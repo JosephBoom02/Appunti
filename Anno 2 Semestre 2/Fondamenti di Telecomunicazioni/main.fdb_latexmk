@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1677512164 "main.xdv" "main.pdf" "main" 1677512164 0
-  "main.xdv" 1677512163 5628 55bd887d4074c693e078dca07e53a1c2 "xelatex"
+["xdvipdfmx"] 1677603762 "main.xdv" "main.pdf" "main" 1677603762 0
+  "main.xdv" 1677603761 13072 0c02fe3d000eeeca681e617da8194045 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1677512160 "c:/Users/bumma/Documents/VSCode/Fondamenti-Di-Telecomunicazioni/main.tex" "main.xdv" "main" 1677512164 0
+["xelatex"] 1677603759 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Fondamenti di Telecomunicazioni/main.tex" "main.xdv" "main" 1677603762 0
   "C:/Program Files/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768654 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -22,6 +22,7 @@
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmmi8.tfm" 1136765053 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
+  "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmr17.tfm" 1136765053 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmr6.tfm" 1136765053 1300 b62933e007d01cfd073f79b963c01526 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmr8.tfm" 1136765053 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmsy10.tfm" 1136765053 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -216,6 +217,7 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/listofitems/listofitems.sty" 1566398070 195 27b9da3d207196766c9f281d0590e267 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mathtools/mathtools.sty" 1656511286 62269 5c1837a5bc5db4c0d255eedc225ca44b ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mathtools/mhsetup.sty" 1656511286 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
+  "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/multirow/multirow.sty" 1615976118 6149 2398eec4faa1ee24ff761581e580ecf1 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mwe/mwe.sty" 1522421737 1456 7bb09594886c19c468e0197ad923b508 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/natbib/natbib.sty" 1292249081 46712 1c8843383c0bd05870c45fa0ebea6cc2 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/pdflscape/pdflscape-nometadata.sty" 1668505912 6572 ea530fbbe537629fd97736d33babc07d ""
@@ -227,11 +229,12 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657797096 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/stackengine/stackengine.sty" 1626919988 16455 7159cc65692c01a770db5ae586ea9570 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/was/upgreek.sty" 1665847170 5794 9054e31be15d93f1e6bd28cca2b6643f ""
-  "c:/Users/bumma/Documents/VSCode/Fondamenti-Di-Telecomunicazioni/main.tex" 1677512159 2236 5f0c35e173f8f8557e7fd97cd799b326 ""
-  "main.aux" 1677512163 633 60631c0237958c01c7d2aa489889b251 "xelatex"
-  "main.out" 1677512163 126 db4f6df91e8ebfb603e5fc2c0b6adccb "xelatex"
-  "main.tex" 1677512159 2236 5f0c35e173f8f8557e7fd97cd799b326 ""
-  "main.toc" 1677512163 72 4507cdf39a9d0e1d6f2b64c4bfc3479a "xelatex"
+  "Circonferenza.png" 1677601007 24187 4d3cf52f54b336bbe61fccb486db7273 ""
+  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Fondamenti di Telecomunicazioni/main.tex" 1677603758 3740 eaaac8ecc10e01d5cddecd663cf886eb ""
+  "main.aux" 1677603761 873 8c7a2ad92874b62337daae9379d2926a "xelatex"
+  "main.out" 1677603761 418 c6ae41ede7416f2bb339015ad8c9eaca "xelatex"
+  "main.tex" 1677603758 3740 eaaac8ecc10e01d5cddecd663cf886eb ""
+  "main.toc" 1677603761 230 79cddc084fa291cd3ab688b0f336f7bf "xelatex"
   (generated)
   "main.aux"
   "main.log"

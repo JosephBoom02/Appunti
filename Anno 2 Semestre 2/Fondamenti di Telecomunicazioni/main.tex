@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 
@@ -29,6 +29,8 @@
 \lstdefinestyle{mystyle}{ 
 bracketsstyle=\color{red}
 }
+
+\DeclareMathOperator{\sgn}{\text{sgn}}
 
 \title{Formulario di Fondamenti di Telecomunicazioni}
 \author{Giuseppe Bumma}
@@ -81,10 +83,73 @@ bracketsstyle=\color{red}
     \begin{cases}
         \arctan\left( \dfrac{b}{a} \right) &a > 0\\
         \\
+        \sgn(y) \cdot \dfrac{\pi}{2} &x=0\\
+        \\
         \arctan \left( \dfrac{b}{a} \right) + \pi &a<0
     \end{cases}
 \end{align*}
 \subsubsection*{}
+
+
+\subsubsection*{Forma esponenziale}
+\begin{align*}
+    e^{j \phi} &= \cos(\phi) + j \sin(\phi) & z&= a + jb = r e^{j \phi} 
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.5]{Circonferenza.png}
+\end{center}
+
+
+
+
+\section{Sinusoide e fasori}
+\renewcommand{\arraystretch}{2.5}
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        Funzione sinusoidale & $x(t) = A \cos (\omega t + \theta) = Re \left\{  A e^{j(\omega t + \theta)}\right\}$\\
+        \hline
+    \end{tabular} 
+\end{center}
+
+
+\subsection{Analisi di Fourier}
+\begin{center}
+    \renewcommand{\arraystretch}{3}
+    \begin{tabular}{|c|l|}
+        \hline 
+        \multirow{2}{7em}{Prima forma (esponenziale)} & formula di sintesi: $x(t)=\mathlarger{\sum}_{n=-\infty}^{+\infty} c_n e^{jn \omega_0t}$\\
+        & formula di analisi: $c_n = \dfrac{1}{T} \bigintss_{-T/2}^{+T/2} x(t)e^{-jn\omega_0t}dt$\\
+        \hline
+        Convergenza puntuale & $\lim\limits_{N \rightarrow \infty} \left\{ x(t) - \mathlarger{\sum}_{n=-N}^N c_n e^{jn\omega_0t} \right\}=0$\\
+        \hline
+        Convergenza in media quadratica & $\lim\limits_{N \rightarrow \infty} \left\{ \bigintss_T \left| x(t) - \mathlarger{\sum}_{n=-N}^N c_n e^{-jn\omega_0t} \right|^2 dt \right\}=0$\\
+        \hline
+        $I^o$ forma & $$
+    \end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
