@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1677503314 "main.xdv" "main.pdf" "main" 1677503315 0
-  "main.xdv" 1677503314 37932 ac505b1216faefc3d91ec0c4df362f66 "xelatex"
+["xdvipdfmx"] 1677668741 "main.xdv" "main.pdf" "main" 1677668742 0
+  "main.xdv" 1677668741 130180 ad08f6b9d8a59ab0bbbfa189ef708e0c "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1677503311 "c:/Users/bumma/Documents/VSCode/Economia-e-Organizzazione-aziendale/main.tex" "main.xdv" "main" 1677503315 0
+["xelatex"] 1677668739 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/main.tex" "main.xdv" "main" 1677668742 0
   "C:/Program Files/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768654 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -195,6 +195,7 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/listofitems/listofitems.tex" 1566398070 27590 17724a32e183cb652d922ee9f34b134d ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty" 1601732009 18568 4409f8f50cd365c68e684407e5350b1b ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/pdfescape/pdfescape.sty" 1575926700 19007 15924f7228aca6c6d184b115f4baa231 ""
+  "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/schemata/schemata.sty" 1614781716 8465 5f76b287565a2ee8c5241c96e71702b2 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/stringenc/stringenc.sty" 1575105840 21514 b7557edcee22835ef6b03ede1802dad4 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/generic/uniquecounter/uniquecounter.sty" 1576434012 7008 f92eaa0a3872ed622bbf538217cd2ab7 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/amscls/amsthm.sty" 1591020009 12594 0d51ac3a545aaaa555021326ff22a6cc ""
@@ -216,6 +217,7 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/listofitems/listofitems.sty" 1566398070 195 27b9da3d207196766c9f281d0590e267 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mathtools/mathtools.sty" 1656511286 62269 5c1837a5bc5db4c0d255eedc225ca44b ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mathtools/mhsetup.sty" 1656511286 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
+  "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/multirow/multirow.sty" 1615976118 6149 2398eec4faa1ee24ff761581e580ecf1 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/mwe/mwe.sty" 1522421737 1456 7bb09594886c19c468e0197ad923b508 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/natbib/natbib.sty" 1292249081 46712 1c8843383c0bd05870c45fa0ebea6cc2 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/pdflscape/pdflscape-nometadata.sty" 1668505912 6572 ea530fbbe537629fd97736d33babc07d ""
@@ -227,12 +229,13 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657797096 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/stackengine/stackengine.sty" 1626919988 16455 7159cc65692c01a770db5ae586ea9570 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/was/upgreek.sty" 1665847170 5794 9054e31be15d93f1e6bd28cca2b6643f ""
-  "Tabella bilancio.png" 1677503070 82970 0686ac5c24d4bd3f3805a0002d8d75c4 ""
-  "c:/Users/bumma/Documents/VSCode/Economia-e-Organizzazione-aziendale/main.tex" 1677503310 4874 146f6b926bdf26fe7d80a93dafd07511 ""
-  "main.aux" 1677503314 1184 1719162fc4f451500deb743d2796118f "xelatex"
-  "main.out" 1677503314 908 da1a1e74007c5b4e3aef45db51b7b4d3 "xelatex"
-  "main.tex" 1677503310 4874 146f6b926bdf26fe7d80a93dafd07511 ""
-  "main.toc" 1677503314 459 eef215e268e64f8ae53115370427e618 "xelatex"
+  "Rendiconto renzo.png" 1677604897 101499 c19987b316c1a685fa302f5b55460d3c ""
+  "Tabella bilancio.png" 1677599897 82970 0686ac5c24d4bd3f3805a0002d8d75c4 ""
+  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/main.tex" 1677668735 13927 b3e9d3097ba16590c9a20786716f06cc ""
+  "main.aux" 1677668741 2806 efb4ca84b9b9a49e9c2f8fe623e2c4aa "xelatex"
+  "main.out" 1677668741 3193 512dd7dea7208bd3e32b73d8815f6ffb "xelatex"
+  "main.tex" 1677668735 13927 b3e9d3097ba16590c9a20786716f06cc ""
+  "main.toc" 1677668741 1589 89b1a0790fee451987fb65c1de29d23f "xelatex"
   (generated)
   "main.aux"
   "main.log"

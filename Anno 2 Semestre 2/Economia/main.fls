@@ -1,6 +1,6 @@
-PWD c:\Users\bumma\Documents\VSCode\Economia-e-Organizzazione-aziendale
+PWD c:\Users\bumma\Documents\VSCode\Latex\Anno 2 Semestre 2\Economia
 INPUT C:\Users\bumma\AppData\Local\MiKTeX\miktex\data\le\xetex\xelatex.fmt
-INPUT c:\Users\bumma\Documents\VSCode\Economia-e-Organizzazione-aziendale\main.tex
+INPUT c:\Users\bumma\Documents\VSCode\Latex\Anno 2 Semestre 2\Economia\main.tex
 OUTPUT main.log
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
@@ -787,6 +787,28 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
@@ -1236,6 +1258,9 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT .\Tabella bilancio.png
 INPUT .\Tabella bilancio.png
 INPUT Tabella bilancio.png
+INPUT .\Rendiconto renzo.png
+INPUT .\Rendiconto renzo.png
+INPUT Rendiconto renzo.png
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
