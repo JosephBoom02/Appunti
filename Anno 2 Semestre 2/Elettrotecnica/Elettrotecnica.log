@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.2.25)  2 MAR 2023 16:10
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.2.25)  6 MAR 2023 20:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -777,35 +777,59 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box80
 \enit@count@id=\count360
 \enitdp@description=\count361
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 19.
+) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/soul\soul.sty
+Package: soul 2023-02-18 v3.0 Permit use of UTF-8 characters in soul (HO)
+ (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/soul\soul-ori.sty
+Package: soul-ori 2023-02-18 v3.0 letterspacing/underlining (mf)
+\SOUL@word=\toks55
+\SOUL@lasttoken=\toks56
+\SOUL@syllable=\toks57
+\SOUL@cmds=\toks58
+\SOUL@buffer=\toks59
+\SOUL@token=\toks60
+\SOUL@syllgoal=\dimen311
+\SOUL@syllwidth=\dimen312
+\SOUL@charkern=\dimen313
+\SOUL@hyphkern=\dimen314
+\SOUL@dimen=\dimen315
+\SOUL@dimeni=\dimen316
+\SOUL@minus=\count362
+\SOUL@comma=\count363
+\SOUL@apo=\count364
+\SOUL@grave=\count365
+\SOUL@spaceskip=\skip70
+\SOUL@ttwidth=\dimen317
+\SOUL@uldp=\dimen318
+\SOUL@ulht=\dimen319
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 20.
  (Elettrotecnica.aux)
 \openout1 = `Elettrotecnica.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 51.
  (C:\Program Files\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -815,14 +839,14 @@ LaTeX Font Info:    ... okay on input line 50.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.9055pt, 483.69684pt, 56.90553pt)
-* v-part:(T,H,B)=(28.45274pt, 731.23582pt, 85.35828pt)
+* h-part:(L,W,R)=(28.45274pt, 540.60239pt, 28.45274pt)
+* v-part:(T,H,B)=(28.45274pt, 715.18745pt, 101.40665pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=483.69684pt
-* \textheight=731.23582pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
+* \textwidth=540.60239pt
+* \textheight=715.18745pt
+* \oddsidemargin=-43.81725pt
+* \evensidemargin=-43.81725pt
 * \topmargin=-80.81725pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -841,7 +865,7 @@ LaTeX Font Info:    ... okay on input line 50.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count362
+\c@lstlisting=\count366
 (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
@@ -853,7 +877,7 @@ Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 ))
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.9).
 
-Package hyperref Info: Link coloring ON on input line 50.
+Package hyperref Info: Link coloring ON on input line 51.
 (Elettrotecnica.out) (Elettrotecnica.out)
 \@outlinefile=\write4
 \openout4 = `Elettrotecnica.out'.
@@ -877,49 +901,132 @@ File: uesint.fd
  [1
 
 ]
-File: Forza di Coulomb.png Graphic file (type bmp)
-<Forza di Coulomb.png>
+File: Image/Forza di Coulomb.png Graphic file (type bmp)
+<Image/Forza di Coulomb.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--126
+Overfull \hbox (9.12764pt too wide) in paragraph at lines 118--127
+\TU/lmr/m/n/10 Campo elettrico e forza elettrostatica da cui esso deriva hanno la stessa direzione. Perciò il campo produce un’accelerazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--127
 
  []
 
 [2]
-File: Forza elettrostatica.png Graphic file (type bmp)
-<Forza elettrostatica.png>
-File: Densità di corrente.png Graphic file (type bmp)
-<Densità di corrente.png>
-File: Corrente conduttore.png Graphic file (type bmp)
-<Corrente conduttore.png>
+File: Image/Forza elettrostatica.png Graphic file (type bmp)
+<Image/Forza elettrostatica.png>
+File: Image/Densità di corrente.png Graphic file (type bmp)
+<Image/Densità di corrente.png>
+File: Image/Corrente conduttore.png Graphic file (type bmp)
+<Image/Corrente conduttore.png>
  [3]
-File: Tensione.png Graphic file (type bmp)
-<Tensione.png>
-File: Campo magnetico.png Graphic file (type bmp)
-<Campo magnetico.png>
-File: Campo magnetico-2.png Graphic file (type bmp)
-<Campo magnetico-2.png>
+File: Image/Tensione.png Graphic file (type bmp)
+<Image/Tensione.png>
+File: Image/Campo magnetico.png Graphic file (type bmp)
+<Image/Campo magnetico.png>
+File: Image/Campo magnetico-2.png Graphic file (type bmp)
+<Image/Campo magnetico-2.png>
  [4]
-File: Legge di Faraday.png Graphic file (type bmp)
-<Legge di Faraday.png>
+File: Image/Legge di Faraday.png Graphic file (type bmp)
+<Image/Legge di Faraday.png>
  [5]
-File: Conservazione della carica.png Graphic file (type bmp)
-<Conservazione della carica.png>
+File: Image/Conservazione della carica.png Graphic file (type bmp)
+<Image/Conservazione della carica.png>
  [6] [7]
-Underfull \hbox (badness 2359) in paragraph at lines 475--475
+Underfull \hbox (badness 2359) in paragraph at lines 476--476
 \TU/lmr/m/n/10 ferenza di potenziale
  []
 
-[8] [9] (Elettrotecnica.aux)
+[8] [9]
+File: Image/Convenzione.png Graphic file (type bmp)
+<Image/Convenzione.png>
+File: Image/Esempio1-Circuiiti.png Graphic file (type bmp)
+<Image/Esempio1-Circuiiti.png>
+ [10]
+File: Image/Esempio LKC.png Graphic file (type bmp)
+<Image/Esempio LKC.png>
+File: Image/Resistore.png Graphic file (type bmp)
+<Image/Resistore.png>
+ [11]
+File: Image/Condensatore.png Graphic file (type bmp)
+<Image/Condensatore.png>
+File: Image/Grafico condensatore.png Graphic file (type bmp)
+<Image/Grafico condensatore.png>
+ [12]
+File: Image/Induttore.png Graphic file (type bmp)
+<Image/Induttore.png>
+File: Image/Induttore ferr.png Graphic file (type bmp)
+<Image/Induttore ferr.png>
+File: Image/Resistori in serie.png Graphic file (type bmp)
+<Image/Resistori in serie.png>
+File: Image/Resistori in parallelo.png Graphic file (type bmp)
+<Image/Resistori in parallelo.png>
+File: Image/Condensatori in serie.png Graphic file (type bmp)
+<Image/Condensatori in serie.png>
+File: Image/Condensatori in parallelo.png Graphic file (type bmp)
+<Image/Condensatori in parallelo.png>
+ [13]
+File: Image/Induttori in serie.png Graphic file (type bmp)
+<Image/Induttori in serie.png>
+File: Image/Induttori in parallelo.png Graphic file (type bmp)
+<Image/Induttori in parallelo.png>
+File: Image/Gen Tensione ideale.png Graphic file (type bmp)
+<Image/Gen Tensione ideale.png>
+File: Image/Gen tensione reale.png Graphic file (type bmp)
+<Image/Gen tensione reale.png>
+ [14]
+File: Image/Gen corrente ideale.png Graphic file (type bmp)
+<Image/Gen corrente ideale.png>
+File: Image/Gen corrente reale.png Graphic file (type bmp)
+<Image/Gen corrente reale.png>
+File: Image/Circuito aperto.png Graphic file (type bmp)
+<Image/Circuito aperto.png>
+ [15]
+File: Image/Circuito chiuso.png Graphic file (type bmp)
+<Image/Circuito chiuso.png>
+File: Image/Resistori aperto chiuso.png Graphic file (type bmp)
+<Image/Resistori aperto chiuso.png>
+File: Image/Esempio1_1.png Graphic file (type bmp)
+<Image/Esempio1_1.png>
+File: Image/Esempio1_2.png Graphic file (type bmp)
+<Image/Esempio1_2.png>
+File: Image/Esempio1_3.png Graphic file (type bmp)
+<Image/Esempio1_3.png>
+File: Image/Esempio1_4.png Graphic file (type bmp)
+<Image/Esempio1_4.png>
+File: Image/Partitore di tensione.png Graphic file (type bmp)
+<Image/Partitore di tensione.png>
+ [16]
+File: Image/Partitore di corrente.png Graphic file (type bmp)
+<Image/Partitore di corrente.png>
+File: Image/Stella triangolo.png Graphic file (type bmp)
+<Image/Stella triangolo.png>
+File: Image/Nodi triangolo stella.png Graphic file (type bmp)
+<Image/Nodi triangolo stella.png>
+File: Image/Stella triangolo insieme.png Graphic file (type bmp)
+<Image/Stella triangolo insieme.png>
+ [17]
+File: Image/Esempio2_1.png Graphic file (type bmp)
+<Image/Esempio2_1.png>
+File: Image/Esempio2_2.png Graphic file (type bmp)
+<Image/Esempio2_2.png>
+File: Image/Esempio2_3.png Graphic file (type bmp)
+<Image/Esempio2_3.png>
+ [18]
+File: Image/Esempio2_4.png Graphic file (type bmp)
+<Image/Esempio2_4.png>
+ [19] (Elettrotecnica.aux)
 Package rerunfilecheck Info: File `Elettrotecnica.out' has not changed.
-(rerunfilecheck)             Checksum: 4814014CFC76A1DF1A0B58218693C986;3861.
+(rerunfilecheck)             Checksum: 6AD4EA98DBF3022C9EEFB8389D78BC59;7653.
  ) 
 Here is how much of TeX's memory you used:
- 35292 strings out of 411476
- 791884 string characters out of 5822643
- 1861001 words of memory out of 5000000
- 54951 multiletter control sequences out of 15000+600000
- 521195 words of font info for 84 fonts, out of 8000000 for 9000
+ 35802 strings out of 411476
+ 803771 string characters out of 5822643
+ 1868001 words of memory out of 5000000
+ 55427 multiletter control sequences out of 15000+600000
+ 521508 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  100i,17n,104p,804b,479s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Elettrotecnica.xdv (9 pages, 156564 bytes).
+Output written on Elettrotecnica.xdv (19 pages, 291332 bytes).

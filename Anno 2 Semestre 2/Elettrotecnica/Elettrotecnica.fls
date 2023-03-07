@@ -1122,6 +1122,31 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
 INPUT .\Elettrotecnica.aux
 INPUT Elettrotecnica.aux
 INPUT Elettrotecnica.aux
@@ -1233,33 +1258,135 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\euler\eurm7.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
-INPUT .\Forza di Coulomb.png
-INPUT .\Forza di Coulomb.png
-INPUT Forza di Coulomb.png
-INPUT .\Forza elettrostatica.png
-INPUT .\Forza elettrostatica.png
-INPUT Forza elettrostatica.png
-INPUT .\Densità di corrente.png
-INPUT .\Densità di corrente.png
-INPUT Densità di corrente.png
-INPUT .\Corrente conduttore.png
-INPUT .\Corrente conduttore.png
-INPUT Corrente conduttore.png
-INPUT .\Tensione.png
-INPUT .\Tensione.png
-INPUT Tensione.png
-INPUT .\Campo magnetico.png
-INPUT .\Campo magnetico.png
-INPUT Campo magnetico.png
-INPUT .\Campo magnetico-2.png
-INPUT .\Campo magnetico-2.png
-INPUT Campo magnetico-2.png
-INPUT .\Legge di Faraday.png
-INPUT .\Legge di Faraday.png
-INPUT Legge di Faraday.png
-INPUT .\Conservazione della carica.png
-INPUT .\Conservazione della carica.png
-INPUT Conservazione della carica.png
+INPUT .\Image\Forza di Coulomb.png
+INPUT .\Image\Forza di Coulomb.png
+INPUT Image\Forza di Coulomb.png
+INPUT .\Image\Forza elettrostatica.png
+INPUT .\Image\Forza elettrostatica.png
+INPUT Image\Forza elettrostatica.png
+INPUT .\Image\Densità di corrente.png
+INPUT .\Image\Densità di corrente.png
+INPUT Image\Densità di corrente.png
+INPUT .\Image\Corrente conduttore.png
+INPUT .\Image\Corrente conduttore.png
+INPUT Image\Corrente conduttore.png
+INPUT .\Image\Tensione.png
+INPUT .\Image\Tensione.png
+INPUT Image\Tensione.png
+INPUT .\Image\Campo magnetico.png
+INPUT .\Image\Campo magnetico.png
+INPUT Image\Campo magnetico.png
+INPUT .\Image\Campo magnetico-2.png
+INPUT .\Image\Campo magnetico-2.png
+INPUT Image\Campo magnetico-2.png
+INPUT .\Image\Legge di Faraday.png
+INPUT .\Image\Legge di Faraday.png
+INPUT Image\Legge di Faraday.png
+INPUT .\Image\Conservazione della carica.png
+INPUT .\Image\Conservazione della carica.png
+INPUT Image\Conservazione della carica.png
+INPUT .\Image\Convenzione.png
+INPUT .\Image\Convenzione.png
+INPUT Image\Convenzione.png
+INPUT .\Image\Esempio1-Circuiiti.png
+INPUT .\Image\Esempio1-Circuiiti.png
+INPUT Image\Esempio1-Circuiiti.png
+INPUT .\Image\Esempio LKC.png
+INPUT .\Image\Esempio LKC.png
+INPUT Image\Esempio LKC.png
+INPUT .\Image\Resistore.png
+INPUT .\Image\Resistore.png
+INPUT Image\Resistore.png
+INPUT .\Image\Condensatore.png
+INPUT .\Image\Condensatore.png
+INPUT Image\Condensatore.png
+INPUT .\Image\Grafico condensatore.png
+INPUT .\Image\Grafico condensatore.png
+INPUT Image\Grafico condensatore.png
+INPUT .\Image\Induttore.png
+INPUT .\Image\Induttore.png
+INPUT Image\Induttore.png
+INPUT .\Image\Induttore ferr.png
+INPUT .\Image\Induttore ferr.png
+INPUT Image\Induttore ferr.png
+INPUT .\Image\Resistori in serie.png
+INPUT .\Image\Resistori in serie.png
+INPUT Image\Resistori in serie.png
+INPUT .\Image\Resistori in parallelo.png
+INPUT .\Image\Resistori in parallelo.png
+INPUT Image\Resistori in parallelo.png
+INPUT .\Image\Condensatori in serie.png
+INPUT .\Image\Condensatori in serie.png
+INPUT Image\Condensatori in serie.png
+INPUT .\Image\Condensatori in parallelo.png
+INPUT .\Image\Condensatori in parallelo.png
+INPUT Image\Condensatori in parallelo.png
+INPUT .\Image\Induttori in serie.png
+INPUT .\Image\Induttori in serie.png
+INPUT Image\Induttori in serie.png
+INPUT .\Image\Induttori in parallelo.png
+INPUT .\Image\Induttori in parallelo.png
+INPUT Image\Induttori in parallelo.png
+INPUT .\Image\Gen Tensione ideale.png
+INPUT .\Image\Gen Tensione ideale.png
+INPUT Image\Gen Tensione ideale.png
+INPUT .\Image\Gen tensione reale.png
+INPUT .\Image\Gen tensione reale.png
+INPUT Image\Gen tensione reale.png
+INPUT .\Image\Gen corrente ideale.png
+INPUT .\Image\Gen corrente ideale.png
+INPUT Image\Gen corrente ideale.png
+INPUT .\Image\Gen corrente reale.png
+INPUT .\Image\Gen corrente reale.png
+INPUT Image\Gen corrente reale.png
+INPUT .\Image\Circuito aperto.png
+INPUT .\Image\Circuito aperto.png
+INPUT Image\Circuito aperto.png
+INPUT .\Image\Circuito chiuso.png
+INPUT .\Image\Circuito chiuso.png
+INPUT Image\Circuito chiuso.png
+INPUT .\Image\Resistori aperto chiuso.png
+INPUT .\Image\Resistori aperto chiuso.png
+INPUT Image\Resistori aperto chiuso.png
+INPUT .\Image\Esempio1_1.png
+INPUT .\Image\Esempio1_1.png
+INPUT Image\Esempio1_1.png
+INPUT .\Image\Esempio1_2.png
+INPUT .\Image\Esempio1_2.png
+INPUT Image\Esempio1_2.png
+INPUT .\Image\Esempio1_3.png
+INPUT .\Image\Esempio1_3.png
+INPUT Image\Esempio1_3.png
+INPUT .\Image\Esempio1_4.png
+INPUT .\Image\Esempio1_4.png
+INPUT Image\Esempio1_4.png
+INPUT .\Image\Partitore di tensione.png
+INPUT .\Image\Partitore di tensione.png
+INPUT Image\Partitore di tensione.png
+INPUT .\Image\Partitore di corrente.png
+INPUT .\Image\Partitore di corrente.png
+INPUT Image\Partitore di corrente.png
+INPUT .\Image\Stella triangolo.png
+INPUT .\Image\Stella triangolo.png
+INPUT Image\Stella triangolo.png
+INPUT .\Image\Nodi triangolo stella.png
+INPUT .\Image\Nodi triangolo stella.png
+INPUT Image\Nodi triangolo stella.png
+INPUT .\Image\Stella triangolo insieme.png
+INPUT .\Image\Stella triangolo insieme.png
+INPUT Image\Stella triangolo insieme.png
+INPUT .\Image\Esempio2_1.png
+INPUT .\Image\Esempio2_1.png
+INPUT Image\Esempio2_1.png
+INPUT .\Image\Esempio2_2.png
+INPUT .\Image\Esempio2_2.png
+INPUT Image\Esempio2_2.png
+INPUT .\Image\Esempio2_3.png
+INPUT .\Image\Esempio2_3.png
+INPUT Image\Esempio2_3.png
+INPUT .\Image\Esempio2_4.png
+INPUT .\Image\Esempio2_4.png
+INPUT Image\Esempio2_4.png
 INPUT Elettrotecnica.aux
 INPUT .\Elettrotecnica.out
 INPUT .\Elettrotecnica.out
