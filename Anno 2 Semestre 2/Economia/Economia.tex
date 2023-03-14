@@ -1,21 +1,39 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
+\usepackage{titlesec}
+
+%code to write section, subsection and subsubsection title in a specific color
+\titleformat{\section}
+{\color{synthwave_text}\normalfont\Large\bfseries}
+{\color{synthwave_text}\thesection}{1em}{} 
+
+\titleformat{\subsection}
+{\color{synthwave_text}\normalfont\large\bfseries}
+{\color{synthwave_text}\thesubsection}{1em}{} 
+
+\titleformat{\subsubsection}
+{\color{synthwave_text}\normalfont\normalfont\bfseries}
+{\color{synthwave_text}\thesubsubsection}{1em}{} 
 
 
-\pgfplotsset{width=10cm,compat=1.9}
+
+
+\pgfplotsset{compat=1.9}
 
 \colorlet{myWhite}{white!35!gray}
 \definecolor{shadeofgray}{HTML}{181818}
 \definecolor{shadeofviolet}{HTML}{0f022c}
+\definecolor{synthwave_beckground}{HTML}{252334}
+\definecolor{synthwave_text}{HTML}{e148aa}
 
 
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=violet,
+    linkcolor=synthwave_text,
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Overleaf Example},
@@ -24,8 +42,8 @@
 
 \geometry{ 
  a4paper,
- total={170mm,257mm},
- left=20mm,
+ left=10mm,
+ right=10mm,
  top=10mm,
  }
  
@@ -44,7 +62,7 @@ bracketsstyle=\color{red}
 %----------------------------------------------------------------------
 
 
-\pagecolor{shadeofgray}
+\pagecolor{synthwave_beckground} %{shadeofgray}
 \color{myWhite}
 
 
@@ -145,7 +163,7 @@ gestione.
 }%
 }
 \begin{center}
-    \includegraphics[scale=0.4]{Tabella bilancio.png}
+    \includegraphics[scale=0.4]{Image/Tabella bilancio.png}
 \end{center}
 \textbf{N.B.} Il bilancio fiscale si chiude sempre a dicembre, ma un'azienda può compilare un bilancio gestionale (con cadenza arbitraria, as es. mensile o bimestrale) per avere un'idea sui futuri investimenti.
 
@@ -190,7 +208,7 @@ momento. Esso fornisce tre informazioni essenziali:
 \end{itemize}
 \textbf{Esempio di un rendiconto:}
 \begin{center}
-    \includegraphics[scale=0.45]{Rendiconto renzo.png
+    \includegraphics[scale=0.29]{Image/Rendiconto renzo.png
     }
 \end{center}
 Le \textbf{attività} sono interpretabili come:
@@ -361,24 +379,138 @@ Gli elementi principali costituenti il capitale netto:
     \item Riserve di utili: "ricchezza" generata attraverso la gestione e non distribuita sotto forma di dividendi
 \end{enumerate}
 
+\subsection{Esercizio stato patrimoniale}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Rendiconto renzo.png}
+    \includegraphics[scale=0.2925]{Image/Esercizio stato patrimoniale_1.png}
+\end{center}
 
 
 
 
+\section{Il conto economico e la misurazione dei costi}
+\subsection{Il concetto di costo}
+Le risorse economiche di un'azienda sono definite \textbf{attività} o \textbf{asset} o elementi patrimoniali.
+\vspace*{0.2cm}\\
+Le attività possono essere:
+\begin{itemize}
+    \item \textbf{monetarie}: esiste un'informazione oggettiva e affidabile del loro valore (denaro contante e C/C, titoli, diritti a incassare denaro)
+    \item \textbf{non monetarie}: non esiste un'informazione “oggettiva” e affidabile di quale sia il loro valore di mercato (terreni, fabbricati, macchinari)
+\end{itemize}
+Un'attività, qualunque sia, è normalmente rilevata in contabilità al suo prezzo d'acquisto cioè al suo
+costo storico.
+
+
+\subsubsection*{Attività monetarie}
+La maggior parte delle attività monetarie sono registrate in periodi successivi a quello
+d'acquisto, tipicamente al loro valore di presunto realizzo o \textit{fair value}.
+
+\subsubsection*{Attività non monetarie}
+Il costo d'acquisto continua a essere il riferimento per la contabilizzazione anche nei periodo
+successivi.\\
+l valore di attività non monetarie, come terreni, fabbricati, non sono correlati con i prezzi ai
+quali potrebbero essere venduti, ma \textbf{sono presentati al loro costo storico}.
+
+
+\subsubsection{Le ragioni del concetto di costo}
+Il concetto di costo risulta importante per le attività di un'azienda perché fornisce un'informazione \textbf{relativamente oggettiva} del costo di tale attività.\\
+Il concetto consente una \underline{maggiore flessibilità} di valutazione a chi legge un rendiconto.\\
+Ciò non significa che il valore di un'attività non monetaria rimanga in
+bilancio quello iniziale: il costo storico di un'attività pluriennale è infatti
+sistematicamente ridotto nel corso del tempo attraverso l'\underline{ammortamento}.
+\begin{center}
+    \underline{\textbf{Il principio del costo sacrifica la rilevanza in cambio di una maggiore oggettività e fattibilità}}
+\end{center}
 
 
 
 
+\subsection{Il concetto di costo per le attività monetarie}
+Le attività monetarie (al pari di quelle non monetarie) sono registrate al costo storico al momento
+dell'acquisto o al costo di produzione al momento della loro formazione.\\
+Sono poi, nel caso più comune, adeguate nel tempo al loro \textit{fair value}, detto anche \underline{valore di
+presunto realizzo}.\\
+L'utilizzo del fair value di un'attività monetaria è:
+\begin{enumerate}
+    \item rilevante
+    \item oggettivo
+    \item fattibile, cioè a basso costo (ne sono un esempio le azioni quotate)
+\end{enumerate}
+
+
+\subsubsection*{Esempio}
+Un'impresa ha investito un surplus di cassa acquistando 100.000 azioni
+Unicredit il 30 settembre 2010 al prezzo di €2 e intende determinare il
+valore di presunto realizzo dell'investimento al 30 settembre 2012 per
+potere redigere il bilancio mensile a quella data. Per far questo è necessario semplicemente attendere la chiusura della
+borsa di Milano e leggere sul WEB il valore del titolo. Se, per esempio,
+fosse di €3,47, allora il fair value dell'investimento sarebbe di € 347.000 e
+non € 200.000.
 
 
 
+\subsection{Il concetto di costo per le attività non monetarie}
+Il valore di mercato delle attività non monetarie, come terreni, edifici o attrezzature, si modifica nel tempo
+per diversi motivi. Il costo d'acquisto (costo storico) non rappresenta dunque, se non al momento dell'acquisto, il valore di
+presunto realizzo delle attività non monetarie, non ha cioè un legame con i prezzi ai quali queste
+potrebbero essere vendute (fair value); in generale questa differenza cresce col tempo.
 
 
 
+\subsection{Spesa, Costo di competenza ed esborso}
+\subsubsection{Spesa}
+Quando un'azienda acquista beni o servizi sostiene un costo d'acquisto denominato \textit{spesa}; n\underline{non genera una riduzione delle} \underline{riserve di utili}.
+
+
+\subsubsection{Costo di competenza}
+Un'azienda sostiene un costo di competenza quando il
+suo capitale netto si riduce a seguito della gestione.
+\vspace*{0.1cm}\\
+I tipi di costi di competenza sono:
+\begin{itemize}
+    \item Costi direttamente e analiticamente riconducibili ai ricavi (costo del venduto)
+    \item Costi di periodo
+    \item Perdite
+\end{itemize}
+
+
+\subsubsection{Esborso}
+Esborso è un'uscita di cassa che non necessariamente si
+riferisce all'acquisto di un'attività; as esempio il pagamento di un debito con i fornitori.
 
 
 
+\subsection{Il Conto economico}
+\subsubsection{Ricavi}
+Sono flussi in ingresso che risultano dalla vendita di beni o servizi e che si concretizzano in
+aumenti di valore di attività (cassa, crediti commerciali ...) e delle riserve di utili.
 
+
+\subsubsection{Costi di competenza}
+Sono flussi in uscita che si concretizzano in riduzioni della cassa (o aumento delle passività) e
+di una riduzione delle riserve di utili.
+\begin{center}
+    Ricavi - Costi di competenza = Reddito
+\end{center}
+Il reddito può essere indicato come profitto, risultato netto, utile netto.
+
+
+
+\subsection{T account}
+Le transazioni che durante il periodo amministrativo hanno ripercussioni sul valore della cassa, cioè possono determinare incrementi o decrementi della stessa.\\
+La sezione di sinistra, è riservata agli incrementi, mentre l'altra ai decrementi.
+\vspace*{0.2cm}\\
+Vediamo un esempio:\\ 
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Image/Esempio_Taccount_1.png}
+\end{wrapfigure}
+\begin{itemize}
+    \item L'azienda incassa €300,00 per la vendita in contanti di merce costata €200,00
+    \item L'azienda contrae un prestito bancario di €5.000,00
+    \item L'azienda acquisisce €2.000,00 di merci che paga in contanti
+    \item L'azienda vende in contanti €800,00 merce costata €500,00
+\end{itemize} 
 
 
 

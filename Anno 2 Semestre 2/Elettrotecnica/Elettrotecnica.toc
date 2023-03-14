@@ -31,9 +31,12 @@
 \contentsline {subsubsection}{\numberline {2.4.1}Generatore indipendente di tensione}{14}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Generatore indipendente di corrente}{15}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Generatori dipendenti}{15}{subsubsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.5}Circuiti nel dettaglio}{15}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Circuiti aperti e chiusi}{15}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}Esempio 1}{16}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5}Circuiti nel dettaglio}{16}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Circuiti aperti e chiusi}{16}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Esempio 1}{17}{subsubsection.2.5.2}%
 \contentsline {subsubsection}{\numberline {2.5.3}Partitore di tensione}{17}{subsubsection.2.5.3}%
 \contentsline {subsubsection}{\numberline {2.5.4}Partitore di corrente}{17}{subsubsection.2.5.4}%
 \contentsline {subsubsection}{\numberline {2.5.5}Collegamenti di resistori a stella e a triangolo}{17}{subsubsection.2.5.5}%
+\contentsline {section}{\numberline {3}Metodi di analisi}{19}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Metodo di Tanenblau}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Metodo dei potenziali di nodo}{20}{subsection.3.2}%

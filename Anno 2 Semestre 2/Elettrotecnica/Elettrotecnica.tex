@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{soul}
+\usepackage{unicode-math}
 
 \pgfplotsset{compat=1.9}
 
@@ -1056,7 +1057,66 @@ Determinare la resistenza equivalente del seguente circuito
 
 
 
+\section{Metodi di analisi}
+\subsection{Metodo di Tanenblau}
+Prendiamo un circuito di riferimento
+\begin{center}
+    \includegraphics[scale=0.35]{Image/Metodo di Tanenblau_1.png}
+\end{center}
+Definiamo
+\begin{itemize} 
+    \item Nodo: intersezione tra 3 o più fili
+    \item Ramo: Parte di circuito compresa tra due nodi
+    \item Maglia: qualsiasi percorso chiuso del circuito
+    \item Lato: connessione in successione di più rami
+\end{itemize}
+Possiamo riformulare la definizione di risoluzione di un circuito: calcolare tutte le tensioni di lato e tutte le correnti di lato.\\
+Quindi se $L$ è il numero di lati, avremo $L$ tensioni e $L$ correnti in un circuito; in totale si hanno $2L$ incognite, che necessitano di $2L$ equazioni indipendenti.
+\vspace*{0.2cm}\\
+Possiamo scrivere $L$ equazioni costitutive dei componenti, le altre $L$ equazioni di ricavano da LKC e LKT.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Metodo di Tanenblau_2.png}
+\end{center}
+\begin{align*}
+    &\begin{rcases}
+        A(LKC): i_1+i_3-i_2=0\\
+        B(LKC): i_4-i_3-i_5=0
+    \end{rcases}+ = -i_2 =i_5+i_1+i_4\\
+    &C(LKC): i_2+i_5-i_1-i_4=0
+\end{align*}
+La somma delle prime due equazioni è uguale alle terza con segni invertiti, quindi le tre equazioni non sono indipendenti, solo due di esse lo sono.
+\vspace*{0.1cm}\\
+Le equazioni che servono per risolvere un circuito sono:
+\begin{itemize}
+    \item $L$ equazioni costitutive
+    \item $N-1$ LKC
+    \item $L-N+1$ LKT (maglie non intersecate da rami)
+\end{itemize}
+Infatti per il circuito avremo
+\begin{align*}
+    &M_1: v_1-v_2 = 0 & M_3: v_2+v_3 - v_4=0\\
+    &M_2: v_4-v_5=0
+\end{align*}
 
+\subsubsection*{Passaggi}
+\begin{enumerate}
+    \item individuare $N$ nodi e $L$ lati
+    \item individuare $2L$ incognite ($v,i$)
+    \item scrivere le $L$ equazioni di lato
+    \item scrivere le $N-1$ LKC e $L-N+1$ LKT
+    \item Risolvere il sistema di equazioni
+\end{enumerate}
+
+
+
+
+\subsection{Metodo dei potenziali di nodo}
+\begin{enumerate}
+    \item scegliere un nodo di rifermento
+    \item assegniamo le tensioni agli altri nodi
+    \item LKC ai nodi non di riferimento
+    \item scrivere le correnti in funzione dei potenziali di nodo
+\end{enumerate}
 
 
 

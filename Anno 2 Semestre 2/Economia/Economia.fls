@@ -1,7 +1,7 @@
 PWD c:\Users\bumma\Documents\VSCode\Latex\Anno 2 Semestre 2\Economia
 INPUT C:\Users\bumma\AppData\Local\MiKTeX\miktex\data\le\xetex\xelatex.fmt
-INPUT c:\Users\bumma\Documents\VSCode\Latex\Anno 2 Semestre 2\Economia\Econommia.tex
-OUTPUT Econommia.log
+INPUT c:\Users\bumma\Documents\VSCode\Latex\Anno 2 Semestre 2\Economia\Economia.tex
+OUTPUT Economia.log
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
@@ -809,6 +809,17 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
@@ -1144,10 +1155,21 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
-INPUT .\Econommia.aux
-INPUT Econommia.aux
-INPUT Econommia.aux
-OUTPUT Econommia.aux
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT .\Economia.aux
+INPUT Economia.aux
+INPUT Economia.aux
+OUTPUT Economia.aux
 INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
@@ -1189,20 +1211,20 @@ INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\graphics\color.sty
-INPUT .\Econommia.out
-INPUT Econommia.out
-INPUT .\Econommia.out
-INPUT Econommia.out
-INPUT .\Econommia.out
-INPUT Econommia.out
-INPUT .\Econommia.out
-INPUT Econommia.out
-INPUT .\Econommia.out
-INPUT .\Econommia.out
-OUTPUT Econommia.out
-INPUT .\Econommia.toc
-INPUT Econommia.toc
-INPUT Econommia.toc
+INPUT .\Economia.out
+INPUT Economia.out
+INPUT .\Economia.out
+INPUT Economia.out
+INPUT .\Economia.out
+INPUT Economia.out
+INPUT .\Economia.out
+INPUT Economia.out
+INPUT .\Economia.out
+INPUT .\Economia.out
+OUTPUT Economia.out
+INPUT .\Economia.toc
+INPUT Economia.toc
+INPUT Economia.toc
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
@@ -1229,8 +1251,8 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\uesint.fd
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
-OUTPUT Econommia.toc
-OUTPUT Econommia.xdv
+OUTPUT Economia.toc
+OUTPUT Economia.xdv
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
@@ -1255,12 +1277,21 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\euler\eurm7.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
-INPUT .\Tabella bilancio.png
-INPUT .\Tabella bilancio.png
-INPUT Tabella bilancio.png
-INPUT .\Rendiconto renzo.png
-INPUT .\Rendiconto renzo.png
-INPUT Rendiconto renzo.png
-INPUT Econommia.aux
-INPUT .\Econommia.out
-INPUT .\Econommia.out
+INPUT .\Image\Tabella bilancio.png
+INPUT .\Image\Tabella bilancio.png
+INPUT Image\Tabella bilancio.png
+INPUT .\Image\Rendiconto renzo.png
+INPUT .\Image\Rendiconto renzo.png
+INPUT Image\Rendiconto renzo.png
+INPUT .\Image\Rendiconto renzo.png
+INPUT .\Image\Rendiconto renzo.png
+INPUT Image\Rendiconto renzo.png
+INPUT .\Image\Esercizio stato patrimoniale_1.png
+INPUT .\Image\Esercizio stato patrimoniale_1.png
+INPUT Image\Esercizio stato patrimoniale_1.png
+INPUT .\Image\Esempio_Taccount_1.png
+INPUT .\Image\Esempio_Taccount_1.png
+INPUT Image\Esempio_Taccount_1.png
+INPUT Economia.aux
+INPUT .\Economia.out
+INPUT .\Economia.out
