@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1678817868 "Economia.xdv" "Economia.pdf" "Economia" 1678817870 0
-  "Economia.xdv" 1678817868 215624 2e1ce4e94e608ecf687ad272faa8b19f "xelatex"
+["xdvipdfmx"] 1678897030 "Economia.xdv" "Economia.pdf" "Economia" 1678897032 0
+  "Economia.xdv" 1678897030 265508 8e5dfeefa292a2bb6d18fc393f50ea20 "xelatex"
   (generated)
   "Economia.pdf"
   (rewritten before read)
-["xelatex"] 1678817866 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" "Economia.xdv" "Economia" 1678817870 0
+["xelatex"] 1678897028 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" "Economia.xdv" "Economia" 1678897032 0
   "C:/Program Files/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768654 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -206,6 +206,7 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/esint/esint.sty" 1567177715 3004 afa98ed936439dae4d7a74e105144a0f ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/esint/uesint.fd" 1567177715 829 7639bdc0e31ae0fddb2806b1ed14c450 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/eso-pic/eso-pic.sty" 1607182970 11772 8d0db0794e6aeb45348f60bbe3a3e093 ""
+  "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/eurosym/eurosym.sty" 1006988220 3028 8faeef64adee9b964b5e7f5e45921024 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.cfg" 1578053545 1104 7ac475a4e3466b0b43e138e9356bda83 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/hycolor/hycolor.sty" 1580380792 18571 4c28a13fc3d975e6e81c9bea1d697276 ""
@@ -231,15 +232,15 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/titlesec/titlesec.sty" 1625494067 48833 3b7b4cfab1a3d15596bfd3772a77ab65 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/was/upgreek.sty" 1665847170 5794 9054e31be15d93f1e6bd28cca2b6643f ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
-  "Economia.aux" 1678817868 4703 1c8f8b2e4ec38bdb860267c0a75c8bcd "xelatex"
-  "Economia.out" 1678817868 5894 4dd9c29924889da18c171b0f7c7856d7 "xelatex"
-  "Economia.tex" 1678817865 20600 f4d126090c29998102f63ccabed20f12 ""
-  "Economia.toc" 1678817868 2911 f7c9ff4396a561eb7871033d2a52b136 "xelatex"
+  "Economia.aux" 1678897030 5398 942d81b6f70b8dc46274a12d0d915d7d "xelatex"
+  "Economia.out" 1678897030 7011 0e377831f9fd1dde90a0124fabd44671 "xelatex"
+  "Economia.tex" 1678897027 25919 20cddc7edda5b9992764bc3e91554f18 ""
+  "Economia.toc" 1678897030 3401 e1596d41319d3cb606f614d3685ccb76 "xelatex"
   "Image/Esempio_Taccount_1.png" 1678817142 48434 619921d550d8c0134ffad73068e596a1 ""
   "Image/Esercizio stato patrimoniale_1.png" 1678637892 381329 36ca2c466085f2ae0a48ac7c0585f36b ""
   "Image/Rendiconto renzo.png" 1678808757 229795 87067a9eb913d503b48afb71f851a0a2 ""
   "Image/Tabella bilancio.png" 1677599897 82970 0686ac5c24d4bd3f3805a0002d8d75c4 ""
-  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" 1678817865 20600 f4d126090c29998102f63ccabed20f12 ""
+  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" 1678897027 25919 20cddc7edda5b9992764bc3e91554f18 ""
   (generated)
   "Economia.aux"
   "Economia.log"

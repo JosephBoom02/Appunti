@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, eurosym}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
@@ -510,7 +510,138 @@ Vediamo un esempio:\\
     \item L'azienda contrae un prestito bancario di €5.000,00
     \item L'azienda acquisisce €2.000,00 di merci che paga in contanti
     \item L'azienda vende in contanti €800,00 merce costata €500,00
-\end{itemize} 
+\end{itemize}
+Le regole per gli incrementi e per i decrementi sono:
+\begin{itemize}
+    \item \textbf{attività:} se "mette" soldi nella cassa va a sinistra; se li "prende" va a destra
+    \item \textbf{passività:} si fa il contrario, se "prende" i soldi dalla cassa va a sinistra; se li "mette" va a destra
+    \item \textbf{capitale netto:} uguale per le passività
+\end{itemize}
+
+
+
+
+
+
+\section{Analisi di Bilancio}
+L’obiettivo dell’analisi di bilancio:
+\begin{itemize}
+    \item capire l’andamento economico, patrimoniale e finanziario di un’impresa, nostra o di terzi;
+    \item individuare i correttivi da apportare per migliorare l’andamento dell’impresa;
+    \item calcolare ed interpretare i rating aziendali;
+    \item completare le informazioni di bilancio (Relazione sulla gestione);
+    \item controllare le informazioni di bilancio (Relazione del revisore e del Collegio sindacale).
+\end{itemize}
+
+
+
+\subsection{Indici di Bilancio}
+Obiettivo degli Indici di Bilancio:
+\begin{itemize}
+    \item fornire indicazioni sullo stato di salute dell’azienda;
+    \item non rappresentano un punto di arrivo ma un punto di partenza per eventuali correzioni di rotta;
+    \item è opportuno poter contare su una pluralità di indicatori;
+    \item è indispensabile confrontare nel tempo e nello spazio le informazioni degli indici:
+    \begin{itemize}
+        \item nel tempo: tra i dati di bilanci di esercizi diversi della stessa azienda;
+        \item nello spazio: tra i dati di bilancio dello stesso esercizio di aziende diverse tra loro
+        confrontabili (benchmark: medie di settore e best performer).
+    \end{itemize}
+\end{itemize}
+
+
+\subsubsection{Classificazione degli Indici di Bilancio}
+\begin{center}
+    \renewcommand{\arraystretch}{2.5}
+    \begin{tabular}{|c|c|}
+        \hline
+        Redditività & Capacità dell’azienda di creare ricchezza per
+        la proprietà\\
+        \hline 
+        Efficienza & Efficienza nell’utilizzo delle risorse\\
+        \hline 
+        Liquidità & Capacità dell’azienda di generare (assorbire)
+        cassa e di essere solvibile\\
+        \hline 
+        Struttura finanziaria & Relazione tra i mezzi propri ed i mezzi di terzi \\
+        \hline 
+        Investment ratio & Performance aziendale nell’ottica dei
+        soci/azionisti non operativi\\    
+        \hline 
+    \end{tabular}
+\end{center}
+
+
+\subsubsection*{Indicatori di Performance}
+\begin{center}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+        \hline 
+        \textbf{Indicatori di Performance} & \textbf{Numeratore} & \textbf{Denominatore}\\
+        \hline 
+        1. Redditività del capitale Netto (ROE) & Reddito Netto & Capitale Netto\\
+        \hline 
+        2. Utile per Azione & Reddito Netto & Numero di azioni ordinarie in
+        circolazione\\
+        \hline 
+        3. Rapporto prezzo-utili & Valore medio di mercato
+        dell’azione & Utile per Azione\\
+        \hline
+        4. Redditività del capitale investito (ROI) & Risultato Operativo & Fonti di Finanziamento Onerose
+        (debiti di finanziamenti + capitale
+        netto = capitale investito)\\
+        \hline 
+    \end{tabular}
+\end{center}
+
+
+
+\subsection{Redditività del Capitale Netto (ROE)}
+Il ROE (return of equity) misura il ritorno dell’investimento della proprietà sia direttamente (apporti di capitale) sia indirettamente (riserve utili); fa riferimento al \textbf{reddito netto}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management.\\
+In altri termini \underline{misura la capacità del patrimonio netto di generare profitti}. 
+\[
+    \text{ROE} = \frac{\text{Reddito netto}}{\text{Capitale netto}}
+\]
+Se la società Renzo nel 2021 ha un utile (reddito) netto di
+24.000,00 € e un capitale netto di 130.000,00 € il suo ROE sarà del $18\%$ $\left( 24.000,00 \text{€} / 130.000,00 \text{€} \right)$; quindi il capitale  nel 2021 nella Renzo ha avuto un rendimento del $18\%$.
+Interpretazione del ROE:
+\begin{itemize}
+    \item ROE<0: l’azienda sta distruggendo ricchezza
+    \item ROE=0: l’azienda non sta creando/distruggendo ricchezza
+    \item ROE>0: l’azienda sta creando ricchezza
+\end{itemize}
+
+
+
+\subsection{Redditività del capitale investito (ROI)}
+Il ROI (return on investment) ci dice se l'azienda sta impiegando bene il proprio capitale o meno, senza tenere conto di quanto capitale provenga da debiti e quanto da capitale proprio; fa riferimento al reddito \underline{senza imposte}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management. Sostanzialmente \textbf{misura la capacità del investimento di generare profitti}.
+\[
+    \text{ROI} = \frac{\text{Risultato operativo}}{\text{Capitale investito}}
+\]
+Se la società Renzo nel 2021 ha un risultato operativo di 42.000,00
+€ e un capitale investito di 170.000,00 € (40.000,00 € di debiti +
+130.000,00 € di capitale netto), il ROI sarà del $25\%$ $\left( 42.000,00 \text{€} / 170.000,00 \text{€} \right)$; quindi il totale investito nel 2021 nella Renzo ha avuto un ritorno del $25\%$.
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

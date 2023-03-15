@@ -29,3 +29,8 @@
 \contentsline {subsubsection}{\numberline {3.5.1}Ricavi}{10}{subsubsection.3.5.1}%
 \contentsline {subsubsection}{\numberline {3.5.2}Costi di competenza}{10}{subsubsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.6}T account}{10}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Analisi di Bilancio}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Indici di Bilancio}{11}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Classificazione degli Indici di Bilancio}{11}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Redditività del Capitale Netto (ROE)}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Redditività del capitale investito (ROI)}{12}{subsection.4.3}%
