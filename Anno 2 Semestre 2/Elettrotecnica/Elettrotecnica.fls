@@ -506,6 +506,7 @@ INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\color.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
@@ -787,6 +788,50 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\esint\esint.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\schemata\schemata.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\cancel\cancel.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
@@ -1122,133 +1167,25 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\enumitem\enumitem.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\soul\soul-ori.sty
-INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec-xetex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\tuenc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\xparse\xparse.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\fontspec\fontspec.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\fix-cm.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-table.tex
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\unicode-math\unicode-math-table.tex
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\titlesec\titlesec.sty
 INPUT .\Elettrotecnica.aux
 INPUT Elettrotecnica.aux
 INPUT Elettrotecnica.aux
 OUTPUT Elettrotecnica.aux
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
@@ -1300,6 +1237,8 @@ OUTPUT Elettrotecnica.out
 INPUT .\Elettrotecnica.toc
 INPUT Elettrotecnica.toc
 INPUT Elettrotecnica.toc
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
@@ -1326,9 +1265,18 @@ INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\fonts\tfm\public\esint\esint10.tfm
 OUTPUT Elettrotecnica.toc
 OUTPUT Elettrotecnica.xdv
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
@@ -1476,6 +1424,78 @@ INPUT Image\Metodo di Tanenblau_1.png
 INPUT .\Image\Metodo di Tanenblau_2.png
 INPUT .\Image\Metodo di Tanenblau_2.png
 INPUT Image\Metodo di Tanenblau_2.png
+INPUT .\Image\Esempio_Tanenblau.png
+INPUT .\Image\Esempio_Tanenblau.png
+INPUT Image\Esempio_Tanenblau.png
+INPUT .\Image\Esempio_PotenzialiNodo.png
+INPUT .\Image\Esempio_PotenzialiNodo.png
+INPUT Image\Esempio_PotenzialiNodo.png
+INPUT .\Image\Esempio_MetAnalisi_1.png
+INPUT .\Image\Esempio_MetAnalisi_1.png
+INPUT Image\Esempio_MetAnalisi_1.png
+INPUT .\Image\Esempio_MetAnal_2.png
+INPUT .\Image\Esempio_MetAnal_2.png
+INPUT Image\Esempio_MetAnal_2.png
+INPUT .\Image\Esempio_MetAnalisi_3.png
+INPUT .\Image\Esempio_MetAnalisi_3.png
+INPUT Image\Esempio_MetAnalisi_3.png
+INPUT .\Image\Esempio_MetAnalisi_4.png
+INPUT .\Image\Esempio_MetAnalisi_4.png
+INPUT Image\Esempio_MetAnalisi_4.png
+INPUT .\Image\Thevenin_1.png
+INPUT .\Image\Thevenin_1.png
+INPUT Image\Thevenin_1.png
+INPUT .\Image\Thevenin_2.png
+INPUT .\Image\Thevenin_2.png
+INPUT Image\Thevenin_2.png
+INPUT .\Image\Esempio_Thevenin_1.png
+INPUT .\Image\Esempio_Thevenin_1.png
+INPUT Image\Esempio_Thevenin_1.png
+INPUT .\Image\Esempio_Thevenin_2.png
+INPUT .\Image\Esempio_Thevenin_2.png
+INPUT Image\Esempio_Thevenin_2.png
+INPUT .\Image\Esempio_Thevenin_3.png
+INPUT .\Image\Esempio_Thevenin_3.png
+INPUT Image\Esempio_Thevenin_3.png
+INPUT .\Image\Esempio_Thevenin_4.png
+INPUT .\Image\Esempio_Thevenin_4.png
+INPUT Image\Esempio_Thevenin_4.png
+INPUT .\Image\Esercizio_Thevenin_1.png
+INPUT .\Image\Esercizio_Thevenin_1.png
+INPUT Image\Esercizio_Thevenin_1.png
+INPUT .\Image\Esercizio_Thevenin_2.png
+INPUT .\Image\Esercizio_Thevenin_2.png
+INPUT Image\Esercizio_Thevenin_2.png
+INPUT .\Image\Esercizio_Thevenin_3.png
+INPUT .\Image\Esercizio_Thevenin_3.png
+INPUT Image\Esercizio_Thevenin_3.png
+INPUT .\Image\Esercizio_Thevenin_4.png
+INPUT .\Image\Esercizio_Thevenin_4.png
+INPUT Image\Esercizio_Thevenin_4.png
+INPUT .\Image\Norton_1.png
+INPUT .\Image\Norton_1.png
+INPUT Image\Norton_1.png
+INPUT .\Image\Norton_2.png
+INPUT .\Image\Norton_2.png
+INPUT Image\Norton_2.png
+INPUT .\Image\Esempio_Norton_0.png
+INPUT .\Image\Esempio_Norton_0.png
+INPUT Image\Esempio_Norton_0.png
+INPUT .\Image\Esempio_Norton_1.png
+INPUT .\Image\Esempio_Norton_1.png
+INPUT Image\Esempio_Norton_1.png
+INPUT .\Image\Esempio_Norton_2.png
+INPUT .\Image\Esempio_Norton_2.png
+INPUT Image\Esempio_Norton_2.png
+INPUT .\Image\Esempio_Norton_3.png
+INPUT .\Image\Esempio_Norton_3.png
+INPUT Image\Esempio_Norton_3.png
+INPUT .\Image\T_Massima_Potenza.png
+INPUT .\Image\T_Massima_Potenza.png
+INPUT Image\T_Massima_Potenza.png
+INPUT .\Image\T_Potenza_Massima_1.png
+INPUT .\Image\T_Potenza_Massima_1.png
+INPUT Image\T_Potenza_Massima_1.png
 INPUT Elettrotecnica.aux
 INPUT .\Elettrotecnica.out
 INPUT .\Elettrotecnica.out

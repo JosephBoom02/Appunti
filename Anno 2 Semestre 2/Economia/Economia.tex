@@ -55,13 +55,7 @@ bracketsstyle=\color{red}
 \author{Giuseppe Bumma}
 
 
-%----------------------------------------------------------------------
-%use this for a total black background
-%\pagecolor{black}
-%\color{myWhite}
-%----------------------------------------------------------------------
-
-
+% color option
 \pagecolor{synthwave_beckground} %{shadeofgray}
 \color{myWhite}
 
@@ -572,7 +566,7 @@ Obiettivo degli Indici di Bilancio:
 \end{center}
 
 
-\subsubsection*{Indicatori di Performance}
+\subsection{Indicatori di Performance}
 \begin{center}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
@@ -596,7 +590,7 @@ Obiettivo degli Indici di Bilancio:
 
 
 
-\subsection{Redditività del Capitale Netto (ROE)}
+\subsubsection{Redditività del Capitale Netto (ROE)}
 Il ROE (return of equity) misura il ritorno dell’investimento della proprietà sia direttamente (apporti di capitale) sia indirettamente (riserve utili); fa riferimento al \textbf{reddito netto}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management.\\
 In altri termini \underline{misura la capacità del patrimonio netto di generare profitti}. 
 \[
@@ -613,7 +607,7 @@ Interpretazione del ROE:
 
 
 
-\subsection{Redditività del capitale investito (ROI)}
+\subsubsection{Redditività del capitale investito (ROI)}
 Il ROI (return on investment) ci dice se l'azienda sta impiegando bene il proprio capitale o meno, senza tenere conto di quanto capitale provenga da debiti e quanto da capitale proprio; fa riferimento al reddito \underline{senza imposte}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management. Sostanzialmente \textbf{misura la capacità del investimento di generare profitti}.
 \[
     \text{ROI} = \frac{\text{Risultato operativo}}{\text{Capitale investito}}
@@ -621,23 +615,74 @@ Il ROI (return on investment) ci dice se l'azienda sta impiegando bene il propri
 Se la società Renzo nel 2021 ha un risultato operativo di 42.000,00
 € e un capitale investito di 170.000,00 € (40.000,00 € di debiti +
 130.000,00 € di capitale netto), il ROI sarà del $25\%$ $\left( 42.000,00 \text{€} / 170.000,00 \text{€} \right)$; quindi il totale investito nel 2021 nella Renzo ha avuto un ritorno del $25\%$.
+
+
+
+
+\subsubsection{Utile per Azione}
+L' \textit{utile per azione} Misura il rapporto tra gli utili generati in un certo periodo e il numero di azioni in  circolazione alla fine di quel periodo.
+\[
+    \text{Utili per Azione} = \frac{\text{Reddito netto}}{\text{Numero di azioni ordinarie in circolazione}}
+\]
+Ad esempio, nell'azienda "Renzo"
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Ce_Renzo.png}
+    \includegraphics[scale=0.25]{Image/Stato patrimoniale Renzo.png}
+\end{center}
+\[
+    \text{Utili per Azione} = \frac{24.000 \text{\euro}}{4.800 \text{\euro}} = 5 \text{\euro}/\text{azione}
+\]
+
  
- 
+
+
+\subsubsection{Rapporto prezzo-utili}
+Il \textit{rapporto prezzo-utili} (price earnings ratio) misure il rapporto tra il prezzo medio di mercato delle azioni e gli utili per azione come indicativo del valore di una società.
+\[
+    \text{Rapporto prezzo-utili} = \frac{\text{Valore medio di mercato dell'azione}}{\text{Utile per azione}}
+\]
+Nel corso di 2020 il prezzo medio di mercato delle azioni di Renzo è stato 35€, abbiamo visto che l'Utile per azione è stato 5€, quindi
+\[
+    \text{Rapporto prezzo-utili} = \frac{35 \text{\euro}}{5 \text{\euro}} = 7 \text{\euro}
+\]
+significa che gli investitori pagano 7 \euro per ogni euro di utili correnti.
 
 
 
 
+\subsection{Indicatori di redditività}
+\begin{center}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+        \hline 
+        \textbf{Indicatori di Performance} & \textbf{Numeratore} & \textbf{Denominatore}\\
+        \hline 
+        1. Margine Lordo (\%) & Margine Lordo & Ricavi\\
+        \hline 
+        2. Risultato Operativo (\%) & Risultato Operativo & Ricavi\\
+        \hline 
+        3. Reddito Netto (\%) & Reddito Netto & Ricavi\\
+        \hline 
+    \end{tabular}
+\end{center}
 
 
-
-
-
-
-
-
-
-
-
+\subsubsection{Margine Lordo}
+\begin{wrapfigure}{l}{0.35\textwidth}
+    \includegraphics[scale=0.3]{Image/MargineLordo_1.png}
+\end{wrapfigure}
+Il \textit{margine lordo (\%)} è il rapporto tra il Margine Lordo e i Ricavi. È una misura del flusso di cassa aziendale, cioè della potenziale capacità dell'azienda di generare cassa con i ricorrenti cicli della gestione operativa (produzione e vendita). Non è quindi una misura di effettiva cassa prodotta ma di potenziale generazione di cassa dell'esercizio.\\
+\textbf{N.B.} Un Margine Lordo \% alto non significa un alto valore del reddito netto.
+\[
+    \text{Margine Lordo \%} = \frac{\text{Margine Lordo}}{\text{Ricavi}}
+\]
+\begin{wrapfigure}{l}{0.35\textwidth}
+    \includegraphics[scale=0.25]{Image/MargineLordo_2.png}
+\end{wrapfigure}
+\[
+    \text{Margine Lordo \%} = \frac{120.000,00 \text{\euro}}{300.000,00 \text{\euro}} = 40 \%
+\]
+Il 40 \% del ricavo è il flusso di cassa per coprire altri costi, come debiti, ammortamento e investimento.
 
 
 

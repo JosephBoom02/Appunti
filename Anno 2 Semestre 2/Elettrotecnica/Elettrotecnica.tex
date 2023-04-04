@@ -1,19 +1,37 @@
 \documentclass{article}
-\usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array}
+\usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor,
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
-\usepackage{soul}
-\usepackage{unicode-math}
+\usepackage{titlesec}
+
+%code to write section, subsection and subsubsection title in a specific color
+\titleformat{\section}
+{\color{synthwave_text}\normalfont\Large\bfseries}
+{\color{synthwave_text}\thesection}{1em}{} 
+
+\titleformat{\subsection}
+{\color{synthwave_text}\normalfont\large\bfseries}
+{\color{synthwave_text}\thesubsection}{1em}{} 
+
+\titleformat{\subsubsection}
+{\color{synthwave_text}\normalfont\normalfont\bfseries}
+{\color{synthwave_text}\thesubsubsection}{1em}{} 
+
+
 
 \pgfplotsset{compat=1.9}
 
 \colorlet{myWhite}{white!35!gray}
-\definecolor{background}{HTML}{181818}
+\definecolor{shadeofgray}{HTML}{181818}
+\definecolor{shadeofviolet}{HTML}{0f022c}
+\definecolor{synthwave_beckground}{HTML}{252334}
+\definecolor{synthwave_text}{HTML}{e148aa}
+
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=violet,
+    linkcolor=synthwave_text,
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Overleaf Example},
@@ -35,18 +53,11 @@ bracketsstyle=\color{red}
 \author{Giuseppe Bumma}
 
 
-%----------------------------------------------------------------------
-%use this for a total black background
-%\pagecolor{black}
-%\color{myWhite}
-%----------------------------------------------------------------------
-
-
-
-% use this for a shade of gray background
-\pagecolor{background}
+% color option
+\pagecolor{synthwave_beckground} %{shadeofgray}
 \color{myWhite}
 
+\renewcommand{\CancelColor}{\color{synthwave_text}}
 
 
 \begin{document}
@@ -979,7 +990,7 @@ triangolo o a stella. Può essere
 meglio per l'analisi circuitale
 una connessione a stella invece
 che un triangolo o viceversa.
-Da sottolineare che \ul{una rete a stella può essere equivalente ad una rete a triangolo}.
+Da sottolineare che \underline{una rete a stella può essere equivalente ad una rete a} \underline{triangolo}.
 \begin{center}
     \includegraphics[scale=0.3]{Image/Stella triangolo.png}
     \includegraphics[scale=0.3]{Image/Nodi triangolo stella.png}
@@ -1107,6 +1118,56 @@ Infatti per il circuito avremo
     \item Risolvere il sistema di equazioni
 \end{enumerate}
 
+\subsubsection{Esempio}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Esempio_Tanenblau.png}
+\end{center}
+
+\begin{center}
+\begin{tabular}{c|c}
+    Equazioni di lato & Equazioni topologiche\\
+    \hline
+    Lato 1:
+    $
+    \begin{rcases}
+        e_1=E_1\\
+        v_{R_1} = R_1 \cdot i_1 
+    \end{rcases}
+    v_1 = E_1 - R_1 \cdot i_i$
+    &
+    LKC(A): $i_1+i_2-i_3=0$\\
+    Lato 2: 
+    $
+    \begin{rcases}
+        e_2 = E_2\\
+        v_{R_2} = R_2 \cdot i_2
+    \end{rcases}
+    v_2 = E_2 - R_2 \cdot i_2
+    $
+    &
+    LKT($M_1$) : $v_1 - v_3=0$\\
+    Lato 3: $v_{R_3} = R_3 \dot i_3$ 
+    &
+    LKT($M_2$) = $v_3-v_2=0$    
+\end{tabular}
+\end{center}
+Ora effettuiamo la sostituzione:
+\[
+    \begin{rcases}
+        v_1 - v_3 = E_1-R_1i_1 - R_3i_3=0\\
+        v_3 - v_2 = R_3i_3 - E_2 + R_2i_2=0
+    \end{rcases}
+    \Longrightarrow
+    \begin{cases}
+        i_1+i_2-i_3=0\\
+        R_1i_1+R_3i_3=E_1\\
+        R_2i_2+R_3i_3=E_2
+    \end{cases}
+\]
+
+
+
+
 
 
 
@@ -1116,7 +1177,261 @@ Infatti per il circuito avremo
     \item assegniamo le tensioni agli altri nodi
     \item LKC ai nodi non di riferimento
     \item scrivere le correnti in funzione dei potenziali di nodo
+    \item risolvere infine il sistema di equazioni
 \end{enumerate}
+
+
+
+\subsection{Esempio}
+\begin{center}
+    \includegraphics[scale=0.15]{Image/Esempio_PotenzialiNodo.png}
+\end{center}
+Scegliamo come nodo di riferimento il nodo C
+\begin{align*}
+    \text{LKC(A): }&i_1-i_2 - I - i_3=0\\
+    \text{LKC(B): }&i_3 + I - i_4=0\\
+\end{align*}
+\begin{align*}
+    &i_1=\dfrac{E_1-e_A}{R_1} & &i_2 = \dfrac{e_A}{R_2} & &i_3 = \dfrac{e_A-e_B}{R_3}
+\end{align*}
+
+
+
+
+
+
+
+\subsection{Teoremi di rete}
+\subsubsection*{Ipotesi di linearità}
+ $f(x_1+x_2)$ è lineare
+\begin{align*}
+    \text{additività: } &f(x_1+x_2) = f(x_1) + f(x_2)\\
+    \text{omogeneità: } &f(ax_1) = af(x_1)
+\end{align*}
+
+\subsection{Sovrapposizione degli effetti}
+Ipotesi: circuito lineare.\\
+Le variabili di rete (effetti) si possono ottenere come sovrapposizione delle risposte dovute alle singole cause.
+
+\subsubsection{Esempio}
+\begin{center}
+    \includegraphics[scale=0.2]{Image/Esempio_MetAnalisi_1.png}
+\end{center}
+Calcoliamo $i_3$.\\
+Bisogna considerare una causa alla volta, quindi passivare alcuni generatori: passivando un \underline{generatore di tensione} si ottiene un corto-circuito (quindi il circuito è chiuso), mentre se si passiva un generatore di corrente il circuito risultante è aperto. 
+\subsubsection*{Causa \texorpdfstring{$E_1$}{E1}}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_MetAnal_2.png}
+\end{center}
+
+\begin{align*}
+    &i_3' = i_1 \cdot \dfrac{R_2}{R_2 + R_3} = \dfrac{E_1}{R_1 + R_{eq}'} \cdot \dfrac{R_2}{R_2 + R_3}\\
+    &R_{eq}' = R_2 // R_3 = \dfrac{R_2 \cdot R_3}{R_2 + R_3} & i_1 = \dfrac{E_1}{R_1 + R_{eq}'}
+\end{align*}
+
+\subsubsection*{Causa \texorpdfstring{$E_2$}{E2}}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_MetAnalisi_3.png}
+\end{center}
+\begin{align*}
+    &i_2 = \dfrac{E_2}{R_2+R_{eq}'} & &i_3'' = i_2 \cdot \dfrac{R_1}{R_1+R_3}
+\end{align*}
+Ora possiamo calcolare $i_3$:
+\[
+    i_3 = i_3' + i_3''
+\]
+
+\subsubsection{Esempio 2}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_MetAnalisi_4.png}
+\end{center}
+\begin{align*}
+    &I'= \dfrac{E}{R} & &I'' = - \dfrac{E}{R}
+\end{align*}
+\begin{align*}
+    &I = I' + I'' = \dfrac{E}{R} - \dfrac{E}{R} = 0 & &P=RI^2 = 0
+\end{align*}
+\begin{align*}
+    P &= P' + P'' \\
+    &= R (I')^2 + R(I'')^2 \\
+    &= R \left( \dfrac{E}{R}\right)^2 + R \left(- \dfrac{E}{R}\right)^2\\
+    &=R \dfrac{E^2}{R^2} + R \dfrac{E^2}{R^2} \neq 0
+\end{align*}
+
+
+
+\subsubsection{Esercizio}
+
+
+
+
+
+
+
+\subsection{Teorema di Thevenin}
+In un circuito lineare tempo-indipendente è messa in evidenza una porta. Il circuito N visto dalla porta, è equivalente ad un circuito formato dalla serie di un generatore indipendente di tensione ed un resistore. La tensione del generatore è data dalla tensione a vuoto
+della porta AB del circuito N. Il resistore è il resistore equivalente di N visto dalla porta AB quando tutti i generatori indipendenti interni al circuito N sono spenti.
+\vspace*{0.2cm}\\
+Ipotesi:
+\begin{itemize}
+    \item circuito lineare
+    \item il carico non è accoppiato con la rete da semplificare
+\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Thevenin_1.png}
+    \includegraphics[scale=0.3]{Image/Thevenin_2.png}
+\end{center}
+$E_{eq}$ è la tensione vista ai morsetti A e B a circuito aperto.\\
+$E_{eq}$ è la resistenza equivalente vista da A e B passivando i generatori indipendenti.
+
+
+\subsubsection{Esempio}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Esempio_Thevenin_1.png}
+\end{center}
+Applichiamo il teorema di Thevenin ai morsetti A e B:
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_Thevenin_2.png}
+\end{center}
+Utilizzando l'LKT sulla maglia più grande:
+\begin{align*}
+    E_1 - v_{R_1} + v_{R_2} - E_2=0 &\Rightarrow E_1 - R_1i - R_2i - E_2=0\\
+    &\Rightarrow E_1 - E_2 = R_1i + R_2 i \\
+    & \Rightarrow E_1 - E_2 = (R_1 + R_2)i\\
+    & \Rightarrow i = \frac{E_1-E_2}{R_1+R_2}
+\end{align*}
+mentre l'LKT sulla maglia più piccola a sinistra:
+\begin{align*}
+    E_1 - R_1i -E_{eq}=0 &\underbrace{\Rightarrow}_{i=\frac{E_1-E_2}{R_1+R_2}} E_{eq} = E-1-R_1 \cdot \frac{E_1-E_2}{R_1+R_2} \\
+    &= \frac{\cancel{E_1R_1}+E_1R_2-\cancel{R_1E_1}+R_1E_2}{R_1+R_2}\\
+    & = \frac{E_1R_2+E_2R_1}{R_1+R_2}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_Thevenin_3.png}
+\end{center}
+\[
+    R_{eq} = R_1 // R_2 = \frac{R_1 \cdot R_2}{R_1 + R_2}
+\]
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_Thevenin_4.png}
+\end{center}
+\[
+    i_3 = \frac{E_{eq}}{R_3+R_{eq}} = \frac{E_1R_2+E_2R_1}{R_1+R_2} \cdot \frac{1}{R_3+R_{eq}}
+\]
+
+
+\subsubsection{Esercizio}
+Si consideri il seguente circuito:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Esercizio_Thevenin_1.png}
+\end{center}
+Vogliamo calcolare la corrente nella resistenza $R_5$; utilizzando il teorema di Thevenin otteniamo il circuito
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Esercizio_Thevenin_2.png}
+\end{center}
+e il circuito della $R_{eq}$ è il seguente
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Esercizio_Thevenin_3.png}
+\end{center}
+Da notare che le resistenze $R_1$ e $R_2$ (come anche $R_3$ e $R_4$) sono in serie viste da B e C, cosa non vera nel circuito ottenuto corto-circuitando la resistenza $R_5$.
+\[
+    R_{eq} = (R_1+R_2) // (R_3+R_4)
+\]
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Esercizio_Thevenin_4.png}
+\end{center}
+Per calcolare $E_{eq}$ consideriamo la maglia $M_1$ nel circuito ottenuto corto-circuitando la resistenza $R_5$; è evidente che $e_B$ è concorde a essa, mentre $e_C$ è discorde, quindi (chiamo la tensione del circuito aperto $E_{CA}$)
+\begin{align*}
+    M_1: e_B - E_{CA} - e_C=&0\\
+    \Longrightarrow& E_{CA} = e_B - e_C\\
+    =& R_2I_2 - R_4I_3\\
+    =&R_2 \dfrac{E}{R_1+R_2} - R_4 \dfrac{E}{R_3+R_4} = E_{eq}
+\end{align*}
+\[
+    I_5 = \frac{E_{eq}}{R_{eq}+R_5}
+\]
+
+
+
+
+
+\subsection{Teorema di Norton}
+In un circuito N lineare tempo-indipendente è messa in evidenza una porta. Visto dalla porta
+il circuito è equivalente ad un circuito formato dal parallelo di un generatore indipendente di
+corrente ed un resistore. La corrente del generatore è data dalla corrente di cortocircuito della porta AB del circuito N. Il resistore è il resistore equivalente di N visto dalla porta AB quando tutti i generatori indipendenti interni al circuito N sono spenti.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Norton_1.png}
+    \includegraphics[scale=0.3]{Image/Norton_2.png}
+\end{center}
+Ipotesi:
+\begin{itemize}
+    \item circuito lineare
+    \item il carico non è accoppiato con la rete da semplificare
+\end{itemize}
+$I_{eq}$ è la corrente tra A e B quando vi è un corto-circuito.\\
+$R_{eq}$ è resistenza vista ai morsetti A e B passivando i generatori indipendenti.
+
+
+\subsubsection{Esempio}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Esempio_Norton_0.png}
+\end{center}
+Vogliamo calcolare $i_3$. Quindi applichiamo il teorema di Norton:
+\begin{center}
+    \begin{tabular}{c c c}
+        \includegraphics[scale=0.25]{Image/Esempio_Norton_1.png}&\includegraphics[scale=0.25]{Image/Esempio_Norton_2.png} & \includegraphics[scale=0.25]{Image/Esempio_Norton_3.png}\\
+        $I_{eq} = i_1+i_2 = \dfrac{E_1}{R_1} + \dfrac{E_2}{R_2}$ & $R_{eq} = R_1 // R_2 = \dfrac{R_1 \cdot R_2}{R_1+R_2}$ & $i_3 = I_{eq} \cdot \dfrac{R_{eq}}{R_{eq}+R_3}$
+    \end{tabular}
+\end{center}
+
+
+
+
+
+\subsection{Teorema del massimo trasferimento di potenza}
+Consideriamo il seguente circuito
+\begin{center}
+    \includegraphics[scale=0.27]{Image/T_Massima_Potenza.png}
+\end{center}
+Qual è il valore di $R_L$ che massimizza il trasferimento di potenza? Proviamo a calcolarlo.
+\begin{align*}
+    P_L &= I \cdot V_L\\
+    &=R_L \cdot I^2\\
+    &=R_L \left( \dfrac{E}{R+R_L} \right)^2 
+    \begin{cases}
+        R_L=0 \Rightarrow P_L=0\\
+        R_L \rightarrow \infty \Rightarrow P_L=0 \text{ (circuito aperto)}
+    \end{cases}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/T_Potenza_Massima_1.png}
+\end{center}
+Per trovare il massimo poniamo la derivata della potenza a 0; sapendo che $P_L = E^2 \dfrac{R_L}{(R+R_L)^2}$
+\begin{align*}
+    \dfrac{\partial P_L}{\partial R_L}=0 &\Rightarrow E^2 \dfrac{(R+R_L)^2 - 2R_L(R+R_L)}{(R+R_L)^4}=0\\
+    & \Rightarrow R^2 + \cancel{R^2_L} + \cancel{2RR_L} - \cancel{2RR_L} -\cancel{2}R^2_L = 0\\
+    &\Rightarrow R=R_L
+\end{align*} 
+\begin{align*}
+    P_{L,Max} &= R \dfrac{E^2}{(R+R)^2}\\
+    &= \cancel{R} \dfrac{E^2}{4R^{\cancel{2}}}\\
+    &= \dfrac{E^2}{4R}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
