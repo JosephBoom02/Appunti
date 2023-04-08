@@ -68,6 +68,7 @@ bracketsstyle=\color{red}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\cc}[1]{\mathcal{#1}}
 \newcommand{ \lognormal }{\text{Lognormal} }
+\newcommand{\T}[1]{\text{#1}}
 \newcommand{\tb}[1]{\textbf{#1}}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
@@ -123,7 +124,7 @@ interpretazione e comunicazione di
 informazioni economiche e finanziarie che
 consentano ai decisori di esprimere giudizi
 e valutazioni sull'impresa.\\
-Le informazioni sono necessarie agli \textit{shareholders}(azionisti, che sono effettivamente soci) e agli \textit{stakeholders} (coloro che hanno contatti con l'azienda, come clienti o fornitori)
+Le informazioni sono necessarie agli \textit{shareholders} (azionisti, che sono effettivamente soci) e agli \textit{stakeholders} (coloro che hanno contatti con l'azienda, come clienti o fornitori)
 \vspace*{0.1cm}\\
 La contabilità ha le
 seguenti caratteristiche: 
@@ -518,10 +519,10 @@ Le regole per gli incrementi e per i decrementi sono:
 
 
 \section{Analisi di Bilancio}
-L’obiettivo dell’analisi di bilancio:
+L'obiettivo dell'analisi di bilancio:
 \begin{itemize}
-    \item capire l’andamento economico, patrimoniale e finanziario di un’impresa, nostra o di terzi;
-    \item individuare i correttivi da apportare per migliorare l’andamento dell’impresa;
+    \item capire l'andamento economico, patrimoniale e finanziario di un'impresa, nostra o di terzi;
+    \item individuare i correttivi da apportare per migliorare l'andamento dell'impresa;
     \item calcolare ed interpretare i rating aziendali;
     \item completare le informazioni di bilancio (Relazione sulla gestione);
     \item controllare le informazioni di bilancio (Relazione del revisore e del Collegio sindacale).
@@ -532,7 +533,7 @@ L’obiettivo dell’analisi di bilancio:
 \subsection{Indici di Bilancio}
 Obiettivo degli Indici di Bilancio:
 \begin{itemize}
-    \item fornire indicazioni sullo stato di salute dell’azienda;
+    \item fornire indicazioni sullo stato di salute dell'azienda;
     \item non rappresentano un punto di arrivo ma un punto di partenza per eventuali correzioni di rotta;
     \item è opportuno poter contare su una pluralità di indicatori;
     \item è indispensabile confrontare nel tempo e nello spazio le informazioni degli indici:
@@ -549,17 +550,17 @@ Obiettivo degli Indici di Bilancio:
     \renewcommand{\arraystretch}{2.5}
     \begin{tabular}{|c|c|}
         \hline
-        Redditività & Capacità dell’azienda di creare ricchezza per
+        Redditività & Capacità dell'azienda di creare ricchezza per
         la proprietà\\
         \hline 
-        Efficienza & Efficienza nell’utilizzo delle risorse\\
+        Efficienza & Efficienza nell'utilizzo delle risorse\\
         \hline 
-        Liquidità & Capacità dell’azienda di generare (assorbire)
+        Liquidità & Capacità dell'azienda di generare (assorbire)
         cassa e di essere solvibile\\
         \hline 
         Struttura finanziaria & Relazione tra i mezzi propri ed i mezzi di terzi \\
         \hline 
-        Investment ratio & Performance aziendale nell’ottica dei
+        Investment ratio & Performance aziendale nell'ottica dei
         soci/azionisti non operativi\\    
         \hline 
     \end{tabular}
@@ -579,7 +580,7 @@ Obiettivo degli Indici di Bilancio:
         circolazione\\
         \hline 
         3. Rapporto prezzo-utili & Valore medio di mercato
-        dell’azione & Utile per Azione\\
+        dell'azione & Utile per Azione\\
         \hline
         4. Redditività del capitale investito (ROI) & Risultato Operativo & Fonti di Finanziamento Onerose
         (debiti di finanziamenti + capitale
@@ -591,7 +592,7 @@ Obiettivo degli Indici di Bilancio:
 
 
 \subsubsection{Redditività del Capitale Netto (ROE)}
-Il ROE (return of equity) misura il ritorno dell’investimento della proprietà sia direttamente (apporti di capitale) sia indirettamente (riserve utili); fa riferimento al \textbf{reddito netto}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management.\\
+Il ROE (return of equity) misura il ritorno dell'investimento della proprietà sia direttamente (apporti di capitale) sia indirettamente (riserve utili); fa riferimento al \textbf{reddito netto}. Interessa dunque alla proprietà e potenziali detentori di capitale di rischio, oltre che al management.\\
 In altri termini \underline{misura la capacità del patrimonio netto di generare profitti}. 
 \[
     \text{ROE} = \frac{\text{Reddito netto}}{\text{Capitale netto}}
@@ -600,9 +601,9 @@ Se la società Renzo nel 2021 ha un utile (reddito) netto di
 24.000,00 € e un capitale netto di 130.000,00 € il suo ROE sarà del $18\%$ $\left( 24.000,00 \text{€} / 130.000,00 \text{€} \right)$; quindi il capitale  nel 2021 nella Renzo ha avuto un rendimento del $18\%$.
 Interpretazione del ROE:
 \begin{itemize}
-    \item ROE<0: l’azienda sta distruggendo ricchezza
-    \item ROE=0: l’azienda non sta creando/distruggendo ricchezza
-    \item ROE>0: l’azienda sta creando ricchezza
+    \item ROE<0: l'azienda sta distruggendo ricchezza
+    \item ROE=0: l'azienda non sta creando/distruggendo ricchezza
+    \item ROE>0: l'azienda sta creando ricchezza
 \end{itemize}
 
 
@@ -667,22 +668,313 @@ significa che gli investitori pagano 7 \euro per ogni euro di utili correnti.
 \end{center}
 
 
-\subsubsection{Margine Lordo}
-\begin{wrapfigure}{l}{0.35\textwidth}
-    \includegraphics[scale=0.3]{Image/MargineLordo_1.png}
-\end{wrapfigure}
+\subsubsection{Margine Lordo (percentuale)}
 Il \textit{margine lordo (\%)} è il rapporto tra il Margine Lordo e i Ricavi. È una misura del flusso di cassa aziendale, cioè della potenziale capacità dell'azienda di generare cassa con i ricorrenti cicli della gestione operativa (produzione e vendita). Non è quindi una misura di effettiva cassa prodotta ma di potenziale generazione di cassa dell'esercizio.\\
 \textbf{N.B.} Un Margine Lordo \% alto non significa un alto valore del reddito netto.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/MargineLordo_1.png}
+\end{center}
 \[
     \text{Margine Lordo \%} = \frac{\text{Margine Lordo}}{\text{Ricavi}}
 \]
-\begin{wrapfigure}{l}{0.35\textwidth}
+\begin{center}
     \includegraphics[scale=0.25]{Image/MargineLordo_2.png}
-\end{wrapfigure}
+\end{center}
 \[
     \text{Margine Lordo \%} = \frac{120.000,00 \text{\euro}}{300.000,00 \text{\euro}} = 40 \%
 \]
 Il 40 \% del ricavo è il flusso di cassa per coprire altri costi, come debiti, ammortamento e investimento.
+
+
+
+\subsubsection{Risultato operativo (percentuale)}
+Il risultato operativo misura la capacità di ritorno della produzione dell'impresa. È una misura di adeguatezza della gestione (dato che non considera oneri, debiti e imposte).
+\[
+    \text{Risultato operativo \%} = \frac{\text{Risultato Operativo}}{\text{Ricavi}}
+\]
+Ad esempio:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RisultatoOperPer.png}
+\end{center}
+\[
+    \text{Risultato operativo \%} = \frac{42.000,00 \text{\euro}}{300.000,00\text{\euro}} = 14\%
+\]
+
+
+\subsubsection{Reddito netto (percentuale)}
+Il reddito netto (percentuale) è una misura di adeguatezza del reddito netto. Misura la capacità di un'azienda di generare utile. È utile conoscerlo dato che ll valore assoluto di reddito netto non permette di analizzare la capacità dell'impresa. I valori medi del reddito netto percentuale dei diversi settori industriali sono disponibili e possono
+costituire una base di confronto.
+\[
+    \T{Reddito Netto \%} = \frac{\T{Reddito Netto}}{\T{Ricavi}}   
+\]
+Esempio:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RedditoNettoPerc.png}
+\end{center}
+\[
+    \T{Reddito Netto \%} = \frac{24.000,00\T{\euro}}{300.000,00\T{\euro}} = 8\% 
+\]
+
+
+
+
+\subsection{Indicatori di Efficienza di Utilizzo del Capitale}
+Gli indicatori di efficienza di utilizzo del capitale misurano la
+\textbf{capacità di rendimento e adeguatezza} del capitale investito.\\
+Permette di valutare se:
+\begin{itemize}
+    \item il costo del venduto è adeguato;
+    \item come vengono utilizzati i fattori impiegati (input) nel processo di produzione , dato che, se utilizzati
+    impropriamente, causano dispersioni di risorse e/o sprechi
+\end{itemize}
+Sono anche una misura della capacità di rendimento e di rispondenza al
+capitale investito.
+\vspace*{0.2cm}\\
+Vediamo quali sono questi indicatori:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/IndicEff.png}
+\end{center}
+
+
+
+\subsubsection{Giorni di incasso del credito commerciale}
+Misura il \textbf{ritardo temporale} tra il momento di realizzazione di ricavi e il momento di incasso del corrispondente credito commerciale.\\
+Indica:
+\begin{itemize}
+    \item se i clienti pagano o meno il loro debito alla scadenza concordata
+    \item se le condizioni di incasso peggiorano o
+    migliorano nel tempo.
+\end{itemize}
+\[
+    \T{Giorni di incasso del credito commerciale} = \frac{\T{Credito Commerciale}}{\dfrac{\T{Ricavi}}{365}}
+\]
+Prendiamo in esempio l'azienda Renzo:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/GiorniIncasso_1.png}
+    \includegraphics[scale=0.3]{Image/GiorniIncasso_2.png}
+\end{center}
+\[
+    \T{Giorni di incasso del credito commerciale} = \frac{40.000,00 \T{\euro}}{\dfrac{300.000,00\T{\euro}}{365}} = 49 \T{ giorni}
+\]
+
+
+
+\subsubsection{Rotazione delle rimanenze}
+È facilmente intuibile che la \textit{rotazione delle rimanenze} è un indice di \textbf{gestione delle scorte}; esso supporta le decisioni del magazzino, controlli di costo e acquisti. Un \textbf{indice elevato} si ha quando le scorte ruotano molte volte (o velocemente), di conseguenza può causare dei ritardi nei tempi di consegna; mentre, quando l'indice di rotazione è basso le scorte rimangono più "ferme" o ruotano più lentamente, questo vuol dire che le scorte potrebbero divenire obsolete.\\
+Sostanzialmente è il \textbf{tempo di giacenza media} di un articolo:
+conoscendo l'indice di rotazione si può sapere quanto tempo un articolo rimane in media in magazzino, dal suo ricevimento fino alla vendita.
+\[
+    \T{Rotazione delle Rimanenze} = \frac{\T{Costo del venduto}}{\T{Rimanenze Finali}}
+\]
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RotazioneRimanenze_1.png}
+    \includegraphics[scale=0.3]{Image/RotazioneRimanenze_2.png}
+\end{center}
+\[
+    \T{Rotazione delle Rimanenze} = \frac{180.000,00\T{\euro}}{60.000,00\T{\euro}} = 3 \T{ (volte)}
+\]
+
+
+
+\subsubsection{Indice di liquidità}
+Permette di valutare l'effettiva capacità dell'impresa nel coprire le uscite a breve termine, queste ultime prodotte dalle passività correnti.
+\begin{center}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|l|}
+        \hline
+        Indice di liquidità $<1$ & Condizione di insufficienza delle
+        disponibilità, rispetto
+        all'ammontare dei debiti a breve\\
+        \hline
+        Indice di liquidità $= 1$ & Disponibilità uguale
+        all'ammontare del debito
+        aziendale\\
+        \hline
+        Indice di liquidità $> 1$ & Disponibilità superiore al valore
+        dei debiti breve\\
+        \hline
+    \end{tabular}
+\end{center}
+\[
+    \T{Indice di Liquidità} = \frac{\T{Attività Correnti}}{\T{Passività Correnti}}
+\]
+Per l'azienda Renzo:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/IndiceLiq_1.png}
+    \includegraphics[scale=0.3]{Image/IndiceLiq_2.png}
+\end{center}
+\[
+    \T{Indice di Liquidità} = \frac{140.000,00\T{\euro}}{60.000,00\T{\euro}} = 2,3
+\]
+
+
+
+\subsubsection{Quick ratio (indice secco di liquidità)}
+Misura la capacità immediata di coprire le uscite a breve senza rincorrere alle rimanenze nel magazzino (infatti non vengono considerate nella somma delle attività).
+\[
+    \T{Quick ratio} = \frac{\T{Attività Correnti - Rimanenze}}{\T{Passività Correnti}}
+\]
+Esempio per l'azienda Renzo:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/QuickRatio_1.png}
+    \includegraphics[scale=0.3]{Image/QuickRatio_2.png}
+\end{center}
+\[
+    \T{Quick Ratio} = \frac{140.000,00-60.000,00\T{\euro}}{60.000,00\T{\euro}} = 1,3
+\]
+
+
+
+\subsubsection{Indice di indebitamento (Debt Ratio)}
+Indica la proporzione di fondi presi in prestito che l'azienda ha in
+relazione alle fonte di finanziamento (proprio e terzi).\\
+L'analisi dipende:
+\begin{itemize}
+    \item dalla media di comportamento del settore
+    \item dal costo e rischio del capitale sociale (costo di opportunità e rischio delle azioni)
+    \item dal costo del finanziamento
+\end{itemize}
+Un indice di Indebitamento molto alto implica una struttura finanziaria più rischiosa.
+\vspace*{0.2cm}\\
+L'azienda può finanziare le attività attraverso:
+\begin{itemize}
+    \item le Riserve di Utili, cioè la ricchezza generata attraverso la gestione;
+    \item l' apporto di capitale proprio o per le aziende di capitale aperto attraverso le emissioni di nuove azioni;
+    \item l' accesso a nuovi debiti di finanziamento.
+\end{itemize}
+\[
+    \T{Debt Ratio} = \frac{\T{Debiti Finanziari}}{\T{Debiti Finanziari + Capitale Netto}}
+\]
+
+
+\subsubsection{Rotazione del Capitale}
+Indica quanti euro di ricavo sono stati generati per ciascun euro di capitale investito. Un'azienda che ha un alto investimento in capitale circolante e immobilizzazioni tecniche è denominata impresa \textbf{capital intensive} e si caratterizza per valori bassi di rotazione del capitale investito.\\
+\textbf{N.B.} Il Capitale Investito è l'aggregato del capitale netto e dei debiti di finanziamenti.
+
+\[
+    \T{Rotazione del Capitale} = \frac{\T{Ricavi}}{\T{Capitale investito}}
+\]
+Esempio:
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RotCapitale_1.png}
+    \includegraphics[scale=0.3]{Image/RotCapitale_2.png}
+\end{center}
+\[
+    \T{Rotazione del Capitale} = \frac{300.000,00\T{\euro}}{40.000,00\T{\euro}+ 130.000,00 \T{\euro}} = 1,80 \T{\euro}
+\]
+L'azienda ha generato $1,80 \T{\euro}$ di ricavo per ciascun euro di capitale investito.
+\vspace*{0.2cm}\\
+Un'altra alternativa per misurare la \underline{Redditività del Capitale Investito} (ROI) è moltiplicare il risultato percentuale operativo per l'indice di rotazione del capitale.
+\[
+    \frac{\T{Risultato Operativo}}{\T{Ricavi}} \times \frac{\T{Ricavi}}{\T{Capitale investito}} = \frac{\T{Risultato Operativo}}{\T{Capitale investito}}
+\]
+
+
+
+
+
+
+
+
+
+\section{Management Accounting}
+\subsection{Contabilità generale vs contabilità direzionale}
+\begin{itemize}
+    \item Contabilità Generali: è preparata soprattutto per attori
+    esterni all'impresa. Le informazione assistono i finanziatori
+    nella valutazione delle prospettive di redditività dell'impresa;
+    \item Contabilità Direzionale: è preparata per supportare le
+    decisioni interne. Fornisce le informazioni utilizzate per
+    pianificare, porre in atto e controllare le attività di
+    un'organizzazione. Le informazione di contabilità direzionale
+    sono riepilogative, ottenute assemblando dati elementari
+    operativi.
+\end{itemize}
+
+\subsubsection{Tre tipiche funzioni del management}
+\begin{itemize}
+    \item Programmare:
+    \begin{itemize}
+        \item decidere quali azioni debbano essere avviate (\textbf{decision making});
+        \item il budget è il processo di programmazione per un determinato periodo, normalmente un anno;
+        \item la pianificazione ha un orizzonte pluriennale.
+    \end{itemize}
+    \item Implementare:
+    \begin{itemize}
+        \item porre in atto azioni
+        necessarie affinché
+        attraverso risorse e
+        persone si possano
+        conseguire i risultati
+        programmati
+        \item richiede supervisione
+        \item i manager possono
+        modificare i programmi
+        quando risulti necessario
+        od opportuno
+    \end{itemize}
+    \item Controllare:
+    \begin{itemize}
+        \item il processo volto a
+        ottenere dalle persone le
+        azioni e i comportamenti
+        desiderati
+        \item le informazioni contabili
+        sono utilizzate per:
+        \begin{itemize}
+            \item comunicare
+            \item motivare
+            \item indirizzare l'attenzione
+            \item valutare
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/FunzioniManag_1.png}
+\end{center} 
+\textbf{N.B.} La contabilità direzionale fornisce la gran parte delle informazioni monetarie e quantitative utilizzate dal management per programmare, porre in atto le decisioni e controllare.
+\begin{center}
+\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{|l|m{5cm}|m{5cm}|}
+    \hline
+    \textbf{\color{synthwave_text}Caratteristiche} & \textbf{\color{synthwave_text}Contabilità Generale} & \textbf{\color{synthwave_text}Contabilità Direzionale}\\
+    \hline 
+    01. Necessità d'uso &Obbligatoria &Facoltativa\\
+    \hline 
+    02. Finalità&Produrre Informazioni per l'esterno&Strumento per assistere il management\\
+    \hline 
+    03. Utilizzatori&Gruppi relativamente ampi dall'identità ignota&Gruppi relativamente ristretti dall'identità nota\\
+    \hline 
+    04. Struttura Sottostante&Equazione fondamentale del bilancio&Cambia in funzione dell'utilizzo delle informazioni\\
+    \hline 
+    05. Fonte dei principi&Codice Civili e Principi Contabili&Qualunque essa sia, purché ritenuta utile\\
+    \hline 
+    06. Prospettiva Temporale&Storica&Storica e Prospettica\\
+    \hline 
+    07. Tipo delle informazioni&Prevalentemente Monetarie&Monetarie e non Monetarie\\
+    \hline 
+    08. Precisione delle Informazioni&Livello relativamente alto&Livello relativamente basso\\
+    \hline 
+    09. Frequenza del reporting&Trimestrale e annuale&Cambia con lo scopo\\
+    \hline 
+    10. Tempestività del reporting&Ritardi di settimane e anche di mesi rispetto al periodo esaminato&Report prodotti tempestivamente al termine del periodo di misurazione\\
+    \hline 
+    11. Oggetto del reporting&L'intera impresa&Unità organizzativa\\
+    \hline 
+    12. Responsabilità&Teoricamente sempre presenti&Virtualmente Nessuna\\
+    \hline 
+\end{tabular}
+\end{center}
+
+
+
+\subsection{Similarità tra contabilità generale e contabilità direzionale}
+\begin{enumerate}
+    \item i criteri generali sono condivisi: molti criteri generali alla base dei principi contabili sono rilevanti anche nella contabilità direzionale (ad esempio il principio del costo storico);
+    \item molti dati elementari sono condivisi: gran parte dei dati elementari utilizzati dalla contabilità generale e raccolti in conformità ai principi contabili sono utilizzati anche dal contabilità direzionale;
+    \item scopo comune: entrambi i tipi di informazione sono utilizzati per fini decisionali.
+\end{enumerate}
+
 
 
 

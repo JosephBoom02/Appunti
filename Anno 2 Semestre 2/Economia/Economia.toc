@@ -1,41 +1,54 @@
-\contentsline {section}{\numberline {1}Introduzione alla contabilità}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Cos'è un'azienda}{2}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Economia aziendale}{2}{subsubsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.2}La contabilità}{2}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}I concetti alla base della contabilità}{2}{subsubsection.1.2.1}%
-\contentsline {section}{\numberline {2}I rendiconti economico-finanziari}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Bilancio}{3}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Lo stato Patrimoniale}{4}{subsubsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.2}Le attività}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Le attività correnti e le attività immobilizzate}{5}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Le attività correnti}{5}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Le attività immobilizzate}{5}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}Le immobilizzazioni tecniche}{6}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Le immobilizzazioni immateriali}{6}{subsubsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.4}Le passività correnti}{6}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Le passività a lungo termine}{7}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Il capitale netto}{7}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Esercizio stato patrimoniale}{8}{subsection.2.7}%
-\contentsline {section}{\numberline {3}Il conto economico e la misurazione dei costi}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Il concetto di costo}{8}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Le ragioni del concetto di costo}{9}{subsubsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.2}Il concetto di costo per le attività monetarie}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Il concetto di costo per le attività non monetarie}{9}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Spesa, Costo di competenza ed esborso}{9}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Spesa}{9}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Costo di competenza}{9}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Esborso}{10}{subsubsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.5}Il Conto economico}{10}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}Ricavi}{10}{subsubsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.2}Costi di competenza}{10}{subsubsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.6}T account}{10}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Analisi di Bilancio}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Indici di Bilancio}{11}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Classificazione degli Indici di Bilancio}{11}{subsubsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.2}Indicatori di Performance}{11}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Redditività del Capitale Netto (ROE)}{11}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Redditività del capitale investito (ROI)}{12}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}Utile per Azione}{12}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Rapporto prezzo-utili}{13}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Indicatori di redditività}{13}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Margine Lordo}{13}{subsubsection.4.3.1}%
+\contentsline {section}{\numberline {1}Introduzione alla contabilità}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Cos'è un'azienda}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Economia aziendale}{3}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}La contabilità}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}I concetti alla base della contabilità}{3}{subsubsection.1.2.1}%
+\contentsline {section}{\numberline {2}I rendiconti economico-finanziari}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Bilancio}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Lo stato Patrimoniale}{5}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Le attività}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Le attività correnti e le attività immobilizzate}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Le attività correnti}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Le attività immobilizzate}{6}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Le immobilizzazioni tecniche}{7}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Le immobilizzazioni immateriali}{7}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Le passività correnti}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Le passività a lungo termine}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Il capitale netto}{8}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Esercizio stato patrimoniale}{9}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Il conto economico e la misurazione dei costi}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Il concetto di costo}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Le ragioni del concetto di costo}{10}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Il concetto di costo per le attività monetarie}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Il concetto di costo per le attività non monetarie}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Spesa, Costo di competenza ed esborso}{10}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Spesa}{10}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Costo di competenza}{10}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Esborso}{11}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Il Conto economico}{11}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Ricavi}{11}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Costi di competenza}{11}{subsubsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.6}T account}{11}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Analisi di Bilancio}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Indici di Bilancio}{12}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Classificazione degli Indici di Bilancio}{12}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Indicatori di Performance}{12}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Redditività del Capitale Netto (ROE)}{12}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Redditività del capitale investito (ROI)}{13}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Utile per Azione}{13}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Rapporto prezzo-utili}{14}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Indicatori di redditività}{14}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Margine Lordo (percentuale)}{14}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Risultato operativo (percentuale)}{15}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Reddito netto (percentuale)}{15}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Indicatori di Efficienza di Utilizzo del Capitale}{16}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Giorni di incasso del credito commerciale}{16}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Rotazione delle rimanenze}{17}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Indice di liquidità}{18}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Quick ratio (indice secco di liquidità)}{19}{subsubsection.4.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.5}Indice di indebitamento (Debt Ratio)}{19}{subsubsection.4.4.5}%
+\contentsline {subsubsection}{\numberline {4.4.6}Rotazione del Capitale}{20}{subsubsection.4.4.6}%
+\contentsline {section}{\numberline {5}Management Accounting}{20}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Contabilità generale vs contabilità direzionale}{20}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Tre tipiche funzioni del management}{20}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}Similarità tra contabilità generale e contabilità direzionale}{22}{subsection.5.2}%

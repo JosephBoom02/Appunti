@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  17 MAR 2023 18:16
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  8 APR 2023 19:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -912,71 +912,115 @@ File: uesint.fd
 
  [1
 
-]
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 152--159
+] [2]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 153--160
 [] 
  []
 
-[2]
+[3]
 File: Image/Tabella bilancio.png Graphic file (type bmp)
 <Image/Tabella bilancio.png>
 File: Image/Rendiconto renzo.png Graphic file (type bmp)
 <Image/Rendiconto renzo.png>
- [3] [4] [5] [6]
+ [4] [5] [6] [7]
 File: Image/Rendiconto renzo.png Graphic file (type bmp)
 <Image/Rendiconto renzo.png>
 File: Image/Esercizio stato patrimoniale_1.png Graphic file (type bmp)
 <Image/Esercizio stato patrimoniale_1.png>
- [7] [8] [9]
+ [8] [9] [10]
 File: Image/Esempio_Taccount_1.png Graphic file (type bmp)
 <Image/Esempio_Taccount_1.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--501
+Underfull \hbox (badness 10000) in paragraph at lines 495--502
 
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 581--582
-[]|\TU/lmr/m/n/10 Valore medio di mercato
  []
 
 [11]
+Underfull \hbox (badness 10000) in paragraph at lines 582--583
+[]|\TU/lmr/m/n/10 Valore medio di mercato
+ []
+
+[12]
 File: Image/Ce_Renzo.png Graphic file (type bmp)
 <Image/Ce_Renzo.png>
 File: Image/Stato patrimoniale Renzo.png Graphic file (type bmp)
 <Image/Stato patrimoniale Renzo.png>
- [12]
+ [13]
 File: Image/MargineLordo_1.png Graphic file (type bmp)
 <Image/MargineLordo_1.png>
-
-Overfull \hbox (0.97432pt too wide) in paragraph at lines 672--673
-[][] 
- []
-
-
-Package wrapfig Warning: Collision between wrapping environments on input line 679.
-
 File: Image/MargineLordo_2.png Graphic file (type bmp)
 <Image/MargineLordo_2.png>
+ [14]
+File: Image/RisultatoOperPer.png Graphic file (type bmp)
+<Image/RisultatoOperPer.png>
+File: Image/RedditoNettoPerc.png Graphic file (type bmp)
+<Image/RedditoNettoPerc.png>
+ [15]
+File: Image/IndicEff.png Graphic file (type bmp)
+<Image/IndicEff.png>
+File: Image/GiorniIncasso_1.png Graphic file (type bmp)
+<Image/GiorniIncasso_1.png>
+File: Image/GiorniIncasso_2.png Graphic file (type bmp)
+<Image/GiorniIncasso_2.png>
+ [16]
+File: Image/RotazioneRimanenze_1.png Graphic file (type bmp)
+<Image/RotazioneRimanenze_1.png>
+File: Image/RotazioneRimanenze_2.png Graphic file (type bmp)
+<Image/RotazioneRimanenze_2.png>
+ [17]
+File: Image/IndiceLiq_1.png Graphic file (type bmp)
+<Image/IndiceLiq_1.png>
+File: Image/IndiceLiq_2.png Graphic file (type bmp)
+<Image/IndiceLiq_2.png>
+ [18]
+File: Image/QuickRatio_1.png Graphic file (type bmp)
+<Image/QuickRatio_1.png>
+File: Image/QuickRatio_2.png Graphic file (type bmp)
+<Image/QuickRatio_2.png>
+ [19]
+File: Image/RotCapitale_1.png Graphic file (type bmp)
+<Image/RotCapitale_1.png>
+File: Image/RotCapitale_2.png Graphic file (type bmp)
+<Image/RotCapitale_2.png>
+ [20]
+File: Image/FunzioniManag_1.png Graphic file (type bmp)
+<Image/FunzioniManag_1.png>
 
-Overfull \hbox (11.81436pt too wide) in paragraph at lines 680--681
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 944--944
+[]|\TU/lmr/m/n/10 Produrre Informazioni per
  []
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 681.
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
+[]|\TU/lmr/m/n/10 Gruppi relativamente ampi
+ []
 
-[13] (Economia.aux)
+
+Underfull \hbox (badness 4686) in paragraph at lines 946--947
+[]|\TU/lmr/m/n/10 Gruppi relativamente ristretti
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 950--951
+[]|\TU/lmr/m/n/10 Qualunque essa sia, purché
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 960--961
+[]|\TU/lmr/m/n/10 Report prodotti tempestiva-
+ []
+
+[21] [22] (Economia.aux)
 Package rerunfilecheck Info: File `Economia.out' has not changed.
-(rerunfilecheck)             Checksum: E2390CB1D48951023B175C97EDE86C71;7878.
+(rerunfilecheck)             Checksum: DF18907105B925620E87577647D1F4AC;11242.
  ) 
 Here is how much of TeX's memory you used:
- 35880 strings out of 411476
- 800739 string characters out of 5822644
- 1869001 words of memory out of 5000000
- 55537 multiletter control sequences out of 15000+600000
+ 35995 strings out of 411476
+ 803884 string characters out of 5822644
+ 1875001 words of memory out of 5000000
+ 55638 multiletter control sequences out of 15000+600000
  521522 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  100i,9n,104p,792b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Economia.xdv (13 pages, 294300 bytes).
+Output written on Economia.xdv (22 pages, 413056 bytes).
