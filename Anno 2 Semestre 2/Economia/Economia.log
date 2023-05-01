@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  8 APR 2023 19:37
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  1 MAY 2023 10:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -906,13 +906,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+esint on input line 2.
  (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
-))
+) [1
+
+])
 \tf@toc=\write5
 \openout5 = `Economia.toc'.
 
- [1
-
-] [2]
+ [2]
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 153--160
 [] 
  []
@@ -1010,17 +1010,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 960--961
 []|\TU/lmr/m/n/10 Report prodotti tempestiva-
  []
 
-[21] [22] (Economia.aux)
+[21] [22]
+File: Image/ScopiContDirez_1.png Graphic file (type bmp)
+<Image/ScopiContDirez_1.png>
+
+Underfull \hbox (badness 6380) in paragraph at lines 1040--1040
+[]|\TU/lmr/m/n/10 Analizzare al redditività dei
+ []
+
+[23]
+File: Image/Costi_Var.png Graphic file (type bmp)
+<Image/Costi_Var.png>
+ [24]
+Underfull \hbox (badness 10000) in paragraph at lines 1081--1085
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1092
+
+ []
+
+File: Image/Costi_SemiVar_1.png Graphic file (type bmp)
+<Image/Costi_SemiVar_1.png>
+File: Image/Costi_SemiVar_2.png Graphic file (type bmp)
+<Image/Costi_SemiVar_2.png>
+[25]
+File: Image/CostoUni_1.png Graphic file (type bmp)
+<Image/CostoUni_1.png>
+File: Image/CostoUni_2.png Graphic file (type bmp)
+<Image/CostoUni_2.png>
+ [26]
+File: Image/CostiGradino_1.png Graphic file (type bmp)
+<Image/CostiGradino_1.png>
+ [27]
+File: Image/Costi_Viscosi_1.png Graphic file (type bmp)
+<Image/Costi_Viscosi_1.png>
+File: Image/RegressioneLin_1.png Graphic file (type bmp)
+<Image/RegressioneLin_1.png>
+ [28]
+File: Image/RegressioneLin_2.png Graphic file (type bmp)
+<Image/RegressioneLin_2.png>
+ [29]
+File: Image/DiagrammaProfitto_1.png Graphic file (type bmp)
+<Image/DiagrammaProfitto_1.png>
+File: Image/DiagrammaProfitto_2.png Graphic file (type bmp)
+<Image/DiagrammaProfitto_2.png>
+File: Image/DiagrammaProfitto_3.png Graphic file (type bmp)
+<Image/DiagrammaProfitto_3.png>
+ [30]
+File: Image/MargineContr_1.png Graphic file (type bmp)
+<Image/MargineContr_1.png>
+File: Image/MargineContr_2.png Graphic file (type bmp)
+<Image/MargineContr_2.png>
+ [31]
+File: Image/PrestazioniProf_1.png Graphic file (type bmp)
+<Image/PrestazioniProf_1.png>
+ [32] [33] [34] (Economia.aux)
 Package rerunfilecheck Info: File `Economia.out' has not changed.
-(rerunfilecheck)             Checksum: DF18907105B925620E87577647D1F4AC;11242.
+(rerunfilecheck)             Checksum: 8ECF6AD47785844F273CA36661552CB6;17706.
  ) 
 Here is how much of TeX's memory you used:
- 35995 strings out of 411476
- 803884 string characters out of 5822644
- 1875001 words of memory out of 5000000
- 55638 multiletter control sequences out of 15000+600000
+ 36133 strings out of 411476
+ 807682 string characters out of 5822644
+ 1876001 words of memory out of 5000000
+ 55760 multiletter control sequences out of 15000+600000
  521522 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 100i,9n,104p,792b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 100i,12n,104p,792b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Economia.xdv (22 pages, 413056 bytes).
+Output written on Economia.xdv (34 pages, 659680 bytes).
