@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  1 MAY 2023 10:53
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  1 MAY 2023 13:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1066,17 +1066,52 @@ File: Image/MargineContr_2.png Graphic file (type bmp)
  [31]
 File: Image/PrestazioniProf_1.png Graphic file (type bmp)
 <Image/PrestazioniProf_1.png>
- [32] [33] [34] (Economia.aux)
+ [32] [33]
+File: Image/ElemCosto_1.png Graphic file (type bmp)
+<Image/ElemCosto_1.png>
+File: Image/ElemCosto_2.png Graphic file (type bmp)
+<Image/ElemCosto_2.png>
+ [34]
+Overfull \hbox (7.42667pt too wide) in paragraph at lines 1416--1418
+[]\TU/lmr/bx/n/10 metodo diretto o semplificato: \TU/lmr/m/n/10 il procedimento prevede, oltre all’attribuzione dei costi diretti al prodotto, l’allocazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1430--1433
+
+ []
+
+
+Underfull \hbox (badness 3417) in paragraph at lines 1449--1449
+[]|\TU/lmr/m/n/10 Elevata semplicità di proget-
+ []
+
+
+Underfull \hbox (badness 8056) in paragraph at lines 1451--1451
+[]|\TU/lmr/m/n/10 Assente capacità di cogliere
+ []
+
+
+Underfull \hbox (badness 1077) in paragraph at lines 1451--1451
+\TU/lmr/m/n/10 l’influenza dei fattori di com-
+ []
+
+File: Image/BasiAlloc_1.png Graphic file (type bmp)
+<Image/BasiAlloc_1.png>
+[35]
+File: Image/GestStrategica_1.png Graphic file (type bmp)
+<Image/GestStrategica_1.png>
+ [36] (Economia.aux)
 Package rerunfilecheck Info: File `Economia.out' has not changed.
-(rerunfilecheck)             Checksum: 8ECF6AD47785844F273CA36661552CB6;17706.
+(rerunfilecheck)             Checksum: 9ABDBFDF4840A1367ABEF5F75BD6A06D;19330.
  ) 
 Here is how much of TeX's memory you used:
- 36133 strings out of 411476
- 807682 string characters out of 5822644
+ 36167 strings out of 411476
+ 808542 string characters out of 5822644
  1876001 words of memory out of 5000000
- 55760 multiletter control sequences out of 15000+600000
+ 55790 multiletter control sequences out of 15000+600000
  521522 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  100i,12n,104p,792b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Economia.xdv (34 pages, 659680 bytes).
+Output written on Economia.xdv (36 pages, 712840 bytes).

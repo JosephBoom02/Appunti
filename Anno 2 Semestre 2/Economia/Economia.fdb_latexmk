@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1682931238 "Economia.xdv" "Economia.pdf" "Economia" 1682931246 0
-  "Economia.xdv" 1682931237 659680 8e0a2394f41088f786ee2aacc199e186 "xelatex"
+["xdvipdfmx"] 1682940530 "Economia.xdv" "Economia.pdf" "Economia" 1682940539 0
+  "Economia.xdv" 1682940530 712840 65fbe9edf60b8be71c3d3265ea2be331 "xelatex"
   (generated)
   "Economia.pdf"
   (rewritten before read)
-["xelatex"] 1682931234 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" "Economia.xdv" "Economia" 1682931246 0
+["xelatex"] 1682940527 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" "Economia.xdv" "Economia" 1682940539 0
   "C:/Program Files/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136772254 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233955448 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -233,10 +233,11 @@
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/titlesec/titlesec.sty" 1625497667 48833 3b7b4cfab1a3d15596bfd3772a77ab65 ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/was/upgreek.sty" 1665850770 5794 9054e31be15d93f1e6bd28cca2b6643f ""
   "C:/Users/bumma/AppData/Roaming/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044406800 26220 3701aebf80ccdef248c0c20dd062fea9 ""
-  "Economia.aux" 1682931237 12405 18dfa0bcbe90511b92490cb6826712c2 "xelatex"
-  "Economia.out" 1682931237 17706 8ecf6ad47785844f273ca36661552cb6 "xelatex"
-  "Economia.tex" 1682931234 63749 0908977852800a4506b4f3d6aab79173 ""
-  "Economia.toc" 1682931237 8399 a821eb1d3332ffb5ff03392a9d97c104 "xelatex"
+  "Economia.aux" 1682940530 13323 2cc2576b4be6a93abb7505e44a56cfb0 "xelatex"
+  "Economia.out" 1682940530 19330 9abdbfdf4840a1367abef5f75bd6a06d "xelatex"
+  "Economia.tex" 1682940522 68927 faee4862025a179fa5b7da0e2a9713a1 ""
+  "Economia.toc" 1682940530 9071 5f022c385da8dd10f04b9b4752c75aa6 "xelatex"
+  "Image/BasiAlloc_1.png" 1682938462 157584 881441b1873e76e52865ee68990143f7 ""
   "Image/Ce_Renzo.png" 1679071314 140860 512c947cd8fb31ac3ace55e42a3bc48c ""
   "Image/CostiGradino_1.png" 1681578069 33403 a2a965aad46bc5b82d0bc1510d53c6a2 ""
   "Image/Costi_SemiVar_1.png" 1681307910 45302 0638680a1bc8ffe8dad6587bf3062e6a ""
@@ -248,9 +249,12 @@
   "Image/DiagrammaProfitto_1.png" 1681827553 35156 ee4e0a1586e6fe803ebe4afd242a9bd3 ""
   "Image/DiagrammaProfitto_2.png" 1681827570 63114 9b07486759f9dcd17b62649c75e7d48a ""
   "Image/DiagrammaProfitto_3.png" 1681827909 85204 870cab30f79f038d2a4300969aad4be0 ""
+  "Image/ElemCosto_1.png" 1682931260 75458 f50b8c8ba5da19c0e4691af820aa1618 ""
+  "Image/ElemCosto_2.png" 1682932544 96916 d7409a77b5d5a66a85f80255d5b345e3 ""
   "Image/Esempio_Taccount_1.png" 1678820742 48434 619921d550d8c0134ffad73068e596a1 ""
   "Image/Esercizio stato patrimoniale_1.png" 1678641492 381329 36ca2c466085f2ae0a48ac7c0585f36b ""
   "Image/FunzioniManag_1.png" 1680969206 36058 cc7cef4e65aacb48ea14f06b18eaa86e ""
+  "Image/GestStrategica_1.png" 1682940457 217252 1a9389c7b26b3b2a2e6d8e51ebcaf83a ""
   "Image/GiorniIncasso_1.png" 1680626736 169266 01df2a3aff3f8f1578b62c12e73d6f2f ""
   "Image/GiorniIncasso_2.png" 1680626759 103133 b437ca1443d5e558c252ad3736cbaa3e ""
   "Image/IndicEff.png" 1680626200 114498 4bab43aa2300813ce4ad498e0b6fd09a ""
@@ -275,7 +279,7 @@
   "Image/ScopiContDirez_1.png" 1680976711 55664 d9e2e19673f94feb6e35337539991e83 ""
   "Image/Stato patrimoniale Renzo.png" 1679071459 197598 df0fc5466cd15458af003a81046a8478 ""
   "Image/Tabella bilancio.png" 1677603497 82970 0686ac5c24d4bd3f3805a0002d8d75c4 ""
-  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" 1682931234 63749 0908977852800a4506b4f3d6aab79173 ""
+  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex" 1682940522 68927 faee4862025a179fa5b7da0e2a9713a1 ""
   (generated)
   "Economia.aux"
   "Economia.log"
