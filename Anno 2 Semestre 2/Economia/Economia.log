@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.5) (preloaded format=xelatex 2023.5.13)  13 MAY 2023 16:38
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.5) (preloaded format=xelatex 2023.5.13)  25 MAY 2023 10:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex"
-(c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Economia/Economia.tex
+**"c:/Users/bumma/Documents/VSCode/Latex/Latex/Anno 2 Semestre 2/Economia/Economia.tex"
+(c:/Users/bumma/Documents/VSCode/Latex/Latex/Anno 2 Semestre 2/Economia/Economia.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-04-20> (C:\Program Files\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -1104,19 +1104,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 1541--1552
 
  []
 
-[38] [39]
-Missing character: There is no – in font cmr10!
-[40] (Economia.aux)
+[38] [39] [40] [41] (Economia.aux)
 Package rerunfilecheck Info: File `Economia.out' has not changed.
-(rerunfilecheck)             Checksum: 1AE048B8749F47712F74326728B6528F;20239.
+(rerunfilecheck)             Checksum: 582D5DE64233D2BCA7FA6CB8179DBC8A;20470.
  ) 
 Here is how much of TeX's memory you used:
  36143 strings out of 411448
- 807775 string characters out of 5821724
+ 807793 string characters out of 5821724
  1876698 words of memory out of 5000000
  55796 multiletter control sequences out of 15000+600000
  521522 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 100i,12n,104p,792b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 100i,12n,104p,798b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Economia.xdv (40 pages, 793392 bytes).
+Output written on Economia.xdv (41 pages, 795792 bytes).
