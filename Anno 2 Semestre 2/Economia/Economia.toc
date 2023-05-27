@@ -94,3 +94,5 @@
 \contentsline {subsubsection}{\numberline {7.6.2}Domanda 2: Calcolo costo pieno unitario}{38}{subsubsection.7.6.2}%
 \contentsline {subsubsection}{\numberline {7.6.3}Domanda 3: Profitto totale}{40}{subsubsection.7.6.3}%
 \contentsline {section}{\numberline {8}Sistemi di determinazione dei costi}{41}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Introduzione}{41}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Il sistema di determinazione dei costi}{41}{subsection.8.2}%
