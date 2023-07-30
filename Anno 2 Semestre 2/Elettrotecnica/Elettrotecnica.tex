@@ -1,11 +1,12 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
 
-%code to write section, subsection and subsubsection title in a specific color
+\begin{comment}
+code to write section, subsection and subsubsection title in a specific color
 \titleformat{\section}
 {\color{synthwave_text}\normalfont\Large\bfseries}
 {\color{synthwave_text}\thesection}{1em}{} 
@@ -16,8 +17,8 @@
 
 \titleformat{\subsubsection}
 {\color{synthwave_text}\normalfont\normalfont\bfseries}
-{\color{synthwave_text}\thesubsubsection}{1em}{} 
-
+{\color{synthwave_text}\thesubsubsection}{1em}{}
+\end{comment}
 
 
 \pgfplotsset{compat=1.9}
@@ -31,12 +32,13 @@
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=synthwave_text,
+    linkcolor=black,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={Overleaf Example},
+    pdftitle={Elettotecnica},
     pdfpagemode=FullScreen,
 }
+
 
 \geometry{ 
  a4paper,
@@ -54,8 +56,8 @@ bracketsstyle=\color{red}
 
 
 % color option
-\pagecolor{synthwave_beckground} %{shadeofgray}
-\color{myWhite}
+%\pagecolor{synthwave_beckground} %{shadeofgray}
+%\color{myWhite}
 
 \renewcommand{\CancelColor}{\color{synthwave_text}}
 
@@ -88,7 +90,7 @@ Se due particelle cariche, supposte puntiformi, di carica $q_0$ e $q_1$, siano a
 con $r$ distanza tra le due cariche.
 
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Forza di Coulomb.png}
+    \includegraphics[scale=0.3]{Image/Forza di Coulomb.png}
 \end{center}
 
 La forza di Coulomb $F_C$ è diretta nella direzione di $r$. Quando $q_1$ e $q_2$ hanno lo
@@ -189,7 +191,7 @@ delle cariche. La direzione ed il verso di $\vec J$ sono la direzione ed il vers
 $\vec J$: densità di corrente $\left[\frac{C}{m^2\cdot s}\right] = \left[\frac{A}{m^2} \right]$
 
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Densità di corrente.png}
+    \includegraphics[scale=0.3]{Image/Densità di corrente.png}
 \end{center}
 
 $\vec J(x,y,z)$ definisce un campo vettoriale ed è la densità di flusso delle
@@ -212,7 +214,7 @@ Se si considera un cavo conduttore, ad esempio, la corrente nel conduttore è la
 quantità di carica che attraversa una sezione del cavo nell'unità di tempo.
 
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Corrente conduttore.png}
+    \includegraphics[scale=0.3]{Image/Corrente conduttore.png}
 \end{center}
 
 L'unità di misura SI è l'ampere [$A$] dove $A = \frac{C}{s}$
@@ -234,7 +236,7 @@ punto 1 al punto 2 lungo $l$:
 \]
 
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Tensione.png}
+    \includegraphics[scale=0.3]{Image/Tensione.png}
 \end{center}
 
 Per spostare la carica $q$ dal punto 1 al 2 il lavoro è:
@@ -302,7 +304,7 @@ stabilisce che:
     \vec E \ d\vec l_C = -\frac{d \Phi}{dt}
 \]
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Legge di Faraday.png}
+    \includegraphics[scale=0.3]{Image/Legge di Faraday.png}
 \end{center}
 ove $\Phi$ è il flusso magnetico concatenato con
 la linea chiusa $l_c$. (direzione di $l_C$ data dalla
@@ -322,7 +324,7 @@ all'interno di un volume $\tau$ corrisponde alle
 cariche che lasciano $\tau$ fluendo attraverso la
 superficie chiusa $S$, superficie esterna di $\tau$.
 \begin{center}
-    \includegraphics[scale=0.5]{Image/Conservazione della carica.png}
+    \includegraphics[scale=0.3]{Image/Conservazione della carica.png}
 \end{center}
 La \textbf{\textit{
 legge di conservazione della carica elettrica}} afferma questo ed è espressa
@@ -648,7 +650,7 @@ Usando le \textbf{leggi di Kirchhoff} e le \textbf{leggi costitutive}
 \]
 ne consegue che il campo elettrico è conservativo e dunque si può definire una differenza di potenziale.
 \[
-    \int)l \vec E \ d \vec l = v(A) - v(b) = v_{AB}
+    \int_l \vec E \ d \vec l = v(A) - v(B) = v_{AB}
 \]
 \begin{align*}
     \underbrace{\oint \vec E \ d \vec l}_{0} &= \int_{A}^{B} \vec E \ d\vec l + \int_{B}^{C} \vec E \ d\vec l + \int_{C}^{A} \vec E \ d\vec l \\
@@ -713,7 +715,7 @@ Combinando la LKT e la LKC su un circuito è possibile verificare che la somma d
 Gli elementi circuitali passivi sono elementi che (nel caso ideale) restituiscono la stessa energia che ricevono. 
 \subsubsection{Resistore}
 \begin{center}
-    \includegraphics[scale=0.22]{Image/Resistore.png}
+    \includegraphics[scale=0.4]{Image/Resistore.png}
 \end{center}
 \begin{align*}
     &\underbrace{v(t) = R \cdot i(t)}_{1^a\text{ legge di Ohm}} \Longrightarrow i(t) = \dfrac{1}{R} \cdot v(t) & &\underbrace{R = \rho \cdot \dfrac{l}{S}}_{2^a \text{ legge di Ohm}} = \rho \cdot  \dfrac{[\text{lunghezza filo}]}{[\text{sezione filo}]}
@@ -726,10 +728,10 @@ Il resistore assorbe sempre potenza, non può erogarla.
 
 \subsubsection{Condensatore}
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Condensatore.png}
+    \includegraphics[scale=0.4]{Image/Condensatore.png}
 \end{center}
 \[
-    i = C \cdot \dfrac{dv}{dt} \underset{i=\frac{dq}{dt}}{\Longrightarrow} i = C \cdot \frac{dv}{dt}
+    i = C \cdot \dfrac{dv}{dt} \underset{i=\frac{dq}{dt}}{\Longrightarrow} \frac{dq}{dt} = C \cdot \frac{dv}{dt}
 \]
 quindi $Q = C \cdot V$.\\
 Un condensatore (ideale) è non dissipativo: eroga sempre la stessa quantità di potenza che ha assorbito.
@@ -749,8 +751,8 @@ $v$ è la variabile di stato del condensatore.
 \end{center}
 in quel punto $\dfrac{dv}{dt}=\infty \Rightarrow i(t)=\infty \Rightarrow p(t) = \infty$, ma è impossibile avere potenza infinita, quindi non possiamo avere una variazione istantanea di tensione (il grafico della tensione di un condensatore non può avere discontinuità).
 \begin{align*}
-    \int i(t) \ dt = C \int \frac{dv}{dt}\Longrightarrow v(t) &= \int_{- \infty}^{t} \frac{1}{C} i(t) \ dt\\
-    &= \underbrace{\int_{- \infty}^{0} \frac{1}{C}i(t) \ dt}_{v_0} + \int_{0}^{t} \frac{1}{C} i(t) \ dt
+    i(t) \ dt = C \cdot \frac{dv}{dt} \Longrightarrow \int_{- \infty}^{t} \frac{i(t)}{C} dt = \underbrace{\int_{- \infty}^{t} \frac{dv}{dt}dt}_{v(t)} \Longrightarrow  v(t) &= \int_{- \infty}^{t} \frac{1}{C} \cdot i(t) \ dt\\ 
+    &= \underbrace{\int_{- \infty}^{0} \frac{1}{C} \cdot i(t) \ dt}_{v_0} + \int_{0}^{t} \frac{1}{C} \cdot i(t) \ dt
 \end{align*}
 A differenza del resistore, per conoscere la tensione non ho bisogno solo della corrente nell'istante corrente, ma anche della tensione iniziale; per questo il condensatore è un \textbf{elemento con memoria}.
 \vspace*{0.2cm}\\
@@ -758,8 +760,9 @@ Un \textbf{condensatore reale} è semplicemente un condensatore messo in paralle
 
 
 \subsubsection{Induttore}
+L'induttore è un componente elettrico che genera un campo magnetico al passaggio di corrente elettrica.
 \begin{center}
-    \includegraphics[scale=0.22]{Image/Induttore.png}
+    \includegraphics[scale=0.4]{Image/Induttore.png}
 \end{center}
 \[
     v= L \dfrac{di}{dt}
@@ -785,7 +788,7 @@ L'induttore è un elemento \textbf{non dissipativo}.
 \]
 Anche per l'induttore le variazioni istantanee di tensione non sono possibili.
 \begin{center}
-    \includegraphics[scale=0.21]{Image/Induttore ferr.png}
+    \includegraphics[scale=0.4]{Image/Induttore ferr.png}
 \end{center}
 \[
    L = \dfrac{\mu  N^2  A}{l} 
@@ -837,19 +840,19 @@ Gli elementi attivi sono elementi che possono generare (e fornire) energia elett
 
 \subsubsection{Generatore indipendente di tensione}
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Gen Tensione ideale.png}
+    \includegraphics[scale=0.4]{Image/Gen Tensione ideale.png}
 \end{center}
 Il \textit{generatore di tensione ideale} mantiene
 la tensione tra i suoi terminali indipendentemente dalla
 corrente che lo attraversa, quindi la tensione ai capi $V$ è uguale alla tensione interna $e$ (N.B. nel disegno la $v_s$ è la tensione interna $e$).
 \[
     p(t) = V \cdot i = e \cdot i 
-    \begin{cases}
+    \begin{cases} 
         >0 &\text{eroga}\\
         <0 &\text{assorbe}\\
     \end{cases}
 \]
-Essendo $e$ fisso, la potenza dipende solo da $i$ (variabile di stato?).
+Essendo $e$ fisso, la potenza dipende solo da $i$ (variabile di stato).
 \vspace*{0.2cm}\\
 Per simulare un generatore
 di tensione reale (ad es. una batteria) si
@@ -857,15 +860,15 @@ considera un resistenza
 interna $R_i$ in serie con il
 generatore ideale:
 \begin{center}
-    \includegraphics[scale=0.2]{Image/Gen tensione reale.png}
+    \includegraphics[scale=0.4]{Image/Gen tensione reale.png}
 \end{center}
 \[
     V = e - R \cdot i
 \]
-In realtà nella formula della tensione di una batteria ci sono anche altri termini dipendenti da altri piccoli condensatori nella batteria.
+In realtà nella formula della tensione di una batteria ci sono anche termini dipendenti da altri piccoli condensatori nella stessa.
 \vspace*{0.2cm}\\
 Se si hanno più generatori di tensione \textbf{in serie}, la tensione totale è semplicemente la somma delle tensioni dei vari generatori.\\
-I generatori di tensione \textbf{\underline{non sono collegabili in parallelo}}: se così fosse si avrebbe, sullo stesso cavo, due differenti tensioni che dovrebbero essere contemporaneamente uguali (per la LKT).
+I generatori di tensione \textbf{\underline{non sono collegabili in parallelo}}: se così fosse si avrebbero, nella stessa maglia, due differenti tensioni, ma questo non è possibile perché non viene soddisfatta la LKT.
 \vspace*{0.2cm}\\
 In un generatore di tensione reale, nel caso in cui la resistenza $R \rightarrow \infty \Longrightarrow i = \dfrac{V}{R} = 0$, mentre se $R \rightarrow 0 \Longrightarrow i=\dfrac{V}{R}= \infty$.
 
@@ -873,7 +876,7 @@ In un generatore di tensione reale, nel caso in cui la resistenza $R \rightarrow
 
 \subsubsection{Generatore indipendente di corrente}
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Gen corrente ideale.png}
+    \includegraphics[scale=0.4]{Image/Gen corrente ideale.png}
 \end{center}
 Il \textit{generatore di corrente ideale} mantiene
 la corrente che lo attraversa al valore $ A $ indipendentemente dalla
@@ -887,7 +890,7 @@ differenza di potenziale fra i suoi terminali (N.B. nel disegno la $i_s$ è la c
 \]
 Un imprecisa approssimazione di un generatore di corrente reale è un pannello fotovoltaico, dotato di resistenza interna in parallelo con il generatore ideale
 \begin{center}
-    \includegraphics[scale=0.2]{Image/Gen corrente reale.png}
+    \includegraphics[scale=0.4]{Image/Gen corrente reale.png}
 \end{center}
 \[
     i = A -\frac{v}{R}
@@ -897,7 +900,7 @@ Un imprecisa approssimazione di un generatore di corrente reale è un pannello f
 \subsubsection{Generatori dipendenti}
 Gli elementi attivi visti prima possono essere "controllati" in tensione o in corrente.
 \vspace*{0.2cm}\\
-Il \textbf{generatore dipendente di tensione} è controllato in tensione $V=v_c \cot \mu$, o in corrente $V = r \cdot i_c$.
+Il \textbf{generatore dipendente di tensione} è controllato in tensione $V=v_c \cdot  \mu$, o in corrente $V = r \cdot i_c$.
 \vspace*{0.2cm}\\
 Il \textbf{generatore dipendente di corrente} è controllato in tensione $i = g \cdot v_c$, o in corrente $i = \alpha \cdot i_c$.
 
@@ -913,17 +916,17 @@ considerare nei due seguenti modi:
 \end{itemize}
 L'equazione dell'elemento circuitale è $i=0, \ \forall v$.
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Circuito aperto.png}
+    \includegraphics[scale=0.35]{Image/Circuito aperto.png}
 \end{center}
 Un ramo in circuito chiuso si può
 considerare nei due seguenti modi:
 \begin{itemize}
-    \item Un generatore di corrente (tensione?) con: $e = 0$
+    \item Un generatore di tensione con: $e = 0$
     \item Un resistore con: $R = 0$
 \end{itemize}
 L'equazione dell'elemento circuitale è $v=0, \ \forall i$.
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Circuito chiuso.png}
+    \includegraphics[scale=0.35]{Image/Circuito chiuso.png}
 \end{center}
 \begin{center}
     \includegraphics[scale=0.3]{Image/Resistori aperto chiuso.png}
@@ -940,6 +943,7 @@ L'equazione dell'elemento circuitale è $v=0, \ \forall i$.
     \includegraphics[scale=0.27]{Image/Esempio1_3.png}
     & 
     \includegraphics[scale=0.27]{Image/Esempio1_4.png}\\
+    &
     $R_{1eq} = R_2+R_3$
     &
     $R_{2eq} =\dfrac{R_1 R_{1eq}}{R_1+R_{1eq}} = \left( \dfrac{1}{R_1} + \dfrac{1}{R_{1eq}} \right)^{-1}$
@@ -950,31 +954,30 @@ L'equazione dell'elemento circuitale è $v=0, \ \forall i$.
 
 
 \subsubsection{Partitore di tensione}
+Un partitore di tensione è un tipo di circuito costituito da due o più componenti passivi collegati in serie ai capi dei quali, se viene applicata una tensione, essa si ripartirà sulle stesse componenti in base al loro valore. 
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Partitore di tensione.png}
+    \includegraphics[scale=0.35]{Image/Partitore di tensione.png}
 \end{center}
 \begin{align*}
-    R_{eq} &= R_1+R_2 & i = \dfrac{V_s}{R_eq} = \dfrac{V_s}{R_1+R_2}
+    R_{eq} &= R_1+R_2 & i = \dfrac{V_s}{R_{eq}} = \dfrac{V_s}{R_1+R_2}
 \end{align*}
 Dalla LKT si ha
 \begin{align*}
-    &v_1+v_2 - V_s = 0\\
-    &\Longrightarrow & v_1&=V_s - v_2 = V_s - R_2 i & v_2 &= V_s-v_1 = V_s - R_1 i\\
+    &v_1+v_2 - V_s = 0 \Longrightarrow & v_1&=V_s - v_2 = V_s - R_2 i & v_2 &= V_s-v_1 = V_s - R_1 i\\
     &\underset{\text{sostituisco } i}{\Longrightarrow} & v_1&=\dfrac{R_1}{R_1+R_2} V_s & v_2&=\dfrac{R_2}{R_1+R_2} V_s
 \end{align*}
 
 
 \subsubsection{Partitore di corrente}
 \begin{center}
-    \includegraphics[scale=0.23]{Image/Partitore di corrente.png}
+    \includegraphics[scale=0.35]{Image/Partitore di corrente.png}
 \end{center}
 \begin{align*}
     R_{eq} &= \dfrac{R_1R_2}{R_1+R_2} & v &= R_{eq}I_s = \dfrac{R_1R_2}{R_1+R_2}I_s
 \end{align*}
 Dalla LKC si ha
 \begin{align*}
-    &i_1 + i_2 -I_s = 0\\
-    &\Longrightarrow & i_1 &= I_s - i_2 = I_s - \dfrac{v}{R_2} &  i_2 &= I_s - i_1 = I_s - \dfrac{v}{R_1}\\
+    &i_1 + i_2 -I_s = 0 \Longrightarrow & i_1 &= I_s - i_2 = I_s - \dfrac{v}{R_2} &  i_2 &= I_s - i_1 = I_s - \dfrac{v}{R_1}\\
     &\underset{\text{sostituisco } v}{\Longrightarrow} & i_1 &= \dfrac{R_2}{R_1+R_2}I_s &  i_2 &= \dfrac{R_1}{R_1+R_2}I_s
 \end{align*}
 
@@ -996,9 +999,9 @@ Da sottolineare che \underline{una rete a stella può essere equivalente ad una 
     \includegraphics[scale=0.3]{Image/Nodi triangolo stella.png}
 \end{center}
 Ciò significa che le stesse tensioni $v_{12}$, $v_{23}$ e $v_{31}$ tra i nodi 1 e
-2, i nodi 2 e 3 e i nodi 3 e 1 rispettivamente, inducono le
+2, i nodi 2 e 3 e i nodi 3 e 1 inducono le
 stesse correnti entranti nella
-stella e nel triangolo al nodo 1,
+stella e nel triangolo rispettivamente al nodo 1,
 al nodo 2 ed al nodo 3.
 Ora vediamo come passare da stella a triangolo e viceversa
 \begin{center}
@@ -1012,8 +1015,8 @@ diviso per la somma dei resistori a triangolo.
     R_{Y2} &= \dfrac{R_{\Delta 1} R_{\Delta 2}}{R_{\Delta 1} + R_{\Delta 2} + R_{\Delta 3}} &
     R_{Y3} &= \dfrac{R_{\Delta 2} R_{\Delta 3}}{R_{\Delta 1} + R_{\Delta 2} + R_{\Delta 3}}
 \end{align*}
-Ogni resistenza del triangolo è la somma dei prodotti due a due dei
-resistori della stella, divisi la resistenza nel ramo opposto della stella.
+Ogni resistenza del triangolo è la somma dei prodotti a due a due di tutti i
+resistori della stella, divisa per la resistenza nel ramo opposto della stella.
 \begin{align*}
     R_{\Delta 1} &= \dfrac{R_{Y_1}R_{Y_2} +R_{Y2}R_{Y3} + R_{Y3}R_{Y1}}{R_{Y_3}} &
     R_{\Delta 2} &= \dfrac{R_{Y_1}R_{Y_2} +R_{Y2}R_{Y3} + R_{Y3}R_{Y1}}{R_{Y_1}} &
@@ -1043,11 +1046,11 @@ Determinare la resistenza equivalente del seguente circuito
     \includegraphics[scale=0.3]{Image/Esempio2_2.png}
 \end{center}
 \begin{align*}
-    R_{A\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R+3}{R_1} = 9 \Omega
+    R_{A\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R_3}{R_1} = 9 \Omega
     &
-    R_{B\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R+3}{R_2} = 9 \Omega
+    R_{B\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R_3}{R_2} = 9 \Omega
     &
-    R_{c\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R+3}{R_3} = 9 \Omega
+    R_{c\Delta} &= \dfrac{R_1R_2 + R_2R_3 +R_1R_3}{R_3} = 9 \Omega
 \end{align*}
 \begin{center}
     \includegraphics[scale=0.3]{Image/Esempio2_3.png}
@@ -1146,9 +1149,9 @@ Infatti per il circuito avremo
     $
     &
     LKT($M_1$) : $v_1 - v_3=0$\\
-    Lato 3: $v_{R_3} = R_3 \dot i_3$ 
+    Lato 3: $v_{R_3} = R_3 \cdot i_3$ 
     &
-    LKT($M_2$) = $v_3-v_2=0$    
+    LKT($M_2$) : $v_3-v_2=0$    
 \end{tabular}
 \end{center}
 Ora effettuiamo la sostituzione:
@@ -1184,7 +1187,7 @@ Ora effettuiamo la sostituzione:
 
 \subsection{Esempio}
 \begin{center}
-    \includegraphics[scale=0.15]{Image/Esempio_PotenzialiNodo.png}
+    \includegraphics[scale=0.12]{Image/Esempio_PotenzialiNodo.png}
 \end{center}
 Scegliamo come nodo di riferimento il nodo C
 \begin{align*}
@@ -1221,7 +1224,7 @@ Calcoliamo $i_3$.\\
 Bisogna considerare una causa alla volta, quindi passivare alcuni generatori: passivando un \underline{generatore di tensione} si ottiene un corto-circuito (quindi il circuito è chiuso), mentre se si passiva un generatore di corrente il circuito risultante è aperto. 
 \subsubsection*{Causa \texorpdfstring{$E_1$}{E1}}
 \begin{center}
-    \includegraphics[scale=0.25]{Image/Esempio_MetAnal_2.png}
+    \includegraphics[scale=0.3]{Image/Esempio_MetAnal_2.png}
 \end{center}
 
 \begin{align*}
@@ -1243,7 +1246,7 @@ Ora possiamo calcolare $i_3$:
 
 \subsubsection{Esempio 2}
 \begin{center}
-    \includegraphics[scale=0.25]{Image/Esempio_MetAnalisi_4.png}
+    \includegraphics[scale=0.3]{Image/Esempio_MetAnalisi_4.png}
 \end{center}
 \begin{align*}
     &I'= \dfrac{E}{R} & &I'' = - \dfrac{E}{R}
@@ -1297,7 +1300,7 @@ Utilizzando l'LKT sulla maglia più grande:
 \begin{align*}
     E_1 - v_{R_1} + v_{R_2} - E_2=0 &\Rightarrow E_1 - R_1i - R_2i - E_2=0\\
     &\Rightarrow E_1 - E_2 = R_1i + R_2 i \\
-    & \Rightarrow E_1 - E_2 = (R_1 + R_2)i\\
+    & \Rightarrow E_1 - E_2 = (R_1 + R_2)i\\ 
     & \Rightarrow i = \frac{E_1-E_2}{R_1+R_2}
 \end{align*}
 mentre l'LKT sulla maglia più piccola a sinistra:
@@ -1391,7 +1394,7 @@ Vogliamo calcolare $i_3$. Quindi applichiamo il teorema di Norton:
 \subsection{Teorema del massimo trasferimento di potenza}
 Consideriamo il seguente circuito
 \begin{center}
-    \includegraphics[scale=0.27]{Image/T_Massima_Potenza.png}
+    \includegraphics[scale=0.3]{Image/T_Massima_Potenza_0.png}
 \end{center}
 Qual è il valore di $R_L$ che massimizza il trasferimento di potenza? Proviamo a calcolarlo.
 \begin{align*}
@@ -1404,7 +1407,7 @@ Qual è il valore di $R_L$ che massimizza il trasferimento di potenza? Proviamo 
     \end{cases}
 \end{align*}
 \begin{center}
-    \includegraphics[scale=0.25]{Image/T_Potenza_Massima_1.png}
+    \includegraphics[scale=0.25]{Image/T_Massima_Potenza_1.png}
 \end{center}
 Per trovare il massimo poniamo la derivata della potenza a 0; sapendo che $P_L = E^2 \dfrac{R_L}{(R+R_L)^2}$
 \begin{align*}

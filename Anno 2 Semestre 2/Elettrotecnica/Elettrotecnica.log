@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.9)  22 MAR 2023 16:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  30 JUL 2023 17:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,47 +6,47 @@ entering extended mode
 **"c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex"
 (c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-02-07> (C:\Program Files\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2023-05-15> (c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(C:\Program Files\MiKTeX\tex/latex/base\size10.clo
+(c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count181
-\c@section=\count182
-\c@subsection=\count183
-\c@subsubsection=\count184
-\c@paragraph=\count185
-\c@subparagraph=\count186
-\c@figure=\count187
-\c@table=\count188
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2022/04/08 v2.17n AMS math features
 \@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
-(C:\Program Files\MiKTeX\tex/latex/amsmath\amstext.sty
+(c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen141
-)) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen142
-) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count189
+\inf@bad=\count193
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count190
-\leftroot@=\count191
+\uproot@=\count194
+\leftroot@=\count195
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count192
-\DOTSCASE@=\count193
+\classnum@=\count196
+\DOTSCASE@=\count197
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -59,20 +59,20 @@ LaTeX Info: Redefining \Bigg on input line 725.
 \big@size=\dimen143
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count194
+\macc@depth=\count198
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count195
+\c@MaxMatrixCols=\count199
 \dotsspace@=\muskip16
-\c@parentequation=\count196
-\dspbrk@lvl=\count197
+\c@parentequation=\count266
+\dspbrk@lvl=\count267
 \tag@help=\toks17
-\row@=\count198
-\column@=\count199
-\maxfields@=\count266
+\row@=\count268
+\column@=\count269
+\maxfields@=\count270
 \andhelp@=\toks18
 \eqnshift@=\dimen144
 \alignsep@=\dimen145
@@ -86,49 +86,49 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Program Files\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+)) (c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks21
 \pgfutil@tempdima=\dimen150
 \pgfutil@tempdimb=\dimen151
-) (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box53
-) (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
-) (C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 107.
- (C:\Program Files\MiKTeX\tex/latex/graphics-def\xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen152
 \Gin@req@width=\dimen153
-) (C:\Program Files\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+) (c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks23
 \pgfkeys@temptoks=\toks24
- (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks25
 ))
 \pgf@x=\dimen154
@@ -143,40 +143,37 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen163
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count267
-\c@pgf@countb=\count268
-\c@pgf@countc=\count269
-\c@pgf@countd=\count270
+\c@pgf@counta=\count271
+\c@pgf@countb=\count272
+\c@pgf@countc=\count273
+\c@pgf@countd=\count274
 \t@pgf@toka=\toks26
 \t@pgf@tokb=\toks27
 \t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count271
- (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+\pgf@sys@id@count=\count275
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
-Driver file for pgf: pgfsys-xetex.def
- (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-xetex.def
-File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-dvipdfmx.def
-File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+Driver file for pgf: pgfsys-pdftex.def
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-)
-\pgfsys@objnum=\count272
-))) (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+))) (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count273
-\pgfsyssoftpath@bigbuffer@items=\count274
-) (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+\pgfsyssoftpath@smallbuffer@items=\count276
+\pgfsyssoftpath@bigbuffer@items=\count277
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
+)) (c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
- (C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 227.
- (C:\Program Files\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
 Package xcolor Info: Model `RGB' extended on input line 1369.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
@@ -184,18 +181,18 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen164
-\pgfmath@count=\count275
+\pgfmath@count=\count278
 \pgfmath@box=\box54
 \pgfmath@toks=\toks29
 \pgfmath@stack@operand=\toks30
 \pgfmath@stack@operation=\toks31
-) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count276
-)) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count279
+)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen165
 \pgf@picmaxx=\dimen166
@@ -211,77 +208,77 @@ File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yy=\dimen176
 \pgf@zx=\dimen177
 \pgf@zy=\dimen178
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@path@lastx=\dimen179
 \pgf@path@lasty=\dimen180
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@end@additional=\dimen181
 \pgf@shorten@start@additional=\dimen182
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box55
 \pgf@hbox=\box56
 \pgf@layerbox@main=\box57
-\pgf@picture@serial@count=\count277
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+\pgf@picture@serial@count=\count280
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen183
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@pt@x=\dimen184
 \pgf@pt@y=\dimen185
 \pgf@pt@temp=\dimen186
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowsep=\dimen187
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen188
-\pgf@sys@shading@range@num=\count278
-\pgf@shadingcount=\count279
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+\pgf@sys@shading@range@num=\count281
+\pgf@shadingcount=\count282
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfexternal@startupbox=\box58
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+))) (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box59
-) (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen189
 \pgf@nodesepend=\dimen190
-) (C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-)) (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Program Files\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+)) (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen191
 \pgffor@skip=\dimen192
 \pgffor@stack=\toks32
 \pgffor@toks=\toks33
-)) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count280
+\pgf@plot@mark@count=\count283
 \pgfplotmarksize=\dimen193
 )
 \tikz@lastx=\dimen194
@@ -296,29 +293,29 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box61
 \tikz@tempbox=\box62
 \tikz@tempbox@bg=\box63
-\tikztreelevel=\count281
-\tikznumberofchildren=\count282
-\tikznumberofcurrentchild=\count283
-\tikz@fig@count=\count284
- (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+\tikztreelevel=\count284
+\tikznumberofchildren=\count285
+\tikznumberofcurrentchild=\count286
+\tikz@fig@count=\count287
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count285
-\pgfmatrixcurrentcolumn=\count286
-\pgf@matrix@numberofcolumns=\count287
+\pgfmatrixcurrentrow=\count288
+\pgfmatrixcurrentcolumn=\count289
+\pgf@matrix@numberofcolumns=\count290
 )
-\tikz@expandcount=\count288
- (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+\tikz@expandcount=\count291
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.sty
+))) (c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
+ (c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count289
-\Gm@cntv=\count290
-\c@Gm@tempcnt=\count291
+\Gm@cnth=\count292
+\Gm@cntv=\count293
+\c@Gm@tempcnt=\count294
 \Gm@bindingoffset=\dimen258
 \Gm@wd@mp=\dimen259
 \Gm@odd@mp=\dimen260
@@ -328,33 +325,30 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen264
 \Gm@layoutvoffset=\dimen265
 \Gm@dimlist=\toks34
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/natbib\natbib.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip53
 \bibsep=\skip54
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count292
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/mwe\mwe.sty
+\c@NAT@ctr=\count295
+) (c:/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
 Package: mwe 2018/03/30 v0.5 Package to support minimal working examples (MWE)
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/lipsum\lipsum.sty (C:\Program Files\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty (C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2023-02-07 L3 programming layer (loader) 
- (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
-File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
-\g__graphics_track_int=\count293
+ (c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-05-15 L3 programming layer (loader) 
+ (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count296
 \l__pdf_internal_box=\box64
-\g__pdf_backend_object_int=\count294
-\g__pdf_backend_annotation_int=\count295
-\g__pdf_backend_link_int=\count296
 ))
-Package: l3keys2e 2023-01-16 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2023-02-02 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \g__lipsum_par_int=\count297
 \l__lipsum_a_int=\count298
 \l__lipsum_b_int=\count299
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (C:\Program Files\MiKTeX\tex/latex/blindtext\blindtext.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
- (C:\Program Files\MiKTeX\tex/latex/tools\xspace.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 \c@blindtext=\count300
@@ -375,7 +369,7 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@randommax=\count315
 \c@blind@pangramcount=\count316
 \c@blind@pangrammax=\count317
-)) (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
+)) (c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count318
 \lst@gtempboxa=\box65
 \lst@token=\toks35
@@ -388,18 +382,18 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \lst@newlines=\count322
 \lst@lineno=\count323
 \lst@maxwidth=\dimen269
- (C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
-File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+ (c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 \c@lstnumber=\count324
 \lst@skipnumbers=\count325
 \lst@framebox=\box66
-) (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
-File: listings.cfg 2020/03/24 1.8d listings configuration
+) (c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
-Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (C:\Program Files\MiKTeX\tex/latex/tools\tabularx.sty
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
- (C:\Program Files\MiKTeX\tex/latex/tools\array.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen270
 \ar@mcellbox=\box67
@@ -416,11 +410,11 @@ Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \TX@delta=\dimen276
 \TX@cols=\count326
 \TX@ftn=\toks37
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2022/12/19 v0.5x Insert pages of external PDF documents (AM)
- (C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-) (C:\Program Files\MiKTeX\tex/latex/tools\calc.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count327
 \calc@Bcount=\count328
@@ -432,16 +426,16 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count329
 \calc@Cskip=\skip59
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/eso-pic\eso-pic.sty
-Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
+) (c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 \ESO@tempdima=\dimen279
 \ESO@tempdimb=\dimen280
 )
 \AM@pagewidth=\dimen281
 \AM@pageheight=\dimen282
 \AM@fboxrule=\dimen283
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdfpages\ppxetex.def
-File: ppxetex.def 2022/12/19 v0.5x Pdfpages driver for XeTeX (AM)
+ (c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2022/12/19 v0.5x Pdfpages driver for pdfTeX (AM)
 )
 \pdfpages@includegraphics@status=\count330
 \AM@pagebox=\box69
@@ -451,9 +445,9 @@ File: ppxetex.def 2022/12/19 v0.5x Pdfpages driver for XeTeX (AM)
 \AM@lof@heading=\toks40
 \c@AM@survey=\count332
 \AM@templatesizebox=\box70
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/mathtools\mathtools.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/mathtools\mhsetup.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
 \g_MT_multlinerow_int=\count333
@@ -467,112 +461,14 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 \l_MT_below_shortintertext_sep=\dimen290
 \xmathstrut@box=\box71
 \xmathstrut@dim=\dimen291
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/stackengine\stackengine.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/stackengine/stackengine.sty
 Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient ways
- (C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count334
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/listofitems\listofitems.sty (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/listofitems\listofitems.tex
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 52 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 52 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 52 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 96 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 96 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 104 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 105 replaced by U+FFFD.
+) (c:/texlive/2023/texmf-dist/tex/generic/listofitems/listofitems.sty (c:/texlive/2023/texmf-dist/tex/generic/listofitems/listofitems.tex
 \loi_cnt_foreach_nest=\count335
-Invalid UTF-8 byte or sequence at line 139 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 146 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 192 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 209 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 209 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 222 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 222 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 223 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 223 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 224 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 226 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 226 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 238 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 243 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 243 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 260 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 284 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 310 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 310 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 324 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 337 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 337 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 339 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 350 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 350 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 350 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 354 replaced by U+FFFD.
 \loi_nestcnt=\count336
-Invalid UTF-8 byte or sequence at line 367 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 367 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 367 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 367 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 375 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 375 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 375 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 375 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 377 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 378 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 398 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 398 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 399 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 409 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 410 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 410 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 410 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 410 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 411 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 414 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 422 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 422 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 426 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 428 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 433 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 433 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 441 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 441 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 442 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 443 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 443 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 443 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 446 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 446 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 446 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 448 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 448 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 451 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 455 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 455 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 458 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 458 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 472 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 475 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 492 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 508 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 508 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 509 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 509 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 519 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 541 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 541 replaced by U+FFFD.
 )
 Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified sep char (CT)
 )
@@ -588,7 +484,7 @@ Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified s
 \stackedbox=\box76
 \@centerbox=\box77
 \c@ROWcellindex@=\count338
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/amscls\amsthm.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks41
 \thm@bodyfont=\toks42
@@ -599,73 +495,71 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip66
 \thm@headsep=\skip67
 \dth@everypar=\toks46
-) (C:\Program Files\MiKTeX\tex/latex/pgfplots\pgfplots.sty (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
+) (c:/texlive/2023/texmf-dist/tex/latex/pgfplots/pgfplots.sty (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
- (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotscore.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks47
 \t@pgfplots@tokb=\toks48
 \t@pgfplots@tokc=\toks49
 \pgfplots@tmpa=\dimen292
 \c@pgfplots@coordindex=\count339
 \c@pgfplots@scanlineindex=\count340
- (C:\Program Files\MiKTeX\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
+ (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
 \t@pgf@toka=\toks50
 \t@pgf@tokb=\toks51
 \t@pgf@tokc=\toks52
-(C:\Program Files\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructure.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructureext.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsarray.code.tex
+(c:/texlive/2023/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
 \c@pgfplotsarray@tmp=\count341
-) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsmatrix.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstableshared.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
 \c@pgfplotstable@counta=\count342
 \t@pgfplotstable@a=\toks53
-) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count343
- (C:\Program Files\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-xetex.def (C:\Program Files\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-dvipdfmx.def
-\c@pgfplotslibrarysurf@streamlen=\count344
-)))) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.scaling.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.markers.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsticks.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.paths.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
 \pgfdecoratedcompleteddistance=\dimen293
 \pgfdecoratedremainingdistance=\dimen294
 \pgfdecoratedinputsegmentcompleteddistance=\dimen295
 \pgfdecoratedinputsegmentremainingdistance=\dimen296
 \pgf@decorate@distancetomove=\dimen297
-\pgf@decorate@repeatstate=\count345
+\pgf@decorate@repeatstate=\count344
 \pgfdecorationsegmentamplitude=\dimen298
 \pgfdecorationsegmentlength=\dimen299
 )
 \tikz@lib@dec@box=\box78
-) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count346
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count345
 \pgfplots@xmin@reg=\dimen300
 \pgfplots@xmax@reg=\dimen301
 \pgfplots@ymin@reg=\dimen302
 \pgfplots@ymax@reg=\dimen303
 \pgfplots@zmin@reg=\dimen304
 \pgfplots@zmax@reg=\dimen305
-) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryplotmarks.code.tex
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryplotmarks.code.tex
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/bigints\bigints.sty
+))) (c:/texlive/2023/texmf-dist/tex/latex/bigints/bigints.sty
 Package: bigints 2010/02/15 Writing big integrals
 Package bigints Info: This is Bigints by Merciadri Luca. on input line 5.
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/relsize\relsize.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/was\upgreek.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
 \symugrf@m=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/esint\esint.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/esint/esint.sty
 Package: esint 
 \symlargesymbolsA=\mathgroup7
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/multirow\multirow.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip68
-\multirow@cntb=\count347
+\multirow@cntb=\count346
 \multirow@dima=\skip69
 \bigstrutjot=\dimen306
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/schemata\schemata.sty
+) (c:/texlive/2023/texmf-dist/tex/generic/schemata/schemata.sty
 Package: schemata 2021/02/27 1.4 generic package to aid construction of topical categories
 \@schemata@rhs=\box79
 \@schemata@lhs=\box80
@@ -674,136 +568,135 @@ Package: schemata 2021/02/27 1.4 generic package to aid construction of topical 
 \@schemata@one=\dimen309
 \@schemata@two=\dimen310
 \@schemata@three=\dimen311
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen312
 \WF@size=\dimen313
-\c@WF@wrappedlines=\count348
+\c@WF@wrappedlines=\count347
 \WF@box=\box81
 \WF@everypar=\toks54
 Package: wrapfig 2003/01/31  v 3.6
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/cancel\cancel.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
-) (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2023-02-07 v7.00v Hypertext links for LaTeX
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write4
+ Excluding comment 'comment') (c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2023-04-22 v7.00x Hypertext links for LaTeX
+ (c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+) (c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+ (c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package pdftexcmds Info: \pdfdraftmode found.
+) (c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+) (c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/auxhook\auxhook.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/refcount\refcount.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+) (c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count349
+\c@section@level=\count348
 )
 \@linkdim=\dimen314
-\Hy@linkcounter=\count350
-\Hy@pagecounter=\count351
- (C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/intcalc\intcalc.sty
+\Hy@linkcounter=\count349
+\Hy@pagecounter=\count350
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2023-04-22 v7.00x Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/etexcmds\etexcmds.sty
-Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count352
- (C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count351
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2023-04-22 v7.00x Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4177.
-Package hyperref Info: Link nesting OFF on input line 4182.
-Package hyperref Info: Hyper index ON on input line 4185.
-Package hyperref Info: Plain pages OFF on input line 4192.
-Package hyperref Info: Backreferencing OFF on input line 4197.
+Package hyperref Info: Hyper figures OFF on input line 4182.
+Package hyperref Info: Link nesting OFF on input line 4187.
+Package hyperref Info: Hyper index ON on input line 4190.
+Package hyperref Info: Plain pages OFF on input line 4197.
+Package hyperref Info: Backreferencing OFF on input line 4202.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4425.
-\c@Hy@tempcnt=\count353
- (C:\Program Files\MiKTeX\tex/latex/url\url.sty
+Package hyperref Info: Bookmarks ON on input line 4449.
+\c@Hy@tempcnt=\count352
+ (c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4763.
+LaTeX Info: Redefining \url on input line 4787.
 \XeTeXLinkMargin=\dimen315
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/bitset\bitset.sty
+ (c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+ (c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count354
+\Fld@menulength=\count353
 \Field@Width=\dimen316
 \Fld@charsize=\dimen317
-Package hyperref Info: Hyper figures OFF on input line 6042.
-Package hyperref Info: Link nesting OFF on input line 6047.
-Package hyperref Info: Hyper index ON on input line 6050.
-Package hyperref Info: backreferencing OFF on input line 6057.
-Package hyperref Info: Link coloring OFF on input line 6062.
-Package hyperref Info: Link coloring with OCG OFF on input line 6067.
-Package hyperref Info: PDF/A mode OFF on input line 6072.
- (C:\Program Files\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package hyperref Info: Hyper figures OFF on input line 6066.
+Package hyperref Info: Link nesting OFF on input line 6071.
+Package hyperref Info: Hyper index ON on input line 6074.
+Package hyperref Info: backreferencing OFF on input line 6081.
+Package hyperref Info: Link coloring OFF on input line 6086.
+Package hyperref Info: Link coloring with OCG OFF on input line 6091.
+Package hyperref Info: PDF/A mode OFF on input line 6096.
+ (c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count355
-\c@Item=\count356
-\c@Hfootnote=\count357
+\Hy@abspage=\count354
+\c@Item=\count355
+\c@Hfootnote=\count356
 )
-Package hyperref Info: Driver (autodetected): hxetex.
- (C:\Program Files\MiKTeX\tex/latex/hyperref\hxetex.def
-File: hxetex.def 2023-02-07 v7.00v Hyperref driver for XeTeX
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/stringenc\stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
-)
-\pdfm@box=\box82
-\c@Hy@AnnotLevel=\count358
-\HyField@AnnotCount=\count359
-\Fld@listcount=\count360
-\c@bookmark@seq@number=\count361
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Program Files\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2023-04-22 v7.00x Hyperref driver for pdfTeX
+ (c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+)
+\Fld@listcount=\count357
+\c@bookmark@seq@number=\count358
+ (c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip70
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/carlisle\slashed.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/carlisle/slashed.sty
 Package: slashed 1997/01/16 v0.01 Feynman Slashed Character Notation (DPC)
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/enumitem\enumitem.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip71
 \enit@outerparindent=\dimen318
 \enit@toks=\toks55
-\enit@inbox=\box83
-\enit@count@id=\count362
-\enitdp@description=\count363
-) (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/titlesec\titlesec.sty
+\enit@inbox=\box82
+\enit@count@id=\count359
+\enitdp@description=\count360
+) (c:/texlive/2023/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2021/07/05 v2.14 Sectioning titles
-\ttl@box=\box84
+\ttl@box=\box83
 \beforetitleunit=\skip72
 \aftertitleunit=\skip73
 \ttl@plus=\dimen319
@@ -812,40 +705,52 @@ Package: titlesec 2021/07/05 v2.14 Sectioning titles
 \titlewidth=\dimen321
 \titlewidthlast=\dimen322
 \titlewidthfirst=\dimen323
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 39.
- (Elettrotecnica.aux)
+) Excluding 'comment' comment.
+Package hyperref Info: Option `colorlinks' set `true' on input line 40.
+ (./Elettrotecnica.aux)
 \openout1 = `Elettrotecnica.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 63.
- (C:\Program Files\MiKTeX\tex/latex/base\ts1cmr.fd
-File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+ (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count361
+\scratchdimen=\dimen324
+\scratchbox=\box84
+\nofMPsegments=\count362
+\nofMParguments=\count363
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count364
+\MPscratchDim=\dimen325
+\MPnumerator=\count365
+\makeMPintoPDFobject=\count366
+\everyMPtoPDFconversion=\toks58
+) (c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
 *geometry* driver: auto-detecting
-*geometry* detected driver: xetex
+*geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
-* driver: xetex
+* driver: pdftex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -876,227 +781,441 @@ LaTeX Font Info:    ... okay on input line 63.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count364
-(C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+\c@lstlisting=\count367
+(c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
- (C:\Program Files\MiKTeX\tex/latex/graphics\lscape.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
-Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.9).
 
-Package hyperref Info: Link coloring ON on input line 63.
-(Elettrotecnica.out) (Elettrotecnica.out)
-\@outlinefile=\write4
-\openout4 = `Elettrotecnica.out'.
+Package hyperref Info: Link coloring ON on input line 65.
+(./Elettrotecnica.out) (./Elettrotecnica.out)
+\@outlinefile=\write5
+\openout5 = `Elettrotecnica.out'.
 
- (Elettrotecnica.toc
+ (./Elettrotecnica.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 2.
- (C:\Users\bumma\AppData\Roaming\MiKTeX\tex/latex/esint\uesint.fd
+ (c:/texlive/2023/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 ))
-\tf@toc=\write5
-\openout5 = `Elettrotecnica.toc'.
+\tf@toc=\write6
+\openout6 = `Elettrotecnica.toc'.
 
  [1
 
-]
-File: Image/Forza di Coulomb.png Graphic file (type bmp)
-<Image/Forza di Coulomb.png>
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<Image/Forza di Coulomb.png, id=292, 350.81062pt x 432.11438pt>
+File: Image/Forza di Coulomb.png Graphic file (type png)
+<use Image/Forza di Coulomb.png>
+Package pdftex.def Info: Image/Forza di Coulomb.png  used on input line 93.
+(pdftex.def)             Requested size: 105.24399pt x 129.6353pt.
 
-Overfull \hbox (9.12764pt too wide) in paragraph at lines 130--139
-\TU/lmr/m/n/10 Campo elettrico e forza elettrostatica da cui esso deriva hanno la stessa direzione. Perciò il campo produce un’accelerazione
+Overfull \hbox (9.16699pt too wide) in paragraph at lines 132--141
+\OT1/cmr/m/n/10 Campo elet-trico e forza elet-tro-stat-ica da cui esso deriva hanno la stessa di-rezione. Perci^^Ro il campo pro-duce un'accelerazione
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--141
 
  []
 
-[2]
-File: Image/Forza elettrostatica.png Graphic file (type bmp)
-<Image/Forza elettrostatica.png>
-File: Image/Densità di corrente.png Graphic file (type bmp)
-<Image/Densità di corrente.png>
-File: Image/Corrente conduttore.png Graphic file (type bmp)
-<Image/Corrente conduttore.png>
- [3]
-File: Image/Tensione.png Graphic file (type bmp)
-<Image/Tensione.png>
-File: Image/Campo magnetico.png Graphic file (type bmp)
-<Image/Campo magnetico.png>
-File: Image/Campo magnetico-2.png Graphic file (type bmp)
-<Image/Campo magnetico-2.png>
- [4]
-File: Image/Legge di Faraday.png Graphic file (type bmp)
-<Image/Legge di Faraday.png>
- [5]
-File: Image/Conservazione della carica.png Graphic file (type bmp)
-<Image/Conservazione della carica.png>
- [6] [7]
-Underfull \hbox (badness 2359) in paragraph at lines 488--488
-\TU/lmr/m/n/10 ferenza di potenziale
+[2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Image/Forza di Coulomb.png>]
+<Image/Forza elettrostatica.png, id=306, 372.64218pt x 382.42876pt>
+File: Image/Forza elettrostatica.png Graphic file (type png)
+<use Image/Forza elettrostatica.png>
+Package pdftex.def Info: Image/Forza elettrostatica.png  used on input line 160.
+(pdftex.def)             Requested size: 100.61473pt x 103.25714pt.
+<Image/Densità di corrente.png, id=307, 333.49594pt x 319.94531pt>
+File: Image/Densità di corrente.png Graphic file (type png)
+<use Image/Densità di corrente.png>
+Package pdftex.def Info: Image/Densità di corrente.png  used on input line 194.
+(pdftex.def)             Requested size: 100.04955pt x 95.98433pt.
+ [3 <./Image/Forza elettrostatica.png> <./Image/Densità di corrente.png>]
+<Image/Corrente conduttore.png, id=316, 483.30562pt x 295.85532pt>
+File: Image/Corrente conduttore.png Graphic file (type png)
+<use Image/Corrente conduttore.png>
+Package pdftex.def Info: Image/Corrente conduttore.png  used on input line 217.
+(pdftex.def)             Requested size: 144.9928pt x 88.75726pt.
+<Image/Tensione.png, id=317, 328.22626pt x 257.46187pt>
+File: Image/Tensione.png Graphic file (type png)
+<use Image/Tensione.png>
+Package pdftex.def Info: Image/Tensione.png  used on input line 239.
+(pdftex.def)             Requested size: 98.46863pt x 77.23915pt.
+ [4 <./Image/Corrente conduttore.png> <./Image/Tensione.png>]
+<Image/Campo magnetico.png, id=331, 332.74312pt x 449.42906pt>
+File: Image/Campo magnetico.png Graphic file (type png)
+<use Image/Campo magnetico.png>
+Package pdftex.def Info: Image/Campo magnetico.png  used on input line 274.
+(pdftex.def)             Requested size: 99.8237pt x 134.82974pt.
+<Image/Campo magnetico-2.png, id=332, 390.70969pt x 395.97937pt>
+File: Image/Campo magnetico-2.png Graphic file (type png)
+<use Image/Campo magnetico-2.png>
+Package pdftex.def Info: Image/Campo magnetico-2.png  used on input line 275.
+(pdftex.def)             Requested size: 117.2138pt x 118.79472pt.
+<Image/Legge di Faraday.png, id=333, 486.31688pt x 518.6878pt>
+File: Image/Legge di Faraday.png Graphic file (type png)
+<use Image/Legge di Faraday.png>
+Package pdftex.def Info: Image/Legge di Faraday.png  used on input line 307.
+(pdftex.def)             Requested size: 145.89618pt x 155.60754pt.
+ [5 <./Image/Campo magnetico.png> <./Image/Campo magnetico-2.png>]
+<Image/Conservazione della carica.png, id=340, 467.49657pt x 492.33937pt>
+File: Image/Conservazione della carica.png Graphic file (type png)
+<use Image/Conservazione della carica.png>
+Package pdftex.def Info: Image/Conservazione della carica.png  used on input line 327.
+(pdftex.def)             Requested size: 140.25005pt x 147.70294pt.
+ [6 <./Image/Legge di Faraday.png> <./Image/Conservazione della carica.png>] [7]
+Underfull \hbox (badness 2351) in paragraph at lines 490--490
+\OT1/cmr/m/n/10 ferenza di poten-ziale
  []
 
-[8] [9]
-File: Image/Convenzione.png Graphic file (type bmp)
-<Image/Convenzione.png>
-File: Image/Esempio1-Circuiiti.png Graphic file (type bmp)
-<Image/Esempio1-Circuiiti.png>
- [10]
-File: Image/Esempio LKC.png Graphic file (type bmp)
-<Image/Esempio LKC.png>
-File: Image/Resistore.png Graphic file (type bmp)
-<Image/Resistore.png>
- [11]
-File: Image/Condensatore.png Graphic file (type bmp)
-<Image/Condensatore.png>
-File: Image/Grafico condensatore.png Graphic file (type bmp)
-<Image/Grafico condensatore.png>
- [12]
-File: Image/Induttore.png Graphic file (type bmp)
-<Image/Induttore.png>
-File: Image/Induttore ferr.png Graphic file (type bmp)
-<Image/Induttore ferr.png>
- [13]
-File: Image/Resistori in serie.png Graphic file (type bmp)
-<Image/Resistori in serie.png>
-File: Image/Resistori in parallelo.png Graphic file (type bmp)
-<Image/Resistori in parallelo.png>
-File: Image/Condensatori in serie.png Graphic file (type bmp)
-<Image/Condensatori in serie.png>
-File: Image/Condensatori in parallelo.png Graphic file (type bmp)
-<Image/Condensatori in parallelo.png>
-File: Image/Induttori in serie.png Graphic file (type bmp)
-<Image/Induttori in serie.png>
-File: Image/Induttori in parallelo.png Graphic file (type bmp)
-<Image/Induttori in parallelo.png>
-File: Image/Gen Tensione ideale.png Graphic file (type bmp)
-<Image/Gen Tensione ideale.png>
-File: Image/Gen tensione reale.png Graphic file (type bmp)
-<Image/Gen tensione reale.png>
- [14]
-File: Image/Gen corrente ideale.png Graphic file (type bmp)
-<Image/Gen corrente ideale.png>
-File: Image/Gen corrente reale.png Graphic file (type bmp)
-<Image/Gen corrente reale.png>
- [15]
-File: Image/Circuito aperto.png Graphic file (type bmp)
-<Image/Circuito aperto.png>
-File: Image/Circuito chiuso.png Graphic file (type bmp)
-<Image/Circuito chiuso.png>
-File: Image/Resistori aperto chiuso.png Graphic file (type bmp)
-<Image/Resistori aperto chiuso.png>
-File: Image/Esempio1_1.png Graphic file (type bmp)
-<Image/Esempio1_1.png>
-File: Image/Esempio1_2.png Graphic file (type bmp)
-<Image/Esempio1_2.png>
-File: Image/Esempio1_3.png Graphic file (type bmp)
-<Image/Esempio1_3.png>
-File: Image/Esempio1_4.png Graphic file (type bmp)
-<Image/Esempio1_4.png>
- [16]
-File: Image/Partitore di tensione.png Graphic file (type bmp)
-<Image/Partitore di tensione.png>
-File: Image/Partitore di corrente.png Graphic file (type bmp)
-<Image/Partitore di corrente.png>
-File: Image/Stella triangolo.png Graphic file (type bmp)
-<Image/Stella triangolo.png>
-File: Image/Nodi triangolo stella.png Graphic file (type bmp)
-<Image/Nodi triangolo stella.png>
- [17]
-File: Image/Stella triangolo insieme.png Graphic file (type bmp)
-<Image/Stella triangolo insieme.png>
-File: Image/Esempio2_1.png Graphic file (type bmp)
-<Image/Esempio2_1.png>
-File: Image/Esempio2_2.png Graphic file (type bmp)
-<Image/Esempio2_2.png>
- [18]
-File: Image/Esempio2_3.png Graphic file (type bmp)
-<Image/Esempio2_3.png>
-File: Image/Esempio2_4.png Graphic file (type bmp)
-<Image/Esempio2_4.png>
-File: Image/Metodo di Tanenblau_1.png Graphic file (type bmp)
-<Image/Metodo di Tanenblau_1.png>
-File: Image/Metodo di Tanenblau_2.png Graphic file (type bmp)
-<Image/Metodo di Tanenblau_2.png>
- [19]
-File: Image/Esempio_Tanenblau.png Graphic file (type bmp)
-<Image/Esempio_Tanenblau.png>
- [20]
-File: Image/Esempio_PotenzialiNodo.png Graphic file (type bmp)
-<Image/Esempio_PotenzialiNodo.png>
- [21]
-File: Image/Esempio_MetAnalisi_1.png Graphic file (type bmp)
-<Image/Esempio_MetAnalisi_1.png>
-File: Image/Esempio_MetAnal_2.png Graphic file (type bmp)
-<Image/Esempio_MetAnal_2.png>
-File: Image/Esempio_MetAnalisi_3.png Graphic file (type bmp)
-<Image/Esempio_MetAnalisi_3.png>
-File: Image/Esempio_MetAnalisi_4.png Graphic file (type bmp)
-<Image/Esempio_MetAnalisi_4.png>
- [22]
-File: Image/Thevenin_1.png Graphic file (type bmp)
-<Image/Thevenin_1.png>
-File: Image/Thevenin_2.png Graphic file (type bmp)
-<Image/Thevenin_2.png>
-File: Image/Esempio_Thevenin_1.png Graphic file (type bmp)
-<Image/Esempio_Thevenin_1.png>
- [23]
-File: Image/Esempio_Thevenin_2.png Graphic file (type bmp)
-<Image/Esempio_Thevenin_2.png>
-File: Image/Esempio_Thevenin_3.png Graphic file (type bmp)
-<Image/Esempio_Thevenin_3.png>
-File: Image/Esempio_Thevenin_4.png Graphic file (type bmp)
-<Image/Esempio_Thevenin_4.png>
-File: Image/Esercizio_Thevenin_1.png Graphic file (type bmp)
-<Image/Esercizio_Thevenin_1.png>
-File: Image/Esercizio_Thevenin_2.png Graphic file (type bmp)
-<Image/Esercizio_Thevenin_2.png>
- [24]
-File: Image/Esercizio_Thevenin_3.png Graphic file (type bmp)
-<Image/Esercizio_Thevenin_3.png>
-File: Image/Esercizio_Thevenin_4.png Graphic file (type bmp)
-<Image/Esercizio_Thevenin_4.png>
-File: Image/Norton_1.png Graphic file (type bmp)
-<Image/Norton_1.png>
-File: Image/Norton_2.png Graphic file (type bmp)
-<Image/Norton_2.png>
- [25]
-File: Image/Esempio_Norton_0.png Graphic file (type bmp)
-<Image/Esempio_Norton_0.png>
-File: Image/Esempio_Norton_1.png Graphic file (type bmp)
-<Image/Esempio_Norton_1.png>
-File: Image/Esempio_Norton_2.png Graphic file (type bmp)
-<Image/Esempio_Norton_2.png>
-File: Image/Esempio_Norton_3.png Graphic file (type bmp)
-<Image/Esempio_Norton_3.png>
-File: Image/T_Massima_Potenza.png Graphic file (type bmp)
-<Image/T_Massima_Potenza.png>
-File: Image/T_Potenza_Massima_1.png Graphic file (type bmp)
-<Image/T_Potenza_Massima_1.png>
- [26] [27] (Elettrotecnica.aux)
+[8] [9] [10]
+<Image/Convenzione.png, id=366, 477.28313pt x 454.69875pt>
+File: Image/Convenzione.png Graphic file (type png)
+<use Image/Convenzione.png>
+Package pdftex.def Info: Image/Convenzione.png  used on input line 630.
+(pdftex.def)             Requested size: 143.18604pt x 136.41068pt.
+<Image/Esempio1-Circuiiti.png, id=367, 513.41812pt x 327.72438pt>
+File: Image/Esempio1-Circuiiti.png Graphic file (type png)
+<use Image/Esempio1-Circuiiti.png>
+Package pdftex.def Info: Image/Esempio1-Circuiiti.png  used on input line 669.
+(pdftex.def)             Requested size: 189.96172pt x 121.25612pt.
+ [11 <./Image/Convenzione.png>]
+<Image/Esempio LKC.png, id=373, 685.56125pt x 577.65813pt>
+File: Image/Esempio LKC.png Graphic file (type png)
+<use Image/Esempio LKC.png>
+Package pdftex.def Info: Image/Esempio LKC.png  used on input line 691.
+(pdftex.def)             Requested size: 171.3899pt x 144.41417pt.
+<Image/Resistore.png, id=374, 161.10187pt x 221.32687pt>
+File: Image/Resistore.png Graphic file (type png)
+<use Image/Resistore.png>
+Package pdftex.def Info: Image/Resistore.png  used on input line 718.
+(pdftex.def)             Requested size: 64.43959pt x 88.52916pt.
+ [12 <./Image/Esempio1-Circuiiti.png> <./Image/Esempio LKC.png>]
+<Image/Condensatore.png, id=381, 198.7425pt x 222.07968pt>
+File: Image/Condensatore.png Graphic file (type png)
+<use Image/Condensatore.png>
+Package pdftex.def Info: Image/Condensatore.png  used on input line 731.
+(pdftex.def)             Requested size: 79.49557pt x 88.83029pt.
+<Image/Grafico condensatore.png, id=382, 568.1225pt x 280.04625pt>
+File: Image/Grafico condensatore.png Graphic file (type png)
+<use Image/Grafico condensatore.png>
+Package pdftex.def Info: Image/Grafico condensatore.png  used on input line 750.
+(pdftex.def)             Requested size: 124.98732pt x 61.61035pt.
+ [13 <./Image/Resistore.png> <./Image/Condensatore.png> <./Image/Grafico condensatore.png>]
+<Image/Induttore.png, id=391, 185.19188pt x 201.75375pt>
+File: Image/Induttore.png Graphic file (type png)
+<use Image/Induttore.png>
+Package pdftex.def Info: Image/Induttore.png  used on input line 765.
+(pdftex.def)             Requested size: 74.07542pt x 80.70006pt.
+<Image/Induttore ferr.png, id=392, 547.2947pt x 341.77687pt>
+File: Image/Induttore ferr.png Graphic file (type png)
+<use Image/Induttore ferr.png>
+Package pdftex.def Info: Image/Induttore ferr.png  used on input line 791.
+(pdftex.def)             Requested size: 218.91399pt x 136.70831pt.
+ [14 <./Image/Induttore.png> <./Image/Induttore ferr.png>]
+<Image/Resistori in serie.png, id=399, 73.77562pt x 187.19937pt>
+File: Image/Resistori in serie.png Graphic file (type png)
+<use Image/Resistori in serie.png>
+Package pdftex.def Info: Image/Resistori in serie.png  used on input line 806.
+(pdftex.def)             Requested size: 27.29654pt x 69.26268pt.
+<Image/Resistori in parallelo.png, id=400, 233.87375pt x 149.55875pt>
+File: Image/Resistori in parallelo.png Graphic file (type png)
+<use Image/Resistori in parallelo.png>
+Package pdftex.def Info: Image/Resistori in parallelo.png  used on input line 808.
+(pdftex.def)             Requested size: 86.53192pt x 55.33586pt.
+<Image/Condensatori in serie.png, id=401, 228.35312pt x 195.73125pt>
+File: Image/Condensatori in serie.png Graphic file (type png)
+<use Image/Condensatori in serie.png>
+Package pdftex.def Info: Image/Condensatori in serie.png  used on input line 810.
+(pdftex.def)             Requested size: 84.48932pt x 72.41942pt.
+<Image/Condensatori in parallelo.png, id=402, 291.58937pt x 144.03813pt>
+File: Image/Condensatori in parallelo.png Graphic file (type png)
+<use Image/Condensatori in parallelo.png>
+Package pdftex.def Info: Image/Condensatori in parallelo.png  used on input line 812.
+(pdftex.def)             Requested size: 107.88637pt x 53.29326pt.
+<Image/Induttori in serie.png, id=403, 162.10562pt x 268.00125pt>
+File: Image/Induttori in serie.png Graphic file (type png)
+<use Image/Induttori in serie.png>
+Package pdftex.def Info: Image/Induttori in serie.png  used on input line 825.
+(pdftex.def)             Requested size: 59.97813pt x 99.1589pt.
+<Image/Induttori in parallelo.png, id=404, 262.48062pt x 189.70876pt>
+File: Image/Induttori in parallelo.png Graphic file (type png)
+<use Image/Induttori in parallelo.png>
+Package pdftex.def Info: Image/Induttori in parallelo.png  used on input line 827.
+(pdftex.def)             Requested size: 97.1163pt x 70.19113pt.
+<Image/Gen Tensione ideale.png, id=405, 174.6525pt x 272.51813pt>
+File: Image/Gen Tensione ideale.png Graphic file (type png)
+<use Image/Gen Tensione ideale.png>
+Package pdftex.def Info: Image/Gen Tensione ideale.png  used on input line 843.
+(pdftex.def)             Requested size: 69.85976pt x 109.00531pt.
+ [15 <./Image/Resistori in serie.png> <./Image/Resistori in parallelo.png> <./Image/Condensatori in serie.png> <./Image/Condensatori in parallelo.png> <./Image/Induttori in serie.png> <./Image/Induttori in parallelo.png> <./Image/Gen Tensione ideale.png>]
+<Image/Gen tensione reale.png, id=417, 621.82312pt x 298.11375pt>
+File: Image/Gen tensione reale.png Graphic file (type png)
+<use Image/Gen tensione reale.png>
+Package pdftex.def Info: Image/Gen tensione reale.png  used on input line 863.
+(pdftex.def)             Requested size: 248.72484pt x 119.24338pt.
+<Image/Gen corrente ideale.png, id=418, 121.20282pt x 219.82124pt>
+File: Image/Gen corrente ideale.png Graphic file (type png)
+<use Image/Gen corrente ideale.png>
+Package pdftex.def Info: Image/Gen corrente ideale.png  used on input line 879.
+(pdftex.def)             Requested size: 48.48026pt x 87.92693pt.
+<Image/Gen corrente reale.png, id=419, 613.54219pt x 300.3722pt>
+File: Image/Gen corrente reale.png Graphic file (type png)
+<use Image/Gen corrente reale.png>
+Package pdftex.def Info: Image/Gen corrente reale.png  used on input line 893.
+(pdftex.def)             Requested size: 245.41252pt x 120.14674pt.
+ [16 <./Image/Gen tensione reale.png> <./Image/Gen corrente ideale.png> <./Image/Gen corrente reale.png>]
+<Image/Circuito aperto.png, id=427, 380.17032pt x 360.59718pt>
+File: Image/Circuito aperto.png Graphic file (type png)
+<use Image/Circuito aperto.png>
+Package pdftex.def Info: Image/Circuito aperto.png  used on input line 919.
+(pdftex.def)             Requested size: 133.0616pt x 126.21089pt.
+<Image/Circuito chiuso.png, id=428, 401.24907pt x 348.55219pt>
+File: Image/Circuito chiuso.png Graphic file (type png)
+<use Image/Circuito chiuso.png>
+Package pdftex.def Info: Image/Circuito chiuso.png  used on input line 929.
+(pdftex.def)             Requested size: 140.43927pt x 121.99509pt.
+<Image/Resistori aperto chiuso.png, id=429, 1316.66907pt x 880.03781pt>
+File: Image/Resistori aperto chiuso.png Graphic file (type png)
+<use Image/Resistori aperto chiuso.png>
+Package pdftex.def Info: Image/Resistori aperto chiuso.png  used on input line 932.
+(pdftex.def)             Requested size: 395.00377pt x 264.01338pt.
+ [17 <./Image/Circuito aperto.png> <./Image/Circuito chiuso.png>]
+<Image/Esempio1_1.png, id=436, 491.58656pt x 239.39438pt>
+File: Image/Esempio1_1.png Graphic file (type png)
+<use Image/Esempio1_1.png>
+Package pdftex.def Info: Image/Esempio1_1.png  used on input line 939.
+(pdftex.def)             Requested size: 122.89633pt x 59.84843pt.
+<Image/Esempio1_2.png, id=437, 463.7325pt x 214.55156pt>
+File: Image/Esempio1_2.png Graphic file (type png)
+<use Image/Esempio1_2.png>
+Package pdftex.def Info: Image/Esempio1_2.png  used on input line 941.
+(pdftex.def)             Requested size: 115.93283pt x 53.63776pt.
+<Image/Esempio1_3.png, id=438, 264.23718pt x 207.77625pt>
+File: Image/Esempio1_3.png Graphic file (type png)
+<use Image/Esempio1_3.png>
+Package pdftex.def Info: Image/Esempio1_3.png  used on input line 943.
+(pdftex.def)             Requested size: 71.34499pt x 56.10033pt.
+<Image/Esempio1_4.png, id=439, 283.0575pt x 216.81pt>
+File: Image/Esempio1_4.png Graphic file (type png)
+<use Image/Esempio1_4.png>
+Package pdftex.def Info: Image/Esempio1_4.png  used on input line 945.
+(pdftex.def)             Requested size: 76.42653pt x 58.53947pt.
+<Image/Partitore di tensione.png, id=440, 450.9347pt x 305.64188pt>
+File: Image/Partitore di tensione.png Graphic file (type png)
+<use Image/Partitore di tensione.png>
+Package pdftex.def Info: Image/Partitore di tensione.png  used on input line 959.
+(pdftex.def)             Requested size: 157.8295pt x 106.97624pt.
+<Image/Partitore di corrente.png, id=441, 493.0922pt x 279.29344pt>
+File: Image/Partitore di corrente.png Graphic file (type png)
+<use Image/Partitore di corrente.png>
+Package pdftex.def Info: Image/Partitore di corrente.png  used on input line 973.
+(pdftex.def)             Requested size: 172.58485pt x 97.75417pt.
+ [18 <./Image/Resistori aperto chiuso.png> <./Image/Esempio1_1.png> <./Image/Esempio1_2.png> <./Image/Esempio1_3.png> <./Image/Esempio1_4.png> <./Image/Partitore di tensione.png>]
+<Image/Stella triangolo.png, id=452, 881.54344pt x 546.54187pt>
+File: Image/Stella triangolo.png Graphic file (type png)
+<use Image/Stella triangolo.png>
+Package pdftex.def Info: Image/Stella triangolo.png  used on input line 998.
+(pdftex.def)             Requested size: 264.46507pt x 163.96382pt.
+<Image/Nodi triangolo stella.png, id=453, 950.80219pt x 475.7775pt>
+File: Image/Nodi triangolo stella.png Graphic file (type png)
+<use Image/Nodi triangolo stella.png>
+Package pdftex.def Info: Image/Nodi triangolo stella.png  used on input line 999.
+(pdftex.def)             Requested size: 285.24286pt x 142.73434pt.
+<Image/Stella triangolo insieme.png, id=454, 599.23875pt x 566.86781pt>
+File: Image/Stella triangolo insieme.png Graphic file (type png)
+<use Image/Stella triangolo insieme.png>
+Package pdftex.def Info: Image/Stella triangolo insieme.png  used on input line 1008.
+(pdftex.def)             Requested size: 137.822pt x 130.37685pt.
+ [19 <./Image/Partitore di corrente.png> <./Image/Stella triangolo.png> <./Image/Nodi triangolo stella.png>]
+<Image/Esempio2_1.png, id=463, 733.23938pt x 511.9125pt>
+File: Image/Esempio2_1.png Graphic file (type png)
+<use Image/Esempio2_1.png>
+Package pdftex.def Info: Image/Esempio2_1.png  used on input line 1039.
+(pdftex.def)             Requested size: 219.97351pt x 153.57494pt.
+<Image/Esempio2_2.png, id=464, 746.79pt x 493.845pt>
+File: Image/Esempio2_2.png Graphic file (type png)
+<use Image/Esempio2_2.png>
+Package pdftex.def Info: Image/Esempio2_2.png  used on input line 1046.
+(pdftex.def)             Requested size: 224.03873pt x 148.15463pt.
+<Image/Esempio2_3.png, id=465, 771.63281pt x 336.50719pt>
+File: Image/Esempio2_3.png Graphic file (type png)
+<use Image/Esempio2_3.png>
+Package pdftex.def Info: Image/Esempio2_3.png  used on input line 1056.
+(pdftex.def)             Requested size: 231.49162pt x 100.95293pt.
+ [20 <./Image/Stella triangolo insieme.png> <./Image/Esempio2_1.png> <./Image/Esempio2_2.png>]
+<Image/Esempio2_4.png, id=473, 410.2828pt x 275.52937pt>
+File: Image/Esempio2_4.png Graphic file (type png)
+<use Image/Esempio2_4.png>
+Package pdftex.def Info: Image/Esempio2_4.png  used on input line 1062.
+(pdftex.def)             Requested size: 123.08578pt x 82.65944pt.
+<Image/Metodo di Tanenblau_1.png, id=474, 909.3975pt x 346.79562pt>
+File: Image/Metodo di Tanenblau_1.png Graphic file (type png)
+<use Image/Metodo di Tanenblau_1.png>
+Package pdftex.def Info: Image/Metodo di Tanenblau_1.png  used on input line 1078.
+(pdftex.def)             Requested size: 318.2939pt x 121.38028pt.
+<Image/Metodo di Tanenblau_2.png, id=475, 754.31813pt x 462.72874pt>
+File: Image/Metodo di Tanenblau_2.png Graphic file (type png)
+<use Image/Metodo di Tanenblau_2.png>
+Package pdftex.def Info: Image/Metodo di Tanenblau_2.png  used on input line 1092.
+(pdftex.def)             Requested size: 226.29718pt x 138.81969pt.
+ [21 <./Image/Esempio2_3.png> <./Image/Esempio2_4.png> <./Image/Metodo di Tanenblau_1.png>]
+<Image/Esempio_Tanenblau.png, id=483, 834.11626pt x 442.15187pt>
+File: Image/Esempio_Tanenblau.png Graphic file (type png)
+<use Image/Esempio_Tanenblau.png>
+Package pdftex.def Info: Image/Esempio_Tanenblau.png  used on input line 1126.
+(pdftex.def)             Requested size: 250.2368pt x 132.64658pt.
+ [22 <./Image/Metodo di Tanenblau_2.png> <./Image/Esempio_Tanenblau.png>]
+<Image/Esempio_PotenzialiNodo.png, id=495, 1662.21pt x 1209.51875pt>
+File: Image/Esempio_PotenzialiNodo.png Graphic file (type png)
+<use Image/Esempio_PotenzialiNodo.png>
+Package pdftex.def Info: Image/Esempio_PotenzialiNodo.png  used on input line 1190.
+(pdftex.def)             Requested size: 199.45659pt x 145.13599pt.
+ [23 <./Image/Esempio_PotenzialiNodo.png>]
+<Image/Esempio_MetAnalisi_1.png, id=505, 764.8575pt x 451.6875pt>
+File: Image/Esempio_MetAnalisi_1.png Graphic file (type png)
+<use Image/Esempio_MetAnalisi_1.png>
+Package pdftex.def Info: Image/Esempio_MetAnalisi_1.png  used on input line 1221.
+(pdftex.def)             Requested size: 152.96878pt x 90.33589pt.
+<Image/Esempio_MetAnal_2.png, id=506, 1358.07375pt x 450.18187pt>
+File: Image/Esempio_MetAnal_2.png Graphic file (type png)
+<use Image/Esempio_MetAnal_2.png>
+Package pdftex.def Info: Image/Esempio_MetAnal_2.png  used on input line 1227.
+(pdftex.def)             Requested size: 407.42526pt x 135.0556pt.
+<Image/Esempio_MetAnalisi_3.png, id=507, 1300.86pt x 378.66469pt>
+File: Image/Esempio_MetAnalisi_3.png Graphic file (type png)
+<use Image/Esempio_MetAnalisi_3.png>
+Package pdftex.def Info: Image/Esempio_MetAnalisi_3.png  used on input line 1237.
+(pdftex.def)             Requested size: 325.2142pt x 94.66594pt.
+<Image/Esempio_MetAnalisi_4.png, id=508, 931.98187pt x 563.10374pt>
+File: Image/Esempio_MetAnalisi_4.png Graphic file (type png)
+<use Image/Esempio_MetAnalisi_4.png>
+Package pdftex.def Info: Image/Esempio_MetAnalisi_4.png  used on input line 1249.
+(pdftex.def)             Requested size: 279.59671pt x 168.93242pt.
+ [24 <./Image/Esempio_MetAnalisi_1.png> <./Image/Esempio_MetAnal_2.png> <./Image/Esempio_MetAnalisi_3.png>]
+<Image/Thevenin_1.png, id=516, 701.62125pt x 389.20406pt>
+File: Image/Thevenin_1.png Graphic file (type png)
+<use Image/Thevenin_1.png>
+Package pdftex.def Info: Image/Thevenin_1.png  used on input line 1284.
+(pdftex.def)             Requested size: 210.48799pt x 116.76212pt.
+<Image/Thevenin_2.png, id=517, 459.96844pt x 423.83344pt>
+File: Image/Thevenin_2.png Graphic file (type png)
+<use Image/Thevenin_2.png>
+Package pdftex.def Info: Image/Thevenin_2.png  used on input line 1285.
+(pdftex.def)             Requested size: 137.9916pt x 127.151pt.
+<Image/Esempio_Thevenin_1.png, id=518, 721.19438pt x 301.125pt>
+File: Image/Esempio_Thevenin_1.png Graphic file (type png)
+<use Image/Esempio_Thevenin_1.png>
+Package pdftex.def Info: Image/Esempio_Thevenin_1.png  used on input line 1293.
+(pdftex.def)             Requested size: 194.72508pt x 81.30482pt.
+ [25 <./Image/Esempio_MetAnalisi_4.png> <./Image/Thevenin_1.png> <./Image/Thevenin_2.png>]
+<Image/Esempio_Thevenin_2.png, id=528, 670.75594pt x 344.03531pt>
+File: Image/Esempio_Thevenin_2.png Graphic file (type png)
+<use Image/Esempio_Thevenin_2.png>
+Package pdftex.def Info: Image/Esempio_Thevenin_2.png  used on input line 1297.
+(pdftex.def)             Requested size: 167.68857pt x 86.0086pt.
+<Image/Esempio_Thevenin_3.png, id=529, 778.40813pt x 371.13657pt>
+File: Image/Esempio_Thevenin_3.png Graphic file (type png)
+<use Image/Esempio_Thevenin_3.png>
+Package pdftex.def Info: Image/Esempio_Thevenin_3.png  used on input line 1313.
+(pdftex.def)             Requested size: 194.60155pt x 92.7839pt.
+<Image/Esempio_Thevenin_4.png, id=530, 510.40688pt x 295.1025pt>
+File: Image/Esempio_Thevenin_4.png Graphic file (type png)
+<use Image/Esempio_Thevenin_4.png>
+Package pdftex.def Info: Image/Esempio_Thevenin_4.png  used on input line 1319.
+(pdftex.def)             Requested size: 127.6014pt x 73.77544pt.
+<Image/Esercizio_Thevenin_1.png, id=531, 488.32437pt x 202.25563pt>
+File: Image/Esercizio_Thevenin_1.png Graphic file (type png)
+<use Image/Esercizio_Thevenin_1.png>
+Package pdftex.def Info: Image/Esercizio_Thevenin_1.png  used on input line 1329.
+(pdftex.def)             Requested size: 146.49843pt x 60.67715pt.
+ [26 <./Image/Esempio_Thevenin_1.png> <./Image/Esempio_Thevenin_2.png> <./Image/Esempio_Thevenin_3.png> <./Image/Esempio_Thevenin_4.png>]
+<Image/Esercizio_Thevenin_2.png, id=542, 345.29pt x 225.84375pt>
+File: Image/Esercizio_Thevenin_2.png Graphic file (type png)
+<use Image/Esercizio_Thevenin_2.png>
+Package pdftex.def Info: Image/Esercizio_Thevenin_2.png  used on input line 1333.
+(pdftex.def)             Requested size: 103.58778pt x 67.75363pt.
+<Image/Esercizio_Thevenin_3.png, id=543, 593.21625pt x 255.95625pt>
+File: Image/Esercizio_Thevenin_3.png Graphic file (type png)
+<use Image/Esercizio_Thevenin_3.png>
+Package pdftex.def Info: Image/Esercizio_Thevenin_3.png  used on input line 1337.
+(pdftex.def)             Requested size: 177.96625pt x 76.78746pt.
+<Image/Esercizio_Thevenin_4.png, id=544, 739.76375pt x 419.06563pt>
+File: Image/Esercizio_Thevenin_4.png Graphic file (type png)
+<use Image/Esercizio_Thevenin_4.png>
+Package pdftex.def Info: Image/Esercizio_Thevenin_4.png  used on input line 1344.
+(pdftex.def)             Requested size: 221.93083pt x 125.72064pt.
+<Image/Norton_1.png, id=545, 736.25063pt x 437.38406pt>
+File: Image/Norton_1.png Graphic file (type png)
+<use Image/Norton_1.png>
+Package pdftex.def Info: Image/Norton_1.png  used on input line 1366.
+(pdftex.def)             Requested size: 220.87689pt x 131.21622pt.
+<Image/Norton_2.png, id=546, 653.44125pt x 394.47375pt>
+File: Image/Norton_2.png Graphic file (type png)
+<use Image/Norton_2.png>
+Package pdftex.def Info: Image/Norton_2.png  used on input line 1367.
+(pdftex.def)             Requested size: 196.03387pt x 118.34303pt.
+ [27 <./Image/Esercizio_Thevenin_1.png> <./Image/Esercizio_Thevenin_2.png> <./Image/Esercizio_Thevenin_3.png> <./Image/Esercizio_Thevenin_4.png>]
+<Image/Esempio_Norton_0.png, id=555, 733.23938pt x 324.46219pt>
+File: Image/Esempio_Norton_0.png Graphic file (type png)
+<use Image/Esempio_Norton_0.png>
+Package pdftex.def Info: Image/Esempio_Norton_0.png  used on input line 1380.
+(pdftex.def)             Requested size: 183.30939pt x 81.11534pt.
+<Image/Esempio_Norton_1.png, id=556, 654.19406pt x 307.90031pt>
+File: Image/Esempio_Norton_1.png Graphic file (type png)
+<use Image/Esempio_Norton_1.png>
+Package pdftex.def Info: Image/Esempio_Norton_1.png  used on input line 1385.
+(pdftex.def)             Requested size: 163.54811pt x 76.97488pt.
+<Image/Esempio_Norton_2.png, id=557, 554.82281pt x 313.9228pt>
+File: Image/Esempio_Norton_2.png Graphic file (type png)
+<use Image/Esempio_Norton_2.png>
+Package pdftex.def Info: Image/Esempio_Norton_2.png  used on input line 1385.
+(pdftex.def)             Requested size: 138.70535pt x 78.4805pt.
+<Image/Esempio_Norton_3.png, id=558, 704.6325pt x 329.73187pt>
+File: Image/Esempio_Norton_3.png Graphic file (type png)
+<use Image/Esempio_Norton_3.png>
+Package pdftex.def Info: Image/Esempio_Norton_3.png  used on input line 1385.
+(pdftex.def)             Requested size: 176.1577pt x 82.43275pt.
+<Image/T_Massima_Potenza_0.png, id=559, 500.62032pt x 282.30469pt>
+File: Image/T_Massima_Potenza_0.png Graphic file (type png)
+<use Image/T_Massima_Potenza_0.png>
+Package pdftex.def Info: Image/T_Massima_Potenza_0.png  used on input line 1397.
+(pdftex.def)             Requested size: 150.18726pt x 84.69205pt.
+<Image/T_Massima_Potenza_1.png, id=560, 789.70032pt x 480.29437pt>
+File: Image/T_Massima_Potenza_1.png Graphic file (type png)
+<use Image/T_Massima_Potenza_1.png>
+Package pdftex.def Info: Image/T_Massima_Potenza_1.png  used on input line 1410.
+(pdftex.def)             Requested size: 197.42459pt x 120.07329pt.
+ [28 <./Image/Norton_1.png> <./Image/Norton_2.png> <./Image/Esempio_Norton_0.png> <./Image/Esempio_Norton_1.png> <./Image/Esempio_Norton_2.png> <./Image/Esempio_Norton_3.png> <./Image/T_Massima_Potenza_0.png>] [29 <./Image/T_Massima_Potenza_1.png>] (./Elettrotecnica.aux)
 Package rerunfilecheck Info: File `Elettrotecnica.out' has not changed.
-(rerunfilecheck)             Checksum: 3CC7079E40B8CD6F35EFA84FEBCF711C;9417.
+(rerunfilecheck)             Checksum: A0F27E6BACFA488AFA566A447CD8B7AA;9958.
  ) 
 Here is how much of TeX's memory you used:
- 36339 strings out of 411476
- 815250 string characters out of 5822644
- 1874001 words of memory out of 5000000
- 55930 multiletter control sequences out of 15000+600000
- 521195 words of font info for 84 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 100i,21n,104p,804b,479s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 37030 strings out of 476097
+ 836689 string characters out of 5795135
+ 1884845 words of memory out of 5000000
+ 56623 multiletter control sequences out of 15000+600000
+ 523290 words of font info for 78 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,21n,104p,804b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on Elettrotecnica.pdf (29 pages, 2340546 bytes).
+PDF statistics:
+ 688 PDF objects out of 1000 (max. 8388607)
+ 473 compressed objects within 5 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 798 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on Elettrotecnica.xdv (27 pages, 386940 bytes).
