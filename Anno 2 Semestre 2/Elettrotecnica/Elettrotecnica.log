@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  30 JUL 2023 17:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  31 JUL 2023 19:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -810,14 +810,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+esint on input line 2.
  (c:/texlive/2023/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
-))
+) [1
+
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write6
 \openout6 = `Elettrotecnica.toc'.
 
- [1
-
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<Image/Forza di Coulomb.png, id=292, 350.81062pt x 432.11438pt>
+ [2]
+<Image/Forza di Coulomb.png, id=306, 350.81062pt x 432.11438pt>
 File: Image/Forza di Coulomb.png Graphic file (type png)
 <use Image/Forza di Coulomb.png>
 Package pdftex.def Info: Image/Forza di Coulomb.png  used on input line 93.
@@ -832,390 +832,413 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--141
 
  []
 
-[2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Image/Forza di Coulomb.png>]
-<Image/Forza elettrostatica.png, id=306, 372.64218pt x 382.42876pt>
+[3{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Image/Forza di Coulomb.png>]
+<Image/Forza elettrostatica.png, id=320, 372.64218pt x 382.42876pt>
 File: Image/Forza elettrostatica.png Graphic file (type png)
 <use Image/Forza elettrostatica.png>
 Package pdftex.def Info: Image/Forza elettrostatica.png  used on input line 160.
 (pdftex.def)             Requested size: 100.61473pt x 103.25714pt.
-<Image/Densità di corrente.png, id=307, 333.49594pt x 319.94531pt>
+<Image/Densità di corrente.png, id=321, 333.49594pt x 319.94531pt>
 File: Image/Densità di corrente.png Graphic file (type png)
 <use Image/Densità di corrente.png>
 Package pdftex.def Info: Image/Densità di corrente.png  used on input line 194.
 (pdftex.def)             Requested size: 100.04955pt x 95.98433pt.
- [3 <./Image/Forza elettrostatica.png> <./Image/Densità di corrente.png>]
-<Image/Corrente conduttore.png, id=316, 483.30562pt x 295.85532pt>
+ [4 <./Image/Forza elettrostatica.png> <./Image/Densità di corrente.png>]
+<Image/Corrente conduttore.png, id=330, 483.30562pt x 295.85532pt>
 File: Image/Corrente conduttore.png Graphic file (type png)
 <use Image/Corrente conduttore.png>
 Package pdftex.def Info: Image/Corrente conduttore.png  used on input line 217.
 (pdftex.def)             Requested size: 144.9928pt x 88.75726pt.
-<Image/Tensione.png, id=317, 328.22626pt x 257.46187pt>
+<Image/Tensione.png, id=331, 328.22626pt x 257.46187pt>
 File: Image/Tensione.png Graphic file (type png)
 <use Image/Tensione.png>
 Package pdftex.def Info: Image/Tensione.png  used on input line 239.
 (pdftex.def)             Requested size: 98.46863pt x 77.23915pt.
- [4 <./Image/Corrente conduttore.png> <./Image/Tensione.png>]
-<Image/Campo magnetico.png, id=331, 332.74312pt x 449.42906pt>
+ [5 <./Image/Corrente conduttore.png> <./Image/Tensione.png>]
+<Image/Campo magnetico.png, id=345, 332.74312pt x 449.42906pt>
 File: Image/Campo magnetico.png Graphic file (type png)
 <use Image/Campo magnetico.png>
 Package pdftex.def Info: Image/Campo magnetico.png  used on input line 274.
 (pdftex.def)             Requested size: 99.8237pt x 134.82974pt.
-<Image/Campo magnetico-2.png, id=332, 390.70969pt x 395.97937pt>
+<Image/Campo magnetico-2.png, id=346, 390.70969pt x 395.97937pt>
 File: Image/Campo magnetico-2.png Graphic file (type png)
 <use Image/Campo magnetico-2.png>
 Package pdftex.def Info: Image/Campo magnetico-2.png  used on input line 275.
 (pdftex.def)             Requested size: 117.2138pt x 118.79472pt.
-<Image/Legge di Faraday.png, id=333, 486.31688pt x 518.6878pt>
+<Image/Legge di Faraday.png, id=347, 486.31688pt x 518.6878pt>
 File: Image/Legge di Faraday.png Graphic file (type png)
 <use Image/Legge di Faraday.png>
 Package pdftex.def Info: Image/Legge di Faraday.png  used on input line 307.
 (pdftex.def)             Requested size: 145.89618pt x 155.60754pt.
- [5 <./Image/Campo magnetico.png> <./Image/Campo magnetico-2.png>]
-<Image/Conservazione della carica.png, id=340, 467.49657pt x 492.33937pt>
+ [6 <./Image/Campo magnetico.png> <./Image/Campo magnetico-2.png>]
+<Image/Conservazione della carica.png, id=355, 467.49657pt x 492.33937pt>
 File: Image/Conservazione della carica.png Graphic file (type png)
 <use Image/Conservazione della carica.png>
 Package pdftex.def Info: Image/Conservazione della carica.png  used on input line 327.
 (pdftex.def)             Requested size: 140.25005pt x 147.70294pt.
- [6 <./Image/Legge di Faraday.png> <./Image/Conservazione della carica.png>] [7]
+ [7 <./Image/Legge di Faraday.png> <./Image/Conservazione della carica.png>] [8]
 Underfull \hbox (badness 2351) in paragraph at lines 490--490
 \OT1/cmr/m/n/10 ferenza di poten-ziale
  []
 
-[8] [9] [10]
-<Image/Convenzione.png, id=366, 477.28313pt x 454.69875pt>
+[9] [10] [11]
+<Image/Convenzione.png, id=380, 477.28313pt x 454.69875pt>
 File: Image/Convenzione.png Graphic file (type png)
 <use Image/Convenzione.png>
 Package pdftex.def Info: Image/Convenzione.png  used on input line 630.
 (pdftex.def)             Requested size: 143.18604pt x 136.41068pt.
-<Image/Esempio1-Circuiiti.png, id=367, 513.41812pt x 327.72438pt>
+<Image/Esempio1-Circuiiti.png, id=381, 513.41812pt x 327.72438pt>
 File: Image/Esempio1-Circuiiti.png Graphic file (type png)
 <use Image/Esempio1-Circuiiti.png>
 Package pdftex.def Info: Image/Esempio1-Circuiiti.png  used on input line 669.
 (pdftex.def)             Requested size: 189.96172pt x 121.25612pt.
- [11 <./Image/Convenzione.png>]
-<Image/Esempio LKC.png, id=373, 685.56125pt x 577.65813pt>
+ [12 <./Image/Convenzione.png>]
+<Image/Esempio LKC.png, id=387, 685.56125pt x 577.65813pt>
 File: Image/Esempio LKC.png Graphic file (type png)
 <use Image/Esempio LKC.png>
 Package pdftex.def Info: Image/Esempio LKC.png  used on input line 691.
 (pdftex.def)             Requested size: 171.3899pt x 144.41417pt.
-<Image/Resistore.png, id=374, 161.10187pt x 221.32687pt>
+<Image/Resistore.png, id=388, 161.10187pt x 221.32687pt>
 File: Image/Resistore.png Graphic file (type png)
 <use Image/Resistore.png>
 Package pdftex.def Info: Image/Resistore.png  used on input line 718.
 (pdftex.def)             Requested size: 64.43959pt x 88.52916pt.
- [12 <./Image/Esempio1-Circuiiti.png> <./Image/Esempio LKC.png>]
-<Image/Condensatore.png, id=381, 198.7425pt x 222.07968pt>
+ [13 <./Image/Esempio1-Circuiiti.png> <./Image/Esempio LKC.png>]
+<Image/Condensatore.png, id=396, 198.7425pt x 222.07968pt>
 File: Image/Condensatore.png Graphic file (type png)
 <use Image/Condensatore.png>
 Package pdftex.def Info: Image/Condensatore.png  used on input line 731.
 (pdftex.def)             Requested size: 79.49557pt x 88.83029pt.
-<Image/Grafico condensatore.png, id=382, 568.1225pt x 280.04625pt>
+<Image/Grafico condensatore.png, id=397, 568.1225pt x 280.04625pt>
 File: Image/Grafico condensatore.png Graphic file (type png)
 <use Image/Grafico condensatore.png>
 Package pdftex.def Info: Image/Grafico condensatore.png  used on input line 750.
 (pdftex.def)             Requested size: 124.98732pt x 61.61035pt.
- [13 <./Image/Resistore.png> <./Image/Condensatore.png> <./Image/Grafico condensatore.png>]
-<Image/Induttore.png, id=391, 185.19188pt x 201.75375pt>
+ [14 <./Image/Resistore.png> <./Image/Condensatore.png> <./Image/Grafico condensatore.png>]
+<Image/Induttore.png, id=405, 185.19188pt x 201.75375pt>
 File: Image/Induttore.png Graphic file (type png)
 <use Image/Induttore.png>
 Package pdftex.def Info: Image/Induttore.png  used on input line 765.
 (pdftex.def)             Requested size: 74.07542pt x 80.70006pt.
-<Image/Induttore ferr.png, id=392, 547.2947pt x 341.77687pt>
+<Image/Induttore ferr.png, id=406, 547.2947pt x 341.77687pt>
 File: Image/Induttore ferr.png Graphic file (type png)
 <use Image/Induttore ferr.png>
 Package pdftex.def Info: Image/Induttore ferr.png  used on input line 791.
 (pdftex.def)             Requested size: 218.91399pt x 136.70831pt.
- [14 <./Image/Induttore.png> <./Image/Induttore ferr.png>]
-<Image/Resistori in serie.png, id=399, 73.77562pt x 187.19937pt>
+ [15 <./Image/Induttore.png> <./Image/Induttore ferr.png>]
+<Image/Resistori in serie.png, id=413, 73.77562pt x 187.19937pt>
 File: Image/Resistori in serie.png Graphic file (type png)
 <use Image/Resistori in serie.png>
 Package pdftex.def Info: Image/Resistori in serie.png  used on input line 806.
 (pdftex.def)             Requested size: 27.29654pt x 69.26268pt.
-<Image/Resistori in parallelo.png, id=400, 233.87375pt x 149.55875pt>
+<Image/Resistori in parallelo.png, id=414, 233.87375pt x 149.55875pt>
 File: Image/Resistori in parallelo.png Graphic file (type png)
 <use Image/Resistori in parallelo.png>
 Package pdftex.def Info: Image/Resistori in parallelo.png  used on input line 808.
 (pdftex.def)             Requested size: 86.53192pt x 55.33586pt.
-<Image/Condensatori in serie.png, id=401, 228.35312pt x 195.73125pt>
+<Image/Condensatori in serie.png, id=415, 228.35312pt x 195.73125pt>
 File: Image/Condensatori in serie.png Graphic file (type png)
 <use Image/Condensatori in serie.png>
 Package pdftex.def Info: Image/Condensatori in serie.png  used on input line 810.
 (pdftex.def)             Requested size: 84.48932pt x 72.41942pt.
-<Image/Condensatori in parallelo.png, id=402, 291.58937pt x 144.03813pt>
+<Image/Condensatori in parallelo.png, id=416, 291.58937pt x 144.03813pt>
 File: Image/Condensatori in parallelo.png Graphic file (type png)
 <use Image/Condensatori in parallelo.png>
 Package pdftex.def Info: Image/Condensatori in parallelo.png  used on input line 812.
 (pdftex.def)             Requested size: 107.88637pt x 53.29326pt.
-<Image/Induttori in serie.png, id=403, 162.10562pt x 268.00125pt>
+<Image/Induttori in serie.png, id=417, 162.10562pt x 268.00125pt>
 File: Image/Induttori in serie.png Graphic file (type png)
 <use Image/Induttori in serie.png>
 Package pdftex.def Info: Image/Induttori in serie.png  used on input line 825.
 (pdftex.def)             Requested size: 59.97813pt x 99.1589pt.
-<Image/Induttori in parallelo.png, id=404, 262.48062pt x 189.70876pt>
+<Image/Induttori in parallelo.png, id=418, 262.48062pt x 189.70876pt>
 File: Image/Induttori in parallelo.png Graphic file (type png)
 <use Image/Induttori in parallelo.png>
 Package pdftex.def Info: Image/Induttori in parallelo.png  used on input line 827.
 (pdftex.def)             Requested size: 97.1163pt x 70.19113pt.
-<Image/Gen Tensione ideale.png, id=405, 174.6525pt x 272.51813pt>
+<Image/Gen Tensione ideale.png, id=419, 174.6525pt x 272.51813pt>
 File: Image/Gen Tensione ideale.png Graphic file (type png)
 <use Image/Gen Tensione ideale.png>
 Package pdftex.def Info: Image/Gen Tensione ideale.png  used on input line 843.
 (pdftex.def)             Requested size: 69.85976pt x 109.00531pt.
- [15 <./Image/Resistori in serie.png> <./Image/Resistori in parallelo.png> <./Image/Condensatori in serie.png> <./Image/Condensatori in parallelo.png> <./Image/Induttori in serie.png> <./Image/Induttori in parallelo.png> <./Image/Gen Tensione ideale.png>]
-<Image/Gen tensione reale.png, id=417, 621.82312pt x 298.11375pt>
+ [16 <./Image/Resistori in serie.png> <./Image/Resistori in parallelo.png> <./Image/Condensatori in serie.png> <./Image/Condensatori in parallelo.png> <./Image/Induttori in serie.png> <./Image/Induttori in parallelo.png> <./Image/Gen Tensione ideale.png>]
+<Image/Gen tensione reale.png, id=431, 621.82312pt x 298.11375pt>
 File: Image/Gen tensione reale.png Graphic file (type png)
 <use Image/Gen tensione reale.png>
 Package pdftex.def Info: Image/Gen tensione reale.png  used on input line 863.
 (pdftex.def)             Requested size: 248.72484pt x 119.24338pt.
-<Image/Gen corrente ideale.png, id=418, 121.20282pt x 219.82124pt>
+<Image/Gen corrente ideale.png, id=432, 121.20282pt x 219.82124pt>
 File: Image/Gen corrente ideale.png Graphic file (type png)
 <use Image/Gen corrente ideale.png>
 Package pdftex.def Info: Image/Gen corrente ideale.png  used on input line 879.
 (pdftex.def)             Requested size: 48.48026pt x 87.92693pt.
-<Image/Gen corrente reale.png, id=419, 613.54219pt x 300.3722pt>
+<Image/Gen corrente reale.png, id=433, 613.54219pt x 300.3722pt>
 File: Image/Gen corrente reale.png Graphic file (type png)
 <use Image/Gen corrente reale.png>
 Package pdftex.def Info: Image/Gen corrente reale.png  used on input line 893.
 (pdftex.def)             Requested size: 245.41252pt x 120.14674pt.
- [16 <./Image/Gen tensione reale.png> <./Image/Gen corrente ideale.png> <./Image/Gen corrente reale.png>]
-<Image/Circuito aperto.png, id=427, 380.17032pt x 360.59718pt>
+ [17 <./Image/Gen tensione reale.png> <./Image/Gen corrente ideale.png> <./Image/Gen corrente reale.png>]
+<Image/Circuito aperto.png, id=441, 380.17032pt x 360.59718pt>
 File: Image/Circuito aperto.png Graphic file (type png)
 <use Image/Circuito aperto.png>
 Package pdftex.def Info: Image/Circuito aperto.png  used on input line 919.
 (pdftex.def)             Requested size: 133.0616pt x 126.21089pt.
-<Image/Circuito chiuso.png, id=428, 401.24907pt x 348.55219pt>
+<Image/Circuito chiuso.png, id=442, 401.24907pt x 348.55219pt>
 File: Image/Circuito chiuso.png Graphic file (type png)
 <use Image/Circuito chiuso.png>
 Package pdftex.def Info: Image/Circuito chiuso.png  used on input line 929.
 (pdftex.def)             Requested size: 140.43927pt x 121.99509pt.
-<Image/Resistori aperto chiuso.png, id=429, 1316.66907pt x 880.03781pt>
+<Image/Resistori aperto chiuso.png, id=443, 1316.66907pt x 880.03781pt>
 File: Image/Resistori aperto chiuso.png Graphic file (type png)
 <use Image/Resistori aperto chiuso.png>
 Package pdftex.def Info: Image/Resistori aperto chiuso.png  used on input line 932.
 (pdftex.def)             Requested size: 395.00377pt x 264.01338pt.
- [17 <./Image/Circuito aperto.png> <./Image/Circuito chiuso.png>]
-<Image/Esempio1_1.png, id=436, 491.58656pt x 239.39438pt>
+ [18 <./Image/Circuito aperto.png> <./Image/Circuito chiuso.png>]
+<Image/Esempio1_1.png, id=450, 491.58656pt x 239.39438pt>
 File: Image/Esempio1_1.png Graphic file (type png)
 <use Image/Esempio1_1.png>
 Package pdftex.def Info: Image/Esempio1_1.png  used on input line 939.
 (pdftex.def)             Requested size: 122.89633pt x 59.84843pt.
-<Image/Esempio1_2.png, id=437, 463.7325pt x 214.55156pt>
+<Image/Esempio1_2.png, id=451, 463.7325pt x 214.55156pt>
 File: Image/Esempio1_2.png Graphic file (type png)
 <use Image/Esempio1_2.png>
 Package pdftex.def Info: Image/Esempio1_2.png  used on input line 941.
 (pdftex.def)             Requested size: 115.93283pt x 53.63776pt.
-<Image/Esempio1_3.png, id=438, 264.23718pt x 207.77625pt>
+<Image/Esempio1_3.png, id=452, 264.23718pt x 207.77625pt>
 File: Image/Esempio1_3.png Graphic file (type png)
 <use Image/Esempio1_3.png>
 Package pdftex.def Info: Image/Esempio1_3.png  used on input line 943.
 (pdftex.def)             Requested size: 71.34499pt x 56.10033pt.
-<Image/Esempio1_4.png, id=439, 283.0575pt x 216.81pt>
+<Image/Esempio1_4.png, id=453, 283.0575pt x 216.81pt>
 File: Image/Esempio1_4.png Graphic file (type png)
 <use Image/Esempio1_4.png>
 Package pdftex.def Info: Image/Esempio1_4.png  used on input line 945.
 (pdftex.def)             Requested size: 76.42653pt x 58.53947pt.
-<Image/Partitore di tensione.png, id=440, 450.9347pt x 305.64188pt>
+<Image/Partitore di tensione.png, id=454, 450.9347pt x 305.64188pt>
 File: Image/Partitore di tensione.png Graphic file (type png)
 <use Image/Partitore di tensione.png>
 Package pdftex.def Info: Image/Partitore di tensione.png  used on input line 959.
 (pdftex.def)             Requested size: 157.8295pt x 106.97624pt.
-<Image/Partitore di corrente.png, id=441, 493.0922pt x 279.29344pt>
+ [19 <./Image/Resistori aperto chiuso.png> <./Image/Esempio1_1.png> <./Image/Esempio1_2.png> <./Image/Esempio1_3.png> <./Image/Esempio1_4.png> <./Image/Partitore di tensione.png>]
+<Image/Partitore di corrente.png, id=466, 493.0922pt x 279.29344pt>
 File: Image/Partitore di corrente.png Graphic file (type png)
 <use Image/Partitore di corrente.png>
-Package pdftex.def Info: Image/Partitore di corrente.png  used on input line 973.
+Package pdftex.def Info: Image/Partitore di corrente.png  used on input line 974.
 (pdftex.def)             Requested size: 172.58485pt x 97.75417pt.
- [18 <./Image/Resistori aperto chiuso.png> <./Image/Esempio1_1.png> <./Image/Esempio1_2.png> <./Image/Esempio1_3.png> <./Image/Esempio1_4.png> <./Image/Partitore di tensione.png>]
-<Image/Stella triangolo.png, id=452, 881.54344pt x 546.54187pt>
+<Image/Stella triangolo.png, id=467, 881.54344pt x 546.54187pt>
 File: Image/Stella triangolo.png Graphic file (type png)
 <use Image/Stella triangolo.png>
-Package pdftex.def Info: Image/Stella triangolo.png  used on input line 998.
+Package pdftex.def Info: Image/Stella triangolo.png  used on input line 999.
 (pdftex.def)             Requested size: 264.46507pt x 163.96382pt.
-<Image/Nodi triangolo stella.png, id=453, 950.80219pt x 475.7775pt>
+<Image/Nodi triangolo stella.png, id=468, 950.80219pt x 475.7775pt>
 File: Image/Nodi triangolo stella.png Graphic file (type png)
 <use Image/Nodi triangolo stella.png>
-Package pdftex.def Info: Image/Nodi triangolo stella.png  used on input line 999.
+Package pdftex.def Info: Image/Nodi triangolo stella.png  used on input line 1000.
 (pdftex.def)             Requested size: 285.24286pt x 142.73434pt.
-<Image/Stella triangolo insieme.png, id=454, 599.23875pt x 566.86781pt>
+<Image/Stella triangolo insieme.png, id=469, 599.23875pt x 566.86781pt>
 File: Image/Stella triangolo insieme.png Graphic file (type png)
 <use Image/Stella triangolo insieme.png>
-Package pdftex.def Info: Image/Stella triangolo insieme.png  used on input line 1008.
+Package pdftex.def Info: Image/Stella triangolo insieme.png  used on input line 1009.
 (pdftex.def)             Requested size: 137.822pt x 130.37685pt.
- [19 <./Image/Partitore di corrente.png> <./Image/Stella triangolo.png> <./Image/Nodi triangolo stella.png>]
-<Image/Esempio2_1.png, id=463, 733.23938pt x 511.9125pt>
+ [20 <./Image/Partitore di corrente.png> <./Image/Stella triangolo.png> <./Image/Nodi triangolo stella.png>]
+<Image/Esempio2_1.png, id=477, 733.23938pt x 511.9125pt>
 File: Image/Esempio2_1.png Graphic file (type png)
 <use Image/Esempio2_1.png>
-Package pdftex.def Info: Image/Esempio2_1.png  used on input line 1039.
+Package pdftex.def Info: Image/Esempio2_1.png  used on input line 1040.
 (pdftex.def)             Requested size: 219.97351pt x 153.57494pt.
-<Image/Esempio2_2.png, id=464, 746.79pt x 493.845pt>
+<Image/Esempio2_2.png, id=478, 746.79pt x 493.845pt>
 File: Image/Esempio2_2.png Graphic file (type png)
 <use Image/Esempio2_2.png>
-Package pdftex.def Info: Image/Esempio2_2.png  used on input line 1046.
+Package pdftex.def Info: Image/Esempio2_2.png  used on input line 1047.
 (pdftex.def)             Requested size: 224.03873pt x 148.15463pt.
-<Image/Esempio2_3.png, id=465, 771.63281pt x 336.50719pt>
+<Image/Esempio2_3.png, id=479, 771.63281pt x 336.50719pt>
 File: Image/Esempio2_3.png Graphic file (type png)
 <use Image/Esempio2_3.png>
-Package pdftex.def Info: Image/Esempio2_3.png  used on input line 1056.
+Package pdftex.def Info: Image/Esempio2_3.png  used on input line 1057.
 (pdftex.def)             Requested size: 231.49162pt x 100.95293pt.
- [20 <./Image/Stella triangolo insieme.png> <./Image/Esempio2_1.png> <./Image/Esempio2_2.png>]
-<Image/Esempio2_4.png, id=473, 410.2828pt x 275.52937pt>
+ [21 <./Image/Stella triangolo insieme.png> <./Image/Esempio2_1.png> <./Image/Esempio2_2.png>]
+<Image/Esempio2_4.png, id=487, 410.2828pt x 275.52937pt>
 File: Image/Esempio2_4.png Graphic file (type png)
 <use Image/Esempio2_4.png>
-Package pdftex.def Info: Image/Esempio2_4.png  used on input line 1062.
+Package pdftex.def Info: Image/Esempio2_4.png  used on input line 1063.
 (pdftex.def)             Requested size: 123.08578pt x 82.65944pt.
-<Image/Metodo di Tanenblau_1.png, id=474, 909.3975pt x 346.79562pt>
+<Image/Metodo di Tanenblau_1.png, id=488, 909.3975pt x 346.79562pt>
 File: Image/Metodo di Tanenblau_1.png Graphic file (type png)
 <use Image/Metodo di Tanenblau_1.png>
-Package pdftex.def Info: Image/Metodo di Tanenblau_1.png  used on input line 1078.
+Package pdftex.def Info: Image/Metodo di Tanenblau_1.png  used on input line 1079.
 (pdftex.def)             Requested size: 318.2939pt x 121.38028pt.
-<Image/Metodo di Tanenblau_2.png, id=475, 754.31813pt x 462.72874pt>
+<Image/Metodo di Tanenblau_2.png, id=489, 754.31813pt x 462.72874pt>
 File: Image/Metodo di Tanenblau_2.png Graphic file (type png)
 <use Image/Metodo di Tanenblau_2.png>
-Package pdftex.def Info: Image/Metodo di Tanenblau_2.png  used on input line 1092.
+Package pdftex.def Info: Image/Metodo di Tanenblau_2.png  used on input line 1093.
 (pdftex.def)             Requested size: 226.29718pt x 138.81969pt.
- [21 <./Image/Esempio2_3.png> <./Image/Esempio2_4.png> <./Image/Metodo di Tanenblau_1.png>]
-<Image/Esempio_Tanenblau.png, id=483, 834.11626pt x 442.15187pt>
+ [22 <./Image/Esempio2_3.png> <./Image/Esempio2_4.png> <./Image/Metodo di Tanenblau_1.png>]
+<Image/Esempio_Tanenblau.png, id=497, 834.11626pt x 442.15187pt>
 File: Image/Esempio_Tanenblau.png Graphic file (type png)
 <use Image/Esempio_Tanenblau.png>
-Package pdftex.def Info: Image/Esempio_Tanenblau.png  used on input line 1126.
+Package pdftex.def Info: Image/Esempio_Tanenblau.png  used on input line 1127.
 (pdftex.def)             Requested size: 250.2368pt x 132.64658pt.
- [22 <./Image/Metodo di Tanenblau_2.png> <./Image/Esempio_Tanenblau.png>]
-<Image/Esempio_PotenzialiNodo.png, id=495, 1662.21pt x 1209.51875pt>
+ [23 <./Image/Metodo di Tanenblau_2.png> <./Image/Esempio_Tanenblau.png>]
+<Image/Esempio_PotenzialiNodo.png, id=509, 1662.21pt x 1209.51875pt>
 File: Image/Esempio_PotenzialiNodo.png Graphic file (type png)
 <use Image/Esempio_PotenzialiNodo.png>
-Package pdftex.def Info: Image/Esempio_PotenzialiNodo.png  used on input line 1190.
+Package pdftex.def Info: Image/Esempio_PotenzialiNodo.png  used on input line 1191.
 (pdftex.def)             Requested size: 199.45659pt x 145.13599pt.
- [23 <./Image/Esempio_PotenzialiNodo.png>]
-<Image/Esempio_MetAnalisi_1.png, id=505, 764.8575pt x 451.6875pt>
+ [24 <./Image/Esempio_PotenzialiNodo.png>]
+<Image/Esempio_MetAnalisi_1.png, id=520, 764.8575pt x 451.6875pt>
 File: Image/Esempio_MetAnalisi_1.png Graphic file (type png)
 <use Image/Esempio_MetAnalisi_1.png>
-Package pdftex.def Info: Image/Esempio_MetAnalisi_1.png  used on input line 1221.
+Package pdftex.def Info: Image/Esempio_MetAnalisi_1.png  used on input line 1222.
 (pdftex.def)             Requested size: 152.96878pt x 90.33589pt.
-<Image/Esempio_MetAnal_2.png, id=506, 1358.07375pt x 450.18187pt>
+<Image/Esempio_MetAnal_2.png, id=521, 1358.07375pt x 450.18187pt>
 File: Image/Esempio_MetAnal_2.png Graphic file (type png)
 <use Image/Esempio_MetAnal_2.png>
-Package pdftex.def Info: Image/Esempio_MetAnal_2.png  used on input line 1227.
+Package pdftex.def Info: Image/Esempio_MetAnal_2.png  used on input line 1228.
 (pdftex.def)             Requested size: 407.42526pt x 135.0556pt.
-<Image/Esempio_MetAnalisi_3.png, id=507, 1300.86pt x 378.66469pt>
+<Image/Esempio_MetAnalisi_3.png, id=522, 1300.86pt x 378.66469pt>
 File: Image/Esempio_MetAnalisi_3.png Graphic file (type png)
 <use Image/Esempio_MetAnalisi_3.png>
-Package pdftex.def Info: Image/Esempio_MetAnalisi_3.png  used on input line 1237.
+Package pdftex.def Info: Image/Esempio_MetAnalisi_3.png  used on input line 1247.
 (pdftex.def)             Requested size: 325.2142pt x 94.66594pt.
-<Image/Esempio_MetAnalisi_4.png, id=508, 931.98187pt x 563.10374pt>
+ [25 <./Image/Esempio_MetAnalisi_1.png> <./Image/Esempio_MetAnal_2.png> <./Image/Esempio_MetAnalisi_3.png>]
+<Image/Esempio_MetAnalisi_4.png, id=531, 931.98187pt x 563.10374pt>
 File: Image/Esempio_MetAnalisi_4.png Graphic file (type png)
 <use Image/Esempio_MetAnalisi_4.png>
-Package pdftex.def Info: Image/Esempio_MetAnalisi_4.png  used on input line 1249.
+Package pdftex.def Info: Image/Esempio_MetAnalisi_4.png  used on input line 1268.
 (pdftex.def)             Requested size: 279.59671pt x 168.93242pt.
- [24 <./Image/Esempio_MetAnalisi_1.png> <./Image/Esempio_MetAnal_2.png> <./Image/Esempio_MetAnalisi_3.png>]
-<Image/Thevenin_1.png, id=516, 701.62125pt x 389.20406pt>
+<Image/Thevenin_1.png, id=532, 701.62125pt x 389.20406pt>
 File: Image/Thevenin_1.png Graphic file (type png)
 <use Image/Thevenin_1.png>
-Package pdftex.def Info: Image/Thevenin_1.png  used on input line 1284.
+Package pdftex.def Info: Image/Thevenin_1.png  used on input line 1300.
 (pdftex.def)             Requested size: 210.48799pt x 116.76212pt.
-<Image/Thevenin_2.png, id=517, 459.96844pt x 423.83344pt>
+<Image/Thevenin_2.png, id=533, 459.96844pt x 423.83344pt>
 File: Image/Thevenin_2.png Graphic file (type png)
 <use Image/Thevenin_2.png>
-Package pdftex.def Info: Image/Thevenin_2.png  used on input line 1285.
+Package pdftex.def Info: Image/Thevenin_2.png  used on input line 1301.
 (pdftex.def)             Requested size: 137.9916pt x 127.151pt.
-<Image/Esempio_Thevenin_1.png, id=518, 721.19438pt x 301.125pt>
+ [26 <./Image/Esempio_MetAnalisi_4.png>]
+<Image/Esempio_Thevenin_1.png, id=539, 721.19438pt x 301.125pt>
 File: Image/Esempio_Thevenin_1.png Graphic file (type png)
 <use Image/Esempio_Thevenin_1.png>
-Package pdftex.def Info: Image/Esempio_Thevenin_1.png  used on input line 1293.
+Package pdftex.def Info: Image/Esempio_Thevenin_1.png  used on input line 1309.
 (pdftex.def)             Requested size: 194.72508pt x 81.30482pt.
- [25 <./Image/Esempio_MetAnalisi_4.png> <./Image/Thevenin_1.png> <./Image/Thevenin_2.png>]
-<Image/Esempio_Thevenin_2.png, id=528, 670.75594pt x 344.03531pt>
+<Image/Esempio_Thevenin_2.png, id=540, 670.75594pt x 344.03531pt>
 File: Image/Esempio_Thevenin_2.png Graphic file (type png)
 <use Image/Esempio_Thevenin_2.png>
-Package pdftex.def Info: Image/Esempio_Thevenin_2.png  used on input line 1297.
-(pdftex.def)             Requested size: 167.68857pt x 86.0086pt.
-<Image/Esempio_Thevenin_3.png, id=529, 778.40813pt x 371.13657pt>
+Package pdftex.def Info: Image/Esempio_Thevenin_2.png  used on input line 1313.
+(pdftex.def)             Requested size: 201.22833pt x 103.21138pt.
+<Image/Esempio_Thevenin_3.png, id=541, 778.40813pt x 371.13657pt>
 File: Image/Esempio_Thevenin_3.png Graphic file (type png)
 <use Image/Esempio_Thevenin_3.png>
-Package pdftex.def Info: Image/Esempio_Thevenin_3.png  used on input line 1313.
-(pdftex.def)             Requested size: 194.60155pt x 92.7839pt.
-<Image/Esempio_Thevenin_4.png, id=530, 510.40688pt x 295.1025pt>
+Package pdftex.def Info: Image/Esempio_Thevenin_3.png  used on input line 1329.
+(pdftex.def)             Requested size: 217.95279pt x 103.91753pt.
+ [27 <./Image/Thevenin_1.png> <./Image/Thevenin_2.png> <./Image/Esempio_Thevenin_1.png> <./Image/Esempio_Thevenin_2.png> <./Image/Esempio_Thevenin_3.png>]
+<Image/Esempio_Thevenin_4.png, id=553, 510.40688pt x 295.1025pt>
 File: Image/Esempio_Thevenin_4.png Graphic file (type png)
 <use Image/Esempio_Thevenin_4.png>
-Package pdftex.def Info: Image/Esempio_Thevenin_4.png  used on input line 1319.
-(pdftex.def)             Requested size: 127.6014pt x 73.77544pt.
-<Image/Esercizio_Thevenin_1.png, id=531, 488.32437pt x 202.25563pt>
+Package pdftex.def Info: Image/Esempio_Thevenin_4.png  used on input line 1335.
+(pdftex.def)             Requested size: 137.81169pt x 79.67873pt.
+<Image/Esercizio_Thevenin_1.png, id=554, 488.32437pt x 202.25563pt>
 File: Image/Esercizio_Thevenin_1.png Graphic file (type png)
 <use Image/Esercizio_Thevenin_1.png>
-Package pdftex.def Info: Image/Esercizio_Thevenin_1.png  used on input line 1329.
-(pdftex.def)             Requested size: 146.49843pt x 60.67715pt.
- [26 <./Image/Esempio_Thevenin_1.png> <./Image/Esempio_Thevenin_2.png> <./Image/Esempio_Thevenin_3.png> <./Image/Esempio_Thevenin_4.png>]
-<Image/Esercizio_Thevenin_2.png, id=542, 345.29pt x 225.84375pt>
+Package pdftex.def Info: Image/Esercizio_Thevenin_1.png  used on input line 1345.
+(pdftex.def)             Requested size: 161.14754pt x 66.74455pt.
+<Image/Esercizio_Thevenin_2.png, id=555, 345.29pt x 225.84375pt>
 File: Image/Esercizio_Thevenin_2.png Graphic file (type png)
 <use Image/Esercizio_Thevenin_2.png>
-Package pdftex.def Info: Image/Esercizio_Thevenin_2.png  used on input line 1333.
-(pdftex.def)             Requested size: 103.58778pt x 67.75363pt.
-<Image/Esercizio_Thevenin_3.png, id=543, 593.21625pt x 255.95625pt>
+Package pdftex.def Info: Image/Esercizio_Thevenin_2.png  used on input line 1349.
+(pdftex.def)             Requested size: 113.94604pt x 74.52866pt.
+<Image/Esercizio_Thevenin_3.png, id=556, 593.21625pt x 255.95625pt>
 File: Image/Esercizio_Thevenin_3.png Graphic file (type png)
 <use Image/Esercizio_Thevenin_3.png>
-Package pdftex.def Info: Image/Esercizio_Thevenin_3.png  used on input line 1337.
-(pdftex.def)             Requested size: 177.96625pt x 76.78746pt.
-<Image/Esercizio_Thevenin_4.png, id=544, 739.76375pt x 419.06563pt>
+Package pdftex.def Info: Image/Esercizio_Thevenin_3.png  used on input line 1353.
+(pdftex.def)             Requested size: 195.76196pt x 84.46582pt.
+<Image/Esercizio_Thevenin_4.png, id=557, 739.76375pt x 419.06563pt>
 File: Image/Esercizio_Thevenin_4.png Graphic file (type png)
 <use Image/Esercizio_Thevenin_4.png>
-Package pdftex.def Info: Image/Esercizio_Thevenin_4.png  used on input line 1344.
+Package pdftex.def Info: Image/Esercizio_Thevenin_4.png  used on input line 1360.
 (pdftex.def)             Requested size: 221.93083pt x 125.72064pt.
-<Image/Norton_1.png, id=545, 736.25063pt x 437.38406pt>
+ [28 <./Image/Esempio_Thevenin_4.png> <./Image/Esercizio_Thevenin_1.png> <./Image/Esercizio_Thevenin_2.png> <./Image/Esercizio_Thevenin_3.png> <./Image/Esercizio_Thevenin_4.png>]
+<Image/Norton_1.png, id=567, 736.25063pt x 437.38406pt>
 File: Image/Norton_1.png Graphic file (type png)
 <use Image/Norton_1.png>
-Package pdftex.def Info: Image/Norton_1.png  used on input line 1366.
+Package pdftex.def Info: Image/Norton_1.png  used on input line 1381.
 (pdftex.def)             Requested size: 220.87689pt x 131.21622pt.
-<Image/Norton_2.png, id=546, 653.44125pt x 394.47375pt>
+<Image/Norton_2.png, id=568, 653.44125pt x 394.47375pt>
 File: Image/Norton_2.png Graphic file (type png)
 <use Image/Norton_2.png>
-Package pdftex.def Info: Image/Norton_2.png  used on input line 1367.
+Package pdftex.def Info: Image/Norton_2.png  used on input line 1382.
 (pdftex.def)             Requested size: 196.03387pt x 118.34303pt.
- [27 <./Image/Esercizio_Thevenin_1.png> <./Image/Esercizio_Thevenin_2.png> <./Image/Esercizio_Thevenin_3.png> <./Image/Esercizio_Thevenin_4.png>]
-<Image/Esempio_Norton_0.png, id=555, 733.23938pt x 324.46219pt>
+<Image/Esempio_Norton_0.png, id=569, 733.23938pt x 324.46219pt>
 File: Image/Esempio_Norton_0.png Graphic file (type png)
 <use Image/Esempio_Norton_0.png>
-Package pdftex.def Info: Image/Esempio_Norton_0.png  used on input line 1380.
+Package pdftex.def Info: Image/Esempio_Norton_0.png  used on input line 1395.
 (pdftex.def)             Requested size: 183.30939pt x 81.11534pt.
-<Image/Esempio_Norton_1.png, id=556, 654.19406pt x 307.90031pt>
+<Image/Esempio_Norton_1.png, id=570, 654.19406pt x 307.90031pt>
 File: Image/Esempio_Norton_1.png Graphic file (type png)
 <use Image/Esempio_Norton_1.png>
-Package pdftex.def Info: Image/Esempio_Norton_1.png  used on input line 1385.
+Package pdftex.def Info: Image/Esempio_Norton_1.png  used on input line 1400.
 (pdftex.def)             Requested size: 163.54811pt x 76.97488pt.
-<Image/Esempio_Norton_2.png, id=557, 554.82281pt x 313.9228pt>
+<Image/Esempio_Norton_2.png, id=571, 554.82281pt x 313.9228pt>
 File: Image/Esempio_Norton_2.png Graphic file (type png)
 <use Image/Esempio_Norton_2.png>
-Package pdftex.def Info: Image/Esempio_Norton_2.png  used on input line 1385.
+Package pdftex.def Info: Image/Esempio_Norton_2.png  used on input line 1400.
 (pdftex.def)             Requested size: 138.70535pt x 78.4805pt.
-<Image/Esempio_Norton_3.png, id=558, 704.6325pt x 329.73187pt>
+<Image/Esempio_Norton_3.png, id=572, 704.6325pt x 329.73187pt>
 File: Image/Esempio_Norton_3.png Graphic file (type png)
 <use Image/Esempio_Norton_3.png>
-Package pdftex.def Info: Image/Esempio_Norton_3.png  used on input line 1385.
+Package pdftex.def Info: Image/Esempio_Norton_3.png  used on input line 1400.
 (pdftex.def)             Requested size: 176.1577pt x 82.43275pt.
-<Image/T_Massima_Potenza_0.png, id=559, 500.62032pt x 282.30469pt>
+ [29 <./Image/Norton_1.png> <./Image/Norton_2.png> <./Image/Esempio_Norton_0.png> <./Image/Esempio_Norton_1.png> <./Image/Esempio_Norton_2.png> <./Image/Esempio_Norton_3.png>]
+<Image/T_Massima_Potenza_0.png, id=583, 500.62032pt x 282.30469pt>
 File: Image/T_Massima_Potenza_0.png Graphic file (type png)
 <use Image/T_Massima_Potenza_0.png>
-Package pdftex.def Info: Image/T_Massima_Potenza_0.png  used on input line 1397.
+Package pdftex.def Info: Image/T_Massima_Potenza_0.png  used on input line 1412.
 (pdftex.def)             Requested size: 150.18726pt x 84.69205pt.
-<Image/T_Massima_Potenza_1.png, id=560, 789.70032pt x 480.29437pt>
+<Image/T_Massima_Potenza_1.png, id=584, 789.70032pt x 480.29437pt>
 File: Image/T_Massima_Potenza_1.png Graphic file (type png)
 <use Image/T_Massima_Potenza_1.png>
-Package pdftex.def Info: Image/T_Massima_Potenza_1.png  used on input line 1410.
+Package pdftex.def Info: Image/T_Massima_Potenza_1.png  used on input line 1425.
 (pdftex.def)             Requested size: 197.42459pt x 120.07329pt.
- [28 <./Image/Norton_1.png> <./Image/Norton_2.png> <./Image/Esempio_Norton_0.png> <./Image/Esempio_Norton_1.png> <./Image/Esempio_Norton_2.png> <./Image/Esempio_Norton_3.png> <./Image/T_Massima_Potenza_0.png>] [29 <./Image/T_Massima_Potenza_1.png>] (./Elettrotecnica.aux)
+<Image/Th_Millman_0.png, id=585, 883.80188pt x 541.27219pt>
+File: Image/Th_Millman_0.png Graphic file (type png)
+<use Image/Th_Millman_0.png>
+Package pdftex.def Info: Image/Th_Millman_0.png  used on input line 1444.
+(pdftex.def)             Requested size: 229.78307pt x 140.72745pt.
+ [30 <./Image/T_Massima_Potenza_0.png> <./Image/T_Massima_Potenza_1.png>]
+<Image/Es_Millman.png, id=592, 1696.83937pt x 823.57687pt>
+File: Image/Es_Millman.png Graphic file (type png)
+<use Image/Es_Millman.png>
+Package pdftex.def Info: Image/Es_Millman.png  used on input line 1452.
+(pdftex.def)             Requested size: 424.2088pt x 205.8937pt.
+<Image/Dim_Es_Millman.png, id=593, 1074.26344pt x 432.86719pt>
+File: Image/Dim_Es_Millman.png Graphic file (type png)
+<use Image/Dim_Es_Millman.png>
+Package pdftex.def Info: Image/Dim_Es_Millman.png  used on input line 1459.
+(pdftex.def)             Requested size: 322.28152pt x 129.86115pt.
+ [31 <./Image/Th_Millman_0.png> <./Image/Es_Millman.png> <./Image/Dim_Es_Millman.png>]
+<Image/Es_Millman_2.png, id=606, 770.88pt x 383.93437pt>
+File: Image/Es_Millman_2.png Graphic file (type png)
+<use Image/Es_Millman_2.png>
+Package pdftex.def Info: Image/Es_Millman_2.png  used on input line 1476.
+(pdftex.def)             Requested size: 231.26578pt x 115.1812pt.
+ [32 <./Image/Es_Millman_2.png>] (./Elettrotecnica.aux)
 Package rerunfilecheck Info: File `Elettrotecnica.out' has not changed.
-(rerunfilecheck)             Checksum: A0F27E6BACFA488AFA566A447CD8B7AA;9958.
+(rerunfilecheck)             Checksum: 78F58988B6E1566AB2AEBA81F6E196CB;10231.
  ) 
 Here is how much of TeX's memory you used:
- 37030 strings out of 476097
- 836689 string characters out of 5795135
- 1884845 words of memory out of 5000000
- 56623 multiletter control sequences out of 15000+600000
+ 37073 strings out of 476097
+ 837684 string characters out of 5795135
+ 1885845 words of memory out of 5000000
+ 56653 multiletter control sequences out of 15000+600000
  523290 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,21n,104p,804b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Elettrotecnica.pdf (29 pages, 2340546 bytes).
+Output written on Elettrotecnica.pdf (32 pages, 2554799 bytes).
 PDF statistics:
- 688 PDF objects out of 1000 (max. 8388607)
- 473 compressed objects within 5 object streams
- 96 named destinations out of 1000 (max. 500000)
- 798 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 725 PDF objects out of 1000 (max. 8388607)
+ 499 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 834 words of extra memory for PDF output out of 10000 (max. 10000000)
 
