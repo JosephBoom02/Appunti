@@ -69,7 +69,7 @@ bracketsstyle=\color{red}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\cc}[1]{\mathcal{#1}}
 \newcommand{ \lognormal }{\text{Lognormal} }
-\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\T}[1]{\text{#1}}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 %for using circled number in enumerate use:
@@ -625,10 +625,16 @@ Le formule fondamentali per i circuiti sono:
 \begin{align*}
     &\underbrace{P(t) = v(t) \cdot i(t)}_{\text{potenza}} & &\underbrace{W(t) = \int P(t) \ dt}_{\text{energia}}
 \end{align*}
+
+\subsubsection{Convenzione del generatore e dell'utilizzatore}
 Per ogni circuito esistono due convenzioni per il verso della corrente
 \begin{center}
     \includegraphics[scale=0.3]{Image/Convenzione.png}
 \end{center}
+\begin{itemize}
+    \item negli utilizzatori tensione e corrente sono discordi
+    \item nei generatori tensione e corrente sono concordi (si fa riferimento ai generatori di corrente e di tensione)
+\end{itemize}
 Ad esempio, nel caso di una batteria ricaricabile, se si utilizza la convenzione del generatore:
 \begin{align*}
     &\text{Scarica} & v&=1,5 V & i&=1A & P&=v\cdot i = 1,5W \ {\color{violet}>0}\\
@@ -1483,11 +1489,483 @@ Calcoliamo $i_3$:
 
 
 
+\section{Analisi del transitorio}
+
+\subsection{Formule notevoli}
+\subsubsection{Condensatore}
+\textbf{Condensatore lineare}
+\begin{align*}
+    C&=\frac{Q}{\Delta V} & C &= \varepsilon \cdot \frac{S}{d}
+\end{align*}
+dove $C$ è la capacità in farad,  $\varepsilon$ la permittività elettrica assoluta dell'isolante in farad su metro, $S$ la superficie delle due armature in metri quadrati e $d$ la distanza fra le armature in metri. 
+\vspace*{0.2cm}\\
+\textbf{Energia immagazzinata}
+\begin{align*}
+    dW &= V \ dq = \frac{q}{C} \ dq & U &= \frac{1}{2} CV^2 
+\end{align*}
+L'energia immagazzinata da un condensatore è uguale al lavoro $W$; $U$ è l'energia potenziale.
+\vspace*{0.2cm}\\
+\textbf{Equazione caratteristica}
+\begin{align*}
+    v(t) &= \frac{q(t)}{C} = \frac{1}{C} \int_{t_0}^t i(\tau) \ d\tau + v(t_0) & i(t) &= \frac{dq(t)}{dt} = C \frac{dv(t)}{dt}
+\end{align*}
+
+
+\subsubsection{Induttore}
+\textbf{Energia}
+\[
+    W = \frac{1}{2}LI^2
+\]
+\textbf{Equazione differenziale}
+\[
+    v(t) = L \frac{di(t)}{dt}
+\]
+\textbf{Campo magnetico prodotto da un solenoide}
+\[
+    B = \mu  \frac{N}{l}  I
+\]
+
+
+
+\subsection{Introduzione}
+Fin'ora abbiamo usato delle sorgenti costanti, quindi abbiamo fatto esercizi con circuiti DC (circuiti con corrente continua).\\
+Consideriamo ora invece la variabile tempo; i nostri circuiti subiranno delle variazioni:
+\begin{itemize}
+    \item avremo generatori variabili nel tempo
+    \item si possono presentare dei guasti nel circuito
+    \item il circuito sarà dotato di un interruttore:
+    \begin{itemize}
+        \item se aperto $i=0 \Rightarrow$ circuito aperto
+        \item se chiuso $v=0 \Rightarrow$ cortocircuito
+    \end{itemize}
+\end{itemize}
+Per il \textbf{resistore} $v=R \cdot i$, vi è un legame istantaneo, viene chiamato legame \textbf{adinamico} (senza memoria).\\
+Per \textbf{induttori e condensatori} il legame è integro-differenziale, viene chiamato legame \textbf{dinamico} (con memoria).
+\vspace*{0.2cm}\\
+\begin{align*}
+    &\text{Induttore} & \text{Condensatore}\\
+    &\varepsilon = \frac{1}{2} L \cdot I^2 & \varepsilon = \frac{1}{2}C \cdot V^2
+\end{align*}
+Per l'induttore la variabile di stato è la corrente, mentre per il condensatore la variabile di stato è la tensione.
+\vspace*{0.2cm}\\
+Ovviamente valgono ancora le formule LKC, LKT e le equazioni costitutive.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Es_Trans_0.png}
+\end{center}
+\[
+    \text{LKT:}
+    \begin{cases}
+        E-v_R-v_L-v_C=0\\
+        v_R=R  i\\
+        v_L = L \dfrac{di}{dt}\\
+        i = C \dfrac{v_L}{dt} \Rightarrow v_C = \dfrac{1}{C} \bigintss i \ dt
+    \end{cases}
+\]
+\[
+    E = R  i - L \frac{di}{dt} - \frac{1}{C} \int i \ dt = 0    
+\]
+Ecco che dobbiamo risolvere un'equazione differenziale.
+\vspace*{0.2cm}\\
+Per i circuiti lineari, quindi con equazioni differenziali ordinarie (ODE) a coefficienti costanti, utilizzeremo il metodo di Cauchy. La soluzione finale sarà la somma di due contributi:
+\begin{itemize}
+    \item la soluzione dell'omogenea associata $o(t)$
+    \item la soluzione particolare $p(t)$
+\end{itemize}
+
+
+\subsection{Il problema di Cauchy}
+In generale la soluzione sarà un espressione di questo tipo
+\[
+    a_n \frac{d^n x(t)}{dt} + a_{n-1} \frac{d^{n-1} x(t)}{dt} + ... + a_1 \frac{d x(t)}{dt} + a_0 x(t) = b(t)
+\]
+\begin{itemize}
+    \item $b(t)$ è il termine noto
+    \item $a_n,a_{n-1},...,a_1,a_0$ sono i coefficienti costanti
+    \item $x(t)$ è l'incognita
+\end{itemize}
+La condizione iniziale del problema di Cauchy è $x(t=0) = X_0$; rappresenta lo stato energetico del sistema prima che si inneschi il transitorio. Per risolvere il problema di Cauchy non solo serve sapere quest'ultimo, ma anche le variabili di stato prima che si inneschi il transitorio.
+\vspace*{0.2cm}\\
+L'integrale particolare $p(t)$ ha la stessa evoluzione di $b(t)$; ad esempio se $b(t)$ è costante allora anche $p(t)$ è costante ($b(t)$ dipende solo dai generatori).\\
+L'integrale dell'omogenea associata $o(t)$ è la soluzione dell'ODE quando il termine noto è nullo, cioè si passivano i generatori. Esso rappresenta l'\textbf{evoluzione libera}:
+\[
+    a_n \frac{d^n x(t)}{dt} + a_{n-1} \frac{d^{n-1} x(t)}{dt} + ... + a_1 \frac{d x(t)}{dt} + a_0 x(t) = 0
+\]
+il \textbf{polinomio associato} all'integrale dell'omogenea è
+\[
+    a_n \lambda ^n + a_{n-1}\lambda ^{n-1} + ... + a_1\lambda + a_0 = 0 \underset{\text{soluzioni}}{\Longrightarrow} \lambda_1,\lambda_2,...,\lambda_n
+\]
+\[
+    o(t) = k_1e^{\lambda_1t} + k_2e^{\lambda_2t} + ... + k_ne^{\lambda_nt} \tag*{$\lambda_1,\lambda_2,...,\lambda_n<0$}
+\]
+\vspace*{0.2cm}\\
+\textbf{Costante di tempo:}
+\[
+    \tau_n = -\frac{1}{\lambda_n} [s]
+\]
 
 
 
 
 
+
+
+\subsubsection{Principio di conservazione dell'energia}
+Al fine di inibire variazioni istantanee dell'energia immagazzinata, nei
+condensatori la variazione istantanea della tensione è nulla e negli induttori la
+variazione istantanea della corrente è nulla. L'energia immagazzinata da un elemento non può variare bruscamente
+\begin{center}
+\begin{tabular}{m{7cm} m{7cm}}
+    Induttore & Condensatore\\
+    $\varepsilon = \dfrac{1}{2} L \cdot I^2$ & $\varepsilon = \dfrac{1}{2}C \cdot V^2 = \dfrac{1}{2}\dfrac{Q^2}{C}$\\
+    Nell'induttore variazioni istantanee di $i$ non sono possibili & Nel condensatore variazioni istantanee di $V$ e $Q$ non sono possibili
+\end{tabular}
+\end{center}
+
+
+\subsection{Circuito del primo ordine: Circuito RC}
+\begin{center}
+    \includegraphics[scale=0.4]{Image/RC_0.png}
+    \includegraphics[scale=0.4]{Image/RC_1.png}
+\end{center}
+\begin{align*}
+    \text{LKT:}
+    \begin{cases}
+        E - v_R - v_C = 0\\
+        v_R = R \cdot i \\
+        i = C \dfrac{dv_C}{dt}
+    \end{cases}
+    &\Longrightarrow E - RC \frac{dv_C}{dt} - v_C = 0\\
+    &\Longrightarrow \frac{dv_C}{dt} + \frac{v_C}{RC} = \frac{E}{RC}
+\end{align*}
+Perveniamo a una equazione differenziale del primo ordine. Per risolverla dobbiamo trovare la soluzione dell'omogenea associata e la soluzione particolare.
+\begin{enumerate}
+    \item \textbf{Soluzione dell'omogenea associata}
+    \[
+        \frac{dv_C}{dt} + \frac{v_C}{RC} = 0
+    \]
+    il polinomio associato è 
+    \[
+        \lambda + \frac{1}{RC} = 0 \Rightarrow \lambda = -\frac{1}{RC}
+    \]
+    quindi la soluzione è
+    \[
+        o(t) = A e^{-t/RC}
+    \]
+    $\dfrac{t}{RC}$ è detto numero puro, e la costante di tempo è $\tau = RC$.
+    Si può pervenire alla soluzione dell'omogenea associata anche in un altro modo: riprendiamo l'omogenea associata e poniamo sotto integrale ambo i membri:
+    \begin{align*}
+        \frac{dv_C}{dt} = -\frac{v_C}{RC} &\Rightarrow \int \frac{dv_C}{dt} = -\int\frac{v_C}{RC}\\
+        &\Rightarrow \ln(v_C) + k_1 = - \frac{t}{RC} + k_2\\
+        &\Rightarrow \ln(v_C) = - \frac{t}{RC} + \underbrace{(k_2 - k_1)}_{k_3}\\
+        &\Rightarrow v_C = e^{-t/RC+k_3}\\
+        &\Rightarrow v_C = e^{-t/RC}\underbrace{e^{k_3}}_{A}\\
+        &\Rightarrow v_C = A e^{-t/RC}
+    \end{align*}
+
+    \item \textbf{Soluzione particolare}\\
+    Siccome $p(t)$ si comporta come $b(t)$ e $b(t)=\dfrac{E}{RC}$ (una costante), allora $p(t)$ sarà una costante
+    \[
+        \cancel{\frac{dp(t)}{dt}} + \frac{p(t)}{RC} = \frac{E}{RC} \Rightarrow p(t) = E    
+    \]
+
+    \item \[ v_C = o(t) + p(t)  = A e^{-t/RC}+E \]
+    
+    \item Consideriamo la condizione iniziale
+    \begin{align*}
+        v_C(t=0^-) &= V_{C0} & v_C(t=0^+) &= A e^{-0/RC} + E = V_{C0}\\
+        & & &\Rightarrow A + E = V_{C0}\\
+        & & &\Rightarrow A=V_{C0} - E
+    \end{align*}
+
+    \item \[ v_C(t) = \underbrace{(V_{C0}-E)e^{-t/RC}}_{\text{Risposta transitoria}} + \underbrace{E}_{\substack{\text{Risposta}\\\text{a regime}}} = \underbrace{V_{C0} \cdot  e^{-t/RC}}_{\T{Evoluzione libera}} + \underbrace{E(1-e^{-t/RC})}_{\T{Risposta formata}} \]
+\end{enumerate}
+Ricordiamo che $\tau = -\dfrac{1}{\lambda}$, quindi in questo caso $\tau = RC$
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RC_2.png}
+\end{center}
+N.B. nel grafico la $V0$ è $E$.
+\begin{center}
+    \includegraphics[scale=0.18]{Image/RC_3.png}
+\end{center}
+Dal grafico si può facilmente vedere che $\tau_1<\tau_2$, quindi la tensione è continua.
+\[
+    e^{-t/\tau}
+    \begin{cases}
+        \text{Analiticamente è 0 con } t \rightarrow \infty\\
+        \text{Praticamente: } e^{-5\cancel{\tau}/\cancel{\tau}} = e^{-5} = \dfrac{1}{e^5}=0,0067\\
+    \end{cases}
+\]
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RC_4.png}
+\end{center}
+\begin{align*}
+    i(t) &= C \frac{dv_C}{dt}\\ 
+    &= C \frac{d}{dt} \left[ \left(V_{C0}-E\right) e^{-t/RC}+E \right]\\
+    &= \cancel{C} -\left(\frac{1}{R \cancel{C}}\right) \left(V_{C0}-E\right)e^{-t/RC}\\
+    &\Rightarrow i(t) = \frac{E-V_{C0}}{R} e^{-t/RC}
+\end{align*}
+Dal grafico è evidente che la corrente non varia con continuità.
+
+
+\subsection{Circuito del primo ordine: Circuito RL}
+\begin{center}
+    \includegraphics[scale=0.18]{Image/RL_0.png}
+    \includegraphics[scale=0.18]{Image/RL_1.png}
+\end{center}
+L'obiettivo è determinare la risposta naturale del circuito RL (che si ha alla chiusura del derivatore da 1 a 2).\\
+Il circuito risultante è il seguente:
+\begin{center}
+    \includegraphics[scale=0.25]{Image/RL_2.png}
+\end{center}
+\begin{align*}
+    \T{LKT}:&
+    \begin{cases}
+        E-v_R-v_L = 0\\
+        v_R = R \cdot i\\
+        v_L=L \dfrac{di}{dt}
+    \end{cases}\\
+    &\Rightarrow E - R \cdot i - L \frac{di}{dt}=0\\
+    &\Rightarrow \frac{di}{dt} + \frac{R}{L}i = \frac{E}{L}
+\end{align*}
+Siamo arrivati a una equazione differenziale del primo ordine.
+\begin{enumerate}
+    \item \textbf{Soluzione dell'omogenea associata}
+    \[
+        \frac{di}{dt} + \frac{R}{L}i = 0
+    \]
+    il polinomio associato è 
+    \[
+        \lambda + \frac{R}{L} = 0 \Rightarrow \lambda = -\frac{R}{L}
+    \]
+    quindi la soluzione è
+    \[
+        o(t) = A e^{\lambda t} = A e^{-\frac{R}{L}t}
+    \]
+    $\dfrac{t}{RC}$ è il numero puro, e la costante di tempo è $\tau = \dfrac{R}{L}$.
+    \item \textbf{Soluzione particolare}\\
+    Siccome $p(t)$ si comporta come $b(t)$ e $b(t)=\dfrac{E}{RC}$ (una costante), allora $p(t)$ sarà una costante
+    \[
+        \cancel{\frac{dp(t)}{dt}} + \frac{R}{L}p = \frac{E}{L} \Rightarrow p(t) = \frac{E}{R} 
+    \]
+
+    \item \[ i(t) = o(t)+p(t) = A e^{-\frac{R}{L}t} + \frac{E}{R}  \] 
+    
+    \item Consideriamo le condizioni iniziali
+    \begin{align*}
+        &i(t=0^-) = I_0 & i(t=0^+) = &I_0\\
+        &i(0) = A e^{-\frac{R}{L}0} + \frac{E}{R} = I_0\\
+        &\Rightarrow A = I_0 - \frac{E}{R}
+    \end{align*}
+
+    \item \[ i(t) = \underbrace{\left(I_0-\frac{E}{R}\right)e^{-\frac{R}{L}t}}_{\text{Risposta transitoria}} + \underbrace{\frac{E}{R}}_{\substack{\text{Risposta}\\\text{a regime}}} = \underbrace{I_0 \cdot  e^{-\frac{R}{L}t}}_{\T{Evoluzione libera}} + \underbrace{\frac{E}{R}(1-e^{-\frac{R}{L}t})}_{\T{Risposta formata}} \]
+\end{enumerate}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/RL_3.png}
+\end{center}
+La corrente varia con continuità.
+\begin{align*}
+    v_L&=L\frac{di}{dt}\\
+    &=L\frac{d}{dt} \left[\left(I_0-\frac{E}{R}\right)e^{-\frac{R}{L}t}+\frac{E}{R}\right]\\
+    &=\cancel{L} \left((-\frac{R}{\cancel{L}})\right)\left(I_0-\frac{E}{R}\right)e^{-\frac{R}{L}t}\\
+    &\Rightarrow v_L=\left(E-RI_0\right)e^{-\frac{R}{L}t}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/RL_4.png}
+\end{center}
+La tensione non varia con continuità.
+
+
+\subsection{Confronto tra circuito RC e circuito RL}
+\begin{center}
+    \begin{tabular}{c c}
+        \textbf{RC} & \textbf{RL}\\
+        $ \dfrac{dv_c}{dt} + \dfrac{v_c}{RC} = \dfrac{E}{RC} $ & $ \dfrac{di}{dt} + \dfrac{R}{L}i = \dfrac{E}{L} $\\
+        $ \dfrac{dv_c}{dt} + \dfrac{v_c}{\tau} = \dfrac{E}{RC} $ & $ \dfrac{di}{dt} + \dfrac{i}{\tau} = \dfrac{E}{L} $\\
+    \end{tabular}
+\end{center}
+\[
+    \frac{dx(t)}{dt} + \frac{x(t)}{\tau} = X_F
+\]
+\[
+    x(t) = o(t) + p(t) = \underbrace{X_n(t)}_{\substack{\T{Evouluzione} \\ \T{libera}}} + X_F    
+\]
+\[
+    \begin{cases}
+        x(t) = \underbrace{k e^{-t/\tau}}_{Transitorio} + \underbrace{X_{\infty}}_{\T{Regime}}\\
+        x(t=0^-) = x(t=0^+) = X_0
+    \end{cases}
+\]
+\begin{align*}
+    x(0) &= k+X_{\infty} = X_0 \\
+    &\Rightarrow k = X_0 - X_{\infty}\\
+    &\Rightarrow x(t) = \left(X_0 - X_{\infty}\right)e^{-t/\tau} + X_{\infty}
+\end{align*}
+
+
+
+\subsection{Circuiti del secondo ordine: Circuito RLC}
+\begin{center}
+    \includegraphics[scale=0.25]{Image/RLC_0.png}
+    \includegraphics[scale=0.25]{Image/RLC_1.png}
+\end{center}
+\begin{align*}
+    \T{LKT:}
+    &\begin{cases}
+        E-v_R-v_L-v_C=0\\
+        v_R = R i \\
+        v_L = L \dfrac{di}{dt}\\
+        v_C = \dfrac{1}{C} \bigintsss i(\tau) d \tau
+    \end{cases}\\
+    &\Rightarrow E - R i - L \frac{di}{dt} - \frac{1}{C} \int i(\tau) d \tau = 0\\
+    &\underset{\substack{\T{derviiamo}\\ \T{in }dt}}{\Rightarrow} R \frac{di}{dt} + L \frac{d^2i}{dt} + \frac{1}{C}i = 0\\
+    &\Rightarrow \frac{d^2i}{dt} + \frac{R}{L} \frac{di}{dt} + \frac{1}{LC}i = 0
+\end{align*}
+Siamo arrivati a un'equazione differenziale del secondo ordine.\\
+    \textbf{Soluzione dell'omogenea associata}
+    \[
+        i(t) = Ae^{\lambda_1t} + B e^{\lambda_2t}
+    \]
+    il polinomio associato è 
+    \[
+        \lambda^2 + \frac{R}{L} \lambda + \frac{1}{LC} = 0 \Rightarrow \lambda_{1,2} = - \frac{R}{2L} \pm \sqrt{\left(\frac{R}{2L}\right)^2 - \frac{1}{LC}}
+    \]
+    \begin{align*}
+        \frac{R}{2L} &= \alpha \T{: coefficiente di smorzamento}\\
+        \frac{1}{LC} &= \omega^2_0 \T{: pulsazione di risonanza}
+    \end{align*}
+    \begin{align*}
+        \lambda_{1,2} &= - \alpha \pm \sqrt{\alpha^2 - \omega^2_0}\\
+        &\Rightarrow \Delta = \alpha^2 - \omega^2_0 
+        \begin{cases}
+            >0 \rightarrow \T{ soluzioini reali distinte}\\
+            =0 \rightarrow \T{ soluzioini reali coincidenti}\\
+            <0 \rightarrow \T{ soluzioini complesse coniugate}
+        \end{cases}
+    \end{align*}
+    \begin{itemize}
+        \item $\Delta > 0$
+        \[ \alpha^2 > \omega^2_0 \Rightarrow \alpha > \omega_0 \]
+        \[i(t) = A e^{\lambda_1t}+Be^{\lambda_2t}\]
+        Analizziamo le condizioni iniziali:
+        \begin{align*}
+            i(0^-) &= i(0^+) = 0\\
+            &\Rightarrow i(0) = 0\\
+            &\Rightarrow A+B = 0\\
+            &\Rightarrow A = -B 
+        \end{align*}
+        \begin{align*}
+            v_C(0) &= V_{C0}\\
+            &\Rightarrow E - \underbrace{Ri(0)}_{0} - L\frac{di}{dt} - V_{C0} = 0\\
+            &\Rightarrow E - L \frac{di}{dt}\bigg|_0 - V_{C0} = 0\\
+            &\Rightarrow \frac{di}{dt}\bigg|_0 = \frac{E-V_{C0}}{L}
+        \end{align*}
+        \begin{align*}
+            \frac{di}{dt}\bigg|_0 &= \left(A\lambda_1e^{\lambda_1t} +B\lambda_2e^{\lambda_2t} \right) \big|_0\\
+            &= A \lambda_1 + B\lambda_2\\
+            &\Rightarrow A \lambda_1 + \underbrace{B}_{-A}\lambda_2 = \frac{E-V_{C0}}{L}\\
+            &\Rightarrow A(\lambda_1 - \lambda_2) = \frac{E-V_{C0}}{L}\\
+            &\Rightarrow A = \frac{E-V_{C0}}{L(\lambda_1-\lambda_2)}
+        \end{align*}
+        \begin{align*}
+            i(t) &= \frac{E-V_{C0}}{L(\lambda_1-\lambda_2)}(e^{\lambda_1 t} - e^{\lambda_2 t})\\
+            &= \frac{E-V_{C0}}{2L(\alpha^2 - \omega^2_0)} \left( e^{\left(-\alpha+\sqrt{\alpha^2 - \omega^2_0}\right)t} - e^{\left(-\alpha-\sqrt{\alpha^2 - \omega^2_0}\right)t}\right)\\
+            &=\frac{E-V_{C0}}{2L(\alpha^2 - \omega^2_0)} \left( e^{\left(\sqrt{\alpha^2 - \omega^2_0}\right)t} - e^{\left(-\sqrt{\alpha^2 - \omega^2_0}\right)t}\right) e^{-\alpha t}
+        \end{align*}
+        \textbf{Risposta sovrasmorzata:}
+        \[i(t) = \frac{E-V_{C0}}{2L(\alpha^2 - \omega^2_0)} \left( e^{\left(\sqrt{\alpha^2 - \omega^2_0}\right)t} - e^{\left(-\sqrt{\alpha^2 - \omega^2_0}\right)t}\right) e^{-\alpha t}\]
+        \begin{center}
+            \includegraphics[scale=0.2]{Image/RLC_2.png}
+        \end{center}
+
+        \item $\Delta = 0$
+        \begin{align*}
+            &\alpha^2 = \omega^2 \Rightarrow \alpha = \omega\\
+            \underset{\substack{\T{Risposte reali} \\ \T{coincidenti}}}{\Rightarrow} &\lambda_1 = \lambda_2 = \lambda = - \alpha
+        \end{align*}
+        \[i(t) = \left(A+Bt\right)e^{\lambda t} = \left(A+Bt\right)e^{-\alpha t}\]
+        Utilizziamo le condizioni iniziali
+        \begin{align*}
+            i(t=0^-) &= i(t=0^+) = 0\\
+            &\Rightarrow i(0) = A = 0
+        \end{align*}
+        \begin{align*}
+            v_C(t=0^-) &= v_C(t=0^+) = V_{C0} & \frac{di}{dt} \bigg|_0 &= \left(-\alpha(Bt)e^{-\alpha t} + Be^{- \alpha t}\right)\big|_0\\
+            &\Rightarrow E - Ri(0) - L\frac{di}{dt} - V_{C0} = 0 & &= B = \frac{E-V_{C0}}{L} \\
+            &\Rightarrow \frac{di}{dt} \bigg|_0 = \frac{E-V_{C0}}{L}\\
+        \end{align*}
+        \textbf{Smorzamento critico:}
+        \[i(t) = \frac{E-V_{C0}}{L}t \cdot e^{- \alpha t}\]
+        \begin{center}
+            \includegraphics[scale=0.3]{Image/RLC_3.png}
+        \end{center}
+
+        \item $\Delta < 0$
+        \begin{align*}
+            \alpha^2 &< \omega^2_0 \\
+            &\Rightarrow \alpha < \omega_0
+        \end{align*}
+        \begin{align*}
+            \lambda_1 &= -\alpha + \sqrt{\alpha^2-\omega_0^2} & \lambda_2 &= -\alpha - \sqrt{\alpha^2-\omega_0^2} \\
+            &= - \alpha + \sqrt{-\underbrace{(\omega_0^2 -\alpha^2)}_{\substack{\T{Pulsazione}\\\T{nat. smorzata}}}} & &=- \alpha - j \omega_d\\
+            &= - \alpha + j \omega_d
+        \end{align*}
+        \[i(t) = \frac{E-V_{C0}}{2Lj \omega_d} \left(e^{j \omega_d t} - e^{-j \omega_d t}\right)e^{-\alpha t}\]
+        Utilizziamo le formule di eulero:
+        \begin{align*}
+            e^{j \theta} &= \cos \theta + j \sin \theta\\
+            e^{-j \theta} &= \cos \theta - j \sin \theta
+        \end{align*}
+        \[i(t) = \frac{E-V_{C0}}{\cancel{2}L\cancel{j} \omega_d} \cancel{j} \cancel{2} \sin (\omega_d t) e^{-\alpha t}\]
+        \textbf{Risposta sottosmorzata:}
+        \[i(t) = \frac{E-V_{C0}}{L \omega_d}  \sin (\omega_d t) e^{-\alpha t}\]
+        \begin{center}
+            \includegraphics[scale=0.25]{Image/RLC_4.png}
+        \end{center}
+    \end{itemize}
+
+
+\subsection{Esercizi in regime transitorio}
+Risolvere un'equazione differenziale di ordine superiore al secondo è complesso; in questi casi si usa il \textbf{metodo per ispezione}.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Es_0_Trans.png}
+\end{center}
+Siamo interessati a 
+\begin{itemize}
+    \item $t=0^-$: istante immediatamente prima che si instauri il transitorio
+    \item $t=0^+$: istante immediatamente dopo l'instaurasi del transitorio
+    \item $t=\infty$: regime
+\end{itemize}
+
+
+\subsubsection{Esercizio 1}
+\begin{center}
+    \includegraphics[scale=0.35]{Image/Es_1_Trans_1.png}
+\end{center}
+\begin{align*}
+    R_1 &= 100 \Omega\\
+    C_1 &= 100 F\\
+    E_1 &= 10V\\
+\end{align*}
+T si chiude a $t=0$; il condensatore è inizialmente scarico.
+\vspace*{0.1cm}\\
+Dobbiamo trovare:
+\begin{itemize}
+    \item $P_{E_1,max}$ e $t_{P_E, max}$
+    \item $P_{E_1}(t=\infty)$
+    \item $t_{P_E^*}$ e $P_E^* = \dfrac{1}{2}P_{E,max}$
+\end{itemize}
+\[P_{E_1} = E_1 \cdot i_1\]
+\begin{align*}
+    t=0^- &: v_C(t=0^-) = 0V\\
+    t=0^+ &: v_C(t=0^+) = v_C(t=0^-) = 0V\\
+    t= \infty &: v_C(t = \infty) = E_1 = 10V
+\end{align*}
+Ricordiamo la formula trovata dal confronto tra circuito RC e RL:
+\[x(t) = \left(X_0-X_{\infty}\right)e^{-t/\tau} + X_{\infty}\]
+\begin{align*}
+    v_C(t) &= (0-10)e^{-t/\tau} + 10V \\
+    &= 10\left(1 - e^{-t/\tau}\right)
+\end{align*}
 
 
 
