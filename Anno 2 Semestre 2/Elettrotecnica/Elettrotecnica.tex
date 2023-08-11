@@ -1,9 +1,10 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment, animate, scalerel}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
+\usetikzlibrary{positioning}
 
 \begin{comment}
 code to write section, subsection and subsubsection title in a specific color
@@ -66,6 +67,8 @@ bracketsstyle=\color{red}
 
 %Commands
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Varepsilon}{\mathcal{E}}
+\newcommand{\rad}{\text{rad}}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\cc}[1]{\mathcal{#1}}
 \newcommand{ \lognormal }{\text{Lognormal} }
@@ -1495,9 +1498,9 @@ Calcoliamo $i_3$:
 \subsubsection{Condensatore}
 \textbf{Condensatore lineare}
 \begin{align*}
-    C&=\frac{Q}{\Delta V} & C &= \varepsilon \cdot \frac{S}{d}
+    C&=\frac{Q}{\Delta V} & C &= \mathcal{E} \cdot \frac{S}{d}
 \end{align*}
-dove $C$ è la capacità in farad,  $\varepsilon$ la permittività elettrica assoluta dell'isolante in farad su metro, $S$ la superficie delle due armature in metri quadrati e $d$ la distanza fra le armature in metri. 
+dove $C$ è la capacità in farad,  $\mathcal{E}$ la permittività elettrica assoluta dell'isolante in farad su metro, $S$ la superficie delle due armature in metri quadrati e $d$ la distanza fra le armature in metri. 
 \vspace*{0.2cm}\\
 \textbf{Energia immagazzinata}
 \begin{align*}
@@ -1525,6 +1528,11 @@ L'energia immagazzinata da un condensatore è uguale al lavoro $W$; $U$ è l'ene
     B = \mu  \frac{N}{l}  I
 \]
 
+Una cosa importantissima da tenere a mente sono i circuiti equivalenti di conduttore e induttore in regime stazionario:
+\begin{center}
+    \includegraphics[scale=0.2]{Image/Es_4_Trans_1.png}
+\end{center}
+
 
 
 \subsection{Introduzione}
@@ -1544,7 +1552,7 @@ Per \textbf{induttori e condensatori} il legame è integro-differenziale, viene 
 \vspace*{0.2cm}\\
 \begin{align*}
     &\text{Induttore} & \text{Condensatore}\\
-    &\varepsilon = \frac{1}{2} L \cdot I^2 & \varepsilon = \frac{1}{2}C \cdot V^2
+    &\mathcal{E} = \frac{1}{2} L \cdot I^2 & \mathcal{E} = \frac{1}{2}C \cdot V^2
 \end{align*}
 Per l'induttore la variabile di stato è la corrente, mentre per il condensatore la variabile di stato è la tensione.
 \vspace*{0.2cm}\\
@@ -1616,7 +1624,7 @@ variazione istantanea della corrente è nulla. L'energia immagazzinata da un ele
 \begin{center}
 \begin{tabular}{m{7cm} m{7cm}}
     Induttore & Condensatore\\
-    $\varepsilon = \dfrac{1}{2} L \cdot I^2$ & $\varepsilon = \dfrac{1}{2}C \cdot V^2 = \dfrac{1}{2}\dfrac{Q^2}{C}$\\
+    $\mathcal{E} = \dfrac{1}{2} L \cdot I^2$ & $\mathcal{E} = \dfrac{1}{2}C \cdot V^2 = \dfrac{1}{2}\dfrac{Q^2}{C}$\\
     Nell'induttore variazioni istantanee di $i$ non sono possibili & Nel condensatore variazioni istantanee di $V$ e $Q$ non sono possibili
 \end{tabular}
 \end{center}
@@ -1937,7 +1945,7 @@ Siamo interessati a
 \end{itemize}
 
 
-\subsubsection{Esercizio 1}
+\subsubsection{Esercizio 1: Circuito RC}
 \begin{center}
     \includegraphics[scale=0.35]{Image/Es_1_Trans_1.png}
 \end{center}
@@ -1950,7 +1958,7 @@ T si chiude a $t=0$; il condensatore è inizialmente scarico.
 \vspace*{0.1cm}\\
 Dobbiamo trovare:
 \begin{itemize}
-    \item $P_{E_1,max}$ e $t_{P_E, max}$
+    \item $P_{E_1,max}$ e $t_{P_{E_1}, max}$
     \item $P_{E_1}(t=\infty)$
     \item $t_{P_E^*}$ e $P_E^* = \dfrac{1}{2}P_{E,max}$
 \end{itemize}
@@ -1963,9 +1971,1167 @@ Dobbiamo trovare:
 Ricordiamo la formula trovata dal confronto tra circuito RC e RL:
 \[x(t) = \left(X_0-X_{\infty}\right)e^{-t/\tau} + X_{\infty}\]
 \begin{align*}
-    v_C(t) &= (0-10)e^{-t/\tau} + 10V \\
-    &= 10\left(1 - e^{-t/\tau}\right)
+    v_C(t) &= (0-10)e^{-t/\tau} + 10V & i_C &= C\frac{dv_c}{dt} & \tau &= R_1C \\
+    &= 10\left(1 - e^{-t/\tau}\right) & &=C \frac{d}{dt}\left[10 \left(1-e^{-t/\tau}\right)\right] & &=10ms\\
+    & & &=C\cdot 10 \cdot \frac{1}{\tau} \cdot e^{-t/\tau}\\
+    & & &=\frac{10}{R} e^{-t/\tau}\\
+    & & &=0,1 e^{-t/\tau} [A]
 \end{align*}
+\begin{center}
+    \includegraphics[scale=0.35]{Image/Es_1_Trans_2.png}
+\end{center}
+La corrente ha il suo massimo in $t=0$, dopo diminuisce in maniera esponenziale $\Rightarrow I_{1,max} = 0,1 A$
+\begin{align*}
+    P_{E_1,max} &= E_1 \cdot I_{1,max} & t_{P_{E_1}, max} = 0 \\
+    &=10 V \cdot 0,1 A \\
+    &=1 W
+\end{align*}
+\begin{align*}
+    P_{E_1}(t=\infty) &= E_1 \cdot I_1(t=\infty)\\
+    &=10V \cdot 0A\\
+    &=0
+\end{align*}
+\begin{align*}
+    P_{\delta_1} &= E_1 \cdot i_C & e^{-t_{P^*_\delta}/\tau} &=0,5 & t_{P^*_\delta} &=-RC \ln(0,5) \\
+    &= E_1 \cdot  0,1 e^{-t_{P_\delta}/\tau} & &\Rightarrow -\frac{t_{P^*_\delta}}{RC} = \ln(0,5) & &=RC(0,69)\\
+    &= \frac{P_{\delta_1, max}}{2}  & & & &=0,01\cdot(0,69) \\
+    &=0,5W &  & & &=6,9ms
+\end{align*}
+
+
+\subsubsection{Esercizio 2: Circuito RL}
+\begin{center}
+    \includegraphics[scale=0.4]{Image/Es_2_Trans_0.png}
+\end{center}
+\begin{align*}
+    &E_1 = 12V\\
+    &R_1 = R_2 = 10 \Omega\\
+    &L = 0,5 H
+\end{align*}
+L'induttanza inizialmente è scarica; T si chiude in $t=0$.
+Bisogna trovare:
+\begin{enumerate}
+    \item $I_{E_1}(t=0^-)$
+    \item $I_{E_1}(t=\infty)$
+    \item Espressione analitica di $P_{E_1}$
+\end{enumerate}
+
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item $t=0^-$
+    \begin{center}
+        \includegraphics[scale=0.4]{Image/Es_2_Trans_1.png}
+    \end{center}
+    \begin{align*}
+        I_{E_1}(t=0^-) &=\frac{E_1}{R_1} \\
+        &=1,2A
+    \end{align*}
+    \item $t=\infty$
+    \begin{center}
+        \includegraphics[scale=0.4]{Image/Es_2_Trans_2.png}
+    \end{center}
+    \begin{align*}
+        I_{E_2}(t=\infty) &= \frac{E_1}{R_1//R_2} & i_L(t=\infty) &= \frac{E_1}{R_2}\\
+        &=\frac{12V}{5\Omega} & &=1,2A\\
+        &= 2,4 A
+    \end{align*}
+    \item $P_{E_1} = E_1 \cdot i_1 = E_1[i_{R_1}+i_L]$
+    \begin{center}
+        \includegraphics[scale=0.4]{Image/Es_2_Trans_3.png}
+    \end{center}
+    \begin{align*}
+        i_L(t) &= \left(I_{L,0} - I_{L,\infty}\right)e^{-t/\tau} + I_{L, \infty} & \tau &= \frac{L}{R} \\
+        &= (0-1,2)e^{-t/\tau} + 1,2 & &=\frac{0,5H}{10\Omega}\\
+        &=1,2(1-e^{-t/\tau}) & &=50ms
+    \end{align*}
+    \begin{align*}
+        P_{E_1} &= E_1 \left[\frac{E_1}{R_1}+1,2(1-e^{-t/\tau})\right]\\
+        &=12[1,2+1,2 - 1,2e^{-t/\tau}]\\
+        &= 12[2,4 - 1,2e^{-t/\tau}]\\
+        &=28,8 - 14,4 e^{-t/\tau} W
+    \end{align*}
+\end{enumerate}
+
+
+\subsubsection{Esercizio 3: Circuito RLC complesso}
+\begin{center}
+    \includegraphics[scale=0.26]{Image/Es_3_Trans_0.png}
+\end{center}
+\begin{align*}
+    &E_2=12V\\
+    &R_1=R_2=2\Omega\\
+    &R_3=R_4=4\Omega\\
+    &C_1=10\mu F\\
+    &L_1=2mH
+\end{align*}
+T si chiude in $t=0$.
+\vspace*{0.2cm}\\
+Bisogna trovare:
+\begin{enumerate}
+    \item $t=0^-:Q_{C_1}$
+    \item $t=0^+:i_{C_1}; \ \dfrac{di_L}{dt}$
+    \item $t=\infty:\mathcal{E}_{L_1}; \ \mathcal{E}_{C_1}$
+\end{enumerate}
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item $t=0^-$ siamo in regime stazionario, quindi $\dfrac{\partial}{\partial t}=0$
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Es_3_Trans_1.png}
+    \end{center}
+    \begin{align*}
+        i_{L_1}(t=0^-) &=\frac{E_2}{R_2+R_4} & v_{C_1} (t=0^-) &=R_4\cdot i_{L_1} \\
+        &= 2A & &=8V
+    \end{align*}
+    \begin{align*}
+        Q_{C_1}(t=0^-) &=C_1 \cdot v_{C_1}(t=0^-)\\
+        &=10\mu F \cdot 8V \\
+        &=8\cdot 10^{-5}C
+    \end{align*}
+    \item $t=0^+$
+    \begin{align*}
+        i_{L_1}(t=0^+) &= i_{L_1}(t=0^-) & v_{C_1}(t=0^+) &= v_{C_1}(t=0^-)\\
+        &=I_{L,0} & &=V_{C,0}\\
+        &=2A & &=8V
+    \end{align*}
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Es_3_Trans_2.png}
+    \end{center}
+    \begin{align*}
+       M1&:v_{R_1}+V_{C,0} - E_2 + v_{R_2}=0 & & & &R_1\cdot i_{C_1} + V_{C,0}-E_2+R_2\cdot i_{E_2}=0\\
+        M_2&:-v_{R_2}+E_2-v_{R_P}-v_L=0 & &\Rightarrow & & -R_2\cdot i_{E_2}+E_2-R_P\cdot I_{L,0}-v_L=0\\
+        LKC&:I_{L,0}+i_{C_1}-i_{E_2} & & & &
+        I_{L,0} + i_{C_1} - i_{E_2}=0 & &\Rightarrow & &i_{E_2} = I_{L,0}+i_{C_1}
+    \end{align*}
+    Sostituisco $i_{E_2}$ nella prima equazione
+    \begin{align*}
+        &R_1\cdot i_{C_1} + V_{C,0}-E_2+R_2\left(I_{L,0}+i_C\right)=0\\
+        \Rightarrow& i_{C_1}(R_1+R_2) = E_2-V_{C,0}-R_2I_{L,0}\\
+        \Rightarrow& i_{C_1} = \frac{E_2-V_{C,0}-R_2I_{L,0}}{R_1+R_2}\\
+        \Rightarrow& i_{C_1} = \frac{12V-8V-2 \cdot 2}{2\Omega+2\Omega}\\
+        \Rightarrow& i_{C_1}=0A
+    \end{align*}
+    Quindi $i_{E_2}=I_{L,0}$; sostituisco questo nell'equazione della seconda maglia
+    \begin{align*}
+        -R_2\cdot I_{L,0}+E_2-R_P\cdot I_{L,0}-v_L&=0\\
+        \Rightarrow v_L&=E_2-(R_2+R_P)I_{L,0}\\
+        &=4V
+    \end{align*}
+    Ricordando l'equazione differenziale del'induttore $v(t) = L \dfrac{di(t)}{dt}$, da essa si può calcolare la derivata della corrente $\dfrac{di(t)}{dt} = \dfrac{v(t)}{L}$
+    \begin{align*}
+        \frac{di_L}{dt}(t=0^+) &= \frac{v_L(t=0^+)}{L} \\
+        &=\frac{4V}{2\cdot 10^{-3}H}\\
+        &=2 \ kA/s
+    \end{align*}
+    \item $t = \infty$
+    \begin{center}
+        \includegraphics[scale=0.25]{Image/Es_3_Trans_3.png}
+    \end{center}
+    \begin{align*}
+        i_L(t=\infty) &= \frac{E_2}{R_2+R_P} & v_{C_1}(t=\infty) &= R_P\cdot i_L\\
+        &=3A & &=6V
+    \end{align*}
+    \begin{align*}
+        \mathcal{E}_L &= \frac{1}{2}LI^2 & \mathcal{E}_C&=\frac{1}{2}CV^2 \\
+        &=\frac{1}{2}\cdot 2 \times 10^{-3} \cdot(3)^2 & &=\frac{1}{2}\cdot 10 \times 10^{-6}\cdot(6)^2\\
+        &=9 \ mJ & &= 180 \ \mu J 
+    \end{align*}
+\end{enumerate}
+
+
+
+\subsubsection{Esercizio 4: Circuito RLC complesso}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Es_4_Trans_0.png}
+\end{center}
+T si chiude all'istante $t=0$.\\
+Dobbiamo calcolare 
+\begin{enumerate}
+    \item $t=0^-:\mathcal{E}_{C_2}$ 
+    \item $t=0^+: \dfrac{di_L}{dt}; \ P_{E_1}$
+    \item $t=\infty: \Varepsilon_{C_1}; \ \Varepsilon_{C_2}; \ \Varepsilon_{L}$
+\end{enumerate}
+Il generatore di tensione $E_1$ è costante, quindi abbiamo un regime stazionario.
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item $t=0^-$
+    Siccome T è aperto e siamo in un regime stazionario $\dfrac{\partial}{\partial t}=0$
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Es_4_Trans_1.png}
+    \end{center}
+    \begin{align*}
+        v_L &=L\frac{di}{dt} \underset{\frac{\partial}{\partial t}=0}{\Rightarrow}v_L=0 & i_C &= C \frac{dv_C}{dt} \underset{\frac{\partial}{\partial t}=0}{\Rightarrow} i_C=0
+    \end{align*}
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Es_4_Trans_2.png}
+    \end{center}
+    Come prima cosa calcoliamo le variabili di stato all'istante $t=0^-$:
+    \begin{align*}
+        v_{C_1}(t=0^-) &= 0V & i_L(t=0^-) &= \frac{E_1}{R_1+R_2} & v_{C_2}(t=0^-) &= v_{R_2} = R_2 \cdot i_L\\
+        & & & & &=E_1 \frac{R_2}{R_1+R_2}
+    \end{align*}
+    \[
+        \Varepsilon_{C_2} = \frac{1}{2}V_C^2=\frac{1}{2}C\left(E_1\frac{R_2}{R_1+R_2}\right)
+    \]
+    \item $t=0^+$
+    \begin{align*}
+        v_{C_1}(t=0^+)&=v_{C_1}(t=0^-) & v_{C_2}(t=0^+)&=v_{C_2}(t=0^-) & i_L(t=0^+)&=i_L(t=0^-)\\
+        &=0V & &=v_{C_2,0} & &=i_{L,0}\\
+        & & &=E_1\frac{R_2}{R_1+R_2} & &=\frac{E_1}{R_1+R_2}
+    \end{align*}
+    Manteniamo la convenzione dell'utilizzatore
+    \begin{center}
+        \includegraphics[scale=0.3]{Image/Es_4_Trans_3.png}
+        \includegraphics[scale=0.3]{Image/Es_4_Trans_4.png}
+    \end{center}
+    \begin{align*}
+        \frac{di_L}{dt}\Bigg|_{t=0^+} &= \frac{v_L}{L}\Bigg|_{t=0^+} & P_{E_1} &= E_1\cdot I_1 \\
+        &=\frac{v_{C_1,0}}{L} & &=E_1\left(\frac{E_1-v_{C_2,0}}{R_1}\right) \\
+        &=0
+    \end{align*}
+    \item $t=\infty$, siamo sempre in regime stazionario
+    \begin{center}
+        \includegraphics[scale=0.3]{Image/Es_4_Trans_6.png}
+    \end{center}
+    \begin{align*}
+        v_{C_1}(t=\infty) &= 0V & I_1 &= \frac{E_1}{R_1+R_P} \\ 
+        i_L(t=\infty) &=\frac{E_1}{R_1+R_P}\cdot \frac{R_3}{R_2+R_3} & i_L &=I_1 \frac{R_3}{R_2+R_P} \\
+        v_{C_2}(t=\infty) &= R_2\cdot i_L
+    \end{align*}
+    \begin{align*}
+        \Varepsilon_{C_1} &= \frac{1}{2}C_1V_{C_1}^2 & \Varepsilon_{C_2} &= \frac{1}{2}C_2V_{C_2}^2 & \Varepsilon_L &= \frac{1}{2}L\cdot I_L^2\\
+        &=\frac{1}{2}C_1(0)^2 & &=\frac{1}{2}C_2(R_2\cdot i_L)^2 [J] & &=\frac{1}{2}L\left(\frac{E_1}{R_1+R_P}\cdot \frac{R_3}{R_2+R_3}\right) [J]\\
+        &=0 \ J
+    \end{align*}
+    La R per la quale ho smorzamento critico è
+    \begin{align*}
+        \alpha &= \omega_0 \\
+        &\Rightarrow \frac{R}{2L} = \frac{1}{\sqrt{LC}}\\
+        &\Rightarrow R = \frac{2L}{\sqrt{LC}}
+    \end{align*}
+\end{enumerate}
+
+
+
+
+
+\section{Regime sinusoidale}
+\subsection{Introduzione}
+
+
+\subsubsection{Segnali periodici}
+Una grandezza temporale $a(t)$ si definisce periodica quando si ripete a ogni periodo $T$
+\[a(t)=a(t+nT) \tag*{$\forall t$}\]
+dove:
+\begin{itemize}
+    \item $T$ è il \textit{periodo}, in $[s]$;
+    \item $f=\dfrac{1}{T}$ è la \textit{frequenza}, in $\T{Hz}$ (numero di periodi nell'unità di tempo)
+    \item $A_m=\dfrac{1}{T}\bigintss_0^Ta(t)\ dt$ è il \textit{valore medio}
+    \item $A_{eff}=\sqrt{\dfrac{1}{T}\bigintss_0^Ta^2(t)\ dt}$
+\end{itemize}
+
+\subsection{Sinusoide}
+Si definisce come grandezza sinusoidale nel tempo quanto segue:
+\[a(t)=\hat{A} \cos(\omega t+\theta)\]
+dove:
+\begin{itemize}
+    \item $\hat A$ è l'\textit{ampiezza}, il massimo di $a(t)$, reale positivo;
+    \item $\omega$ è la \textit{frequenza angolare}, in $[s^{-1}]$, reale positivo;
+    \item $\theta$ è la \textit{fase}, in $[\rad]$;
+    \item $T = \dfrac{2\pi}{\omega}$ è il \textit{periodo}, in $[s]$;
+    \item $f=\dfrac{1}{T} = \dfrac{\omega}{2\pi}$ è la \textit{frequenza naturale}, in $[\T{Hz}]$;
+    \item $A_{eff} = \sqrt{\dfrac{1}{T}\bigintss_t^{t+T}\hat A^2\cos^2(\omega t + \theta)dt}=\dfrac{\hat A}{\sqrt{2}}=0,707 \hat A$ è il \textit{valore efficace}, o radice della media dei quadrati, in inglese \textit{root mean square}, abbreviato in RMS
+\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Regime_sinusoidale_0.png}
+\end{center}
+Usiamo il cappello ($\hat A$) per distinguere il valore di picco dal valore efficace.
+
+\subsubsection{Potenza media dissipata da una resistenza}
+\begin{align*}
+    p(t) &= R\cdot i^2(t) & i(t) &= \hat I \cos (\omega t + \alpha)
+\end{align*}
+la potenza media dissipata è
+\begin{align*}
+    <p(t)> &= \dfrac{1}{T} \int_0^T R \cdot i^2(t) \ dt\\
+    &=R\underbrace{\dfrac{1}{T} \int_0^T i^2(t) \ dt}_{I_{eff}^2}\\
+    &=RI_{eff}^2
+\end{align*}
+Una corrente DC di 1A comporta una potenza dissipata sul resistore pari a quella di una corrente sinusoidale id valore efficace pari a 1A.
+
+
+\subsubsection{Segnali isofrequenziali}
+Una sinusoide è completamente definita da 3 parametri:
+\begin{itemize}
+    \item valore massimo $\hat A$ o valore efficace $A_{eff} = \dfrac{\hat A}{\sqrt{2}}$;
+    \item pulsazione $\omega$ o frequenza $f$ o periodo $T$: $f=\dfrac{1}{T}; \ \omega=2\pi f$;
+    \item fase $\alpha$
+\end{itemize}
+\[
+    \begin{rcases}
+        a(t) = \hat A \cos(\omega t + \alpha)\\
+        b(t) = \hat B \cos(\omega t + \beta)
+    \end{rcases}
+    \substack{\T{Segnali}\\ \T{isofrequenziali}}
+\]
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Regime_sinusoidale_1.png}
+\end{center}
+Viene definito \textit{sfasamento} o \textit{differenza di fase}:
+\[
+    \phi = \alpha - \beta
+\]
+\begin{itemize}
+    \item $\phi = 0$: $a(t)$ e $b(t)$ sono \textbf{in fase}
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Regime_sinusoidale_2.png}
+    \end{center}
+    \item $\phi >0$:
+    \begin{itemize}
+        \item $a(t)$ è in \textbf{anticipo} rispetto a $b(t)$
+        \item $b(t)$ è \textbf{ritardo} rispetto a $a(t)$
+    \end{itemize}
+    \item $\phi <0$:
+    \begin{itemize}
+        \item $a(t)$ è in \textbf{ritardo} rispetto a $b(t)$
+        \item $b(t)$ è \textbf{anticipo} rispetto a $a(t)$
+    \end{itemize}
+    \item $\phi = \pm \pi$: $a(t)$ e $b(t)$ sono in \textbf{opposizione di fase}
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Regime_sinusoidale_3.png}
+    \end{center}
+    \item $\phi = \pm \dfrac{\pi}{2}$: $a(t)$ e $b(t)$ sono in \textbf{quadratura}
+    \begin{center}
+        \includegraphics[scale=0.2]{Image/Regime_sinusoidale_4.png}
+    \end{center}
+    nella figura $b(t)$ è in quadratura in ritardo
+\end{itemize}
+
+
+
+
+\subsection{Fasori}
+I \textit{fasori} rappresentano una grandezza sinusoidale tramite un numero complesso (un vettore)
+\textbf{Identità di Eulero:}
+\[
+    e^{jx} = \cos(x) + j\sin(x)
+\]
+l'espressione caratteristica di un fasore così diventa
+\[
+    a(t)=\hat A \cos(\omega t + \alpha) = \T{Re}\left[\hat A e^{j(\omega t + \alpha)}\right]
+\]
+l'argomento della parte reale è un vettore rotante nel piano complesso
+\begin{center}
+    \animategraphics[autoplay,loop,width=3cm]{12}{Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-}{0}{47}
+\end{center}
+Nella figura:
+\begin{itemize}
+    \item l'asse orizzontale della circonferenza è l'asse dei numeri \textit{immaginari}, l'asse verticale è l'asse dei numeri \textit{reali};
+    \item il grafico disegnato sopra è il nostro $a(t)$
+\end{itemize}
+
+Prendiamo dei fasori isofrequenziali:
+\begin{align*}
+    a_1&=\hat A_1\cos(\omega t + \alpha_1) & &\longleftrightarrow & \hat A_1 e^{j(\omega t + \alpha_1)} &= \hat A_1 \underline{e^{j \omega t}}e^{j \alpha_1}=\sqrt{2}A_{1,e} \cdot e^{j \omega t} \cdot e^{j \alpha_1}\\
+    a_2&=\hat A_2\cos(\omega t + \alpha_2) & &\longleftrightarrow & \hat A_2 e^{j(\omega t + \alpha_2)} &= \hat A_2 \underline{e^{j \omega t}}e^{j \alpha_2}=\sqrt{2}A_{2,e} \cdot e^{j \omega t} \cdot e^{j \alpha_2}\\
+    &...\\
+    &...\\
+    &...\\
+    a_n&=\hat A_n\cos(\omega t + \alpha_n) & &\longleftrightarrow & \hat A_n e^{j(\omega t + \alpha_n)} &= \hat A_n \underline{e^{j \omega t}}e^{j \alpha_n}=\sqrt{2}A_{n,e} \cdot e^{j \omega t} \cdot e^{j \alpha_n}
+\end{align*}
+Il valore sottolineato è chiamato \textbf{fattore rotante}.
+\vspace*{0.1cm}\\
+Tutti i vettori ruotano alla stessa pulsazione in senso antiorario nel piano complesso; un fasore può essere scritto nella forma
+\[
+    \vec A = A_e \cdot e^{j \alpha}
+\]
+\begin{itemize}
+    \item $\vec A$ è il vettore nel piano complesso
+    \item $A_e$ è il valore efficace
+    \item $\alpha$ è la fase iniziale
+\end{itemize}
+Il metodo fasoriale (?) vale per segnali isofrequenziali.
+\begin{center}
+    \includegraphics[scale=0.2]{Image/Regime_sinusoidale_5.png}
+\end{center}
+
+
+
+\subsection{Trasformata di Steinmetz}
+\[
+    S[a(t)] = \frac{\sqrt{2}}{T} \int_0^T a(t) e^{-j \omega t} \ dt
+\]
+siccome $a(t) = \hat A \cos(\omega t + \alpha)$
+\begin{align*}
+    S[a(t)] &= \frac{\sqrt{2}}{T} \int_0^T \hat A \cos(\omega t + \alpha)e^{-j \omega t} \ dt\\
+    &= \frac{\sqrt{2}}{T} \hat A \int_0^T \frac{e^{j(\omega t + \alpha)}+e^{-j(\omega t + \alpha)}}{2} e^{-j \omega t} \ dt\\
+    &=\frac{\sqrt{2}}{T} \frac{\hat A}{2} \int_0^T \left[e^{j(\omega t + \alpha)}+e^{-j(\omega t + \alpha)}\right]e^{-j \omega t} \ dt\\
+    &=\frac{\sqrt{2}}{T} \frac{\hat A}{2} \left[ \int_0^T e^{j \alpha} \ dt + \cancel{\int_0^T e^{-2j \omega t - j \alpha} \ dt} \right] \substack{\Longleftarrow \T{un fasore integrato su un} \\ \T{ periodo con } \omega \neq 0 \T{ vale 0}}\\
+    &=\frac{\hat A}{\sqrt{2}\cancel{T}} e^{j \alpha} \cancel{T}\\
+    &= \frac{\hat A}{\sqrt{2}}e^{j \alpha}\\
+    &=\underbrace{A_e \cdot e^{j \alpha}}_{\T{Fasore}}
+\end{align*}
+La \textit{trasformata di Steinmetz} associa a una grandezza nel dominio dei tempi una grandezza nel dominio fasoriale.
+\vspace*{0.2cm}\\
+La trasformata di Steinmetz è un operatore lineare:
+\[
+    S [m a(t) + n b(t) ] = m S[a(t)]+nS[b(t)]
+\]
+\[
+    S\left[\frac{da(t)}{dt}\right] = \frac{\sqrt{2}}{T} \int_0^T \frac{da(t)}{dt}e^{-j \omega t} \ dt
+\]
+integrando per parti:
+\begin{align*}
+    S\left[\frac{da(t)}{dt}\right] &= \frac{\sqrt{2}}{T} \left[\cancel{\left[a(t)e^{-j \omega t}\right]^T_0}- \int_0^T a(t) \cdot (-j \omega e^{-j \omega t}) \ dt\right] \\
+    &=\frac{\sqrt{2}}{T} \left[j \omega \int_0^T  a(t)e^{-j \omega t} \ dt\right] \\
+    &= j\omega \underbrace{\frac{\sqrt{2}}{T} \int_0^T a(t) e^{-j \omega t} \ dt}_{S[a(t)]}\\
+\end{align*}
+\[
+    S\left[\frac{da(t)}{dt}\right] = j \omega S[a(t)]
+\]
+$j \omega$ è lo sfasamento.
+
+
+\subsubsection{Operazioni sui numeri complessi}
+Un fasore può essere rappresentato un due modi:
+\begin{itemize}
+    \item rappresentazione cartesiana: $\underline{A} = A_R + j A_I$
+    \item rappresentazione polare: $\underline{A} = A_e \cdot e^{j \alpha}$
+\end{itemize}
+\begin{center}
+   \begin{tabular}{c|c}
+    Polare $\rightarrow$ Cartesiana & Cartesiana $\rightarrow$ Polare\\
+    $ Ae^{j \alpha} \longrightarrow 
+    \begin{cases}
+        A_R = A \cos(\alpha)\\
+        A_I = A \sin(\alpha)
+    \end{cases} $
+    &
+    $A_R+jA_I \longrightarrow 
+    \begin{cases}
+        A = \sqrt{A_R^2+A_I^2}\\
+        \alpha = \arctan \left(\dfrac{A_I}{A_R}\right)
+    \end{cases}$
+    \end{tabular} 
+\end{center}
+\begin{align*}
+    \underline{A} &= A_R+j A_I = Ae^{j \alpha} & \textbf{B} &= B_R + j B_I = Be^{j\beta}
+\end{align*}
+\textbf{Somma}
+\begin{align*}
+    \underline{C} &= \underline{A} + \underline{B}\\
+    &=A_R+jA_I + B_R + jB_I \\
+    &= \underbrace{(A_R+B_R)}_{C_R} + j\underbrace{(A_I+B_I)}_{C_I}\\
+\end{align*}
+\textbf{Prodotto}
+\begin{align*}
+    \underline{C} &= \underline{A} \cdot \underline{B}\\
+    &=A e^{j\alpha}\cdot Be^{j\beta}\\
+    &=\underbrace{A \cdot B}_{C} e^{j\underbrace{(\alpha + \beta)}_{\gamma}}
+\end{align*}
+\textbf{Rapporto}
+\begin{align*}
+    \underline{C} &= \frac{\underline{A}}{\underline{B}} \\
+    &= \frac{A e^{j \alpha}}{Be^{j \beta}}\\
+    &=\underbrace{\frac{A}{B}}_{C} e^{j\underbrace{(\alpha - \beta)}_{\gamma}}
+\end{align*}
+\textbf{Complesso coniugato}
+\vspace*{0.1cm}\\
+Se $\underline{A}=A_R+jA_I$ allora il suo complesso coniugato è
+\[
+    \underline{A}^* = A_R - jA_I = Ae^{-j \alpha}
+\]
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Complex_conjugate_picture.svg.png}
+\end{center}
+
+
+\subsection{Metodo simbolico}
+Utilizziamo Steinmetz sulle equazioni differenziali per ottenere delle equazioni algebriche:
+\begin{align*}
+    \T{LKT:}&\sum_{i=1}^m v_i(t)=0 & &\Longrightarrow & &\sum_{i=1}^m \underline{V_i}=0\\
+    \T{LKC:}&\sum_{i=1}^n i(t)=0 & &\Longrightarrow &  &\sum_{i=1}^m \underline{I_i}=0
+\end{align*}
+Possiamo scrivere ora le equazioni costitutive in \textbf{forma simbolica}:
+\begin{itemize}
+    \item resistore: 
+    \begin{align*}
+        v(t) &=R \cdot i(t) & S[v(t)] &= S[R \cdot i(t)] \\
+        S[v(t)] &= \underline{V} & &=R\cdot S[i(t)]\\
+        & & &=R \cdot \underline{I}\\
+    \end{align*}
+    \[\underline{V} = R \cdot \underline{I}\]
+    \item induttore:
+    \begin{align*}
+        v(t) &= L \frac{di}{dt} & S[v(t)] &= S\left[L \frac{di}{dt}\right] \\
+        S[v(t)] &= \underline{V} & &=L \cdot S\left[\frac{di}{dt}\right]\\
+        & & &=Lj \omega \cdot  S \left[i(t)\right]
+    \end{align*}
+    \[\underline{V}=j \omega L \underline{I}\]
+    \item condensatore:
+    \begin{align*}
+        i(t) &= C \frac{dv}{dt} &
+        \underbrace{S[i(t)]}_{\underline{I}} &= S\left[C \frac{dv}{dt}\right] & \underline{I} = j\omega C \underline{V} \Longrightarrow \underline{V} &= \frac{1}{j \omega C}\underline{I} \\
+        & & &=C \cdot S\left[\frac{dv}{dt}\right] & &= - \frac{j}{\omega C}\underline{I}\\
+        & & &= C \cdot S\left[j \omega \cdot v(t)\right]\\
+        & & &= j \omega C \underline{V}
+    \end{align*}
+    \[\underline{V} = - \frac{j}{\omega C}\underline{I}\]
+\end{itemize}
+Le equazioni simboliche di tensione e corrente sono:
+\[
+    e(t) = \sqrt{2}E \cos(\omega t + \alpha) \longrightarrow S[e(t)] = \underline{E}
+\]
+\[
+    i(t) = \sqrt{2} I \cos(\omega t + \beta) \longrightarrow S[i(t)] = \underline{I}
+\]
+
+
+\subsubsection{Impedenza e ammettenza - Legge di Ohm simbolica}
+Definiamo l'\textit{impedenza} $Z$
+\[
+    \underline{Z} = \frac{\underline{V}}{\underline{I}}
+\]
+Ad esempio se $\underline{V}=Ve^{j \alpha}$ e $\underline{I} = Ie^{j \beta}$:
+\[
+    \underline{Z} = \frac{Ve^{j \alpha}}{Ie^{j \beta}} = \underbrace{\frac{V}{I}}_{Z}e^{j\underbrace{(\alpha - \beta)}_{\phi}}
+\]
+$\phi$ è detto \textit{sfasamento}, cioè la differenza di fase tra tensione e corrente introdotta dal componente.
+\begin{itemize}
+    \item $\phi >0 \rightarrow \alpha_V > \alpha_I$, la tensione è in anticipo rispetto alla corrente
+    \item $\phi <0 \rightarrow \alpha_V < \alpha_I$, la tensione è in ritardo rispetto alla corrente
+\end{itemize}
+
+
+Definiamo l'\textit{ammettenza} $Y$
+\[
+    \underline{Y} = \frac{1}{\underline{Z}}
+\]
+Definiamo la \textit{legge di Ohm simbolica}
+\[
+    \underline{V} = Z\underline{I}
+\]
+
+\subsubsection*{Impedenze in serie}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Impedenza_serie.png}
+\end{center}
+\begin{align*}
+    \underline{V} &= \underline{V_1}+\underline{V_2}\\
+    &= \underline{Z}_1 \underline{I} + \underline{Z}_2 \underline{I}\\
+    &= \left(\underline{Z}_1+ \underline{Z}_2\right)\underline{I}
+\end{align*}
+\begin{align*}
+    \underline{Z}_1 &= Z_{R_1} + j Z_{I_1} & Z_{eq} &= \left(Z_{R_1}+Z_{R_2}\right) + j \left(Z_{I_1}+Z_{I_2}\right)\\
+    \underline{Z}_2 &= Z_{R_2} + j Z_{I_2}
+\end{align*}
+
+\subsubsection*{Impedenze in parallelo}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Impedenza-parallelo.png}
+\end{center}
+\begin{align*}
+    \underline{I} &= \underline{I}_1 + \underline{I}_2\\
+    &= \frac{\underline{V}}{\underline{Z}_1} + \frac{\underline{V}}{\underline{Z}_2} \\
+    &= \underbrace{\left(\frac{1}{\underline{Z}_1} + \frac{1}{\underline{Z}_2}\right)}_{\frac{1}{\underline{Z}_{eq}} = Y_{eq} } \underline{V}
+\end{align*}
+
+\subsubsection{Formule simboliche di resistore, induttore e condensatore}
+\begin{center}
+\begin{tabular}{c c c}
+    \includegraphics[scale=0.25]{Image/Fasori_1.png} & \includegraphics[scale=0.25]{Image/Fasori_2.png} & \includegraphics[scale=0.25]{Image/Fasori_3.png}\\
+    $\underline{V}=R \underline{I}$ &
+    $\underline{V}= j \omega L \underline{I}$ &
+    $\underline{V}=- \dfrac{j}{\omega C}\underline{I}$
+    \\
+    $\underline{Z}=R$ &
+    $\underline{Z}=j \omega L$ &
+    $\underline{Z}=\dfrac{1}{j \omega C}=-\dfrac{j}{\omega C}$
+    \\
+    $\underline{I}=\dfrac{\underline{V}}{\underline{Z}} = \dfrac{\underline{V}}{R}$ &
+    $\underline{I}=\dfrac{\underline{V}}{\underline{Z}} = \dfrac{\underline{V}}{j \omega L}$ &
+    $\underline{I}=\dfrac{\underline{V}}{\underline{Z}} = j \omega C \underline{V}$
+    \\
+    $I = \dfrac{V}{R}$ &
+    $I = \dfrac{V}{\omega L}$ &
+    $I = \omega C V$
+    \\
+    $\alpha_V=0, \ \phi = 0 \rightarrow \alpha_I=0$ &
+    $\alpha_V=0, \ \alpha_I=- \dfrac{\pi}{2}$ &
+    $\alpha_V=0, \ \alpha_I= \dfrac{\pi}{2}$
+    \\
+    \includegraphics[scale=0.25]{Image/Fasori_4.png}&
+    \includegraphics[scale=0.25]{Image/Fasori_5.png}&
+    \includegraphics[scale=0.25]{Image/Fasori_6.png}
+\end{tabular}
+\end{center}
+
+
+
+\subsubsection{Equazioni costitutive in forma simbolica}
+\subsubsection*{Resistore}
+\[
+    v(t)=R \cdot i(t) \overset{S[]}{\longrightarrow} \underline{V} = R \underline{I} \longrightarrow \underline{Z} = \frac{\underline{V}}{\underline{I}} = R
+\]
+\[
+    \begin{cases}
+        Z_R=R\\
+        Z_I=0
+    \end{cases}
+    \ \ \ \T{è solamente reale}
+\]
+\[
+    \begin{cases}
+        |Z|=R\\
+        \phi = 0
+    \end{cases}
+\]
+Supponiamo $\alpha_V=0$
+\begin{align*}
+    \phi &= \alpha_V - \alpha_I \\
+    &\Longrightarrow \alpha_I = - \phi = 0
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.22]{Image/Regime_sinusoidale_6.png}
+\end{center}
+
+\subsubsection*{Induttore}
+\[
+    v(t)=L \frac{di}{dt} \overset{S[]}{\longrightarrow} \underline{V} = j \omega L \underline{I} \longrightarrow \underline{Z} = \frac{\underline{V}}{\underline{I}} = j \omega L = \omega L e^{j \frac{\pi}{2}}
+\]
+\[
+    \begin{cases}
+        Z_R=0\\
+        Z_I=\omega L
+    \end{cases}
+    \ \ \ \T{è solamente immaginiaria}
+\]
+\[
+    \begin{cases}
+        |Z|=\omega L\\
+        \phi = \dfrac{\pi}{2}
+    \end{cases}
+\]
+Supponiamo $\alpha_V=0$
+\begin{align*}
+    \phi &= \alpha_V - \alpha_I \\
+    &\Longrightarrow \alpha_I = - \phi = -\frac{\pi}{2}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.22]{Image/Regime_sinusoidale_7.png}
+    \includegraphics[scale=0.22]{Image/Regime_sinusoidale_8.png}
+\end{center}
+
+\subsubsection*{Condensatore}
+\begin{align*}
+    i(t)=C \frac{dv}{dt} \overset{S[]}{\longrightarrow} \underline{I} = j \omega C \underline{V} \longrightarrow \underline{Z} = \frac{\underline{V}}{\underline{I}} &= \frac{1}{j \omega C}\\
+    &= -\frac{j}{\omega C} \\
+    &=\frac{1}{\omega C} \underbrace{e^{-j \pi}}_{\T{per il meno}} \overbrace{e^{j \frac{\pi}{2}}}^{\T{per la }j} \\
+    &= \frac{1}{\omega C}e^{-j \frac{\pi}{2}}
+\end{align*}
+\textbf{N.B.} lo stesso risultato si ottiene se si utilizzano le formule del passaggio da coordinate cartesiane a coordinate polari.
+\[
+    \begin{cases}
+        Z_R=0\\
+        Z_I= - \dfrac{1}{\omega C}
+    \end{cases}
+    \ \ \ \T{solo parte immaginaria negativa}
+\]
+\[
+    \begin{cases}
+        |Z|=\omega L\\
+        \phi = \dfrac{\pi}{2}
+    \end{cases}
+\]
+Supponiamo $\alpha_V=0$
+\begin{align*}
+    \phi &= \alpha_V - \alpha_I \\
+    &\Longrightarrow \alpha_I = - \phi = \frac{\pi}{2}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.22]{Image/Regime_sinusoidale_9.png}
+\end{center}
+\begin{align*}
+    \underline{Z} &= Z_R + jZ_I\\
+    &= R +j \underbrace{X}_{\T{Reattanza}}
+\end{align*}
+La \textit{reattanza può essere di due tipi}
+\begin{itemize}
+    \item \textit{reattanza induttiva}: $X_L=\omega L$\\
+    \item \textit{reattanza capacitiva}: $X_C= - \dfrac{1}{\omega C}$
+\end{itemize}
+$X = f(\omega)$ è la \textbf{risposta in frequenza}.
+
+
+\subsubsection{Il metodo}
+\begin{center}
+\begin{tabular}{c c c}
+    \fbox { \parbox {6cm} {Circuito in regime AC (a corrente alternata). Scriviamo le equazioni differenziali date da LKT,LKC ed equazioni costitutive}}
+    &
+    $\scaleto{\overset{S[ \ ]}{\longrightarrow}}{17pt}$
+    &
+    \fbox { \parbox {6cm} {Equazioni algebriche date da LKT, LKC ed equazioni costitutive in forma simbolica}}\\
+    $\scaleto{\big\downarrow\substack{\T{metodo} \\ \T{diretto}}}{17pt}$  & &
+    $\scaleto{\big\downarrow\substack{\T{metodo} \\ \T{simbolico}}}{17pt}$ 
+    \\
+    \fbox { \parbox {6cm} {Troviamo tensioni e correnti nel dominio dei tempi}} 
+    &
+    $\scaleto{\overset{S^{-1}[ \ ]}{\longleftarrow}}{17pt}$
+    &
+    \fbox { \parbox {6cm} {Troviamo tensioni e correnti in forma simbolica}} 
+    \\
+    Dominio dei tempi & & Dominio fasoriale
+\end{tabular}
+\end{center}
+
+
+
+\subsection{Potenza elettrica nel regime sinusoidale}
+
+\subsubsection{Potenza istantanea}
+La potenza istantanea è data da 
+\[
+    p(t) = v(t)i(t)    
+\]
+Assumendo $\alpha_V$ = 0, da cui $\alpha_I=- \phi$ si ha:
+\begin{align*}
+    v(t) &= V \cos(\omega t) & 
+    i(t) &= I \cos(\omega t - \phi)
+    \\
+    & &
+    &=I (\cos(\omega t)\cos(\phi) + \sin(\omega t)\sin(\phi))
+    \\
+    & &
+    &= I\cos(\omega t)\cos(\phi) + I\sin(\omega t)
+    \sin(\phi)
+    \\
+    & &
+    &= i_a(t) + i_r(t)
+\end{align*}
+dove 
+\begin{itemize}
+    \item $i_a(t)= I\cos(\omega t)\cos(\phi)$ è la \textbf{corrente attiva}, la componente in fase con la tensione
+    \item $i_r(t)=I\sin(\omega t) \sin(\phi)$ è la \textbf{corrente reattiva}, componente in quadratura rispetto alla tensione
+\end{itemize}
+\begin{align*}
+    p(t) &= v(t)i(t)
+    \\
+    &=v(t)i_a(t) + v(t)i_r(t)
+    \\
+    &=p_a(t) + p_r(t)
+\end{align*}
+dove
+\begin{itemize}
+    \item $p_a(t)= v(t)i_a(t)$ è la \textbf{potenza attiva istantanea}
+    \item $p_r(t)= v(t)i_r(t)$ è la \textbf{potenza reattiva istantanea}
+\end{itemize}
+\begin{align*}
+    p_a(t) &= v(t)i_a(t)
+    \\
+    &=V \cos(\omega t)I \cos(\omega t)\cos(\phi)
+    \\
+    &= VI\cos(\phi)\cos^2(\omega t)
+\end{align*}
+La \textbf{potenza istantanea attiva} $p_a(t)$ è dovuta
+alla componente attiva della corrente che è in
+fase con la tensione. La corrente attiva è
+quindi dovuta alla componente resistiva
+dell'elemento circuitale. La potenza
+istantanea attiva è sempre positiva. Quindi è
+una potenza che fluisce nell'elemento
+circuitale ed è dissipato dalla sua componente
+resistiva. Essa quindi viene utilizzata
+dall'elemento circuitale ed, in particolare ,dalla
+sua resistenza che costituisce un carico del
+circuito.
+\begin{align*}
+    p_r(t) &= v(t)i_r(t)
+    \\
+    &= V \cos(\omega t)I \sin(\omega t)\sin(\phi)
+    \\
+    &= \frac{1}{2}VI\sin(\phi)\sin(2\omega t)
+\end{align*}
+La \textbf{potenza istantanea reattiva} $p_r(t)$ è dovuta
+alla componente reattiva della corrente che è in
+quadratura con la tensione. La corrente reattiva
+è quindi dovuta alla reattanza dell'elemento circuitale. La potenza istantanea reattiva media è
+nulla. Quindi è una potenza che entra nell'elemento circuitale per un quarto di periodo $(T/4 =\pi/(2w))$ ed esce per il quarto di periodo successivo. È quindi una componente della potenza
+che non viene dissipata dagli elementi circuitali
+ma viene immagazzinata e poi rilasciata dagli
+elementi con memoria del circuito.
+
+\subsubsection{Potenza attiva}
+La \textbf{potenza attiva P} è definita come la media della potenza $p(t)$ sul periodo $T$
+\[P = \frac{1}{T} \int_{T_0}^{t_0+T}p(t') \ dt' = V_eI_e\cos(\phi)\]
+dove $V_e$ è la tensione efficace e $I_e$ è la corrente efficace; $\cos(\phi)$ è il \textbf{fattore di potenza}.
+
+\subsubsection{Potenza reattiva}
+La \textbf{potenza reattiva} $Q$ è definita come
+\begin{align*}
+    Q &= \left[p_r(t)\right]_{max} \cdot \T{sgn}(\phi)
+    \\
+    &=\frac{1}{2}VI\sin(\phi)
+    \\
+    &=V_eI_e \sin(\phi)
+\end{align*}
+dove $\phi$ è l'angolo di sfasamento fra tensione e corrente. $Q$ quindi è il valore massimo della potenza scambiata dagli elementi circuitali con memoria nel circuito.\\
+$Q$ può essere positivo o negativo a seconda del segno di j. Per un carico induttivo $Q$ è positivo, per un carico capacitivo $Q$ è negativo.\\
+Nel Sistema SI delle Unità $Q$ è misurato in volt-ampere reattivi [VAR].
+
+\subsubsection{Potenza complessa}
+La potenza complessa $\dot N$ è definita come:
+\[\dot N = \frac{1}{2} \dot V \dot I^* = \dot V_e \dot I_e^*\]
+dove $\dot I^*$ è il complesso coniugato del fasore $\dot I$
+\begin{align*}
+    \dot I =& I e^{j \alpha}
+    \\
+    &\Longrightarrow \dot I^* = I e^{-j \alpha}
+\end{align*}
+\begin{align*}
+    \dot N &= \dot V_e \dot I_e^*\\
+    &=V_ee^{j\alpha_v}I_e e^{-j \alpha_i} \\
+    &=V_eI_e e^{j(\alpha_v-\alpha_i)}\\
+    &=V_eI_e e^{j\phi}\\
+    &= V_eI_e \cos(\phi) + jV_eI_e\sin(\phi)\\
+    &= P+jQ
+\end{align*}
+inoltre poiché $\dot V_e=\dot Z \dot I_e$
+\begin{align*}
+    P+jQ=\dot N &= \dot V_e \dot I_e^*\\
+    &=\dot Z \dot I_e\dot I_e^*\\
+    &=\dot Z I_e^2\\
+    &=(R+jX)I_e^2\\
+    &=\underbrace{RI_e^2}_{P}+j\underbrace{XI_e^2}_{Q}
+\end{align*}
+\begin{align*}
+    P &= RI_e^2 & Q &= XI_e^2
+\end{align*}
+
+\subsubsection{Formule notevoli}
+\begin{align*}
+    \dot N &= \frac{1}{2} \dot V \dot I^*
+    &
+    P &= \frac{1}{2}VI \cos(\phi)
+    & 
+    Q &= \frac{1}{2} VI \sin(\phi)
+    \\
+    &= P+jQ
+    &
+    &= V_eI_e \cos(\phi)
+    &
+    &=V_eI_e \sin(\phi)
+    \\
+    &=RI_e^2 + j XI_e^2
+    &
+    &= \frac{1}{2}RI^2
+    &
+    &= \frac{1}{2}XI^2
+    \\
+    & &
+    &= RI_e^2
+    &
+    &= XI_e^2
+\end{align*}
+
+\subsubsection{Potenza apparente}
+La potenza apparente $N$ è definita come:
+\[N = \frac{1}{2}VI=V_eI_e\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Esercizi}
+\subsubsection{Esercizio 1}
+\begin{center}
+    \includegraphics[scale=0.26]{Image/Es_Regime_Sinusoiudale_1.png}
+\end{center}
+\begin{align*}
+    e(t) &= \sqrt{2} \cdot 230 \cdot \sin(\omega t + 30^o)\\
+    f &= 50 Hz\\
+    R_! &= 0,1 \Omega & R_2&=5,2 \Omega\\
+    L_1 &= 0,64 mH & L_2 &= 12 mH\\
+    C_1 &= 180 \mu F
+\end{align*}
+
+Bisogna trovare:
+\begin{itemize}
+    \item le correnti in ogni ramo
+    \item $v_C(t)$
+\end{itemize}
+
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item Passiamo da dominio nei tempi a dominio fasoriale
+    \begin{center}
+        \includegraphics[scale=0.26]{Image/Es_Regime_Sinusoiudale_1_1.png}
+    \end{center}
+    Ricordando che $S[a(t)]=A_e \cdot e^{j \alpha}$ e che $e(t) = \sqrt{2} E \cos(\omega t + \alpha)$
+    \[\underline{E}=230 \cdot e^{j \alpha}\]
+    e $\omega = 2 \pi f = 314,26 \ rad/s$.
+    \vspace*{0.1cm}\\
+    Calcoliamo le impedenze:
+    \begin{align*}
+        \underline{Z}_{R_1} &= R_1 & 
+        \underline{Z}_{L_1} &= j X_{L_1}&
+        \underline{Z}_C &= j X_C\\
+        &=0,1 \Omega & &=j \omega L_1 & &=-\frac{j}{\omega C}
+        \\
+        & & 
+        &= j \cdot 314,16 \cdot 0,64 \times 10^{-3} &
+        &= - j 17,66 \ \Omega
+        \\
+        & & 
+        &= j 0,2 \ \Omega
+    \end{align*}
+    \begin{align*}
+        \underline{Z}_{R_2} &= R_2 &
+        \underline{Z}_{L_2} &= jX_{L_2}
+        \\
+        &= 5,2 \ \Omega & &= j \omega L_2
+        \\
+        & &
+        &=j \cdot 314,16 \cdot 1,2 \times 10^{-3}
+        \\
+        & &
+        &= j \ 3,77 \ \Omega
+    \end{align*}
+    \begin{center}
+        \includegraphics[scale=0.26]{Image/Es_Regime_Sinusoiudale_1_2.png}
+    \end{center}
+    \begin{align*}
+        \underline{Z}_1 &= \underline{Z}_{R_1} + \underline{Z}_{L_1} &
+        \underline{Z}_2 &= \underline{Z}_{R_2} + \underline{Z}_{L_2} &
+        \underline{Z}_3 &= \underline{Z}_C
+        \\
+        &=0,1 +j \ 0,2 \ [\Omega] &
+        &= 5,2 + j \ 3,77 \ [\Omega] &
+        &= - j\ 17,66 \ [\Omega]
+    \end{align*}
+    \item Risolviamo il circuito (nel dominio fasoriale)
+    \vspace*{0.2cm}\\
+    Applichiamo Millman:
+    \begin{align*}
+        \underline{V}_C &= \frac{\dfrac{\underline{E}}{\underline{Z}_1}}{\dfrac{1}{\underline{Z}_1} + \dfrac{1}{\underline{Z}_2} + \dfrac{1}{\underline{Z}_3}} \\
+        &=197,68 + j \ 108,58 \ [V]\\
+        \substack{\T{passaggio da coo.} \\ \T{cartesiane a polari}} \Longrightarrow&=\underbrace{225,53}_{E} \ \underbrace{\boxed{28,78 ^o}}_{\alpha} \ [V]
+    \end{align*}
+    \begin{align*}
+        \underline{I}_C &= \frac{\underline{V}_C}{\underline{Z}_3} &
+        \underline{I}_L &= \frac{\underline{V}_C}{\underline{Z}_2}
+        \\
+        &= 12,76 \ \boxed{118,78^o} \ [A] &
+        &= 35,11 \ \boxed{-7,16^o} \ [A]
+    \end{align*}
+    \begin{align*}
+        \T{LKC:} \ \underline{I}_e &= \underline{I}_C + \underline{I}_L\\
+        &=29,49 \ \boxed{13,34^o}
+    \end{align*}
+    \item Passaggio da dominio fasoriale a dominio nei tempi
+    \vspace*{0.2cm}\\
+    Applico \textit{l'antitrasformata} $S^{-1}[ \ ]$ ai fasori trovati
+    \begin{align*}
+        \underline{V}_C &= \underbrace{225,53}_{E} \ \underbrace{\boxed{28,78 ^o}}_{\alpha} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        v_C(t) &=\sqrt{2} \cdot 225,53 \cdot \sin(\omega t + 28,78 ^o)
+        \\
+        \underline{I}_C &= \underbrace{12,76}_{I_C} \ \underbrace{\boxed{118,78 ^o}}_{\alpha} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_C(t) &= \sqrt{2} \cdot 12,76 \cdot \sin(\omega t + 118,78 ^o)\\
+        \underline{I}_L &= 35,11 \ \boxed{-7,16^o} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_L(t) &= \sqrt{2} \cdot 35,11 \cdot \sin(\omega t + -7,16 ^o)
+        \\
+        \underline{I}_e &= 29,49 \ \boxed{13,34^o} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_e(t) &= \sqrt{2} \cdot 28,49 \cdot \sin(\omega t + 13,34 ^o)
+    \end{align*}
+\end{enumerate}
+
+
+\subsubsection{Esercizio 2}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Es_Regime_Sinusoiudale_2.png}
+\end{center}
+\begin{align*}
+    e(t) &= \sqrt{2} \cdot 10 \cdot \cos \left(\omega t + \frac{\pi}{2}\right)\\
+    R_1 &= 2 \ \Omega & R_2 &= 1 \ \Omega \\
+    L_1 &= 1 \ mH & C_1 &= 500 \ \mu F\\
+    \omega &= 10^3 \ rad/s 
+\end{align*}
+Bisogna trovare:
+\begin{itemize}
+    \item $i_1(t)$
+    \item $i_2(t)$
+    \item $i_3(t)$
+\end{itemize}
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item Passiamo da dominio nei tempi a dominio fasoriale
+    \begin{center}
+        \includegraphics[scale=0.26]{Image/Es_Regime_Sinusoiudale_2_1.png}
+    \end{center}
+    Ricordando che $S[a(t)]=A_e \cdot e^{j \alpha}$ e che $e(t) = \sqrt{2} E \cos(\omega t + \alpha)$
+    \[\underline{E}=10 \cdot e^{j \frac{\pi}{2}}\]
+    Calcoliamo le impedenze:
+    \begin{align*}
+        \underline{Z}_{R_1} &= R_1 & 
+        \underline{Z}_{L} &= j X_{L_1}&
+        \underline{Z}_C &= j X_{C_1} &
+        \underline{Z}_{R_2} &= R_2
+        \\
+        &=2 \Omega & 
+        &=j \omega L_1 & 
+        &=-\frac{j}{\omega C} &
+        &= 1 \ \Omega
+        \\
+        & & 
+        &= j \cdot 10^3 \cdot 10^{-3} &
+        &= - j \frac{1}{10^3 \cdot 500 \times 10^{-6}} 
+        \\
+        & & 
+        &= j &
+        &= -j \cdot 2
+    \end{align*}
+    \begin{center}
+        \includegraphics[width=0.23\textwidth]{Image/Es_Regime_Sinusoiudale_2_2.png}
+    \end{center}
+    \leavevmode
+    \begin{align*}
+        \underline{Z}_{1} &= \underline{Z}_R + \underline{Z}_L &
+        \underline{Z}_{2} &= \underline{Z}_{R_2} // \underline{Z}_C
+        \\
+        &= 2 + j &
+        &= \frac{\underline{Z}_{R_2} \cdot \underline{Z}_C}{\underline{Z}_{R_2} + \underline{Z}_C}
+        \\
+        & &
+        &=\frac{1 \cdot (-2j)}{1 -2j}
+        \\
+        & &
+        &= -\frac{2j}{1-2j} \cdot \frac{1+2j}{1+2j}
+        \\
+        & &
+        &=-2j \cdot \frac{1+2j}{1+4}
+        \\
+        & &
+        &=-\frac{2j-4}{5}
+        \\
+        & &
+        &= \frac{4}{5} - j \frac{2}{5}
+        \\
+        & & 
+        &= 0,8 -0,4j
+    \end{align*}
+    \begin{align*}
+        \underline{I}_1 &= \frac{\underline{E}}{\underline{Z}_1+\underline{Z}_2} &
+        \underline{I}_2 &= \underline{I}_1 \cdot \frac{\underline{Z}_C}{\underline{Z}_{R_1}+\underline{Z}_{R_2}} &
+        \underline{I}_3&= \underline{I}_1 \cdot \frac{\underline{Z}_{R_2}}{\underline{Z}_{R_2}+\underline{Z}_C}
+        \\
+        &=\frac{\underline{E}}{2,8+0,6j} &
+        &= 1.95 + 2,44j &
+        &= -1,22 + 0,92j
+        \\
+        &=\frac{10j}{2,8+0,6j} &
+        &=3,12 \ \boxed{51,34^o} &
+        &= 1,56 \ \boxed{141^o}
+        \\
+        &=0,73 + 3,41j
+        \\
+        &=3,49 \ \boxed{77,9 ^o}
+    \end{align*}
+    
+    \item Passaggio da dominio fasoriale a dominio nei tempi
+    \vspace*{0.2cm}\\
+    Applico \textit{l'antitrasformata} $S^{-1}[ \ ]$ ai fasori trovati
+    \begin{align*}
+        \underline{I}_1 &= \underbrace{3,49}_{I_1} \ \underbrace{\boxed{77,9 ^o}}_{\alpha} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_1(t) &= \sqrt{2} \cdot 3,49 \cdot \sin(\omega t + 77,9 ^o)
+        \\
+        \underline{I}_2 &= 3,12 \ \boxed{51,34^o} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_2(t) &= \sqrt{2} \cdot 3,12 \cdot \sin(\omega t + 51,34 ^o)
+        \\
+        \underline{I}_3 &= 1,56 \ \boxed{141^o} &
+        &\underset{S^{-1} [\ ]}{\Longrightarrow} &
+        i_3(t) &= \sqrt{2} \cdot 1,56 \cdot \sin(\omega t + 141 ^o)
+    \end{align*}
+\end{enumerate}
+
+
+\subsubsection{Esercizio sulle potenze}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Es_Regime_Sinusoidale_Potenze.png}
+\end{center}
+\begin{align*}
+    V &= 400 \ V & L &= 0,3 \ H
+    \\
+    R_1 &= 50 \ \Omega & R_2 &= 20 \ \Omega 
+    \\
+    C &= 30 \ \mu F & f &= 50 \ Hz \\
+    & & \omega &= 2 \pi f = 314,16 \ rad/s 
+\end{align*}
+Dobbiamo calcolare la potenza generata da $\underline{E}$
+\begin{enumerate}
+    \item Calcolo $\underline{I}$
+    \[\underline{I} = \frac{\underline{V}}{\underline{Z}_{eq}}\]
+    \begin{align*}
+        \underline{Z}_{eq} &= \frac{R_1\cdot (jX_C)}{R_1 + (jX_C)} & 
+        \underline{I} &= \frac{400}{41-19j}
+        \\
+        &= \frac{-R_1\cdot \left(j \dfrac{1}{\omega C}\right)}{R_1+j \left(- \dfrac{1}{\omega C}\right)} &
+        &=8,03 + 3,72j \ A
+        \\
+        &= - \frac{50\left(j\dfrac{1}{314,16 \cdot 30 \times 10^{-6}}\right)}{50 - j\dfrac{1}{314,16 \cdot 30 \times 10^{-6}}}
+        \\
+        & = 41 - 19j \ \Omega
+    \end{align*}
+    \item Calcolo $\underline{E}$
+    \begin{align*}
+        \underline{Z}_2 &= R_2 +jX_L &
+        \underline{E} &= \underline{V} + \underline{Z}_2 \cdot \underline{I}
+        \\
+        &= R_2 +j \omega L &
+        &= 400 + (20 + 94,2j)\cdot (8,03+3,72j)
+        \\
+        &= 20 + 94,2j \ \Omega &
+        &=210,18 + 830,83j \ V
+    \end{align*}
+    \item Calcolare $\underline{N}$ (potenza)
+    \begin{align*}
+        \underline{N} &= \underline{E} \cdot \underline{I}
+    \end{align*}
+\end{enumerate}
+
+
+
+
+
+
+\section{Risposta in frequenza}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
