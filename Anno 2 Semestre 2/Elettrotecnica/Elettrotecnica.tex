@@ -2832,20 +2832,43 @@ inoltre poiché $\dot V_e=\dot Z \dot I_e$
 \subsubsection{Potenza apparente}
 La potenza apparente $N$ è definita come:
 \[N = \frac{1}{2}VI=V_eI_e\]
+Nel sistema di unità SI la potenza apparente è misurata in volt-ampere [VA].\\
+Dalla definizione di P e di N risulta:
+\begin{align*}
+    P &= N \cos(\phi) & N &= \frac{P}{\cos(\phi)}
+\end{align*}
+Poiché $P$ è la componente della potenza utilizzata ed N riporta i volt-ampere
+che devono essere forniti alla rete dal generatore, le espressioni prodotte
+mettono in risalto l'importanza del fattore di potenza $\cos(\phi)$ che deve essere il
+più vicino possibile all'unità e l'angolo sfasamento $j$ il più ridotto possibile.
 
 
+\subsubsection{Additività delle potenze}
+Per un circuito, indipendentemente dal fatto che le impedenze siano collegate in serie o in parallelo, o siano presenti entrambi i collegamenti, la potenza totale fornita dal/dai generatore/i è uguale alla somma delle potenze utilizzate dai singoli $r$ elementi circuitali passivi
+\[\dot N = \sum_{k=1}^r\dot N_k\]
 
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection{Fattore di potenza}
+Il fattore di potenza $\cos(\phi)$, con $\phi = \alpha_v-\alpha_i$, angolo di sfasamento fra
+tensione e corrente, determina il rapporto fra potenza attiva, componente della potenza utilizzata, e potenza apparente, definita dal prodotto dei valori efficaci di corrente e tensione che devono essere forniti dai generatori.\\
+È necessario che il fattore di potenza sia il più possibile vicino all'unità e perciò che l'angolo di sfasamento sia il più piccolo possibile (molte compagnie elettriche fanno pagare per il $\cos(\phi) < 0,9$ corrispondente a $\phi > 25,8^o$)
+\begin{align*}
+    P &= V_eI_e \cos(\phi)=N \cos(\phi) & &\Longrightarrow & \cos(\phi) &= \frac{P}{V_eI_e} = \frac{P}{N}
+\end{align*}
+\[I_e = \frac{P}{V_e \cos(\phi)}\]
+fissati $P$ e $V_e$, se il $\cos(\phi)$ diminuisce $I_e$ e $N$ aumentano.
+\subsubsection*{Correzione dell'angolo di sfasamento}
+La maggior parte dei carichi sono induttivi e funzionano con un angolo di sfasamento $\phi$ positivo (corrente in ritardo sulla tensione).
+\begin{center}
+    \includegraphics[scale=0.26]{Image/Fattore_di_potenza_1.png}
+\end{center}
+\[
+    \begin{rcases}
+        P = V_eI_e \cos(\phi)\\
+        Q = V_eI_e \sin(\phi)
+    \end{rcases}
+    \Longrightarrow Q = P \tan(\phi)
+\]
+Per ridurre $\phi$ e portarlo a $\phi '$ ($\cos(\phi ')=0,9$) si pone un condensatore in parallelo con il circuito dell'utilizzatore. Il condensatore richiede una potenza reattiva negativa che compensa la potenza reattiva positiva dovuta alla reattanza di tipo induttivo dell'utilizzatore.
 
 
 
@@ -3119,6 +3142,338 @@ Dobbiamo calcolare la potenza generata da $\underline{E}$
 
 
 \section{Risposta in frequenza}
+Definiamo la \textbf{funzione di trasferimento} $\dot H(\omega)$
+\[\dot H(\omega) = \frac{\dot Y(\omega)}{\dot X(
+    \omega
+)}\]
+In relazione al tipo di ingresso e risposta (se corrente o tensione) si hanno quattro tipi di funzioni di trasferimento:
+\begin{itemize}
+    \item Guadagno di tensione
+     \[\dot \alpha(\omega)= \frac{\dot V_{out}}{\dot V_{in}}=\alpha(\omega) e^{j \phi}\]
+     \item Guadagno di corrente 
+     \[\dot \beta(\omega)= \frac{\dot I_{out}}{\dot I_{in}}=\beta(\omega) e^{j \phi}\]
+     \item Impedenza di trasferimento
+     \[\dot z(\omega)= \frac{\dot V_{out}}{\dot I_{in}}=Z(\omega) e^{j \phi}\]
+     \item Ammettenza di trasferimento
+     \[\dot y(\omega)= \frac{\dot I_{out}}{\dot V_{in}}=Y(\omega) e^{j \phi}\]
+\end{itemize}
+Dove $\alpha(w), \beta(w), Z(w) \T{ e } Y(w)$ sono le ampiezze delle funzioni di trasferimento e $\phi$ è lo sfasamento fra l'output e l'input.
+
+
+\subsection{Filtro passa-basso}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Passa-basso_1.png}
+\end{center}
+Nel circuito RC con funzione di \textit{filtro passa-basso}, a un segnali di ingresso $v_S(t)=V \cos(\omega t)$ il segnale di uscita è dato dalla tensione sul condensatore:
+\begin{align*}
+    \dot V_S = \dot V_{in} &= \left[R - j \frac{1}{\omega C}\right]\dot I & \dot V_{out} &= -j \frac{1}{\omega C} \dot I
+\end{align*}
+il guadagno di tensione è:
+\begin{align*}
+    \dot \alpha(\omega) &= \alpha(\omega) e^{j \phi}
+    \\
+    &=\frac{\dot V_{out}}{\dot V_{in}}
+    \\
+    &= \frac{-\frac{j}{\omega C}}{R -\frac{j}{\omega C}}
+    \\
+    &= \frac{1-j \frac{\omega}{\omega_0}}{1 + \left(\frac{\omega}{\omega_0}\right)^2}
+\end{align*}
+dove $\omega_0 = =\frac{1}{RC}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno sono:
+\begin{align*}
+    \alpha(\omega) &- \frac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} & \phi &= \tan^{-1}\left(- \frac{\omega}{\omega_0}\right)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Passa-basso_2.png}
+    \includegraphics[scale=0.27]{Image/Passa-basso_3.png}
+\end{center}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $\dfrac{\omega}{\omega_0}$
+        & 0 & 1 & 2 & 3 & 10 & 20 & 100\\
+        \hline
+        $\alpha$ & 1 & 0.71 & 0.45 & 0.32 & 0.1 & 0.05 & 0.01\\
+        \hline
+        $\phi$ & 0 & $-45^o$ & $-63^o$ & $-72^o$ & $-84^o$ & $-87^o$ & $-90^o$\\
+        \hline
+    \end{tabular}
+\end{center}
+Poiché questo filtro è di soli elementi passivi, il
+valore massimo del guadagno è pari all'unità.
+
+\subsubsection{Filtro passa-basso RL}
+Il filtro RL può assumere la funzione di filtro
+passa-basso, se $\dot V_{out}$ è la caduta di tensione sul resistore:
+\[\dot \alpha(\omega)=\frac{R}{R+j \omega L}\]
+
+
+
+\subsection{Filtro passa-alto}
+Nel circuito RL con funzione di filtro passa-alto, a un segnale di ingresso $v_S(t)=V \cos(\omega t)$ il sanale di uscita è dato dalla tensione dell'induttore:
+\begin{align*}
+    \dot V_S = \dot V_{in} &= \left[R + j \omega L\right]\dot I & \dot V_{out} &= j \omega L \dot I
+\end{align*}
+Il guadagno è:
+\begin{align*}
+    \dot \alpha(\omega) &= \alpha(\omega) e^{j \phi}
+    \\
+    &=\frac{\dot V_{out}}{\dot V_{in}}
+    \\
+    &= \frac{j \omega L}{R+j \omega L}
+    \\
+    &= \frac{j \frac{\omega}{\omega_0}}{1+j \frac{\omega}{\omega_0}}
+\end{align*}
+dove $\omega_0 = \frac{R}{L}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno del \textit{filtro RL passa-alto}, come visto, sono:
+\begin{align*}
+    \alpha(\omega) &= \frac{\frac{\omega}{\omega_0}}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} & \phi &= \tan^{-1} \frac{\omega_0}{\omega}
+\end{align*}
+Poiché questo filtro è di soli elementi passivi, il
+valore massimo del guadagno è pari all'unità.
+
+
+\subsubsection{Filtro passa-alto RC}
+Il filtro RC può assumere la funzione di filtro
+passa-alto, se $\dot V_{out}$ è la caduta di tensione sul resistore:
+\[\dot \alpha(\omega) = \frac{\dot V_{out}}{\dot V_{in}} = \frac{R}{R - \dfrac{j}{\omega C}}\]
+
+
+
+\subsection{Filtro passa-banda}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Passa-banda_1.png}
+\end{center}
+Nel circuito RLC con funzione di filtro passa-banda, ad un segnale di ingresso $v_S(t) = V \cos (\omega t)$ il segnale di uscita è dato dalla tensione sul resistore:
+\begin{align*}
+    \dot V_S &= \dot V_{in} = \left[R + j\left(\omega L - \dfrac{1}{\omega C}\right)\right] \dot I & \dot V_{out} = R \dot I
+\end{align*}
+Il guadagno è:
+\[\dot \alpha(\omega)=\alpha(\omega) e^{j \phi}=\frac{\dot V_{out}}{\dot V_{in}}=\frac{R}{R + j\left(\omega L - \dfrac{1}{\omega C}\right)}\]
+La frequenza di centro-banda è $\omega_0= \dfrac{1}{\sqrt{LC}}$. Si definiscono anche $\omega_1$ e $\omega_2$ frequenze di taglio limiti di banda. I segnali con frequenze $\omega_1<\omega<\omega_2$ sono lasciati passare, i segnali con $\omega < \omega_1$ e con $\omega > \omega_2$ sono fermati.
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Passa-banda_2.png}
+\end{center}
+
+
+
+\subsection{Filtro arresta banda}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Arresta-banda_1.png}
+\end{center}
+Nel circuito RLC con funzione di filtro arresta-banda, ad un segnale di ingresso $v_S(t) = V \cos(\omega t)$ il segnale di uscita è data dalla tensione sul resistore:
+\begin{align*}
+    \dot V_S &= \dot V_{in} = \left[R + j\left(\omega L - \dfrac{1}{\omega C}\right)\right] \dot I & \dot V_{out} = j \left(\omega L - \dfrac{1}{\omega C}\right) \dot I
+\end{align*}
+Il guadagno è:
+\[\dot \alpha(\omega)=\alpha(\omega) e^{j \phi}=\frac{\dot V_{out}}{\dot V_{in}}=\frac{j\left(\omega L - \dfrac{1}{\omega C}\right)}{R + j\left(\omega L - \dfrac{1}{\omega C}\right)}\]
+La frequenza di centro-banda è $\omega_0= \dfrac{1}{\sqrt{LC}}$. Si definiscono anche $\omega_1$ e $\omega_2$ frequenze di taglio limiti di banda. I segnali con frequenze $\omega_1<\omega<\omega_2$ non sono lasciati passare, i segnali con $\omega < \omega_1$ e con $\omega > \omega_2$ sono lasciati passare.
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Arresta-banda_2.png}
+\end{center}
+
+
+\subsection{Filtri ideali}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Filtri_ideali.png}
+\end{center}
+I \textbf{filtri passivi} sono costituiti solo da elementi passivi (R, L e C). Il loro guadagno non può essere maggiore di 1 in quanto gli elementi passivi non
+possono fornire energia alla rete. Essi per lo più richiedono elementi ingombranti e costosi; si comportano male alle basse frequenze.\\
+I \textbf{filtri attivi} contengono elementi attivi come transistori ed operazionali.
+
+
+
+
+
+
+\section{Sistemi trifase}
+\subsection{Introduzione}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Sistemi_trifase_1.png}
+\end{center}
+La generazione e la distribuzione di energia è in genere realizzata mediante \textit{sistemi trifase}. Questi sistemi sono costituiti da tre cavi conduttori collegati ad un alternatore (macchina elettrica che trasforma energia meccanica in energia elettrica), che può essere considerato composto da tre generatori indipendenti di tensione in regime alternato, con la stessa ampiezza della tensione, l'una sfasata rispetto all'altra di $120^o$.
+\begin{center}
+    \includegraphics[scale=0.26]{Image/Sistemi_trifase_2.png}
+\end{center}
+Frequenza e tensione efficace sono di 50 Hz, 314 rad/s e 230 - 400 V in Europa, buona parte dell'Asia ed in Australia, mentre sono di 60 Hz, 377 rad/s, 120 - 210 V in Nord America.
+\vspace*{0.2cm}\\
+Tre sono le motivazioni principali per l'utilizzo dei sistemi trifase:
+\begin{enumerate}
+    \item La maggior parte di energia elettrica è generata da macchine elettriche rotanti a tre fasi (alternatori)
+    \item Nei sistemi a tre fasi bilanciati la \textbf{potenza istantanea totale} è costante
+    nel tempo (le tre fasi si bilanciano nel tempo). Ciò si traduce in una trasmissione uniforme con meno vibrazioni lungo la linea
+    \item Per la stessa quantità di energia trasportata, un sistema a tre fasi è più
+    economico di uno singola fase
+\end{enumerate}
+
+
+
+\subsection{Correnti e tensioni nei sistemi trifase}
+Le correnti di linea $i_1(t)$, $i_2(t)$ e $i_3(t)$ sono le correnti che fluiscono in ciascuna delle tre linee. Dalla LKC segue che:
+\begin{align*}
+    i_1(t) + i_2(t)+i_3(t)&=0 & \dot I_1 + \dot I_2 + \dot I_3 &=0
+\end{align*}
+Le tensioni concatenate $v_{12}(t), v_{23}(t) \T{ e } v_{31}(t)$ sono le tensioni fra linea e linea. Dalla LKT segue:
+\begin{align*}
+    v_{12}(t) + v_{23}(t) + v_{31}(t) &= 0 & \dot V_{12} + \dot V_{23} + \dot V_{31} &= 0
+\end{align*}
+Anche per le tensioni di fase,$e_1 (t), e_2 (t) \T{ e } e_3(t)$, le tensioni fra il centro stella dei tre generatori e ciascuna linea, si ha:
+\begin{align*}
+    e_1 (t) + e_2 (t) + e_3(t) &= 0 & \dot E_1 + \dot E_2 + \dot E_3 &= 0
+\end{align*}
+Da questo se ne deduce che i fasori delle tensioni e delle correnti soddisfano le leggi di Kirchhoff. Nel piano complesso perciò sono rappresentati da
+triangoli: il triangolo delle tensioni concatenate, il triangolo delle tensioni di linea ed il triangolo
+delle correnti di linea. 
+
+
+\subsubsection{Sistema delle tensioni simmetrico}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Sistema_delle_tensioni_simmetrico.png}
+    \includegraphics[scale=0.3]{Image/Sistemi_trifase_2.png}
+\end{center}
+Le tensioni di fase $\dot E_1, \dot E_2 \T{ ed } \dot E_3$ sono collegate a stella tra un centro stella $n$ e i terminali 1,2 e 3. Le tensioni concatenate $\dot V_{12}, \dot V_{23} \T{ e } \dot V_{31}$ sono la differenza di potenziale trai terminali 1 e2, 2 e 3 e 3 e 1. Le relazioni tra esse, date dalla LKT, sono:
+\begin{align*}
+    \dot V_{12} &= \dot E_1 - \dot E_2\\
+    \dot V_{23} &= \dot E_2 - \dot E_3\\
+    \dot V_{31} &= \dot E3 - \dot E_1
+\end{align*} 
+Il nodo $n$ può essere un qualsiasi punto del piano
+complesso per il quale viene individuata una terna
+di tensioni di fase che soddisfa le tre relazioni
+precedenti per le stesse tre tensioni di linea. Pertanto ci sono $\infty ^2$ serie di tensioni di fase corrispondenti allo stessa terna di tensioni di linea.
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png}
+\end{center}
+
+
+\subsubsection{Sistema equilibrato delle correnti}
+\begin{center}
+    \includegraphics[scale=0.3]{Image/Sistema_equilibrato_delle_correnti.png}
+\end{center}
+
+
+\subsubsection{Sistema delle tensioni di linea e di fase simmetrico}
+Un sistema di tensioni di linea simmetrico con
+sequenza positiva ed il corrispondente sistema
+simmetrico di tensioni di fase, anch'esso con
+sequenza positiva sono:
+\begin{align*}
+    \dot V_{12} &= V
+    &
+    \dot V_{23} &= \dot \alpha^2 \dot V_{12}
+    &
+    \dot V_{31} &= \dot \alpha \dot V_{12}
+    \\
+    & &
+    &=V e^{-j 2 \pi /3}
+    &
+    &= V e^{j 2 \pi /3}
+    \\
+    & &
+    &= - \frac{V}{2} \left(1+j \sqrt{3}\right)
+    &
+    &= \frac{V}{2} \left(1+j \sqrt{3}\right)
+\end{align*}
+\begin{align*}
+    \dot E_1 &= E e^{-j \pi /6}
+    &
+    \dot E_2 &= E e^{-j \pi /6} e^{-j 2\pi /3}
+    &
+    \dot E_3 &= E e^{-j 4\pi /6} e^{-j 4\pi /3}
+    \\
+    & & 
+    &=E e^{-j 5\pi /6}
+    &
+    &= E e^{-j 9\pi /6}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Sistema_tensioni_linea_fase_simmetrico.png}
+\end{center}
+
+
+
+\subsection{Impedenze di carico}
+\subsubsection{Impedenze collegate a stella}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Impedenze_collegate_a_stella_1.png}
+\end{center}
+Ci sono $\infty^2$ serie di impedenze collegate a stella che inducono $\infty^2$ serie di tensioni di fase che possono essere collegate alla stessa serie di tensioni di linea.
+\begin{align*}
+    \dot V_{12} &= \dot Z_1 \dot I_1 - \dot Z_2 \dot I_2 & & 
+    &
+    \dot E_1 &= \dot Z_1 \dot I_1
+    \\
+    \dot V_{23} &= \dot Z_2 \dot I_2 - \dot Z_3 \dot I_3 & 
+    &\Longrightarrow 
+    &
+    \dot E_2 &= \dot Z_2 \dot I_2
+    \\
+    \dot I_1 &= \dot I_2 + \dot I_3 = 0
+    & &
+    &
+    \dot E_3 &= \dot Z_3 \dot I_3
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.24]{Image/Impedenze_collegate_a_stella_2.png}
+\end{center}
+
+
+\subsubsection{Impedenze collegate a triangolo}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Impedenze_collegate_a_triangolo_1.png}
+\end{center}
+\begin{align*}
+    \dot V_{12} &= \dot Z_{12} \dot I_{12} & & 
+    &
+    \dot I_1 &= \dot I_{12} - \dot I_{31}
+    \\
+    \dot V_{23} &= \dot Z_{23} \dot I_{23}
+    & 
+    &\Longrightarrow 
+    &
+    \dot I_2 &= \dot I_{23} - \dot I_{12}
+    \\
+    \dot  V_{31} &= \dot Z_{31} \dot I_{31}
+    & &
+    &
+    \dot I_3 &= \dot I_{31} - \dot I_{23}
+\end{align*}
+
+
+\subsubsection{Impedenze collegate a una rete trifase}
+\begin{center}
+    \begin{tabular}{c c}
+        Impedenze a stella connesse a una rete trifase & Impedenze a triangolo connesse a una rete trifase
+        \\
+        \includegraphics[scale=0.26]{Image/Impedenze_connesse_1.png}
+        &
+        \includegraphics[scale=0.26]{Image/Impedenze_connesse_2.png}
+    \end{tabular}
+\end{center}
+
+
+
+\subsection{Sistemi trifase bilanciati}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
