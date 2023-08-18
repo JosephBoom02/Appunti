@@ -1504,7 +1504,8 @@ dove $C$ è la capacità in farad,  $\mathcal{E}$ la permittività elettrica ass
 \vspace*{0.2cm}\\
 \textbf{Energia immagazzinata}
 \begin{align*}
-    dW &= V \ dq = \frac{q}{C} \ dq & U &= \frac{1}{2} CV^2 
+    dW &= V \ dq = \frac{q}{C} \ dq & U &= \frac{1}{2} CV^2 \\
+    W&={\frac {1}{2}}C\,V^{2}=U
 \end{align*}
 L'energia immagazzinata da un condensatore è uguale al lavoro $W$; $U$ è l'energia potenziale.
 \vspace*{0.2cm}\\
@@ -3329,7 +3330,7 @@ delle correnti di linea.
     \includegraphics[scale=0.3]{Image/Sistema_delle_tensioni_simmetrico.png}
     \includegraphics[scale=0.3]{Image/Sistemi_trifase_2.png}
 \end{center}
-Le tensioni di fase $\dot E_1, \dot E_2 \T{ ed } \dot E_3$ sono collegate a stella tra un centro stella $n$ e i terminali 1,2 e 3. Le tensioni concatenate $\dot V_{12}, \dot V_{23} \T{ e } \dot V_{31}$ sono la differenza di potenziale trai terminali 1 e2, 2 e 3 e 3 e 1. Le relazioni tra esse, date dalla LKT, sono:
+Le tensioni di fase $\dot E_1, \dot E_2 \T{ ed } \dot E_3$ sono collegate a stella tra un centro stella $n$ e i terminali 1,2 e 3. Le tensioni concatenate $\dot V_{12}, \dot V_{23} \T{ e } \dot V_{31}$ sono la differenza di potenziale trai terminali 1 e 2, 2 e 3 e 3 e 1. Le relazioni tra esse, date dalla LKT, sono:
 \begin{align*}
     \dot V_{12} &= \dot E_1 - \dot E_2\\
     \dot V_{23} &= \dot E_2 - \dot E_3\\
@@ -3441,7 +3442,7 @@ Ci sono $\infty^2$ serie di impedenze collegate a stella che inducono $\infty^2$
 \subsubsection{Impedenze collegate a una rete trifase}
 \begin{center}
     \begin{tabular}{c c}
-        Impedenze a stella connesse a una rete trifase & Impedenze a triangolo connesse a una rete trifase
+        \textbf{Impedenze a stella connesse a una rete trifase} & \textbf{Impedenze a triangolo connesse a una rete trifase}
         \\
         \includegraphics[scale=0.26]{Image/Impedenze_connesse_1.png}
         &
@@ -3452,6 +3453,600 @@ Ci sono $\infty^2$ serie di impedenze collegate a stella che inducono $\infty^2$
 
 
 \subsection{Sistemi trifase bilanciati}
+\subsection{Introduzione}
+Qualora si abbia un sistema di impedenze $\dot Z_1, \dot Z_2, \T{ e } \dot Z_3$ a stella o a
+triangolo uguali (cioè con uguale resistenza e uguale reattanza), il sistema è un \textbf{sistema di impedenze di carico bilanciato}.\\
+Qualora un sistema trifase simmetrico (con tensioni simmetriche) sia collegato ad un sistema di impedenze di carico bilanciato, il sistema
+delle correnti è equilibrato. Il sistema trifase con tensioni simmetriche e correnti equilibrate si definisce \textbf{sistema trifase bilanciato}.
+
+
+\subsection{Sistemi trifase con neutro}
+Un generatore trifase di un sistema
+simmetrico (un alternatore) equivale a tre
+generatori monofase collegati a stella che
+generano un sistema simmetrico di tensioni di
+fase con centro O. In un \textit{sistema trifase con
+neutro} il centro O della connessione a stella è
+collegato a una quarta linea. La relazione tra
+le tensioni di fase $E$, simmetriche, e le tensioni
+di linea $V$, anch'esse simmetriche, è:
+\[E = \frac{V}{\sqrt{3}}\]
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Sistemi_trifase_neutro_1.png}
+\end{center}
+Nel sistema trifase con neutro il triangolo
+delle correnti è sostituito da un quadrilatero
+delle correnti dato dall'equazione (LKC):
+\[\dot I_1 + \dot I_2 + \dot I_3 + \dot I_n =0\]
+La tensione di fase efficace $Ee = 230 V$ si ottiene per mezzo di un sistema simmetrico di tensioni di linea, con un valore efficace $V_e = 400 V$.
+\vspace*{0.2cm}\\
+In un sistema trifase senza neutro ci
+sono $\infty^2$ serie di tensioni di fase, indotte da sistemi di impedenze di carico non
+equilibrati. Le tensioni di fase sono ottenute dalla serie simmetrica di tensioni
+concatenate generata dall'alternatore.
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Sistemi_trifase_neutro_2.png}
+\end{center}
+Per avere sempre un sistema simmetrico di tensioni di fase, viene utilizzato il sistema trifase con neutro. Il conduttore detto "neutro" connette il centro dei tre generatori a stella (terna di generatori monofase equivalenti dell'alternatore) con il centro
+del sistema di carico a stella. In tal modo ciascuna fase delle tensioni di fase, generata da uno dei tre generatori equivalenti all'alternatore, alimenta una fase del sistema delle impedenze collegate a stella.
+\vspace*{0.2cm}\\
+In un sistema trifase simmetrico con una sequenza positiva le tensioni di fase sono:
+\begin{align*}
+    e_1(t) &= \sqrt{2} E \sin(\omega t) 
+    &
+    e_2(t) &= \sqrt{2} E \sin(\omega t - \frac{2 \pi}{3})
+    &
+    e_2(t) &= \sqrt{2} E \sin(\omega t - \frac{4 \pi}{3})
+\end{align*}
+dove $E$ è il valore efficace della tensione di fase con $E = \dfrac{V}{\sqrt{3}}$ ($V$ valore efficace della tensione della linea).
+
+\subsubsection{Potenza istantanea trifase}
+Con un carico a stella bilanciato, con le correnti della stella in ritardo di un angolo $\phi$ rispetto alle tensioni di fase si ha:
+\begin{align*}
+    i_1(t) &= \sqrt{2} I \sin\left(\omega t - \phi\right) 
+    &
+    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi - \frac{2 \pi}{3}\right)
+    &
+    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi - \frac{4 \pi}{3}\right)
+\end{align*}
+dove $I$ è il valore efficace delle correnti. La potenza istantanea totale assorbita dal carico allora è:
+\begin{align*}
+    p(t) &= e_1(t)i_1(t) + e_2(t)i_2(t) + e_3(t)i_3(t)
+    \\
+    &=2EI \left[\sin(\omega t) \sin(\omega t - \phi)+\sin \left(\omega t - \frac{2 \pi}{3}\right)\sin \left(\omega t - \phi - \frac{2 \pi}{3}\right)+\sin\left(\omega t - \frac{4 \pi}{3}\right)\sin\left(\omega t - \phi - \frac{4 \pi}{3}\right)\right]
+    \\
+    &= EI \left[3 \cos(\phi) - \cos(2 \omega t - \phi) - \cos \left(2 \omega t - \phi - \frac{4 \pi}{3}\right)-\cos\left(2 \omega t - \phi - \frac{8 \pi}{3}\right)\right]
+\end{align*}
+Le tre sinusoidi a pulsazione $2 \omega$ a ultimo membro costituiscono una terna simmetrica diretta ed hanno quindi so1nma nulla in ogni istante, sicché la potenza
+istantanea si riduce al solo addendo costante:
+\[p(t) = 3 EI \cos(\phi)\]
+Dunque la potenza istantanea in un sistema trifase simmetrico ed equilibrato è
+costante nel tempo, a differenza di quanto si verifica in un sistema monofase. Questa è una delle motivazioni principali per cui, per la generazione e la distribuzione della potenza elettrica in corrente alternata, vengono utilizzati sistemi trifase.
+
+
+\subsection{Differenze tra sistemi trifase bilanciati e non bilanciati}
+\subsubsection{Potenza attiva e potenza reattiva}
+La potenza attiva $P$ e la potenza reattiva $Q$ in un sistema trifase bilanciato,
+detti $E_e$, $V_e$ ed $I_e$ rispettivamente i valori efficaci delle tensioni di fase, delle
+tensioni di linea e delle correnti di linea, sono:
+\begin{align*}
+    P &= 3E_eI_e \cos(\phi) = \sqrt{3}V_eI_e \cos(\phi)
+    &
+    Q &= 3E_eI_e \sin(\phi) = \sqrt{3}V_eI_e \cos(\phi)
+\end{align*}
+Potenza apparente e potenza complessa sono:
+\begin{align*}
+    N &= \sqrt{P^2+Q^2} & \dot N &= P + jQ
+\end{align*}
+Il \textbf{fattore di potenza} è:
+\[
+    \cos(\phi) = \cos \left(\tan^{-1} \frac{Q}{P}\right)
+\]
+In un sistema non bilanciato l'angolo di sfasamento tra la tensione e la corrente linea solitamente è diverso per ogni fase. In questo caso il rifasamento (correzione dell'angolo di sfasamento) deve essere fatto per ogni singola fase.\\
+Per il sistema non bilanciato il fattore di potenza è:
+\[
+    \cos(\phi) = \cos \left(\tan^{-1} \frac{Q}{P}\right) = \frac{P}{\sqrt{P^2+Q^2}} = \frac{P}{Q}
+\]
+Per i sistemi bilanciati e non, la rotazione del sistema trifase di correnti di un angolo $\phi$ (arco-coseno del fattore di potenza) fa si che la potenza attiva assorbita dal circuito sia massimizzata.
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Potenza_sistemi_trifase_non_bilanciati_1.png}
+\end{center}
+
+
+
+
+
+
+\section{Circuiti e forze magnetiche}
+\subsection{Introduzione}
+Il campo magnetico $\mathbf{H}$ è definito dalla prima
+legge di Maxwell (L. Ampere):
+\[\oint_l \mathbf{H} \ dl = i_c\]
+dove $i_c$ è il flusso di $\mathbf{J}_t$ (corrente di conduzione e spostamento) attraverso una superficie con contorno $l$. il cui verso è determinato dalla regola della vite destrogira.\\
+In un filo conduttore rettilineo percorso
+dalla corrente i viene indotto un campo H
+le cui linee di flusso sono in piani normali al
+conduttore, circolari col conduttore al
+centro. 
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Legge di Faraday.png}
+    \includegraphics[scale=0.27]{Image/Campo magnetico.png}
+\end{center}
+
+
+\subsection{Dai campi ai circuiti magnetici}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Circuiti_magnetici_1.png}
+\end{center}
+Considerato il sistema toroidale di figura,
+il campo magnetico è indotto da un conduttore percorso dalla corrente i ed avvolto attorno al toro con $N$ spire. Il flusso della densità di corrente concatenato con l'asse interno al toro, di lunghezza $2 \pi r$, è $i_c = Ni$. Per le linee di flusso di $\mathbf{H}$ interne al toro, assunte parallele all'asse del toro, si ha:
+\begin{align*}
+    2 \pi r \mathbf{H} &= Ni & &\rightarrow & \mathbf{H} &= \frac{N i}{2 \pi r}
+\end{align*}
+Per un materiale lineare il campo di induzione magnetica B è proporzionale
+ad $H$ ($B = \mu H$). Nel caso in esame si ha:
+\begin{align*}
+    \frac{\mathbf{B}}{\mu} &= \frac{N i}{2 \pi r} & &\rightarrow & \mathbf{B} &= \frac{\mu N i}{2 \pi r}
+\end{align*}
+
+\subsubsection{Legge di Hopkinson}
+Il campo di induzione magnetica {\boldmath {$B$}} presenta notevoli \textit{analogie} con il campo di corrente di conduzione stazionaria $J$. Anzitutto, essendo entrambi i campi solenoidali, le loro linee vettoriali sono chiuse e danno luogo a tubi di flusso chiusi. Inoltre le linee vettoriali di entrambi i campi possono essere ben canalizzate utilizzando, nel caso di {\boldmath {$J$}}, materiali ad elevata conducibilità (conduttori) circondati da altri a bassissima conducibilità (isolanti), mentre, nel caso di {\boldmath {$B$}}, utilizzando materiali ad elevata permeabilità (\textit{ferromagnetici}) circondati da altri a bassa permeabilità (\textit{amagnetici}).\\
+In considerazione di tali analogie, come un campo di corrente solenoidale ben canalizzato costituisce un circuito elettrico (o rete elettrica), così un campo di induzione ben canalizzato è detto \textbf{circuito magnetico} (o rete magnetica). 
+\vspace*{0.1cm}\\
+Fra due sezioni $S$ trasversali 1 e 2 di un tubo di \textbf{flusso magnetico} $\Phi$, qualora fra 1 e 2 non vi siano correnti concatenate, si ha (con $\mathcal{T}$ tensione magnetica):
+\begin{align*}
+    \mathcal{T} &= \mathcal{T}_1 - \mathcal{T}_2
+    \\
+    &=\int_1^2 \mathbf{H} \ dl 
+    \\
+    &=\int_1^2 \frac{1}{\mu}\mathbf{B} \ dl 
+    \\
+    &=\int_1^2 \frac{\mathbf{B}S}{\mu S} \ dl 
+    \\
+    &=\Phi \int_1^2 \frac{1}{\mu S} \ dl
+    \\
+    &=\mathcal{R}\Phi
+\end{align*}
+dove, come nel caso elettrico, $\mathbf{H} = - \nabla \mathcal{T}$. Se si considera il circuito magnetico in figura, il circuito elettrico concatenato genera una forza magneto-motrice (f.m.m.), quindi $\mathcal{T}=Ni$. Si ottiene per il circuito magnetico la \textit{legge di Hopkinson}:
+\[Ni = \mathcal{R}\Phi\]
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Legge_di_Hopkinson.png}
+\end{center}
+dove la \textit{riluttanza} $\mathcal{R}$ per una lunghezza $l$ e una sezione trasversale $S$ del tubo è $\mathcal{R}= \dfrac{l}{S \mu}$.
+\vspace*{0.2cm}\\
+Possiamo quindi evidenziare le seguenti similitudini con i circuiti elettrici:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline 
+        \textbf{Legge di Ohm} & \textbf{Legge di Hopkinson}\\
+        \hline 
+        $V_s=Ri$ & $Ni = \mathcal{R}\Phi$\\
+        \hline 
+        $\underset{\T{f.e.m.}}{V_s}$  & $\underset{\T{f.m.m.}}{Ni}$\\
+        \hline
+        $\underset{\T{corrente elettrica}}{i}$ & $\underset{\T{flusso magnetico}}{\Phi}$ \\
+        \hline
+        $\underset{\T{resistenza}}{R}$ & $\underset{\T{riluttanza}}{\mathcal{R}}$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+
+\subsubsection{Differenze tra circuiti elettrici e circuiti magnetici}
+La principale differenza fra i circuiti elettrici ed i circuiti magnetici è dovuta alle caratteristiche dei materiali.\\
+Nel caso elettrico vi sono materiali isolanti e materiali conduttori con differenze di resistività elettrica dell'ordine di $10^{20}$. Nei materiali isolanti infatti il flusso di $\mathbf{J}_t$ può essere considerato nullo.\\
+Nel caso magnetico invece i materiali con elevata resistività magnetica non sono completamente isolanti magnetici, per questo sono sempre presenti dei \textbf{flussi magnetici dispersi} fuori dal circuito magnetico.
+
+
+
+\subsection{Circuiti magnetici nel dettaglio}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Circuiti_magnetici_dettaglio_1.png}
+\end{center}
+I materiali ferromagnetici usati nei circuiti magnetici sono ghisa, acciaio fuso e lamiera di acciaio.\\
+Questi materiali non sono lineari, ma sotto un valore critico $B <B_S$(con $B_S$ \textbf{campo di saturazione}) il materiale si può considerare lineare con elevati valori della permeabilità magnetica $\mu$ (bassa resistività magnetica). Di conseguenza anche la \textbf{permeabilità relativa} di questi materiali è elevata:
+\[
+    \mu_r >>1
+\]
+Per la determinazione della riluttanza magnetica nel caso in figura in alto essa viene ottenuta come somma delle riluttanze dei tronchi del circuito magnetico:
+\begin{align*}
+    \mathcal{R}_1 &= \frac{l_1}{S \mu} & \mathcal{R}_2 &= \frac{l_2}{S \mu} & \mathcal{R}_3 &= \frac{l_3}{S \mu}
+    \\
+    \mathcal{R}_4 &= \frac{l_4}{S \mu} &
+    \mathcal{R}_5 &= \frac{l_5}{S \mu} &
+    \mathcal{R}_{tf} &= \frac{\delta}{S \mu_0}
+\end{align*}
+Nel ferro $\mathcal{R}_{tr}>\mathcal{R}_1,\mathcal{R}_2,\mathcal{R}_3,\mathcal{R}_4,\mathcal{R}_5$, Quindi di solito le riluttanze dei rami ferromagnetici sono trascurate rispetto a quelle dei traferri (un traferro è un'interruzione dell'anello di materiale ferromagnetico).
+\vspace*{0.2cm}\\
+In un circuito magnetico si distinguono rami e nodi. $\Phi_k$ è il flusso magnetico del
+ramo $k$, $\mathcal{T}_k$ è la tensione magnetica del ramo (differenza di potenziale magnetico fra i capi del ramo), $\mathcal{R}_k$ è la riluttanza del ramo e $N_ki_k$ è la f.m.m., generatore indipendente di tensione magnetica del ramo ove $N_k$ è il numero di spire che avvolgono il ramo e $i_k$ è la corrente elettrica che scorre nell'avvolgimento.
+
+\subsubsection{Leggi di Kirchhoff per i circuiti megnetici e equazione di ramo magnetico}
+Dalla prima legge di Maxwell si ottiene la legge di Kirchhoff delle tensioni magnetiche LKT e per la solenoidalità di $\mathbf{B}$ si perviene alla legge di Kirchhoff dei flussi magnetici LKF. Inoltre per la legge di Hopkinson si ottiene l'equazione
+di ramo magnetico. In un circuito magnetico di r rami ed n nodi si ha quindi:
+\begin{align*}
+    \T{LKF:}& 
+    &
+    &\sum_{k=1}^n \Phi_k = 0
+    &
+    &\T{per } n-1 \T{ nodi}
+    \\
+    \T{LKT:}& 
+    &
+    &\sum_{k=1}^m \mathcal{T}_k = 0
+    &
+    &\T{per } r-n+1 \T{ maglie}
+    \\
+    \T{ER:}& 
+    &
+    &\mathcal{T}_k = \mathcal{R}_k \Phi_k - N_ki_k
+    &
+    &\T{per gli } r \T{ rami}
+\end{align*}
+Utilizzando il metodo di sostituzione delle tensioni si ha:
+\begin{align*}
+    \T{LKF:}& 
+    &
+    &\sum_{k=1}^n \Phi_k = 0
+    &
+    &\T{per } n-1 \T{ nodi}
+    \\
+    \T{LKT -ER:}& 
+    &
+    &\sum_{k=1}^m  \mathcal{R}_k \Phi_k - N_ki_k = 0
+    &
+    &\T{per } r-n+1 \T{ maglie}
+\end{align*}
+
+
+\subsection{Analisi di un circuito magnetico}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Analisi_circuito_magnetico_1.png}
+\end{center}
+Equazioni del sistema:
+\begin{align*}
+    N_1i_2 &= R_1 \Phi_1 + R_3\Phi_3 
+    &
+    N_2i_2 &= R_3\Phi_3
+    &
+    \Phi_1-\Phi_2-\Phi_3=0
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Induttori_accoppiati_1.png}
+\end{center}
+Il flusso magnetico $\Phi_{C1}$ concatenato con il circuito 1, è generato sia da $i_1$ che da $i_2$:
+\[\Phi_{C1} = \Phi_1(i_1) + \Phi_1(i_2)\]
+Per un induttore lineare tempo-invariante $\Phi_{C1}$ diviene:
+\[\Phi_{C1} = L_1i_1 + M_{12}i_2\]
+con $L_1$ auto-induttanza e $M_{12}$ mutua-induttanza. 
+\vspace*{0.2cm}\\
+Analogamente per flusso magnetico $\Phi_{C1}$ concatenato con il circuito 2,si ha:
+\begin{align*}
+    \Phi_{C2} &= \Phi_2(i_1) + \Phi_2(i_2)
+    &
+    \Phi_{C2} &= L_2i_2 + M_{21}i_1
+\end{align*}
+con $M_{12} = M_{21}$.
+\vspace*{0.2cm}\\
+Le componenti dei flussi del circuito sono:
+\begin{align*}
+    N_1\Phi_1(i_1) &= L_1i_1 & N_1\Phi_1(i_2) &= M_{12}i_2
+    \\
+    N_2\Phi_2(i_2) &= L_2i_2 & N_2\Phi_2(i_1) &= M_{21}i_1
+\end{align*}
+Per determinare $L-1$ e $M_{12}$ è necessario calcolare $\Phi_1(i_1)$ e $\Phi_1(i_2)$.\\
+Il contributo del flusso $\Phi_1(i_1)$ concatenato a $i_1$ e generato da $i_1$ è il valore di $\Phi_1$ quando la f.m.m. $N_1i_1$ è accesa e la f.m.m. $N_2i_2$ è spenta:
+\[L_1 = \frac{N_1\Phi_1(i_1)}{i_1}\]
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Analisi_circuito_magnetico_2.png}
+\end{center}
+nel nostro caso:
+\begin{align*}
+    \Phi_1(i_1) &= \underbrace{\frac{N_1i_1}{R_1}}_{Ni=\mathcal{R}\Phi} = \underbrace{\frac{L_1i_1}{N_1}}_{ N_1\Phi_1(i_1) = L_1i_1}
+    &
+    &\Longrightarrow
+    &
+    L_1 &= \frac{N_1^2}{R_1}
+\end{align*}
+Il contributo del flusso $\Phi_1(i_2)$ concatenato a $i_1$ e generato da $i_2$ è il valore di $\Phi_1$ quando la f.m.m. $N_1i_1$ è spenta e la f.m.m. $N_2i_2$ è accesa:
+\[M_{12}=\frac{N_1\Phi_1(i_2)}{i_2}\]
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Analisi_circuito_magnetico_3.png}
+\end{center}
+nel nostro caso:
+\begin{align*}
+    \Phi_1(i_1) &= -\frac{N_2i_2}{R_1} = \underbrace{\frac{M_{12}i_2}{N_1}}_{N_1\Phi_1(i_2)=M_{12}i_2}
+    &
+    &\Longrightarrow
+    &
+    M_{12} &= -\frac{N_1N_2}{R_1}
+\end{align*}
+
+
+
+\subsection{Energia magnetica}
+L'\textit{energia magnetica} $\Varepsilon_M$ è utilizzata per generare il flusso $\Phi$ per mezzo della corrente $i$ che scorre in un avvolgimento di $N$ spire attorno a $\Phi$ ($\Phi_C=N\Phi$).\\
+L'\textit{energia magnetica infinitesima} $d \Varepsilon_M$ assorbita dal campo magnetico
+all'aumento di $\Phi$ nell'intervallo di tempo $dt$ è:
+\begin{align*}
+    d \Varepsilon_M &= P_M \ dt \\
+    &=i \cdot v \ dt\\
+    &= i \frac{d \Phi_C}{dt} \ dt \\
+    &= i \cdot d \Phi_C
+\end{align*}
+dove $P_M$ è la potenza magnetica.\\
+All'istante $t$ l'energia accumulata dal campo magnetico quindi è:
+\begin{align*}
+    \Varepsilon_M(- \infty, t) &= \int_{-\infty}^t i \cdot v \ dt \\
+    &= \int_{-\infty}^t i \cdot d \Phi_C \\
+    \underset{\T{caso lineare }\Phi=L \cdot i}{\Longrightarrow} &= \int_{-\infty}^t i \ d(Li) \\
+    \underset{L \T{ costante}}{\Longrightarrow} &= \int_{-\infty}^t L \cdot i \ di \\
+    &= \frac{1}{2}L \cdot i^2
+\end{align*}
+
+
+\subsubsection{Energia magnetica di correnti concatenate}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Energia_magnetica_1.png}
+\end{center}
+L'\textit{energia magnetica infinitesima} $d\Varepsilon_M$ assorbita dal campo magnetico
+all'aumento di $\Phi$ prodotto dalle correnti $i_1$ e $i_2$ nell'intervallo di tempo $dt$ è:
+\begin{align*}
+    d\Varepsilon_M &= P_{M_1} \ dt + P_{M_2} \ dt \\
+    &= i_1 \cdot v_1 \ dt + i_2 \cdot v_2 \ dt \\
+    &=i_1 \ d\Phi_{C1} + i_2 \ d\Phi_{C2}
+\end{align*}
+All'istante $t$ l'energia accumulata dal campo
+magnetico quindi è:
+\begin{align*}
+    \Varepsilon_M(- \infty, t) &= \int_{-\infty}^t [i_1 \cdot v_1 + i_2 \cdot v_2] \ dt \\
+    &= \int_{-\infty}^t \left[i_1 \frac{d\Phi_{C1}}{dt} + i_2 \frac{d\Phi_{C2}}{dt}\right] \\
+    &= \int_{-\infty}^t \left[L_1i_1 \frac{di_1}{dt}+M_{12}i_1 \frac{di_2}{dt}+M_{12}i_2 \frac{di_1}{dt}+L_2i_2 \frac{di_2}{dt}\right] \ dt\\
+    &= \int_{-\infty}^t d \left[\frac{1}{2}L_1(i_1)^2 + M_{12}i_1i_2 + \frac{1}{2}L_2(i_2)^2\right]\\
+    &= \frac{1}{2}L_1i_1(t)^2 + M_{12}i_1(t)i_2(t) + \frac{1}{2}L_2i_2(t)^2
+\end{align*}
+
+
+\subsection{Isteresi magnetica}
+I materiali \textbf{ferromagnetici} sono caratterizzati dalla capacità di magnetizzarsi molto intensamente sotto l'azione di un campo magnetico esterno e di restare a lungo magnetizzati quando il campo si annulla, diventando così magneti. Invece i materiali \textbf{ferrimagnetici} sono caratterizzati da una magnetizzazione spontanea.
+\vspace*{0.1cm}\\
+I materiali ferromagnetici e ferrimagnetici per temperature inferiori alla temperatura di Curie hanno per la suscettività magnetica un comportamento \textbf{isteretico}. Perciò la relazione $\mathbf{B} = f(\mathbf{H})$ è una \textbf{funzione isterica}.\\
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Isteresi_magnetica_2.png}
+\end{center}
+Nella figura è raffigurato un \textbf{ciclo si isteresi:} dopo una \textit{curva di prima magnetizzazione}, al materiale vengono applicati il campo magnetico $\mathbf{H}_{max}$ e l'induzione magnetica $\mathbf{B}_{max}$; riducendo il campo magnetico fino ad annullarlo, l'induzione non si annulla, ma raggiunge il valore $\mathbf{B}_r$ (\textit{retentivity}, \textit{induzione residua}). Per ridurre ulteriormente l'induzione è necessario invertire il verso del campo magnetico, applicando valori di $\mathbf{H}<0$. L'induzione si annulla quando si raggiunge il valore $-\mathbf{H}_c$ (\textit{coercitivity, }, \textit{campo magnetico coercitivo}). Quando, aumentando ulteriormente il modulo di $\mathbf{H}$, si raggiungo il valore $-\mathbf{H}_{max}$, l' induzione assume il valore $-\mathbf{B}_{max}$. Se si fanno variare ciclicamente i due campi tra valori estremi opposti $\mathbf{H}_{max}$ e $-\mathbf{H}_{max}$, la curva $\mathbf{H},\mathbf{B}$ descrive un \textit{ciclo di isteresi simmetrico}.
+\vspace*{0.1cm}\\
+Si dimostra che la densità di energia dissipata per isteresi è data dall'area del ciclo di isteresi.
+
+
+\subsubsection{Materiali ferromagnetici e ferrimagnetici morbidi}
+\begin{center}
+    \includegraphics[scale=0.2]{Image/Isteresi_magnetica_3.png}
+\end{center}
+I materiali ferromagnetici (o ferrimagnetici)
+morbidi hanno alti valori di permeabilità magnetica e un piccolo campo coercitivo ($\mathbf{H}_c < 103 A/m$). Pertanto la superficie del ciclo di isteresi è piccola (quindi hanno delle perdite per isteresi ridotte).\\
+Questi materiali sono utilizzati per ridurre le
+correnti necessarie per produrre e controllare
+il flusso magnetico con perdite per isteresi con-
+tenute (nuclei elettromagnetici, nuclei di trasformatori, rotori e statori di macchine rotanti).\\
+Tipici materiali morbidi sono il ferro e le sue
+leghe di nichel, cobalto e silicio, acciaio a bas-
+so contenuto di carbonio e leghe di ferro dolce.
+
+
+\subsubsection{Materiali ferromagnetici e ferrimagnetici duri}
+\begin{center}
+    \includegraphics[scale=0.2]{Image/Isteresi_magnetica_4.png}
+\end{center}
+I materiali \textit{ferromagnetici} (o ferrimagnetici) \textit{duri} hanno un'alta
+densità di flusso magnetico residua ($\mathbf{B}r$) e un campo coercitivo elevato ($\mathbf{H}_c > 104 A/m$). Pertanto la superficie del ciclo di isteresi è grande (dunque hanno dele perdite per isteresi elevate).\\
+Questi materiali sono usati per realizzare magneti permanenti.\\
+I materiali utilizzati per loro sono leghe e
+terre rare con un grande campo coercitivo.
+
+
+
+
+\section{Trasformatore}
+\subsection{Introduzione}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Trasformatore_1.png}
+\end{center}
+Una \textbf{macchina elettrica} è costituita da due circuiti elettrici accoppiati da un flusso magnetico concatenato ad entrambi.\\
+Il flusso magnetico generato dalla corrente $i_1$, se varia nel tempo rispetto al circuito 2, induce in esso una tensione (f.e.m.) $v_2$ e quindi una corrente $i_2$. La corrente $i_2$, a sua volta, genera un flusso magnetico che interagisce con il flusso prodotto da $i_1$, con l'induzione di una forza fra i due campi: si realizza così la conversione della potenza elettrica in potenza meccanica.
+
+
+\subsection{Conversione elettromeccanica dell'energia}
+Si considerino $n$ circuiti che possono ruotare
+uno rispetto all'altro. Il circuito $j$ è percorso
+dalla corrente $i_j$ ha resistenza $R_j$, angolo di rotazione $\vartheta_j$ e flusso magnetico $\Phi_{C_j}$ concatenato al circuito
+\[\Phi_{C_j} = \Phi_{C_J}(i_k,\vartheta_k)\]
+Il flusso concatenato col circuito j è generato
+dalle correnti $i_1, i_2,..., i_n$. La f.e.m. indotta nel circuito $j$ è dovuta alla variazione nel tempo delle correnti $i_k$ ed alla variazione nel tempo della posizione di ogni circuito $k$
+rispetto al j-esimo.\\
+La variazione$d \Phi_{C_j}$ al variare delle correnti e delle posizioni reciproche dei circuiti è:
+\begin{align*}
+    d \Phi_{C_j} &= \sum_{k=1}^n \frac{\partial \Phi_{C_j}}{\partial i_k}d i_k + \sum_{k=1}^n \frac{\partial \Phi_{C_j}}{\partial \vartheta_k}d \vartheta_k
+    \\
+    &= \sum_{k=1}^n L_{jk} \ d i_k + \sum_{k=1}^n i_j \frac{\partial L_{jk}}{\partial \vartheta_k} d \vartheta_k i_k
+\end{align*}
+per $k=j$ è $L_{jk}=L_j$, per $k \neq j$ è $L_{jk} = M_{jk}$.\\
+La tensione indotta nel circuito $j$ perciò diviene:
+\[v_j = R_ji_j + \sum_{k=1}^n L_{jk} \ \frac{d i_k}{dt} +\underbrace{ \sum_{k=1}^n  i_k\frac{\partial L_{jk}}{\partial \vartheta_k} \omega_{jk}}_{k \neq j}\]
+dove $\omega_{jk}$ è la velocità di rotazione del circuito $k$ rispetto al circuito $j$.
+\vspace*{0.2cm}\\
+Considerando un sistema di due circuiti di materiale lineare con relative correnti, uno in moto con velocità angolare $\omega$ rispetto all'altro, si ha:
+\begin{align*}
+    d \Phi_{C_1} &- L_1 \ di_1 + M_{12}\ di_2 + i_2 \frac{\partial M_{12}}{\partial \vartheta} d \vartheta
+    &
+    d \Phi_{C_2} &- L_2 \ di_2 + M_{21} \ di_1 + i_1 \frac{\partial M_{21}}{\partial \vartheta} d \vartheta
+\end{align*}
+Le tensioni ai capi dei due circuiti sono:
+\begin{align*}
+    v_1 &= R_1i_1 + L_1 \frac{di_1}{dt} + M_{12} \frac{di_2}{dt} + i_2 \frac{\partial M_{12}}{d\vartheta} \omega
+    &
+    v_2 &= R_2i_2 + L_2 \frac{di_2}{dt} + M_{12} \frac{di_1}{dt} + i_1 \frac{\partial M_{12}}{d\vartheta} \omega
+\end{align*}
+Nell'espressione della tensione indotta dalla
+variazione del flusso magnetico concatenato
+coi circuiti 1 e 2 , si distinguono due meccanismi diversi che danno luogo alla f.e.m.:
+\begin{itemize}
+    \item le \textbf{f.e.m. trasformatoriche} indotte nel circuito e nel circuito 2
+    \begin{align*}
+        &L_1 \frac{di_1}{dt} + M_{12} \frac{di_2}{dt}
+        &
+        L_2 \frac{di_2}{dt} + M_{12} \frac{di_1}{dt}
+    \end{align*}
+    \item le \textbf{f.e.m. mozionali} indotte nel circuito 1 e nel circuito 2
+    \begin{align*}
+        &i_2 \frac{\partial M_{12}}{\partial \vartheta} \omega
+        &
+        &i_1 \frac{\partial M_{12}}{\partial \vartheta} \omega
+    \end{align*}
+\end{itemize}
+In un sistema di $n$ circuiti, la f.e.m. indotta nel circuito $j$ dalla variazione del flusso con esse concatenato è data da:
+\[\underbrace{\sum_{k=1}^n L_{jk} \frac{di_k}{dt}}_{\T{f.e.m. trasformatorica}}+ \underbrace{\sum_{k=1}^n i_k \frac{\partial L_{jk}}{\partial \vartheta_k}\omega_{jk}}_{\T{f.e.m. mozionale}}\]
+
+
+
+
+\subsection{Il trasformatore nel dettaglio}
+\subsubsection{Differenze con macchine elettriche}
+Prima di tutto evidenziamo le differenze tra trasformatore e macchine elettriche rotanti:
+\begin{itemize}
+    \item Nel trasformatore la velocità meccanica reciproca dei circuiti $\omega_m$ è nulla e le correnti $i_1$ e $i_2$ sono correnti sinusoidali
+    \item Nelle macchine elettriche rotanti la velocità meccanica reciproca dei circuiti $\omega_m$ è non nulla e le correnti variano in base al tipo di macchina:
+    \begin{itemize}
+        \item per \textbf{macchine asincrone} lo statore $i_1$ è trifase, il rotore $i_2$ è trifase
+        \item per \textbf{macchine sincrone} lo statore $i_1$ è trifase, il rotore $i_2$ è a corrente continua
+        \item per \textbf{macchine in corrente continua} lo statore $i_1$ e il rotore $i_2$ sono in corrente continua
+    \end{itemize}
+\end{itemize}
+
+
+\subsubsection{Struttura}
+\begin{center}
+    \includegraphics[scale=0.12]{Image/Trasformatore_2.png}
+\end{center}
+Il trasformatore consiste in due circuiti
+(primario e secondario) accoppiati
+magneticamente. I due circuiti sono fra
+loro immobili e la f.e.m. è indotta dalla
+variazione da correnti sinusoidali. In questo caso quindi la f.e.m. è trasformatorica.\\
+Le tensioni ai capi dei due circuiti sono:
+\begin{align*}
+    v_1 &= R_1i_1+ L_1 \frac{di_1}{dt} + M_{12} \frac{di_2}{dt} + \cancel{i_2 \frac{\partial M_{12}}{\partial \vartheta}\omega}
+    \\
+    v_2 &= R_2i_2+ L_2 \frac{di_2}{dt} + M_{12} \frac{di_1}{dt} + \cancel{i_1 \frac{\partial M_{12}}{\partial \vartheta}\omega}
+\end{align*}
+Se $i_1$ ed $i_2$ sono in un sistema isofrequenziale nello spazio delle fasi si ha:
+\begin{align*}
+     \mathbf{\dot V}_1 &= (R_1+ j \omega L_1)  \mathbf{\dot I}_1 + j \omega M_{12}   \mathbf{\dot I}_2
+     \\
+     \mathbf{\dot V}_2 &= (R_2+ j \omega L_2)  \mathbf{\dot I}_2 + j \omega M_{12}   \mathbf{\dot I}_1
+\end{align*}
+
+
+\subsubsection{Trasformatore ideale}
+Nell'ipotesi di trasformatore ideale i due circuiti si considerano \textbf{perfettamente accoppiati magneticamente}. Il flusso generato da un avvolgimento è completamente concatenato con l'altro, e si ritengono nulli i flussi dispersi. 
+Inoltre non vi sono perdite nel rame dei due
+avvolgimenti ($R_1 = R_2 = 0$) e nel ferro del circuito magnetico.\\
+Si definisce il \textbf{rapporto spire:}
+\[K=\frac{N_1}{N_2}\]
+dove $N_1$ ed $N_2$ sono il numero di spire degli avvolgimenti 1, primario, e 2, secondario. In un trasformatore ideale quindi per $V1$ e $V_2$ risulta:
+\begin{align*}
+    V_1 &= N_1 \frac{d \Phi}{dt} & 
+    V_2 &= N_2 \frac{d\Phi}{dt} &
+    &\Longrightarrow &
+    \frac{V_1}{V_2} &= \frac{N_1}{N_2} = K
+    \\
+    p_1 &= p_2 \Longrightarrow V_1 I_1 = V_2I_2 &
+    & &
+    &\Longrightarrow &
+    \frac{I_1}{I_2} &= \frac{N_2}{N_1}=\frac{1}{K}
+\end{align*}
+
+
+\subsection{Perdite energetiche}
+Le perdite nelle macchine elettriche sono di due tipologie:
+\begin{itemize}
+    \item \textbf{perdite nel rame:} queste perdite si verificano nei circuiti elettrici e sono perdite per effetto Ohm dovute alla resistenza elettrica dei circuiti, che è non-nulla;
+    \item \textbf{perdite nel ferro:} sono dovute a isteresi magnetica e correnti parassite.
+\end{itemize}
+
+
+\subsubsection{Perdite nel ferro}
+\subsubsection*{Perdite per isteresi}
+\begin{center}
+    \includegraphics[scale=0.24]{Image/Isteresi_ferro.png}
+\end{center}
+L'energia elettromagnetica $w_{\mathbf{B}}$ dissipata per unità di volume di ferro a causa dell'isteresi dipende dall'area del ciclo di isteresi $\mathbf{H}-\mathbf{B}$ ed è  proporzionale al numero di cicli per unità di tempo (alla frequenza $f$ ):
+\[w_{\mathbf{B}} = \mathbf{H} \times d \mathbf{B}\]
+Una formulazione semi-empirica afferma che la potenza dissipata per isteresi $P_{DH}$ è:
+\[
+    P_{DH} = k_H f B_{M}^\alpha
+\]
+$B_{M}$ è il valore massimo della induzione magnetica nel ciclo dell'isteresi, $k_\mathbf{H}$ è un coefficiente di proporzionalità, l'esponente $\alpha$ è circa 2.
+
+\subsubsection*{Perdite per correnti parassite}
+\begin{center}
+    \includegraphics[scale=0.24]{Image/Nucleo_ferro.png}
+\end{center}
+Nei nuclei in ferro, a causa della variazione nel
+tempo dell'induzione magnetica $\mathbf{B}$, vene indotta una f.e.m. perpendicolare a $\mathbf{B}$. Di  conseguenza, per l'elevata conduttività elettrica del ferro, vengono generate \textit{correnti parassite} nel ferro. Perciò viene dissipata energia elettromagnetica per effetto Joule.\\
+Assumendo il regime sinusoidale e, conseguente-
+mente un campo $\mathbf{B}(t) = \mathbf{B}_M \cos \omega t$ , detta $S$ la sezione di un tubo di flusso sul cui contorno si forma un circuito nel ferro per la corrente parassita e detta $R$ la
+resistenza del circuito in ferro, la potenza dissipata per correnti parassite $P_{DP}$ è
+data da:
+\[
+    P_{DP} =\frac{S^2\mathbf{B}_M^2 \omega^2}{2R} = k_H f^2 \mathbf{B}_M^2
+\]
+dove $k_H$ è un coefficiente di proporzionalità.\\
+Al fine di ridurre le perdite per correnti parassite vengono utilizzate per il nucleo leghe speciali (ad esempio ferro-silicio ad elevata resistività) e viene adottato il processo di
+\textbf{laminazione} con il nucleo in ferro sostituito da lamierini di ferro di ridotto spessore ($\delta \approx 1 \ mm$) fra loro isolati (vedi figura) per aumentare la resistenza e diminuire la sezione del flusso magnetico prodotto dalle correnti parassite riducendo quindi la f.e.m. indotta.
+\begin{center}
+    \includegraphics[scale=0.24]{Image/Laminazione_nucleo_ferro.png}
+\end{center}
+
+
+\subsection{Il sistema di potenza elettrico: produzione, trasmissione, distribuzione, utilizzo}
+La \textbf{produzione} di potenza in una centrale elettrica generalmente è di $320-640 \ MVA$ in generatori di tensione trifase (alternatori) con valori efficaci della tensione concatenata di $10-25 \ kV$ (valore di media tensione MT).\\
+La \textbf{trasmissione} fra la località della centrale e la zona del suo utilizzo copre distanze dell'ordine di 100-1000 km. La trasmissione avviene ad alta tensione (AT con $V_e = 400 \ kV$).\\
+Nel luogo di utilizzo si ha prima la \textbf{distribuzione} dell'energia elettrica in media tensione (MT).\\
+La corrente poi viene \textbf{utilizzata} a bassa tensione: BT con $V_e = 400 \ V$ in sistemi trifase
+e $V_e = 220 \ V$ in sistemi monofase (questi ultimi sono ottenuti da trifase con neutro).\\
+Il passaggio fra MT a AT dalla produzione alla trasmissione, fra AT a MT dalla trasmissione alla distribuzione e fra MT a BT fra distribuzione ed utilizzo avviene attraverso l'utilizzo di trasformatori.
+\vspace*{0.2cm}\\
+La \textbf{trasmissione} avviene in AT poiché a parità di potenza trasmessa $P=VI$ elevare la tensione riduce la corrente e la potenza dissipata per effetto Joule, dato che la potenza dissipata è $P= RI^2$.\\
+Il passaggio da MT della produzione ad AT per la trasmissione, da AT ad MT per la distribuzione e quindi a BT per l'utilizzo è fatto con trasformatori trifase.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
