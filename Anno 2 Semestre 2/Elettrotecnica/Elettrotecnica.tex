@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor,
- listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment, animate, scalerel}
+ listings, tabularx, pdfpages, blindtext, mathtools, stackengine, amsthm, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment, animate, scalerel, steinmetz}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
@@ -1528,7 +1528,6 @@ L'energia immagazzinata da un condensatore è uguale al lavoro $W$; $U$ è l'ene
 \[
     B = \mu  \frac{N}{l}  I
 \]
-
 Una cosa importantissima da tenere a mente sono i circuiti equivalenti di conduttore e induttore in regime stazionario:
 \begin{center}
     \includegraphics[scale=0.2]{Image/Es_4_Trans_1.png}
@@ -2828,6 +2827,10 @@ inoltre poiché $\dot V_e=\dot Z \dot I_e$
     &= RI_e^2
     &
     &= XI_e^2
+    \\
+    & &
+    &=\frac{V^2}{R} &
+    &=Im \left(\frac{V^2}{Z^*} \right)
 \end{align*}
 
 \subsubsection{Potenza apparente}
@@ -3093,6 +3096,7 @@ Bisogna trovare:
 \end{enumerate}
 
 
+\begin{comment}
 \subsubsection{Esercizio sulle potenze}
 \begin{center}
     \includegraphics[scale=0.3]{Image/Es_Regime_Sinusoidale_Potenze.png}
@@ -3136,6 +3140,66 @@ Dobbiamo calcolare la potenza generata da $\underline{E}$
         \underline{N} &= \underline{E} \cdot \underline{I}
     \end{align*}
 \end{enumerate}
+\end{comment}
+
+\subsubsection{Esercizio metodo delle potenze}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Esercizio_potenze.png}
+\end{center}
+Dati:
+\begin{align*}
+    R &= 10 \ \Omega & C &= 100 \ \mu F\\
+    L &= 0,1 \ H & V &= 230 \ V
+\end{align*}
+Bisogna trovare:
+\begin{itemize}
+    \item corrente elettrica
+    \item P, Q
+\end{itemize}
+\subsubsection*{Metodo 1}
+Si calcolano le impedenze in $C$ ed $L$:
+\begin{align*}
+    \underline{Z}_C &= -\frac{j}{\omega C} & \underline{Z}_L &= j \omega L
+    \\
+    &= -j31,83 \ \Omega &
+    &= j31,416 \Omega
+    \\
+\end{align*}
+Quindi l'impedenza totale risulta:
+\[\underline{Z}_{eq} = 10 \phase{-0,24^{\circ}}\]
+\[\underline{I} = \frac{\underline{V}}{\underline{Z}_{eq}} = 23 \phase{-0,237^{\circ}}\]
+Per il calcolo di $P$ e $Q$ si usa la formula:
+\begin{align*}
+    \dot N &= P+jQ
+    \\
+    &=\underline{V}\cdot \underline{I}^*
+    \\
+    &=5290 \phase{0,237^{\circ}}
+    \\
+    &= 5290 + j21,9
+\end{align*}
+quindi
+\begin{align*}
+    P &= 5290 \ W &  Q = 21,8 \ \T{Var}
+\end{align*}
+\subsubsection*{Metodo 2}
+Calcoliamo la potenza assorbita da $R$ nel modo classico:
+\begin{align*}
+    P &= \frac{V^2}{R}
+    \\
+    &= \frac{230^2}{10}
+    \\
+    &= 5,29 \ kW
+\end{align*}
+Mentre per la potenza reattiva di $C$ ed $L$ si usa la formula $Q = Im \Bigg(\dfrac{V^2}{Z^*}\Bigg)$:
+\begin{align*}
+    Q_C &= Im \Bigg( \frac{V^2}{Z_C^*}\Bigg) &
+    Q_L &= Im \Bigg( \frac{V^2}{Z_L^*}\Bigg)
+    \\
+    &= -1661,95 \ \T{Var} &
+    &= 1683,86 \ \T{Var}
+\end{align*}
+\[Q_{tot} = 21,9 \ \T{Var}\]
 
 
 

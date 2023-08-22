@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  18 AUG 2023 17:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  22 AUG 2023 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -648,6 +648,33 @@ Package: scalerel 2016/12/29 v1.8 Routines for constrained scaling and stretchin
 \mnxsrwidth=\skip74
 \LMex=\skip75
 \LMpt=\skip76
+) (c:/texlive/2023/texmf-dist/tex/latex/steinmetz/steinmetz.sty
+Package: steinmetz 2009/06/14 v1.0 Steinmetz symbol for electrotechnics
+ (c:/texlive/2023/texmf-dist/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+ (c:/texlive/2023/texmf-dist/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
+ (c:/texlive/2023/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks55
+\@arclen=\dimen316
+\@arcrad=\dimen317
+\pIIe@tempdima=\dimen318
+\pIIe@tempdimb=\dimen319
+\pIIe@tempdimc=\dimen320
+\pIIe@tempdimd=\dimen321
+\pIIe@tempdime=\dimen322
+\pIIe@tempdimf=\dimen323
+)
+\stm@phasebox=\box84
+\stm@phasedp=\skip77
+\stm@phaseht=\skip78
+\stm@phasetot=\skip79
+\stm@phasewd=\skip80
 ) (c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2023-04-22 v7.00x Hypertext links for LaTeX
  (c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
@@ -667,7 +694,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count364
 )
-\@linkdim=\dimen316
+\@linkdim=\dimen324
 \Hy@linkcounter=\count365
 \Hy@pagecounter=\count366
  (c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -696,15 +723,15 @@ Package hyperref Info: Bookmarks ON on input line 4449.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4787.
-\XeTeXLinkMargin=\dimen317
+\XeTeXLinkMargin=\dimen325
  (c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count369
-\Field@Width=\dimen318
-\Fld@charsize=\dimen319
+\Field@Width=\dimen326
+\Fld@charsize=\dimen327
 Package hyperref Info: Hyper figures OFF on input line 6066.
 Package hyperref Info: Link nesting OFF on input line 6071.
 Package hyperref Info: Hyper index ON on input line 6074.
@@ -733,28 +760,28 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip77
+\Hy@SectionHShift=\skip81
 ) (c:/texlive/2023/texmf-dist/tex/latex/carlisle/slashed.sty
 Package: slashed 1997/01/16 v0.01 Feynman Slashed Character Notation (DPC)
 ) (c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip78
-\enit@outerparindent=\dimen320
-\enit@toks=\toks55
-\enit@inbox=\box84
+\labelindent=\skip82
+\enit@outerparindent=\dimen328
+\enit@toks=\toks56
+\enit@inbox=\box85
 \enit@count@id=\count376
 \enitdp@description=\count377
 ) (c:/texlive/2023/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2021/07/05 v2.14 Sectioning titles
-\ttl@box=\box85
-\beforetitleunit=\skip79
-\aftertitleunit=\skip80
-\ttl@plus=\dimen321
-\ttl@minus=\dimen322
-\ttl@toksa=\toks56
-\titlewidth=\dimen323
-\titlewidthlast=\dimen324
-\titlewidthfirst=\dimen325
+\ttl@box=\box86
+\beforetitleunit=\skip83
+\aftertitleunit=\skip84
+\ttl@plus=\dimen329
+\ttl@minus=\dimen330
+\ttl@toksa=\toks57
+\titlewidth=\dimen331
+\titlewidthlast=\dimen332
+\titlewidthfirst=\dimen333
 ) (c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) Excluding 'comment' comment.
@@ -783,16 +810,16 @@ LaTeX Font Info:    ... okay on input line 66.
  (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count378
-\scratchdimen=\dimen326
-\scratchbox=\box86
+\scratchdimen=\dimen334
+\scratchbox=\box87
 \nofMPsegments=\count379
 \nofMParguments=\count380
-\everyMPshowfont=\toks57
+\everyMPshowfont=\toks58
 \MPscratchCnt=\count381
-\MPscratchDim=\dimen327
+\MPscratchDim=\dimen335
 \MPnumerator=\count382
 \makeMPintoPDFobject=\count383
-\everyMPtoPDFconversion=\toks58
+\everyMPtoPDFconversion=\toks59
 ) (c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1278,587 +1305,587 @@ Package pdftex.def Info: Image/Es_Millman_2.png  used on input line 1485.
 <Image/Es_4_Trans_1.png, id=1107, 893.58844pt x 328.97906pt>
 File: Image/Es_4_Trans_1.png Graphic file (type png)
 <use Image/Es_4_Trans_1.png>
-Package pdftex.def Info: Image/Es_4_Trans_1.png  used on input line 1534.
+Package pdftex.def Info: Image/Es_4_Trans_1.png  used on input line 1533.
 (pdftex.def)             Requested size: 178.71452pt x 65.79465pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1551--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1550--1553
 
  []
 
 <Image/Es_Trans_0.png, id=1108, 1075.51813pt x 266.9975pt>
 File: Image/Es_Trans_0.png Graphic file (type png)
 <use Image/Es_Trans_0.png>
-Package pdftex.def Info: Image/Es_Trans_0.png  used on input line 1562.
+Package pdftex.def Info: Image/Es_Trans_0.png  used on input line 1561.
 (pdftex.def)             Requested size: 322.65793pt x 80.09985pt.
 [34 <./Image/Es_4_Trans_1.png> <./Image/Es_Trans_0.png>]
 <Image/RC_0.png, id=1116, 432.11438pt x 286.06876pt>
 File: Image/RC_0.png Graphic file (type png)
 <use Image/RC_0.png>
-Package pdftex.def Info: Image/RC_0.png  used on input line 1636.
+Package pdftex.def Info: Image/RC_0.png  used on input line 1635.
 (pdftex.def)             Requested size: 172.84268pt x 114.42546pt.
 <Image/RC_1.png, id=1117, 449.17813pt x 258.46562pt>
 File: Image/RC_1.png Graphic file (type png)
 <use Image/RC_1.png>
-Package pdftex.def Info: Image/RC_1.png  used on input line 1637.
+Package pdftex.def Info: Image/RC_1.png  used on input line 1636.
 (pdftex.def)             Requested size: 179.66806pt x 103.38441pt.
  [35 <./Image/RC_0.png> <./Image/RC_1.png>]
 <Image/RC_2.png, id=1126, 725.71124pt x 478.03593pt>
 File: Image/RC_2.png Graphic file (type png)
 <use Image/RC_2.png>
-Package pdftex.def Info: Image/RC_2.png  used on input line 1693.
+Package pdftex.def Info: Image/RC_2.png  used on input line 1692.
 (pdftex.def)             Requested size: 217.71504pt x 143.41188pt.
  [36]
 <Image/RC_3.png, id=1137, 1590.69281pt x 591.71063pt>
 File: Image/RC_3.png Graphic file (type png)
 <use Image/RC_3.png>
-Package pdftex.def Info: Image/RC_3.png  used on input line 1697.
+Package pdftex.def Info: Image/RC_3.png  used on input line 1696.
 (pdftex.def)             Requested size: 286.31235pt x 106.50331pt.
 <Image/RC_4.png, id=1138, 760.34062pt x 455.45157pt>
 File: Image/RC_4.png Graphic file (type png)
 <use Image/RC_4.png>
-Package pdftex.def Info: Image/RC_4.png  used on input line 1708.
+Package pdftex.def Info: Image/RC_4.png  used on input line 1707.
 (pdftex.def)             Requested size: 228.10394pt x 136.63652pt.
 <Image/RL_0.png, id=1139, 905.63344pt x 616.55344pt>
 File: Image/RL_0.png Graphic file (type png)
 <use Image/RL_0.png>
-Package pdftex.def Info: Image/RL_0.png  used on input line 1721.
+Package pdftex.def Info: Image/RL_0.png  used on input line 1720.
 (pdftex.def)             Requested size: 163.00697pt x 110.97482pt.
 <Image/RL_1.png, id=1140, 896.59969pt x 607.51968pt>
 File: Image/RL_1.png Graphic file (type png)
 <use Image/RL_1.png>
-Package pdftex.def Info: Image/RL_1.png  used on input line 1722.
+Package pdftex.def Info: Image/RL_1.png  used on input line 1721.
 (pdftex.def)             Requested size: 161.38098pt x 109.34882pt.
  [37 <./Image/RC_2.png> <./Image/RC_3.png> <./Image/RC_4.png>]
 <Image/RL_2.png, id=1150, 622.57594pt x 347.79938pt>
 File: Image/RL_2.png Graphic file (type png)
 <use Image/RL_2.png>
-Package pdftex.def Info: Image/RL_2.png  used on input line 1727.
+Package pdftex.def Info: Image/RL_2.png  used on input line 1726.
 (pdftex.def)             Requested size: 155.6436pt x 86.94963pt.
  [38 <./Image/RL_0.png> <./Image/RL_1.png> <./Image/RL_2.png>]
 <Image/RL_3.png, id=1163, 853.68938pt x 447.92343pt>
 File: Image/RL_3.png Graphic file (type png)
 <use Image/RL_3.png>
-Package pdftex.def Info: Image/RL_3.png  used on input line 1772.
+Package pdftex.def Info: Image/RL_3.png  used on input line 1771.
 (pdftex.def)             Requested size: 213.42181pt x 111.98058pt.
 <Image/RL_4.png, id=1164, 855.195pt x 301.8778pt>
 File: Image/RL_4.png Graphic file (type png)
 <use Image/RL_4.png>
-Package pdftex.def Info: Image/RL_4.png  used on input line 1782.
+Package pdftex.def Info: Image/RL_4.png  used on input line 1781.
 (pdftex.def)             Requested size: 256.56049pt x 90.56403pt.
 <Image/RLC_0.png, id=1165, 950.04938pt x 536.75531pt>
 File: Image/RLC_0.png Graphic file (type png)
 <use Image/RLC_0.png>
-Package pdftex.def Info: Image/RLC_0.png  used on input line 1817.
+Package pdftex.def Info: Image/RLC_0.png  used on input line 1816.
 (pdftex.def)             Requested size: 237.51176pt x 134.18849pt.
 <Image/RLC_1.png, id=1166, 966.61125pt x 601.4972pt>
 File: Image/RLC_1.png Graphic file (type png)
 <use Image/RLC_1.png>
-Package pdftex.def Info: Image/RLC_1.png  used on input line 1818.
+Package pdftex.def Info: Image/RLC_1.png  used on input line 1817.
 (pdftex.def)             Requested size: 241.65222pt x 150.37393pt.
  [39 <./Image/RL_3.png> <./Image/RL_4.png>] [40 <./Image/RLC_0.png> <./Image/RLC_1.png>]
 <Image/RLC_2.png, id=1183, 670.75594pt x 417.81094pt>
 File: Image/RLC_2.png Graphic file (type png)
 <use Image/RLC_2.png>
-Package pdftex.def Info: Image/RLC_2.png  used on input line 1886.
+Package pdftex.def Info: Image/RLC_2.png  used on input line 1885.
 (pdftex.def)             Requested size: 134.1488pt x 83.5607pt.
  [41 <./Image/RLC_2.png>]
 <Image/RLC_3.png, id=1191, 433.62pt x 296.10625pt>
 File: Image/RLC_3.png Graphic file (type png)
 <use Image/RLC_3.png>
-Package pdftex.def Info: Image/RLC_3.png  used on input line 1908.
+Package pdftex.def Info: Image/RLC_3.png  used on input line 1907.
 (pdftex.def)             Requested size: 130.087pt x 88.83255pt.
 <Image/RLC_4.png, id=1192, 607.26875pt x 397.485pt>
 File: Image/RLC_4.png Graphic file (type png)
 <use Image/RLC_4.png>
-Package pdftex.def Info: Image/RLC_4.png  used on input line 1931.
+Package pdftex.def Info: Image/RLC_4.png  used on input line 1930.
 (pdftex.def)             Requested size: 151.81682pt x 99.371pt.
 <Image/Es_0_Trans.png, id=1193, 703.62875pt x 262.48062pt>
 File: Image/Es_0_Trans.png Graphic file (type png)
 <use Image/Es_0_Trans.png>
-Package pdftex.def Info: Image/Es_0_Trans.png  used on input line 1939.
+Package pdftex.def Info: Image/Es_0_Trans.png  used on input line 1938.
 (pdftex.def)             Requested size: 211.09026pt x 78.74478pt.
  [42 <./Image/RLC_3.png> <./Image/RLC_4.png> <./Image/Es_0_Trans.png>]
 <Image/Es_1_Trans_1.png, id=1202, 425.08812pt x 201.25188pt>
 File: Image/Es_1_Trans_1.png Graphic file (type png)
 <use Image/Es_1_Trans_1.png>
-Package pdftex.def Info: Image/Es_1_Trans_1.png  used on input line 1951.
+Package pdftex.def Info: Image/Es_1_Trans_1.png  used on input line 1950.
 (pdftex.def)             Requested size: 148.78307pt x 70.43921pt.
 <Image/Es_1_Trans_2.png, id=1203, 299.61937pt x 180.17313pt>
 File: Image/Es_1_Trans_2.png Graphic file (type png)
 <use Image/Es_1_Trans_2.png>
-Package pdftex.def Info: Image/Es_1_Trans_2.png  used on input line 1982.
+Package pdftex.def Info: Image/Es_1_Trans_2.png  used on input line 1981.
 (pdftex.def)             Requested size: 104.86835pt x 63.06152pt.
  [43 <./Image/Es_1_Trans_1.png> <./Image/Es_1_Trans_2.png>]
 <Image/Es_2_Trans_0.png, id=1212, 474.27188pt x 218.31563pt>
 File: Image/Es_2_Trans_0.png Graphic file (type png)
 <use Image/Es_2_Trans_0.png>
-Package pdftex.def Info: Image/Es_2_Trans_0.png  used on input line 2005.
+Package pdftex.def Info: Image/Es_2_Trans_0.png  used on input line 2004.
 (pdftex.def)             Requested size: 189.70538pt x 87.32469pt.
 <Image/Es_2_Trans_1.png, id=1213, 416.05438pt x 181.17688pt>
 File: Image/Es_2_Trans_1.png Graphic file (type png)
 <use Image/Es_2_Trans_1.png>
-Package pdftex.def Info: Image/Es_2_Trans_1.png  used on input line 2023.
+Package pdftex.def Info: Image/Es_2_Trans_1.png  used on input line 2022.
 (pdftex.def)             Requested size: 166.4188pt x 72.46945pt.
 <Image/Es_2_Trans_2.png, id=1214, 392.46625pt x 191.21437pt>
 File: Image/Es_2_Trans_2.png Graphic file (type png)
 <use Image/Es_2_Trans_2.png>
-Package pdftex.def Info: Image/Es_2_Trans_2.png  used on input line 2031.
+Package pdftex.def Info: Image/Es_2_Trans_2.png  used on input line 2030.
 (pdftex.def)             Requested size: 156.9837pt x 76.48439pt.
  [44 <./Image/Es_2_Trans_0.png> <./Image/Es_2_Trans_1.png>]
 <Image/Es_2_Trans_3.png, id=1227, 417.56pt x 209.28188pt>
 File: Image/Es_2_Trans_3.png Graphic file (type png)
 <use Image/Es_2_Trans_3.png>
-Package pdftex.def Info: Image/Es_2_Trans_3.png  used on input line 2040.
+Package pdftex.def Info: Image/Es_2_Trans_3.png  used on input line 2039.
 (pdftex.def)             Requested size: 167.02103pt x 83.71126pt.
 <Image/Es_3_Trans_0.png, id=1228, 770.12718pt x 469.755pt>
 File: Image/Es_3_Trans_0.png Graphic file (type png)
 <use Image/Es_3_Trans_0.png>
-Package pdftex.def Info: Image/Es_3_Trans_0.png  used on input line 2058.
+Package pdftex.def Info: Image/Es_3_Trans_0.png  used on input line 2057.
 (pdftex.def)             Requested size: 200.22833pt x 122.13342pt.
  [45 <./Image/Es_2_Trans_2.png> <./Image/Es_2_Trans_3.png> <./Image/Es_3_Trans_0.png>]
 <Image/Es_3_Trans_1.png, id=1238, 1653.92906pt x 483.30562pt>
 File: Image/Es_3_Trans_1.png Graphic file (type png)
 <use Image/Es_3_Trans_1.png>
-Package pdftex.def Info: Image/Es_3_Trans_1.png  used on input line 2078.
+Package pdftex.def Info: Image/Es_3_Trans_1.png  used on input line 2077.
 (pdftex.def)             Requested size: 330.77995pt x 96.65941pt.
 <Image/Es_3_Trans_2.png, id=1239, 1717.91812pt x 523.9575pt>
 File: Image/Es_3_Trans_2.png Graphic file (type png)
 <use Image/Es_3_Trans_2.png>
-Package pdftex.def Info: Image/Es_3_Trans_2.png  used on input line 2096.
+Package pdftex.def Info: Image/Es_3_Trans_2.png  used on input line 2095.
 (pdftex.def)             Requested size: 343.57755pt x 104.78964pt.
  [46 <./Image/Es_3_Trans_1.png> <./Image/Es_3_Trans_2.png>]
 <Image/Es_3_Trans_3.png, id=1252, 1638.87282pt x 520.19344pt>
 File: Image/Es_3_Trans_3.png Graphic file (type png)
 <use Image/Es_3_Trans_3.png>
-Package pdftex.def Info: Image/Es_3_Trans_3.png  used on input line 2126.
+Package pdftex.def Info: Image/Es_3_Trans_3.png  used on input line 2125.
 (pdftex.def)             Requested size: 409.71721pt x 130.04803pt.
 <Image/Es_4_Trans_0.png, id=1253, 822.07124pt x 525.46312pt>
 File: Image/Es_4_Trans_0.png Graphic file (type png)
 <use Image/Es_4_Trans_0.png>
-Package pdftex.def Info: Image/Es_4_Trans_0.png  used on input line 2143.
+Package pdftex.def Info: Image/Es_4_Trans_0.png  used on input line 2142.
 (pdftex.def)             Requested size: 221.9622pt x 141.87694pt.
  [47 <./Image/Es_3_Trans_3.png> <./Image/Es_4_Trans_0.png>]
 File: Image/Es_4_Trans_1.png Graphic file (type png)
 <use Image/Es_4_Trans_1.png>
-Package pdftex.def Info: Image/Es_4_Trans_1.png  used on input line 2157.
+Package pdftex.def Info: Image/Es_4_Trans_1.png  used on input line 2156.
 (pdftex.def)             Requested size: 178.71452pt x 65.79465pt.
 <Image/Es_4_Trans_2.png, id=1262, 1416.79312pt x 409.53pt>
 File: Image/Es_4_Trans_2.png Graphic file (type png)
 <use Image/Es_4_Trans_2.png>
-Package pdftex.def Info: Image/Es_4_Trans_2.png  used on input line 2163.
+Package pdftex.def Info: Image/Es_4_Trans_2.png  used on input line 2162.
 (pdftex.def)             Requested size: 283.3536pt x 81.90454pt.
 <Image/Es_4_Trans_3.png, id=1263, 449.68pt x 220.825pt>
 File: Image/Es_4_Trans_3.png Graphic file (type png)
 <use Image/Es_4_Trans_3.png>
-Package pdftex.def Info: Image/Es_4_Trans_3.png  used on input line 2181.
+Package pdftex.def Info: Image/Es_4_Trans_3.png  used on input line 2180.
 (pdftex.def)             Requested size: 134.90503pt x 66.248pt.
 <Image/Es_4_Trans_4.png, id=1264, 919.435pt x 334.24875pt>
 File: Image/Es_4_Trans_4.png Graphic file (type png)
 <use Image/Es_4_Trans_4.png>
-Package pdftex.def Info: Image/Es_4_Trans_4.png  used on input line 2182.
+Package pdftex.def Info: Image/Es_4_Trans_4.png  used on input line 2181.
 (pdftex.def)             Requested size: 275.83263pt x 100.27539pt.
 <Image/Es_4_Trans_6.png, id=1265, 988.19188pt x 461.22313pt>
 File: Image/Es_4_Trans_6.png Graphic file (type png)
 <use Image/Es_4_Trans_6.png>
-Package pdftex.def Info: Image/Es_4_Trans_6.png  used on input line 2191.
+Package pdftex.def Info: Image/Es_4_Trans_6.png  used on input line 2190.
 (pdftex.def)             Requested size: 296.45985pt x 138.368pt.
  [48 <./Image/Es_4_Trans_2.png> <./Image/Es_4_Trans_3.png> <./Image/Es_4_Trans_4.png>] [49 <./Image/Es_4_Trans_6.png>]
 <Image/Regime_sinusoidale_0.png, id=1288, 510.40688pt x 624.83438pt>
 File: Image/Regime_sinusoidale_0.png Graphic file (type png)
 <use Image/Regime_sinusoidale_0.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_0.png  used on input line 2243.
+Package pdftex.def Info: Image/Regime_sinusoidale_0.png  used on input line 2242.
 (pdftex.def)             Requested size: 153.12323pt x 187.45175pt.
  [50 <./Image/Regime_sinusoidale_0.png>]
 <Image/Regime_sinusoidale_1.png, id=1295, 583.42969pt x 509.65407pt>
 File: Image/Regime_sinusoidale_1.png Graphic file (type png)
 <use Image/Regime_sinusoidale_1.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_1.png  used on input line 2275.
+Package pdftex.def Info: Image/Regime_sinusoidale_1.png  used on input line 2274.
 (pdftex.def)             Requested size: 175.03024pt x 152.8974pt.
 <Image/Regime_sinusoidale_2.png, id=1296, 578.16pt x 499.11469pt>
 File: Image/Regime_sinusoidale_2.png Graphic file (type png)
 <use Image/Regime_sinusoidale_2.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_2.png  used on input line 2284.
+Package pdftex.def Info: Image/Regime_sinusoidale_2.png  used on input line 2283.
 (pdftex.def)             Requested size: 115.62994pt x 99.82115pt.
 <Image/Regime_sinusoidale_3.png, id=1297, 526.21594pt x 467.49657pt>
 File: Image/Regime_sinusoidale_3.png Graphic file (type png)
 <use Image/Regime_sinusoidale_3.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_3.png  used on input line 2298.
+Package pdftex.def Info: Image/Regime_sinusoidale_3.png  used on input line 2297.
 (pdftex.def)             Requested size: 105.24132pt x 93.49765pt.
 <Image/Regime_sinusoidale_4.png, id=1298, 618.05907pt x 469.00218pt>
 File: Image/Regime_sinusoidale_4.png Graphic file (type png)
 <use Image/Regime_sinusoidale_4.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_4.png  used on input line 2302.
+Package pdftex.def Info: Image/Regime_sinusoidale_4.png  used on input line 2301.
 (pdftex.def)             Requested size: 123.60962pt x 93.79877pt.
  [51 <./Image/Regime_sinusoidale_1.png> <./Image/Regime_sinusoidale_2.png> <./Image/Regime_sinusoidale_3.png>]
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png, id=1307, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-0.png> <a0,fr0>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png, id=1311, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-1.png> <a0,fr1>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png, id=1315, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-2.png> <a0,fr2>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png, id=1319, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-3.png> <a0,fr3>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png, id=1323, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-4.png> <a0,fr4>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png, id=1327, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-5.png> <a0,fr5>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png, id=1331, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-6.png> <a0,fr6>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png, id=1335, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png> <a0,fr7>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png, id=1339, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png> <a0,fr8>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png, id=1343, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png> <a0,fr9>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png, id=1347, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-10.png> <a0,fr10>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png, id=1351, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-11.png> <a0,fr11>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png, id=1355, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-12.png> <a0,fr12>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png, id=1359, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-13.png> <a0,fr13>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png, id=1363, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-14.png> <a0,fr14>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png, id=1367, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-15.png> <a0,fr15>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png, id=1371, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-16.png> <a0,fr16>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png, id=1375, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-17.png> <a0,fr17>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png, id=1379, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-18.png> <a0,fr18>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png, id=1383, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-19.png> <a0,fr19>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png, id=1387, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-20.png> <a0,fr20>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png, id=1391, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-21.png> <a0,fr21>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png, id=1395, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-22.png> <a0,fr22>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png, id=1399, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-23.png> <a0,fr23>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png, id=1404, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-24.png> <a0,fr24>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png, id=1408, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-25.png> <a0,fr25>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png, id=1412, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-26.png> <a0,fr26>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png, id=1416, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-27.png> <a0,fr27>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png, id=1420, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-28.png> <a0,fr28>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png, id=1424, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-29.png> <a0,fr29>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png, id=1428, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-30.png> <a0,fr30>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png, id=1432, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-31.png> <a0,fr31>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png, id=1436, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-32.png> <a0,fr32>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png, id=1440, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-33.png> <a0,fr33>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png, id=1444, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-34.png> <a0,fr34>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png, id=1448, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-35.png> <a0,fr35>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png, id=1452, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-36.png> <a0,fr36>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png, id=1456, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-37.png> <a0,fr37>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png, id=1460, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-38.png> <a0,fr38>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png, id=1464, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-39.png> <a0,fr39>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png, id=1468, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-40.png> <a0,fr40>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png, id=1472, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-41.png> <a0,fr41>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png, id=1476, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-42.png> <a0,fr42>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png, id=1480, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-43.png> <a0,fr43>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png, id=1484, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-44.png> <a0,fr44>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png, id=1488, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-45.png> <a0,fr45>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png, id=1492, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-46.png> <a0,fr46>
 <Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png, id=1496, 219.82124pt x 433.62pt>
 File: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png Graphic file (type png)
 <use Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png>
-Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png  used on input line 2322.
+Package pdftex.def Info: Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png  used on input line 2321.
 (pdftex.def)             Requested size: 219.8207pt x 433.61894pt.
  <./Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-47.png> <a0,fr47>
 <Image/Regime_sinusoidale_5.png, id=1552, 1575.63657pt x 582.67688pt>
 File: Image/Regime_sinusoidale_5.png Graphic file (type png)
 <use Image/Regime_sinusoidale_5.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_5.png  used on input line 2352.
+Package pdftex.def Info: Image/Regime_sinusoidale_5.png  used on input line 2351.
 (pdftex.def)             Requested size: 315.12173pt x 116.53331pt.
  [52 <./Image/Regime_sinusoidale_4.png>] [53 <./Image/Regime_sinusoidale_5.png>]
 <Image/Complex_conjugate_picture.svg.png, id=1565, 301.125pt x 423.5825pt>
 File: Image/Complex_conjugate_picture.svg.png Graphic file (type png)
 <use Image/Complex_conjugate_picture.svg.png>
-Package pdftex.def Info: Image/Complex_conjugate_picture.svg.png  used on input line 2442.
+Package pdftex.def Info: Image/Complex_conjugate_picture.svg.png  used on input line 2441.
 (pdftex.def)             Requested size: 90.33818pt x 127.07573pt.
  [54 <./Image/Complex_conjugate_picture.svg.png>] [55]
 <Image/Impedenza_serie.png, id=1578, 437.38406pt x 322.20375pt>
 File: Image/Impedenza_serie.png Graphic file (type png)
 <use Image/Impedenza_serie.png>
-Package pdftex.def Info: Image/Impedenza_serie.png  used on input line 2514.
+Package pdftex.def Info: Image/Impedenza_serie.png  used on input line 2513.
 (pdftex.def)             Requested size: 131.21622pt x 96.66187pt.
 <Image/Impedenza-parallelo.png, id=1579, 525.46312pt x 256.70906pt>
 File: Image/Impedenza-parallelo.png Graphic file (type png)
 <use Image/Impedenza-parallelo.png>
-Package pdftex.def Info: Image/Impedenza-parallelo.png  used on input line 2528.
+Package pdftex.def Info: Image/Impedenza-parallelo.png  used on input line 2527.
 (pdftex.def)             Requested size: 157.64015pt x 77.0133pt.
 <Image/Fasori_1.png, id=1580, 378.66469pt x 373.395pt>
 File: Image/Fasori_1.png Graphic file (type png)
 <use Image/Fasori_1.png>
-Package pdftex.def Info: Image/Fasori_1.png  used on input line 2539.
+Package pdftex.def Info: Image/Fasori_1.png  used on input line 2538.
 (pdftex.def)             Requested size: 94.66594pt x 93.34851pt.
 <Image/Fasori_2.png, id=1581, 443.40656pt x 408.02437pt>
 File: Image/Fasori_2.png Graphic file (type png)
 <use Image/Fasori_2.png>
-Package pdftex.def Info: Image/Fasori_2.png  used on input line 2539.
+Package pdftex.def Info: Image/Fasori_2.png  used on input line 2538.
 (pdftex.def)             Requested size: 110.85136pt x 102.00584pt.
 <Image/Fasori_3.png, id=1582, 426.84468pt x 392.21532pt>
 File: Image/Fasori_3.png Graphic file (type png)
 <use Image/Fasori_3.png>
-Package pdftex.def Info: Image/Fasori_3.png  used on input line 2539.
+Package pdftex.def Info: Image/Fasori_3.png  used on input line 2538.
 (pdftex.def)             Requested size: 106.7109pt x 98.05359pt.
 <Image/Fasori_4.png, id=1583, 372.64218pt x 125.71968pt>
 File: Image/Fasori_4.png Graphic file (type png)
 <use Image/Fasori_4.png>
-Package pdftex.def Info: Image/Fasori_4.png  used on input line 2560.
+Package pdftex.def Info: Image/Fasori_4.png  used on input line 2559.
 (pdftex.def)             Requested size: 93.16031pt x 31.42984pt.
 <Image/Fasori_5.png, id=1584, 383.93437pt x 188.20313pt>
 File: Image/Fasori_5.png Graphic file (type png)
 <use Image/Fasori_5.png>
-Package pdftex.def Info: Image/Fasori_5.png  used on input line 2561.
+Package pdftex.def Info: Image/Fasori_5.png  used on input line 2560.
 (pdftex.def)             Requested size: 95.98335pt x 47.05066pt.
 <Image/Fasori_6.png, id=1585, 408.77719pt x 210.7875pt>
 File: Image/Fasori_6.png Graphic file (type png)
 <use Image/Fasori_6.png>
-Package pdftex.def Info: Image/Fasori_6.png  used on input line 2562.
+Package pdftex.def Info: Image/Fasori_6.png  used on input line 2561.
 (pdftex.def)             Requested size: 102.19405pt x 52.69675pt.
  [56 <./Image/Impedenza_serie.png> <./Image/Impedenza-parallelo.png>]
 <Image/Regime_sinusoidale_6.png, id=1593, 877.77937pt x 641.39626pt>
 File: Image/Regime_sinusoidale_6.png Graphic file (type png)
 <use Image/Regime_sinusoidale_6.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_6.png  used on input line 2592.
+Package pdftex.def Info: Image/Regime_sinusoidale_6.png  used on input line 2591.
 (pdftex.def)             Requested size: 193.11206pt x 141.1076pt.
  [57 <./Image/Fasori_1.png> <./Image/Fasori_2.png> <./Image/Fasori_3.png> <./Image/Fasori_4.png> <./Image/Fasori_5.png> <./Image/Fasori_6.png> <./Image/Regime_sinusoidale_6.png>]
 <Image/Regime_sinusoidale_7.png, id=1607, 685.05937pt x 353.82187pt>
 File: Image/Regime_sinusoidale_7.png Graphic file (type png)
 <use Image/Regime_sinusoidale_7.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_7.png  used on input line 2618.
+Package pdftex.def Info: Image/Regime_sinusoidale_7.png  used on input line 2617.
 (pdftex.def)             Requested size: 150.71352pt x 77.84105pt.
 <Image/Regime_sinusoidale_8.png, id=1608, 700.11563pt x 347.04657pt>
 File: Image/Regime_sinusoidale_8.png Graphic file (type png)
 <use Image/Regime_sinusoidale_8.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_8.png  used on input line 2619.
+Package pdftex.def Info: Image/Regime_sinusoidale_8.png  used on input line 2618.
 (pdftex.def)             Requested size: 154.02591pt x 76.35048pt.
 <Image/Regime_sinusoidale_9.png, id=1609, 792.71156pt x 606.76688pt>
 File: Image/Regime_sinusoidale_9.png Graphic file (type png)
 <use Image/Regime_sinusoidale_9.png>
-Package pdftex.def Info: Image/Regime_sinusoidale_9.png  used on input line 2649.
+Package pdftex.def Info: Image/Regime_sinusoidale_9.png  used on input line 2648.
 (pdftex.def)             Requested size: 174.39708pt x 133.48912pt.
  [58 <./Image/Regime_sinusoidale_7.png> <./Image/Regime_sinusoidale_8.png> <./Image/Regime_sinusoidale_9.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2657--2658
+Underfull \hbox (badness 10000) in paragraph at lines 2656--2657
 
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 2670--2670
+Underfull \hbox (badness 1675) in paragraph at lines 2669--2669
 []\OT1/cmr/m/n/10 Equazioni al-ge-briche date da LKT,
  []
 
@@ -1866,290 +1893,291 @@ Underfull \hbox (badness 1675) in paragraph at lines 2670--2670
 <Image/Fattore_di_potenza_1.png, id=1634, 621.07031pt x 405.76593pt>
 File: Image/Fattore_di_potenza_1.png Graphic file (type png)
 <use Image/Fattore_di_potenza_1.png>
-Package pdftex.def Info: Image/Fattore_di_potenza_1.png  used on input line 2863.
+Package pdftex.def Info: Image/Fattore_di_potenza_1.png  used on input line 2866.
 (pdftex.def)             Requested size: 161.47447pt x 105.49664pt.
 <Image/Es_Regime_Sinusoiudale_1.png, id=1635, 777.65532pt x 342.5297pt>
 File: Image/Es_Regime_Sinusoiudale_1.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_1.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1.png  used on input line 2883.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1.png  used on input line 2886.
 (pdftex.def)             Requested size: 202.18561pt x 89.05562pt.
 <Image/Es_Regime_Sinusoiudale_1_1.png, id=1636, 820.56563pt x 298.86656pt>
 File: Image/Es_Regime_Sinusoiudale_1_1.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_1_1.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1_1.png  used on input line 2902.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1_1.png  used on input line 2905.
 (pdftex.def)             Requested size: 213.34203pt x 77.70346pt.
  [62 <./Image/Fattore_di_potenza_1.png> <./Image/Es_Regime_Sinusoiudale_1.png> <./Image/Es_Regime_Sinusoiudale_1_1.png>]
 <Image/Es_Regime_Sinusoiudale_1_2.png, id=1646, 773.13844pt x 394.47375pt>
 File: Image/Es_Regime_Sinusoiudale_1_2.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_1_2.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1_2.png  used on input line 2935.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_1_2.png  used on input line 2938.
 (pdftex.def)             Requested size: 201.01125pt x 102.56075pt.
  [63 <./Image/Es_Regime_Sinusoiudale_1_2.png>]
 <Image/Es_Regime_Sinusoiudale_2.png, id=1655, 874.76813pt x 344.78813pt>
 File: Image/Es_Regime_Sinusoiudale_2.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_2.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2.png  used on input line 2989.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2.png  used on input line 2992.
 (pdftex.def)             Requested size: 236.19055pt x 93.09402pt.
 <Image/Es_Regime_Sinusoiudale_2_1.png, id=1656, 756.57657pt x 306.39468pt>
 File: Image/Es_Regime_Sinusoiudale_2_1.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_2_1.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2_1.png  used on input line 3006.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2_1.png  used on input line 3009.
 (pdftex.def)             Requested size: 196.70526pt x 79.66074pt.
 <Image/Es_Regime_Sinusoiudale_2_2.png, id=1657, 612.78937pt x 372.64218pt>
 File: Image/Es_Regime_Sinusoiudale_2_2.png Graphic file (type png)
 <use Image/Es_Regime_Sinusoiudale_2_2.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2_2.png  used on input line 3031.
+Package pdftex.def Info: Image/Es_Regime_Sinusoiudale_2_2.png  used on input line 3034.
 (pdftex.def)             Requested size: 124.33623pt x 75.60745pt.
- [64 <./Image/Es_Regime_Sinusoiudale_2.png> <./Image/Es_Regime_Sinusoiudale_2_1.png>]
-<Image/Es_Regime_Sinusoidale_Potenze.png, id=1666, 844.65562pt x 361.35pt>
-File: Image/Es_Regime_Sinusoidale_Potenze.png Graphic file (type png)
-<use Image/Es_Regime_Sinusoidale_Potenze.png>
-Package pdftex.def Info: Image/Es_Regime_Sinusoidale_Potenze.png  used on input line 3098.
-(pdftex.def)             Requested size: 253.39864pt x 108.40584pt.
- [65 <./Image/Es_Regime_Sinusoiudale_2_2.png> <./Image/Es_Regime_Sinusoidale_Potenze.png>]
-<Image/Passa-basso_1.png, id=1675, 627.84563pt x 354.57469pt>
+ [64 <./Image/Es_Regime_Sinusoiudale_2.png> <./Image/Es_Regime_Sinusoiudale_2_1.png>] Excluding 'comment' comment.
+<Image/Esercizio_potenze.png, id=1666, 514.42188pt x 255.45438pt>
+File: Image/Esercizio_potenze.png Graphic file (type png)
+<use Image/Esercizio_potenze.png>
+Package pdftex.def Info: Image/Esercizio_potenze.png  used on input line 3147.
+(pdftex.def)             Requested size: 138.89575pt x 68.97359pt.
+ [65 <./Image/Es_Regime_Sinusoiudale_2_2.png> <./Image/Esercizio_potenze.png>] [66]
+<Image/Passa-basso_1.png, id=1680, 627.84563pt x 354.57469pt>
 File: Image/Passa-basso_1.png Graphic file (type png)
 <use Image/Passa-basso_1.png>
-Package pdftex.def Info: Image/Passa-basso_1.png  used on input line 3166.
+Package pdftex.def Info: Image/Passa-basso_1.png  used on input line 3230.
 (pdftex.def)             Requested size: 188.35513pt x 106.37321pt.
- [66]
-<Image/Passa-basso_2.png, id=1684, 565.36218pt x 401.24907pt>
+<Image/Passa-basso_2.png, id=1681, 565.36218pt x 401.24907pt>
 File: Image/Passa-basso_2.png Graphic file (type png)
 <use Image/Passa-basso_2.png>
-Package pdftex.def Info: Image/Passa-basso_2.png  used on input line 3187.
+Package pdftex.def Info: Image/Passa-basso_2.png  used on input line 3251.
 (pdftex.def)             Requested size: 152.64983pt x 108.33868pt.
-<Image/Passa-basso_3.png, id=1685, 545.78906pt x 390.70969pt>
+<Image/Passa-basso_3.png, id=1682, 545.78906pt x 390.70969pt>
 File: Image/Passa-basso_3.png Graphic file (type png)
 <use Image/Passa-basso_3.png>
-Package pdftex.def Info: Image/Passa-basso_3.png  used on input line 3188.
+Package pdftex.def Info: Image/Passa-basso_3.png  used on input line 3252.
 (pdftex.def)             Requested size: 147.365pt x 105.49301pt.
  [67 <./Image/Passa-basso_1.png> <./Image/Passa-basso_2.png> <./Image/Passa-basso_3.png>]
-<Image/Passa-banda_1.png, id=1695, 599.23875pt x 401.24907pt>
+<Image/Passa-banda_1.png, id=1692, 599.23875pt x 401.24907pt>
 File: Image/Passa-banda_1.png Graphic file (type png)
 <use Image/Passa-banda_1.png>
-Package pdftex.def Info: Image/Passa-banda_1.png  used on input line 3244.
+Package pdftex.def Info: Image/Passa-banda_1.png  used on input line 3308.
 (pdftex.def)             Requested size: 179.77301pt x 120.37564pt.
-<Image/Passa-banda_2.png, id=1696, 562.35094pt x 496.85625pt>
+ [68 <./Image/Passa-banda_1.png>]
+<Image/Passa-banda_2.png, id=1699, 562.35094pt x 496.85625pt>
 File: Image/Passa-banda_2.png Graphic file (type png)
 <use Image/Passa-banda_2.png>
-Package pdftex.def Info: Image/Passa-banda_2.png  used on input line 3254.
+Package pdftex.def Info: Image/Passa-banda_2.png  used on input line 3318.
 (pdftex.def)             Requested size: 151.83678pt x 134.15297pt.
- [68 <./Image/Passa-banda_1.png>]
-<Image/Arresta-banda_1.png, id=1703, 533.74406pt x 464.4853pt>
+<Image/Arresta-banda_1.png, id=1700, 533.74406pt x 464.4853pt>
 File: Image/Arresta-banda_1.png Graphic file (type png)
 <use Image/Arresta-banda_1.png>
-Package pdftex.def Info: Image/Arresta-banda_1.png  used on input line 3261.
+Package pdftex.def Info: Image/Arresta-banda_1.png  used on input line 3325.
 (pdftex.def)             Requested size: 160.12445pt x 139.34666pt.
-<Image/Arresta-banda_2.png, id=1704, 547.2947pt x 513.41812pt>
+<Image/Arresta-banda_2.png, id=1701, 547.2947pt x 513.41812pt>
 File: Image/Arresta-banda_2.png Graphic file (type png)
 <use Image/Arresta-banda_2.png>
-Package pdftex.def Info: Image/Arresta-banda_2.png  used on input line 3271.
+Package pdftex.def Info: Image/Arresta-banda_2.png  used on input line 3335.
 (pdftex.def)             Requested size: 147.77153pt x 138.62474pt.
-<Image/Filtri_ideali.png, id=1705, 1483.04062pt x 761.84625pt>
+ [69 <./Image/Passa-banda_2.png> <./Image/Arresta-banda_1.png>]
+<Image/Filtri_ideali.png, id=1709, 1483.04062pt x 761.84625pt>
 File: Image/Filtri_ideali.png Graphic file (type png)
 <use Image/Filtri_ideali.png>
-Package pdftex.def Info: Image/Filtri_ideali.png  used on input line 3277.
+Package pdftex.def Info: Image/Filtri_ideali.png  used on input line 3341.
 (pdftex.def)             Requested size: 444.91562pt x 228.55563pt.
- [69 <./Image/Passa-banda_2.png> <./Image/Arresta-banda_1.png> <./Image/Arresta-banda_2.png>]
-<Image/Sistemi_trifase_1.png, id=1714, 1458.19781pt x 374.90062pt>
+<Image/Sistemi_trifase_1.png, id=1710, 1458.19781pt x 374.90062pt>
 File: Image/Sistemi_trifase_1.png Graphic file (type png)
 <use Image/Sistemi_trifase_1.png>
-Package pdftex.def Info: Image/Sistemi_trifase_1.png  used on input line 3291.
+Package pdftex.def Info: Image/Sistemi_trifase_1.png  used on input line 3355.
 (pdftex.def)             Requested size: 393.71867pt x 101.22452pt.
-<Image/Sistemi_trifase_2.png, id=1715, 642.14906pt x 514.17094pt>
+<Image/Sistemi_trifase_2.png, id=1711, 642.14906pt x 514.17094pt>
 File: Image/Sistemi_trifase_2.png Graphic file (type png)
 <use Image/Sistemi_trifase_2.png>
-Package pdftex.def Info: Image/Sistemi_trifase_2.png  used on input line 3295.
+Package pdftex.def Info: Image/Sistemi_trifase_2.png  used on input line 3359.
 (pdftex.def)             Requested size: 166.95482pt x 133.68129pt.
- [70 <./Image/Filtri_ideali.png> <./Image/Sistemi_trifase_1.png> <./Image/Sistemi_trifase_2.png>]
-<Image/Sistema_delle_tensioni_simmetrico.png, id=1724, 1651.67062pt x 920.68968pt>
+ [70 <./Image/Arresta-banda_2.png> <./Image/Filtri_ideali.png> <./Image/Sistemi_trifase_1.png>]
+<Image/Sistema_delle_tensioni_simmetrico.png, id=1720, 1651.67062pt x 920.68968pt>
 File: Image/Sistema_delle_tensioni_simmetrico.png Graphic file (type png)
 <use Image/Sistema_delle_tensioni_simmetrico.png>
-Package pdftex.def Info: Image/Sistema_delle_tensioni_simmetrico.png  used on input line 3330.
+Package pdftex.def Info: Image/Sistema_delle_tensioni_simmetrico.png  used on input line 3394.
 (pdftex.def)             Requested size: 495.50502pt x 276.20903pt.
 File: Image/Sistemi_trifase_2.png Graphic file (type png)
 <use Image/Sistemi_trifase_2.png>
-Package pdftex.def Info: Image/Sistemi_trifase_2.png  used on input line 3331.
+Package pdftex.def Info: Image/Sistemi_trifase_2.png  used on input line 3395.
 (pdftex.def)             Requested size: 192.6462pt x 154.25247pt.
- [71 <./Image/Sistema_delle_tensioni_simmetrico.png>]
-<Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png, id=1734, 590.205pt x 482.55281pt>
+ [71 <./Image/Sistemi_trifase_2.png>]
+<Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png, id=1730, 590.205pt x 482.55281pt>
 File: Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png Graphic file (type png)
 <use Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png>
-Package pdftex.def Info: Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png  used on input line 3344.
+Package pdftex.def Info: Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png  used on input line 3408.
 (pdftex.def)             Requested size: 177.06287pt x 144.76695pt.
-<Image/Sistema_equilibrato_delle_correnti.png, id=1735, 1633.60312pt x 895.84688pt>
+ [72 <./Image/Sistema_delle_tensioni_simmetrico.png>]
+<Image/Sistema_equilibrato_delle_correnti.png, id=1737, 1633.60312pt x 895.84688pt>
 File: Image/Sistema_equilibrato_delle_correnti.png Graphic file (type png)
 <use Image/Sistema_equilibrato_delle_correnti.png>
-Package pdftex.def Info: Image/Sistema_equilibrato_delle_correnti.png  used on input line 3350.
+Package pdftex.def Info: Image/Sistema_equilibrato_delle_correnti.png  used on input line 3414.
 (pdftex.def)             Requested size: 490.08472pt x 268.75613pt.
- [72 <./Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png> <./Image/Sistema_equilibrato_delle_correnti.png>]
-<Image/Sistema_tensioni_linea_fase_simmetrico.png, id=1744, 566.86781pt x 524.71031pt>
+<Image/Sistema_tensioni_linea_fase_simmetrico.png, id=1738, 566.86781pt x 524.71031pt>
 File: Image/Sistema_tensioni_linea_fase_simmetrico.png Graphic file (type png)
 <use Image/Sistema_tensioni_linea_fase_simmetrico.png>
-Package pdftex.def Info: Image/Sistema_tensioni_linea_fase_simmetrico.png  used on input line 3389.
+Package pdftex.def Info: Image/Sistema_tensioni_linea_fase_simmetrico.png  used on input line 3453.
 (pdftex.def)             Requested size: 153.05635pt x 141.67368pt.
-<Image/Impedenze_collegate_a_stella_1.png, id=1745, 722.7pt x 418.56375pt>
+ [73 <./Image/Triangolo_delle_tensioni_concate_e_tensioni_di_fase.png> <./Image/Sistema_equilibrato_delle_correnti.png>]
+<Image/Impedenze_collegate_a_stella_1.png, id=1748, 722.7pt x 418.56375pt>
 File: Image/Impedenze_collegate_a_stella_1.png Graphic file (type png)
 <use Image/Impedenze_collegate_a_stella_1.png>
-Package pdftex.def Info: Image/Impedenze_collegate_a_stella_1.png  used on input line 3397.
+Package pdftex.def Info: Image/Impedenze_collegate_a_stella_1.png  used on input line 3461.
 (pdftex.def)             Requested size: 195.1316pt x 113.01372pt.
-<Image/Impedenze_collegate_a_stella_2.png, id=1746, 637.63219pt x 559.33969pt>
+<Image/Impedenze_collegate_a_stella_2.png, id=1749, 637.63219pt x 559.33969pt>
 File: Image/Impedenze_collegate_a_stella_2.png Graphic file (type png)
 <use Image/Impedenze_collegate_a_stella_2.png>
-Package pdftex.def Info: Image/Impedenze_collegate_a_stella_2.png  used on input line 3416.
+Package pdftex.def Info: Image/Impedenze_collegate_a_stella_2.png  used on input line 3480.
 (pdftex.def)             Requested size: 153.03485pt x 134.24426pt.
-<Image/Impedenze_collegate_a_triangolo_1.png, id=1747, 789.70032pt x 499.11469pt>
+<Image/Impedenze_collegate_a_triangolo_1.png, id=1750, 789.70032pt x 499.11469pt>
 File: Image/Impedenze_collegate_a_triangolo_1.png Graphic file (type png)
 <use Image/Impedenze_collegate_a_triangolo_1.png>
-Package pdftex.def Info: Image/Impedenze_collegate_a_triangolo_1.png  used on input line 3422.
+Package pdftex.def Info: Image/Impedenze_collegate_a_triangolo_1.png  used on input line 3486.
 (pdftex.def)             Requested size: 213.22194pt x 134.76276pt.
- [73 <./Image/Sistema_tensioni_linea_fase_simmetrico.png> <./Image/Impedenze_collegate_a_stella_1.png> <./Image/Impedenze_collegate_a_stella_2.png>]
-<Image/Impedenze_connesse_1.png, id=1757, 533.74406pt x 454.69875pt>
+ [74 <./Image/Sistema_tensioni_linea_fase_simmetrico.png> <./Image/Impedenze_collegate_a_stella_1.png> <./Image/Impedenze_collegate_a_stella_2.png> <./Image/Impedenze_collegate_a_triangolo_1.png>]
+<Image/Impedenze_connesse_1.png, id=1760, 533.74406pt x 454.69875pt>
 File: Image/Impedenze_connesse_1.png Graphic file (type png)
 <use Image/Impedenze_connesse_1.png>
-Package pdftex.def Info: Image/Impedenze_connesse_1.png  used on input line 3447.
+Package pdftex.def Info: Image/Impedenze_connesse_1.png  used on input line 3511.
 (pdftex.def)             Requested size: 138.77017pt x 118.21887pt.
-<Image/Impedenze_connesse_2.png, id=1758, 614.295pt x 469.755pt>
+<Image/Impedenze_connesse_2.png, id=1761, 614.295pt x 469.755pt>
 File: Image/Impedenze_connesse_2.png Graphic file (type png)
 <use Image/Impedenze_connesse_2.png>
-Package pdftex.def Info: Image/Impedenze_connesse_2.png  used on input line 3449.
+Package pdftex.def Info: Image/Impedenze_connesse_2.png  used on input line 3513.
 (pdftex.def)             Requested size: 159.71292pt x 122.13342pt.
-<Image/Sistemi_trifase_neutro_1.png, id=1759, 621.07031pt x 573.64313pt>
+<Image/Sistemi_trifase_neutro_1.png, id=1762, 621.07031pt x 573.64313pt>
 File: Image/Sistemi_trifase_neutro_1.png Graphic file (type png)
 <use Image/Sistemi_trifase_neutro_1.png>
-Package pdftex.def Info: Image/Sistemi_trifase_neutro_1.png  used on input line 3475.
+Package pdftex.def Info: Image/Sistemi_trifase_neutro_1.png  used on input line 3539.
 (pdftex.def)             Requested size: 167.69122pt x 154.88571pt.
- [74 <./Image/Impedenze_collegate_a_triangolo_1.png> <./Image/Impedenze_connesse_1.png> <./Image/Impedenze_connesse_2.png>]
-<Image/Sistemi_trifase_neutro_2.png, id=1768, 785.93625pt x 431.36156pt>
+ [75 <./Image/Impedenze_connesse_1.png> <./Image/Impedenze_connesse_2.png> <./Image/Sistemi_trifase_neutro_1.png>]
+<Image/Sistemi_trifase_neutro_2.png, id=1771, 785.93625pt x 431.36156pt>
 File: Image/Sistemi_trifase_neutro_2.png Graphic file (type png)
 <use Image/Sistemi_trifase_neutro_2.png>
-Package pdftex.def Info: Image/Sistemi_trifase_neutro_2.png  used on input line 3488.
+Package pdftex.def Info: Image/Sistemi_trifase_neutro_2.png  used on input line 3552.
 (pdftex.def)             Requested size: 212.20561pt x 116.46918pt.
- [75 <./Image/Sistemi_trifase_neutro_1.png> <./Image/Sistemi_trifase_neutro_2.png>]
-<Image/Potenza_sistemi_trifase_non_bilanciati_1.png, id=1776, 554.07pt x 536.75531pt>
+ [76 <./Image/Sistemi_trifase_neutro_2.png>]
+<Image/Potenza_sistemi_trifase_non_bilanciati_1.png, id=1778, 554.07pt x 536.75531pt>
 File: Image/Potenza_sistemi_trifase_non_bilanciati_1.png Graphic file (type png)
 <use Image/Potenza_sistemi_trifase_non_bilanciati_1.png>
-Package pdftex.def Info: Image/Potenza_sistemi_trifase_non_bilanciati_1.png  used on input line 3552.
+Package pdftex.def Info: Image/Potenza_sistemi_trifase_non_bilanciati_1.png  used on input line 3616.
 (pdftex.def)             Requested size: 149.60089pt x 144.92586pt.
 File: Image/Legge di Faraday.png Graphic file (type png)
 <use Image/Legge di Faraday.png>
-Package pdftex.def Info: Image/Legge di Faraday.png  used on input line 3572.
+Package pdftex.def Info: Image/Legge di Faraday.png  used on input line 3636.
 (pdftex.def)             Requested size: 131.30731pt x 140.04758pt.
 File: Image/Campo magnetico.png Graphic file (type png)
 <use Image/Campo magnetico.png>
-Package pdftex.def Info: Image/Campo magnetico.png  used on input line 3573.
+Package pdftex.def Info: Image/Campo magnetico.png  used on input line 3637.
 (pdftex.def)             Requested size: 89.84183pt x 121.34746pt.
- [76 <./Image/Potenza_sistemi_trifase_non_bilanciati_1.png>]
-<Image/Circuiti_magnetici_1.png, id=1783, 580.41844pt x 471.26062pt>
+<Image/Circuiti_magnetici_1.png, id=1779, 580.41844pt x 471.26062pt>
 File: Image/Circuiti_magnetici_1.png Graphic file (type png)
 <use Image/Circuiti_magnetici_1.png>
-Package pdftex.def Info: Image/Circuiti_magnetici_1.png  used on input line 3579.
+Package pdftex.def Info: Image/Circuiti_magnetici_1.png  used on input line 3643.
 (pdftex.def)             Requested size: 156.71507pt x 127.24207pt.
- [77 <./Image/Circuiti_magnetici_1.png>]
-<Image/Legge_di_Hopkinson.png, id=1791, 618.81187pt x 473.51906pt>
+ [77 <./Image/Potenza_sistemi_trifase_non_bilanciati_1.png>]
+<Image/Legge_di_Hopkinson.png, id=1786, 618.81187pt x 473.51906pt>
 File: Image/Legge_di_Hopkinson.png Graphic file (type png)
 <use Image/Legge_di_Hopkinson.png>
-Package pdftex.def Info: Image/Legge_di_Hopkinson.png  used on input line 3613.
+Package pdftex.def Info: Image/Legge_di_Hopkinson.png  used on input line 3677.
 (pdftex.def)             Requested size: 167.08144pt x 127.85184pt.
-<Image/Circuiti_magnetici_dettaglio_1.png, id=1792, 450.18187pt x 368.1253pt>
+ [78 <./Image/Circuiti_magnetici_1.png>]
+<Image/Circuiti_magnetici_dettaglio_1.png, id=1794, 450.18187pt x 368.1253pt>
 File: Image/Circuiti_magnetici_dettaglio_1.png Graphic file (type png)
 <use Image/Circuiti_magnetici_dettaglio_1.png>
-Package pdftex.def Info: Image/Circuiti_magnetici_dettaglio_1.png  used on input line 3644.
+Package pdftex.def Info: Image/Circuiti_magnetici_dettaglio_1.png  used on input line 3708.
 (pdftex.def)             Requested size: 121.55072pt x 99.39516pt.
- [78 <./Image/Legge_di_Hopkinson.png> <./Image/Circuiti_magnetici_dettaglio_1.png>]
-<Image/Analisi_circuito_magnetico_1.png, id=1800, 755.07094pt x 463.7325pt>
+ [79 <./Image/Legge_di_Hopkinson.png> <./Image/Circuiti_magnetici_dettaglio_1.png>]
+<Image/Analisi_circuito_magnetico_1.png, id=1803, 755.07094pt x 463.7325pt>
 File: Image/Analisi_circuito_magnetico_1.png Graphic file (type png)
 <use Image/Analisi_circuito_magnetico_1.png>
-Package pdftex.def Info: Image/Analisi_circuito_magnetico_1.png  used on input line 3704.
+Package pdftex.def Info: Image/Analisi_circuito_magnetico_1.png  used on input line 3768.
 (pdftex.def)             Requested size: 203.87187pt x 125.20944pt.
-<Image/Induttori_accoppiati_1.png, id=1801, 743.02594pt x 564.60938pt>
+<Image/Induttori_accoppiati_1.png, id=1804, 743.02594pt x 564.60938pt>
 File: Image/Induttori_accoppiati_1.png Graphic file (type png)
 <use Image/Induttori_accoppiati_1.png>
-Package pdftex.def Info: Image/Induttori_accoppiati_1.png  used on input line 3715.
+Package pdftex.def Info: Image/Induttori_accoppiati_1.png  used on input line 3779.
 (pdftex.def)             Requested size: 200.61967pt x 152.44656pt.
- [79 <./Image/Analisi_circuito_magnetico_1.png>]
-<Image/Analisi_circuito_magnetico_2.png, id=1809, 752.0597pt x 320.69812pt>
+ [80 <./Image/Analisi_circuito_magnetico_1.png> <./Image/Induttori_accoppiati_1.png>]
+<Image/Analisi_circuito_magnetico_2.png, id=1812, 752.0597pt x 320.69812pt>
 File: Image/Analisi_circuito_magnetico_2.png Graphic file (type png)
 <use Image/Analisi_circuito_magnetico_2.png>
-Package pdftex.def Info: Image/Analisi_circuito_magnetico_2.png  used on input line 3741.
+Package pdftex.def Info: Image/Analisi_circuito_magnetico_2.png  used on input line 3805.
 (pdftex.def)             Requested size: 203.05882pt x 86.58965pt.
-<Image/Analisi_circuito_magnetico_3.png, id=1810, 727.21687pt x 383.93437pt>
+<Image/Analisi_circuito_magnetico_3.png, id=1813, 727.21687pt x 383.93437pt>
 File: Image/Analisi_circuito_magnetico_3.png Graphic file (type png)
 <use Image/Analisi_circuito_magnetico_3.png>
-Package pdftex.def Info: Image/Analisi_circuito_magnetico_3.png  used on input line 3754.
+Package pdftex.def Info: Image/Analisi_circuito_magnetico_3.png  used on input line 3818.
 (pdftex.def)             Requested size: 196.35117pt x 103.66365pt.
- [80 <./Image/Induttori_accoppiati_1.png> <./Image/Analisi_circuito_magnetico_2.png>]
-<Image/Energia_magnetica_1.png, id=1818, 618.81187pt x 429.85594pt>
+ [81 <./Image/Analisi_circuito_magnetico_2.png> <./Image/Analisi_circuito_magnetico_3.png>]
+<Image/Energia_magnetica_1.png, id=1821, 618.81187pt x 429.85594pt>
 File: Image/Energia_magnetica_1.png Graphic file (type png)
 <use Image/Energia_magnetica_1.png>
-Package pdftex.def Info: Image/Energia_magnetica_1.png  used on input line 3790.
+Package pdftex.def Info: Image/Energia_magnetica_1.png  used on input line 3854.
 (pdftex.def)             Requested size: 167.08144pt x 116.06265pt.
- [81 <./Image/Analisi_circuito_magnetico_3.png> <./Image/Energia_magnetica_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 3811--3814
+
+Underfull \hbox (badness 10000) in paragraph at lines 3875--3878
 
  []
 
-<Image/Isteresi_magnetica_2.png, id=1826, 785.93625pt x 679.78969pt>
+[82 <./Image/Energia_magnetica_1.png>]
+<Image/Isteresi_magnetica_2.png, id=1828, 785.93625pt x 679.78969pt>
 File: Image/Isteresi_magnetica_2.png Graphic file (type png)
 <use Image/Isteresi_magnetica_2.png>
-Package pdftex.def Info: Image/Isteresi_magnetica_2.png  used on input line 3815.
+Package pdftex.def Info: Image/Isteresi_magnetica_2.png  used on input line 3879.
 (pdftex.def)             Requested size: 212.20561pt x 183.54567pt.
-<Image/Isteresi_magnetica_3.png, id=1827, 510.40688pt x 817.55438pt>
+<Image/Isteresi_magnetica_3.png, id=1829, 510.40688pt x 817.55438pt>
 File: Image/Isteresi_magnetica_3.png Graphic file (type png)
 <use Image/Isteresi_magnetica_3.png>
-Package pdftex.def Info: Image/Isteresi_magnetica_3.png  used on input line 3824.
+Package pdftex.def Info: Image/Isteresi_magnetica_3.png  used on input line 3888.
 (pdftex.def)             Requested size: 102.07956pt x 163.50798pt.
-[82 <./Image/Isteresi_magnetica_2.png>]
-<Image/Isteresi_magnetica_4.png, id=1834, 684.30656pt x 736.25063pt>
+<Image/Isteresi_magnetica_4.png, id=1830, 684.30656pt x 736.25063pt>
 File: Image/Isteresi_magnetica_4.png Graphic file (type png)
 <use Image/Isteresi_magnetica_4.png>
-Package pdftex.def Info: Image/Isteresi_magnetica_4.png  used on input line 3839.
+Package pdftex.def Info: Image/Isteresi_magnetica_4.png  used on input line 3903.
 (pdftex.def)             Requested size: 136.85889pt x 147.24751pt.
-<Image/Trasformatore_1.png, id=1835, 869.49844pt x 673.01437pt>
+ [83 <./Image/Isteresi_magnetica_2.png> <./Image/Isteresi_magnetica_3.png>]
+<Image/Trasformatore_1.png, id=1838, 869.49844pt x 673.01437pt>
 File: Image/Trasformatore_1.png Graphic file (type png)
 <use Image/Trasformatore_1.png>
-Package pdftex.def Info: Image/Trasformatore_1.png  used on input line 3853.
+Package pdftex.def Info: Image/Trasformatore_1.png  used on input line 3917.
 (pdftex.def)             Requested size: 234.76772pt x 181.71631pt.
- [83 <./Image/Isteresi_magnetica_3.png> <./Image/Isteresi_magnetica_4.png>] [84 <./Image/Trasformatore_1.png>]
-<Image/Trasformatore_2.png, id=1849, 2569.6pt x 1741.50626pt>
+ [84 <./Image/Isteresi_magnetica_4.png> <./Image/Trasformatore_1.png>]
+<Image/Trasformatore_2.png, id=1846, 2569.6pt x 1741.50626pt>
 File: Image/Trasformatore_2.png Graphic file (type png)
 <use Image/Trasformatore_2.png>
-Package pdftex.def Info: Image/Trasformatore_2.png  used on input line 3929.
+Package pdftex.def Info: Image/Trasformatore_2.png  used on input line 3993.
 (pdftex.def)             Requested size: 308.3387pt x 208.97173pt.
- [85 <./Image/Trasformatore_2.png>]
-<Image/Isteresi_ferro.png, id=1857, 492.33937pt x 601.4972pt>
+ [85]
+<Image/Isteresi_ferro.png, id=1853, 492.33937pt x 601.4972pt>
 File: Image/Isteresi_ferro.png Graphic file (type png)
 <use Image/Isteresi_ferro.png>
-Package pdftex.def Info: Image/Isteresi_ferro.png  used on input line 3981.
+Package pdftex.def Info: Image/Isteresi_ferro.png  used on input line 4045.
 (pdftex.def)             Requested size: 118.16385pt x 144.36227pt.
-<Image/Nucleo_ferro.png, id=1858, 543.53062pt x 417.05812pt>
+ [86 <./Image/Trasformatore_2.png>]
+<Image/Nucleo_ferro.png, id=1860, 543.53062pt x 417.05812pt>
 File: Image/Nucleo_ferro.png Graphic file (type png)
 <use Image/Nucleo_ferro.png>
-Package pdftex.def Info: Image/Nucleo_ferro.png  used on input line 3993.
+Package pdftex.def Info: Image/Nucleo_ferro.png  used on input line 4057.
 (pdftex.def)             Requested size: 130.45001pt x 100.096pt.
- [86 <./Image/Isteresi_ferro.png> <./Image/Nucleo_ferro.png>]
-<Image/Laminazione_nucleo_ferro.png, id=1867, 674.52pt x 462.22687pt>
+<Image/Laminazione_nucleo_ferro.png, id=1861, 674.52pt x 462.22687pt>
 File: Image/Laminazione_nucleo_ferro.png Graphic file (type png)
 <use Image/Laminazione_nucleo_ferro.png>
-Package pdftex.def Info: Image/Laminazione_nucleo_ferro.png  used on input line 4008.
+Package pdftex.def Info: Image/Laminazione_nucleo_ferro.png  used on input line 4072.
 (pdftex.def)             Requested size: 161.8881pt x 110.9367pt.
- [87 <./Image/Laminazione_nucleo_ferro.png>] (./Elettrotecnica.aux)
+ [87 <./Image/Isteresi_ferro.png> <./Image/Nucleo_ferro.png> <./Image/Laminazione_nucleo_ferro.png>] [88] (./Elettrotecnica.aux)
 Package rerunfilecheck Info: File `Elettrotecnica.out' has not changed.
-(rerunfilecheck)             Checksum: B24C149A0292C92429F5F68C5A0BED92;28750.
+(rerunfilecheck)             Checksum: EFDC7631790A804EF7F993FD2A8551C8;28788.
  ) 
 Here is how much of TeX's memory you used:
- 40349 strings out of 476097
- 946070 string characters out of 5795135
+ 40562 strings out of 476097
+ 949491 string characters out of 5795135
  1885845 words of memory out of 5000000
- 59547 multiletter control sequences out of 15000+600000
+ 59749 multiletter control sequences out of 15000+600000
  529767 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,21n,104p,1125b,733s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Elettrotecnica.pdf (87 pages, 6253891 bytes).
+Output written on Elettrotecnica.pdf (88 pages, 6363052 bytes).
 PDF statistics:
- 2045 PDF objects out of 2073 (max. 8388607)
- 1406 compressed objects within 15 object streams
- 292 named destinations out of 1000 (max. 500000)
+ 2047 PDF objects out of 2073 (max. 8388607)
+ 1407 compressed objects within 15 object streams
+ 290 named destinations out of 1000 (max. 500000)
  2592 words of extra memory for PDF output out of 10000 (max. 10000000)
 
