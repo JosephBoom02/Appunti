@@ -1,1596 +1,1485 @@
-PWD c:\Users\bumma\Documents\VSCode\Latex\Anno 1\Reti Logiche
-INPUT C:\Users\bumma\AppData\Local\MiKTeX\miktex\data\le\xetex\xelatex.fmt
-INPUT c:\Users\bumma\Documents\VSCode\Latex\Anno 1\Reti Logiche\main.tex
+PWD c:/Users/bumma/Documents/VSCode/Latex/Anno 1/Reti Logiche
+INPUT c:/texlive/2023/texmf.cnf
+INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT c:/Users/bumma/Documents/VSCode/Latex/Anno 1/Reti Logiche/main.tex
 OUTPUT main.log
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
-INPUT C:\Program Files\MiKTeX\tex\latex\base\size10.clo
-INPUT C:\Program Files\MiKTeX\tex\latex\base\size10.clo
-INPUT C:\Program Files\MiKTeX\tex\latex\base\size10.clo
-INPUT C:\Program Files\MiKTeX\tex\latex\base\size10.clo
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-common.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-latex.def
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\pgf.revision.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\pgf.revision.tex
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeyslibraryfiltered.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgf.cfg
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-dvipdfmx.def
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\mathcolor.ltx
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\mathcolor.ltx
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\mathcolor.ltx
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\mathcolor.ltx
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathutil.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathparser.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathcalc.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfloat.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfint.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleplot.code.tex
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmodulematrix.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.cfg
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.cfg
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.cfg
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\geometry\geometry.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\mwe\mwe.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3packages\l3keys2e\l3keys2e.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3kernel\expl3.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.ltd.tex
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\lipsum\lipsum.ltd.tex
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\xspace.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\hycolor\hycolor.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\auxhook\auxhook.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\refcount\refcount.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvsetkeys\kvsetkeys.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\puenc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\puenc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\puenc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\puenc.def
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Program Files\MiKTeX\fonts\tfm\adobe\zapfding\pzdr.tfm
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bitset\bitset.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\intcalc\intcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atbegshi-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hxetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hxetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hxetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hxetex.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\stringenc\stringenc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\pdfescape\pdfescape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\kvoptions\kvoptions.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\atveryend-ltx.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\generic\infwarerr\infwarerr.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\lstmisc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\lstmisc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\lstmisc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\lstmisc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\listings\listings.cfg
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\tabularx.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\pdfpages.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\eso-pic\eso-pic.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\ppxetex.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\ppxetex.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\ppxetex.def
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdfpages\ppxetex.def
-INPUT C:\Program Files\MiKTeX\tex\latex\blindtext\blindtext.sty
-INPUT .\main.aux
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT ./main.aux
 INPUT main.aux
 INPUT main.aux
 OUTPUT main.aux
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\base\ts1cmr.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\color.sty
+INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
 OUTPUT main.out
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Users\bumma\AppData\Roaming\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
-INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
+OUTPUT main.pdf
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 OUTPUT main.toc
-OUTPUT main.xdv
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd
-INPUT C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT .\logica.png
-INPUT .\logica.png
+INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT ./logica.png
+INPUT ./logica.png
 INPUT logica.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-INPUT .\intmecc.png
-INPUT .\intmecc.png
+INPUT ./logica.png
+INPUT ./logica.png
+INPUT c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT ./intmecc.png
+INPUT ./intmecc.png
 INPUT intmecc.png
-INPUT .\intel.png
-INPUT .\intel.png
+INPUT ./intmecc.png
+INPUT ./intmecc.png
+INPUT ./intel.png
+INPUT ./intel.png
 INPUT intel.png
-INPUT .\funzioni1.png
-INPUT .\funzioni1.png
+INPUT ./intel.png
+INPUT ./intel.png
+INPUT ./funzioni1.png
+INPUT ./funzioni1.png
 INPUT funzioni1.png
-INPUT .\desgate.png
-INPUT .\desgate.png
+INPUT ./funzioni1.png
+INPUT ./funzioni1.png
+INPUT ./desgate.png
+INPUT ./desgate.png
 INPUT desgate.png
-INPUT .\funzioni2.png
-INPUT .\funzioni2.png
+INPUT ./desgate.png
+INPUT ./desgate.png
+INPUT ./funzioni2.png
+INPUT ./funzioni2.png
 INPUT funzioni2.png
-INPUT .\desAND.png
-INPUT .\desAND.png
+INPUT ./funzioni2.png
+INPUT ./funzioni2.png
+INPUT ./desAND.png
+INPUT ./desAND.png
 INPUT desAND.png
-INPUT .\desOR.png
-INPUT .\desOR.png
+INPUT ./desAND.png
+INPUT ./desAND.png
+INPUT ./desOR.png
+INPUT ./desOR.png
 INPUT desOR.png
-INPUT .\desGate3.png
-INPUT .\desGate3.png
+INPUT ./desOR.png
+INPUT ./desOR.png
+INPUT ./desGate3.png
+INPUT ./desGate3.png
 INPUT desGate3.png
-INPUT .\circEXOR.png
-INPUT .\circEXOR.png
+INPUT ./desGate3.png
+INPUT ./desGate3.png
+INPUT ./circEXOR.png
+INPUT ./circEXOR.png
 INPUT circEXOR.png
-INPUT .\desEXOR.png
-INPUT .\desEXOR.png
+INPUT ./circEXOR.png
+INPUT ./circEXOR.png
+INPUT ./desEXOR.png
+INPUT ./desEXOR.png
 INPUT desEXOR.png
-INPUT .\nand.png
-INPUT .\nand.png
+INPUT ./desEXOR.png
+INPUT ./desEXOR.png
+INPUT ./nand.png
+INPUT ./nand.png
 INPUT nand.png
-INPUT .\diagrammiocchio.png
-INPUT .\diagrammiocchio.png
+INPUT ./nand.png
+INPUT ./nand.png
+INPUT ./diagrammiocchio.png
+INPUT ./diagrammiocchio.png
 INPUT diagrammiocchio.png
-INPUT .\diagrammabus.png
-INPUT .\diagrammabus.png
+INPUT ./diagrammiocchio.png
+INPUT ./diagrammiocchio.png
+INPUT ./diagrammabus.png
+INPUT ./diagrammabus.png
 INPUT diagrammabus.png
-INPUT .\ritardi.png
-INPUT .\ritardi.png
+INPUT ./diagrammabus.png
+INPUT ./diagrammabus.png
+INPUT ./ritardi.png
+INPUT ./ritardi.png
 INPUT ritardi.png
-INPUT .\gateinserie.png
-INPUT .\gateinserie.png
+INPUT ./ritardi.png
+INPUT ./ritardi.png
+INPUT ./gateinserie.png
+INPUT ./gateinserie.png
 INPUT gateinserie.png
-INPUT .\gateinparallelo.png
-INPUT .\gateinparallelo.png
+INPUT ./gateinserie.png
+INPUT ./gateinserie.png
+INPUT ./gateinparallelo.png
+INPUT ./gateinparallelo.png
 INPUT gateinparallelo.png
-INPUT .\gateinretro.png
-INPUT .\gateinretro.png
+INPUT ./gateinparallelo.png
+INPUT ./gateinparallelo.png
+INPUT ./gateinretro.png
+INPUT ./gateinretro.png
 INPUT gateinretro.png
-INPUT .\espos.png
-INPUT .\espos.png
+INPUT ./gateinretro.png
+INPUT ./gateinretro.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ./espos.png
+INPUT ./espos.png
 INPUT espos.png
-INPUT .\esEs.png
-INPUT .\esEs.png
+INPUT ./espos.png
+INPUT ./espos.png
+INPUT ./esEs.png
+INPUT ./esEs.png
 INPUT esEs.png
-INPUT .\esIter.png
-INPUT .\esIter.png
+INPUT ./esEs.png
+INPUT ./esEs.png
+INPUT ./esIter.png
+INPUT ./esIter.png
 INPUT esIter.png
-INPUT .\esIterEs.png
-INPUT .\esIterEs.png
+INPUT ./esIter.png
+INPUT ./esIter.png
+INPUT ./esIterEs.png
+INPUT ./esIterEs.png
 INPUT esIterEs.png
-INPUT .\trascod.png
-INPUT .\trascod.png
+INPUT ./esIterEs.png
+INPUT ./esIterEs.png
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt10.tfm
+INPUT ./trascod.png
+INPUT ./trascod.png
 INPUT trascod.png
-INPUT .\utf32utf8.png
-INPUT .\utf32utf8.png
+INPUT ./trascod.png
+INPUT ./trascod.png
+INPUT c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc
+INPUT ./utf32utf8.png
+INPUT ./utf32utf8.png
 INPUT utf32utf8.png
-INPUT .\retelog.png
-INPUT .\retelog.png
+INPUT ./utf32utf8.png
+INPUT ./utf32utf8.png
+INPUT ./retelog.png
+INPUT ./retelog.png
 INPUT retelog.png
-INPUT .\bcd-7.png
-INPUT .\bcd-7.png
+INPUT ./retelog.png
+INPUT ./retelog.png
+INPUT ./bcd-7.png
+INPUT ./bcd-7.png
 INPUT bcd-7.png
-INPUT .\parallel.png
-INPUT .\parallel.png
+INPUT ./bcd-7.png
+INPUT ./bcd-7.png
+INPUT ./parallel.png
+INPUT ./parallel.png
 INPUT parallel.png
-INPUT .\compstr.png
-INPUT .\compstr.png
+INPUT ./parallel.png
+INPUT ./parallel.png
+INPUT ./compstr.png
+INPUT ./compstr.png
 INPUT compstr.png
-INPUT .\conv7.png
-INPUT .\conv7.png
+INPUT ./compstr.png
+INPUT ./compstr.png
+INPUT ./conv7.png
+INPUT ./conv7.png
 INPUT conv7.png
-INPUT .\algmap.png
-INPUT .\algmap.png
+INPUT ./conv7.png
+INPUT ./conv7.png
+INPUT ./algmap.png
+INPUT ./algmap.png
 INPUT algmap.png
-INPUT .\imesp.png
-INPUT .\imesp.png
+INPUT ./algmap.png
+INPUT ./algmap.png
+INPUT ./imesp.png
+INPUT ./imesp.png
 INPUT imesp.png
-INPUT .\esp1.png
+INPUT ./imesp.png
+INPUT ./imesp.png
+INPUT ./esp1.png
 INPUT esp1.png
-INPUT .\esp2.png
+INPUT ./esp1.png
+INPUT ./esp1.png
+INPUT ./esp2.png
 INPUT esp2.png
-INPUT .\tdv1.png
-INPUT .\tdv1.png
+INPUT ./esp2.png
+INPUT ./esp2.png
+INPUT ./tdv1.png
+INPUT ./tdv1.png
 INPUT tdv1.png
-INPUT .\fulladderTdv.png
-INPUT .\fulladderTdv.png
+INPUT ./tdv1.png
+INPUT ./tdv1.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm
+INPUT ./fulladderTdv.png
+INPUT ./fulladderTdv.png
 INPUT fulladderTdv.png
-INPUT .\es3.png
+INPUT ./fulladderTdv.png
+INPUT ./fulladderTdv.png
+INPUT ./es3.png
 INPUT es3.png
-INPUT .\enc3ing.png
-INPUT .\enc3ing.png
+INPUT ./es3.png
+INPUT ./es3.png
+INPUT ./enc3ing.png
+INPUT ./enc3ing.png
 INPUT enc3ing.png
-INPUT .\FullAdder1.png
-INPUT .\FullAdder1.png
+INPUT ./enc3ing.png
+INPUT ./enc3ing.png
+INPUT ./FullAdder1.png
+INPUT ./FullAdder1.png
 INPUT FullAdder1.png
-INPUT .\proglog.png
-INPUT .\proglog.png
+INPUT ./FullAdder1.png
+INPUT ./FullAdder1.png
+INPUT ./proglog.png
+INPUT ./proglog.png
 INPUT proglog.png
-INPUT .\escompl.png
-INPUT .\escompl.png
+INPUT ./proglog.png
+INPUT ./proglog.png
+INPUT ./escompl.png
+INPUT ./escompl.png
 INPUT escompl.png
-INPUT .\zfun.png
-INPUT .\zfun.png
+INPUT ./escompl.png
+INPUT ./escompl.png
+INPUT ./zfun.png
+INPUT ./zfun.png
 INPUT zfun.png
-INPUT .\impZ.png
-INPUT .\impZ.png
+INPUT ./zfun.png
+INPUT ./zfun.png
+INPUT ./impZ.png
+INPUT ./impZ.png
 INPUT impZ.png
-INPUT .\imp1Z.png
-INPUT .\imp1Z.png
+INPUT ./impZ.png
+INPUT ./impZ.png
+INPUT ./imp1Z.png
+INPUT ./imp1Z.png
 INPUT imp1Z.png
-INPUT .\imp1att.png
-INPUT .\imp1att.png
+INPUT ./imp1Z.png
+INPUT ./imp1Z.png
+INPUT ./imp1att.png
+INPUT ./imp1att.png
 INPUT imp1att.png
-INPUT .\karnfulladd.png
-INPUT .\karnfulladd.png
+INPUT ./imp1att.png
+INPUT ./imp1att.png
+INPUT ./karnfulladd.png
+INPUT ./karnfulladd.png
 INPUT karnfulladd.png
-INPUT .\cellead.png
-INPUT .\cellead.png
+INPUT ./karnfulladd.png
+INPUT ./karnfulladd.png
+INPUT ./cellead.png
+INPUT ./cellead.png
 INPUT cellead.png
-INPUT .\celle5-6.png
-INPUT .\celle5-6.png
+INPUT ./cellead.png
+INPUT ./cellead.png
+INPUT ./celle5-6.png
+INPUT ./celle5-6.png
 INPUT celle5-6.png
-INPUT .\cellad2.png
-INPUT .\cellad2.png
+INPUT ./celle5-6.png
+INPUT ./celle5-6.png
+INPUT ./cellad2.png
+INPUT ./cellad2.png
 INPUT cellad2.png
-INPUT .\raggimpl.png
-INPUT .\raggimpl.png
+INPUT ./cellad2.png
+INPUT ./cellad2.png
+INPUT ./raggimpl.png
+INPUT ./raggimpl.png
 INPUT raggimpl.png
-INPUT .\spRR.png
+INPUT ./raggimpl.png
+INPUT ./raggimpl.png
+INPUT ./spRR.png
 INPUT spRR.png
-INPUT .\ridond.png
-INPUT .\ridond.png
+INPUT ./spRR.png
+INPUT ./spRR.png
+INPUT ./ridond.png
+INPUT ./ridond.png
 INPUT ridond.png
-INPUT .\copertura.png
-INPUT .\copertura.png
+INPUT ./ridond.png
+INPUT ./ridond.png
+INPUT ./copertura.png
+INPUT ./copertura.png
 INPUT copertura.png
-INPUT .\escoper.png
-INPUT .\escoper.png
+INPUT ./copertura.png
+INPUT ./copertura.png
+INPUT ./escoper.png
+INPUT ./escoper.png
 INPUT escoper.png
-INPUT .\escoper2.png
-INPUT .\escoper2.png
+INPUT ./escoper.png
+INPUT ./escoper.png
+INPUT ./escoper2.png
+INPUT ./escoper2.png
 INPUT escoper2.png
-INPUT .\ind1.png
+INPUT ./escoper2.png
+INPUT ./escoper2.png
+INPUT ./ind1.png
 INPUT ind1.png
-INPUT .\ind2.png
+INPUT ./ind1.png
+INPUT ./ind1.png
+INPUT ./ind2.png
 INPUT ind2.png
-INPUT .\ind2.1.png
-INPUT .\ind2.1.png
+INPUT ./ind2.png
+INPUT ./ind2.png
+INPUT ./ind2.1.png
+INPUT ./ind2.1.png
 INPUT ind2.1.png
-INPUT .\indes3.png
+INPUT ./ind2.1.png
+INPUT ./ind2.1.png
+INPUT ./indes3.png
 INPUT indes3.png
-INPUT .\ind4.png
+INPUT ./indes3.png
+INPUT ./indes3.png
+INPUT ./ind4.png
 INPUT ind4.png
-INPUT .\encoder3.png
-INPUT .\encoder3.png
+INPUT ./ind4.png
+INPUT ./ind4.png
+INPUT ./encoder3.png
+INPUT ./encoder3.png
 INPUT encoder3.png
-INPUT .\Z1.png
-INPUT .\Z1.png
+INPUT ./encoder3.png
+INPUT ./encoder3.png
+INPUT ./Z1.png
+INPUT ./Z1.png
 INPUT Z1.png
-INPUT .\Z2.png
-INPUT .\Z2.png
+INPUT ./Z1.png
+INPUT ./Z1.png
+INPUT ./Z2.png
+INPUT ./Z2.png
 INPUT Z2.png
-INPUT .\mappeanalisi1.png
-INPUT .\mappeanalisi1.png
+INPUT ./Z2.png
+INPUT ./Z2.png
+INPUT ./mappeanalisi1.png
+INPUT ./mappeanalisi1.png
 INPUT mappeanalisi1.png
-INPUT .\mappeanalisi2.png
-INPUT .\mappeanalisi2.png
+INPUT ./mappeanalisi1.png
+INPUT ./mappeanalisi1.png
+INPUT ./mappeanalisi2.png
+INPUT ./mappeanalisi2.png
 INPUT mappeanalisi2.png
-INPUT .\tdvnand.png
-INPUT .\tdvnand.png
+INPUT ./mappeanalisi2.png
+INPUT ./mappeanalisi2.png
+INPUT ./tdvnand.png
+INPUT ./tdvnand.png
 INPUT tdvnand.png
-INPUT .\equivalence.png
-INPUT .\equivalence.png
+INPUT ./tdvnand.png
+INPUT ./tdvnand.png
+INPUT ./equivalence.png
+INPUT ./equivalence.png
 INPUT equivalence.png
-INPUT .\tabDec.png
-INPUT .\tabDec.png
+INPUT ./equivalence.png
+INPUT ./equivalence.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./tabDec.png
+INPUT ./tabDec.png
 INPUT tabDec.png
-INPUT .\fan-in1.png
-INPUT .\fan-in1.png
+INPUT ./tabDec.png
+INPUT ./tabDec.png
+INPUT ./fan-in1.png
+INPUT ./fan-in1.png
 INPUT fan-in1.png
-INPUT .\fan-in2.png
-INPUT .\fan-in2.png
+INPUT ./fan-in1.png
+INPUT ./fan-in1.png
+INPUT ./fan-in2.png
+INPUT ./fan-in2.png
 INPUT fan-in2.png
-INPUT .\sintesiFullAdder.png
-INPUT .\sintesiFullAdder.png
+INPUT ./fan-in2.png
+INPUT ./fan-in2.png
+INPUT ./sintesiFullAdder.png
+INPUT ./sintesiFullAdder.png
 INPUT sintesiFullAdder.png
-INPUT .\TDVMulti.png
-INPUT .\TDVMulti.png
+INPUT ./sintesiFullAdder.png
+INPUT ./sintesiFullAdder.png
+INPUT ./TDVMulti.png
+INPUT ./TDVMulti.png
 INPUT TDVMulti.png
-INPUT .\MUX2n.png
-INPUT .\MUX2n.png
+INPUT ./TDVMulti.png
+INPUT ./TDVMulti.png
+INPUT ./MUX2n.png
+INPUT ./MUX2n.png
 INPUT MUX2n.png
-INPUT .\ProgMUX.png
-INPUT .\ProgMUX.png
+INPUT ./MUX2n.png
+INPUT ./MUX2n.png
+INPUT ./ProgMUX.png
+INPUT ./ProgMUX.png
 INPUT ProgMUX.png
-INPUT .\fulladderTdv.png
-INPUT .\fulladderTdv.png
+INPUT ./ProgMUX.png
+INPUT ./ProgMUX.png
+INPUT ./fulladderTdv.png
+INPUT ./fulladderTdv.png
 INPUT fulladderTdv.png
-INPUT .\MUXfa.png
-INPUT .\MUXfa.png
+INPUT ./fulladderTdv.png
+INPUT ./MUXfa.png
+INPUT ./MUXfa.png
 INPUT MUXfa.png
-INPUT .\MUX4var.png
-INPUT .\MUX4var.png
+INPUT ./MUXfa.png
+INPUT ./MUXfa.png
+INPUT ./MUX4var.png
+INPUT ./MUX4var.png
 INPUT MUX4var.png
-INPUT .\retiProg1.png
-INPUT .\retiProg1.png
+INPUT ./MUX4var.png
+INPUT ./MUX4var.png
+INPUT ./retiProg1.png
+INPUT ./retiProg1.png
 INPUT retiProg1.png
-INPUT .\aritmetica 1.png
-INPUT .\aritmetica 1.png
+INPUT ./retiProg1.png
+INPUT ./retiProg1.png
+INPUT ./aritmetica 1.png
+INPUT ./aritmetica 1.png
 INPUT aritmetica 1.png
-INPUT .\TDV Full Adder.png
-INPUT .\TDV Full Adder.png
+INPUT ./aritmetica 1.png
+INPUT ./aritmetica 1.png
+INPUT ./TDV Full Adder.png
+INPUT ./TDV Full Adder.png
 INPUT TDV Full Adder.png
-INPUT .\Full Adder.png
-INPUT .\Full Adder.png
+INPUT ./TDV Full Adder.png
+INPUT ./TDV Full Adder.png
+INPUT ./Full Adder.png
+INPUT ./Full Adder.png
 INPUT Full Adder.png
-INPUT .\adder n bit.png
-INPUT .\adder n bit.png
+INPUT ./Full Adder.png
+INPUT ./Full Adder.png
+INPUT ./adder n bit.png
+INPUT ./adder n bit.png
 INPUT adder n bit.png
-INPUT .\sottrazione.png
-INPUT .\sottrazione.png
+INPUT ./adder n bit.png
+INPUT ./adder n bit.png
+INPUT ./sottrazione.png
+INPUT ./sottrazione.png
 INPUT sottrazione.png
-INPUT .\adder-sub.png
-INPUT .\adder-sub.png
+INPUT ./sottrazione.png
+INPUT ./sottrazione.png
+INPUT ./adder-sub.png
+INPUT ./adder-sub.png
 INPUT adder-sub.png
-INPUT .\adder-sub2.png
-INPUT .\adder-sub2.png
+INPUT ./adder-sub.png
+INPUT ./adder-sub.png
+INPUT ./adder-sub2.png
+INPUT ./adder-sub2.png
 INPUT adder-sub2.png
-INPUT .\aritmetica con segno.png
-INPUT .\aritmetica con segno.png
+INPUT ./adder-sub2.png
+INPUT ./adder-sub2.png
+INPUT ./aritmetica con segno.png
+INPUT ./aritmetica con segno.png
 INPUT aritmetica con segno.png
-INPUT .\n bit adder modificato.png
-INPUT .\n bit adder modificato.png
+INPUT ./aritmetica con segno.png
+INPUT ./aritmetica con segno.png
+INPUT ./n bit adder modificato.png
+INPUT ./n bit adder modificato.png
 INPUT n bit adder modificato.png
-INPUT .\n bit adder complemento.png
-INPUT .\n bit adder complemento.png
+INPUT ./n bit adder modificato.png
+INPUT ./n bit adder modificato.png
+INPUT ./n bit adder complemento.png
+INPUT ./n bit adder complemento.png
 INPUT n bit adder complemento.png
-INPUT .\alu.png
-INPUT .\alu.png
+INPUT ./n bit adder complemento.png
+INPUT ./n bit adder complemento.png
+INPUT ./alu.png
+INPUT ./alu.png
 INPUT alu.png
-INPUT .\alu circuito.png
-INPUT .\alu circuito.png
+INPUT ./alu.png
+INPUT ./alu.png
+INPUT ./alu circuito.png
+INPUT ./alu circuito.png
 INPUT alu circuito.png
-INPUT .\carrylookahead1.png
-INPUT .\carrylookahead1.png
+INPUT ./alu circuito.png
+INPUT ./alu circuito.png
+INPUT ./carrylookahead1.png
+INPUT ./carrylookahead1.png
 INPUT carrylookahead1.png
-INPUT .\esGrafo1.png
-INPUT .\esGrafo1.png
+INPUT ./carrylookahead1.png
+INPUT ./carrylookahead1.png
+INPUT ./esGrafo1.png
+INPUT ./esGrafo1.png
 INPUT esGrafo1.png
-INPUT .\esGrafo2.png
-INPUT .\esGrafo2.png
+INPUT ./esGrafo1.png
+INPUT ./esGrafo1.png
+INPUT ./esGrafo2.png
+INPUT ./esGrafo2.png
 INPUT esGrafo2.png
-INPUT .\cassaforteMealy.png
-INPUT .\cassaforteMealy.png
+INPUT ./esGrafo2.png
+INPUT ./esGrafo2.png
+INPUT ./cassaforteMealy.png
+INPUT ./cassaforteMealy.png
 INPUT cassaforteMealy.png
-INPUT .\indifferenza.png
-INPUT .\indifferenza.png
+INPUT ./cassaforteMealy.png
+INPUT ./cassaforteMealy.png
+INPUT ./indifferenza.png
+INPUT ./indifferenza.png
 INPUT indifferenza.png
-INPUT .\TDFMealy.png
-INPUT .\TDFMealy.png
+INPUT ./indifferenza.png
+INPUT ./indifferenza.png
+INPUT ./TDFMealy.png
+INPUT ./TDFMealy.png
 INPUT TDFMealy.png
-INPUT .\TDFMoore.png
-INPUT .\TDFMoore.png
+INPUT ./TDFMealy.png
+INPUT ./TDFMealy.png
+INPUT ./TDFMoore.png
+INPUT ./TDFMoore.png
 INPUT TDFMoore.png
-INPUT .\passo3.png
-INPUT .\passo3.png
+INPUT ./TDFMoore.png
+INPUT ./TDFMoore.png
+INPUT ./passo3.png
+INPUT ./passo3.png
 INPUT passo3.png
-INPUT .\passo4.png
-INPUT .\passo4.png
+INPUT ./passo3.png
+INPUT ./passo3.png
+INPUT ./passo4.png
+INPUT ./passo4.png
 INPUT passo4.png
-INPUT .\passo5.png
-INPUT .\passo5.png
+INPUT ./passo4.png
+INPUT ./passo4.png
+INPUT ./passo5.png
+INPUT ./passo5.png
 INPUT passo5.png
-INPUT .\esMuxAlea.png
-INPUT .\esMuxAlea.png
+INPUT ./passo5.png
+INPUT ./passo5.png
+INPUT ./esMuxAlea.png
+INPUT ./esMuxAlea.png
 INPUT esMuxAlea.png
-INPUT .\esAleeStatic.png
-INPUT .\esAleeStatic.png
+INPUT ./esMuxAlea.png
+INPUT ./esMuxAlea.png
+INPUT ./esAleeStatic.png
+INPUT ./esAleeStatic.png
 INPUT esAleeStatic.png
-INPUT .\cassaforteSempl.png
-INPUT .\cassaforteSempl.png
+INPUT ./esAleeStatic.png
+INPUT ./esAleeStatic.png
+INPUT ./cassaforteSempl.png
+INPUT ./cassaforteSempl.png
 INPUT cassaforteSempl.png
-INPUT .\CorseCritiche.png
-INPUT .\CorseCritiche.png
+INPUT ./cassaforteSempl.png
+INPUT ./cassaforteSempl.png
+INPUT ./CorseCritiche.png
+INPUT ./CorseCritiche.png
 INPUT CorseCritiche.png
-INPUT .\lampadaC1.png
-INPUT .\lampadaC1.png
+INPUT ./CorseCritiche.png
+INPUT ./CorseCritiche.png
+INPUT ./lampadaC1.png
+INPUT ./lampadaC1.png
 INPUT lampadaC1.png
-INPUT .\lampadaC2.png
-INPUT .\lampadaC2.png
+INPUT ./lampadaC1.png
+INPUT ./lampadaC1.png
+INPUT ./lampadaC2.png
+INPUT ./lampadaC2.png
 INPUT lampadaC2.png
-INPUT .\lampadaC3.png
-INPUT .\lampadaC3.png
+INPUT ./lampadaC2.png
+INPUT ./lampadaC2.png
+INPUT ./lampadaC3.png
+INPUT ./lampadaC3.png
 INPUT lampadaC3.png
-INPUT .\nand2retro.png
-INPUT .\nand2retro.png
+INPUT ./lampadaC3.png
+INPUT ./lampadaC3.png
+INPUT ./nand2retro.png
+INPUT ./nand2retro.png
 INPUT nand2retro.png
-INPUT .\nand2retroEspr.png
-INPUT .\nand2retroEspr.png
+INPUT ./nand2retro.png
+INPUT ./nand2retro.png
+INPUT ./nand2retroEspr.png
+INPUT ./nand2retroEspr.png
 INPUT nand2retroEspr.png
-INPUT .\sintesiKarnaugh.png
-INPUT .\sintesiKarnaugh.png
+INPUT ./nand2retroEspr.png
+INPUT ./nand2retroEspr.png
+INPUT ./sintesiKarnaugh.png
+INPUT ./sintesiKarnaugh.png
 INPUT sintesiKarnaugh.png
-INPUT .\sintesiTransizioni.png
-INPUT .\sintesiTransizioni.png
+INPUT ./sintesiKarnaugh.png
+INPUT ./sintesiKarnaugh.png
+INPUT ./sintesiTransizioni.png
+INPUT ./sintesiTransizioni.png
 INPUT sintesiTransizioni.png
-INPUT .\analisiStabilita.png
-INPUT .\analisiStabilita.png
+INPUT ./sintesiTransizioni.png
+INPUT ./sintesiTransizioni.png
+INPUT ./analisiStabilita.png
+INPUT ./analisiStabilita.png
 INPUT analisiStabilita.png
-INPUT .\grafoecomportamento.png
-INPUT .\grafoecomportamento.png
+INPUT ./analisiStabilita.png
+INPUT ./analisiStabilita.png
+INPUT ./grafoecomportamento.png
+INPUT ./grafoecomportamento.png
 INPUT grafoecomportamento.png
-INPUT .\latch SR.png
-INPUT .\latch SR.png
+INPUT ./grafoecomportamento.png
+INPUT ./grafoecomportamento.png
+INPUT ./latch SR.png
+INPUT ./latch SR.png
 INPUT latch SR.png
-INPUT .\SRcomportamento.png
-INPUT .\SRcomportamento.png
+INPUT ./latch SR.png
+INPUT ./latch SR.png
+INPUT ./SRcomportamento.png
+INPUT ./SRcomportamento.png
 INPUT SRcomportamento.png
-INPUT .\SRsintesi.png
-INPUT .\SRsintesi.png
+INPUT ./SRcomportamento.png
+INPUT ./SRcomportamento.png
+INPUT ./SRsintesi.png
+INPUT ./SRsintesi.png
 INPUT SRsintesi.png
-INPUT .\latchSR-schema-logico.png
-INPUT .\latchSR-schema-logico.png
+INPUT ./SRsintesi.png
+INPUT ./SRsintesi.png
+INPUT ./latchSR-schema-logico.png
+INPUT ./latchSR-schema-logico.png
 INPUT latchSR-schema-logico.png
-INPUT .\latchSR-PS.png
-INPUT .\latchSR-PS.png
+INPUT ./latchSR-schema-logico.png
+INPUT ./latchSR-schema-logico.png
+INPUT ./latchSR-PS.png
+INPUT ./latchSR-PS.png
 INPUT latchSR-PS.png
-INPUT .\latchSR-NOR.png
-INPUT .\latchSR-NOR.png
+INPUT ./latchSR-PS.png
+INPUT ./latchSR-PS.png
+INPUT ./latchSR-NOR.png
+INPUT ./latchSR-NOR.png
 INPUT latchSR-NOR.png
-INPUT .\latchSR-schema-logico-SP.png
-INPUT .\latchSR-schema-logico-SP.png
+INPUT ./latchSR-NOR.png
+INPUT ./latchSR-NOR.png
+INPUT ./latchSR-schema-logico-SP.png
+INPUT ./latchSR-schema-logico-SP.png
 INPUT latchSR-schema-logico-SP.png
-INPUT .\latchSR-SP.png
-INPUT .\latchSR-SP.png
+INPUT ./latchSR-schema-logico-SP.png
+INPUT ./latchSR-schema-logico-SP.png
+INPUT ./latchSR-SP.png
+INPUT ./latchSR-SP.png
 INPUT latchSR-SP.png
-INPUT .\latchSR-NAND.png
-INPUT .\latchSR-NAND.png
+INPUT ./latchSR-SP.png
+INPUT ./latchSR-SP.png
+INPUT ./latchSR-NAND.png
+INPUT ./latchSR-NAND.png
 INPUT latchSR-NAND.png
-INPUT .\latch cd init.png
-INPUT .\latch cd init.png
+INPUT ./latchSR-NAND.png
+INPUT ./latchSR-NAND.png
+INPUT ./latch cd init.png
+INPUT ./latch cd init.png
 INPUT latch cd init.png
-INPUT .\tempi-ritardi.png
-INPUT .\tempi-ritardi.png
+INPUT ./latch cd init.png
+INPUT ./latch cd init.png
+INPUT ./tempi-ritardi.png
+INPUT ./tempi-ritardi.png
 INPUT tempi-ritardi.png
-INPUT .\metastabilita1.png
-INPUT .\metastabilita1.png
+INPUT ./tempi-ritardi.png
+INPUT ./tempi-ritardi.png
+INPUT ./metastabilita1.png
+INPUT ./metastabilita1.png
 INPUT metastabilita1.png
-INPUT .\metastabilita2.png
-INPUT .\metastabilita2.png
+INPUT ./metastabilita1.png
+INPUT ./metastabilita1.png
+INPUT ./metastabilita2.png
+INPUT ./metastabilita2.png
 INPUT metastabilita2.png
-INPUT .\latchCD-tab.png
-INPUT .\latchCD-tab.png
+INPUT ./metastabilita2.png
+INPUT ./metastabilita2.png
+INPUT ./latchCD-tab.png
+INPUT ./latchCD-tab.png
 INPUT latchCD-tab.png
-INPUT .\latchCD-grafico.png
-INPUT .\latchCD-grafico.png
+INPUT ./latchCD-tab.png
+INPUT ./latchCD-tab.png
+INPUT ./latchCD-grafico.png
+INPUT ./latchCD-grafico.png
 INPUT latchCD-grafico.png
-INPUT .\latchCD-sintesi.png
-INPUT .\latchCD-sintesi.png
+INPUT ./latchCD-grafico.png
+INPUT ./latchCD-grafico.png
+INPUT ./latchCD-sintesi.png
+INPUT ./latchCD-sintesi.png
 INPUT latchCD-sintesi.png
-INPUT .\latchCD-sintesi-diretta.png
-INPUT .\latchCD-sintesi-diretta.png
+INPUT ./latchCD-sintesi.png
+INPUT ./latchCD-sintesi.png
+INPUT ./latchCD-sintesi-diretta.png
+INPUT ./latchCD-sintesi-diretta.png
 INPUT latchCD-sintesi-diretta.png
-INPUT .\latchCD-rete.png
-INPUT .\latchCD-rete.png
+INPUT ./latchCD-sintesi-diretta.png
+INPUT ./latchCD-sintesi-diretta.png
+INPUT ./latchCD-rete.png
+INPUT ./latchCD-rete.png
 INPUT latchCD-rete.png
-INPUT .\uscita trasparente.png
-INPUT .\uscita trasparente.png
+INPUT ./latchCD-rete.png
+INPUT ./latchCD-rete.png
+INPUT ./uscita trasparente.png
+INPUT ./uscita trasparente.png
 INPUT uscita trasparente.png
-INPUT .\flip-flop D-grafico.png
-INPUT .\flip-flop D-grafico.png
+INPUT ./uscita trasparente.png
+INPUT ./uscita trasparente.png
+INPUT ./flip-flop D-grafico.png
+INPUT ./flip-flop D-grafico.png
 INPUT flip-flop D-grafico.png
-INPUT .\master-slave-schema.png
-INPUT .\master-slave-schema.png
+INPUT ./flip-flop D-grafico.png
+INPUT ./flip-flop D-grafico.png
+INPUT ./master-slave-schema.png
+INPUT ./master-slave-schema.png
 INPUT master-slave-schema.png
-INPUT .\master-slave-grafico.png
-INPUT .\master-slave-grafico.png
+INPUT ./master-slave-schema.png
+INPUT ./master-slave-schema.png
+INPUT ./master-slave-grafico.png
+INPUT ./master-slave-grafico.png
 INPUT master-slave-grafico.png
-INPUT .\campionamento periodico.png
-INPUT .\campionamento periodico.png
+INPUT ./master-slave-grafico.png
+INPUT ./master-slave-grafico.png
+INPUT ./campionamento periodico.png
+INPUT ./campionamento periodico.png
 INPUT campionamento periodico.png
-INPUT .\signale periodico CLK.png
-INPUT .\signale periodico CLK.png
+INPUT ./campionamento periodico.png
+INPUT ./campionamento periodico.png
+INPUT ./signale periodico CLK.png
+INPUT ./signale periodico CLK.png
 INPUT signale periodico CLK.png
-INPUT .\RSS.png
-INPUT .\RSS.png
+INPUT ./signale periodico CLK.png
+INPUT ./signale periodico CLK.png
+INPUT ./RSS.png
+INPUT ./RSS.png
 INPUT RSS.png
-INPUT .\periodo-t0-RSS.png
-INPUT .\periodo-t0-RSS.png
+INPUT ./RSS.png
+INPUT ./RSS.png
+INPUT ./periodo-t0-RSS.png
+INPUT ./periodo-t0-RSS.png
 INPUT periodo-t0-RSS.png
-INPUT .\frequenza-RSS.png
-INPUT .\frequenza-RSS.png
+INPUT ./periodo-t0-RSS.png
+INPUT ./periodo-t0-RSS.png
+INPUT ./frequenza-RSS.png
+INPUT ./frequenza-RSS.png
 INPUT frequenza-RSS.png
-INPUT .\moore-RSS.png
-INPUT .\moore-RSS.png
+INPUT ./frequenza-RSS.png
+INPUT ./frequenza-RSS.png
+INPUT ./moore-RSS.png
+INPUT ./moore-RSS.png
 INPUT moore-RSS.png
-INPUT .\rss-mealy.png
-INPUT .\rss-mealy.png
+INPUT ./moore-RSS.png
+INPUT ./moore-RSS.png
+INPUT ./rss-mealy.png
+INPUT ./rss-mealy.png
 INPUT rss-mealy.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmib10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib5.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbsy10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy7.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy5.tfm
-INPUT .\sincronizzazione.png
-INPUT .\sincronizzazione.png
+INPUT ./rss-mealy.png
+INPUT ./rss-mealy.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
+INPUT ./sincronizzazione.png
+INPUT ./sincronizzazione.png
 INPUT sincronizzazione.png
-INPUT .\cassaforte-rss.png
-INPUT .\cassaforte-rss.png
+INPUT ./sincronizzazione.png
+INPUT ./sincronizzazione.png
+INPUT ./cassaforte-rss.png
+INPUT ./cassaforte-rss.png
 INPUT cassaforte-rss.png
-INPUT .\grafo-rss-1.png
-INPUT .\grafo-rss-1.png
+INPUT ./cassaforte-rss.png
+INPUT ./cassaforte-rss.png
+INPUT ./grafo-rss-1.png
+INPUT ./grafo-rss-1.png
 INPUT grafo-rss-1.png
-INPUT .\grafo-cassaforte-moore.png
-INPUT .\grafo-cassaforte-moore.png
+INPUT ./grafo-rss-1.png
+INPUT ./grafo-rss-1.png
+INPUT ./grafo-cassaforte-moore.png
+INPUT ./grafo-cassaforte-moore.png
 INPUT grafo-cassaforte-moore.png
-INPUT .\grafo-cassaforte-mealy.png
-INPUT .\grafo-cassaforte-mealy.png
+INPUT ./grafo-cassaforte-moore.png
+INPUT ./grafo-cassaforte-moore.png
+INPUT ./grafo-cassaforte-mealy.png
+INPUT ./grafo-cassaforte-mealy.png
 INPUT grafo-cassaforte-mealy.png
-INPUT .\TDF-cassaforte-rss-mealy.png
-INPUT .\TDF-cassaforte-rss-mealy.png
+INPUT ./grafo-cassaforte-mealy.png
+INPUT ./grafo-cassaforte-mealy.png
+INPUT ./TDF-cassaforte-rss-mealy.png
+INPUT ./TDF-cassaforte-rss-mealy.png
 INPUT TDF-cassaforte-rss-mealy.png
-INPUT .\codifica-cassaforte-rss.png
-INPUT .\codifica-cassaforte-rss.png
+INPUT ./TDF-cassaforte-rss-mealy.png
+INPUT ./TDF-cassaforte-rss-mealy.png
+INPUT ./codifica-cassaforte-rss.png
+INPUT ./codifica-cassaforte-rss.png
 INPUT codifica-cassaforte-rss.png
-INPUT .\Sintesi-cassaforte-rss.png
-INPUT .\Sintesi-cassaforte-rss.png
+INPUT ./codifica-cassaforte-rss.png
+INPUT ./codifica-cassaforte-rss.png
+INPUT ./Sintesi-cassaforte-rss.png
+INPUT ./Sintesi-cassaforte-rss.png
 INPUT Sintesi-cassaforte-rss.png
-INPUT .\schema logico cassaforte RSS.png
-INPUT .\schema logico cassaforte RSS.png
+INPUT ./Sintesi-cassaforte-rss.png
+INPUT ./Sintesi-cassaforte-rss.png
+INPUT ./schema logico cassaforte RSS.png
+INPUT ./schema logico cassaforte RSS.png
 INPUT schema logico cassaforte RSS.png
-INPUT .\sintesi formale rss.png
-INPUT .\sintesi formale rss.png
+INPUT ./schema logico cassaforte RSS.png
+INPUT ./schema logico cassaforte RSS.png
+INPUT ./sintesi formale rss.png
+INPUT ./sintesi formale rss.png
 INPUT sintesi formale rss.png
-INPUT .\sintesi diretta rss.png
-INPUT .\sintesi diretta rss.png
+INPUT ./sintesi formale rss.png
+INPUT ./sintesi formale rss.png
+INPUT ./sintesi diretta rss.png
+INPUT ./sintesi diretta rss.png
 INPUT sintesi diretta rss.png
-INPUT .\flip-flop t.png
-INPUT .\flip-flop t.png
+INPUT ./sintesi diretta rss.png
+INPUT ./sintesi diretta rss.png
+INPUT ./flip-flop t.png
+INPUT ./flip-flop t.png
 INPUT flip-flop t.png
-INPUT .\registro k.png
-INPUT .\registro k.png
+INPUT ./flip-flop t.png
+INPUT ./flip-flop t.png
+INPUT ./registro k.png
+INPUT ./registro k.png
 INPUT registro k.png
-INPUT .\grafo registro 1 bit.png
-INPUT .\grafo registro 1 bit.png
+INPUT ./registro k.png
+INPUT ./registro k.png
+INPUT ./grafo registro 1 bit.png
+INPUT ./grafo registro 1 bit.png
 INPUT grafo registro 1 bit.png
-INPUT .\registro 1 bit multi.png
-INPUT .\registro 1 bit multi.png
+INPUT ./grafo registro 1 bit.png
+INPUT ./grafo registro 1 bit.png
+INPUT ./registro 1 bit multi.png
+INPUT ./registro 1 bit multi.png
 INPUT registro 1 bit multi.png
-INPUT .\registro k bit.png
-INPUT .\registro k bit.png
+INPUT ./registro 1 bit multi.png
+INPUT ./registro 1 bit multi.png
+INPUT ./registro k bit.png
+INPUT ./registro k bit.png
 INPUT registro k bit.png
-INPUT .\we prioritario.png
-INPUT .\we prioritario.png
+INPUT ./registro k bit.png
+INPUT ./registro k bit.png
+INPUT ./we prioritario.png
+INPUT ./we prioritario.png
 INPUT we prioritario.png
-INPUT .\reset prioritario.png
-INPUT .\reset prioritario.png
+INPUT ./we prioritario.png
+INPUT ./we prioritario.png
+INPUT ./reset prioritario.png
+INPUT ./reset prioritario.png
 INPUT reset prioritario.png
-INPUT .\shift register.png
-INPUT .\shift register.png
+INPUT ./reset prioritario.png
+INPUT ./reset prioritario.png
+INPUT ./shift register.png
+INPUT ./shift register.png
 INPUT shift register.png
-INPUT .\shift register 3 bit.png
-INPUT .\shift register 3 bit.png
+INPUT ./shift register.png
+INPUT ./shift register.png
+INPUT ./shift register 3 bit.png
+INPUT ./shift register 3 bit.png
 INPUT shift register 3 bit.png
-INPUT .\shift register esteso.png
-INPUT .\shift register esteso.png
+INPUT ./shift register 3 bit.png
+INPUT ./shift register 3 bit.png
+INPUT ./shift register esteso.png
+INPUT ./shift register esteso.png
 INPUT shift register esteso.png
-INPUT .\shift register 2 bit.png
-INPUT .\shift register 2 bit.png
+INPUT ./shift register esteso.png
+INPUT ./shift register esteso.png
+INPUT ./shift register 2 bit.png
+INPUT ./shift register 2 bit.png
 INPUT shift register 2 bit.png
-INPUT .\tabella s1 s0.png
-INPUT .\tabella s1 s0.png
+INPUT ./shift register 2 bit.png
+INPUT ./shift register 2 bit.png
+INPUT ./tabella s1 s0.png
+INPUT ./tabella s1 s0.png
 INPUT tabella s1 s0.png
-INPUT .\uni shift register.png
-INPUT .\uni shift register.png
+INPUT ./tabella s1 s0.png
+INPUT ./tabella s1 s0.png
+INPUT ./uni shift register.png
+INPUT ./uni shift register.png
 INPUT uni shift register.png
-INPUT .\sp moore.png
-INPUT .\sp moore.png
+INPUT ./uni shift register.png
+INPUT ./uni shift register.png
+INPUT ./sp moore.png
+INPUT ./sp moore.png
 INPUT sp moore.png
-INPUT .\ps load.png
-INPUT .\ps load.png
+INPUT ./sp moore.png
+INPUT ./sp moore.png
+INPUT ./ps load.png
+INPUT ./ps load.png
 INPUT ps load.png
-INPUT .\ric. sequenze.png
-INPUT .\ric. sequenze.png
+INPUT ./ps load.png
+INPUT ./ps load.png
+INPUT ./ric. sequenze.png
+INPUT ./ric. sequenze.png
 INPUT ric. sequenze.png
-INPUT .\monoipulsore grafico.png
-INPUT .\monoipulsore grafico.png
+INPUT ./ric. sequenze.png
+INPUT ./ric. sequenze.png
+INPUT ./monoipulsore grafico.png
+INPUT ./monoipulsore grafico.png
 INPUT monoipulsore grafico.png
-INPUT .\monoimpulsore 1.png
-INPUT .\monoimpulsore 1.png
+INPUT ./monoipulsore grafico.png
+INPUT ./monoipulsore grafico.png
+INPUT ./monoimpulsore 1.png
+INPUT ./monoimpulsore 1.png
 INPUT monoimpulsore 1.png
-INPUT .\monoimpulsore 2.png
-INPUT .\monoimpulsore 2.png
+INPUT ./monoimpulsore 1.png
+INPUT ./monoimpulsore 1.png
+INPUT ./monoimpulsore 2.png
+INPUT ./monoimpulsore 2.png
 INPUT monoimpulsore 2.png
-INPUT .\contatore.png
-INPUT .\contatore.png
+INPUT ./monoimpulsore 2.png
+INPUT ./monoimpulsore 2.png
+INPUT ./contatore.png
+INPUT ./contatore.png
 INPUT contatore.png
-INPUT .\contatore binario.png
-INPUT .\contatore binario.png
+INPUT ./contatore.png
+INPUT ./contatore.png
+INPUT ./contatore binario.png
+INPUT ./contatore binario.png
 INPUT contatore binario.png
-INPUT .\contatore x4.png
-INPUT .\contatore x4.png
+INPUT ./contatore binario.png
+INPUT ./contatore binario.png
+INPUT ./contatore x4.png
+INPUT ./contatore x4.png
 INPUT contatore x4.png
-INPUT .\enable.png
-INPUT .\enable.png
+INPUT ./contatore x4.png
+INPUT ./contatore x4.png
+INPUT ./enable.png
+INPUT ./enable.png
 INPUT enable.png
-INPUT .\grafico enable.png
-INPUT .\grafico enable.png
+INPUT ./enable.png
+INPUT ./enable.png
+INPUT ./grafico enable.png
+INPUT ./grafico enable.png
 INPUT grafico enable.png
-INPUT .\contatore x4 en.png
-INPUT .\contatore x4 en.png
+INPUT ./grafico enable.png
+INPUT ./grafico enable.png
+INPUT ./contatore x4 en.png
+INPUT ./contatore x4 en.png
 INPUT contatore x4 en.png
-INPUT .\ottimizzazioni.png
-INPUT .\ottimizzazioni.png
+INPUT ./contatore x4 en.png
+INPUT ./contatore x4 en.png
+INPUT ./ottimizzazioni.png
+INPUT ./ottimizzazioni.png
 INPUT ottimizzazioni.png
-INPUT .\ottimizzazioni2.png
-INPUT .\ottimizzazioni2.png
+INPUT ./ottimizzazioni.png
+INPUT ./ottimizzazioni.png
+INPUT ./ottimizzazioni2.png
+INPUT ./ottimizzazioni2.png
 INPUT ottimizzazioni2.png
-INPUT .\contatore binario x4 en v2.png
-INPUT .\contatore binario x4 en v2.png
+INPUT ./ottimizzazioni2.png
+INPUT ./ottimizzazioni2.png
+INPUT ./contatore binario x4 en v2.png
+INPUT ./contatore binario x4 en v2.png
 INPUT contatore binario x4 en v2.png
-INPUT .\contatore binario x4 res es.png
-INPUT .\contatore binario x4 res es.png
+INPUT ./contatore binario x4 en v2.png
+INPUT ./contatore binario x4 en v2.png
+INPUT ./contatore binario x4 res es.png
+INPUT ./contatore binario x4 res es.png
 INPUT contatore binario x4 res es.png
-INPUT .\sol ready data.png
-INPUT .\sol ready data.png
+INPUT ./contatore binario x4 res es.png
+INPUT ./contatore binario x4 res es.png
+INPUT ./sol ready data.png
+INPUT ./sol ready data.png
 INPUT sol ready data.png
-INPUT .\load grafico.png
-INPUT .\load grafico.png
+INPUT ./sol ready data.png
+INPUT ./sol ready data.png
+INPUT ./load grafico.png
+INPUT ./load grafico.png
 INPUT load grafico.png
-INPUT .\contatore binario LD EN.png
-INPUT .\contatore binario LD EN.png
+INPUT ./load grafico.png
+INPUT ./load grafico.png
+INPUT ./contatore binario LD EN.png
+INPUT ./contatore binario LD EN.png
 INPUT contatore binario LD EN.png
-INPUT .\ric. sequenze 3.png
-INPUT .\ric. sequenze 3.png
+INPUT ./contatore binario LD EN.png
+INPUT ./contatore binario LD EN.png
+INPUT ./ric. sequenze 3.png
+INPUT ./ric. sequenze 3.png
 INPUT ric. sequenze 3.png
-INPUT .\sol 3 mod.png
-INPUT .\sol 3 mod.png
+INPUT ./ric. sequenze 3.png
+INPUT ./ric. sequenze 3.png
+INPUT ./sol 3 mod.png
+INPUT ./sol 3 mod.png
 INPUT sol 3 mod.png
-INPUT .\up down.png
-INPUT .\up down.png
+INPUT ./sol 3 mod.png
+INPUT ./sol 3 mod.png
+INPUT ./up down.png
+INPUT ./up down.png
 INPUT up down.png
-INPUT .\contatore binario en ud.png
-INPUT .\contatore binario en ud.png
+INPUT ./up down.png
+INPUT ./up down.png
+INPUT ./contatore binario en ud.png
+INPUT ./contatore binario en ud.png
 INPUT contatore binario en ud.png
-INPUT .\contatore x8.png
-INPUT .\contatore x8.png
+INPUT ./contatore binario en ud.png
+INPUT ./contatore binario en ud.png
+INPUT ./contatore x8.png
+INPUT ./contatore x8.png
 INPUT contatore x8.png
-INPUT .\contatore x32.png
-INPUT .\contatore x32.png
+INPUT ./contatore x8.png
+INPUT ./contatore x8.png
+INPUT ./contatore x32.png
+INPUT ./contatore x32.png
 INPUT contatore x32.png
-INPUT .\contatore x32 en.png
-INPUT .\contatore x32 en.png
+INPUT ./contatore x32.png
+INPUT ./contatore x32.png
+INPUT ./contatore x32 en.png
+INPUT ./contatore x32 en.png
 INPUT contatore x32 en.png
-INPUT .\decremento.png
-INPUT .\decremento.png
+INPUT ./contatore x32 en.png
+INPUT ./contatore x32 en.png
+INPUT ./decremento.png
+INPUT ./decremento.png
 INPUT decremento.png
-INPUT .\decremento 2.png
-INPUT .\decremento 2.png
+INPUT ./decremento.png
+INPUT ./decremento.png
+INPUT ./decremento 2.png
+INPUT ./decremento 2.png
 INPUT decremento 2.png
-INPUT .\clock gating.png
-INPUT .\clock gating.png
+INPUT ./decremento 2.png
+INPUT ./decremento 2.png
+INPUT ./clock gating.png
+INPUT ./clock gating.png
 INPUT clock gating.png
-INPUT .\clock skew.png
-INPUT .\clock skew.png
+INPUT ./clock gating.png
+INPUT ./clock gating.png
+INPUT ./clock skew.png
+INPUT ./clock skew.png
 INPUT clock skew.png
+INPUT ./clock skew.png
+INPUT ./clock skew.png
 INPUT main.aux
-INPUT .\main.out
-INPUT .\main.out
+INPUT ./main.out
+INPUT ./main.out
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb

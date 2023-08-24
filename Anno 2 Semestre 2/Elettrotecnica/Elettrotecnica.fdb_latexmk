@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1692716272 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex" "Elettrotecnica.pdf" "Elettrotecnica" 1692716288 0
-  "Elettrotecnica.aux" 1692716287 21020 643f051c18ca0ed7b218844b0bedd10d "pdflatex"
-  "Elettrotecnica.out" 1692716287 28788 efdc7631790a804ef7f993fd2a8551c8 "pdflatex"
-  "Elettrotecnica.tex" 1692716271 168456 27b8f33bc889a3c3c656e6e9eef7016d ""
-  "Elettrotecnica.toc" 1692716287 14259 00111df6c5a998ba6cb4ee8ef67df83e "pdflatex"
+["pdflatex"] 1692874369 "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex" "Elettrotecnica.pdf" "Elettrotecnica" 1692874385 0
+  "Elettrotecnica.aux" 1692874384 21172 c9d56339d59cbf67a6ced68bbc3048f1 "pdflatex"
+  "Elettrotecnica.out" 1692874384 29042 afd19e5752b6affe926de8939f149caa "pdflatex"
+  "Elettrotecnica.tex" 1692874352 170541 8ecde69fcd4bc25d4ec87f96e9667f13 ""
+  "Elettrotecnica.toc" 1692874384 14370 71297371c35ef3fbc95edff08d79630b "pdflatex"
   "Image/Analisi_circuito_magnetico_1.png" 1692199987 30131 9dde3d565ab1c4414f803f99b3a869d9 ""
   "Image/Analisi_circuito_magnetico_2.png" 1692266574 26327 e813a8e0cf1177e2f4308b0dc7cfdfd3 ""
   "Image/Analisi_circuito_magnetico_3.png" 1692266611 26860 95a574456bb8b16d75e09eccc395b97b ""
@@ -79,7 +79,8 @@
   "Image/Esercizio_Thevenin_2.png" 1685002166 27876 6060626c0e5fadf01c143300c1d12062 ""
   "Image/Esercizio_Thevenin_3.png" 1685002166 71300 f7b4ce240672ae64409bbd02ceabd580 ""
   "Image/Esercizio_Thevenin_4.png" 1685002166 136079 8de04fe182577d7ab41030880235a966 ""
-  "Image/Esercizio_potenze.png" 1692714510 114484 1ca9077d093725bfc161dc950dad5e1c ""
+  "Image/Esercizio_potenze_1.png" 1692714510 114484 1ca9077d093725bfc161dc950dad5e1c ""
+  "Image/Esercizio_potenze_2.png" 1692872506 135079 a3aa16706ef802dc32ca556e1c3c62fe ""
   "Image/Fasori_1.png" 1691484341 16159 45aaee52b7c90884bb4869b5d29dd2c7 ""
   "Image/Fasori_2.png" 1691484345 15741 9b439e33c4c27b1945aeea5c6f175873 ""
   "Image/Fasori_3.png" 1691484349 16114 6511d2705ccb901efd56dbc8a8102719 ""
@@ -223,7 +224,7 @@
   "Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-7.png" 1691311464 4604 077f2ecf346b1d821a9557dc73e816db ""
   "Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-8.png" 1691311464 4645 81a4112675d2e0be2a1ce5e31e3569d8 ""
   "Image/Unfasor.png/eda58be88a8b4f9caa208b92f2948807JZ1I0VnWz4iD1ZLQ-9.png" 1691311464 4647 8df3ce4248dcddc4538669e8927a8a3f ""
-  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex" 1692716271 168456 27b8f33bc889a3c3c656e6e9eef7016d ""
+  "c:/Users/bumma/Documents/VSCode/Latex/Anno 2 Semestre 2/Elettrotecnica/Elettrotecnica.tex" 1692874352 170541 8ecde69fcd4bc25d4ec87f96e9667f13 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1685006722 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1685007899 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1685007409 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""

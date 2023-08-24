@@ -3142,9 +3142,9 @@ Dobbiamo calcolare la potenza generata da $\underline{E}$
 \end{enumerate}
 \end{comment}
 
-\subsubsection{Esercizio metodo delle potenze}
+\subsubsection{Esercizio metodo delle potenze 1}
 \begin{center}
-    \includegraphics[scale=0.27]{Image/Esercizio_potenze.png}
+    \includegraphics[scale=0.27]{Image/Esercizio_potenze_1.png}
 \end{center}
 Dati:
 \begin{align*}
@@ -3203,7 +3203,72 @@ Mentre per la potenza reattiva di $C$ ed $L$ si usa la formula $Q = Im \Bigg(\df
 
 
 
-
+\subsubsection{Esercizio metodo delle potenze 2}
+\begin{center}
+    \includegraphics[scale=0.27]{Image/Esercizio_potenze_2.png}
+\end{center}
+Dati:
+\begin{align*}
+    R &= 1 \Omega & L &= 10\ mH \\
+    V &= 320 \ V & Q &= 10 \ kVAr
+\end{align*}
+Bisogna trovare
+\begin{itemize}
+    \item $P$ e $Q$ del rame $RL$
+    \item $Q$ del condensatore
+    \item $C$
+    \item corrente assorbita
+\end{itemize}
+Calcoliamo le impedenze di $R$ e $L$:
+\begin{align*}
+    \underline{Z}_L &= j \omega L & 
+    \underline{Z}_R &= R &
+    \underline{Z}_{RL} &= 1 + j 3,14 \ \Omega
+    \\
+    &= j3.14 \  \Omega &
+    &= 1 \ \Omega
+\end{align*}
+\begin{align*}
+    \dot N_{RL} &= \underline{V} \cdot \underline{I}^*
+    \\
+    &= \frac{V^2}{\underline{Z}_{RL}^*}
+    \\
+    &= \underbrace{4,87}_{P} + j\underbrace{15,3}_{Q} \ kVA
+\end{align*}
+quindi
+\begin{align*}
+    P &= 4,87 \ kW & Q &= 15,3 \ kVAr
+\end{align*}
+\[Q_C = Q- Q_{RL} = -5,3 \ kVAr\]
+Ora dobbiamo calcolare la capacità del condensatore; sappiamo che 
+\begin{align*}
+    \underline{Z}_C &= - \frac{j}{\omega C} & Q_C &= Im \left(\frac{V^2}{\underline{Z}_C^*}\right)
+\end{align*}
+ma l'operatore "immagine" si può omettere nella formula della potenza reattiva perché la frazione al suo interno dá come risultato un numero puramente immaginario, quindi
+\begin{align*}
+    Q_C &= \frac{V^2}{\underline{Z}_C^*}
+    \\
+    &= \frac{V^2}{\dfrac{j}{\omega C}}
+    \\
+    &= \frac{V^2 \omega C}{j}
+\end{align*} 
+isolando il termine $C$ si arriva all'equazione
+\begin{align*}
+    C &= \frac{Q_C \cdot j}{V^2 \omega}
+    \\
+    &= \frac{- \cancel{j} \cdot 5300 \cdot \cancel{j}}{(230)^2 \cdot 314,16}
+    \\
+    &= 319 \ \mu F
+\end{align*}
+La formula della potenza complessa totale è:
+\[\dot N_{tot} = 4,87 + j10 \ kVA\]
+quindi l'angolo del fattore di potenza è uguale a
+\[\phi = \arctan \left(\frac{Q_{tot}}{P_{tot}}\right) = 64^{\circ}\]
+ora possiamo determinare la corrente assorbita nel circuito:
+\begin{align*}
+    I &= \frac{P}{V \cos(\phi)}\\
+    &= 48,3 \ A
+\end{align*}
 
 
 \section{Risposta in frequenza}
