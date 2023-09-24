@@ -778,7 +778,7 @@ L'induttore è un componente elettrico che genera un campo magnetico al passaggi
 \]
 Sappiamo che la corrente genera un flusso:
 \begin{align*}
-    &\underbrace{\Phi = L \cdot i}_{I^a\text{ equazione di Maxwell}} & \underbrace{v= \dfrac{d \Phi}{dt}}_{legge di Faraday} = L \dfrac{di}{dt}
+    &\underbrace{\Phi = L \cdot i}_{I^a\text{ equazione di Maxwell}} & \underbrace{v= \dfrac{d \Phi}{dt}}_{\T{legge di Faraday}} = L \dfrac{di}{dt}
 \end{align*}
 \[
     p(t) = v(t) \cdot i(t) = L \cdot i(t) \dfrac{di}{dt} \begin{cases}
@@ -1416,6 +1416,7 @@ Vogliamo calcolare $i_3$. Quindi applichiamo il teorema di Norton, utilizzando l
 
 
 \subsection{Teorema del massimo trasferimento di potenza}
+Il circuito equivalente di Thevenin può essere utilizzato per determinare la potenza massima che un circuito lineare può fornire ad una resistore $R_L$ collegata alla porta del circuito.
 Consideriamo il seguente circuito
 \begin{center}
     \includegraphics[scale=0.3]{Image/T_Massima_Potenza_0.png}
@@ -1439,6 +1440,11 @@ Per trovare il massimo poniamo la derivata della potenza a 0; sapendo che $P_L =
     & \Rightarrow R^2 + \cancel{R^2_L} + \cancel{2RR_L} - \cancel{2RR_L} -\cancel{2}R^2_L = 0\\
     &\Rightarrow R=R_L
 \end{align*} 
+Infatti il teorema afferma che:
+\begin{center}
+    \textit{La potenza massima viene trasferita ad una resistore di carico quando la sua resistenza è uguale alla resistenza equivalente di Thevenin}
+\end{center}
+
 \begin{align*}
     P_{L,Max} &= R \dfrac{E^2}{(R+R)^2}\\
     &= \cancel{R} \dfrac{E^2}{4R^{\cancel{2}}}\\
@@ -1749,9 +1755,9 @@ Siamo arrivati a una equazione differenziale del primo ordine.
     \[
         o(t) = A e^{\lambda t} = A e^{-\frac{R}{L}t}
     \]
-    $\dfrac{t}{RC}$ è il numero puro, e la costante di tempo è $\tau = \dfrac{R}{L}$.
+    la costante di tempo è $\tau = \dfrac{L}{R}$.
     \item \textbf{Soluzione particolare}\\
-    Siccome $p(t)$ si comporta come $b(t)$ e $b(t)=\dfrac{E}{RC}$ (una costante), allora $p(t)$ sarà una costante
+    Siccome $p(t)$ si comporta come $b(t)$ e $b(t)=\dfrac{E}{L}$ (una costante), allora $p(t)$ sarà una costante
     \[
         \cancel{\frac{dp(t)}{dt}} + \frac{R}{L}p = \frac{E}{L} \Rightarrow p(t) = \frac{E}{R} 
     \]
@@ -1813,8 +1819,8 @@ La tensione non varia con continuità.
 
 \subsection{Circuiti del secondo ordine: Circuito RLC}
 \begin{center}
-    \includegraphics[scale=0.25]{Image/RLC_0.png}
     \includegraphics[scale=0.25]{Image/RLC_1.png}
+    \includegraphics[scale=0.25]{Image/RLC_0.png}
 \end{center}
 \begin{align*}
     \T{LKT:}
@@ -1930,7 +1936,21 @@ Siamo arrivati a un'equazione differenziale del secondo ordine.\\
             \includegraphics[scale=0.25]{Image/RLC_4.png}
         \end{center}
     \end{itemize}
-
+Quindi, riassumendo:
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Risposta sovrasmorzata} & \textbf{Smorzamento critico} & \textbf{Risposta sottosmorzata}\\ \hline
+        $\Delta>0$ & $\Delta=0$ & $\Delta<0$\\ \hline 
+        %equazioni
+        $i(t) = \dfrac{E-V_{C0}}{2L(\alpha^2 - \omega^2_0)} \left( e^{\left(\sqrt{\alpha^2 - \omega^2_0}\right)t} - e^{\left(-\sqrt{\alpha^2 - \omega^2_0}\right)t}\right) e^{-\alpha t}$
+        &
+        $i(t) = \dfrac{E-V_{C0}}{L}t \cdot e^{- \alpha t}$
+        &
+        $i(t) = \dfrac{E-V_{C0}}{L \omega_d}  \sin (\omega_d t) e^{-\alpha t}$
+        \\ \hline
+    \end{tabular}
+\end{center}
 
 \subsection{Esercizi in regime transitorio}
 Risolvere un'equazione differenziale di ordine superiore al secondo è complesso; in questi casi si usa il \textbf{metodo per ispezione}.
@@ -2213,7 +2233,7 @@ Il generatore di tensione $E_1$ è costante, quindi abbiamo un regime stazionari
 
 \section{Regime sinusoidale}
 \subsection{Introduzione}
-
+La \textbf{corrente alternata} (CA o AC dall'inglese: Alternating Current) è un tipo di corrente elettrica nella quale il flusso di elettroni inverte la propria direzione continuativamente nel tempo. A differenza della corrente continua (rappresentata in rosso nella figura) in cui il flusso degli elettroni è unidirezionale, nella corrente alternata il flusso di elettroni inverte la propria direzione, con un'alternanza che avviene con frequenza fissa (tipicamente 50 Hz o 60 Hz). L'inversione di polarità però non avviene in modo repentino ma con una variazione progressiva secondo un andamento chiamato \textbf{sinusoidale}, nel quale il valore di corrente (e quindi di tensione) parte da zero e gradualmente aumenta in un determinato verso, raggiunge il suo valore massimo per poi diminuire fino a zero e riprendere nel verso opposto col medesimo andamento.
 
 \subsubsection{Segnali periodici}
 Una grandezza temporale $a(t)$ si definisce periodica quando si ripete a ogni periodo $T$
@@ -2253,7 +2273,7 @@ la potenza media dissipata è
     &=R\underbrace{\dfrac{1}{T} \int_0^T i^2(t) \ dt}_{I_{eff}^2}\\
     &=RI_{eff}^2
 \end{align*}
-Una corrente DC di 1A comporta una potenza dissipata sul resistore pari a quella di una corrente sinusoidale id valore efficace pari a 1A.
+Una corrente DC di 1A comporta una potenza dissipata sul resistore pari a quella di una corrente sinusoidale di valore efficace pari a 1A.
 
 
 \subsubsection{Segnali isofrequenziali}
@@ -2300,14 +2320,15 @@ Viene definito \textit{sfasamento} o \textit{differenza di fase}:
     \begin{center}
         \includegraphics[scale=0.2]{Image/Regime_sinusoidale_4.png}
     \end{center}
-    nella figura $b(t)$ è in quadratura in ritardo
+    nella figura $b(t)$ è in quadratura in ritardo.
 \end{itemize}
 
 
 
 
 \subsection{Fasori}
-I \textit{fasori} rappresentano una grandezza sinusoidale tramite un numero complesso (un vettore)
+I \textit{fasori} rappresentano una grandezza sinusoidale tramite un numero complesso (un vettore).
+\vspace*{0.1cm}\\
 \textbf{Identità di Eulero:}
 \[
     e^{jx} = \cos(x) + j\sin(x)
@@ -2339,14 +2360,14 @@ Il valore sottolineato è chiamato \textbf{fattore rotante}.
 \vspace*{0.1cm}\\
 Tutti i vettori ruotano alla stessa pulsazione in senso antiorario nel piano complesso; un fasore può essere scritto nella forma
 \[
-    \vec A = A_e \cdot e^{j \alpha}
+    \underline{A} = A_e \cdot e^{j \alpha}
 \]
 \begin{itemize}
-    \item $\vec A$ è il vettore nel piano complesso
+    \item $\underline{A}$ è il vettore nel piano complesso
     \item $A_e$ è il valore efficace
     \item $\alpha$ è la fase iniziale
 \end{itemize}
-Il metodo fasoriale (?) vale per segnali isofrequenziali.
+Il \textbf{metodo fasoriale}, cioè risolvere esercizi con corrente sinusoidale scrivendo le equazioni dei generatori in forma fasoriale, vale per segnali isofrequenziali.
 \begin{center}
     \includegraphics[scale=0.2]{Image/Regime_sinusoidale_5.png}
 \end{center}
@@ -2388,7 +2409,7 @@ integrando per parti:
 $j \omega$ è lo sfasamento.
 
 
-\subsubsection{Operazioni sui numeri complessi}
+\subsection{Operazioni sui numeri complessi}
 Un fasore può essere rappresentato un due modi:
 \begin{itemize}
     \item rappresentazione cartesiana: $\underline{A} = A_R + j A_I$
@@ -2413,26 +2434,34 @@ Un fasore può essere rappresentato un due modi:
 \begin{align*}
     \underline{A} &= A_R+j A_I = Ae^{j \alpha} & \textbf{B} &= B_R + j B_I = Be^{j\beta}
 \end{align*}
-\textbf{Somma}
+
+\subsubsection*{Somma}
 \begin{align*}
     \underline{C} &= \underline{A} + \underline{B}\\
     &=A_R+jA_I + B_R + jB_I \\
     &= \underbrace{(A_R+B_R)}_{C_R} + j\underbrace{(A_I+B_I)}_{C_I}\\
 \end{align*}
-\textbf{Prodotto}
+
+\subsubsection*{Prodotto}
 \begin{align*}
-    \underline{C} &= \underline{A} \cdot \underline{B}\\
-    &=A e^{j\alpha}\cdot Be^{j\beta}\\
-    &=\underbrace{A \cdot B}_{C} e^{j\underbrace{(\alpha + \beta)}_{\gamma}}
+    \underline{C} &= \underline{A} \cdot \underline{B} & 
+    \underline{C} &= \underline{A} \cdot \underline{B}
+    \\
+    &=A e^{j\alpha}\cdot Be^{j\beta} &
+    &=(A_R+jA_I) \cdot (B_R+jB_I)
+    \\
+    &=\underbrace{A \cdot B}_{C} e^{j\underbrace{(\alpha + \beta)}_{\gamma}} &
+    &=(A_RB_R-A_IB_I) + j(A_RB_I+A_IB_R)
 \end{align*}
-\textbf{Rapporto}
+
+\subsubsection*{Rapporto}
 \begin{align*}
     \underline{C} &= \frac{\underline{A}}{\underline{B}} \\
     &= \frac{A e^{j \alpha}}{Be^{j \beta}}\\
     &=\underbrace{\frac{A}{B}}_{C} e^{j\underbrace{(\alpha - \beta)}_{\gamma}}
 \end{align*}
-\textbf{Complesso coniugato}
-\vspace*{0.1cm}\\
+
+\subsubsection*{Complesso coniugato}
 Se $\underline{A}=A_R+jA_I$ allora il suo complesso coniugato è
 \[
     \underline{A}^* = A_R - jA_I = Ae^{-j \alpha}
@@ -2721,13 +2750,7 @@ dove
     \item $p_a(t)= v(t)i_a(t)$ è la \textbf{potenza attiva istantanea}
     \item $p_r(t)= v(t)i_r(t)$ è la \textbf{potenza reattiva istantanea}
 \end{itemize}
-\begin{align*}
-    p_a(t) &= v(t)i_a(t)
-    \\
-    &=V \cos(\omega t)I \cos(\omega t)\cos(\phi)
-    \\
-    &= VI\cos(\phi)\cos^2(\omega t)
-\end{align*}
+\vspace*{0.2cm}
 La \textbf{potenza istantanea attiva} $p_a(t)$ è dovuta
 alla componente attiva della corrente che è in
 fase con la tensione. La corrente attiva è
@@ -2741,11 +2764,11 @@ dall'elemento circuitale ed, in particolare ,dalla
 sua resistenza che costituisce un carico del
 circuito.
 \begin{align*}
-    p_r(t) &= v(t)i_r(t)
+    p_a(t) &= v(t)i_a(t)
     \\
-    &= V \cos(\omega t)I \sin(\omega t)\sin(\phi)
+    &=V \cos(\omega t)I \cos(\omega t)\cos(\phi)
     \\
-    &= \frac{1}{2}VI\sin(\phi)\sin(2\omega t)
+    &= VI\cos(\phi)\cos^2(\omega t)
 \end{align*}
 La \textbf{potenza istantanea reattiva} $p_r(t)$ è dovuta
 alla componente reattiva della corrente che è in
@@ -2755,6 +2778,13 @@ nulla. Quindi è una potenza che entra nell'elemento circuitale per un quarto di
 che non viene dissipata dagli elementi circuitali
 ma viene immagazzinata e poi rilasciata dagli
 elementi con memoria del circuito.
+\begin{align*}
+    p_r(t) &= v(t)i_r(t)
+    \\
+    &= V \cos(\omega t)I \sin(\omega t)\sin(\phi)
+    \\
+    &= \frac{1}{2}VI\sin(\phi)\sin(2\omega t)
+\end{align*}
 
 \subsubsection{Potenza attiva}
 La \textbf{potenza attiva P} è definita come la media della potenza $p(t)$ sul periodo $T$
@@ -2775,27 +2805,27 @@ $Q$ può essere positivo o negativo a seconda del segno di j. Per un carico indu
 Nel Sistema SI delle Unità $Q$ è misurato in volt-ampere reattivi [VAR].
 
 \subsubsection{Potenza complessa}
-La potenza complessa $\dot N$ è definita come:
-\[\dot N = \frac{1}{2} \dot V \dot I^* = \dot V_e \dot I_e^*\]
+La potenza complessa $\underline{N}$ è definita come:
+\[\underline{N} = \frac{1}{2} \underline{V} \underline{I}^* = \underline{V_e} \underline{I_e}^*\]
 dove $\dot I^*$ è il complesso coniugato del fasore $\dot I$
 \begin{align*}
-    \dot I =& I e^{j \alpha}
+    \underline{I} =& I e^{j \alpha}
     \\
-    &\Longrightarrow \dot I^* = I e^{-j \alpha}
+    &\Longrightarrow \underline{I}^* = I e^{-j \alpha}
 \end{align*}
 \begin{align*}
-    \dot N &= \dot V_e \dot I_e^*\\
+    \underline{N} &= \underline{V_e} \underline{I_e}^*\\
     &=V_ee^{j\alpha_v}I_e e^{-j \alpha_i} \\
     &=V_eI_e e^{j(\alpha_v-\alpha_i)}\\
     &=V_eI_e e^{j\phi}\\
     &= V_eI_e \cos(\phi) + jV_eI_e\sin(\phi)\\
     &= P+jQ
 \end{align*}
-inoltre poiché $\dot V_e=\dot Z \dot I_e$
+inoltre poiché $\underline{V_e}=\underline{Z} \underline{I_e}$
 \begin{align*}
-    P+jQ=\dot N &= \dot V_e \dot I_e^*\\
-    &=\dot Z \dot I_e\dot I_e^*\\
-    &=\dot Z I_e^2\\
+    P+jQ=\underline{N} &= \underline{V_e} \underline{I_e}^*\\
+    &=\underline{Z} \underline{I_e} \underline{I_e}^*\\
+    &= \underline{Z} I_e^2\\
     &=(R+jX)I_e^2\\
     &=\underbrace{RI_e^2}_{P}+j\underbrace{XI_e^2}_{Q}
 \end{align*}
@@ -2805,7 +2835,7 @@ inoltre poiché $\dot V_e=\dot Z \dot I_e$
 
 \subsubsection{Formule notevoli}
 \begin{align*}
-    \dot N &= \frac{1}{2} \dot V \dot I^*
+    \underline{N} &= \frac{1}{2} \underline{V} \underline{I}^*
     &
     P &= \frac{1}{2}VI \cos(\phi)
     & 
@@ -2849,7 +2879,7 @@ più vicino possibile all'unità e l'angolo sfasamento $j$ il più ridotto possi
 
 \subsubsection{Additività delle potenze}
 Per un circuito, indipendentemente dal fatto che le impedenze siano collegate in serie o in parallelo, o siano presenti entrambi i collegamenti, la potenza totale fornita dal/dai generatore/i è uguale alla somma delle potenze utilizzate dai singoli $r$ elementi circuitali passivi
-\[\dot N = \sum_{k=1}^r\dot N_k\]
+\[\underline{N} = \sum_{k=1}^r \underline{N_k}\]
 
 \subsubsection{Fattore di potenza}
 Il fattore di potenza $\cos(\phi)$, con $\phi = \alpha_v-\alpha_i$, angolo di sfasamento fra
@@ -3308,9 +3338,9 @@ il guadagno di tensione è:
     \\
     &= \frac{1-j \frac{\omega}{\omega_0}}{1 + \left(\frac{\omega}{\omega_0}\right)^2}
 \end{align*}
-dove $\omega_0 = =\frac{1}{RC}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno sono:
+dove $\omega_0=\dfrac{1}{RC}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno sono:
 \begin{align*}
-    \alpha(\omega) &- \frac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} & \phi &= \tan^{-1}\left(- \frac{\omega}{\omega_0}\right)
+    \alpha(\omega) & \frac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} & \phi &= \tan^{-1}\left(- \frac{\omega}{\omega_0}\right)
 \end{align*}
 \begin{center}
     \includegraphics[scale=0.27]{Image/Passa-basso_2.png}
@@ -3353,7 +3383,7 @@ Il guadagno è:
     \\
     &= \frac{j \frac{\omega}{\omega_0}}{1+j \frac{\omega}{\omega_0}}
 \end{align*}
-dove $\omega_0 = \frac{R}{L}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno del \textit{filtro RL passa-alto}, come visto, sono:
+dove $\omega_0 = \dfrac{R}{L}$ è la \textbf{frequenza di taglio}. L'ampiezza e la fase del guadagno del \textit{filtro RL passa-alto}, come visto, sono:
 \begin{align*}
     \alpha(\omega) &= \frac{\frac{\omega}{\omega_0}}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} & \phi &= \tan^{-1} \frac{\omega_0}{\omega}
 \end{align*}
@@ -3389,7 +3419,7 @@ La frequenza di centro-banda è $\omega_0= \dfrac{1}{\sqrt{LC}}$. Si definiscono
 \begin{center}
     \includegraphics[scale=0.3]{Image/Arresta-banda_1.png}
 \end{center}
-Nel circuito RLC con funzione di filtro arresta-banda, ad un segnale di ingresso $v_S(t) = V \cos(\omega t)$ il segnale di uscita è data dalla tensione sul resistore:
+Nel circuito RLC con funzione di filtro arresta-banda, ad un segnale di ingresso $v_S(t) = V \cos(\omega t)$ il segnale di uscita è data dalla tensione su induttore e condensatore:
 \begin{align*}
     \dot V_S &= \dot V_{in} = \left[R + j\left(\omega L - \dfrac{1}{\omega C}\right)\right] \dot I & \dot V_{out} = j \left(\omega L - \dfrac{1}{\omega C}\right) \dot I
 \end{align*}
@@ -3407,7 +3437,7 @@ La frequenza di centro-banda è $\omega_0= \dfrac{1}{\sqrt{LC}}$. Si definiscono
 \end{center}
 I \textbf{filtri passivi} sono costituiti solo da elementi passivi (R, L e C). Il loro guadagno non può essere maggiore di 1 in quanto gli elementi passivi non
 possono fornire energia alla rete. Essi per lo più richiedono elementi ingombranti e costosi; si comportano male alle basse frequenze.\\
-I \textbf{filtri attivi} contengono elementi attivi come transistori ed operazionali.
+I \textbf{filtri attivi} contengono elementi attivi come transistori e amplificatori operazionali.
 
 
 
@@ -3427,11 +3457,11 @@ Frequenza e tensione efficace sono di 50 Hz, 314 rad/s e 230 - 400 V in Europa, 
 \vspace*{0.2cm}\\
 Tre sono le motivazioni principali per l'utilizzo dei sistemi trifase:
 \begin{enumerate}
-    \item La maggior parte di energia elettrica è generata da macchine elettriche rotanti a tre fasi (alternatori)
-    \item Nei sistemi a tre fasi bilanciati la \textbf{potenza istantanea totale} è costante
+    \item La maggior parte di energia elettrica è generata da macchine elettriche rotanti a tre fasi (alternatori);
+    \item Nei sistemi a tre fasi bilanciati la \textbf{potenza istantanea totale} è costante;
     nel tempo (le tre fasi si bilanciano nel tempo). Ciò si traduce in una trasmissione uniforme con meno vibrazioni lungo la linea
     \item Per la stessa quantità di energia trasportata, un sistema a tre fasi è più
-    economico di uno singola fase
+    economico di uno singola fase,
 \end{enumerate}
 
 
@@ -3607,7 +3637,7 @@ Nel sistema trifase con neutro il triangolo
 delle correnti è sostituito da un quadrilatero
 delle correnti dato dall'equazione (LKC):
 \[\dot I_1 + \dot I_2 + \dot I_3 + \dot I_n =0\]
-La tensione di fase efficace $Ee = 230 V$ si ottiene per mezzo di un sistema simmetrico di tensioni di linea, con un valore efficace $V_e = 400 V$.
+La tensione di fase efficace $E_e = 230 V$ si ottiene per mezzo di un sistema simmetrico di tensioni di linea, con un valore efficace $V_e = 400 V$.
 \vspace*{0.2cm}\\
 In un sistema trifase senza neutro ci
 sono $\infty^2$ serie di tensioni di fase, indotte da sistemi di impedenze di carico non
@@ -3621,22 +3651,26 @@ del sistema di carico a stella. In tal modo ciascuna fase delle tensioni di fase
 \vspace*{0.2cm}\\
 In un sistema trifase simmetrico con una sequenza positiva le tensioni di fase sono:
 \begin{align*}
-    e_1(t) &= \sqrt{2} E \sin(\omega t) 
+    e_1(t) &= \sqrt{2} E \cos(\omega t) 
     &
-    e_2(t) &= \sqrt{2} E \sin(\omega t - \frac{2 \pi}{3})
+    e_2(t) &= \sqrt{2} E \cos(\omega t - 120^{\circ})
     &
-    e_2(t) &= \sqrt{2} E \sin(\omega t - \frac{4 \pi}{3})
+    e_2(t) &= \sqrt{2} E \cos(\omega t + 120^{\circ})
 \end{align*}
 dove $E$ è il valore efficace della tensione di fase con $E = \dfrac{V}{\sqrt{3}}$ ($V$ valore efficace della tensione della linea).
+\begin{center}
+    \includegraphics[scale=0.25]{Image/Diagramma_delle_fasi_nel_sistema_trifase.jpg}
+\end{center}
+
 
 \subsubsection{Potenza istantanea trifase}
 Con un carico a stella bilanciato, con le correnti della stella in ritardo di un angolo $\phi$ rispetto alle tensioni di fase si ha:
 \begin{align*}
     i_1(t) &= \sqrt{2} I \sin\left(\omega t - \phi\right) 
     &
-    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi - \frac{2 \pi}{3}\right)
+    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi - 120^{\circ}\right)
     &
-    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi - \frac{4 \pi}{3}\right)
+    i_2(t) &= \sqrt{2} I \sin\left(\omega t - \phi + 120^{\circ}\right)
 \end{align*}
 dove $I$ è il valore efficace delle correnti. La potenza istantanea totale assorbita dal carico allora è:
 \begin{align*}
@@ -3646,7 +3680,7 @@ dove $I$ è il valore efficace delle correnti. La potenza istantanea totale asso
     \\
     &= EI \left[3 \cos(\phi) - \cos(2 \omega t - \phi) - \cos \left(2 \omega t - \phi - \frac{4 \pi}{3}\right)-\cos\left(2 \omega t - \phi - \frac{8 \pi}{3}\right)\right]
 \end{align*}
-Le tre sinusoidi a pulsazione $2 \omega$ a ultimo membro costituiscono una terna simmetrica diretta ed hanno quindi so1nma nulla in ogni istante, sicché la potenza
+Le tre sinusoidi a pulsazione $2 \omega$ a ultimo membro costituiscono una terna simmetrica diretta ed hanno quindi somma nulla in ogni istante, sicché la potenza
 istantanea si riduce al solo addendo costante:
 \[p(t) = 3 EI \cos(\phi)\]
 Dunque la potenza istantanea in un sistema trifase simmetrico ed equilibrato è
@@ -3671,10 +3705,10 @@ Il \textbf{fattore di potenza} è:
 \[
     \cos(\phi) = \cos \left(\tan^{-1} \frac{Q}{P}\right)
 \]
-In un sistema non bilanciato l'angolo di sfasamento tra la tensione e la corrente linea solitamente è diverso per ogni fase. In questo caso il rifasamento (correzione dell'angolo di sfasamento) deve essere fatto per ogni singola fase.\\
+In un sistema non bilanciato l'angolo di sfasamento tra la tensione e la corrente di linea solitamente è diverso per ogni fase. In questo caso il rifasamento (correzione dell'angolo di sfasamento) deve essere fatto per ogni singola fase.\\
 Per il sistema non bilanciato il fattore di potenza è:
 \[
-    \cos(\phi) = \cos \left(\tan^{-1} \frac{Q}{P}\right) = \frac{P}{\sqrt{P^2+Q^2}} = \frac{P}{Q}
+    \cos(\phi) = \cos \left(\tan^{-1} \frac{Q}{P}\right) = \frac{P}{\sqrt{P^2+Q^2}} = \frac{P}{N}
 \]
 Per i sistemi bilanciati e non, la rotazione del sistema trifase di correnti di un angolo $\phi$ (arco-coseno del fattore di potenza) fa si che la potenza attiva assorbita dal circuito sia massimizzata.
 \begin{center}
@@ -3707,8 +3741,7 @@ centro.
 \begin{center}
     \includegraphics[scale=0.27]{Image/Circuiti_magnetici_1.png}
 \end{center}
-Considerato il sistema toroidale di figura,
-il campo magnetico è indotto da un conduttore percorso dalla corrente i ed avvolto attorno al toro con $N$ spire. Il flusso della densità di corrente concatenato con l'asse interno al toro, di lunghezza $2 \pi r$, è $i_c = Ni$. Per le linee di flusso di $\mathbf{H}$ interne al toro, assunte parallele all'asse del toro, si ha:
+Considerato il sistema toroidale in figura, il campo magnetico è indotto da un conduttore percorso dalla corrente $i$ ed avvolto attorno al toro con $N$ spire. Il flusso della densità di corrente concatenato con l'asse interno al toro, di lunghezza $2 \pi r$, è $i_c = Ni$. Per le linee di flusso di $\mathbf{H}$ interne al toro, assunte parallele all'asse del toro, si ha:
 \begin{align*}
     2 \pi r \mathbf{H} &= Ni & &\rightarrow & \mathbf{H} &= \frac{N i}{2 \pi r}
 \end{align*}
@@ -3785,14 +3818,13 @@ Per la determinazione della riluttanza magnetica nel caso in figura in alto essa
     \mathcal{R}_5 &= \frac{l_5}{S \mu} &
     \mathcal{R}_{tf} &= \frac{\delta}{S \mu_0}
 \end{align*}
-Nel ferro $\mathcal{R}_{tr}>\mathcal{R}_1,\mathcal{R}_2,\mathcal{R}_3,\mathcal{R}_4,\mathcal{R}_5$, Quindi di solito le riluttanze dei rami ferromagnetici sono trascurate rispetto a quelle dei traferri (un traferro è un'interruzione dell'anello di materiale ferromagnetico).
+Nel ferro $\mathcal{R}_{tr}>\mathcal{R}_1,\mathcal{R}_2,\mathcal{R}_3,\mathcal{R}_4,\mathcal{R}_5$, quindi di solito le riluttanze dei rami ferromagnetici sono trascurate rispetto a quelle dei traferri (un traferro è un'interruzione dell'anello di materiale ferromagnetico).
 \vspace*{0.2cm}\\
 In un circuito magnetico si distinguono rami e nodi. $\Phi_k$ è il flusso magnetico del
 ramo $k$, $\mathcal{T}_k$ è la tensione magnetica del ramo (differenza di potenziale magnetico fra i capi del ramo), $\mathcal{R}_k$ è la riluttanza del ramo e $N_ki_k$ è la f.m.m., generatore indipendente di tensione magnetica del ramo ove $N_k$ è il numero di spire che avvolgono il ramo e $i_k$ è la corrente elettrica che scorre nell'avvolgimento.
 
 \subsubsection{Leggi di Kirchhoff per i circuiti megnetici e equazione di ramo magnetico}
-Dalla prima legge di Maxwell si ottiene la legge di Kirchhoff delle tensioni magnetiche LKT e per la solenoidalità di $\mathbf{B}$ si perviene alla legge di Kirchhoff dei flussi magnetici LKF. Inoltre per la legge di Hopkinson si ottiene l'equazione
-di ramo magnetico. In un circuito magnetico di r rami ed n nodi si ha quindi:
+Dalla prima legge di Maxwell si ottiene la legge di Kirchhoff delle tensioni magnetiche LKT e per la solenoidalità di $\mathbf{B}$ si perviene alla legge di Kirchhoff dei flussi magnetici LKF. Inoltre per la legge di Hopkinson si ottiene l'equazione di ramo magnetico. In un circuito magnetico di $r$ rami ed $n$ nodi si ha quindi:
 \begin{align*}
     \T{LKF:}& 
     &
