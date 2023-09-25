@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor, listings, tabularx, pdfpages, blindtext, mathtools, stackengine, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment}
+\usepackage{amsmath, amssymb, tikz, geometry, graphicx, natbib, mwe, color, xcolor, listings, tabularx, pdfpages, blindtext, mathtools, stackengine, pgfplots,bigints, relsize, upgreek, esint, array, multirow, schemata, wrapfig, cancel, comment, svg}
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
@@ -154,6 +154,172 @@ e di due elementi fisici:
     \item un server in grado di erogare le risorse che costituiscono i documenti
     \item Un client in grado di rappresentare/visualizzare i documenti e di consentire la navigazione da un documento all'altro
 \end{itemize}
+
+
+
+\subsection{Elementi del Web}
+In estrema sintesi nella sua visione iniziale il Web può essere rappresentato con la “formula”:
+\begin{center}
+    \includegraphics[scale=0.27]{Images/Formula_web.png}
+\end{center}
+Il Web segue un modello Client/Server: i client \textbf{attivi}, detti Web Browser utilizzano il protocollo HTTP per connettersi ai server; i server \textbf{passivi}, detti Web o HTTP Server rimangono in ascolto di eventuali connessioni di nuovi client, utilizzano il protocollo HTTP per interagire con i client e forniscono ai client le pagine Web che questi richiedono.
+
+
+\section{URI e URL}
+\subsection{URI}
+\subsubsection{Problematiche fondamentali}
+L'URL (primo componente della formula del Web) fa riferimento a tre questioni principali:
+\begin{itemize}
+    \item come identificare il server in grado di fornirci un elemento dell'ipertesto
+    \item come identifichiamo la risorsa a cui vogliamo accedere?
+    \item quali meccanismi (ad es. in termini di protocollo) possiamo utilizzare per accedere alla risorsa?
+\end{itemize}
+La risposta a tutte queste domande sono gli URI.
+
+
+\subsubsection{Cosa sono}
+Gli URI (Uniform Resource Identifier) forniscono un meccanismo semplice ed estensibile per identificare una risorsa. Con il termine risorsa intendiamo qualunque entità abbia una identità: un documento, un'immagine, un servizio, una collezione di altre risorse.
+\vspace*{0.2cm}\\
+Un URI è un \textbf{concetto generale}, quindi non fa riferimento solo a risorse alle quali si può accedere con protocollo HTTP o a entità disponibili in rete. Si dice che è un \textbf{mapping} concettuale a una identità, e non si riferisce a una particolare versione dell'entità esistente in un dato momento. Il mapping può rimanere inalterato anche se cambia il contenuto della risorsa.
+
+
+\subsubsection{Sintassi}
+Gli URI rispettano una sintassi standard, semplice e regolare:
+\begin{verbatim}
+    URI = scheme ":" ["//" authority] path ["?" query] ["#" fragment]
+\end{verbatim}
+\begin{center}
+    \includegraphics[scale=0.19]{Images/URI_diagram.png}
+\end{center}
+
+
+\subsection{Specializzazioni di URI: URN e URL}
+Esistono due specializzazioni del concetto di URI:
+\begin{itemize}
+    \item Uniform Resource Name (URN): identifica una risorsa per mezzo di un “nome” che deve essere globalmente unico e \textbf{restare valido anche se la risorsa diventa non disponibile} o cessa di esistere
+    \item Uniform Resource Locator (URL): identifica una risorsa per mezzo del suo \textbf{meccanismo di accesso primario} (es. locazione nella rete) piuttosto che sulla base del suo nome o dei suoi attributi
+\end{itemize}
+Applicando questi concetti ad una persona: l'URN è come identificazione basata su
+nome+cognome, o meglio codice fiscale, quindi io conosco quella persona ma non so dov'è, l'URL è come indirizzo di casa o numero di telefono (se univoci).
+
+
+
+\subsection{URN}
+Un URN identifica una risorsa mediante un nome in un particolare dominio di nomi (namespace), quindi consente di "parlare" di una risorsa prescindendo dalla sua ubicazione e dalle modalità con cui è possibile accedervi.\\
+Un esempio molto noto è il codice ISBN (International Standard Book Number) che identifica a livello internazionale in modo univoco e duraturo un libro o una dizione di un libro di un determinato editore.
+
+
+\subsection{URL}
+Un URL tiene conto anche della modalità per accedere alla risorsa, infatti specifica il protocollo necessario per il trasferimento della risorsa stessa (tipicamente il nome dello schema corrisponde al protocollo utilizzato).\\
+Nella sua forma più comune (schema HTTP-like) sintassi è
+\begin{verbatim}
+    <protocol>://[<username>:<password>@] <host>[:<port>][/<path>[?<query>][#fragment]]
+\end{verbatim}
+Questa forma vale per diversi protocolli di uso comune come HTTP, HTTPS, FTP, WAP, etc ...
+
+
+\subsubsection{Compobenti di un URL}
+Vediamo ora le componenti di un indirizzo URL nel dettaglio:
+\begin{itemize}
+    \item {\fontfamily{lmtt}\selectfont <protocol>}: descrive il protocolo da utilizzare per l'accesso al server
+    \item {\fontfamily{lmtt}\selectfont <username>:<password>@}: credenziale per l'autenticazione (oggigiorno non si usano mai perché non è sicuro inserirle nell'URL)
+    \item {\fontfamily{lmtt}\selectfont <host>}: indirizzo server su cui risiede la risorsa; può essere un indirizzo logico o fisico
+    \item {\fontfamily{lmtt}\selectfont <path>}: percorso (\textit{pathname}) che identifica la risorsa nel file system del server; se manca, tipicamente di accede alla home page 
+    \item {\fontfamily{lmtt}\selectfont <query>}: una stringa di caratteri che consente di passare al server uno o più parametri; di solito ha questo formato:
+    \begin{verbatim}
+        parametro1=valore&parametro2=valore2...
+    \end{verbatim}
+\end{itemize}
+Esempio di URL con schema HTTP:
+\begin{center}
+    \includegraphics[scale=0.27]{Images/Es_URL.png}
+\end{center}
+
+
+\subsection{URI opache e gerarchiche}
+Le URI possono essere anche classificate come opache o gerarchiche
+\begin{itemize}
+    \item l'URI opaca non è soggetta a ulteriori operazioni di \textbf{\textit{parsing}}; esempio
+    \begin{verbatim}
+        mailto:paolo.rossi@disi.unibo.it
+    \end{verbatim}
+    \item L'URI gerarchica è soggetta a ulteriori operazioni di parsing, per esempio per separare l'indirizzo del server dal percorso all'interno del file system; alcuni esempi:
+    \begin{verbatim}
+        http://informatica.unibo.it/
+    \end{verbatim}
+    qui non è specificato un path, quindi il server ritorna la home page identificata dal file {\fontfamily{lmtt}\selectfont index.html}
+    \begin{verbatim}
+        docs/guide/collections/designfaq.html#28
+        ../../../lab/examples/ant/build.xml
+    \end{verbatim}
+    i {\fontfamily{lmtt}\selectfont ".."} indicano il server che sto visitando in quel momento
+    \begin{verbatim}
+        file:///~/calendar
+    \end{verbatim}
+\end{itemize}
+
+
+\subsubsection{Operazioni sulle URI gerarchiche}
+Di seguito si elencano le operazioni possibili su URI gerarchiche:
+\begin{itemize}[label=$\blacktriangleright$]
+    \item \textbf{Normalizzazione:} processo di rimozione dei segmenti {\fontfamily{lmtt}\selectfont "."} e {\fontfamily{lmtt}\selectfont ".."} (e altri caratteri speciali) dal path (N.B. la normalizzazione si applica solo a URI gerarchiche, su URI opache non ha effetto)
+    \item \textbf{Risoluzione:} processo che a partire da una URI originaria porta all'ottenimento di una URI risultante; la URI originaria viene risolta basandosi sulla base URI
+    \item \textbf{Relativizzazione:} processo inverso all risoluzione
+\end{itemize}
+Esempio di risoluzione di una URI:\\
+URI originaria:
+\begin{verbatim}
+    docs/guide/collections/designfaq.html#28
+\end{verbatim}
+Base URI:
+\begin{verbatim}
+    http://disi.unibo.it/
+\end{verbatim}
+Risultato:
+\begin{verbatim}
+    http://disi.unibo.it/docs/guide/collections/designfaq.html#28
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
