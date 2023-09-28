@@ -511,7 +511,52 @@ Dato un sistema (non forzato) $\dot x(t) = f (x(t), t)$, uno stato $x_e$ si dice
 \vspace*{0.2cm}\\
 Dato un sistema (forzato) $\dot x(t) = f (x(t), u(t), t)$, $(x_e , u_e )$ si dice \textit{coppia di equilibrio} del sistema se $(x(t), u(t)) = (x_e , u_e )$, $t \geq t_0$ , è una traiettoria del sistema.
 \vspace*{0.2cm}\\
-Per un sistema (tempo invariante continuo) $\dot x(t) = f (x(t), u(t))$ data una coppia di equilibrio $(x_e,u_e)$ vale $f(x_e,u_e)=0$. Se il sistema è non forzato, dato un equilibrio $x_e$ vale $f(x_e)=0$.
+Per un sistema (tempo invariante continuo) $\dot x(t) = f (x(t), u(t))$ data una coppia di equilibrio $(x_e,u_e)$ vale $f(x_e,u_e)=0$.\\
+Se il sistema è non forzato, dato un equilibrio $x_e$ vale $f(x_e)=0$.
+
+
+\subsubsection{Esempio pendolo}
+\begin{align*}
+    \dot x_1(t) &= x_2(t) &= f_1(x(t),u(t))\\
+    \dot x_2(t) &= - \frac{G}{\ell} \sin (x_1(t)) - \frac{b}{M \ell ^2}x_2(t) + \frac{1}{M\ell^2}u(t) &=f_2(x(t),u(t))
+\end{align*}
+Siccome sappiamo che, data una coppia di equilibrio $(x_e,u_e)$, vale $f(x_e,u_e)=0$, allora per trovare l'equilibrio del pendolo imponiamo 
+\[
+    f(x_e,u_e)=0
+\]
+cioè:
+\[
+    \begin{cases}
+        x_{2e}(t) = 0\\
+        \\
+        - \dfrac{G}{\ell} \sin (x_{1e}) - \dfrac{b x_{2e}}{M \ell ^2} + \dfrac{1}{M\ell^2}u_e =0
+    \end{cases}
+\]
+sostituendo $x_{2e}(t)=0$ nell'ultima equazione
+\[
+    - \dfrac{G}{\ell} \sin (x_{1e}) + \dfrac{1}{M\ell^2}u_e =0 \Longrightarrow u_e = M G \ell \sin(x_{1e})
+\]
+In conclusione, le coppie di equilibrio del sistemo sono tutti fli $(x_{1e}, x_{2e},u_e)$ che soddisfano
+\[
+    \begin{cases}
+        u_e = M G \ell \sin(x_{1e})\\
+        x_{2e}=0
+    \end{cases}
+\]
+
+
+
+
+\subsection{Classificazione dei sistemi in forma di stato}
+La classe generale è  $x \in \mathbb{R}^n , u \in \mathbb{R}^m , y\in \mathbb{R}^p$
+\begin{align*}
+    \dot x(t) &= f (x(t), u(t), t) & &\T{equazione di stato}\\
+    y(t) &= h(x(t), u(t), t) & &\T{equazione di uscita}  
+\end{align*}
+\begin{itemize}
+    \item I sistemi \textbf{monovariabili} (SISO, Single Input Single Output) sono una sottoclasse di sistemi \textbf{multivariabili} (MIMO, Multiple Input Multiple Output); sono tali se $m=p=1$, altrimenti sono dei sistemi MIMO;
+    \item I sistemi \textbf{strettamente propri} sono una sotto classe dei \textbf{sistemi propri}; sono tali se $y(t) = h(x(t),t))$, quindi se l'uscita dipende esclusivamente dall'ingresso
+\end{itemize}
 
 
 
