@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  28 SEP 2023 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  29 SEP 2023 18:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -809,23 +809,23 @@ File: uesint.fd
  [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<Images/Schema_sistema.png, id=115, 740.7675pt x 442.65375pt>
+<Images/Schema_sistema.png, id=135, 740.7675pt x 442.65375pt>
 File: Images/Schema_sistema.png Graphic file (type png)
 <use Images/Schema_sistema.png>
 Package pdftex.def Info: Images/Schema_sistema.png  used on input line 92.
 (pdftex.def)             Requested size: 222.23196pt x 132.79713pt.
-<Images/Anello_aperto.png, id=117, 1097.09875pt x 286.06876pt>
+<Images/Anello_aperto.png, id=137, 1097.09875pt x 286.06876pt>
 File: Images/Anello_aperto.png Graphic file (type png)
 <use Images/Anello_aperto.png>
 Package pdftex.def Info: Images/Anello_aperto.png  used on input line 115.
 (pdftex.def)             Requested size: 351.07878pt x 91.54387pt.
-<Images/Anello_chiuso.png, id=118, 1139.25626pt x 399.4925pt>
+<Images/Anello_chiuso.png, id=138, 1139.25626pt x 399.4925pt>
 File: Images/Anello_chiuso.png Graphic file (type png)
 <use Images/Anello_chiuso.png>
 Package pdftex.def Info: Images/Anello_chiuso.png  used on input line 119.
 (pdftex.def)             Requested size: 341.77951pt x 119.84866pt.
  [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Images/Schema_sistema.png> <./Images/Anello_aperto.png>]
-<Images/Es_cirucito_elettrico.png, id=128, 1035.87pt x 798.985pt>
+<Images/Es_cirucito_elettrico.png, id=148, 1035.87pt x 798.985pt>
 File: Images/Es_cirucito_elettrico.png Graphic file (type png)
 <use Images/Es_cirucito_elettrico.png>
 Package pdftex.def Info: Images/Es_cirucito_elettrico.png  used on input line 142.
@@ -835,47 +835,58 @@ LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 2
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<Images/Es_carrello.png, id=147, 847.165pt x 527.9725pt>
+<Images/Es_carrello.png, id=167, 847.165pt x 527.9725pt>
 File: Images/Es_carrello.png Graphic file (type png)
 <use Images/Es_carrello.png>
 Package pdftex.def Info: Images/Es_carrello.png  used on input line 319.
 (pdftex.def)             Requested size: 169.43pt x 105.59262pt.
  [5{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc} <./Images/Es_carrello.png>]
-<Images/Es_Rettilineo.png, id=156, 1216.545pt x 592.2125pt>
+<Images/Es_Rettilineo.png, id=177, 1216.545pt x 592.2125pt>
 File: Images/Es_Rettilineo.png Graphic file (type png)
 <use Images/Es_Rettilineo.png>
 Package pdftex.def Info: Images/Es_Rettilineo.png  used on input line 371.
 (pdftex.def)             Requested size: 218.96864pt x 106.59364pt.
  [6 <./Images/Es_Rettilineo.png>]
-<Images/Es_pendolo.png, id=162, 742.775pt x 857.2025pt>
+<Images/Es_pendolo.png, id=183, 742.775pt x 857.2025pt>
 File: Images/Es_pendolo.png Graphic file (type png)
 <use Images/Es_pendolo.png>
 Package pdftex.def Info: Images/Es_pendolo.png  used on input line 402.
 (pdftex.def)             Requested size: 126.27007pt x 145.72249pt.
- [7 <./Images/Es_pendolo.png>] [8] [9] (./ControlliAutomatici.aux)
+ [7 <./Images/Es_pendolo.png>] [8]
+<Images/Sistemi_tempo_invarianti.png, id=195, 883.04906pt x 277.78781pt>
+File: Images/Sistemi_tempo_invarianti.png Graphic file (type png)
+<use Images/Sistemi_tempo_invarianti.png>
+Package pdftex.def Info: Images/Sistemi_tempo_invarianti.png  used on input line 574.
+(pdftex.def)             Requested size: 264.91675pt x 83.33698pt.
+ [9 <./Images/Sistemi_tempo_invarianti.png>]
+File: Images/Es_carrello.png Graphic file (type png)
+<use Images/Es_carrello.png>
+Package pdftex.def Info: Images/Es_carrello.png  used on input line 670.
+(pdftex.def)             Requested size: 169.43pt x 105.59262pt.
+ [10] (./ControlliAutomatici.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
 Package rerunfilecheck Info: File `ControlliAutomatici.out' has not changed.
-(rerunfilecheck)             Checksum: 48C3AFA51C54BB48D7FE21C9888B39F5;3886.
+(rerunfilecheck)             Checksum: 532E6D00236835C3D5C7DB0184610BEA;4839.
  ) 
 Here is how much of TeX's memory you used:
- 36108 strings out of 475189
- 811989 string characters out of 5763838
+ 36124 strings out of 475189
+ 812447 string characters out of 5763838
  1938254 words of memory out of 5000000
- 56749 multiletter control sequences out of 15000+600000
+ 56760 multiletter control sequences out of 15000+600000
  569024 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,13n,107p,813b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,107p,813b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Circuito\040elettrico} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ControlliAutomatici.pdf (9 pages, 981260 bytes).
+Output written on ControlliAutomatici.pdf (10 pages, 1025094 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 208 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 

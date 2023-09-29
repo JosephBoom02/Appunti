@@ -18,3 +18,7 @@
 \contentsline {subsection}{\numberline {2.8}Equilibrio di un sistema}{8}{subsection.2.8}%
 \contentsline {subsubsection}{\numberline {2.8.1}Esempio pendolo}{8}{subsubsection.2.8.1}%
 \contentsline {subsection}{\numberline {2.9}Classificazione dei sistemi in forma di stato}{9}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Proprietà dei sistemi lineari}{10}{subsection.2.10}%
+\contentsline {subsubsection}{\numberline {2.10.1}Sistemi lineri in forma matriciale}{10}{subsubsection.2.10.1}%
+\contentsline {subsubsection}{\numberline {2.10.2}Caso particolare: sistemi lineari tempo-invarianti}{10}{subsubsection.2.10.2}%
+\contentsline {subsubsection}{\numberline {2.10.3}Esempio carrello}{10}{subsubsection.2.10.3}%

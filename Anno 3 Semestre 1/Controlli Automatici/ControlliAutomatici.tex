@@ -555,8 +555,136 @@ La classe generale è  $x \in \mathbb{R}^n , u \in \mathbb{R}^m , y\in \mathbb{R
 \end{align*}
 \begin{itemize}
     \item I sistemi \textbf{monovariabili} (SISO, Single Input Single Output) sono una sottoclasse di sistemi \textbf{multivariabili} (MIMO, Multiple Input Multiple Output); sono tali se $m=p=1$, altrimenti sono dei sistemi MIMO;
-    \item I sistemi \textbf{strettamente propri} sono una sotto classe dei \textbf{sistemi propri}; sono tali se $y(t) = h(x(t),t))$, quindi se l'uscita dipende esclusivamente dall'ingresso
+    \item I sistemi \textbf{strettamente propri} sono una sotto classe dei \textbf{sistemi propri}; sono tali se $y(t) = h(x(t),t))$, quindi se l'uscita dipende esclusivamente dall'ingresso, chiamati quindi sistemi causali (tutti i sistemi che abbiamo visto fin'ora sono sistemi propri).
+    \item I sistemi \textbf{non forzati} sono una sotto classe dei \textbf{sistemi forzati}; un esempio di sistema non forzato è il seguente
+    \begin{align*}
+        \dot x(t) &= f(x(t),t)\\
+        y(t) &= h(x(t),t)
+    \end{align*}
+    \item I sistemi \textbf{tempo invarianti} sono una sotto classe di sistemi \textbf{tempo  varianti}.\\
+    I tempo invarianti sono tali se, data una traiettoria $ (x(t), u(t)), t\geq t_0$, con $x(t_0)=x_0$, per ogni $\Delta \in \mathbb{R}$ vale che $x(t_0+\Delta)=x_0$ allora $(x_{\Delta} (t), u_{\Delta} (t)) = (x(t-\Delta), u(t-\Delta))$ è una traiettoria.\\
+    Si può dimostrare che sistemi tempo invarianti sono del tipo
+    \begin{align*}
+        \dot x(t) &= f (x(t), u(t)) &x(0)=x_0\\
+        y(t) &= h(x(t), u(t))
+    \end{align*}
+    e senza senza perdita di generalità possiamo scegliere $t_0=0$.\\
+    Graficamente:
+    \begin{center}
+        \includegraphics[scale=0.3]{Images/Sistemi_tempo_invarianti.png}
+    \end{center}
+    \item I \textbf{sistemi lineari} sono una sotto classe di \textbf{sistemi non lineari}.\\
+    I sistemi lineari sono tali se le funzioni di stato e di uscita sono lineari in $x$ e $u$:
+    \begin{align*}
+        \dot x_1 (t) &= a_{11} (t)x_1 (t) + a_{12} (t)x_2 (t) + . . . + a_{1n} (t)x_n (t)+ b_{11} (t)u_1 (t) + b_{12} (t)u_2 (t) + . . . + b_{1m} (t)u_m (t)\\
+        \dot x_2 (t) &= a_{21} (t)x_1 (t) + a_{22} (t)x_2 (t) + . . . + a_{2n} (t)x_n (t)+ b_{21} (t)u_1 (t) + b_{22} (t)u_2 (t) + . . . + b_{2m} (t)u_m (t)\\
+        ...\\
+        ...\\
+        ...\\
+        \dot x_n (t) &= a_{n1} (t)x_1 (t) + a_{n2} (t)x_2 (t) + . . . + a_{nn} (t)x_n (t)+ b_{n1} (t)u_1 (t) + b_{n2} (t)u_2 (t) + . . . + b_{nm} (t)u_m (t)
+    \end{align*}
+    per $y(t)$ invece 
+    \begin{align*}
+        y_1 (t) &= c_{11} (t)x1 (t) + c_{12} (t)x_2 (t) + . . . + c_{1n} (t)x_n (t)+ d_{11} (t)u_1 (t) + d_{12} (t)u_2 (t) + . . . + d_{1m} (t)u_m (t)\\
+        y_2 (t) &= c_{21} (t)x_1 (t) + c_{22} (t)x_2 (t) + . . . + c_{2n} (t)x_n (t)+ d_{21} (t)u_1 (t) + d_{22} (t)u_2 (t) + . . . + d_{2m} (t)u_m (t)\\
+        ...\\
+        ...\\
+        ...\\
+        y_p (t) &= c_{p1} (t)x_1 (t) + c_{p2} (t)x_2 (t) + . . . + c_{pn} (t)x_n (t)+ d_{p1}(t)u_1 (t) + d_{p2} (t)u_2 (t) + . . . + d_{pm} (t)u_m (t)
+    \end{align*}
 \end{itemize}
+
+
+
+\subsection{Proprietà dei sistemi lineari}
+\subsubsection{Sistemi lineri in forma matriciale}
+Definiamo le matrici $A(t) \in \mathbb{R}^{n \times n} , B(t) \in \mathbb{R}^{n \times m} , C(t) \in \mathbb{R}^{p \times n} , D(t) \in \mathbb{R}^{p \times m}$
+\begin{align*}
+    A(t) &= \begin{bmatrix}
+        a_{11}(t) & ... & a_{1n}(t)\\
+        .\\
+        .\\
+        a_{n1}(t) & ... & a_{nn}(t)
+    \end{bmatrix}
+    &
+    B(t) &= \begin{bmatrix}
+        b_{11}(t) & ... & b_{1m}(t)\\
+        .\\
+        .\\
+        b_{n1}(t) & ... & b_{nm}(t)
+    \end{bmatrix}\\
+    C(t) &= \begin{bmatrix}
+        c_{11}(t) & ... & c_{1n}(t)\\
+        .\\
+        .\\
+        c_{p1}(t) & ... & c_{pn}(t)
+    \end{bmatrix}
+    &
+    D(t) &= \begin{bmatrix}
+        d_{11}(t) & ... & d_{1m}(t)\\
+        .\\
+        .\\
+        d_{pn1}(t) & ... & d_{pm}(t)
+    \end{bmatrix}
+\end{align*}
+quindi scriviamo
+\[
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        .\\
+        .\\
+        \dot x_n(t)
+    \end{bmatrix}
+    = A(t)
+    \begin{bmatrix}
+        x_1(t)\\
+        .\\
+        .\\
+        x_n(t)
+    \end{bmatrix}
+    + B(t)
+    \begin{bmatrix}
+        u_1(t)\\
+        .\\
+        .\\
+        u_m(t)
+    \end{bmatrix}
+\]
+che equivale a 
+\begin{align*}
+    \dot x(t) &= A(t) x(t) + B(t) u(t)\\
+    y(t) &= C(t)x(t) + D(t) u(t)
+\end{align*}
+
+
+\subsubsection{Caso particolare: sistemi lineari tempo-invarianti}
+\begin{align*}
+    \dot x(t) = A x(t) + B u(t)\\
+    y(t) = C x(t) + D u(t)
+\end{align*}
+con $A,B,C,D$ matrici costanti.
+
+
+\subsubsection{Esempio carrello}
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Es_carrello.png}
+\end{center}
+\begin{align*}
+    \dot x_1(t) &= x_2(t)\\
+    \dot x_2(t) &= - \frac{k(t)}{M}x_1(t) + \frac{1}{M} u(t)\\
+    y(t) &= x_1(t)
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
