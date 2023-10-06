@@ -657,7 +657,7 @@ che equivale a
 \end{align*}
 
 
-\subsubsection{Caso particolare: sistemi lineari tempo-invarianti}
+\subsection{Sistemi lineari tempo-invarianti}
 \begin{align*}
     \dot x(t) = A x(t) + B u(t)\\
     y(t) = C x(t) + D u(t)
@@ -670,23 +670,434 @@ con $A,B,C,D$ matrici costanti.
     \includegraphics[scale=0.2]{Images/Es_carrello.png}
 \end{center}
 \begin{align*}
-    \dot x_1(t) &= x_2(t)\\
-    \dot x_2(t) &= - \frac{k(t)}{M}x_1(t) + \frac{1}{M} u(t)\\
+    \dot x_1(t) &= x_2(t) & f_1(x,u,t) &= x_2\\
+    \dot x_2(t) &= - \frac{k(t)}{M}x_1(t) + \frac{1}{M} u(t) & f_2(x,u,t) &= - \frac{k(t)}{M}x_1 + \frac{1}{M}u\\
     y(t) &= x_1(t)
+\end{align*}
+$f_2$ dipende esplicitamente da $t$ attraverso $k(t)$ quindi è un sistema tempo \underline{variante}. Se $k(t) = \overline{k}$ per ogni $t$ allora tempo \underline{invariante}.\\
+Siccome $f_1$ e $f_2$ dipendono linearmente da $x$ e $u$ il sistema è \underline{lineare}. (Se $k(t) = \overline{k}$ il sistema è \underline{lineare tempo invariante}.)
+\begin{align*}
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        \dot x_2(t)
+    \end{bmatrix}
+    &=
+    \underbrace{\begin{bmatrix}
+        0 & 1\\
+        -\frac{k(t)}{M} & 0
+    \end{bmatrix}}_{A}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+    +
+    \underbrace{\begin{bmatrix}
+        0\\
+        \frac{1}{M}
+    \end{bmatrix}}_{B}
+    u(t)
+    \\
+    y(t) &= 
+    \underbrace{\begin{bmatrix}
+        1 & 0
+    \end{bmatrix}}_{C}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+    + \underbrace{0}_D u(t)
+\end{align*}
+per $k$ costante:
+\begin{align*}
+    A &= \begin{bmatrix}
+        0 & 1\\
+        - \frac{k}{M} & 0
+    \end{bmatrix}
+    &
+    B &= 
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix}
+    &
+    C &= 
+    \begin{bmatrix}
+        1 & 0
+    \end{bmatrix}
+\end{align*}
+
+
+\subsubsection{Sistemi lineari tempo-invarianti SISO}
+I sistemi lineari tempo-invarianti single input single output (SISO) sono caratterizzati dalle matrici $A \in \mathbb{R}^{n \times n} , B \in \mathbb{R}^{n \times 1}, C \in \mathbb{R}^{1 \times n} , D \in \mathbb{R}^{1 \times 1}$, ovvero $B$ è un vettore, $C$ è un vettore riga e $D$ è uno scalare.
+
+
+\subsection{Principio di sovrapposizione degli effetti}
+Prendiamo un sistema lineare (anche tempo-variante)
+\begin{align*}
+    \dot x(t) &= A(t)x(t) + B(t)u(t)\\
+    y(t) &= C(t)x(t) + D(t)u(t)
+\end{align*}
+Sia $(x_a (t), u_a (t))$ traiettoria con $x_a (t_0)$ = $x_{0a}$.\\
+Sia $(x_b (t), u_b (t))$ traiettoria con $x_b (t_0)$ = $x_{0b}$.
+\vspace*{0.1cm}\\
+Allora $\forall \alpha, \beta \in \mathbb{R}$ dato lo stato iniziale $x_{ab}(t_0) = \alpha x_{0a}+\beta x_{0b}$, si ha che
+\[
+    (x_{ab}(t), u_{ab}(t)) = (\alpha x_{a}(t) + \beta x_b(t), \alpha u_a(t)+\beta u_b(t))
+\]
+è traiettoria del sistema, ovvero applicando come ingresso $u_{ab}=\alpha u_a(t) + \beta u_b(t)$ la traiettoria di stato è $x_{ab} (t) = \alpha x_a (t) + \beta x_b (t)$
+\[
+    \begin{rcases}
+        \alpha x_{0a}(t)+\beta x_{0b}(t)\\
+        \alpha u_a(t) + \beta u_b(t)(t)
+    \end{rcases}
+    \Longrightarrow
+    \alpha x_a(t) + \beta x_b(t)
+\]
+\vspace*{0.2cm}
+\textbf{IMPORTANTE:} non vale per i sistemi non lineari.
+
+\subsubsection*{Dimostrazione}
+Per dimostrarlo dobbiamo provare che soddisfa l'equazione differenziale
+\begin{align*}
+    \frac{d}{dt}x_{ab}(t) &= \alpha \dot x_a(t) + \beta \dot x_b(t)\\
+    &= \alpha(A(t)x_a (t) + B(t)u_a (t)) + \beta (A(t)x_b (t) + B(t)u_b (t))\\
+    &= A(t)(\alpha x_a (t) + \beta x_b (t)) + B(t)( \alpha u_a (t) + u_b (t))
+\end{align*}
+Per sistemi lineari sotto opportune ipotesi su $A(t)$ e $B(t)$ si può dimostrare che la soluzione è unica.\\
+Si dimostra lo stesso anche per l'uscita.
+
+
+\subsection{Evoluzione libera e evoluzione forzata}
+Sfruttando il principio di sovrapposizione degli effetti prendiamo due sistemi \circled{A} e \circled{B} 
+\begin{align*}
+   \circled{A} \ x(t_0) &= x_0 =x_{0a} {\color{violet} \neq 0} & \circled{B} \ \ \ x_{0b}&=0\\
+    u_a(t) &= 0 \ \ \forall t \geq t_0 & u_b(t) &= u(t) {\color{violet}\neq 0}
+\end{align*}
+chiamiamo $x_a(t)=x_\ell(t)$ e $x_b(t) = x_f(t)$
+\begin{align*}
+    \alpha x_{0a} + \beta x_{0b} &= \underbrace{\alpha}_{1} x_0 = x_0 & 
+    \alpha u_a(t) + \beta u_b(t) &= \underbrace{\beta}_{1}u(t) = u(t)
+\end{align*}
+quindi
+\[
+    x_{ab}(t) = \underbrace{x_\ell(t)}_{\substack{\text{evoluzione} \\ \text{libera}}} + \underbrace{x_f(t)}_{\substack{\text{evoluzione} \\ \text{forzata}}}
+\]
+L'\textbf{evoluzione libera} è definita come $x_\ell(t)$ per $t \geq t_0$, tale che $x_\ell (t_0)=x_0$ e $u_l(t)=0$ per $t \geq t_0$, e uscita $y_\ell(t)=C(t)x_\ell(t)$.\\
+L'\textbf{evoluzione forzata} è definita come $x_f(t)$ per $t \geq t_0$, tale che $x_f (t_0)=0$ e $u_l(t)=u(t)$ per $t \geq t_0$, e uscita $y_f(t)=C(t)x_f(t)+D(t)u(t)$.
+\vspace*{0.2cm}\\
+\textbf{IMPORTANTE:} non vale per i sistemi non lineari.
+
+
+\subsubsection{Traiettorie di un sistema LTI: esempio scalare}
+Definiamo un sistema lineare tempo invariante (LTI) scalare $x \in \mathbb{R}$, $u \in \mathbb{R}$, $y \in \mathbb{R}$
+\begin{align*}
+    \dot x(t) &= ax(t) + bu(t) &x(0) = x_0\\
+    y(t) &= cx(t) + du(t)
+\end{align*}
+dall'analisi matematica possiamo scrivere il sistema come soluzione omogenea + soluzione particolare
+\begin{align*}
+    x(t) &= e^{at}x_0 + \int_0^t e^{a(t-\tau)}bu(\tau) d \tau \\
+    y(t) &= ce^{at}x_0 + c \int_0^t e^{a(t-\tau)}bu(\tau) d \tau + du(t)
+\end{align*}
+ricordiamo che la funzione esponenziale si può scrivere come
+\[
+    e^{at} = 1 + at + \frac{(at)^2}{2!} + \frac{(at)^3}{3!} + ...
+\]
+
+
+\subsubsection{Traiettorie di un sistema LTI: caso generale}
+Definiamo un sistema lineare tempo invariante (LTI) $x\in \mathbb{R}^n, u\in \mathbb{R}^m, y\in \mathbb{R}^p$
+\begin{align*}
+    \dot x(t) &= Ax(t) + Bu(t) &x(0) = x_0\\
+    y(t) &= Cx(t) + Du(t)
+\end{align*}
+\begin{align*}
+    \underbrace{x(t)}_{\mathbb{R}^n} &= \underbrace{e^{At}}_{\mathbb{R}^{n \times n}} \underbrace{x_0}_{\mathbb{R}^n} + \int_0^t e^{A(t-\tau)}Bu(\tau) d \tau \\
+    y(t) &= Ce^{at}x_0 + c \int_0^t e^{A(t-\tau)}Bu(\tau) d \tau + Du(t)
+\end{align*}
+
+Ricordiamo che l'esponenziale di matrice si può scrivere come
+\[
+    e^{At} = I + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + ...
+\]
+\[
+    x(t) = \underbrace{e^{At} x_0}_{\substack{\text{evoluzione} \\ \text{libera}}} + \underbrace{\int_0^t e^{A(t-\tau)}Bu(\tau) d \tau}_{\substack{\text{evoluzione} \\ \text{forzata}}}
+\]
+\begin{align*}
+    x_\ell(t) &= e^{At}x_0 & x_f(t) &= \int_0^t e^{A(t-\tau)}Bu(\tau) d \tau
+\end{align*}
+
+
+\subsubsection{Esempio sistema non forzato}
+\begin{align*}
+    \dot x_1(t) = \lambda_1 x_1(t) & \dot x_1(t) = \lambda_2 x_2(t)
+\end{align*}
+\[
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        \dot x_2(t)
+    \end{bmatrix}
+    =
+    \underbrace{\begin{bmatrix}
+        \lambda_1 & 0\\
+        0 & \lambda_2  
+    \end{bmatrix}}_{A}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+\]
+$A := \Lambda$ matrice diagonale.
+\vspace*{0.2cm}\\
+Il nostro è un sistema non forzato, quindi c'è solo l'evoluzione libera:
+\[
+    x(t) = e^{\Lambda t}x_0
+\]
+\begin{align*}
+    e^{\Lambda t} &= 
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        \lambda_1 & 0\\
+        0 & \lambda_2
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        \lambda_1 & 0\\
+        0 & \lambda_2
+    \end{bmatrix}^2 \frac{t^2}{2!} + ...\\
+    &=\begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        \lambda_1 & 0\\
+        0 & \lambda_2
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        \frac{\lambda_1^2 t^2}{2!} & 0\\
+        0 & \frac{\lambda_2^2 t^2}{2!}
+    \end{bmatrix} + ...\\
+    e^{at} = 1 + at + \frac{(at)^2}{2!} + \frac{(at)^3}{3!} + ... \Longrightarrow&=
+    \begin{bmatrix}
+        e^{\lambda_1 t} & 0\\
+        0 & e^{\lambda_2 t}
+    \end{bmatrix}
+\end{align*}
+Quindi nel caso generale di $\Lambda \in \mathbb{R}^{n \times n}$
+\[
+    e^{\Lambda t} = 
+    \begin{bmatrix}
+        e^{\lambda_1 t} & 0 & ... & 0\\
+        0 & e^{\lambda_2 t} & ... & 0\\
+        .\\
+        .\\
+        0 & ... & 0 & e^{\lambda_n t}
+    \end{bmatrix}
+\]
+
+
+\subsubsection{Proprietà della matrice esponenziale}
+Esponenziale e cambio di base:
+\[
+    e^{TAT^{-1}} = Te^{At}T^{-1}
+\]
+Data una matrice $A \in \mathbb{R}^{n \times n}$, esiste $J$ matrice diagonale a blocchi, chiamata \textit{matrice di Jordan}, che è unica a meno di permutazioni dei blocchi, tale che
+\[
+    A = T^{-1} J T
+\]
+con $T$ matrice invertibile (matrice del cambio base). Questa formula viene chiamata \textit{forma di Jordan}.
+\vspace*{0.2cm}\\
+La matrice di Jordan è fatta in questo modo
+\begin{center}
+    \includegraphics[scale=0.13]{Images/Jordan_matrix.png}
+\end{center}
+con $\lambda_i$ autovalore di $A$.
+\vspace*{0.2cm}\\
+Utilizzando questa forma riconduco il calcolo di $e^{At}$ al calcolo di 
+\[
+    e^{
+        \begin{bmatrix} 
+            \lambda & 1 & 0 & ... & 0\\
+            0 & ... & ... & ... &0\\
+            ... & ... & ... & ... & 0\\
+            ... & ... & ... & ... & 1\\
+            0 & ... & ... & 0 & \lambda
+        \end{bmatrix}
+        }
+        = e^{\lambda t}
+        \begin{bmatrix}
+            1 & t & \frac{t^2}{2!} & ... \\
+            0 & 1 & t & \frac{t^2}{2!} & ... \\
+            ... & ... & ... & ... & ...\\
+            0 & ... & ... & ... & 1
+        \end{bmatrix}
+\]
+\textbf{IMPORTANTE:} tutti gli elementi di $e^{At}$ sono del tipo
+\[
+    t^qe^{\lambda t}
+\]
+con $q$ intero e $\lambda_i$ autovalori di A
+
+
+\subsection{Rappresentazioni equivalenti}
+Effettuiamo un cambio di base mediante una matrice $T$
+\[
+    \hat x(t) = T x(t)
+\]
+ed essendo $T$ invertibile
+\[
+    x(t) = T^{-1} \hat x(t)
+\]
+Sostituendo nell'equazione della dinamica si ottiene
+\begin{align*}
+    {\color{violet} T \cdot} \underbrace{T^{-1} \dot{\hat x}(t)}_{\dot x(t)} &= A \underbrace{T^{-1} \hat x(t)}_{x(t)} + B u(t) {\color{violet} \cdot T } \\
+\end{align*}
+\begin{align*}
+    \dot{\hat x}(t) &= TAT^{-1} \hat x(t) + T B u(t)\\
+    y(t) &= CT^{-1} \hat x(t) + D u(t)
+\end{align*}
+Allora chiamo $\hat A = TAT^{-1}, \hat B=TB, \hat C = CT^{-1}, \hat D = D$
+\begin{align*}
+    \dot{\hat x}(t)  &= \hat A \hat x(t) + \hat B u(t)\\
+    y(t) &= \hat C \hat x(t) + \hat D u(t)
+\end{align*}
+se $T$ è una matrice tale che
+\[
+    J = TAT^{-1}
+\]
+allora
+\[
+    \dot{\hat x} = J \hat x(t) + T B u(t)
+\]
+\begin{align*}
+    \hat x_\ell (t) = e^{JT} \hat x_0 = T^{-1} e^{Jt}T x_0
 \end{align*}
 
 
 
 
+\subsection{Modi di un sistema lineare tempo invariante}
+Prendiamo un sistema lineare tempo invariante con $x \in \mathbb{R}^n, u \in \mathbb{R}^m, y \in \mathbb{R}^p$ e $x(0)=x_0$
+\begin{align*}
+    \dot x(t) &= A x(t) + B u(t)\\
+    y(t) &= C x(t) + D u(t)
+\end{align*}
+Indichiamo con $\lambda_1,...,\lambda_r$ gli $r \leq n$ autovalori (reali o complessi coniugati) distinti della matrice $A$, con molteplicità algebrica $n_1,...,n_r \geq 0$ tali che $\sum\limits ^r_{i=1} n_i = n$.\\
+Le componenti dell'evoluzione libera dello stato $x_\ell(t)$ si possono scrivere come
+\[
+    x_{\ell,j} = \sum^r_{i=1}\sum^{h_i}_{q=1} \gamma_{jiq}t_{q-1}e^{\lambda_i t} \tag*{$j=1,...,n$}
+\]
+per opportuni valori di $h_i \leq n_i$, dove i coefficienti $\gamma_{jiq}$ dipendono dallo stato iniziale $x(0)$.\\
+I termini $t^{q-1}e^{\lambda_i t}$  sono detti modi naturali del sistema.
+L'evoluzione libera dello stato è combinazione lineare dei modi.
 
 
+\subsubsection{Autovalori complessi}
+Se la matrice $A$ è reale e $\lambda_i = \sigma_i + j \omega_i$ è un autovalore complesso, allora il suo complesso coniugato $\overline{\lambda}_i = \sigma_i - j \omega_i$ è anch'esso autovalore di $A$.\\
+Inoltre si dimostra che i coefficienti $\gamma_{jiq}$ corrispondenti a $\lambda_i$ e $\overline{\lambda}_i$ sono anch'essi complessi coniugati.\\
+Scriviamo l'\textbf{esponenziale di autovalori complessi coniugati}; se $\lambda_i = \sigma_i + j \omega_i$ e $\overline{\lambda}_i = \sigma_i - j \omega_i$ allora
+\begin{align*}
+    e^{\lambda_i t} &= e^{\sigma_i + j \omega_i} & e^{\overline{\lambda}_i t} &= e^{\sigma_i - j \omega_i}\\
+    &= e^{\sigma_i t} e^{j \omega_i t} & &= e^{\sigma_i t} e^{-j \omega_i t}\\
+    &= e^{\sigma_i t} (\cos(\omega_i t) + j \sin(\omega_i t)) & &= e^{\sigma_i t} (\cos(\omega_i t) - j \sin(\omega_i t))
+\end{align*}
+Si verifica quindi, per calcolo diretto, che le soluzioni $x_{\ell,j}(t)$ sono sempre reali e che i modi del sistema corrispondenti ad autovalori complessi coniugati $\lambda_i$ e $\overline{\lambda}_i$ sono del tipo
+\[
+    t^{q-1} e^{\sigma_i t} \cos (\omega_i t + \phi_i)
+\]
+con opportuni valori della fase $\phi_i$.
+\vspace*{0.2cm}\\
+Supponiamo che le molteplicità algebriche $n_1,...,n_r$ degli autovalori di $A$ coincidano cone le molteplicità geometriche (ad esempio quando gli autovalori sono distinti).\\
+Allora i coefficienti $h_i$ sono tutti pari a 1 e l'espressione dei modi si semplifica in 
+\begin{align*}
+    &e^{\lambda_i t} & &\T{per autovalori reali}\\
+    &e^{\sigma _i t} \cos (\omega_i t + \phi_i) & &\T{per autovalori complessi coniugati}
+\end{align*}
+
+\subsubsection*{Modi naturali: autovalori reali semplici}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Autovalori_semplici.png}
+\end{center}
 
 
+\subsubsection*{Modi naturali: autovalori complessi coniugati semplici}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Autovalori_comlessi.png}
+\end{center}
+
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Esempio_autovalori.png}
+\end{center}
+
+\subsubsection{Esempio}
+\[
+    \begin{bmatrix}
+        \dot x_1\\
+        \dot x_2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 & 1\\
+        a^2 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1\\
+        x_2
+    \end{bmatrix}
+\]
+
+\begin{align*}
+    p(\lambda) &= \det (\lambda I -A)\\
+    &= \lambda^2 - a^2\\
+    &\Rightarrow \begin{cases}
+        \lambda_1 = a\\
+        \lambda_2 = -a
+    \end{cases}
+\end{align*}
+I modi naturali di questo sistema sono 
+\begin{align*}
+    &e^{at} & &e^{-at}
+\end{align*}
+Il modo $e^{at}$ diverge a infinito, il che non è una cosa "buona" per dei sistemi di controllo, perché ad esempio se si sta realizzando un sistema di controllo della velocità vuol dire che la mia velocità sta aumentando, mentre dovrebbe rimanere fissa in un range.\\
+Non bisogna quindi focalizzarsi sul calcolare con precisione il valore dei modi naturali ma è importante conoscere come si comporta la loro parte reale.
 
 
-
-
-
+\subsubsection{Esempio 1}
+Consideriamo il seguente sistema LTI con $x \in \mathbb{R}^3 e u \in \mathbb{R}^3$
+\[
+    \dot x(t) = \underbrace{\begin{bmatrix}
+        0 & 1 & -1\\
+        1 & -1 & -1\\
+        2 & 1 & 3 
+    \end{bmatrix}}_{A} x(t) +
+    \underbrace{\begin{bmatrix}
+        1 & 1 & 0\\
+        0 & 1 & 1\\
+        1 & 1 & 1
+    \end{bmatrix}}_{B} u(t)
+\]
+Mediante un cambio di coordinate usando la matrice $T = \begin{bmatrix}
+    0 & -1 & 1\\ 1 & 1 & -1\\ -1 & 0 & 1
+\end{bmatrix}$ e ponendo $\hat x(t) = T x(T)$, il sistema si può riformulare come 
+\[
+    \hat{\dot x} (t)= \underbrace{\begin{bmatrix}
+        -1 & 1 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & -2 
+    \end{bmatrix}}_{\hat A = TAT^{-1}} \hat x(t) +
+    \underbrace{\begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}}_{\hat B = TB} u(t)
+\]
+Gli autovalori di $\hat A$ sono $-1, -2$ con molteplicità algebrica $2,1$.
 
 
 
