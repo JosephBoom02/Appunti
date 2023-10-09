@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1696610361 "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" "ControlliAutomatici.pdf" "ControlliAutomatici" 1696610366 0
-  "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" 1696610361 38378 00fbe98f79405545938c979677f81989 ""
+["pdflatex"] 1696691219 "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" "ControlliAutomatici.pdf" "ControlliAutomatici" 1696691223 0
+  "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" 1696691219 41638 40db57b5c26b6239eda92ba7d1ed8dbc ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc" 1254269338 2359 de53213020575850c8f8debc35095765 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -259,10 +259,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693092369 4663632 bf4827545c7ec52d550b0974a81f1d9d ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693092462 8172925 f04b62e0069ad63f3d849e89d2a4b637 ""
   "/usr/local/texlive/2023/texmf.cnf" 1693092366 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "ControlliAutomatici.aux" 1696610366 5695 7f6f30d827983a58d117d7dc3aa108f3 "pdflatex"
-  "ControlliAutomatici.out" 1696610366 7530 bbefe1526fdb72aaed7b3feff3f90efe "pdflatex"
-  "ControlliAutomatici.tex" 1696610361 38378 00fbe98f79405545938c979677f81989 ""
-  "ControlliAutomatici.toc" 1696610366 3553 1fd077d3dbc3a60fd8a84c335bf45fcb "pdflatex"
+  "ControlliAutomatici.aux" 1696691223 5849 06b91781eb32de9e28d63499cc4e0d9c "pdflatex"
+  "ControlliAutomatici.out" 1696691223 7782 53a26ff016b7bde4036570c02c87f00a "pdflatex"
+  "ControlliAutomatici.tex" 1696691219 41638 40db57b5c26b6239eda92ba7d1ed8dbc ""
+  "ControlliAutomatici.toc" 1696691223 3666 bf2a8d20969f9a65ee4bfe3bc454d7d5 "pdflatex"
   "Images/Anello_aperto.png" 1695399984 20011 142920fc00481d45d7899b8fd101dd98 ""
   "Images/Anello_chiuso.png" 1695400023 21013 6ed168bd4ac35e96cde31759a8adfe9e ""
   "Images/Autovalori_comlessi.png" 1696438744 106196 2cd41bfc0928d44b6685cf87e758746e ""

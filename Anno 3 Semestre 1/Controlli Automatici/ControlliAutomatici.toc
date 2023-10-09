@@ -32,5 +32,6 @@
 \contentsline {subsection}{\numberline {2.14}Rappresentazioni equivalenti}{14}{subsection.2.14}%
 \contentsline {subsection}{\numberline {2.15}Modi di un sistema lineare tempo invariante}{14}{subsection.2.15}%
 \contentsline {subsubsection}{\numberline {2.15.1}Autovalori complessi}{15}{subsubsection.2.15.1}%
-\contentsline {subsubsection}{\numberline {2.15.2}Esempio}{16}{subsubsection.2.15.2}%
+\contentsline {subsubsection}{\numberline {2.15.2}Esempio sui modi naturali}{16}{subsubsection.2.15.2}%
 \contentsline {subsubsection}{\numberline {2.15.3}Esempio 1}{17}{subsubsection.2.15.3}%
+\contentsline {subsubsection}{\numberline {2.15.4}Esempio carrello}{18}{subsubsection.2.15.4}%

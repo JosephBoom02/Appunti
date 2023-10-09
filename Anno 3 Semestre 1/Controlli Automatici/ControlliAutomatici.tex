@@ -1035,7 +1035,7 @@ Allora i coefficienti $h_i$ sono tutti pari a 1 e l'espressione dei modi si semp
     \includegraphics[scale=0.23]{Images/Esempio_autovalori.png}
 \end{center}
 
-\subsubsection{Esempio}
+\subsubsection{Esempio sui modi naturali}
 \[
     \begin{bmatrix}
         \dot x_1\\
@@ -1098,6 +1098,184 @@ Mediante un cambio di coordinate usando la matrice $T = \begin{bmatrix}
     \end{bmatrix}}_{\hat B = TB} u(t)
 \]
 Gli autovalori di $\hat A$ sono $-1, -2$ con molteplicità algebrica $2,1$.
+\vspace*{0.2cm}\\
+Per calcolare l'evoluzione libera consideriamo la formula vista in precedenza
+\[
+    \hat x_\ell  =e^{\hat A t}\hat x_0
+\]
+Calcoliamo quindi l'esponenziale di matrice $e^{\hat A t}$ per $\hat A = \begin{bmatrix}
+    -1 & 1 & 0\\
+    0 & -1 & 0\\
+    0 & 0 & -2
+\end{bmatrix}$
+\begin{align*}
+    e^{\hat A t} &= \sum_{k=0}^\infty \begin{bmatrix}
+        -1 & 1 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & -2
+    \end{bmatrix}^k \frac{t^k}{k!}\\
+    &= \begin{bmatrix}
+        \sum\limits_{k=0}^\infty \frac{(-1)^k t^k}{k!} & t \sum\limits_{k=0}^\infty \frac{(-1)^k t^k}{k!} & 0\\
+        0 & \sum\limits_{k=0}^\infty \frac{(-1)^k t^k}{k!} & 0\\
+        0 & 0 & \sum\limits_{k=0}^\infty \frac{(-2)^k t^k}{k!}
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        e^{-t} & te^{-t} & 0\\
+        0 & e^{-t} & 0\\
+        0 & 0 & e^{-2t}
+    \end{bmatrix}
+\end{align*}
+quindi l'evoluzione libera dello stato è
+\[
+    \hat x_\ell = 
+    \begin{bmatrix}
+        e^{-t} & te^{-t} & 0\\
+        0 & e^{-t} & 0\\
+        0 & 0 & e^{-2t}
+    \end{bmatrix} \hat x_0
+\]
+\begin{itemize}
+\item Se ad esempio la condizione iniziale è $\hat x_0 = \begin{bmatrix} 1\\0\\0 \end{bmatrix}$, allora
+\[
+    \hat x_\ell = \begin{bmatrix} e^{-t}\\0\\0 \end{bmatrix}
+\]
+Scriviamolo nello coordinate originali
+\[
+    x_\ell(t) = \underbrace{\begin{bmatrix}
+        1&1&0\\
+        0&1&1\\
+        1&1&1
+    \end{bmatrix}}_{T^{-1}} \hat x_\ell (t) = 
+    \begin{bmatrix}
+        e^{-t}\\
+        0\\
+        e^{-t}
+    \end{bmatrix}
+\]
+\item Se prendiamo come condizione iniziale $\hat x_0 = \begin{bmatrix} 0\\1\\0 \end{bmatrix}$, allora
+\[
+    \hat x_\ell = \begin{bmatrix} te^{-t}\\e^{-t}\\0 \end{bmatrix}
+\]
+Scriviamolo nello coordinate originali
+\[
+    x_\ell(t) = \underbrace{\begin{bmatrix}
+        1&1&0\\
+        0&1&1\\
+        1&1&1
+    \end{bmatrix} }_{T^{-1}} \hat x_\ell (t) = 
+    \begin{bmatrix}
+        e^{-t} + te^{-t}\\
+        e^{-t}\\
+        e^{-t} + te^{-t}
+    \end{bmatrix}
+\]
+
+
+\item Se prendiamo come condizione iniziale $\hat x_0 = \begin{bmatrix} 0\\0\\1 \end{bmatrix}$. allora
+\[
+    \hat x_\ell = \begin{bmatrix} 0\\0\\e^{-2t} \end{bmatrix}
+\]
+Nelle coordinate originali:
+\[
+    x_\ell(t) = \underbrace{\begin{bmatrix}
+        1&1&0\\
+        0&1&1\\
+        1&1&1
+    \end{bmatrix} }_{T^{-1}} \hat x_\ell (t) = 
+    \begin{bmatrix}
+        0\\
+        e^{-2t}\\
+        e^{-2t}
+    \end{bmatrix}
+\]
+
+\end{itemize}
+
+
+\subsubsection{Esempio carrello}
+\begin{align*}
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        \dot x_2(t)
+    \end{bmatrix} &=
+    \begin{bmatrix}
+        0 & 1\\
+        - \frac{k}{M} & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0\\
+        \frac{1}{M}
+    \end{bmatrix} u(t)
+    \\
+    y(t) &= \begin{bmatrix}
+        1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix} + 0 u(t)
+\end{align*}
+Consideriamo $k$ costante, quindi sistema LTI.\\
+Gli autovalori della matrice $A$ sono $\lambda_1 = j \sqrt{\dfrac{k}{M}}, \lambda_2 = -j \sqrt{\dfrac{k}{M}}$ immaginari puri.
+\vspace*{0.2cm}\\
+Applichiamo un controllo $u = - hx_2$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
