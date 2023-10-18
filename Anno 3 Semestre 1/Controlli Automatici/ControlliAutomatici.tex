@@ -902,7 +902,7 @@ Quindi nel caso generale di $\Lambda \in \mathbb{R}^{n \times n}$
 \]
 
 
-\subsubsection{Proprietà della matrice esponenziale}
+\subsubsection{Proprietà della matrice esponenziale} \label{proprietà della matrice esponenziale}
 Esponenziale e cambio di base:
 \[
     e^{TAT^{-1}} = Te^{At}T^{-1}
@@ -1020,7 +1020,7 @@ Allora i coefficienti $h_i$ sono tutti pari a 1 e l'espressione dei modi si semp
     &e^{\sigma _i t} \cos (\omega_i t + \phi_i) & &\T{per autovalori complessi coniugati}
 \end{align*}
 
-\subsubsection*{Modi naturali: autovalori reali semplici}
+\subsubsection*{Modi naturali: autovalori reali semplici} \label{Modi naturali: autovalori reali semplici}
 \begin{center}
     \includegraphics[scale=0.23]{Images/Autovalori_semplici.png}
 \end{center}
@@ -1194,6 +1194,11 @@ Nelle coordinate originali:
 
 \subsubsection{Esempio carrello}
 \begin{align*}
+    \dot x_1(t) &= x_2(t) \\
+    \dot x_2(t) &= - \frac{k(t)}{M}x_1(t) + \frac{1}{M} u(t) \\
+    y(t) &= x_1(t)
+\end{align*}
+\begin{align*}
     \begin{bmatrix}
         \dot x_1(t)\\
         \dot x_2(t)
@@ -1223,27 +1228,340 @@ Nelle coordinate originali:
 Consideriamo $k$ costante, quindi sistema LTI.\\
 Gli autovalori della matrice $A$ sono $\lambda_1 = j \sqrt{\dfrac{k}{M}}, \lambda_2 = -j \sqrt{\dfrac{k}{M}}$ immaginari puri.
 \vspace*{0.2cm}\\
-Applichiamo un controllo $u = - hx_2$
+Applichiamo un controllo $u = - hx_2$. Le equazioni di stato del sistema diventano:
+\begin{align*}
+    \dot x_1(t) &= x_2(t)\\
+    \dot x_2(t) &= -\frac{k}{M}x_1(t) - \frac{h}{M}x_2(t)    
+\end{align*}
+in forma matriciale
+\begin{align*}
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        \dot x_2(t)
+    \end{bmatrix} &=
+    \begin{bmatrix}
+        0 & 1\\
+        - \frac{k}{M} & -\frac{h}{M}x_2
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+\end{align*}
+Quindi calcoliamo gli autovalori della matrice
+\begin{align*}
+    A &= 
+    \begin{bmatrix}
+        0 & 1\\
+        - \frac{k}{M} & -\frac{h}{M}
+    \end{bmatrix}
+    &
+    A - \lambda I &= 
+    \begin{bmatrix}
+        -\lambda & 1\\
+        - \frac{k}{M} & -\frac{h}{M} - \lambda
+    \end{bmatrix}
+\end{align*}
+calcolando il determinante e ponendolo a zero si trova il polinomio caratteristico associato a essa
+\begin{align*}
+    & & \lambda_1 &= - \frac{h}{2M} + \sqrt{\frac{h^2}{4M^2} - \frac{k}{M}}\\
+    p(\lambda) &= \lambda^2 + \lambda \frac{h}{M} + \frac{k}{M} \Longrightarrow\\
+    & & \lambda_2 &= - \frac{h}{2M} - \sqrt{\frac{h^2}{4M^2} - \frac{k}{M}}
+\end{align*}
+le cui soluzioni sono gli autovalori della matrice A.\\
+Prendiamo ora in considerazione la quantità sotto radice; è evidente che se $h^2 > 4Mk$ gli autovalori sono reali, mentre se $h^2 < 4Mk$ sono complessi coniugati.
+\vspace*{0.2cm}\\
+Se invece $h^2 = 4Mk$, $\lambda_1 = \lambda_2 = -\frac{h}{2M}$, con molteplicità algebrica pari a 2. Si può dimostrare che la molteplicità geometrica è pari a 1, quindi il blocco di Jordan sarà $2 \times 2$ (guardare \ref{proprietà della matrice esponenziale})
+\begin{align*}
+    J &= TAT^{-1} = 
+    \begin{bmatrix}
+        - \frac{h}{2M} & 1\\
+        0 & - \frac{h}{2M}
+    \end{bmatrix}
+    &
+    e^{Jt} &= e^{- \frac{h}{2M}t}
+    \begin{bmatrix}
+        1 & t\\
+        0 & 1
+    \end{bmatrix}
+\end{align*}
+\[
+    \hat x_\ell = 
+    \begin{bmatrix}
+        e^{- \frac{h}{2M}t} \hat x_1(0) + t e^{- \frac{h}{2M}t} \hat x_2(0) \\
+        e^{- \frac{h}{2M}t} \hat x_2(0)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \hat x_{1 \ell}(t)\\
+        \hat x_{2 \ell}(t)
+    \end{bmatrix}
+\]
+Quindi i modi naturali del sistema sono
+\begin{align*}
+    &e^{- \frac{h}{2M}t} & &t e^{- \frac{h}{2M}t}  
+\end{align*}
+da notare che anche si effettua il cambio di coordinate i modi del sistema non cambiano.
+\begin{itemize}
+    \item Supponiamo $\hat x(0) = \begin{bmatrix} 1\\0 \end{bmatrix}$, allora
+    \[
+        \hat x_\ell (t) = 
+        \begin{bmatrix}
+            e^{- \frac{h}{2M}t} \hat x_1(0)\\0
+        \end{bmatrix}
+    \]
+    \item Supponiamo $\hat x(0) = \begin{bmatrix} 0\\1 \end{bmatrix}$, allora
+    \[
+        \hat x_\ell (t) = 
+        \begin{bmatrix}
+            0\\e^{- \frac{h}{2M}t} \hat x_2(0)
+        \end{bmatrix}
+    \]
+    \begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,xmax=20,
+                ymin=0,ymax=1,
+                axis x line=middle,
+                axis y line=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                ]
+                \addplot[domain=0:20, samples=100]{x * exp(-2/4 * x)}node   [pos=0.1,anchor=south west]{$y=t e^{-\frac{h}{2M}t}$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    Si nota dal grafico che se $- \dfrac{h}{2M}$ è "grande" il modo va a zero, quindi sono in un punto di equilibrio.
+    \item Se $h = 4Mk = 0$ con $M >0,h=0,k=0$, il sistema diventa
+    \[
+        \begin{bmatrix}
+            \dot x_1(t)\\
+            \dot x_2(t)
+        \end{bmatrix} =
+        \begin{bmatrix}
+            0 & 1\\
+            0 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_1(t)\\
+            x_2(t)
+        \end{bmatrix}
+    \]
+    i cui modi naturali sono $1,t$. È evidente come si possano scrivere queste equazioni differenziali come combinazione lineare dei modi:
+    \begin{align*}
+        x_1(t) &= x_1(0) + x_2(0)t\\
+        x_2(t) &= x_2(0) 
+    \end{align*}
+\end{itemize}
+
+\subsection{Stabilità interna}
+\subsubsection{Richiami sull'equilibrio di un sistema}
+Prendiamo un sistema lineare tempo invariante 
+\[
+    \dot x(t) = f(x(t), u(t))
+\]
+Poniamo $u(t) = u_e \ \forall t \geq 0$, allora
+\[
+    \dot x(t) = f(x(t), u_e) \tag*{$x(0)=x_0$}
+\]
+Esiste, per un sistema di questo tipo, una $x_e$ tale che se $x(0)=x_e \Longrightarrow x(t) = x_e \ \forall t \geq 0$, quindi tale che se lo stato iniziale è costante la $x(t)$ rimane costante in ogni istante di tempo?
+\vspace*{0,2cm}\\
+Chiamo $x_e$ equilibrio, $(x_e,u_e)$ la chiamo coppia stato-ingresso di equilibrio.
+\vspace*{0.2cm}\\
+Proprietà fondamentale di una coppia di equilibrio è che
+\[
+    f(x_e,u_e) = 0
+\]
+
+
+\subsubsection{Definizioni}
+Per sistemi tempo-invarianti (anche se si può generalizzare) la \textit{stabilità interna} di un sistema è l'insieme delle conseguenze sulla traiettoria legate a incertezze sullo stato iniziale con ingressi fissi e noti.
+
+
+\subsubsection{Stabilità interna per sistemi non forzati}
+\[
+    \dot x(t) = f(x(t)) \tag*{$x_e$ equilibrio}  
+\]
+\textbf{Equilibrio stabile:} uno stato di equilibrio $x_e$ si dice stabile se $\forall \epsilon >0, \exists \delta >0$ tale che $\forall x_0 : || x_0-x_e || \leq \delta$ allora risulti $ || x(t) - x_e || < \epsilon \ \forall t \geq 0$. 
+\vspace*{0.2cm}\\
+\textbf{Equilibrio instabile:} uno stato di equilibrio $x_e$ si dice instabile se non è stabile.
+\vspace*{0.2cm}\\
+\textbf{Equilibrio attrattivo:} uno stato di equilibrio $x_e$ si dice  attrattivo se $\exists \delta$ tale che $\forall x_0: || x_0-x_e || \leq \delta$ allora risulti $\lim\limits_{t \rightarrow \infty} || x(t)-x_e ||=0$; quindi se il sistema è in equilibrio solo a infinito.
+\vspace*{0.2cm}\\
+\textbf{Equilibrio asintoticamente stabile:} uno stato di equilibrio $x_e$ si dice asintoticamente stabile se è stabile e attrattivo.
+\vspace*{0.2cm}\\
+\textbf{Equilibrio marginalmente stabile:} uno stato di equilibrio si dice marginalmente stabile se è stabile ma non asintoticamente.
+
+\subsubsection*{Rappresentazione grafica di un sistema in equilibrio stabile}
+\begin{center}
+    \includegraphics[scale=0.3]{Images/Equilibrio_stabile.png}
+\end{center}
+
+\subsubsection*{Rappresentazione grafica di un sistema in equilibrio attrattivo}
+\begin{center}
+    \includegraphics[scale=0.3]{Images/Equilibrio_attrattivo.png}
+\end{center}
+
+\subsubsection{Osservazioni}
+Le definizioni date sottintendono la parola locale, ovvero che la proprietà vale in un intorno dello stato di equilibrio $x_e$.
+\vspace*{0.2cm}\\
+\textbf{Stabilità globale:} le proprietà di stabilità e asintotica stabilità sono globali se valgono per ogni $x \in \mathbb{R}^n$, invece che valere solo per $x_0$ tale che $|| x(0)-x_e || \leq \delta $.
+\vspace*{0.2cm}\\
+\textbf{Stabilità di una traiettoria:} le definizioni di stabilità si possono generalizzare a una traiettoria $\overline{x}(t), t \geq 0$.
+\begin{center}
+    \includegraphics[scale=0.3]{Images/Stabilita_traiettoria.png}
+\end{center}
+
+\subsection{Stabilità interna di sistemi LTI}
+Nei sistemi lineari $x=0$ è sempre un equilibrio.\\
+Per sistemi lineari si può dimostrare che tutti gli equilibri e tutte le traiettorie hanno le stesse proprietà di stabilità, tutte uguali a $x=0$. Per questo motivo si parla di \textbf{stabilità del sistema}.
+\subsubsection*{Dimostrazione}
+\[
+    \begin{rcases}
+        \dot x(t) = Ax(t) + Bu(t)\\
+        u(t) = u_e \ \ \forall t \geq 0
+    \end{rcases}
+    \Longrightarrow Ax_e + Bu_e = 0
+\]
+Sia $\tilde{x}(t) := x(t) - x_e$, allora
+\begin{align*}
+    \dot{\tilde{x}}(t) &= \dot x(t) - \underbrace{\frac{d}{dt}x_e}_{0}\\
+    &=Ax(t)+Bu_e\\
+    &=A(\tilde{x}(t)+x_e)+Bu_e\\
+    &=A \tilde{x}(t) + \underbrace{Ax_e+Bu_e}_{0}
+\end{align*}
+quindi
+\[
+    \dot{\tilde{x}}(t) = A \tilde{x}(t)
+\]
+Concludiamo che
+\[
+    \tilde{x}=0 \Longleftrightarrow x = x_e
+\]
+cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso studiare l'equilibrio del sistema nell'origine.
+
+
+
+
+\subsubsection*{Teorema}
+Un sistema LTI è \textbf{asintoticamente stabile} \underline{se e solo} se tutti gli autovalori hanno parte reale strettamente negativa.
+\vspace*{0.1cm}\\
+\textbf{N.B.} Se gli autovalori hanno parte reale strettamente negativa i modi del sistema tendono a 0 (\ref{Modi naturali: autovalori reali semplici}).
+
+\subsubsection*{Teorema}
+Un sistema LTI è stabile se e solo se tutti gli autovalori hanno parte reale minore o uguale a zero e tutti gli autovalori a parte reale nulla hanno molteplicità geometrica uguale alla molteplicità algebrica (i mini blocchi di Jordan associati hanno dimensione uno).
+
+\subsubsection*{Osservazione}
+Si ha instabilità se almeno un autovalore ha parte reale positiva o se almeno un autovalore con parte reale nulla ha molteplicità algebrica maggiore della molteplicità geometrica.
+
+
+\subsubsection*{Osservazione}
+La stabilità asintotica di sistemi LTI è sempre globale
+\begin{align*}
+    x(0) &= x_0 \Longrightarrow x(t) \ \ t \geq 0 \\
+    x(0) &= \alpha x_0 \Longrightarrow \alpha x(t) \ \ t \geq 0
+\end{align*}
+
+
+\subsubsection*{Proprietà}
+Se un sistema LTI è globalmente asintoticamente stabile, $x=0$ è l'unico equilibrio.\\
+\textbf{Nota:} anche per sistemi \underline{non lineari} se $x_e$ è GAS (Globalmente Asintoticamente Stabile) allora è l'unico equilibrio.
+\vspace*{0.1cm}\\
+Questo perché
+
+
+
+\subsubsection{Esempio stabilità del sistema carrello}
+\begin{align*}
+    \dot x_1(t) &= x_2(t) \\
+    \dot x_2(t) &= - \frac{k(t)}{M}x_1(t) + \frac{1}{M} u(t) \\
+    y(t) &= x_1(t)
+\end{align*}
+\begin{align*}
+    \begin{bmatrix}
+        \dot x_1(t)\\
+        \dot x_2(t)
+    \end{bmatrix} &=
+    \begin{bmatrix}
+        0 & 1\\
+        - \frac{k}{M} & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0\\
+        \frac{1}{M}
+    \end{bmatrix} u(t)
+    \\
+    y(t) &= \begin{bmatrix}
+        1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(t)\\
+        x_2(t)
+    \end{bmatrix} + 0 u(t)
+\end{align*}
+Consideriamo $k$ costante, quindi sistema LTI.\\
+Gli autovalori della matrice $A$ sono $\lambda_1 = j \sqrt{\dfrac{k}{M}}, \lambda_2 = -j \sqrt{\dfrac{k}{M}}$ immaginari puri, quindi sistema semplicemente (marginalmente) stabile.
+\vspace*{0.2cm}\\
+Se applichiamo $u=-h x_2$ gli autovalori diventano $\lambda_1 = - \frac{h}{2M} + \sqrt{\dfrac{h^2}{4M^2}-\dfrac{k}{M}}$ e $\lambda_2 = \dfrac{h}{2M} - \sqrt{\dfrac{h^2}{4M^2}-\dfrac{k}{M}}$.\\
+\begin{itemize}
+    \item Se $h^2 \geq 4Mk$ gli autovalori sono 2 reali negativi, quindi il sistema è asintoticamente stabile;
+    \item Se $h^2 < 4Mk$ gli autovalori sono 2 complessi coniugati con parte reale negativa, quindi il sistema è asintoticamente stabile;
+    \item Se $h^2 = 4Mk$, $\lambda_1 = \lambda_2 = -\frac{h}{2M}$, con molteplicità algebrica pari a 2. Si può dimostrare che la molteplicità geometrica è pari a 1, quindi il blocco di Jordan sarà $2 \times 2$ (guardare \ref{proprietà della matrice esponenziale})
+    \begin{align*}
+        J &= TAT^{-1} = 
+        \begin{bmatrix}
+            - \frac{h}{2M} & 1\\
+            0 & - \frac{h}{2M}
+        \end{bmatrix}
+        &
+        e^{Jt} &= e^{- \frac{h}{2M}t}
+        \begin{bmatrix}
+            1 & t\\
+            0 & 1
+        \end{bmatrix}
+    \end{align*}
+    Gli autovalori sono a parte reale negativa, quindi il sistema è asintoticamente stabile;
+    \item Se $h=k=0 \Longrightarrow \lambda_1=\lambda_2=0$, quindi il sistema è instabile.
+\end{itemize}
 
 
 
 
 
+\subsection{Retroazione dello stato}
+Prendiamo un sistema lineare tempo invariante
+\begin{align*}
+    \dot x(t) &= Ax(t) + Bu(t)\\
+    y(t) &= Cx(t) + Du(t) 
+\end{align*}
+Supponendo di misurare l'intero stato, ovvero se $x(t)=y(t)$, allora possiamo progettare
+\[
+    u(t) = Kx(t) + v(t)
+\]
+con $K \in \mathbb{R}^{m \times n}$ una matrice di guadagni e $v(t)$ un ulteriore ingresso per il sistema retroazionato
+\[
+    \dot x(t) = (A+BK)x(t)+Bv(t)
+\]
+Se vogliamo il sistema in anello chiuso asintoticamente stabile allora dobbiamo progettare $K$ tale che $(A + BK)$ abbia autovalori tutti a parte reale negativa.\\
+\textbf{Nota:} la possibilità di scegliere gli autovalori di $(A + BK)$ (e.g., per renderli tutti a parte reale negativa) dipende dalla coppia $(A, B)$ ed è legata alla proprietà di \textbf{raggiungibilità}.
+\vspace*{0.1cm}\\
+Se non è possibile misurare l'intero stato, ovvero se $y(t) \neq x(t)$, esistono tecniche per ricostruire lo stato a partire dalle misure mediante sistemi ausiliari chiamati \textbf{osservatori}.\\
+Se sia possibile o meno ricostruire lo stato dipende dalla coppia $(A, C)$ ed è legato alla proprietà di \textbf{osservabilità}.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Linearizzazione di sistemi in non lineari (tempo invarianti)}
+Prendiamo un  sistema non lineare tempo invariante
+\begin{align*}
+    \dot x(t) &= f (x(t), u(t))\\
+    y(t) &= h(x(t), u(t))
+\end{align*}
 
 
 
