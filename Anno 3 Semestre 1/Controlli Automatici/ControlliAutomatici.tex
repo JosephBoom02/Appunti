@@ -1562,18 +1562,48 @@ Prendiamo un  sistema non lineare tempo invariante
     \dot x(t) &= f (x(t), u(t))\\
     y(t) &= h(x(t), u(t))
 \end{align*}
-
-
-
-
-
-
-
-
-
-
-
-
+Sia $(x_e,u_e)$ una coppia di equilibrio, $f(x_e,u_e)=0$, consideriamo una traiettoria a partire da uno stato stato iniziale $x(0)=x_e+ \tilde{x}_0$ 
+\begin{align*}
+    x(t) &= x_e + \tilde{x}(t)\\
+    u(t) &= u_e + \tilde{u}(t)
+\end{align*}
+con $y(t) = h(x_e , u_e ) + \tilde{y}(t) = y_e + \tilde{y}(t)$.\\
+Essendo una traiettoria vale
+\begin{align*}
+    \frac{d}{dt}(x_e + \tilde{x}(t)) &= f (x_e + \tilde{x}(t), u_e + \tilde{u}(t))\\
+    y_e + \tilde{y}(t) &= h(x_e+\tilde{x}(t), u_e+ \tilde{u}(t))
+\end{align*}
+Sviluppando in serie di Taylor (con $f$ e $h$ sufficientemente regolari) in $(xe , ue )$ \footnote[1]{i termini del tipo $\frac{\partial}{\partial x}f(x,u)$ vengono chiamati \textit{Jacobiani}}
+\begin{align*}
+    \frac{d}{dt}(x_e + \tilde{x}(t)) &= \underbrace{f(x_e,u_e)}_{0} + \underbrace{\frac{\partial}{\partial x}f(x,u)\bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{A_e} \tilde{x}(t) + \underbrace{\frac{\partial}{\partial u}f(x,u)\bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{B_e} \tilde{u(t)} + \T{term. ord. sup.}\\
+    y_e+\tilde{y}(t) &= h(x_e,u_e) + \frac{\partial}{\partial x}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} \tilde{x}(t) + \frac{\partial}{\partial u}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} \tilde{u}(t) + \T{term. ord. sup.}
+\end{align*} 
+quindi
+\begin{align*}
+    \tilde{\dot x}(t) &= A_e \tilde{x}(t) + B_e \tilde{u}(t) + \T{term. ord. sup.} \tag*{$\tilde{x}(0) = \tilde{x}_0$}\\
+    \tilde{y}(t) &= C_e \tilde{x}(t) + D_e\tilde{u}(t) + \T{term. ord. sup.}
+\end{align*}
+Se consideriamo i termini di ordine superiore come un resto $\mathcal{R}(x,u)$ si osserva che
+\[
+    \lim_{||(x,u)||\rightarrow 0} \frac{||\mathcal{R}(\tilde{x},\tilde{u})||}{||(\tilde{x},\tilde{u})||} = 0
+\]
+di fatto è come se si avesse $\lim\limits_{x \rightarrow 0}\dfrac{x^2}{x}$.\\
+Quindi le due equazioni di prima si possono approssimare
+\begin{align*}
+    \tilde{\dot x}(t) &\approx A_e \tilde{x}(t) + B_e \tilde{u}(t)\\
+    \tilde{y}(t) &\approx C_e \tilde{x}(t) + D_e\tilde{u}(t) 
+\end{align*}
+Il sistema linearizzato è
+\begin{align*}
+    \Delta \dot x(t) &= A \Delta x(t) + B \Delta u(t)\\
+    \Delta y(t) &= C \Delta x(t) + D \Delta u(t)
+\end{align*} 
+Le traiettorie del sistema non lineare soddisfano
+\begin{align*}
+    x(t) &= x_e + \tilde{x}(t) \approx x_e + \Delta x(t)\\
+    u(t) &= u_e + \tilde{u}(t) \approx u_e + \Delta u(t)\\
+    y(t) &= y_e + \Delta y(t) \approx y_e + \Delta y(t) 
+\end{align*}
 
 
 
