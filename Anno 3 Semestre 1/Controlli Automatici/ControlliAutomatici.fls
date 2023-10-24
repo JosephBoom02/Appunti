@@ -513,6 +513,11 @@ INPUT ./Images/Stabilita_traiettoria.png
 INPUT ./Images/Stabilita_traiettoria.png
 INPUT ./Images/Stabilita_traiettoria.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
+INPUT ./Images/Controllo_retroazionato.png
+INPUT ./Images/Controllo_retroazionato.png
+INPUT ./Images/Controllo_retroazionato.png
+INPUT ./Images/Controllo_retroazionato.png
+INPUT ./Images/Controllo_retroazionato.png
 INPUT ControlliAutomatici.aux
 INPUT ./ControlliAutomatici.out
 INPUT ./ControlliAutomatici.out

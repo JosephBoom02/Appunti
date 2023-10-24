@@ -1443,8 +1443,8 @@ cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso stu
 
 
 
-\subsubsection*{Teorema}
-Un sistema LTI è \textbf{asintoticamente stabile} \underline{se e solo} se tutti gli autovalori hanno parte reale strettamente negativa.
+\subsubsection*{Teorema} \label{Teorema parte reale negativa}
+Un sistema LTI è \textbf{asintoticamente stabile} \underline{se e solo se} tutti gli autovalori hanno parte reale strettamente negativa.
 \vspace*{0.1cm}\\
 \textbf{N.B.} Se gli autovalori hanno parte reale strettamente negativa i modi del sistema tendono a 0 (\ref{Modi naturali: autovalori reali semplici}).
 
@@ -1604,6 +1604,296 @@ Le traiettorie del sistema non lineare soddisfano
     u(t) &= u_e + \tilde{u}(t) \approx u_e + \Delta u(t)\\
     y(t) &= y_e + \Delta y(t) \approx y_e + \Delta y(t) 
 \end{align*}
+per variazioni sufficientemente piccole.
+\vspace*{0.1cm}\\
+\textbf{Nota:} $(\Delta x(t),\Delta u(t)), t \geq 0$ traiettoria del sistema linearizzato.
+
+
+
+\subsubsection{Esempio pendolo}
+\begin{align*}
+    \dot x_1(t) &= x_2(t) = f_1(x(t),u(t))\\
+    \dot x_2(t) &= - \frac{g}{l} \sin(x_1(t)) - \frac{b}{M \ell^2}x_2(t) + \frac{1}{M \ell^2} u(t) = f_2(x(t),u(t))
+\end{align*}
+$(x_e,u_e)$ coppia di equilibrio
+\[
+    f(x_e,u_e)=0 \Rightarrow 
+    \begin{cases}
+        x_{2e}=0\\
+        - \dfrac{g}{\ell} \sin(x_{1e}) - \dfrac{b}{M \ell^2}x_{2e} + \dfrac{1}{M \ell^2}u_e
+    \end{cases}
+\]
+Prendiamo come equilibrio $x_e = \begin{bmatrix} x_{1e}\\0 \end{bmatrix}$, allora
+\begin{align*}
+    &- \dfrac{g}{\ell} \sin(x_{1e}) - \dfrac{b}{M \ell^2} \cdot 0 + \dfrac{1}{M \ell^2}u_e = 0\\
+    \Longrightarrow & u_e = gM\ell \sin(X_{1e})
+\end{align*}
+Eseguiamo la linearizzazione intorno a $(x_e,u_e)$
+\[
+    \Delta \dot x(t) = A_e \Delta x(t) + B_e \Delta u(t)
+\]
+%calcolo matrice A_e
+\begin{align*}
+    \underbrace{A_e}_{\frac{\partial f(x,u)}{\partial x}\big|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}} &=
+    \begin{bmatrix}
+        \dfrac{\partial f_1(x,u)}{\partial x_1} & \dfrac{\partial f_1(x,u)}{\partial x_2}\\
+        \dfrac{\partial f_2(x,u)}{\partial x_1} & \dfrac{\partial f_2(x,u)}{\partial x_2}
+    \end{bmatrix}_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}\\ &=
+    \begin{bmatrix}
+        0 & 1\\
+        -\dfrac{g}{\ell}\cos(x_1) & -\dfrac{b}{M \ell^2}
+    \end{bmatrix}_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} \\ &=
+    \begin{bmatrix}
+        0 & 1\\
+        -\dfrac{g}{\ell}\cos(x_{1e}) & -\dfrac{b}{M \ell^2}
+    \end{bmatrix}
+\end{align*}
+%calcolo matrice B_e
+\begin{align*}
+    \underbrace{B_e}_{\frac{\partial f(x,u)}{\partial u}\big|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}} &=
+    \begin{bmatrix}
+        \dfrac{\partial f_1(x,u)}{\partial u}\\
+        \dfrac{\partial f_2(x,u)}{\partial u} 
+    \end{bmatrix}_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}\\ &=
+    \begin{bmatrix}
+        0\\
+        \dfrac{1}{M \ell^2}
+    \end{bmatrix}_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}\\ &=
+    \begin{bmatrix}
+        0\\
+        \dfrac{1}{M \ell^2}
+    \end{bmatrix}
+\end{align*}
+\begin{itemize}
+    \item se $x_e = \begin{bmatrix} 0\\0 \end{bmatrix}$ e $u_e = 0$
+    \begin{align*}
+        A_e &= 
+        \begin{bmatrix}
+            0 & 1\\
+            -\dfrac{g}{\ell} & -\dfrac{b}{M \ell^2}
+        \end{bmatrix} 
+        &
+        B_e &=
+        \begin{bmatrix}
+            0\\
+            \dfrac{1}{M \ell^2}
+        \end{bmatrix}
+    \end{align*}
+    \item se $x_e=\begin{bmatrix} \pi\\0 \end{bmatrix}$ e $u_e=0$
+    \begin{align*}
+        A_e &= 
+        \begin{bmatrix}
+            0 & 1\\
+            \dfrac{g}{\ell} & -\dfrac{b}{M \ell^2}
+        \end{bmatrix} 
+        &
+        B_e &=
+        \begin{bmatrix}
+            0\\
+            \dfrac{1}{M \ell^2}
+        \end{bmatrix}
+    \end{align*}
+    \item se $x_e=\begin{bmatrix} \pi/2 \\0 \end{bmatrix}$ e $u_e=MG\ell$
+    \begin{align*}
+        A_e &= 
+        \begin{bmatrix}
+            0 & 1\\
+            0 & -\dfrac{b}{M \ell^2}
+        \end{bmatrix} 
+        &
+        B_e &=
+        \begin{bmatrix}
+            0\\
+            \dfrac{1}{M \ell^2}
+        \end{bmatrix}
+    \end{align*}
+\end{itemize}
+
+
+
+\subsubsection{Stabilità di 3 sistemi lineari (linearizzzione intorno a 3 diversi equilibri)}
+\begin{enumerate}
+    \item 
+    \begin{align*}
+        A_e &= \begin{bmatrix} 0&1\\-\dfrac{g}{\ell}&-\dfrac{b}{M \ell^2} \end{bmatrix} & p(\lambda) &= \lambda \left( \lambda + \frac{b} +{M\ell^2} \right) + \frac{g}{\ell}\\
+        & & &=\lambda^2 + \frac{b}{M\ell^2}\lambda + \frac{g}{\ell}
+    \end{align*}
+    \[
+        \lambda_{1/2} = - \frac{b}{2M \ell^2} \pm \sqrt{\left(\frac{b}{2M\ell^2}\right) - \frac{g}{\ell}}
+    \]
+    Abbiamo 2 autovalori a parte reale negativa, quindi il sistema linearizzato è \textit{asintoticamente stabile (globalmente)}.
+
+    \item 
+    \begin{align*}
+        A_e &= \begin{bmatrix} 0&1\\\dfrac{g}{\ell}&-\dfrac{b}{M \ell^2} \end{bmatrix} & p(\lambda) &= \lambda \left( \lambda + \frac{b} {M\ell^2} \right) - \frac{g}{\ell}\\
+        & & &=\lambda^2 + \frac{b}{M\ell^2}\lambda - \frac{g}{\ell}
+    \end{align*}
+    \[
+        \lambda_{1/2} = - \frac{b}{2M \ell^2} \pm \sqrt{\underbrace{\left(\frac{b}{2M\ell^2}\right) + \frac{g}{\ell}}_{>0}} \Longrightarrow
+        \begin{cases}
+            \lambda_{1} = - \dfrac{b}{2M \ell^2} - \sqrt{\left(\dfrac{b}{2M\ell^2}\right) + \dfrac{g}{\ell}} <0\\
+            \\
+            \lambda_{2} = - \dfrac{b}{2M \ell^2} + \sqrt{\left(\dfrac{b}{2M\ell^2}\right) + \dfrac{g}{\ell}} >0
+        \end{cases}
+    \]
+    Dato che abbiamo un autovalore a parte reale positiva il sistema è \textit{instabile}.
+
+    \item 
+    Se poniamo $x_e = \begin{bmatrix} \pi/2\\ 0 \end{bmatrix}$ e $M_e = Mg\ell$
+    \begin{align*}
+        A_e &= \begin{bmatrix} 0&1\\ 0&-\dfrac{b}{M \ell^2} \end{bmatrix} & p(\lambda) &= \lambda \left( \lambda + \frac{b} {M\ell^2} \right)
+    \end{align*}
+    \begin{align*}
+        \lambda_1 &= 0 & \lambda_2&=-\frac{b}{M\ell^2}
+    \end{align*}
+    Il sistema linearizzato è \textit{stabile}, ma non asintoticamente, cioè marginalmente stabile (ricordando \ref{Teorema parte reale negativa})
+\end{enumerate}
+
+
+
+\subsection{Stabilità e linearizzazione}
+\subsubsection*{Teorema}
+Dato un sistema non lineare tempo invariante, $\dot x(t)=f(x(t),u(t))$, sia $x_e,u_e$ una coppia di equilibrio. Se il sistema linearizzato intorno a $(x_e,u_e)$ è asintoticamente stabile, allora l'equilibrio $x_e$, relativo all'ingresso $u_e$, è (localmente) asintoticamente stabile.
+
+\subsubsection*{Teorema}
+Dato un sistema non lineare tempo invariante, $\dot x(t)=f(x(t),u(t))$, sia $x_e,u_e$ una coppia di equilibrio. Se il sistema linearizzato intorno a $(x_e,u_e)$ ha almeno un autovalore a parte reale positiva, allora l'equilibrio $x_e$, relativo all'ingresso $u_e$, è instabile.
+
+
+\subsubsection{Controllo nonlineare mediante linearizzazione}
+Consideriamo il sistema non lineare
+\[
+    \dot x(t) = f(x(t),u(t))
+\]
+Linearizzazione intorno all'equilibrio $(x_e,u_e)$
+\[
+    \Delta \dot x(t) = A_e \Delta x(t) + B_e \Delta u(t)
+\]
+Proviamo a portare $\Delta x(t)$ a 0, ovvero $x(t)$ a $x_e$ "in modo approssimato". Usando la retroazione dello stato $\Delta u(t) = K \Delta x(t) + \Delta v(t)$ otteniamo il seguente sistema in anello chiuso
+\[
+    \Delta \dot x(t) = (A_e + B_e K)\Delta x(t) + B_e \Delta v(t)
+\]
+Così sono in grado di progettare la matrice $K$ in modo che $A_e + B_e K$ sia asintoticamente stabile. Grazie ai teoremi sulla linearizzazione, $x_e$ risulta un equilibrio (localmente) asintoticamente stabile per il sistema non lineare in anello chiuso (detto \textit{retroazionato}).
+\vspace*{0.1cm}\\
+Visto che $\Delta x(t) \approx x(t) - x_e$
+\[
+    u(t) = u_e + K(x(t) - x_e) + \tilde{v}(t) \approx u_e + K \Delta x(t) + \tilde{v}(t)
+\]
+Perciò la legge di controllo finale sarà
+\[
+    u(t) = u_e + K(x(t)-x_e) + \tilde{v}(t)
+\]
+\begin{center}
+    \includegraphics[scale=0.4]{Images/Controllo_retroazionato.png}
+\end{center}
+ 
+
+
+
+
+\section{Trasformata di Laplace}
+\subsection{Definizione}
+Data una funzione complessa $f$ di variabile reale $t$, $f: \mathbb{R} \rightarrow \mathbb{C}$ (anche se per noi tipicamente saranno funzioni $f: \mathbb{R} \rightarrow \mathbb{R}$), sia $s = \sigma + j \omega$ una variabile complessa ($\sigma$ parte reale, $\omega$ parte immaginaria); definiamo la \textit{Trasformata di Laplace} di $f(t)$
+\[
+    F(s) = \int_{0^-}^{+ \infty} f(t) e^{-st} \ dt
+\]
+se esiste per qualche $s$, ovvero se l'integrale converge.\\
+Includiamo nell'integrale $0^{-}$ per tener conto di eventuali impulsi cone la \textit{delta di Dirac}.
+\vspace*{0.2cm}\\
+\textbf{Notazione:} indicheremo la trasformata di Laplace con $\mathcal{L}$
+\[
+    f(t) \overset{\mathcal{L}}{\xrightarrow{\hspace*{0.8cm}}} F(s)
+\]
+con $F:\mathbb{C} \rightarrow \mathbb{C}$; indichiamo l'applicazione della trasformata con $F(s) = \mathcal{L}[f(t)]$.
+
+
+\subsection{Osservazioni}
+\subsubsection{Ascissa di convergenza}
+Sia $\overline{\sigma}>- \infty$ estremo inferiore di $s=\sigma + j \omega$ per cui l'integrale converge. Allora la trasformata di Laplace esiste nel semipiano $\operatorname{Re} (s)>\overline{\sigma}$. $\overline{\sigma}$ viene chiamata \textit{ascissa di convergenza}.\\
+La trasformata di Laplace risulta essere una \textit{funzione analitica} e, grazie alle particolari proprietà delle funzioni analitiche, la sua definizione può essere estesa anche in punti $s$ tali che $ \operatorname{Re}(s)\leq \overline{\sigma}$, indipendentemente dal fatto che l'integrale non converga.
+\vspace*{0.2cm}\\
+Dato che 
+\[
+    e^{-st} = e^{- \sigma t}e^{-j \omega t}
+\]
+possiamo dire che $e^{-\sigma t}$ ci aiuta a ottenere un integrale che converge.
+\begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,xmax=5,
+                ymin=0,ymax=1,
+                ticks=none, %elimina i valori numerici
+                axis x line=middle,
+                axis y line=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                ]
+                \addplot[domain=0.05:4.5, samples=100]{exp(-x)}node [pos=0.1,anchor=south west]{$e^{-\sigma t}$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\subsubsection{Trasformate razionali}
+Di particolare importanza sono le \textit{trasformate razionali}, cioè quelle in cui
+\[
+    F(s) = \frac{N(s)}{D(s)}
+\]
+con $N(s)$ e $D(s)$ polinomi primi tra loro. Le radici di $N(s)=0$ si dicono \textbf{zeri} e quelle di $D(s)=0$ si dicono \textbf{poli}: nell'insieme, poli e zeri si dicono \textit{singolarità}.
+\vspace*{0.1cm}\\
+Se $f$ è reale allora i coefficienti dei polinomi $N(s)$ e $D(s)$ sono reali.
+
+\subsubsection*{Esempio}
+\[
+    F(s) = \frac{s^2+2s}{(s+1)(s+3)} = \frac{s(s+2)}{(s+1)(s+3)}
+\]
+allora
+\begin{itemize}
+    \item zeri di $F(s)$: $0$ e $-2$
+    \item poli di $F(s)$: $-1$ e $-3$
+\end{itemize}
+
+
+\subsection{Formula di antitrasformazione}
+La funzione trasformanda può essere ricavata dalla sua trasformata
+mediante la \textit{formula di antitrasformazione}
+\[
+    f(t) = \frac{1}{2 \pi j} \int _{\sigma-j \infty}^{\sigma+j \infty} F(s) e^{st} \ ds
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
