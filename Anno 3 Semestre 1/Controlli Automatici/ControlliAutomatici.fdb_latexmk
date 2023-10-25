@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1698152119 "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" "ControlliAutomatici.pdf" "ControlliAutomatici" 1698152124 0
-  "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" 1698152119 67640 02cbf865440c0ded4c90cbf606d8d3e4 ""
+["pdflatex"] 1698224126 "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" "ControlliAutomatici.pdf" "ControlliAutomatici" 1698224130 0
+  "/home/joseph/Documents/VSCode/Latex/Anno 3 Semestre 1/Controlli Automatici/ControlliAutomatici.tex" 1698224126 72086 c5e10a058e1180754e2d657288adc68e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc" 1254269338 2359 de53213020575850c8f8debc35095765 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -265,10 +265,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693092369 4663632 bf4827545c7ec52d550b0974a81f1d9d ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693092462 8172925 f04b62e0069ad63f3d849e89d2a4b637 ""
   "/usr/local/texlive/2023/texmf.cnf" 1693092366 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "ControlliAutomatici.aux" 1698152124 8868 c7fb005c863c06ab097b6880ad92f1c1 "pdflatex"
-  "ControlliAutomatici.out" 1698152124 11936 3286e8050d7ead7601373459933e62cd "pdflatex"
-  "ControlliAutomatici.tex" 1698152119 67640 02cbf865440c0ded4c90cbf606d8d3e4 ""
-  "ControlliAutomatici.toc" 1698152124 5615 18bbdfe871ecf0316a6e339dc75cbce2 "pdflatex"
+  "ControlliAutomatici.aux" 1698224130 10044 1ddf79aeaf6a7d23050cb1ca0a8f55b7 "pdflatex"
+  "ControlliAutomatici.out" 1698224130 13752 79d4f13a85139e4ad8015f519d6c540b "pdflatex"
+  "ControlliAutomatici.tex" 1698224126 72086 c5e10a058e1180754e2d657288adc68e ""
+  "ControlliAutomatici.toc" 1698224130 6463 a2c589b0b16bf6039b84e8791d333deb "pdflatex"
   "Images/Anello_aperto.png" 1695399984 20011 142920fc00481d45d7899b8fd101dd98 ""
   "Images/Anello_chiuso.png" 1695400023 21013 6ed168bd4ac35e96cde31759a8adfe9e ""
   "Images/Autovalori_comlessi.png" 1696438744 106196 2cd41bfc0928d44b6685cf87e758746e ""
@@ -282,6 +282,7 @@
   "Images/Es_pendolo.png" 1695561979 199752 61a929529738598e18f4c7c5ff5995fc ""
   "Images/Esempio_autovalori.png" 1696438939 69316 5097aea832c343f1649306ecb548f43d ""
   "Images/Jordan_matrix.png" 1696086393 31678 2a02ecfb10210abca879a4c60b6d9408 ""
+  "Images/Motivo_Laplace.png" 1698219083 37958 e4bd00ff0cd56bcdd7176a7a8719e006 ""
   "Images/Schema_sistema.png" 1695399942 17590 2186c5e4299ac3a4317099365e7d3da4 ""
   "Images/Sistemi_tempo_invarianti.png" 1696003161 42048 a7ab0c0f1722a13e9ec425ad1c7ab821 ""
   "Images/Stabilita_traiettoria.png" 1697296137 18269 46bb81ebede7278c4becbc98b95311a9 ""

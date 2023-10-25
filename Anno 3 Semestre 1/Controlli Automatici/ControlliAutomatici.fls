@@ -397,8 +397,8 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/esint/uesint.fd
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/esint/esint10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/esint/esint10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/esint/esint10.tfm
-OUTPUT ControlliAutomatici.toc
 INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+OUTPUT ControlliAutomatici.toc
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -518,6 +518,11 @@ INPUT ./Images/Controllo_retroazionato.png
 INPUT ./Images/Controllo_retroazionato.png
 INPUT ./Images/Controllo_retroazionato.png
 INPUT ./Images/Controllo_retroazionato.png
+INPUT ./Images/Motivo_Laplace.png
+INPUT ./Images/Motivo_Laplace.png
+INPUT ./Images/Motivo_Laplace.png
+INPUT ./Images/Motivo_Laplace.png
+INPUT ./Images/Motivo_Laplace.png
 INPUT ControlliAutomatici.aux
 INPUT ./ControlliAutomatici.out
 INPUT ./ControlliAutomatici.out

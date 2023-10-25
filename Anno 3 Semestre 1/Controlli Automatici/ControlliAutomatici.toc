@@ -54,3 +54,11 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Ascissa di convergenza}{28}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Trasformate razionali}{28}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Formula di antitrasformazione}{29}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Perché si utilizza la trsformata di Laplace}{29}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}Proprietà della trasformata di Laplace}{29}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Linearità}{29}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Traslazione temporale}{30}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Traslazione nel dominio della variabile complessa}{30}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Derivazione (nel dominio del tempo)}{30}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Integrazione nel tempo}{31}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Convoluzione nel tempo}{31}{subsubsection.3.4.6}%

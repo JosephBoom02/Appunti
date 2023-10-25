@@ -1799,7 +1799,7 @@ Data una funzione complessa $f$ di variabile reale $t$, $f: \mathbb{R} \rightarr
 se esiste per qualche $s$, ovvero se l'integrale converge.\\
 Includiamo nell'integrale $0^{-}$ per tener conto di eventuali impulsi cone la \textit{delta di Dirac}.
 \vspace*{0.2cm}\\
-\textbf{Notazione:} indicheremo la trasformata di Laplace con $\mathcal{L}$
+\textbf{Notazione:} indichiamo la trasformata di Laplace con $\mathcal{L}$ tale che
 \[
     f(t) \overset{\mathcal{L}}{\xrightarrow{\hspace*{0.8cm}}} F(s)
 \]
@@ -1857,38 +1857,104 @@ mediante la \textit{formula di antitrasformazione}
 \[
     f(t) = \frac{1}{2 \pi j} \int _{\sigma-j \infty}^{\sigma+j \infty} F(s) e^{st} \ ds
 \]
+\textbf{Notazione:} indichiamo l'antitrasformata di Laplace con $\mathcal{L}^{-1}$ tale che
+\[
+    F(s) \overset{\mathcal{L}^{-1}}{\xrightarrow{\hspace*{0.8cm}}} f(t) \tag*{$\sigma > \overline{\sigma}$}
+\]
+indichiamo la formula di antitrasformazione con $f(t) = \mathcal{L}^{-1}[F(s)]$.
+\vspace*{0.2cm}\\
+La $f(t)$ è fornita per $t\geq 0$, perché solo nei punti di continuità in cui la $f$ è maggiore di zero essa contribuisce a determinare $F$. L'antitrasformata fornisce $f(t)=0$ per $t<0$, per questo la corrispondenza tra $f(t)$ e $F(s)$ è \textbf{biunivoca}.
 
 
+\subsubsection{Perché si utilizza la trsformata di Laplace}
+\begin{center}
+    \includegraphics[scale=0.18]{Images/Motivo_Laplace.png}
+\end{center}
+Se, provando a risolvere il problema oggetto, risulta difficile arrivare alla soluzione oggetto (magari perché i calcoli sono molto complessi o risulta poco conveniente in termini di risorse), allora si trasforma il problema oggetto in problema immagine con la trasformata di Laplace se risulta poi conveniente (o semplice) arrivare alla soluzione immagine, per poi antitrasformarla per ottenere la soluzione oggetto che si stava cercando.
 
 
+\subsection{Proprietà della trasformata di Laplace}
+\subsubsection{Linearità}
+Dati $f(t)$ e $g(t)$ tali per cui esistono le trasformate $F(s)$ e $G(s)$, allora $\forall \alpha \in \mathbb{C}, \forall \beta \in \mathbb{C}$ risulta
+\[
+    \mathcal{L}[\alpha f(t) + \beta g(t)] = \alpha \mathcal{L}[f(t)] + \beta \mathcal{L}[g(t)] = \alpha F(s) + \beta G(s)
+\]
+
+\subsubsection*{Dimostrazione}
+\begin{align*}
+    \mathcal{L}[\alpha f(t) + \beta g(t)] &= \int_{0^{-}}^{+\infty}\left(\alpha f(t) + \beta g(t)\right) e^{-st} \ dt\\
+    &= \alpha \underbrace{\int_{0^{-}}^{+\infty} f(t)e^{-st} \ dt}_{F(s)} + \beta \underbrace{\int_{0^{-}}^{+\infty} g(t)e^{-st} \ dt}_{G(s)}\\
+    &= \alpha F(s) + \beta G(s)
+\end{align*}
+
+\subsubsection{Traslazione temporale}
+\[
+    \mathcal{L}[f(t-\tau)] = e^{-\tau s}F(s) \tag*{$\forall \tau >0$}
+\]
+$\tau$ deve essere maggiore di 0, altrimenti la $f(t)$ sarebbe diversa da 0 per un tempo negativo.
+
+\subsubsection*{Dimostrazione}
+\begin{align*}
+    \mathcal{L}[f(t-\tau)] &= \int_{0^-}^{+ \infty} f(t - \tau)e^{-st} \ dt\\
+    &\underset{\rho = t-\tau}{=} \int_{-\tau^-}^{+ \infty} f(\rho)e^{-s(\rho+t)} \ d\rho\\
+\end{align*}
+siccome la $f(t)$ è nulla per $t<0$ posso riscrivere gli estremi di integrazione
+\begin{align*}
+    \int_{0^-}^{+ \infty} f(\rho)e^{-s(\rho+t)} \ d\rho
+    &= \underbrace{\int_{0^-}^{+ \infty} f(\rho)e^{\rho} \ d\rho}_{F(s)} \cdot e^{-s\tau} \\
+    &= F(s) e^{-s\tau}
+\end{align*}
+come volevasi dimostrare
+\[
+    \mathcal{L}[f(t-\tau)] = e^{-\tau s}F(s)
+\]
+
+\subsubsection{Traslazione nel dominio della variabile complessa}
+\[
+    \mathcal{L}[e^{\alpha t }f(t)] = F(s - 
+    \alpha)
+\]
+
+\subsubsection*{Dimostrazione}
+\begin{align*}
+    \mathcal{L}[e^{\alpha t }f(t)] &= \int_{0^-}^{+ \infty} f(t)e^{\alpha t} \cdot e^{-st} \ dt \\
+    &= \int_{0^-}^{+ \infty} f(t)e^{-(s-\alpha)t} \ dt\\
+    &= F(s-\alpha)
+\end{align*}
+
+\subsubsection{Derivazione (nel dominio del tempo)}
+\[
+    \mathcal{L}\left[\frac{d}{dt}f(t)\right] = sF(s) - f(0)
+\]
+Calcoliamo la trasformata della derivata seconda
+\begin{align*}
+    \mathcal{L}\left[\frac{d^2}{dt^2}f(t)\right] &=
+    \mathcal{L}\left[\frac{d}{dt}\underbrace{\left[\frac{d}{dt}f(t)\right]}_{g(t)}\right]\\
+    &=sG(s) - g(0)\\
+    &=sG(s) - f'(0)\\
+    &=s(sF(s)-f(0)) - f'(0)\\
+    &= s^2 F(s) - sf(0) - f'(0)
+\end{align*}
+Quindi possiamo definire la \textit{derivata n-sima nel tempo}
+\[
+    \mathcal{L}\left[\frac{d^n}{dt^n}f(t)\right] = s^nF(s) = \sum_{i=1}^n s^{n-i} \frac{d^{i-1}}{dt^{i-1}}f(t)|_{t=0}
+\]
+La proprietà ci dice che, se la funzione e le sue derivate si annullano in $t=0$, derivare nel dominio del tempo equivale a moltiplicare per $s$ nel dominio della variabile complessa; infatti $s$ viene chiamato \textit{operatore di derivazione}.
 
 
+\subsubsection{Integrazione nel tempo}
+Supponiamo che la funzione $f(t)$ sia integrabile tra 0 e $+ \infty$. Allora
+\[
+    \mathcal{L} \left[\int_0^tf(\tau) \ d\tau\right] = \frac{1}{s} F(s)
+\]
+La proprietà ci dice che integrare nel dominio del tempo equivale a dividere per $s$ nel dominio della variabile complessa; infatti $\dfrac{1}{s}$ viene chiamato \textit{operatore di integrazione}.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection{Convoluzione nel tempo}
+Date due funzioni $f_1$ e $f_2$, il loro \textit{prodotto di convoluzione} è
+\[
+    f_1(t) \ast f_2(t) =  
+\]
 
 
 

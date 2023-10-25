@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  24 OCT 2023 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  25 OCT 2023 10:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -802,30 +802,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+esint on input line 2.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
-))
+) [1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write6
 \openout6 = `ControlliAutomatici.toc'.
 
- [1
-
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<Images/Schema_sistema.png, id=300, 740.7675pt x 442.65375pt>
+ [2]
+<Images/Schema_sistema.png, id=340, 740.7675pt x 442.65375pt>
 File: Images/Schema_sistema.png Graphic file (type png)
 <use Images/Schema_sistema.png>
 Package pdftex.def Info: Images/Schema_sistema.png  used on input line 92.
 (pdftex.def)             Requested size: 222.23196pt x 132.79713pt.
-<Images/Anello_aperto.png, id=302, 1097.09875pt x 286.06876pt>
+<Images/Anello_aperto.png, id=342, 1097.09875pt x 286.06876pt>
 File: Images/Anello_aperto.png Graphic file (type png)
 <use Images/Anello_aperto.png>
 Package pdftex.def Info: Images/Anello_aperto.png  used on input line 115.
 (pdftex.def)             Requested size: 351.07878pt x 91.54387pt.
-<Images/Anello_chiuso.png, id=303, 1139.25626pt x 399.4925pt>
+<Images/Anello_chiuso.png, id=343, 1139.25626pt x 399.4925pt>
 File: Images/Anello_chiuso.png Graphic file (type png)
 <use Images/Anello_chiuso.png>
 Package pdftex.def Info: Images/Anello_chiuso.png  used on input line 119.
 (pdftex.def)             Requested size: 341.77951pt x 119.84866pt.
  [3{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Images/Schema_sistema.png> <./Images/Anello_aperto.png>]
-<Images/Es_cirucito_elettrico.png, id=313, 1035.87pt x 798.985pt>
+<Images/Es_cirucito_elettrico.png, id=354, 1035.87pt x 798.985pt>
 File: Images/Es_cirucito_elettrico.png Graphic file (type png)
 <use Images/Es_cirucito_elettrico.png>
 Package pdftex.def Info: Images/Es_cirucito_elettrico.png  used on input line 142.
@@ -835,25 +835,25 @@ LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 2
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<Images/Es_carrello.png, id=332, 847.165pt x 527.9725pt>
+<Images/Es_carrello.png, id=373, 847.165pt x 527.9725pt>
 File: Images/Es_carrello.png Graphic file (type png)
 <use Images/Es_carrello.png>
 Package pdftex.def Info: Images/Es_carrello.png  used on input line 319.
 (pdftex.def)             Requested size: 169.43pt x 105.59262pt.
  [6{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc} <./Images/Es_carrello.png>]
-<Images/Es_Rettilineo.png, id=342, 1216.545pt x 592.2125pt>
+<Images/Es_Rettilineo.png, id=382, 1216.545pt x 592.2125pt>
 File: Images/Es_Rettilineo.png Graphic file (type png)
 <use Images/Es_Rettilineo.png>
 Package pdftex.def Info: Images/Es_Rettilineo.png  used on input line 371.
 (pdftex.def)             Requested size: 218.96864pt x 106.59364pt.
  [7 <./Images/Es_Rettilineo.png>]
-<Images/Es_pendolo.png, id=349, 742.775pt x 857.2025pt>
+<Images/Es_pendolo.png, id=389, 742.775pt x 857.2025pt>
 File: Images/Es_pendolo.png Graphic file (type png)
 <use Images/Es_pendolo.png>
 Package pdftex.def Info: Images/Es_pendolo.png  used on input line 402.
 (pdftex.def)             Requested size: 126.27007pt x 145.72249pt.
  [8 <./Images/Es_pendolo.png>] [9]
-<Images/Sistemi_tempo_invarianti.png, id=360, 883.04906pt x 277.78781pt>
+<Images/Sistemi_tempo_invarianti.png, id=400, 883.04906pt x 277.78781pt>
 File: Images/Sistemi_tempo_invarianti.png Graphic file (type png)
 <use Images/Sistemi_tempo_invarianti.png>
 Package pdftex.def Info: Images/Sistemi_tempo_invarianti.png  used on input line 574.
@@ -864,41 +864,41 @@ File: Images/Es_carrello.png Graphic file (type png)
 Package pdftex.def Info: Images/Es_carrello.png  used on input line 670.
 (pdftex.def)             Requested size: 169.43pt x 105.59262pt.
  [11] [12] [13]
-<Images/Jordan_matrix.png, id=383, 1361.085pt x 1136.245pt>
+<Images/Jordan_matrix.png, id=423, 1361.085pt x 1136.245pt>
 File: Images/Jordan_matrix.png Graphic file (type png)
 <use Images/Jordan_matrix.png>
 Package pdftex.def Info: Images/Jordan_matrix.png  used on input line 918.
 (pdftex.def)             Requested size: 176.94727pt x 147.71703pt.
  [14 <./Images/Jordan_matrix.png>] [15]
-<Images/Autovalori_semplici.png, id=395, 1646.15pt x 1215.54124pt>
+<Images/Autovalori_semplici.png, id=435, 1646.15pt x 1215.54124pt>
 File: Images/Autovalori_semplici.png Graphic file (type png)
 <use Images/Autovalori_semplici.png>
 Package pdftex.def Info: Images/Autovalori_semplici.png  used on input line 1025.
 (pdftex.def)             Requested size: 378.60654pt x 279.5686pt.
-<Images/Autovalori_comlessi.png, id=396, 1646.15pt x 1215.54124pt>
+<Images/Autovalori_comlessi.png, id=436, 1646.15pt x 1215.54124pt>
 File: Images/Autovalori_comlessi.png Graphic file (type png)
 <use Images/Autovalori_comlessi.png>
 Package pdftex.def Info: Images/Autovalori_comlessi.png  used on input line 1031.
 (pdftex.def)             Requested size: 378.60654pt x 279.5686pt.
  [16 <./Images/Autovalori_semplici.png>]
-<Images/Esempio_autovalori.png, id=402, 1724.4425pt x 1059.96pt>
+<Images/Esempio_autovalori.png, id=442, 1724.4425pt x 1059.96pt>
 File: Images/Esempio_autovalori.png Graphic file (type png)
 <use Images/Esempio_autovalori.png>
 Package pdftex.def Info: Images/Esempio_autovalori.png  used on input line 1035.
 (pdftex.def)             Requested size: 396.61343pt x 243.78568pt.
  [17 <./Images/Autovalori_comlessi.png> <./Images/Esempio_autovalori.png>] [18] [19] [20]
-<Images/Equilibrio_stabile.png, id=423, 717.68124pt x 425.59pt>
+<Images/Equilibrio_stabile.png, id=463, 717.68124pt x 425.59pt>
 File: Images/Equilibrio_stabile.png Graphic file (type png)
 <use Images/Equilibrio_stabile.png>
 Package pdftex.def Info: Images/Equilibrio_stabile.png  used on input line 1397.
 (pdftex.def)             Requested size: 215.30603pt x 127.67798pt.
-<Images/Equilibrio_attrattivo.png, id=424, 834.11626pt x 507.8975pt>
+<Images/Equilibrio_attrattivo.png, id=464, 834.11626pt x 507.8975pt>
 File: Images/Equilibrio_attrattivo.png Graphic file (type png)
 <use Images/Equilibrio_attrattivo.png>
 Package pdftex.def Info: Images/Equilibrio_attrattivo.png  used on input line 1402.
 (pdftex.def)             Requested size: 250.2368pt x 152.37042pt.
  [21 <./Images/Equilibrio_stabile.png>]
-<Images/Stabilita_traiettoria.png, id=432, 867.24pt x 311.1625pt>
+<Images/Stabilita_traiettoria.png, id=473, 867.24pt x 311.1625pt>
 File: Images/Stabilita_traiettoria.png Graphic file (type png)
 <use Images/Stabilita_traiettoria.png>
 Package pdftex.def Info: Images/Stabilita_traiettoria.png  used on input line 1412.
@@ -909,24 +909,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 1506--1512
  []
 
 [23] [24] [25] [26]
-<Images/Controllo_retroazionato.png, id=470, 642.4pt x 264.99pt>
+<Images/Controllo_retroazionato.png, id=510, 642.4pt x 264.99pt>
 File: Images/Controllo_retroazionato.png Graphic file (type png)
 <use Images/Controllo_retroazionato.png>
 Package pdftex.def Info: Images/Controllo_retroazionato.png  used on input line 1786.
 (pdftex.def)             Requested size: 256.95544pt x 105.99411pt.
- [27 <./Images/Controllo_retroazionato.png>] [28] [29] (./ControlliAutomatici.aux)
+ [27 <./Images/Controllo_retroazionato.png>] [28]
+<Images/Motivo_Laplace.png, id=521, 1413.28pt x 818.05624pt>
+File: Images/Motivo_Laplace.png Graphic file (type png)
+<use Images/Motivo_Laplace.png>
+Package pdftex.def Info: Images/Motivo_Laplace.png  used on input line 1871.
+(pdftex.def)             Requested size: 254.37943pt x 147.24376pt.
+ [29 <./Images/Motivo_Laplace.png>] [30] [31] (./ControlliAutomatici.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
 Package rerunfilecheck Info: File `ControlliAutomatici.out' has not changed.
-(rerunfilecheck)             Checksum: 3286E8050D7EAD7601373459933E62CD;11936.
+(rerunfilecheck)             Checksum: 79D4F13A85139E4AD8015F519D6C540B;13752.
  ) 
 Here is how much of TeX's memory you used:
- 36789 strings out of 475189
- 830488 string characters out of 5763838
- 1950254 words of memory out of 5000000
- 57365 multiletter control sequences out of 15000+600000
+ 36816 strings out of 475189
+ 831045 string characters out of 5763838
+ 1949254 words of memory out of 5000000
+ 57380 multiletter control sequences out of 15000+600000
  569376 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,26n,107p,813b,2248s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -934,10 +940,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{Circuito\040elettrico} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ControlliAutomatici.pdf (29 pages, 1422993 bytes).
+Output written on ControlliAutomatici.pdf (31 pages, 1462696 bytes).
 PDF statistics:
- 617 PDF objects out of 1000 (max. 8388607)
- 497 compressed objects within 5 object streams
- 95 named destinations out of 1000 (max. 500000)
- 541 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 548 compressed objects within 6 object streams
+ 107 named destinations out of 1000 (max. 500000)
+ 610 words of extra memory for PDF output out of 10000 (max. 10000000)
 
