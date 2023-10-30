@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{slashed, enumitem}
 \usepackage{titlesec}
+\usepackage[export]{adjustbox}
 \usetikzlibrary{positioning}
 
 \begin{comment}
@@ -19,6 +20,18 @@ code to write section, subsection and subsubsection title in a specific color
 {\color{synthwave_text}\normalfont\normalfont\bfseries}
 {\color{synthwave_text}\thesubsubsection}{1em}{}
 \end{comment}
+
+%code to have equation like subsection (1.1,1.2,...)
+\numberwithin{equation}{subsection}
+
+\let\oldsection\section% Store \section
+\renewcommand{\section}{% Update \section
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}% Update equation number
+  \oldsection}% Regular \section
+\let\oldsubsection\subsection% Store \subsection
+\renewcommand{\subsection}{% Update \subsection
+  \renewcommand{\theequation}{\thesubsection.\arabic{equation}}% Update equation number
+  \oldsubsection}% Regular \subsection
 
 
 \pgfplotsset{compat=1.9}
@@ -59,7 +72,6 @@ bracketsstyle=\color{red}
 %\pagecolor{synthwave_beckground} %{shadeofgray}
 %\color{myWhite}
 
-\renewcommand{\CancelColor}{\color{synthwave_text}}
 
 
 \begin{document}
@@ -142,17 +154,17 @@ I passi passi per progettare un sistema di controllo sono:
     \includegraphics[scale=0.2]{Images/Es_cirucito_elettrico.png}
 \end{center}
 La legge che usiamo per definire il circuito (il nostro sistema) è la \textit{legge delle tensioni}
-\[
+\begin{equation}
     v_R (t) = v_G (t) - v_C(t)
-\] 
+\end{equation} 
 le leggi del condensatore e del resistore sono 
 \begin{align*}
     C \cdot  \dot v_C (t) &= i(t) & v_R (t) = R\cdot i(t)
 \end{align*}
 Scrivendo la formula in termini di $v_C (t)$ (“stato interno”) e $v_G (t)$ (“ingresso di controllo”)
-\[
+\begin{equation}
     \dot v_C (t) = \frac{1}{RC} \left(v_G (t) - v_C (t) \right)
-\]
+\end{equation}
 
 
 
@@ -173,7 +185,7 @@ Notazione:
     \item $u(t) \in \mathbb{R}^m$ ingresso del sistema all'istante $t$
     \item $y(t) \in \mathbb{R}^p$ uscita del sistema all'istante $t$
 \end{itemize}
-\[
+\begin{equation}
     x(t)=
     \begin{bmatrix}
         x_1(t)\\
@@ -200,7 +212,7 @@ Notazione:
         ...\\
         y_p(t)
     \end{bmatrix}
-\]
+\end{equation}
 Da notare che $x(t)$ è un vettore mentre $x_1,...,x_n$ sono scalari.\\
 $x(t)$ è una variabile interna che descrive il comportamento del sistema.
 
@@ -213,7 +225,7 @@ L'\textit{equazione di stato} è un'equazione ordinaria (ODE) vettoriale del pri
     \dot x_n (t) &= f_n \left(x(t), u(t), t\right)
 \end{align*}
 $\mathbb{R}^n$ è detto \underline{spazio di stato}, con $n$ ordine del sistema. La funzione di stato è $f: \mathbb{R}^n \times \mathbb{R}^m \times \mathbb{R} \rightarrow \mathbb{R}^n$.
-\[
+\begin{equation}
     \begin{bmatrix}
         \dot x_1(t)\\
         ...\\
@@ -230,7 +242,7 @@ $\mathbb{R}^n$ è detto \underline{spazio di stato}, con $n$ ordine del sistema.
         f_n\left(x(t),u(t),t\right)
     \end{bmatrix}
     := f\left(x(t),u(t),t\right)
-\]
+\end{equation}
 Avere solo derivate prime non è limitato, perché ad esempio posso inserire una prima variabile come derivata prima e una seconda variabile come derivata prima della prima variabile.
 
 \subsubsection{Equazione di uscita}
@@ -241,7 +253,7 @@ L'equazione di uscita è un'equazione algebrica
     y_p (t) &= h_p \left(x(t), u(t), t\right)
 \end{align*}
 $h : \mathbb{R}^n \times \mathbb{R}^m , \mathbb{R} \rightarrow R^p$ funzione di uscita
-\[
+\begin{equation}
     \begin{bmatrix}
         y_1(t)\\
         ...\\
@@ -258,7 +270,7 @@ $h : \mathbb{R}^n \times \mathbb{R}^m , \mathbb{R} \rightarrow R^p$ funzione di 
         h_p\left(x(t),u(t),t\right)
     \end{bmatrix}
     := h\left(x(t),u(t),t\right)
-\]
+\end{equation}
 \vspace*{0.2cm}
 Se la soluzione $x(t)$ a partire da un istante iniziale $t_0$ è univocamente determinata da $x(t_0)$ e $u(\tau)$ con $\tau \geq t_0$, allora il sistema è detto \textbf{causale}, cioè lo stato dipende solo da ciò che accede in passato.\\
 Sotto opportune ipotesi di regolarità della funzione $f$ si dimostra esistenza e unicità della soluzione dell'equazione (differenziale) di stato (Teorema di Cauchy-Lipschitz).
@@ -286,25 +298,25 @@ Per modellare sistemi discreti nel codice basta un ciclo {\fontfamily{lmtt}\sele
 
 \subsection{Esempio circuito elettrico}
 Riprendiamo l'esempio del \hyperlink{Circuito elettrico}{circuito elettrico}; la formula trovata è 
-\[
+\begin{equation}
     \underbrace{\dot v_C(t)}_{\dot x(t)} = \frac{1}{RC} (\underbrace{v_G (t)}_{u(t)} - \underbrace{v_C (t)}_{x(t)} )
-\]
+\end{equation}
 In questo caso lo stato del sistema $x(t)$ è caratterizzato dalla variabile $v_C(t)$, l'ingresso dalla variabile $v_G(t)$. Supponiamo quindi di misurare (con un sensore) la tensione ai capi della resistenza, allora l'uscita del nostro sistema sarà $v_R(t)$
 \begin{align*}
     \dot x(t) &= \frac{1}{RC} \left(u(t)-x(t)\right) &
     f(x,u) &= \frac{1}{RC}(u-x)
 \end{align*}
 da notare che in questo caso $f$ non è funzione del tempo.
-\[
+\begin{equation}
     v_R(t) = v_G(t) - v_C(t) \Longrightarrow y(t) = u(t) - x(t)
-\]
+\end{equation}
 
 
 \subsubsection{Esempio con parametri che variano nel tempo}
 Supponiamo che la resistenza sia una funzione del tempo
-\[
+\begin{equation}
     R(t) = \overline{R} \left(1- \frac{1}{2} e^{-t} \right)
-\]
+\end{equation}
 allora 
 \begin{align*}
     \dot x(t) &= \frac{1}{R(t)C} \left(u(t)-x(t)\right) &
@@ -319,17 +331,17 @@ in questo caso $f$ è funzione del tempo.
     \includegraphics[scale=0.2]{Images/Es_carrello.png}
 \end{center}
 La legge che usiamo è la legge di Newton, prendendo $z$ come posizione del centro di massa
-\[
+\begin{equation}
     M \ddot  z = -F_e + F_m
-\]
+\end{equation}
 con $M$ massa e $F_e$ data da
-\[
+\begin{equation}
     F_e (z(t), t) = k(t)z(t)
-\]
+\end{equation}
 quindi la nostra equazione diventa
-\[
+\begin{equation}
     M \ddot  z(t) = -k(t)z(t) + F_m(t)
-\]
+\end{equation}
 Siccome nella nostra formula compare una derivata seconda di una variabile ci conviene definire lo stato del sistema con la variabile stessa e la derivata prima della variabile.\\
 Definiamo quindi $x_1 := z$ e $x_2:=\dot z$, con stato $x := [x_1x_2]^T$, e $u := F_m$ (ingresso).
 \vspace*{0.1cm}\\
@@ -338,7 +350,7 @@ Quindi possiamo scrivere, tenendo conto che $\dot x_2(t) = \ddot z$
     \dot x_1(t) &= x_2(t)\\
     \dot x_2(t) &= -\frac{k}{M} x_1(t) + \frac{u(t)}{M}
 \end{align*}
-\[
+\begin{equation}
     f(x,u) = 
     \begin{bmatrix}
         f_1(x,u)\\
@@ -349,7 +361,7 @@ Quindi possiamo scrivere, tenendo conto che $\dot x_2(t) = \ddot z$
         x_2\\
         -\dfrac{k}{M}x_1+\dfrac{u}{M}
     \end{bmatrix}
-\]
+\end{equation}
 Supponiamo di misurare $z(t)$ (sensore posizione), allora $y := z$
 \begin{align*}
     \dot x_1(t) &= x_2(t)\\
@@ -371,13 +383,13 @@ quindi $h(x):= \dfrac{1}{2} (kx_1^2 + Mx_2^2)$.\\
     \includegraphics[scale=0.18]{Images/Es_Rettilineo.png}
 \end{center}
 Scriviamo la legge di Newton
-\[
+\begin{equation}
     M \ddot z = F_{\text{drag}} + F_m
-\]
+\end{equation}
 con $M$ massa e $F_{\text{drag}}$ data da
-\[
+\begin{equation}
     F_{\text{drag}} = -b \dot z
-\]
+\end{equation}
 Definiamo $x_1 := z$ e $x_2 := \dot z$ (stato $x := [x_1 x_2 ]^T$ ) e $u := F_m$ (ingresso). Supponiamo di misurare $z(t)$ (sensore posizione), allora $y := z$
 \begin{align*}
     \dot x_1(t) &= x_2(t)\\
@@ -386,9 +398,9 @@ Definiamo $x_1 := z$ e $x_2 := \dot z$ (stato $x := [x_1 x_2 ]^T$ ) e $u := F_m$
 \end{align*}
 Proviamo a progettare un sistema per il \textit{cruise control}.\\
 L'equazione della dinamica è
-\[
+\begin{equation}
     M \ddot z(t) = -b\dot z(t) + F_m (t)
-\]
+\end{equation}
 Siccome siamo interessati a controllare la velocità e non la posizione, allora consideriamo come stato solo la velocità: $x := \dot z$, $u := F_m$. Supponiamo di misurare $\dot z(t)$ (sensore velocità), allora $y := x$
 \begin{align*}
     \dot x(t) &= - \frac{b}{M}x(t) + \frac{1}{M}u(t)\\
@@ -402,9 +414,9 @@ Siccome siamo interessati a controllare la velocità e non la posizione, allora 
     \includegraphics[scale=0.17]{Images/Es_pendolo.png}
 \end{center}
 Scriviamo l'equazione dei momenti
-\[
+\begin{equation}
     M \ell^2 \ddot \theta= C_{\T{grav}} + C_{\T{drag}} + C_m
-\]
+\end{equation}
 con $M$ massa e $C_{\T{grav}}$ e $C_{\T{drag}}$ date da
 \begin{align*}
     C_{\T{grav}} &=M g \ell \sin(\theta) &
@@ -414,9 +426,9 @@ con $b$ coefficiente d'attrito.
 \vspace*{0.2cm}\\
 Scriviamo l'equazione della dinamica, partendo dalla formula iniziale dei momenti
 
-\[
+\begin{equation}
     \ddot \theta(t) = -\frac{g}{\ell} \sin \left(\theta(t)\right) - \frac{b}{M \ell^2} \dot \theta(t) + \frac{1}{M \ell^2} C_m(t)
-\]
+\end{equation}
 Definiamo quindi $x_1 := \theta$ e $x_2 := \dot \theta$ (stato $x:= [x_1x_2]^T$) e $u := C_m$ (ingresso).\\
 Supponiamo di misurare $\theta$ (sensore angolo) , allora $y := \theta$
 \begin{align*}
@@ -468,7 +480,7 @@ Assegno a $x_1$, $x_2$ e $u(t)$ le seguenti equazioni
 \end{align*}
 Se le equazioni di $\overline{x_1}$ e $\overline{x_2}$ soddisfano le condizioni iniziali e la funzione di stato ($\dot x_1$ e $\dot x_2$) allora quelle equazioni sono la traiettoria del sistema.\\
 Infatti
-\[
+\begin{equation}
     \overline{x_0} = 
     \begin{bmatrix}
         5+3t+t^2\\
@@ -479,7 +491,7 @@ Infatti
         5\\
         3
     \end{bmatrix}
-\]
+\end{equation}
 \begin{align*}
     &\overline{x_0} = 
     \begin{bmatrix}
@@ -521,28 +533,28 @@ Se il sistema è non forzato, dato un equilibrio $x_e$ vale $f(x_e)=0$.
     \dot x_2(t) &= - \frac{G}{\ell} \sin (x_1(t)) - \frac{b}{M \ell ^2}x_2(t) + \frac{1}{M\ell^2}u(t) &=f_2(x(t),u(t))
 \end{align*}
 Siccome sappiamo che, data una coppia di equilibrio $(x_e,u_e)$, vale $f(x_e,u_e)=0$, allora per trovare l'equilibrio del pendolo imponiamo 
-\[
+\begin{equation}
     f(x_e,u_e)=0
-\]
+\end{equation}
 cioè:
-\[
+\begin{equation}
     \begin{cases}
         x_{2e}(t) = 0\\
         \\
         - \dfrac{G}{\ell} \sin (x_{1e}) - \dfrac{b x_{2e}}{M \ell ^2} + \dfrac{1}{M\ell^2}u_e =0
     \end{cases}
-\]
+\end{equation}
 sostituendo $x_{2e}(t)=0$ nell'ultima equazione
-\[
+\begin{equation}
     - \dfrac{G}{\ell} \sin (x_{1e}) + \dfrac{1}{M\ell^2}u_e =0 \Longrightarrow u_e = M G \ell \sin(x_{1e})
-\]
+\end{equation}
 In conclusione, le coppie di equilibrio del sistemo sono tutti fli $(x_{1e}, x_{2e},u_e)$ che soddisfano
-\[
+\begin{equation}
     \begin{cases}
         u_e = M G \ell \sin(x_{1e})\\
         x_{2e}=0
     \end{cases}
-\]
+\end{equation}
 
 
 
@@ -628,7 +640,7 @@ Definiamo le matrici $A(t) \in \mathbb{R}^{n \times n} , B(t) \in \mathbb{R}^{n 
     \end{bmatrix}
 \end{align*}
 quindi scriviamo
-\[
+\begin{equation}
     \begin{bmatrix}
         \dot x_1(t)\\
         .\\
@@ -649,7 +661,7 @@ quindi scriviamo
         .\\
         u_m(t)
     \end{bmatrix}
-\]
+\end{equation}
 che equivale a 
 \begin{align*}
     \dot x(t) &= A(t) x(t) + B(t) u(t)\\
@@ -741,18 +753,18 @@ Sia $(x_a (t), u_a (t))$ traiettoria con $x_a (t_0)$ = $x_{0a}$.\\
 Sia $(x_b (t), u_b (t))$ traiettoria con $x_b (t_0)$ = $x_{0b}$.
 \vspace*{0.1cm}\\
 Allora $\forall \alpha, \beta \in \mathbb{R}$ dato lo stato iniziale $x_{ab}(t_0) = \alpha x_{0a}+\beta x_{0b}$, si ha che
-\[
+\begin{equation}
     (x_{ab}(t), u_{ab}(t)) = (\alpha x_{a}(t) + \beta x_b(t), \alpha u_a(t)+\beta u_b(t))
-\]
+\end{equation}
 è traiettoria del sistema, ovvero applicando come ingresso $u_{ab}=\alpha u_a(t) + \beta u_b(t)$ la traiettoria di stato è $x_{ab} (t) = \alpha x_a (t) + \beta x_b (t)$
-\[
+\begin{equation}
     \begin{rcases}
         \alpha x_{0a}(t)+\beta x_{0b}(t)\\
         \alpha u_a(t) + \beta u_b(t)(t)
     \end{rcases}
     \Longrightarrow
     \alpha x_a(t) + \beta x_b(t)
-\]
+\end{equation}
 \vspace*{0.2cm}
 \textbf{IMPORTANTE:} non vale per i sistemi non lineari.
 
@@ -779,9 +791,9 @@ chiamiamo $x_a(t)=x_\ell(t)$ e $x_b(t) = x_f(t)$
     \alpha u_a(t) + \beta u_b(t) &= \underbrace{\beta}_{1}u(t) = u(t)
 \end{align*}
 quindi
-\[
+\begin{equation}
     x_{ab}(t) = \underbrace{x_\ell(t)}_{\substack{\text{evoluzione} \\ \text{libera}}} + \underbrace{x_f(t)}_{\substack{\text{evoluzione} \\ \text{forzata}}}
-\]
+\end{equation}
 L'\textbf{evoluzione libera} è definita come $x_\ell(t)$ per $t \geq t_0$, tale che $x_\ell (t_0)=x_0$ e $u_l(t)=0$ per $t \geq t_0$, e uscita $y_\ell(t)=C(t)x_\ell(t)$.\\
 L'\textbf{evoluzione forzata} è definita come $x_f(t)$ per $t \geq t_0$, tale che $x_f (t_0)=0$ e $u_l(t)=u(t)$ per $t \geq t_0$, e uscita $y_f(t)=C(t)x_f(t)+D(t)u(t)$.
 \vspace*{0.2cm}\\
@@ -800,9 +812,9 @@ dall'analisi matematica possiamo scrivere il sistema come soluzione omogenea + s
     y(t) &= ce^{at}x_0 + c \int_0^t e^{a(t-\tau)}bu(\tau) d \tau + du(t)
 \end{align*}
 ricordiamo che la funzione esponenziale si può scrivere come
-\[
+\begin{equation}
     e^{at} = 1 + at + \frac{(at)^2}{2!} + \frac{(at)^3}{3!} + ...
-\]
+\end{equation}
 
 
 \subsubsection{Traiettorie di un sistema LTI: caso generale}
@@ -817,12 +829,12 @@ Definiamo un sistema lineare tempo invariante (LTI) $x\in \mathbb{R}^n, u\in \ma
 \end{align*}
 
 Ricordiamo che l'esponenziale di matrice si può scrivere come
-\[
+\begin{equation}
     e^{At} = I + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + ...
-\]
-\[
+\end{equation}
+\begin{equation}
     x(t) = \underbrace{e^{At} x_0}_{\substack{\text{evoluzione} \\ \text{libera}}} + \underbrace{\int_0^t e^{A(t-\tau)}Bu(\tau) d \tau}_{\substack{\text{evoluzione} \\ \text{forzata}}}
-\]
+\end{equation}
 \begin{align*}
     x_\ell(t) &= e^{At}x_0 & x_f(t) &= \int_0^t e^{A(t-\tau)}Bu(\tau) d \tau
 \end{align*}
@@ -832,7 +844,7 @@ Ricordiamo che l'esponenziale di matrice si può scrivere come
 \begin{align*}
     \dot x_1(t) = \lambda_1 x_1(t) & \dot x_1(t) = \lambda_2 x_2(t)
 \end{align*}
-\[
+\begin{equation}
     \begin{bmatrix}
         \dot x_1(t)\\
         \dot x_2(t)
@@ -846,13 +858,13 @@ Ricordiamo che l'esponenziale di matrice si può scrivere come
         x_1(t)\\
         x_2(t)
     \end{bmatrix}
-\]
+\end{equation}
 $A := \Lambda$ matrice diagonale.
 \vspace*{0.2cm}\\
 Il nostro è un sistema non forzato, quindi c'è solo l'evoluzione libera:
-\[
+\begin{equation}
     x(t) = e^{\Lambda t}x_0
-\]
+\end{equation}
 \begin{align*}
     e^{\Lambda t} &= 
     \begin{bmatrix}
@@ -890,7 +902,7 @@ Il nostro è un sistema non forzato, quindi c'è solo l'evoluzione libera:
     \end{bmatrix}
 \end{align*}
 Quindi nel caso generale di $\Lambda \in \mathbb{R}^{n \times n}$
-\[
+\begin{equation}
     e^{\Lambda t} = 
     \begin{bmatrix}
         e^{\lambda_1 t} & 0 & ... & 0\\
@@ -899,18 +911,18 @@ Quindi nel caso generale di $\Lambda \in \mathbb{R}^{n \times n}$
         .\\
         0 & ... & 0 & e^{\lambda_n t}
     \end{bmatrix}
-\]
+\end{equation}
 
 
 \subsubsection{Proprietà della matrice esponenziale} \label{proprietà della matrice esponenziale}
 Esponenziale e cambio di base:
-\[
+\begin{equation}
     e^{TAT^{-1}} = Te^{At}T^{-1}
-\]
+\end{equation}
 Data una matrice $A \in \mathbb{R}^{n \times n}$, esiste $J$ matrice diagonale a blocchi, chiamata \textit{matrice di Jordan}, che è unica a meno di permutazioni dei blocchi, tale che
-\[
+\begin{equation}
     A = T^{-1} J T
-\]
+\end{equation}
 con $T$ matrice invertibile (matrice del cambio base). Questa formula viene chiamata \textit{forma di Jordan}.
 \vspace*{0.2cm}\\
 La matrice di Jordan è fatta in questo modo
@@ -920,7 +932,7 @@ La matrice di Jordan è fatta in questo modo
 con $\lambda_i$ autovalore di $A$.
 \vspace*{0.2cm}\\
 Utilizzando questa forma riconduco il calcolo di $e^{At}$ al calcolo di 
-\[
+\begin{equation}
     e^{
         \begin{bmatrix} 
             \lambda & 1 & 0 & ... & 0\\
@@ -937,23 +949,23 @@ Utilizzando questa forma riconduco il calcolo di $e^{At}$ al calcolo di
             ... & ... & ... & ... & ...\\
             0 & ... & ... & ... & 1
         \end{bmatrix}
-\]
+\end{equation}
 \textbf{IMPORTANTE:} tutti gli elementi di $e^{At}$ sono del tipo
-\[
+\begin{equation}
     t^qe^{\lambda t}
-\]
+\end{equation}
 con $q$ intero e $\lambda_i$ autovalori di A
 
 
 \subsection{Rappresentazioni equivalenti}
 Effettuiamo un cambio di base mediante una matrice $T$
-\[
+\begin{equation}
     \hat x(t) = T x(t)
-\]
+\end{equation}
 ed essendo $T$ invertibile
-\[
+\begin{equation}
     x(t) = T^{-1} \hat x(t)
-\]
+\end{equation}
 Sostituendo nell'equazione della dinamica si ottiene
 \begin{align*}
     {\color{violet} T \cdot} \underbrace{T^{-1} \dot{\hat x}(t)}_{\dot x(t)} &= A \underbrace{T^{-1} \hat x(t)}_{x(t)} + B u(t) {\color{violet} \cdot T } \\
@@ -968,13 +980,13 @@ Allora chiamo $\hat A = TAT^{-1}, \hat B=TB, \hat C = CT^{-1}, \hat D = D$
     y(t) &= \hat C \hat x(t) + \hat D u(t)
 \end{align*}
 se $T$ è una matrice tale che
-\[
+\begin{equation}
     J = TAT^{-1}
-\]
+\end{equation}
 allora
-\[
+\begin{equation}
     \dot{\hat x} = J \hat x(t) + T B u(t)
-\]
+\end{equation}
 \begin{align*}
     \hat x_\ell (t) = e^{JT} \hat x_0 = T^{-1} e^{Jt}T x_0
 \end{align*}
@@ -990,9 +1002,9 @@ Prendiamo un sistema lineare tempo invariante con $x \in \mathbb{R}^n, u \in \ma
 \end{align*}
 Indichiamo con $\lambda_1,...,\lambda_r$ gli $r \leq n$ autovalori (reali o complessi coniugati) distinti della matrice $A$, con molteplicità algebrica $n_1,...,n_r \geq 0$ tali che $\sum\limits ^r_{i=1} n_i = n$.\\
 Le componenti dell'evoluzione libera dello stato $x_\ell(t)$ si possono scrivere come
-\[
+\begin{equation}
     x_{\ell,j} = \sum^r_{i=1}\sum^{h_i}_{q=1} \gamma_{jiq}t_{q-1}e^{\lambda_i t} \tag*{$j=1,...,n$}
-\]
+\end{equation}
 per opportuni valori di $h_i \leq n_i$, dove i coefficienti $\gamma_{jiq}$ dipendono dallo stato iniziale $x(0)$.\\
 I termini $t^{q-1}e^{\lambda_i t}$  sono detti modi naturali del sistema.
 L'evoluzione libera dello stato è combinazione lineare dei modi.
@@ -1008,9 +1020,9 @@ Scriviamo l'\textbf{esponenziale di autovalori complessi coniugati}; se $\lambda
     &= e^{\sigma_i t} (\cos(\omega_i t) + j \sin(\omega_i t)) & &= e^{\sigma_i t} (\cos(\omega_i t) - j \sin(\omega_i t))
 \end{align*}
 Si verifica quindi, per calcolo diretto, che le soluzioni $x_{\ell,j}(t)$ sono sempre reali e che i modi del sistema corrispondenti ad autovalori complessi coniugati $\lambda_i$ e $\overline{\lambda}_i$ sono del tipo
-\[
+\begin{equation}
     t^{q-1} e^{\sigma_i t} \cos (\omega_i t + \phi_i)
-\]
+\end{equation}
 con opportuni valori della fase $\phi_i$.
 \vspace*{0.2cm}\\
 Supponiamo che le molteplicità algebriche $n_1,...,n_r$ degli autovalori di $A$ coincidano cone le molteplicità geometriche (ad esempio quando gli autovalori sono distinti).\\
@@ -1036,7 +1048,7 @@ Allora i coefficienti $h_i$ sono tutti pari a 1 e l'espressione dei modi si semp
 \end{center}
 
 \subsubsection{Esempio sui modi naturali}
-\[
+\begin{equation}
     \begin{bmatrix}
         \dot x_1\\
         \dot x_2
@@ -1050,7 +1062,7 @@ Allora i coefficienti $h_i$ sono tutti pari a 1 e l'espressione dei modi si semp
         x_1\\
         x_2
     \end{bmatrix}
-\]
+\end{equation}
 
 \begin{align*}
     p(\lambda) &= \det (\lambda I -A)\\
@@ -1070,7 +1082,7 @@ Non bisogna quindi focalizzarsi sul calcolare con precisione il valore dei modi 
 
 \subsubsection{Esempio 1}
 Consideriamo il seguente sistema LTI con $x \in \mathbb{R}^3 e u \in \mathbb{R}^3$
-\[
+\begin{equation}
     \dot x(t) = \underbrace{\begin{bmatrix}
         0 & 1 & -1\\
         1 & -1 & -1\\
@@ -1081,11 +1093,11 @@ Consideriamo il seguente sistema LTI con $x \in \mathbb{R}^3 e u \in \mathbb{R}^
         0 & 1 & 1\\
         1 & 1 & 1
     \end{bmatrix}}_{B} u(t)
-\]
+\end{equation}
 Mediante un cambio di coordinate usando la matrice $T = \begin{bmatrix}
     0 & -1 & 1\\ 1 & 1 & -1\\ -1 & 0 & 1
 \end{bmatrix}$ e ponendo $\hat x(t) = T x(T)$, il sistema si può riformulare come 
-\[
+\begin{equation}
     \hat{\dot x} (t)= \underbrace{\begin{bmatrix}
         -1 & 1 & 0\\
         0 & -1 & 0\\
@@ -1096,13 +1108,13 @@ Mediante un cambio di coordinate usando la matrice $T = \begin{bmatrix}
         0 & 1 & 0\\
         0 & 0 & 1
     \end{bmatrix}}_{\hat B = TB} u(t)
-\]
+\end{equation}
 Gli autovalori di $\hat A$ sono $-1, -2$ con molteplicità algebrica $2,1$.
 \vspace*{0.2cm}\\
 Per calcolare l'evoluzione libera consideriamo la formula vista in precedenza
-\[
+\begin{equation}
     \hat x_\ell  =e^{\hat A t}\hat x_0
-\]
+\end{equation}
 Calcoliamo quindi l'esponenziale di matrice $e^{\hat A t}$ per $\hat A = \begin{bmatrix}
     -1 & 1 & 0\\
     0 & -1 & 0\\
@@ -1126,21 +1138,21 @@ Calcoliamo quindi l'esponenziale di matrice $e^{\hat A t}$ per $\hat A = \begin{
     \end{bmatrix}
 \end{align*}
 quindi l'evoluzione libera dello stato è
-\[
+\begin{equation}
     \hat x_\ell = 
     \begin{bmatrix}
         e^{-t} & te^{-t} & 0\\
         0 & e^{-t} & 0\\
         0 & 0 & e^{-2t}
     \end{bmatrix} \hat x_0
-\]
+\end{equation}
 \begin{itemize}
 \item Se ad esempio la condizione iniziale è $\hat x_0 = \begin{bmatrix} 1\\0\\0 \end{bmatrix}$, allora
-\[
+\begin{equation}
     \hat x_\ell = \begin{bmatrix} e^{-t}\\0\\0 \end{bmatrix}
-\]
+\end{equation}
 Scriviamolo nello coordinate originali
-\[
+\begin{equation}
     x_\ell(t) = \underbrace{\begin{bmatrix}
         1&1&0\\
         0&1&1\\
@@ -1151,13 +1163,13 @@ Scriviamolo nello coordinate originali
         0\\
         e^{-t}
     \end{bmatrix}
-\]
+\end{equation}
 \item Se prendiamo come condizione iniziale $\hat x_0 = \begin{bmatrix} 0\\1\\0 \end{bmatrix}$, allora
-\[
+\begin{equation}
     \hat x_\ell = \begin{bmatrix} te^{-t}\\e^{-t}\\0 \end{bmatrix}
-\]
+\end{equation}
 Scriviamolo nello coordinate originali
-\[
+\begin{equation}
     x_\ell(t) = \underbrace{\begin{bmatrix}
         1&1&0\\
         0&1&1\\
@@ -1168,15 +1180,15 @@ Scriviamolo nello coordinate originali
         e^{-t}\\
         e^{-t} + te^{-t}
     \end{bmatrix}
-\]
+\end{equation}
 
 
 \item Se prendiamo come condizione iniziale $\hat x_0 = \begin{bmatrix} 0\\0\\1 \end{bmatrix}$. allora
-\[
+\begin{equation}
     \hat x_\ell = \begin{bmatrix} 0\\0\\e^{-2t} \end{bmatrix}
-\]
+\end{equation}
 Nelle coordinate originali:
-\[
+\begin{equation}
     x_\ell(t) = \underbrace{\begin{bmatrix}
         1&1&0\\
         0&1&1\\
@@ -1187,7 +1199,7 @@ Nelle coordinate originali:
         e^{-2t}\\
         e^{-2t}
     \end{bmatrix}
-\]
+\end{equation}
 
 \end{itemize}
 
@@ -1285,7 +1297,7 @@ Se invece $h^2 = 4Mk$, $\lambda_1 = \lambda_2 = -\frac{h}{2M}$, con molteplicit�
         0 & 1
     \end{bmatrix}
 \end{align*}
-\[
+\begin{equation}
     \hat x_\ell = 
     \begin{bmatrix}
         e^{- \frac{h}{2M}t} \hat x_1(0) + t e^{- \frac{h}{2M}t} \hat x_2(0) \\
@@ -1296,7 +1308,7 @@ Se invece $h^2 = 4Mk$, $\lambda_1 = \lambda_2 = -\frac{h}{2M}$, con molteplicit�
         \hat x_{1 \ell}(t)\\
         \hat x_{2 \ell}(t)
     \end{bmatrix}
-\]
+\end{equation}
 Quindi i modi naturali del sistema sono
 \begin{align*}
     &e^{- \frac{h}{2M}t} & &t e^{- \frac{h}{2M}t}  
@@ -1304,19 +1316,19 @@ Quindi i modi naturali del sistema sono
 da notare che anche si effettua il cambio di coordinate i modi del sistema non cambiano.
 \begin{itemize}
     \item Supponiamo $\hat x(0) = \begin{bmatrix} 1\\0 \end{bmatrix}$, allora
-    \[
+    \begin{equation}
         \hat x_\ell (t) = 
         \begin{bmatrix}
             e^{- \frac{h}{2M}t} \hat x_1(0)\\0
         \end{bmatrix}
-    \]
+    \end{equation}
     \item Supponiamo $\hat x(0) = \begin{bmatrix} 0\\1 \end{bmatrix}$, allora
-    \[
+    \begin{equation}
         \hat x_\ell (t) = 
         \begin{bmatrix}
             0\\e^{- \frac{h}{2M}t} \hat x_2(0)
         \end{bmatrix}
-    \]
+    \end{equation}
     \begin{center}
     \begin{tikzpicture}
             \begin{axis}[
@@ -1333,7 +1345,7 @@ da notare che anche si effettua il cambio di coordinate i modi del sistema non c
     \end{center}
     Si nota dal grafico che se $- \dfrac{h}{2M}$ è "grande" il modo va a zero, quindi sono in un punto di equilibrio.
     \item Se $h = 4Mk = 0$ con $M >0,h=0,k=0$, il sistema diventa
-    \[
+    \begin{equation}
         \begin{bmatrix}
             \dot x_1(t)\\
             \dot x_2(t)
@@ -1346,7 +1358,7 @@ da notare che anche si effettua il cambio di coordinate i modi del sistema non c
             x_1(t)\\
             x_2(t)
         \end{bmatrix}
-    \]
+    \end{equation}
     i cui modi naturali sono $1,t$. È evidente come si possano scrivere queste equazioni differenziali come combinazione lineare dei modi:
     \begin{align*}
         x_1(t) &= x_1(0) + x_2(0)t\\
@@ -1357,21 +1369,21 @@ da notare che anche si effettua il cambio di coordinate i modi del sistema non c
 \subsection{Stabilità interna}
 \subsubsection{Richiami sull'equilibrio di un sistema}
 Prendiamo un sistema lineare tempo invariante 
-\[
+\begin{equation}
     \dot x(t) = f(x(t), u(t))
-\]
+\end{equation}
 Poniamo $u(t) = u_e \ \forall t \geq 0$, allora
-\[
+\begin{equation}
     \dot x(t) = f(x(t), u_e) \tag*{$x(0)=x_0$}
-\]
+\end{equation}
 Esiste, per un sistema di questo tipo, una $x_e$ tale che se $x(0)=x_e \Longrightarrow x(t) = x_e \ \forall t \geq 0$, quindi tale che se lo stato iniziale è costante la $x(t)$ rimane costante in ogni istante di tempo?
 \vspace*{0,2cm}\\
 Chiamo $x_e$ equilibrio, $(x_e,u_e)$ la chiamo coppia stato-ingresso di equilibrio.
 \vspace*{0.2cm}\\
 Proprietà fondamentale di una coppia di equilibrio è che
-\[
+\begin{equation}
     f(x_e,u_e) = 0
-\]
+\end{equation}
 
 
 \subsubsection{Definizioni}
@@ -1379,9 +1391,9 @@ Per sistemi tempo-invarianti (anche se si può generalizzare) la \textit{stabili
 
 
 \subsubsection{Stabilità interna per sistemi non forzati}
-\[
+\begin{equation}
     \dot x(t) = f(x(t)) \tag*{$x_e$ equilibrio}  
-\]
+\end{equation}
 \textbf{Equilibrio stabile:} uno stato di equilibrio $x_e$ si dice stabile se $\forall \epsilon >0, \exists \delta >0$ tale che $\forall x_0 : || x_0-x_e || \leq \delta$ allora risulti $ || x(t) - x_e || < \epsilon \ \forall t \geq 0$. 
 \vspace*{0.2cm}\\
 \textbf{Equilibrio instabile:} uno stato di equilibrio $x_e$ si dice instabile se non è stabile.
@@ -1416,13 +1428,13 @@ Le definizioni date sottintendono la parola locale, ovvero che la proprietà val
 Nei sistemi lineari $x=0$ è sempre un equilibrio.\\
 Per sistemi lineari si può dimostrare che tutti gli equilibri e tutte le traiettorie hanno le stesse proprietà di stabilità, tutte uguali a $x=0$. Per questo motivo si parla di \textbf{stabilità del sistema}.
 \subsubsection*{Dimostrazione}
-\[
+\begin{equation}
     \begin{rcases}
         \dot x(t) = Ax(t) + Bu(t)\\
         u(t) = u_e \ \ \forall t \geq 0
     \end{rcases}
     \Longrightarrow Ax_e + Bu_e = 0
-\]
+\end{equation}
 Sia $\tilde{x}(t) := x(t) - x_e$, allora
 \begin{align*}
     \dot{\tilde{x}}(t) &= \dot x(t) - \underbrace{\frac{d}{dt}x_e}_{0}\\
@@ -1431,13 +1443,13 @@ Sia $\tilde{x}(t) := x(t) - x_e$, allora
     &=A \tilde{x}(t) + \underbrace{Ax_e+Bu_e}_{0}
 \end{align*}
 quindi
-\[
+\begin{equation}
     \dot{\tilde{x}}(t) = A \tilde{x}(t)
-\]
+\end{equation}
 Concludiamo che
-\[
+\begin{equation}
     \tilde{x}=0 \Longleftrightarrow x = x_e
-\]
+\end{equation}
 cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso studiare l'equilibrio del sistema nell'origine.
 
 
@@ -1540,13 +1552,13 @@ Prendiamo un sistema lineare tempo invariante
     y(t) &= Cx(t) + Du(t) 
 \end{align*}
 Supponendo di misurare l'intero stato, ovvero se $x(t)=y(t)$, allora possiamo progettare
-\[
+\begin{equation}
     u(t) = Kx(t) + v(t)
-\]
+\end{equation}
 con $K \in \mathbb{R}^{m \times n}$ una matrice di guadagni e $v(t)$ un ulteriore ingresso per il sistema retroazionato
-\[
+\begin{equation}
     \dot x(t) = (A+BK)x(t)+Bv(t)
-\]
+\end{equation}
 Se vogliamo il sistema in anello chiuso asintoticamente stabile allora dobbiamo progettare $K$ tale che $(A + BK)$ abbia autovalori tutti a parte reale negativa.\\
 \textbf{Nota:} la possibilità di scegliere gli autovalori di $(A + BK)$ (e.g., per renderli tutti a parte reale negativa) dipende dalla coppia $(A, B)$ ed è legata alla proprietà di \textbf{raggiungibilità}.
 \vspace*{0.1cm}\\
@@ -1584,9 +1596,9 @@ quindi
     \tilde{y}(t) &= C_e \tilde{x}(t) + D_e\tilde{u}(t) + \T{term. ord. sup.}
 \end{align*}
 Se consideriamo i termini di ordine superiore come un resto $\mathcal{R}(x,u)$ si osserva che
-\[
+\begin{equation}
     \lim_{||(x,u)||\rightarrow 0} \frac{||\mathcal{R}(\tilde{x},\tilde{u})||}{||(\tilde{x},\tilde{u})||} = 0
-\]
+\end{equation}
 di fatto è come se si avesse $\lim\limits_{x \rightarrow 0}\dfrac{x^2}{x}$.\\
 Quindi le due equazioni di prima si possono approssimare
 \begin{align*}
@@ -1616,22 +1628,22 @@ per variazioni sufficientemente piccole.
     \dot x_2(t) &= - \frac{g}{l} \sin(x_1(t)) - \frac{b}{M \ell^2}x_2(t) + \frac{1}{M \ell^2} u(t) = f_2(x(t),u(t))
 \end{align*}
 $(x_e,u_e)$ coppia di equilibrio
-\[
+\begin{equation}
     f(x_e,u_e)=0 \Rightarrow 
     \begin{cases}
         x_{2e}=0\\
         - \dfrac{g}{\ell} \sin(x_{1e}) - \dfrac{b}{M \ell^2}x_{2e} + \dfrac{1}{M \ell^2}u_e
     \end{cases}
-\]
+\end{equation}
 Prendiamo come equilibrio $x_e = \begin{bmatrix} x_{1e}\\0 \end{bmatrix}$, allora
 \begin{align*}
     &- \dfrac{g}{\ell} \sin(x_{1e}) - \dfrac{b}{M \ell^2} \cdot 0 + \dfrac{1}{M \ell^2}u_e = 0\\
     \Longrightarrow & u_e = gM\ell \sin(X_{1e})
 \end{align*}
 Eseguiamo la linearizzazione intorno a $(x_e,u_e)$
-\[
+\begin{equation}
     \Delta \dot x(t) = A_e \Delta x(t) + B_e \Delta u(t)
-\]
+\end{equation}
 %calcolo matrice A_e
 \begin{align*}
     \underbrace{A_e}_{\frac{\partial f(x,u)}{\partial x}\big|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}} &=
@@ -1718,9 +1730,9 @@ Eseguiamo la linearizzazione intorno a $(x_e,u_e)$
         A_e &= \begin{bmatrix} 0&1\\-\dfrac{g}{\ell}&-\dfrac{b}{M \ell^2} \end{bmatrix} & p(\lambda) &= \lambda \left( \lambda + \frac{b} +{M\ell^2} \right) + \frac{g}{\ell}\\
         & & &=\lambda^2 + \frac{b}{M\ell^2}\lambda + \frac{g}{\ell}
     \end{align*}
-    \[
+    \begin{equation}
         \lambda_{1/2} = - \frac{b}{2M \ell^2} \pm \sqrt{\left(\frac{b}{2M\ell^2}\right) - \frac{g}{\ell}}
-    \]
+    \end{equation}
     Abbiamo 2 autovalori a parte reale negativa, quindi il sistema linearizzato è \textit{asintoticamente stabile (globalmente)}.
 
     \item 
@@ -1728,14 +1740,14 @@ Eseguiamo la linearizzazione intorno a $(x_e,u_e)$
         A_e &= \begin{bmatrix} 0&1\\\dfrac{g}{\ell}&-\dfrac{b}{M \ell^2} \end{bmatrix} & p(\lambda) &= \lambda \left( \lambda + \frac{b} {M\ell^2} \right) - \frac{g}{\ell}\\
         & & &=\lambda^2 + \frac{b}{M\ell^2}\lambda - \frac{g}{\ell}
     \end{align*}
-    \[
+    \begin{equation}
         \lambda_{1/2} = - \frac{b}{2M \ell^2} \pm \sqrt{\underbrace{\left(\frac{b}{2M\ell^2}\right) + \frac{g}{\ell}}_{>0}} \Longrightarrow
         \begin{cases}
             \lambda_{1} = - \dfrac{b}{2M \ell^2} - \sqrt{\left(\dfrac{b}{2M\ell^2}\right) + \dfrac{g}{\ell}} <0\\
             \\
             \lambda_{2} = - \dfrac{b}{2M \ell^2} + \sqrt{\left(\dfrac{b}{2M\ell^2}\right) + \dfrac{g}{\ell}} >0
         \end{cases}
-    \]
+    \end{equation}
     Dato che abbiamo un autovalore a parte reale positiva il sistema è \textit{instabile}.
 
     \item 
@@ -1761,27 +1773,27 @@ Dato un sistema non lineare tempo invariante, $\dot x(t)=f(x(t),u(t))$, sia $x_e
 
 \subsubsection{Controllo nonlineare mediante linearizzazione}
 Consideriamo il sistema non lineare
-\[
+\begin{equation}
     \dot x(t) = f(x(t),u(t))
-\]
+\end{equation}
 Linearizzazione intorno all'equilibrio $(x_e,u_e)$
-\[
+\begin{equation}
     \Delta \dot x(t) = A_e \Delta x(t) + B_e \Delta u(t)
-\]
+\end{equation}
 Proviamo a portare $\Delta x(t)$ a 0, ovvero $x(t)$ a $x_e$ "in modo approssimato". Usando la retroazione dello stato $\Delta u(t) = K \Delta x(t) + \Delta v(t)$ otteniamo il seguente sistema in anello chiuso
-\[
+\begin{equation}
     \Delta \dot x(t) = (A_e + B_e K)\Delta x(t) + B_e \Delta v(t)
-\]
+\end{equation}
 Così sono in grado di progettare la matrice $K$ in modo che $A_e + B_e K$ sia asintoticamente stabile. Grazie ai teoremi sulla linearizzazione, $x_e$ risulta un equilibrio (localmente) asintoticamente stabile per il sistema non lineare in anello chiuso (detto \textit{retroazionato}).
 \vspace*{0.1cm}\\
 Visto che $\Delta x(t) \approx x(t) - x_e$
-\[
+\begin{equation}
     u(t) = u_e + K(x(t) - x_e) + \tilde{v}(t) \approx u_e + K \Delta x(t) + \tilde{v}(t)
-\]
+\end{equation}
 Perciò la legge di controllo finale sarà
-\[
+\begin{equation}
     u(t) = u_e + K(x(t)-x_e) + \tilde{v}(t)
-\]
+\end{equation}
 \begin{center}
     \includegraphics[scale=0.4]{Images/Controllo_retroazionato.png}
 \end{center}
@@ -1793,16 +1805,16 @@ Perciò la legge di controllo finale sarà
 \section{Trasformata di Laplace}
 \subsection{Definizione}
 Data una funzione complessa $f$ di variabile reale $t$, $f: \mathbb{R} \rightarrow \mathbb{C}$ (anche se per noi tipicamente saranno funzioni $f: \mathbb{R} \rightarrow \mathbb{R}$), sia $s = \sigma + j \omega$ una variabile complessa ($\sigma$ parte reale, $\omega$ parte immaginaria); definiamo la \textit{Trasformata di Laplace} di $f(t)$
-\[
+\begin{equation}
     F(s) = \int_{0^-}^{+ \infty} f(t) e^{-st} \ dt
-\]
+\end{equation}
 se esiste per qualche $s$, ovvero se l'integrale converge.\\
 Includiamo nell'integrale $0^{-}$ per tener conto di eventuali impulsi cone la \textit{delta di Dirac}.
 \vspace*{0.2cm}\\
 \textbf{Notazione:} indichiamo la trasformata di Laplace con $\mathcal{L}$ tale che
-\[
+\begin{equation}
     f(t) \overset{\mathcal{L}}{\xrightarrow{\hspace*{0.8cm}}} F(s)
-\]
+\end{equation}
 con $F:\mathbb{C} \rightarrow \mathbb{C}$; indichiamo l'applicazione della trasformata con $F(s) = \mathcal{L}[f(t)]$.
 
 
@@ -1812,9 +1824,9 @@ Sia $\overline{\sigma}>- \infty$ estremo inferiore di $s=\sigma + j \omega$ per 
 La trasformata di Laplace risulta essere una \textit{funzione analitica} e, grazie alle particolari proprietà delle funzioni analitiche, la sua definizione può essere estesa anche in punti $s$ tali che $ \operatorname{Re}(s)\leq \overline{\sigma}$, indipendentemente dal fatto che l'integrale non converga.
 \vspace*{0.2cm}\\
 Dato che 
-\[
+\begin{equation}
     e^{-st} = e^{- \sigma t}e^{-j \omega t}
-\]
+\end{equation}
 possiamo dire che $e^{-\sigma t}$ ci aiuta a ottenere un integrale che converge.
 \begin{center}
     \begin{tikzpicture}
@@ -1833,17 +1845,17 @@ possiamo dire che $e^{-\sigma t}$ ci aiuta a ottenere un integrale che converge.
     \end{center}
 \subsubsection{Trasformate razionali}
 Di particolare importanza sono le \textit{trasformate razionali}, cioè quelle in cui
-\[
+\begin{equation}
     F(s) = \frac{N(s)}{D(s)}
-\]
+\end{equation}
 con $N(s)$ e $D(s)$ polinomi primi tra loro. Le radici di $N(s)=0$ si dicono \textbf{zeri} e quelle di $D(s)=0$ si dicono \textbf{poli}: nell'insieme, poli e zeri si dicono \textit{singolarità}.
 \vspace*{0.1cm}\\
 Se $f$ è reale allora i coefficienti dei polinomi $N(s)$ e $D(s)$ sono reali.
 
 \subsubsection*{Esempio}
-\[
+\begin{equation}
     F(s) = \frac{s^2+2s}{(s+1)(s+3)} = \frac{s(s+2)}{(s+1)(s+3)}
-\]
+\end{equation}
 allora
 \begin{itemize}
     \item zeri di $F(s)$: $0$ e $-2$
@@ -1854,13 +1866,13 @@ allora
 \subsection{Formula di antitrasformazione}
 La funzione trasformanda può essere ricavata dalla sua trasformata
 mediante la \textit{formula di antitrasformazione}
-\[
+\begin{equation}
     f(t) = \frac{1}{2 \pi j} \int _{\sigma-j \infty}^{\sigma+j \infty} F(s) e^{st} \ ds
-\]
+\end{equation}
 \textbf{Notazione:} indichiamo l'antitrasformata di Laplace con $\mathcal{L}^{-1}$ tale che
-\[
+\begin{equation}
     F(s) \overset{\mathcal{L}^{-1}}{\xrightarrow{\hspace*{0.8cm}}} f(t) \tag*{$\sigma > \overline{\sigma}$}
-\]
+\end{equation}
 indichiamo la formula di antitrasformazione con $f(t) = \mathcal{L}^{-1}[F(s)]$.
 \vspace*{0.2cm}\\
 La $f(t)$ è fornita per $t\geq 0$, perché solo nei punti di continuità in cui la $f$ è maggiore di zero essa contribuisce a determinare $F$. L'antitrasformata fornisce $f(t)=0$ per $t<0$, per questo la corrispondenza tra $f(t)$ e $F(s)$ è \textbf{biunivoca}.
@@ -1876,9 +1888,9 @@ Se, provando a risolvere il problema oggetto, risulta difficile arrivare alla so
 \subsection{Proprietà della trasformata di Laplace}
 \subsubsection{Linearità}
 Dati $f(t)$ e $g(t)$ tali per cui esistono le trasformate $F(s)$ e $G(s)$, allora $\forall \alpha \in \mathbb{C}, \forall \beta \in \mathbb{C}$ risulta
-\[
+\begin{equation}
     \mathcal{L}[\alpha f(t) + \beta g(t)] = \alpha \mathcal{L}[f(t)] + \beta \mathcal{L}[g(t)] = \alpha F(s) + \beta G(s)
-\]
+\end{equation}
 
 \subsubsection*{Dimostrazione}
 \begin{align*}
@@ -1888,9 +1900,9 @@ Dati $f(t)$ e $g(t)$ tali per cui esistono le trasformate $F(s)$ e $G(s)$, allor
 \end{align*}
 
 \subsubsection{Traslazione temporale}
-\[
+\begin{equation}
     \mathcal{L}[f(t-\tau)] = e^{-\tau s}F(s) \tag*{$\forall \tau >0$}
-\]
+\end{equation}
 $\tau$ deve essere maggiore di 0, altrimenti la $f(t)$ sarebbe diversa da 0 per un tempo negativo.
 
 \subsubsection*{Dimostrazione}
@@ -1905,15 +1917,15 @@ siccome la $f(t)$ è nulla per $t<0$ posso riscrivere gli estremi di integrazion
     &= F(s) e^{-s\tau}
 \end{align*}
 come volevasi dimostrare
-\[
+\begin{equation}
     \mathcal{L}[f(t-\tau)] = e^{-\tau s}F(s)
-\]
+\end{equation}
 
-\subsubsection{Traslazione nel dominio della variabile complessa}
-\[
+\subsubsection{Traslazione nel dominio della variabile complessa}\label{Traslazione nel dominio della variabile complessa}
+\begin{equation}
     \mathcal{L}[e^{\alpha t }f(t)] = F(s - 
     \alpha)
-\]
+\end{equation}
 
 \subsubsection*{Dimostrazione}
 \begin{align*}
@@ -1922,10 +1934,10 @@ come volevasi dimostrare
     &= F(s-\alpha)
 \end{align*}
 
-\subsubsection{Derivazione (nel dominio del tempo)}
-\[
+\subsubsection{Derivazione nel dominio del tempo}\label{Derivazione nel dominio del tempo}
+\begin{equation}
     \mathcal{L}\left[\frac{d}{dt}f(t)\right] = sF(s) - f(0)
-\]
+\end{equation}
 Calcoliamo la trasformata della derivata seconda
 \begin{align*}
     \mathcal{L}\left[\frac{d^2}{dt^2}f(t)\right] &=
@@ -1936,25 +1948,265 @@ Calcoliamo la trasformata della derivata seconda
     &= s^2 F(s) - sf(0) - f'(0)
 \end{align*}
 Quindi possiamo definire la \textit{derivata n-sima nel tempo}
-\[
+\begin{equation}
     \mathcal{L}\left[\frac{d^n}{dt^n}f(t)\right] = s^nF(s) = \sum_{i=1}^n s^{n-i} \frac{d^{i-1}}{dt^{i-1}}f(t)|_{t=0}
-\]
+\end{equation}
 La proprietà ci dice che, se la funzione e le sue derivate si annullano in $t=0$, derivare nel dominio del tempo equivale a moltiplicare per $s$ nel dominio della variabile complessa; infatti $s$ viene chiamato \textit{operatore di derivazione}.
+
+
+\subsubsection{Derivazione nel dominio della variabile complessa}\label{Derivazione nel dominio della variabile complessa}
+Supponiamo $F(s)$ derivabile per tutti gli $s$; allora risulta
+\begin{equation}
+    \mathcal{L}[t f(t)] = - \frac{dF(s)}{ds}
+\end{equation}
+la quale è estendibile al caso della trasformata $t^n \cdot f(t)$.
+
+\subsubsection*{Dimostrazione}
+Considerando che $te^{-st} = -\dfrac{d}{ds}e^{-st}$
+\begin{align*}
+    \mathcal{L}[t f(t)] &= \int_{0^+}^{+\infty} t f(t)e^{-st} \ dt\\
+    &=\int_{0^+}^{+\infty} f(t) \underbrace{te^{-st}}_{-\frac{d}{ds}e^{-st}} \ dt\\
+    &=\int_{0^+}^{+\infty} f(t) \left(-\frac{d}{ds}e^{-st}\right) \ dt\\
+    &=-\frac{d}{ds} \underbrace{\int_{0^+}^{+\infty} f(t) e^{-st} \ dt}_{F(s)}\\
+    &= - \frac{dF(s)}{ds}
+\end{align*}
 
 
 \subsubsection{Integrazione nel tempo}
 Supponiamo che la funzione $f(t)$ sia integrabile tra 0 e $+ \infty$. Allora
-\[
+\begin{equation}
     \mathcal{L} \left[\int_0^tf(\tau) \ d\tau\right] = \frac{1}{s} F(s)
-\]
+\end{equation}
 La proprietà ci dice che integrare nel dominio del tempo equivale a dividere per $s$ nel dominio della variabile complessa; infatti $\dfrac{1}{s}$ viene chiamato \textit{operatore di integrazione}.
 
 
 \subsubsection{Convoluzione nel tempo}
 Date due funzioni $f_1$ e $f_2$, il loro \textit{prodotto di convoluzione} è
-\[
-    f_1(t) \ast f_2(t) =  
-\]
+\begin{equation}
+    f_1(t) \ast f_2(t) = \int_{-\infty}^{+\infty} f_1(t -\tau)f_2(t) \ d\tau = \int_{-\infty}^{+\infty} f_1(\eta)f_2(\eta) \ d\eta = f_2(t-\eta) \ast f_1(t)
+\end{equation}
+e si trova
+\begin{equation}
+    \mathcal{L}[f_1(t) \ast f_2(t)] = F_1(s) \cdot F_2(s)
+\end{equation}
+
+\subsubsection{Teorema del valore iniziale}
+Se una funzione reale $f(t)$ ha trasformata razionale $F(s)$ con grado del denominatore maggiore del grado del numeratore, allora
+\begin{equation}
+    f(0) = \lim_{s\rightarrow \infty} s F(s)
+\end{equation}
+Se $f$ è una funzione discontinua di prima specie in $t=0$, $f(0)$ si interpreta come $f(0^+)$. L'equazione vale se $f(0)$ o $f(0^+)$ esistono.
+
+
+\subsubsection{Teorema del valore finale}
+Se una funzione reale $f(t)$ ha trasformata razionale $F(s)$ con grado del denominatore maggiore del grado del numeratore e poli nulli o con parte reale negativa, allora
+\begin{equation}
+    \lim_{t \rightarrow + \infty} f(t) = \lim_{s\rightarrow 0} s F(s)
+\end{equation}
+L'equazione vale se esiste $\lim\limits_{t \rightarrow + \infty}f(t)$ esiste.
+
+
+\subsection{Trasformata di segnali elementari}
+Definiamo il \textit{delta di Dirac} $\delta(t)$ tale che
+\begin{equation}
+    \int_{0^-}^{0^+} \delta(t) \ dt = 1
+\end{equation}
+\begin{center}
+    \renewcommand{\arraystretch}{5}
+    \begin{tabular}{c c}
+        $\mathcal{L}[\delta(t)]=1$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Delta.png}
+        \\
+        $\mathcal{L}[1(t)]=\dfrac{1}{s}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino.png}
+        \\
+        $\mathcal{L}[t \cdot 1(t)]=\dfrac{1}{s^2}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino_2.png}
+        \\
+        $\mathcal{L}[e^{\alpha t} \cdot 1(t)]=\dfrac{1}{s-\alpha}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino_3.png}\\
+    \end{tabular}
+\end{center}
+
+\subsubsection{Trasformata della delta}
+\begin{align*}
+    \mathcal{L}[\delta(t)] &= \int_{0^-}^{+\infty} \delta(t) e^{-st} \ dt \\
+    &= \int_{0^-}^0 \delta(t) \underbrace{e^{-s\cdot 0}}_{1} \ dt + \underbrace{\int_{0^+}^{+\infty} \underbrace{\delta(t)}_{0} e^{-st} \ dt}_{0} \\
+\end{align*}
+
+\subsubsection{Trasformata del segnale gradino unitario}
+Il segnale gradin unitario $1(t)$ è definito
+\begin{equation}
+    1(t) = \begin{cases}
+        0 &t<0\\
+        1 &t\geq 0
+    \end{cases}
+\end{equation}
+\begin{align*}
+    \int_{0^-}^{+ \infty} 1(t)e^{-st} \ dt &= \int_{0}^{+ \infty} \underbrace{1(t)}_{1}e^{-st} \ dt\\
+    &= \int_{0}^{+ \infty}e^{-st} \ dt\\
+    &= \frac{e^{-st}}{-s}\bigg|_{t\rightarrow+\infty} - \frac{e^{-0}}{-s}\bigg|_{t=0}
+\end{align*}
+$\lim_{t\rightarrow+\infty}e^{-st}=0$, $e^0=1$
+\begin{equation}
+    \underbrace{\frac{\overbrace{e^{-st}}^{0}}{-s}}_{0}\bigg|_{t\rightarrow+\infty} - \frac{\overbrace{e^{-0}}^{1}}{-s}\bigg|_{t=0} = \frac{1}{s}
+\end{equation}
+
+\subsubsection{Trasformata del segnale rampa}
+Il segnale \textit{rampa} $r(t)$ è definito come
+\begin{equation}
+    r(t) = \begin{cases}
+        0 &t<0\\
+        t &t\geq 0
+    \end{cases} \ \ \ \ \  \includegraphics[width=0.25\linewidth, valign=c]{Images/Segnale_rampa.png}
+\end{equation}
+Per calcolare la trasformata del segnale rampa utilizziamo la proprietà di \nameref{Derivazione nel dominio della variabile complessa}
+\begin{align*}
+    \mathcal{L}[t \cdot 1(t)] &= -\frac{d\left(\dfrac{1}{s}\right)}{ds}\\
+    &= \frac{1}{s^2}
+\end{align*}
+\vspace*{0.2cm}\\
+Mentre per calcolare la trasformata del gradino moltiplicato un esponenziale utilizziamo la proprietà di \nameref{Traslazione nel dominio della variabile complessa}
+\begin{align*}
+    \mathcal{L}[e^{\alpha t} \underbrace{1(t)}_{f(t)}] &= \underbrace{F(s-\alpha)}_{F(s)=\frac{1}{s}}\\
+    &= \frac{1}{s-\alpha}
+\end{align*}
+
+\subsection{Tabella trasformate}
+
+\begin{center}
+    \renewcommand{\arraystretch}{5}
+    \begin{tabular}{c c}
+        $\mathcal{L}[\delta(t)]=1$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Delta.png}
+        \\
+        $\mathcal{L}[1(t)]=\dfrac{1}{s}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino.png}
+        \\
+        $\mathcal{L}[t \cdot 1(t)]=\dfrac{1}{s^2}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino_2.png}
+        \\
+        $\mathcal{L}[e^{\alpha t} \cdot 1(t)]=\dfrac{1}{s-\alpha}$ & 
+        \includegraphics[width=0.25\linewidth, valign=c]{Images/Scalino_3.png}\\
+        $\mathcal{L}[\sin(\omega t)1(t)]= \dfrac{\omega}{s^2+\omega^2}$ & \includegraphics[width=0.25\linewidth, valign=c]{Images/Trasformata_seno.png}\\
+        $\mathcal{L}[\cos(\omega t)1(t)]= \dfrac{\omega}{s^2+\omega^2}$ & \includegraphics[width=0.25\linewidth, valign=c]{Images/Trasformata_coseno.png}\\
+        $\mathcal{L}[\sin(\omega t + \varphi)1(t)]= \dfrac{\omega \cos\varphi \pm s \sin\phi}{s^2+\omega^2}$\\
+        $\mathcal{L}[\cos(\omega t + \varphi)1(t)]= \dfrac{s \cos\phi \mp \omega \sin\varphi}{s^2+\omega^2}$
+    \end{tabular}
+\end{center}
+
+
+
+\section{Funzione di trasferimento}
+\subsection{Introduzione}
+Consideriamo il sistema LTI con $x\in \mathbb{R}^n, u\in \mathbb{R}^m,y\in \mathbb{R}^p$
+\begin{align*}
+    \dot x(t) &= Ax(t) + Bu(t)\\
+    y(t) &= Cx(t) + Du(t)
+\end{align*}
+con $x(0) = x_0$.
+\vspace*{0.1cm}\\
+Siano $X(s):= \mathcal{L}[x(t)], U(s):= \mathcal{L}[u(t)]$ e $Y(s):= \mathcal{L}[y(t)]$. Applichiamo la trasformazione di Laplace ad ambo i membri delle equazioni precedenti, ricordando che $\mathcal{L}\left[\dfrac{d}{dt}x(t)\right]=sX(s)-x(0)$
+\begin{align*}
+    sX(s) - x(0) &= AX(s) + BU(s)\\
+    Y(s) &= CX(s) + DU(s) 
+\end{align*}
+se raccolgo $X(s)$ nella prima equazione
+\begin{align*}
+    (sI-A)X(s) &=x_0+ BU(s)\\
+    Y(s) &= CX(s) + DU(s) 
+\end{align*}
+\begin{align*}
+    X(s) &=\overbrace{(sI-A)^{-1}x_0}^{X_\ell (s)} +\overbrace{(sI-A)^{-1} BU(s)}^{X_f (s)}\\
+    Y(s) &= CX(s) + DU(s) 
+\end{align*}
+Sottolineiamo che se avessimo un sistema generico non si potrebbe riscrivere come abbiamo fatto perché \underline{le matrici devono essere} \underline{costanti}.\\
+Inoltre per poter scrivere un sistema LTI come sopra la matrice $(sI-A)$ deve essere invertibile; una matrice è invertibile se il suo determinante è non nullo, quindi, se $s$ è autovalore della matrice della dinamica e $p(s)$ è il polinomio caratteristico associato:
+\begin{equation}
+    p(s) = \det (sI-A)
+\end{equation}
+Quindi le trasformate dello stato e dell'uscita del sistema in funzione di $x_0$ e $U(s)$ sono 
+\begin{align*}
+    X(s) &=\overbrace{(sI-A)^{-1}x_0}^{\T{evoluzione libera}} +\overbrace{(sI-A)^{-1} BU(s)}^{\T{evoluzione forzata}}\\
+    Y(s) &=\underbrace{C(sI-A)^{-1}x_0}_{\T{evoluzione libera}} + \underbrace{\left(C(sI-A)^{-1}B+D\right)U(s)}_{\T{evoluzione forzata}}
+\end{align*}
+\begin{align*}
+    X_\ell(s) &= (sI-A)^{-1}x_0 & X_f(s) &= (sI-A)^{-1} BU(s)\\
+    Y_\ell(s) &= C(sI-A)^{-1}x_0 & Y_f(s) &= \left(C(sI-A)^{-1}B+D\right)U(s)  
+\end{align*}
+Consideriamo ora la trasformata dell'evoluzione forzata dell'uscita
+\begin{equation*}
+    Y_f(s) = \left(C(sI-A)^{-1}B+D\right) U(s)
+\end{equation*}
+la matrice
+\begin{equation*}
+    G(s) = C(sI-A)^{-1}B+D
+\end{equation*}
+è detta \textit{funzione di trasferimento}; se il sistema è SISO (Single Input Single Output) è una funzione scalare.
+\vspace*{0.1cm}\\
+Abbiamo così ottenuto una \textbf{rappresentazione ingresso-uscita}
+\begin{equation}
+    Y_f(s) = G(s)U(s)
+\end{equation}
+se assumiamo che $x(0)=0$ otteniamo esattamente la trasformata di Laplace dell'uscita $y$
+\begin{equation}\label{funzione di trasferimento}
+    Y(s) = G(s)U(s)
+\end{equation}
+Due osservazioni:
+\begin{itemize}[label=$\triangleright$]
+    \item se si conosce la funzione di trasferimento $G(s)$ di un sistema e la trasformata di Laplace $U(s)$ dell'ingresso, è possibile calcolare, mediante antitrasformazione dell'equazione precedente \ref{funzione di trasferimento}, il movimento forzato $y_f$ dell'uscita (che ovviamente coincide con il movimento $y$ se lo stato iniziale è nullo);
+    \item la funzione di trasferimento è data dal rapporto tra la trasformata dell'uscita e dell'ingresso nel caso di $x(0)=0$
+    \begin{equation}
+        G(s) = \frac{Y(s)}{U(s)}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{Richiami di calcolo matriciale}
+
+\subsubsection{Matrice diagonale}
+Una \textit{matrice diagonale} è una matrice quadrata tale che per $i \neq j$ si ha sempre $a_{ij}=0$ (ogni matrice diagonale è simmetrica).
+$$ \begin{pmatrix} 1&0&0&0 \\ 0&7&0&0 \\ 0&0&9&0 \\ 0&0&0&-3  \end{pmatrix}, \ \begin{pmatrix} 0&0&0&0 \\ 0&2&0&0 \\ 0&0&3&0 \\ 0&0&0&1  \end{pmatrix} $$
+
+
+\subsubsection{Matrice triangolare alta}
+Una \textit{matrice triangolare alta} è una matrice quadrata tale che per $i>j \ \  a_{ij}=0$
+$$ \begin{pmatrix} a_{11}&a_{12}&a_{13}&a_{14} \\ a_{21}&a_{22}&a_{23}&a_{24} \\ a_{31}&a_{32}&a_{33}&a_{34} \\ a_{41}&a_{42}&a_{43}&a_{44} \end{pmatrix} \rightarrow \begin{pmatrix} 1&4&-3&7 \\ 0&6&-8&9\\ 0&0&3&-5 \\ 0&0&0&1 \end{pmatrix}   $$
+
+
+\subsubsection{Matrice triangolare bassa}
+Una \textit{matrice triangolare alta} è una matrice quadrata tale che per $i<j \ \  a_{ij}=0$
+$$ \begin{pmatrix} a_{11}&a_{12}&a_{13}&a_{14} \\ a_{21}&a_{22}&a_{23}&a_{24} \\ a_{31}&a_{32}&a_{33}&a_{34} \\ a_{41}&a_{42}&a_{43}&a_{44} \end{pmatrix} \rightarrow \begin{pmatrix}  1&0&0&0 \\ 6&7&0&0 \\ 3&-2&-9&0 \\ 5&4&-8&3 \end{pmatrix}   $$
+Nota: una matrice diagonale è triangolare alta e triangolare bassa.
+
+
+\subsubsection{Matrice identità}
+$$ I_n = \begin{pmatrix}
+1 & 0 & .. & 0\\
+0 & .. & .. & .. \\
+.. & .. & .. & ..  \\
+0 & .. & .. & 1
+\end{pmatrix} I_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} $$
+
+
+\subsubsection{Trasposta di una matrice}
+$$\begin{pmatrix}
+2 & 1 & 7 \\
+4 & 0 & 2
+\end{pmatrix}^T = \begin{pmatrix}2 & 4 \\ 1 & 0 \\ 7 & 2 \end{pmatrix} $$
+$A = (a_{ij})$ significa che l'elemento di posto $(i,j)$ in $A$ è $a_{i,j}$.
+\vspace{0.2cm}\\
+$A^T := B = (b_{ij})$ con $b_{ij} = a_{ji}$ per ogni coppia di indici $(i,j)$.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
