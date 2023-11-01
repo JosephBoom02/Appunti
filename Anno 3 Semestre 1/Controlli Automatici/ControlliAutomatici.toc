@@ -72,9 +72,12 @@
 \contentsline {subsection}{\numberline {3.6}Tabella trasformate}{34}{subsection.3.6}%
 \contentsline {section}{\numberline {4}Funzione di trasferimento}{34}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Introduzione}{34}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Richiami di calcolo matriciale}{36}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Matrice diagonale}{36}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Matrice triangolare alta}{36}{subsubsection.4.1.3}%
-\contentsline {subsubsection}{\numberline {4.1.4}Matrice triangolare bassa}{36}{subsubsection.4.1.4}%
-\contentsline {subsubsection}{\numberline {4.1.5}Matrice identità}{36}{subsubsection.4.1.5}%
-\contentsline {subsubsection}{\numberline {4.1.6}Trasposta di una matrice}{36}{subsubsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.2}Richiami di calcolo matriciale}{36}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Matrice diagonale}{36}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Matrice triangolare alta}{36}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Matrice triangolare bassa}{36}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Matrice identità}{36}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}Trasposta di una matrice}{36}{subsubsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.6}Complemento algebrico}{36}{subsubsection.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.7}Determinante di una matrice}{36}{subsubsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.3}Funzione di trasferimento nel dettaglio}{37}{subsection.4.3}%

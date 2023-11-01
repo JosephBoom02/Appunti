@@ -2161,7 +2161,7 @@ Due osservazioni:
     \end{equation}
 \end{itemize}
 
-\subsubsection{Richiami di calcolo matriciale}
+\subsection{Richiami di calcolo matriciale}
 
 \subsubsection{Matrice diagonale}
 Una \textit{matrice diagonale} è una matrice quadrata tale che per $i \neq j$ si ha sempre $a_{ij}=0$ (ogni matrice diagonale è simmetrica).
@@ -2198,29 +2198,83 @@ $A = (a_{ij})$ significa che l'elemento di posto $(i,j)$ in $A$ è $a_{i,j}$.
 $A^T := B = (b_{ij})$ con $b_{ij} = a_{ji}$ per ogni coppia di indici $(i,j)$.
 
 
+\subsubsection{Complemento algebrico}
+Definiamo $\hat A_{ij}$ complemento algebrico dell'elemento $a_{ij}$ il determinante della matrice ottenuta eliminando da $A$ la riga $i$ e la colonna $j$ (che chiamiamo $M$) e moltiplicando per $(-1)^{i+j}$
+\begin{equation*}
+    \hat A_{ij} = (-1)^{i+j} \det(M)
+\end{equation*}
+
+
+\subsubsection{Determinante di una matrice}
+Il determinante di una matrice generica si calcola
+\begin{equation*}
+    det(A) = \sum_{i=1}^n a_{ij} \hat A_{ij} = \sum_{j=1}^n a_{ij} \hat A_{ij}
+\end{equation*}
 
 
 
+\subsection{Funzione di trasferimento nel dettaglio}
+La funzione di trasferimento è definita
+\[
+    G(s) = C(sI-A)^{-1}B + D
+\]
+con $C$ matrice $1 \times n$ e $B$ matrice $m \times 1$.
+\vspace*{0.2cm}\\
+Definiamo ora la \textbf{matrice aggiunta} $\T{adj}(A)$ come matrice dei complementi algebrici di $A$
+\begin{equation}
+    \T{adj}(A) = 
+    \begin{bmatrix}
+        \hat A_{11} & \hat A_{12} & \cdots & \hat A_{n1} \\
+        \hat A_{12} & \hat A_{22} & \dots & \hat A_{n2} \\
+        \vdots & \vdots  & \ddots & \vdots\\
+        \hat A_{n1} & \hat A_{n2} & \dots & \hat A_{nn}
+    \end{bmatrix}
+\end{equation}
+La matrice inversa può essere definita con la matrice aggiunta:
+\begin{equation}
+    A^{-1} = \frac{\T{adj}(A)}{\det(A)}
+\end{equation}
+Quindi, se consideriamo la nostra matrice $(sI-A)$
+\begin{equation}
+    (sI-A)^{-1} = \frac{\T{adj}(sI-A)}{\underbrace{\det(sI-A)}_{\substack{\text{polinomio} \\ \text{caratteristico di } A}}}
+\end{equation}
+quindi scriviamo la matrice aggiunta di $(sI-A)$
+\begin{equation}
+    \T{adj}(sI-A) = 
+    \begin{bmatrix}
+        \widehat{(sI-A)}_{11} & \widehat{(sI-A)}_{12} & \cdots &  \widehat{(sI-A)}_{n1} \\
+        \widehat{(sI-A)}_{12} & \widehat{(sI-A)}_{22} & \dots & \widehat{(sI-A)}_{n2} \\
+        \vdots & \vdots  & \ddots & \vdots\\
+        \widehat{(sI-A)}_{n1} & \widehat{(sI-A)}_{n2} & \dots & \widehat{(sI-A)}_{nn}
+    \end{bmatrix}
+\end{equation}
+matrice di polinomi in $s$ al più di grado $n-1$; il determinante di $sI-A$ è un polinomio in $s$ di grado $n$. Per cui 
+\begin{equation}
+    (sI-A)^{-1} = \underbrace{\frac{1}{\det(sI-A)}}_{\T{scalare}} \cdot \T{adj}(sI-A)
+\end{equation}
+Allora possiamo scrivere la funzione di trasferimento come
+\begin{equation}
+    G(s) = \frac{\overbrace{N_{sp}(s)}^{\substack{\text{polinomio di } \\ \text{grado al più } n-1}}}{\underbrace{D_{sp}(s)}_{\substack{\text{polinomio} \\ \text{di grado } n}}} 
+    + \underbrace{D}_{\substack{\text{polinomio non} \\ \text{strettamente} \\ \T{proprio}}}
+\end{equation}
+in forma estesa:
+\begin{equation}
+    G(s) = \frac{N(s)}{D(s)} = \frac{\beta_{\nu}s^{\nu} + \beta_{\nu-1}s^{\nu-1} + \cdots + \beta_1s + \beta_0}{s^{\nu}\footnotemark + \alpha_{\nu-1}s^{\nu-1} + \cdots + \alpha_1s + \alpha_0}
+\end{equation}
+\footnotetext{trasformata della delta di Dirac}
+Le radici di $N(s)$ si dicono \textbf{zeri}, le radici di $D(s)$ si dicono \textbf{poli}; i poli sono radici di $\det(sI-A)$ quindi sono autovalori di $A$. Poli e zeri sono reali o complessi coniugati, poiché radici di polinomi a coefficienti reali.
 
+\subsubsection*{Esempio 1}
+Se prendiamo $y(t) = \dfrac{d}{dt} u(t)$, allora la sua trasformata sarà $Y(s)=s U(s)$, quindi la funzione di trasferimento del sistema è $G(s)=s$; il sistema non è causale, perché il grado del numeratore ha grado maggiore di quello del denominatore. Questa considerazione diventa evidente se si utilizza la definizione di derivata:
+\[
+    y(t) = \frac{d}{dt}(u(t)) = \lim_{h\rightarrow 0} \frac{u(t+h)-u(t)}{h}
+\]
+infatti per conoscere la derivata in $t$ devo conoscere il valore del segnale in $t+h$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection*{Esempio 2}
+\begin{align*}
+    y(t) &= \int_{0}^t u(\tau) \ dt & Y(s) &= \frac{1}{s}U(s)
+\end{align*}
 
 
 
