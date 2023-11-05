@@ -2278,13 +2278,196 @@ infatti per conoscere la derivata in $t$ devo conoscere il valore del segnale in
 
 
 
+\subsection{Schema dell'utilizzo della trasformata di Laplace}
+\begin{center}
+    \includegraphics[scale=0.25]{Images/Schema_trasformata.png}
+\end{center}
 
 
+\subsection{Rappresentazioni e parametri della funzione di trasferimento}
+Può essere conveniente, in alcune situazioni, rappresentare la funzione di trasferimento in una delle seguenti forme fattorizzate
+\begin{equation}
+    G(s) = \frac{\rho \prod_i (s + z_i)\prod_i (s^2+2 \zeta_i \alpha_{ni}s  +\alpha^2_{ni})}
+                {s^g \prod_i (s + p_i)\prod_i (s^2+2 \xi_i \omega_{ni}s + \omega^2_{ni})}
+\end{equation}
+\begin{equation}\label{Forma di bode}
+    G(s) = \frac{\mu \prod_i (1 + \tau_i s)\prod_i (1 + \frac{2\zeta_i}{\alpha_{ni}} + \frac{s^2}{\alpha^2_{ni}})}
+                {s^g \prod_i (1 + T_i s)\prod_i (1 + \frac{2\xi_i}{\omega_{ni}} + \frac{s^2}{\omega^2_{ni}})}
+\end{equation}
+\textbf{N.B.} il pedice $n$ sta per "naturale".
+Con 
+\begin{itemize}
+    \item lo scalare $\rho$ è detto costante di trasferimento, $\mu$ il \textit{guadagno};
+    \item l'intero $g$ è detto \textit{tipo};
+    \item gli scalari $-z_i$ e $-p_i$ sono gli zeri e i poli reali non nulli;
+    \item gli scalari $\alpha_{ni} > 0$ e$\omega_{ni} > 0$ sono le \textit{pulsazioni naturali} delle coppie di zeri e poli complessi coniugati;
+    \item gli scalari $\zeta_i$ e $\xi_i$, in modulo minori di 1, sono gli \textit{smorzamenti} degli zeri e dei poli complessi coniugati;
+    \item gli scalari $\tau_i \neq 0$ e $T_i \neq 0$ sono le costanti di tempo
+\end{itemize}
+La seconda equazione (\ref{Forma di bode}) è detta \textit{forma di Bode}.
+
+\subsubsection{Esempio}
+\[
+    G(s) = 10 \cdot \frac{\overbrace{s+10}^{\prod_i(s+z_i)}}{s^2(s+1)(s+100)}
+\]
+\begin{align*}
+    z_1 &= 10 & p_1 &= 1 \\
+    & & p_2 &= 100\\
+    \rho &= 10 & g &= 2
+\end{align*}
+C'è un solo zero, che è $-10$, mentre i poli sono $0,-1,-100$.
+\vspace*{0.2cm}\\
+Scriviamo la funzione di trasferimento nella seconda forma (di Bode):
+\[
+    G(s) = \frac{\cancel{10}}{s^2} \cdot \frac{\cancel{10} \cdot \left(1 + \dfrac{s}{10}\right)}{\cancel{100}(1+s)\left(1 + \dfrac{s}{100}\right)} = 1\cdot \frac{(1 + 0.1 s)}{s^2(1+s)(1+10^{-2}s)}
+\]
+\begin{align*}
+    \mu &= 1 & \tau_1 &= 0.1\\
+    T_1 &= 1 & T_2 &= 10^{-2}
+\end{align*}
+Prendiamo un polinomio di II grado del denominatore
+\[
+    s^2 + 2 \xi_i \omega_{ni}s + \omega^2_{ni}
+\]
+le radici del polinomio sono:
+\begin{align*}
+    s_{1/2} &= - \xi_i\omega_{ni} \pm \sqrt{\xi_i^2\omega_{ni}^2 - \omega_{ni}^2}\\
+    &=- \xi_i \omega_{ni} \pm \omega_{ni} \sqrt{\xi_i^2 - 1}
+\end{align*}
+Se $|\xi_i|<1$ abbiamo dei \textit{poli complessi coniugati}
+\[
+    s_{1/2} = - \xi_i \omega_{ni} + j \omega_{ni} \sqrt{1 - \xi_i^2}
+\]
+\begin{align*}
+    |s_1| = |s_2| &= \sqrt{\xi_i^2 \omega_{ni}^2 + \omega_{ni}^2 (1 - \xi_i^2)}\\
+    &= \sqrt{\xi_i^2 \omega_{ni}^2 + \omega_{ni}^2  - \omega_{ni}^2\xi_i^2}\\
+    &= \omega_{ni}
+\end{align*}
+Rappresentiamo i poli nel piano complesso:
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Poli_piano.png}
+\end{center}
+$\omega_{ni}$ quindi è il modulo delle radici, $\xi_i$ ci da invece informazioni sull'angolo delle radici nel piano complesso: se $\xi_i>0$ si hanno dei poli a parte reale negativa, se $\xi_i<0$ si hanno dei poli a parte reale positiva.\\
+Se $\xi_i=0$ gli autovalori sono immaginari puri, quindi i modi del sistema sono sinusoidi non smorzate, dato che lo smorzamento è nullo.
+\vspace*{0.2cm}\\
+Nella rappresentazione classica si una una \textit{x} per i poli e un $\circ$ per gli zeri
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Poli_rapp_classica.png}
+\end{center}
 
 
+\subsection{Cancellazioni}
+\subsubsection{Esempio 1}
+\begin{align*}
+    \dot x_1 &= -x_1 + x_2\\
+    \dot x_2 &= -2x_2 + u\\
+    y &= x_2
+\end{align*}
+\begin{align*}
+    G(s)    &= C(sI-A)^{-1} B \\
+            &=  \begin{bmatrix}
+                0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    s+1 & -1\\
+                    0   & s+2 
+                \end{bmatrix}^{-1}
+                \begin{bmatrix}
+                    0 \\ 1
+                \end{bmatrix}\\
+            &= \begin{bmatrix}
+                0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \frac{s+2}{(s+1)(s+2)} & \frac{1}{(s+1)(s+2)}\\
+                    0   & \frac{s+2}{(s+1)(s+2)}
+                \end{bmatrix}^{-1}
+                \begin{bmatrix}
+                    0 \\ 1
+                \end{bmatrix}
+            \\
+            &= \frac{\cancel{s+1}}{\cancel{(s+1)}(s+2)}\\
+            &= \frac{1}{s+2}
+\end{align*}
+Guardando questo esempio ci verrebbe da pensare che le cancellazioni sono innocue, ma questo perché stiamo cancellando il polinomio associato a un autovalore reale negativo, che quindi fa convergere il mio sistema.
+
+\subsubsection{Esmepio 2}
+Se prendiamo invece un sistema di questo tipo
+\begin{align*}
+    \dot x_1 &= x_1 + x_2\\
+    \dot x_2 &= x_2 + u\\
+    y &= x_2
+\end{align*}
+la funzione di trasferimento di questo sistema è 
+\[
+    G(s) = \frac{\cancel{(s-1)}}{\cancel{(s-1)}(s+2)} = \frac{1}{s+2}
+\]
+In questo caso stiamo cancellando un polinomio associato a un autovalore reale positivo, che quindi fa \underline{divergere} il sistema, perciò bisogna stare attenti quando si eseguono cancellazioni. Non basta guardare la funzione di trasferimento per conoscere l'andamento del sistema.
 
 
+\subsection{Antitrasformazione di Laplace}
+Ricordiamo che la trasformata della risposta di un sistema Lineare Tempo Invariante (LTI) singolo ingresso singola uscita (SISO) è data da
+\[
+    Y(s) = C(sI-A)^{-1} x(0) + G(s)U(s)
+\]
+con $C(sI-A)^{-1} \in \mathbb{R}^{1 \times n}$. Si può far vedere che gli elementi di $C(sI-A)^{-1}$ sono rapporti di polinomi.\\
+Nel corso della trattazione considereremo ingressi tali che $U (s)$ sia un rapporto di polinomi.
+\vspace*{0.2cm}\\
+Quindi possiamo scrivere 
+\begin{equation}
+    Y(s) = \frac{N(s)}{D(s)}
+\end{equation}
+con $N (s)$ e $D(s)$ opportuni polinomi.
+\vspace*{0.2cm}\\
+Ricordiamo che per $x(0)=0$ (risposta forzata)
+\[
+    Y(s)=G(s)U(s)
+\]  
+Quindi, applicando in ingresso una delta di Dirac $u(t)=\delta(t)$, che ha trasformata $U(s)=1$, si ha
+\[
+    Y(s) = G(s)  
+\]
+per questo per la risposta all'impulso le radici di $D(s)$ sono i poli di $G(s)$.
 
+
+\subsection{Sviluppo di Heaviside o in fratti semplici (poli distinti)}
+\subsubsection{Caso 1: poli reali o complessi coniugati distinti con molteplicità 1}
+Possiamo scrivere $Y(s)$ come 
+\begin{equation*}
+    Y(s) = \frac{N(s)}{D(s)} = \frac{N(s)}{\prod_{i=1}^n (s + p_i)} = \sum_{i=1}^n \frac{k_1}{s+p_i}
+\end{equation*}
+con $k_i$ detti residui. Consideriamo
+\begin{equation*}
+    (s+p_i) \frac{N(s)}{D(s)} \bigg|_{s = -p_i} = \sum_{\substack{j=1 \\ j\neq i}}^n \frac{k_j(s+p_i)}{s+p_j} \bigg|_{s=-p_i} + k_i
+\end{equation*}
+quindi ciascun residuo $k_i$ può essere calcolato come
+\begin{equation}
+    k_i = (s+p_i) \frac{N(s)}{D(s)} \bigg|_{s=-p_i}
+\end{equation}
+\textbf{N.B.} $k_i$ reali se associati a poli reali, complessi coniugati se associati a una coppia di poli complessi coniugati.
+
+
+\subsubsection{Esempio}
+Vogliamo scrivere la $Y(s)$ in questo modo:
+\[
+    Y(s) = \frac{s^2+s+1}{(s+2)(s+10)(s+1)} = \frac{k_1}{s+2} + \frac{k_2}{s+10} + \frac{k_3}{s+1}
+\]
+allora
+\begin{align*}
+    (s+2)Y(s) \big|_{s=-2} &= \left[\frac{\cancel{(s+2)}k_1}{\cancel{s+2}} + \frac{\overbrace{(s+2)}^{0}k_2}{s+10} + \frac{\overbrace{(s+2)}^{0}k_3}{s+1}\right]_{s=-2}\\
+    &= k_1
+\end{align*}
+lo riscrivo con $Y(s)$ nella forma "originale"
+\begin{align*}
+    (s+2)Y(s) \big|_{s=-2} &= 
+    \frac{\cancel{(s+2)}(s^2+s+1)}{\cancel{(s+2)}(s+10)(s+1)} \bigg|_{s=-2}\\
+    &=\frac{(-2)^2 + (-2)+1}{(-2+10)(-2+1)} \\
+    &= - \frac{3}{8}
+\end{align*}
+ergo
+\[
+    k_1 = - \frac{3}{8}
+\]
 
 
 

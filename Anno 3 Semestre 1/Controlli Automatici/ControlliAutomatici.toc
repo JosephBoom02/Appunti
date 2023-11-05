@@ -81,3 +81,13 @@
 \contentsline {subsubsection}{\numberline {4.2.6}Complemento algebrico}{36}{subsubsection.4.2.6}%
 \contentsline {subsubsection}{\numberline {4.2.7}Determinante di una matrice}{36}{subsubsection.4.2.7}%
 \contentsline {subsection}{\numberline {4.3}Funzione di trasferimento nel dettaglio}{37}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Schema dell'utilizzo della trasformata di Laplace}{38}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Rappresentazioni e parametri della funzione di trasferimento}{38}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Esempio}{38}{subsubsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.6}Cancellazioni}{40}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Esempio 1}{40}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}Esmepio 2}{40}{subsubsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.7}Antitrasformazione di Laplace}{40}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Sviluppo di Heaviside o in fratti semplici (poli distinti)}{41}{subsection.4.8}%
+\contentsline {subsubsection}{\numberline {4.8.1}Caso 1: poli reali o complessi coniugati distinti con molteplicità 1}{41}{subsubsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.2}Esempio}{41}{subsubsection.4.8.2}%
