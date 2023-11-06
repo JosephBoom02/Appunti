@@ -2072,7 +2072,7 @@ Mentre per calcolare la trasformata del gradino moltiplicato un esponenziale uti
     &= \frac{1}{s-\alpha}
 \end{align*}
 
-\subsection{Tabella trasformate}
+\subsection{Tabella trasformate}\label{Tabella trasformate}
 
 \begin{center}
     \renewcommand{\arraystretch}{5}
@@ -2430,8 +2430,11 @@ Quindi, applicando in ingresso una delta di Dirac $u(t)=\delta(t)$, che ha trasf
 per questo per la risposta all'impulso le radici di $D(s)$ sono i poli di $G(s)$.
 
 
-\subsection{Sviluppo di Heaviside o in fratti semplici (poli distinti)}
-\subsubsection{Caso 1: poli reali o complessi coniugati distinti con molteplicità 1}
+
+
+
+\section{Sviluppo di Heaviside o in fratti semplici (poli distinti)}
+\subsection{Caso 1: poli reali o complessi coniugati distinti con molteplicità 1}
 Possiamo scrivere $Y(s)$ come 
 \begin{equation*}
     Y(s) = \frac{N(s)}{D(s)} = \frac{N(s)}{\prod_{i=1}^n (s + p_i)} = \sum_{i=1}^n \frac{k_1}{s+p_i}
@@ -2445,6 +2448,11 @@ quindi ciascun residuo $k_i$ può essere calcolato come
     k_i = (s+p_i) \frac{N(s)}{D(s)} \bigg|_{s=-p_i}
 \end{equation}
 \textbf{N.B.} $k_i$ reali se associati a poli reali, complessi coniugati se associati a una coppia di poli complessi coniugati.
+
+Quindi, antitrasformando $Y(s)$ sviluppata in fratti semplici
+\begin{equation}
+    y(t) = \mathcal{L}^{-1} \left[Y(s)\right] = \sum_{i=1}^n k_i \mathcal{L}\left[\frac{1}{s+p_i}\right] = \sum_{i=1}^n k_i e^{-p_i t} 1(t)
+\end{equation}
 
 
 \subsubsection{Esempio}
@@ -2468,6 +2476,111 @@ ergo
 \[
     k_1 = - \frac{3}{8}
 \]
+Calcoliamo anche le altre costanti
+\begin{align*}
+    (s+10)Y(s) \big|_{s=-10} &= 
+    \frac{\cancel{(s+10)}(s^2+s+1)}{(s+2)\cancel{(s+10)}(s+1)} \bigg|_{s=-10}\\
+    &=\frac{(-10)^2 + (-10)+1}{(-10+2)(-10+1)} \\
+    &= - \frac{91}{72} = k_2
+\end{align*}
+\begin{align*}
+    (s+1)Y(s) \big|_{s=-1} &= 
+    \frac{\cancel{(s+1)}(s^2+s+1)}{(s+2)(s+10)\cancel{(s+1)}} \bigg|_{s=-1}\\
+    &=\frac{(-1)^2 + (-1)+1}{(-1+2)(-1+1)} \\
+    &= - \frac{1}{9} = k_3
+\end{align*}
+Quindi possiamo scrivere la $Y(s)$ come
+\[
+    Y(s) = - \frac{3}{8} \frac{1}{\underset{\substack{ \ \ \ \ \  \downarrow \mathcal{L}^{-1} \\ e^{-2t}1(t)}}{s+2}} + \frac{91}{72} \frac{1}{\underset{\substack{ \ \ \ \ \  \downarrow \mathcal{L}^{-1} \\ e^{-10t}1(t)}}{s+10}} + \frac{1}{9} \frac{1}{\underset{\substack{ \ \ \ \ \  \downarrow \mathcal{L}^{-1} \\ e^{-t}1(t)}}{s+1}}
+\]
+calcoliamo l'uscita del sistema con la formula di antitrasformazione
+\begin{align*}
+    y(t)    &= \mathcal{L}^{-1} \left[Y(s)\right]\\
+            &= - \frac{3}{8} \mathcal{L}^{-1} \left[\frac{1}{s+2}\right] + \frac{91}{71} \mathcal{L}^{-1} \left[\frac{1}{s+10}\right] + \frac{1}{9} \mathcal{L}^{-1} \left[\frac{1}{s+1}\right] 
+            \\
+            &=- \frac{3}{8} e^{-2t}1(t) + \frac{91}{71} e^{-10t}1(t) + \frac{1}{9} e^{-t}1(t) 
+\end{align*}
+
+\begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                xmin=-3,xmax=3,
+                ymin=-2,ymax=2,
+                ticks=none, %elimina i valori numerici
+                axis x line=middle,
+                axis y line=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                ]
+                \addplot[domain=0:3, samples=100]{exp(-2*x)}node [pos=0.1,anchor=south west]{$e^{-2t}1(t)$};
+                \addplot[domain=-0.5:0, samples=100, dashed]{exp(-2*x)}node [pos=0.65,anchor=south east]{$e^{-2t}$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\textbf{N.B.} $1(t)$ definisce la funzione solo per $t \geq 0$.
+
+
+\subsubsection{Forma reale per poli complessi coniugati}
+Consideriamo la coppia di poli complessi coniugati
+\begin{align*}
+    p_{i,1} &= \sigma + j \omega & p_{i,2} &= \sigma - j \omega
+\end{align*}
+con residui associati (complessi coniugati)
+\begin{align*}
+    k_{i,1} &= Me^{-j\varphi} & k_{i,2} &= Me^{j\varphi}
+\end{align*}
+L'antitrasformata dei due termini associati è data da (ricordando la \ref{Tabella trasformate})
+\begin{align*}
+    \mathcal{L}^{-1} \left[\frac{k_{i,1}}{s+p_{i,1}} + \frac{k_{i,2}}{s+p_{i,2}}\right]      
+                    &= M e^{-j \varphi} e^{-p_{i,1}t}1(t) + M e^{j \varphi} e^{-p_{i,2}t}1(t)
+                    \\
+                    &= M e^{-j \varphi} e^{-(\sigma + j \omega)t}1(t) + M e^{j \varphi} e^{-(\sigma - j \omega)t}1(t)
+                    \\
+                    &= 2M e^{-\sigma t} \left(e^{-j(\omega t + \varphi)} + e^{j(\omega t + \varphi)}\right)1(t) 
+                    \\
+                    &= 2M e^{-\sigma t} \frac{\left(e^{-j(\omega t + \varphi)} + e^{j(\omega t + \varphi)}\right)}{2} 1(t)
+                    \\
+                    \frac{e^{j \varphi} + e^{-j \varphi}}{2} = \cos(\alpha) \Longrightarrow
+                    &= 2M e^{-\sigma t} \cos(\omega t + \varphi) 1(t)
+\end{align*}
+
+
+\subsubsection{Modi naturali di poli reali distinti}
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Modi_naturali_poli_distinti_1.png}
+    \includegraphics[scale=0.2]{Images/Modi_naturali_poli_distinti_2.png}
+    \includegraphics[scale=0.2]{Images/Modi_naturali_poli_distinti_3.png}
+\end{center}
+
+
+\subsubsection{Caso 2: Poli reali o complessi coniugati multipli con molteplicità > 1}
+\begin{equation}
+    Y(s) = \frac{N(s)}{D(s)} = \frac{N(s)}{\prod\limits_{i=1}^q (s + p_i)^{n_i}} = \sum_{i=1}^q \sum_{h=1}^{n_i} \frac{k_{i,h}}{(s+p_i)^h}
+\end{equation}
+con $k_{i,h}, h=1,\dots, n_i$ residui del poli $-p_i$. Consideriamo
+\begin{align*}
+    (s+p_i)^{n_i} \frac{N(s)}{D(s)}
+    &=(s+p_i)^{n_i} \sum_{\substack{j=1\\ j \neq i}}^q \sum_{h=1}^{n_j} \frac{k_{j,h}}{(s+p_j)^h} + \sum_{h=1}^{n_i} (s+p_i)^{n_i - h}k_{i,h}
+    \\
+    &=(s+p_i)^{n_i} \sum_{\substack{j=1\\ j \neq i}}^q \sum_{h=1}^{n_j} \frac{k_{j,h}}{(s+p_j)^h} + \sum_{h=1}^{n_i-1} (s+p_i)^{n_i - h}k_{i,h} + k_{i,n_i}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
