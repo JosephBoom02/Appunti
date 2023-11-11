@@ -2072,7 +2072,7 @@ Mentre per calcolare la trasformata del gradino moltiplicato un esponenziale uti
     &= \frac{1}{s-\alpha}
 \end{align*}
 
-\subsection{Tabella trasformate}\label{Tabella trasformate}
+\subsection{Tabella delle trasformate}\label{Tabella delle trasformate}
 
 \begin{center}
     \renewcommand{\arraystretch}{5}
@@ -2284,12 +2284,12 @@ infatti per conoscere la derivata in $t$ devo conoscere il valore del segnale in
 \end{center}
 
 
-\subsection{Rappresentazioni e parametri della funzione di trasferimento}
+\subsection{Rappresentazioni e parametri della funzione di trasferimento}\label{Rappresentazioni e parametri della funzione di trasferimento}
 Può essere conveniente, in alcune situazioni, rappresentare la funzione di trasferimento in una delle seguenti forme fattorizzate
-\begin{equation}
+\begin{equation}\label{parametrizzazione 1}
     G(s) = \frac{\rho \prod_i (s + z_i)\prod_i (s^2+2 \zeta_i \alpha_{ni}s  +\alpha^2_{ni})}
                 {s^g \prod_i (s + p_i)\prod_i (s^2+2 \xi_i \omega_{ni}s + \omega^2_{ni})}
-\end{equation}
+\end{equation}\label{parametrizzazione 2}
 \begin{equation}\label{Forma di bode}
     G(s) = \frac{\mu \prod_i (1 + \tau_i s)\prod_i (1 + \frac{2\zeta_i}{\alpha_{ni}} + \frac{s^2}{\alpha^2_{ni}})}
                 {s^g \prod_i (1 + T_i s)\prod_i (1 + \frac{2\xi_i}{\omega_{ni}} + \frac{s^2}{\omega^2_{ni}})}
@@ -2529,7 +2529,7 @@ con residui associati (complessi coniugati)
 \begin{align*}
     k_{i,1} &= Me^{-j\varphi} & k_{i,2} &= Me^{j\varphi}
 \end{align*}
-L'antitrasformata dei due termini associati è data da (ricordando la \ref{Tabella trasformate})
+L'antitrasformata dei due termini associati è data da (ricordando la \ref{Tabella delle trasformate})
 \begin{align*}
     \mathcal{L}^{-1} \left[\frac{k_{i,1}}{s+p_{i,1}} + \frac{k_{i,2}}{s+p_{i,2}}\right]      
                     &= M e^{-j \varphi} e^{-p_{i,1}t}1(t) + M e^{j \varphi} e^{-p_{i,2}t}1(t)
@@ -2553,7 +2553,7 @@ L'antitrasformata dei due termini associati è data da (ricordando la \ref{Tabel
 \end{center}
 
 
-\subsubsection{Caso 2: Poli reali o complessi coniugati multipli con molteplicità > 1}
+\subsection{Caso 2: Poli reali o complessi coniugati multipli con molteplicità maggiore di 1}
 \begin{equation}
     Y(s) = \frac{N(s)}{D(s)} = \frac{N(s)}{\prod\limits_{i=1}^q (s + p_i)^{n_i}} = \sum_{i=1}^q \sum_{h=1}^{n_i} \frac{k_{i,h}}{(s+p_i)^h}
 \end{equation}
@@ -2564,10 +2564,273 @@ con $k_{i,h}, h=1,\dots, n_i$ residui del poli $-p_i$. Consideriamo
     \\
     &=(s+p_i)^{n_i} \sum_{\substack{j=1\\ j \neq i}}^q \sum_{h=1}^{n_j} \frac{k_{j,h}}{(s+p_j)^h} + \sum_{h=1}^{n_i-1} (s+p_i)^{n_i - h}k_{i,h} + k_{i,n_i}
 \end{align*}
+Quindi il residuo $k_{i,n_i}$ è dato da
+\begin{equation}
+    k_{i,n_i} = (s+p_i)^{n_i} \frac{N(s)}{D(s)} \bigg|_{s=-p_i}
+\end{equation}
+Derivando $(s+p_i)^{n_i} \dfrac{N(s)}{D(s)}$ si calcolano gli altri residui come
+\begin{equation}
+    k_{i,h} = \frac{1}{(n_i-h)!} \frac{d^{n_i-h}}{ds^{n_i-h}} \left[(s+p_i)^{n_i} \frac{N(s)}{D(s)}\right] \bigg|_{s=-p_i}
+\end{equation}
+Antitrasformando $Y(s)$ sviluppata in fratti semplici, ricordando la \nameref{Tabella delle trasformate} e la  proprietà di \nameref{Derivazione nel dominio della variabile complessa}
+\begin{align*}
+    y(t) = \mathcal{L}^{-1} [Y(s)]
+    &= \sum_{i=1}^q \sum_{h=1}^{n_i} k_{i,h} \mathcal{L}^{-1} \left[\frac{1}{(s+p_i)^h}\right]
+    \\
+    &= \sum_{i=1}^q \sum_{h=1}^{n_i} k_{i,h} \frac{t^{h-1}}{(h-1)!}e^{-p_i t}1(t)
+\end{align*}
 
 
 
+\subsubsection{Esempio}
+Consideriamo la seguente trasformata di Laplace dell'uscita di un generico sistema
+\[
+    Y(s) = \frac{s+3}{(s+1)^2(s+2)} = \frac{k_{1,1}}{(s+1)} + \frac{k_{1,2}}{(s+1)^2} + \frac{k_{2}}{(s+2)}   
+\]
+\begin{align*}
+    k_2 &= (s+2)Y(s) \big|_{s=-2} & k_{1,2} = (s+1)^2 Y(s) \big|_{s=-1}
+\end{align*}
+\begin{align*}
+    k_2 
+    &= \cancel{(s+2)} \frac{(s+3)}{(s+1)^2\cancel{(s+2)}} \bigg|_{s=-2}
+    &
+    k_{1,1}
+    &= \cancel{(s+2)^2} \frac{(s+3)}{\cancel{(s+1)^2}(s+2)} \bigg|_{s=--1}
+    \\
+    &= \frac{(-2+3)}{(-2+1)^2}
+    &
+    &= \frac{(-1+3)}{(-1+2)}
+    \\
+    &=1
+    &
+    &=2
+\end{align*}
+\begin{align*}
+    \frac{d}{ds}\left((s+1)^2 Y(s)\right)\bigg|_{s=-1} 
+    &= \frac{d}{ds} \left[ \frac{k_{1,1}(s+1)^2}{(s+1)} + \frac{k_{1,2}\cancel{(s+1)^2}}{\cancel{(s+1)^2}} + \frac{k_2(s+1)^2}{s+2}\right]_{s=-1}
+    \\
+    &= \left[k_{1,1} + 0 + k_2 \frac{\overbrace{(s+1)^2}^{0}-2\overbrace{(s+1)}^{0}(s+2)}{(s+2)}\right]_{s=-1}
+    \\
+    &= k_{1,1}
+\end{align*}
+\begin{align*}
+    k_{1,1} 
+    &= \frac{d}{ds} \cancel{(s+1)^2} \frac{s+3}{\cancel{(s+1)^2}(s+2)} \bigg|_{s=-1}
+    \\
+    &= \frac{d}{ds}\frac{s+3}{(s+2)} \bigg|_{s=-1}
+    \\
+    &= \frac{(s+3)-(s+2)}{(s+2)^2}\bigg|_{s=-1}
+    \\
+    &= 1
+\end{align*}
+quindi possiamo scrivere la $Y(s)$ come
+\[
+    Y(s) = \frac{k_{1,1}}{(s+1)} + \frac{k_{1,2}}{(s+1)^2} + \frac{k_{2}}{(s+2)} = \frac{1}{s+1} + \frac{2}{(s+1)^2} + \frac{1}{(s+2)}
+\]
+ricordando la \nameref{Tabella delle trasformate} e la proprietà di \nameref{Traslazione nel dominio della variabile complessa} antitrasformiamo tutte le componenti della funzione di trasferimento
+\begin{align*}
+    \mathcal{L}^{-1}\left[\frac{1}{(s+2)^2}\right] &= e^{-2t} t 1(t) & \mathcal{L}^{-1}\left[\frac{1}{(s+1)^2}\right] &= e^{-t} t 1(t)
+\end{align*}
+\begin{align*}
+    y(t) 
+    &= k_{1,1}e^{-t}1(t) + k_{1,2} t e^{-t}1(t) + k_{2}e^{-2t}1(t)
+    \\
+    &= e^{-t}1(t) + 2 t e^{-t}1(t) +e^{-2t}1(t)
+\end{align*}
 
+
+
+\subsubsection{Forma reale per poli complessi coniugati con molteplicità maggiore di 1}
+Si può dimostrare che per una coppia di poli complessi coniugati
+\begin{align*}
+    \sigma_i &+ j \omega_i  & \sigma_i &- j \omega_i 
+\end{align*}
+con molteplicità $n_i$, il contributo elementare associato è dato da
+\begin{equation}
+    \sum_{h=1}^{n_i} 2M_{i,h} \frac{t^{h-1}}{(h-1)!} e^{-\sigma_i t} \cos(\omega_i t + \sigma_{i,h}) 1(t)
+\end{equation}
+Ad esempio, consideriamo la seguente funzione di trasferimento
+\[
+    Y(s) = \frac{N(s)}{(s^2+2 \xi \omega_ns + \omega_n^2)}    
+\]
+i poli della funzione sono
+\begin{align*}
+    &\underbrace{-\xi \omega_n}_{\sigma} + \underbrace{j \omega_n \sqrt{1-\xi^2}}_{\omega} & -\xi \omega_n - j \omega_n \sqrt{1-\xi^2}
+\end{align*}
+quindi
+\[
+    Y(s) = \frac{N(s)}{(s + \sigma + j \omega) (s + \sigma - j \omega)}
+\]
+\begin{align*}
+    &2M_{1,1}e^{-\sigma t}\cos(\omega t+\varphi)1(t) + 2M_{1,2}t e^{-\sigma t} \cos(\omega t + \varphi)1(t)\\ =& 2M_{1,1}e^{-\xi \omega_n t} \cos(\omega_n \sqrt{1 - \xi^2}t+\varphi)1(t) + 2M_{1,2}e^{-\xi \omega_n t} \cos(\omega_n \sqrt{1 - \xi^2}t+\varphi)1(t)
+\end{align*}
+
+
+\subsubsection{Modi naturali di poli multipli}
+Un modo naturale di un polo reale multiplo $-p_i$ è definito come
+\begin{equation}
+    \frac{t^{h-1}}{(h-1)!} e^{-p_i t} 1(t)
+\end{equation}
+I modi naturali di una coppia di poli complessi coniugati multipli $-(\sigma_i + j \omega_i)$ e $-(\sigma_i - j \omega_i)$ sono definiti come
+\begin{equation}
+    \frac{t^{h-1}}{(h-1)!} e^{-\sigma_i t} \cos(\omega_i + \varphi_{i,h}) 1(t)
+\end{equation}
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Modi_naturali_poli_multipli.png}
+\end{center}
+
+
+\subsubsection{Modi naturali come risposta all'impulso}
+Sappiamo che per $x(0)=0$ (risposta forzata)
+\[
+    Y(s) = G(s) U(s)
+\]  
+se applichiamo in ingresso una delta di Dirac $u(t)=\delta(t)$
+\[
+    Y(s) = G(s)    
+\]
+Quindi la risposta ad un impulso è una combinazione lineare dei modi naturali del sistema lineare tempo invariante (SISO) descritto da $G(s)$.
+
+
+
+\subsection{Risposta a un ingresso generico}
+Ricordiamo che 
+\[
+    Y(s) = \underbrace{C(sI-A)^{-1}}_{\begin{array}{c}\frac{N_\ell(s)}{D(s)}\end{array}} -x(0) + \underbrace{G(s)U(s)}_{\begin{array}{c}\frac{N_f(s)}{D(s)}\frac{N_u(s)}{D_u(s)}\end{array}}
+\]
+in cui $C(sI-A)^{-1} x(0)$, $G(s)$ e $U(s)$ sono rapporti di polinomi.\\
+Quindi
+\begin{align*}
+    y(t) 
+    &= y_\ell(t) + y_f(t)
+    \\
+    &=y_\ell(t) + y_{f,G}(t) + y_{g,U}(t)
+\end{align*}
+in cui 
+\begin{itemize}
+    \item  $y_\ell (t)$ e $y_{f,G} (t)$ sono combinazioni lineari di modi naturali del sistema con matrici $A, B, C$ e $D$;
+    \item $y_{f,U} (t)$ è combinazione lineare di "modi" presenti nell'ingresso $u(t)$ (dovuti alle radici del denominatore di $U (s)$).
+\end{itemize}
+
+
+
+\subsection{Risposta di sistemi elementari}
+Ricordiamo la \ref{parametrizzazione 1} 
+\[
+    G(s) = \frac{\rho \prod_i (s + z_i)\prod_i (s^2+2 \zeta_i \alpha_{ni}s  +\alpha^2_{ni})}
+                {s^g \prod_i (s + p_i)\prod_i (s^2+2 \xi_i \omega_{ni}s + \omega^2_{ni})}
+\]
+Consideriamo il caso di poli distinti. Da quanto visto fino ad ora risulta che per $x(0) = 0$ (risposta forzata)
+\[
+    Y(s) = G(s)U(s) = \sum_{i} \frac{k_i}{s+p_i} + \sum_i \frac{a_i s+b_i}{s^2 + 2\xi_i\omega_{n,i}s + \omega^2_{n,i}}
+\]
+\begin{center}
+    \includegraphics[scale=0.27]{Images/Risposta_sistemi_elementari.png}
+\end{center}
+
+
+\subsection{Stabilità esterna (BIBO)}
+Un sistema si dice BIBO (Bounded-Input Bounded-Output) stabile se la sua uscita forzata è limitata per ogni ingresso limitato.
+\vspace*{0.1cm}\\
+Da quanto visto fino ad ora con lo sviluppo di Heaviside (fratti semplici) si può dedurre che un sistema con funzione di trasferimento $G(s)$ è BIBO stabile se e solo se tutti i poli di $G(s)$ sono a parte reale strettamente minore di zero.
+\vspace*{0.1cm}\\
+\textbf{N.B.} La BIBO stabilità è equivalente alla stabilità asintotica. 
+
+
+
+\section{Analisi di sistemi attraverso funzione di trasferimento}
+%in riferimento al pacchetto di slide "main_CAT_modulo2_part4"
+
+
+\subsection{Dalla Funzione di Trasferimento allo spazio degli stati}
+Consideriamo la funzione di trasferimento
+\[
+    G(s) = \frac{\mu}{1+T s}
+\]  
+Questo tipo di sistemi può essere rappresentato nello spazio degli stati (la rappresentazione non è unica) come
+\begin{align}\label{sis_1_ordine}
+    \dot x &= - \frac{1}{T} x + \frac{\mu}{T}\mu
+    \\
+    y = x
+\end{align}
+Infatti, la funzione di trasferimento associata a \ref{sis_1_ordine} è 
+\[
+    G(s) = C(sI-A)^{-1} B = \frac{\mu}{1+Ts}
+\]
+dove 
+\begin{itemize}
+    \item il parametro $T$ è la costante di tempo associata al polo;
+    \item il parametro $\mu$ è il \textit{guadagno}
+\end{itemize}
+
+
+\subsection{Sistemi del primo ordine}
+Definiamo un sistema nello spazio della funzione di trasferimento
+\begin{align*}
+    G(s) &= \frac{\mu}{1+T s} & U(s) = \frac{k}{s}\\
+\end{align*}
+\[
+    Y(s) = G(s) U(s) = \frac{\mu k}{s(1+T s)}
+\]
+con $\mu >0,k>0,T>0$; da notare che se $T<0$ il sistema è instabile perché si avrebbe un polo positivo.
+\vspace*{0.1cm}\\
+Allora mediante lo sviluppo di Heaviside e la formula di antitrasformazione troviamo che
+\[
+    y(t) = \mu k(1-e^{-t/T})1(t)
+\]
+$y(0) = 0, \dot y(0) = \dfrac{\mu k}{T} , y_{\infty} = \mu k$
+\begin{center}
+    \includegraphics[scale=0.27]{Images/Sistemi_1_ordine_1.png}
+\end{center}
+Definiamo il \textbf{tempo di assestamento} $\mathbf{T_{\alpha,\epsilon}}$ come il tempo tale per cui $(1-0.001\epsilon)y_{\infty} \leq y(t) \leq (1+0.01\epsilon)y_{\infty} \ \forall t \geq T_{\alpha,\epsilon}$.
+
+\subsubsection{Esempio}
+Consideriamo un sistema con 
+\begin{align*}
+    G(s) = \frac{\mu}{1+T s} = \frac{\mu}{T} \frac{1}{s+\frac{1}{T}}
+\end{align*}
+con ingresso $u(t)=k 1(t)$, quindi $U(s) = \frac{k}{s}$
+\begin{align*}
+    Y(s) 
+    &= G(s) U(s)
+    \\
+    &=  \frac{\mu}{T} \frac{1}{s+\frac{1}{T}} \frac{k}{s}
+    \\
+    &= \frac{k_1}{s+\frac{1}{T}} + \frac{k_2}{s}
+\end{align*}
+\begin{align*}
+    y(t)
+    &= \mathcal{L}^{-1} \underbrace{\left[\frac{k_1}{s+\frac{1}{T}}\right]}_{y_{G,t}} + \mathcal{L}^{-1} \underbrace{\left[\frac{k_2}{s}\right]}_{y_{U,t}}
+    \\
+    &= k_1 \underbrace{e^{-t/T}}_{\T{sistema}} + k_2 \underbrace{1(t)}_{\T{ingresso}}
+\end{align*}
+\begin{align*}
+    k_1 
+    &= (s+\frac{1}{T})Y(s) \big|_{s=-1/T}
+    &
+    k_2
+    &= sY(s) \big|_{s=0}
+    \\
+    &= \cancel{\left(s+\frac{1}{T}\right)}\frac{\mu}{T}\frac{k}{\left(\cancel{s+\frac{1}{T}}\right)s}\bigg|_{s=-1/T}&
+    &=\frac{\mu}{T} \frac{k}{s+\frac{1}{T}} \bigg|_{s=0}
+    \\
+    &=\frac{\mu}{T} \frac{k}{-\frac{1}{T}}&
+    &= \mu k
+    \\
+    &= -\mu k
+\end{align*}
+\begin{align*}
+    y(t)
+    &= - \mu k e^{-t/T}1(t) + \mu k 1(t)
+    \\
+    &= \mu k (1 - e^{-t/T}) 1(t)
+\end{align*}
+La risposta ottenuta ci dice che dando in ingresso il gradino, il sistema ci metterà un po' per raggiungerlo, in base alla sua dinamica.
+\vspace*{0.1cm}\\
+Per quanto riguarda invece il tempo di assestamento, esso si calcola
+\[
+    T_{\alpha,\epsilon} = T \ln \left(\frac{1}{0.01\epsilon}\right)    
+\]
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  6 NOV 2023 18:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  11 NOV 2023 18:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -852,23 +852,23 @@ File: uesint.fd
 \openout6 = `ControlliAutomatici.toc'.
 
  [2]
-<Images/Schema_sistema.png, id=501, 740.7675pt x 442.65375pt>
+<Images/Schema_sistema.png, id=557, 740.7675pt x 442.65375pt>
 File: Images/Schema_sistema.png Graphic file (type png)
 <use Images/Schema_sistema.png>
 Package pdftex.def Info: Images/Schema_sistema.png  used on input line 104.
 (pdftex.def)             Requested size: 222.23196pt x 132.79713pt.
-<Images/Anello_aperto.png, id=503, 1097.09875pt x 286.06876pt>
+<Images/Anello_aperto.png, id=559, 1097.09875pt x 286.06876pt>
 File: Images/Anello_aperto.png Graphic file (type png)
 <use Images/Anello_aperto.png>
 Package pdftex.def Info: Images/Anello_aperto.png  used on input line 127.
 (pdftex.def)             Requested size: 351.07878pt x 91.54387pt.
-<Images/Anello_chiuso.png, id=504, 1139.25626pt x 399.4925pt>
+<Images/Anello_chiuso.png, id=560, 1139.25626pt x 399.4925pt>
 File: Images/Anello_chiuso.png Graphic file (type png)
 <use Images/Anello_chiuso.png>
 Package pdftex.def Info: Images/Anello_chiuso.png  used on input line 131.
 (pdftex.def)             Requested size: 341.77951pt x 119.84866pt.
  [3{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Images/Schema_sistema.png> <./Images/Anello_aperto.png>]
-<Images/Es_cirucito_elettrico.png, id=515, 1035.87pt x 798.985pt>
+<Images/Es_cirucito_elettrico.png, id=570, 1035.87pt x 798.985pt>
 File: Images/Es_cirucito_elettrico.png Graphic file (type png)
 <use Images/Es_cirucito_elettrico.png>
 Package pdftex.def Info: Images/Es_cirucito_elettrico.png  used on input line 154.
@@ -878,25 +878,25 @@ LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 2
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<Images/Es_carrello.png, id=539, 847.165pt x 527.9725pt>
+<Images/Es_carrello.png, id=594, 847.165pt x 527.9725pt>
 File: Images/Es_carrello.png Graphic file (type png)
 <use Images/Es_carrello.png>
 Package pdftex.def Info: Images/Es_carrello.png  used on input line 331.
 (pdftex.def)             Requested size: 169.43pt x 105.59262pt.
  [6{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc} <./Images/Es_carrello.png>]
-<Images/Es_Rettilineo.png, id=551, 1216.545pt x 592.2125pt>
+<Images/Es_Rettilineo.png, id=606, 1216.545pt x 592.2125pt>
 File: Images/Es_Rettilineo.png Graphic file (type png)
 <use Images/Es_Rettilineo.png>
 Package pdftex.def Info: Images/Es_Rettilineo.png  used on input line 383.
 (pdftex.def)             Requested size: 218.96864pt x 106.59364pt.
  [7 <./Images/Es_Rettilineo.png>]
-<Images/Es_pendolo.png, id=564, 742.775pt x 857.2025pt>
+<Images/Es_pendolo.png, id=619, 742.775pt x 857.2025pt>
 File: Images/Es_pendolo.png Graphic file (type png)
 <use Images/Es_pendolo.png>
 Package pdftex.def Info: Images/Es_pendolo.png  used on input line 414.
 (pdftex.def)             Requested size: 126.27007pt x 145.72249pt.
  [8 <./Images/Es_pendolo.png>] [9]
-<Images/Sistemi_tempo_invarianti.png, id=581, 883.04906pt x 277.78781pt>
+<Images/Sistemi_tempo_invarianti.png, id=636, 883.04906pt x 277.78781pt>
 File: Images/Sistemi_tempo_invarianti.png Graphic file (type png)
 <use Images/Sistemi_tempo_invarianti.png>
 Package pdftex.def Info: Images/Sistemi_tempo_invarianti.png  used on input line 586.
@@ -907,18 +907,18 @@ File: Images/Es_carrello.png Graphic file (type png)
 Package pdftex.def Info: Images/Es_carrello.png  used on input line 682.
 (pdftex.def)             Requested size: 169.43pt x 105.59262pt.
  [11] [12] [13]
-<Images/Jordan_matrix.png, id=613, 1361.085pt x 1136.245pt>
+<Images/Jordan_matrix.png, id=669, 1361.085pt x 1136.245pt>
 File: Images/Jordan_matrix.png Graphic file (type png)
 <use Images/Jordan_matrix.png>
 Package pdftex.def Info: Images/Jordan_matrix.png  used on input line 930.
 (pdftex.def)             Requested size: 176.94727pt x 147.71703pt.
  [14 <./Images/Jordan_matrix.png>] [15]
-<Images/Autovalori_semplici.png, id=638, 1646.15pt x 1215.54124pt>
+<Images/Autovalori_semplici.png, id=693, 1646.15pt x 1215.54124pt>
 File: Images/Autovalori_semplici.png Graphic file (type png)
 <use Images/Autovalori_semplici.png>
 Package pdftex.def Info: Images/Autovalori_semplici.png  used on input line 1037.
 (pdftex.def)             Requested size: 378.60654pt x 279.5686pt.
-<Images/Autovalori_comlessi.png, id=639, 1646.15pt x 1215.54124pt>
+<Images/Autovalori_comlessi.png, id=694, 1646.15pt x 1215.54124pt>
 File: Images/Autovalori_comlessi.png Graphic file (type png)
 <use Images/Autovalori_comlessi.png>
 Package pdftex.def Info: Images/Autovalori_comlessi.png  used on input line 1043.
@@ -929,18 +929,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.15.
                                                   \__shipout_drop_firstpage_...
 l.1044 \end{center}
                     <./Images/Autovalori_semplici.png>]
-<Images/Esempio_autovalori.png, id=645, 1724.4425pt x 1059.96pt>
+<Images/Esempio_autovalori.png, id=700, 1724.4425pt x 1059.96pt>
 File: Images/Esempio_autovalori.png Graphic file (type png)
 <use Images/Esempio_autovalori.png>
 Package pdftex.def Info: Images/Esempio_autovalori.png  used on input line 1047.
 (pdftex.def)             Requested size: 396.61343pt x 243.78568pt.
  [17 <./Images/Autovalori_comlessi.png> <./Images/Esempio_autovalori.png>] [18] [19] [20]
-<Images/Equilibrio_stabile.png, id=680, 717.68124pt x 425.59pt>
+<Images/Equilibrio_stabile.png, id=735, 717.68124pt x 425.59pt>
 File: Images/Equilibrio_stabile.png Graphic file (type png)
 <use Images/Equilibrio_stabile.png>
 Package pdftex.def Info: Images/Equilibrio_stabile.png  used on input line 1409.
 (pdftex.def)             Requested size: 215.30603pt x 127.67798pt.
-<Images/Equilibrio_attrattivo.png, id=681, 834.11626pt x 507.8975pt>
+<Images/Equilibrio_attrattivo.png, id=736, 834.11626pt x 507.8975pt>
 File: Images/Equilibrio_attrattivo.png Graphic file (type png)
 <use Images/Equilibrio_attrattivo.png>
 Package pdftex.def Info: Images/Equilibrio_attrattivo.png  used on input line 1414.
@@ -951,7 +951,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.16.
                                                   \__shipout_drop_firstpage_...
 l.1415 \end{center}
                     <./Images/Equilibrio_stabile.png>]
-<Images/Stabilita_traiettoria.png, id=693, 867.24pt x 311.1625pt>
+<Images/Stabilita_traiettoria.png, id=748, 867.24pt x 311.1625pt>
 File: Images/Stabilita_traiettoria.png Graphic file (type png)
 <use Images/Stabilita_traiettoria.png>
 Package pdftex.def Info: Images/Stabilita_traiettoria.png  used on input line 1424.
@@ -962,13 +962,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1518--1524
  []
 
 [23] [24] [25] [26]
-<Images/Controllo_retroazionato.png, id=740, 642.4pt x 264.99pt>
+<Images/Controllo_retroazionato.png, id=796, 642.4pt x 264.99pt>
 File: Images/Controllo_retroazionato.png Graphic file (type png)
 <use Images/Controllo_retroazionato.png>
 Package pdftex.def Info: Images/Controllo_retroazionato.png  used on input line 1798.
 (pdftex.def)             Requested size: 256.95544pt x 105.99411pt.
  [27 <./Images/Controllo_retroazionato.png>] [28]
-<Images/Motivo_Laplace.png, id=761, 1413.28pt x 818.05624pt>
+<Images/Motivo_Laplace.png, id=816, 1413.28pt x 818.05624pt>
 File: Images/Motivo_Laplace.png Graphic file (type png)
 <use Images/Motivo_Laplace.png>
 Package pdftex.def Info: Images/Motivo_Laplace.png  used on input line 1883.
@@ -979,27 +979,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.4.2
                                                   \__shipout_drop_firstpage_...
 l.1961 \end{equation}
                      ] [31]
-<Images/Delta.png, id=792, 534.99875pt x 196.735pt>
+<Images/Delta.png, id=847, 534.99875pt x 196.735pt>
 File: Images/Delta.png Graphic file (type png)
 <use Images/Delta.png>
 Package pdftex.def Info: Images/Delta.png  used on input line 2018.
 (pdftex.def)             Requested size: 135.15059pt x 49.69995pt.
-<Images/Scalino.png, id=793, 534.99875pt x 196.735pt>
+<Images/Scalino.png, id=848, 534.99875pt x 196.735pt>
 File: Images/Scalino.png Graphic file (type png)
 <use Images/Scalino.png>
 Package pdftex.def Info: Images/Scalino.png  used on input line 2021.
 (pdftex.def)             Requested size: 135.15059pt x 49.69995pt.
-<Images/Scalino_2.png, id=794, 534.99875pt x 196.735pt>
+<Images/Scalino_2.png, id=849, 534.99875pt x 196.735pt>
 File: Images/Scalino_2.png Graphic file (type png)
 <use Images/Scalino_2.png>
 Package pdftex.def Info: Images/Scalino_2.png  used on input line 2024.
 (pdftex.def)             Requested size: 135.15059pt x 49.69995pt.
-<Images/Scalino_3.png, id=795, 534.99875pt x 196.735pt>
+<Images/Scalino_3.png, id=850, 534.99875pt x 196.735pt>
 File: Images/Scalino_3.png Graphic file (type png)
 <use Images/Scalino_3.png>
 Package pdftex.def Info: Images/Scalino_3.png  used on input line 2027.
 (pdftex.def)             Requested size: 135.15059pt x 49.69995pt.
-<Images/Segnale_rampa.png, id=796, 1081.03876pt x 644.4075pt>
+<Images/Segnale_rampa.png, id=851, 1081.03876pt x 644.4075pt>
 File: Images/Segnale_rampa.png Graphic file (type png)
 <use Images/Segnale_rampa.png>
 Package pdftex.def Info: Images/Segnale_rampa.png  used on input line 2061.
@@ -1021,12 +1021,12 @@ File: Images/Scalino_3.png Graphic file (type png)
 <use Images/Scalino_3.png>
 Package pdftex.def Info: Images/Scalino_3.png  used on input line 2090.
 (pdftex.def)             Requested size: 135.15059pt x 49.69995pt.
-<Images/Trasformata_seno.png, id=810, 495.8525pt x 217.81375pt>
+<Images/Trasformata_seno.png, id=866, 495.8525pt x 217.81375pt>
 File: Images/Trasformata_seno.png Graphic file (type png)
 <use Images/Trasformata_seno.png>
 Package pdftex.def Info: Images/Trasformata_seno.png  used on input line 2091.
 (pdftex.def)             Requested size: 135.15059pt x 59.36552pt.
-<Images/Trasformata_coseno.png, id=811, 495.8525pt x 217.81375pt>
+<Images/Trasformata_coseno.png, id=867, 495.8525pt x 217.81375pt>
 File: Images/Trasformata_coseno.png Graphic file (type png)
 <use Images/Trasformata_coseno.png>
 Package pdftex.def Info: Images/Trasformata_coseno.png  used on input line 2092.
@@ -1037,62 +1037,80 @@ Overfull \hbox (6.50957pt too wide) in paragraph at lines 2122--2125
  []
 
 [35] [36] [37]
-<Images/Schema_trasformata.png, id=853, 1389.19pt x 786.94pt>
+<Images/Schema_trasformata.png, id=908, 1389.19pt x 786.94pt>
 File: Images/Schema_trasformata.png Graphic file (type png)
 <use Images/Schema_trasformata.png>
 Package pdftex.def Info: Images/Schema_trasformata.png  used on input line 2283.
 (pdftex.def)             Requested size: 347.29665pt x 196.73451pt.
  [38 <./Images/Schema_trasformata.png>]
-<Images/Poli_piano.png, id=862, 962.59625pt x 773.89125pt>
+<Images/Poli_piano.png, id=917, 962.59625pt x 773.89125pt>
 File: Images/Poli_piano.png Graphic file (type png)
 <use Images/Poli_piano.png>
 Package pdftex.def Info: Images/Poli_piano.png  used on input line 2348.
 (pdftex.def)             Requested size: 221.39247pt x 177.99124pt.
-<Images/Poli_rapp_classica.png, id=863, 1399.2275pt x 448.67625pt>
+<Images/Poli_rapp_classica.png, id=918, 1399.2275pt x 448.67625pt>
 File: Images/Poli_rapp_classica.png Graphic file (type png)
 <use Images/Poli_rapp_classica.png>
 Package pdftex.def Info: Images/Poli_rapp_classica.png  used on input line 2355.
 (pdftex.def)             Requested size: 321.81555pt x 103.19336pt.
  [39 <./Images/Poli_piano.png> <./Images/Poli_rapp_classica.png>] [40] [41]
-<Images/Modi_naturali_poli_distinti_1.png, id=883, 1486.55376pt x 1051.93pt>
+<Images/Modi_naturali_poli_distinti_1.png, id=938, 1486.55376pt x 1051.93pt>
 File: Images/Modi_naturali_poli_distinti_1.png Graphic file (type png)
 <use Images/Modi_naturali_poli_distinti_1.png>
 Package pdftex.def Info: Images/Modi_naturali_poli_distinti_1.png  used on input line 2550.
 (pdftex.def)             Requested size: 297.30548pt x 210.38226pt.
-<Images/Modi_naturali_poli_distinti_2.png, id=884, 1406.25375pt x 1052.93375pt>
+<Images/Modi_naturali_poli_distinti_2.png, id=939, 1406.25375pt x 1052.93375pt>
 File: Images/Modi_naturali_poli_distinti_2.png Graphic file (type png)
 <use Images/Modi_naturali_poli_distinti_2.png>
 Package pdftex.def Info: Images/Modi_naturali_poli_distinti_2.png  used on input line 2551.
 (pdftex.def)             Requested size: 281.24576pt x 210.58302pt.
-<Images/Modi_naturali_poli_distinti_3.png, id=885, 1453.43pt x 955.57pt>
+<Images/Modi_naturali_poli_distinti_3.png, id=940, 1453.43pt x 955.57pt>
 File: Images/Modi_naturali_poli_distinti_3.png Graphic file (type png)
 <use Images/Modi_naturali_poli_distinti_3.png>
 Package pdftex.def Info: Images/Modi_naturali_poli_distinti_3.png  used on input line 2552.
 (pdftex.def)             Requested size: 290.68085pt x 191.11061pt.
- [42] [43 <./Images/Modi_naturali_poli_distinti_1.png> <./Images/Modi_naturali_poli_distinti_2.png> <./Images/Modi_naturali_poli_distinti_3.png>] [44] (./ControlliAutomatici.aux)
+ [42] [43 <./Images/Modi_naturali_poli_distinti_1.png> <./Images/Modi_naturali_poli_distinti_2.png> <./Images/Modi_naturali_poli_distinti_3.png>] [44]
+<Images/Modi_naturali_poli_multipli.png, id=965, 1221.56375pt x 838.13126pt>
+File: Images/Modi_naturali_poli_multipli.png Graphic file (type png)
+<use Images/Modi_naturali_poli_multipli.png>
+Package pdftex.def Info: Images/Modi_naturali_poli_multipli.png  used on input line 2679.
+(pdftex.def)             Requested size: 244.30843pt x 167.62328pt.
+ [45 <./Images/Modi_naturali_poli_multipli.png>]
+<Images/Risposta_sistemi_elementari.png, id=976, 637.38126pt x 322.20375pt>
+File: Images/Risposta_sistemi_elementari.png Graphic file (type png)
+<use Images/Risposta_sistemi_elementari.png>
+Package pdftex.def Info: Images/Risposta_sistemi_elementari.png  used on input line 2728.
+(pdftex.def)             Requested size: 172.09523pt x 86.99617pt.
+ [46 <./Images/Risposta_sistemi_elementari.png>]
+<Images/Sistemi_1_ordine_1.png, id=983, 665.48625pt x 347.2975pt>
+File: Images/Sistemi_1_ordine_1.png Graphic file (type png)
+<use Images/Sistemi_1_ordine_1.png>
+Package pdftex.def Info: Images/Sistemi_1_ordine_1.png  used on input line 2783.
+(pdftex.def)             Requested size: 179.68369pt x 93.77158pt.
+ [47 <./Images/Sistemi_1_ordine_1.png>] [48] (./ControlliAutomatici.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
 Package rerunfilecheck Info: File `ControlliAutomatici.out' has not changed.
-(rerunfilecheck)             Checksum: B40AEB403D8448118EBBD858CAE9487A;20879.
+(rerunfilecheck)             Checksum: 74B14B44C383452975585AEE25019393;23643.
  ) 
 Here is how much of TeX's memory you used:
- 38219 strings out of 475189
- 856946 string characters out of 5763838
+ 38285 strings out of 475189
+ 858581 string characters out of 5763838
  1950254 words of memory out of 5000000
- 58590 multiletter control sequences out of 15000+600000
- 569376 words of font info for 83 fonts, out of 8000000 for 9000
+ 58632 multiletter control sequences out of 15000+600000
+ 569995 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,26n,107p,813b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Circuito\040elettrico} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ControlliAutomatici.pdf (44 pages, 1797325 bytes).
+Output written on ControlliAutomatici.pdf (48 pages, 1867718 bytes).
 PDF statistics:
- 1079 PDF objects out of 1200 (max. 8388607)
- 909 compressed objects within 10 object streams
- 266 named destinations out of 1000 (max. 500000)
- 931 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1173 PDF objects out of 1200 (max. 8388607)
+ 993 compressed objects within 10 object streams
+ 288 named destinations out of 1000 (max. 500000)
+ 1034 words of extra memory for PDF output out of 10000 (max. 10000000)
 

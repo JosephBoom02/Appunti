@@ -69,7 +69,7 @@
 \contentsline {subsubsection}{\numberline {3.5.1}Trasformata della delta}{32}{subsubsection.3.5.1}%
 \contentsline {subsubsection}{\numberline {3.5.2}Trasformata del segnale gradino unitario}{32}{subsubsection.3.5.2}%
 \contentsline {subsubsection}{\numberline {3.5.3}Trasformata del segnale rampa}{33}{subsubsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.6}Tabella trasformate}{34}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Tabella delle trasformate}{34}{subsection.3.6}%
 \contentsline {section}{\numberline {4}Funzione di trasferimento}{34}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Introduzione}{34}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Richiami di calcolo matriciale}{36}{subsection.4.2}%
@@ -93,4 +93,15 @@
 \contentsline {subsubsection}{\numberline {5.1.1}Esempio}{41}{subsubsection.5.1.1}%
 \contentsline {subsubsection}{\numberline {5.1.2}Forma reale per poli complessi coniugati}{42}{subsubsection.5.1.2}%
 \contentsline {subsubsection}{\numberline {5.1.3}Modi naturali di poli reali distinti}{43}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Caso 2: Poli reali o complessi coniugati multipli con molteplicità > 1}{43}{subsubsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.2}Caso 2: Poli reali o complessi coniugati multipli con molteplicità maggiore di 1}{43}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Esempio}{44}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Forma reale per poli complessi coniugati con molteplicità maggiore di 1}{45}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Modi naturali di poli multipli}{45}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Modi naturali come risposta all'impulso}{46}{subsubsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.3}Risposta a un ingresso generico}{46}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Risposta di sistemi elementari}{46}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Stabilità esterna (BIBO)}{46}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Analisi di sistemi attraverso funzione di trasferimento}{47}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Dalla Funzione di Trasferimento allo spazio degli stati}{47}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Sistemi del primo ordine}{47}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Esempio}{47}{subsubsection.6.2.1}%
