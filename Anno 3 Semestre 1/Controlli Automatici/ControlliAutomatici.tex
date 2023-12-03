@@ -2289,7 +2289,7 @@ Può essere conveniente, in alcune situazioni, rappresentare la funzione di tras
 \begin{equation}\label{parametrizzazione 1}
     G(s) = \frac{\rho \prod_i (s + z_i)\prod_i (s^2+2 \zeta_i \alpha_{ni}s  +\alpha^2_{ni})}
                 {s^g \prod_i (s + p_i)\prod_i (s^2+2 \xi_i \omega_{ni}s + \omega^2_{ni})}
-\end{equation}\label{parametrizzazione 2}
+\end{equation}
 \begin{equation}\label{Forma di bode}
     G(s) = \frac{\mu \prod_i (1 + \tau_i s)\prod_i (1 + \frac{2\zeta_i}{\alpha_{ni}} + \frac{s^2}{\alpha^2_{ni}})}
                 {s^g \prod_i (1 + T_i s)\prod_i (1 + \frac{2\xi_i}{\omega_{ni}} + \frac{s^2}{\omega^2_{ni}})}
@@ -2831,6 +2831,696 @@ Per quanto riguarda invece il tempo di assestamento, esso si calcola
 \[
     T_{\alpha,\epsilon} = T \ln \left(\frac{1}{0.01\epsilon}\right)    
 \]
+\begin{align*}
+    T_{\alpha,5} &\approx 3T & T_{\alpha,1} &\approx 4.6T
+\end{align*}
+
+
+\subsubsection{Considerazioni}
+\begin{itemize}
+    \item Per calcolare la risposta riscrivere $G(s) = \dfrac{\mu}{T} \dfrac{1}{s+\frac{1}{T}}$ e sviluppare $Y (s) = G(s)U (s)$ in fratti semplici;
+   \item la risposta è monotona, i modi presenti sono $1(t)$ dell' ingresso e $e^{-t/T}$ del sistema;
+   \item il valore asintotico è $\mu k$, quindi se l'ingresso fosse un riferimento $k$ da seguire, avremmo un errore a regime $e_{\infty} = |1-\mu|k$.
+\end{itemize}
+
+
+
+
+\subsection{Sistemi del secondo ordine}
+La funzione di trasferimento di sistemi del secondo ordine è 
+\begin{equation}
+    G(s) = \mu\frac{\omega^2_n}{s^2+2 \xi \omega_n + \omega^2_n}
+\end{equation}
+Questo tipo di sistemi può essere rappresentato nello spazio degli stati come
+\begin{align*}
+    \dot x_1 &= x_2\\
+    \dot x_2 &= - \omega^2_n - 2 \xi \omega_nx_2 + \mu \omega^2_n u\\
+    y &= x_1
+\end{align*}
+dove
+\begin{itemize}
+    \item il parametro $\xi$ è il coefficiente di smorzamento;
+    \item il paramento $\omega_n$ è la pulsazione naturale;
+    \item il parametro $\mu$ è il guadagno.
+\end{itemize}
+
+
+\subsubsection{Sistemi del secondo ordine con poli complessi coniugati}
+\begin{align*}
+    G(s) &= \mu\frac{\omega^2_n}{s^2+2 \xi \omega_n + \omega^2_n} & U(s) &= \frac{k}{s}
+    \\
+    Y(s) &= G(s)U(s) = \mu k \frac{\omega^2_n}{s(s^2+2 \xi \omega_n + \omega^2_n)}
+\end{align*}
+con $|\xi|<1$ e $\omega_n > 0$
+\[
+    y(t) = \mu k(1 - Ae^{-\xi \omega_n t}\sin(\omega t + \varphi))1(t)
+\]
+\begin{align*}
+    A &= \frac{1}{\sqrt{1-\xi^2}} & \omega &= \omega_n\sqrt{1 - \xi^2} & \varphi &= \arccos(\xi)
+\end{align*}
+\begin{align*}
+    y(0) &= \dot y(0) = 0 & \ddot y(0) &= \mu \omega^2_n & y_{\infty} &= \mu k
+\end{align*}
+\begin{align*}
+    T_{a,5} &\approx \frac{3}{\xi \omega_n} & T_{a,1} \approx \frac{4.6}{\xi \omega_n}
+\end{align*}
+Introduciamo un altro parametro che è la \textbf{sovraelongazione percentuale}, definita come
+\begin{equation}
+    S\% = 100 \frac{y_{\T{max}} - y_\infty}{y_{\infty}}
+\end{equation}
+con $y_{\T{max}}$ valore massimo e $y_{\infty}$ valore asintotico della risposta.
+\vspace*{0.1cm}\\
+Per i sistemi del secondo ordine la sovraelongazione percentuale vale
+\begin{equation}
+    S\% = 100 e^{-\pi \xi / \sqrt{1-\xi^2}}
+\end{equation}
+\vspace*{0.2cm}
+Analizziamo ora la risposta
+\[
+    y(t) = \mu k(1 - Ae^{-\xi \omega_n t}\sin(\omega t + \varphi))1(t)
+\]
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Sovraelongazione.png}
+\end{center}
+Dal grafico possiamo evincere che la sovraelongazione percentuale indica di quanto supero il valore stabile prima del transitorio.\\
+Come abbiamo visto prima, la sovraelongazione percentuale dipende solo dallo smorzamento, e, se scegliamo un valore massimo di sovraelongazione $S^*$, possiamo ricavare il valore di $\xi$ necessario:
+\begin{align*}
+    S\% \leq S^* \Longleftrightarrow \xi \geq \frac{\Bigg| \ln \left(\dfrac{S^*}{100}\right) \Bigg|}{\sqrt{\pi^2 + \ln^2 \left( \dfrac{s^*}{100}\right)}}
+\end{align*}
+
+
+\subsubsection{Luogo di punti a tempo di assestamento costante}
+Adesso proviamo a caratterizzare i sistemi del secondo ordine (con poli complessi coniugati) la cui risposta al gradino ha lo stesso tempo di assestamento.
+\vspace*{0.1cm}\\
+Ricordiamo che 
+\begin{itemize}
+    \item abbiamo approssimato $T_{a,5} \approx \frac{3}{\xi \omega_n}$ e $T_{a,1} \approx \frac{4.6}{\xi \omega_n}$
+    \item $-\xi \omega^n$ è la parte reale dei poli complessi coniugati
+\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Secondo_ordine_poli_complessi.png}
+\end{center}
+Quindi sistemi con poli complessi coniugati che hanno la stessa parte reale avranno una risposta al gradino con stesso tempo di assestamento.
+\vspace*{0.2cm}\\
+Sul piano complesso i luoghi di punti a tempo di assestamento costante sono rette parallele all'asse immaginario.
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Tempo_assestamento_costante.png}
+\end{center}
+Nella figura vediamo in verde e in blue due coppie di poli distinti, ma con parte reale uguale; le risposte associate a questi poli sono evidentemente diverse (grafico in blue e grafico in verde), ma hanno lo stesso tempo di assestamento.
+
+
+\subsubsection{Luogo di punti a sovraelongazione costante}
+Proviamo a caratterizzare e i sistemi del secondo ordine (con poli complessi coniugati) la cui risposta al gradino ha la stessa sovraelongazione.
+\vspace*{0.1cm}\\
+Ricordiamo che 
+\begin{itemize}
+    \item $S\% = 100 e^{\frac{-\pi \xi}{\sqrt{1-\xi^2}}}$
+    \item $\arccos(\xi)$ è l'angolo formato con l'asse reale
+\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Secondo_ordine_poli_complessi.png}
+\end{center}
+Quindi sistemi con stesso coefficiente di smorzamento $\xi$ avranno una risposta al gradino con stessa sovraelongazione.
+\vspace*{0.1cm}\\
+Sul piano complesso i luoghi di punti a sovraelongazione costante sono semirette uscenti dall'origine.
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Sovraelongazione_costante.png}
+\end{center}
+
+
+\subsubsection{Mappatura di specifiche temporali nel piano complesso}
+Vogliamo caratterizzare i sistemi del secondo ordine (con poli complessi coniugati) con $S\% \leq S^*$ e $T_{a,5} \leq T^*$. 
+\vspace*{0.1cm}\\
+Le specifiche sono soddisfatte per $\xi \geq \xi^*$ (con $\xi \leq 1$) e $\xi \omega_n \geq \dfrac{3}{T^*}$ 
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Specifiche_temporali.png}
+\end{center}
+i poli complessi coniugati devono trovarsi nella zona colorata.
+
+
+\subsubsection{Sistemi del secondo ordine con poli reali}
+Caso $T_1 \neq T_2$ e $T_1 > T_2$
+\begin{align*}
+    G(s) &= \frac{\mu}{(1+T_1s)(1+T_2s)} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s)U(s) = \frac{\mu k}{s(1+T_1s)(1+T_2s)} 
+\end{align*}
+\begin{align*}
+    &\mu>0 & &k>0 & &T_1>0 & &T_2>0
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Secondo_ordine_poli_reali_1.png}
+\end{center}
+\[
+    y(t) = \mu k \left(1- \frac{T_1}{T_1-T_2}e^{-\frac{t}{T_1}} + \frac{T_2}{T_1-T_2}e^{-\frac{t}{T_2}}\right)1(t)
+\]
+\begin{align*}
+    &y(0) = 0 & &\dot y(0)=0 & &\ddot y(0) = \frac{\mu K}{T_1 T_2} & &y_{\infty}=\mu k
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.27]{Images/Secondo_ordine_poli_reali_2.png}
+\end{center}
+
+
+\subsection{Sistemi a polo dominante}
+Consideriamo $T_1>>T_2$:
+\begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,xmax=20,
+                ymin=0,ymax=2,
+                ticks=none, %elimina i valori numerici
+                axis x line=middle,
+                axis y line=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                ]
+                \addplot[domain=0:20, samples=100]{exp(-(x/15))}node [pos=0.1,anchor=south west]{$e^{-\frac{t}{T_1}}$};
+                \addplot[domain=0:20, samples=100]{exp(-(x/2))}node [pos=0.2,anchor=south west]{$e^{-\frac{t}{T_2}}$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+Nella risposta $e^{-\frac{t}{T_2}}$ tende a zero velocemente, mentre $\dfrac{T_2}{T_1-T_2}<<\dfrac{T_1}{T_1<<T_2} \approx 1$, quindi
+\[
+    y(t) \approx \mu k\left(1-e^{-\frac{t}{T_1}}\right)1(t)
+\]
+
+\begin{center}
+    \includegraphics[scale=0.25]{Images/Polo_dominante.png}
+\end{center}
+\subsubsection{Esempio con coppia di poli complessi coniugati dominanti} 
+\[
+    G(s) = \mu \frac{\omega_n^2}{(s^2+2\xi\omega_n s +\omega_n^2)(s+p)}
+\]
+assumiamo $\dfrac{1}{T} >> \xi \omega_n$, cioè $-\dfrac{1}{T} << - \xi \omega_n$
+\begin{center}
+    \includegraphics[scale=0.22]{Images/Esempio_polo_dominante.png}
+\end{center}
+Prendiamo $U(s) = \dfrac{k}{s}$
+\begin{align*}
+    Y(s) 
+    &= G(s) U(s)\\
+    &=\frac{\mu k \dfrac{\omega_n^2}{T}}{s(s^2+2\xi\omega_ns + \omega_n^2)\left(s+\dfrac{1}{T}\right)}\\
+    &= \frac{k_1}{s} + \frac{k_2}{s+\xi\omega_n+j\omega_n \sqrt{1-\xi^2}} + \frac{\overline{k_2}}{s+\xi\omega_n-j\omega_n \sqrt{1-\xi^2}} + \frac{k_3}{s+\dfrac{1}{T}}
+\end{align*}
+Per $\dfrac{1}{T} >> \xi \omega_n$ la risposta si può approssimare a quella di sistemi del secondo ordine
+\[
+    y(t) \approx \mu k \left(1-A e^{-\xi \omega_n t} \sin(\omega t + \varphi)\right)
+\]
+Quindi, se ho più poli molto distanti dall'asse immaginario, posso sempre approssimare il sistema come un sistema del secondo ordine.
+\vspace*{0.2cm}\\
+Infatti se analizziamo la risposta effettiva del sistema
+\[
+    y(t) = k_1 1(t) + 2M e^{-\ xi \omega_n t} \cos(\omega_n \sqrt{1 - \xi^2}t + \varphi_k) 1(t) + k_3 e^{-t/T} 1(t)
+\]
+il termine $k_3 e^{-t/T} 1(t)$ va a 0 molto velocemente, quindi è trascurabile.
+
+
+
+\subsection{Sistemi del secondo ordine con poli reali coincidenti}
+Caso $T_1=T_2$
+\begin{align*}
+    G(s) &= \frac{\mu}{(1+T_1s)^2} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s)U(s) = \frac{\mu k}{s(1+T_1 s)^2}
+\end{align*}
+$\mu>0, k>0, T_1 >0$
+\[
+    y(t) = \mu l \left( 1- e^{-t/T_1} - \frac{t}{T_1}e^{_-t/T_1} \right) 1(t)
+\]
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Poli_reali_coincidenti.png}
+\end{center}
+I modi presenti sono $1(t)$ (ingresso), $e^{-t/T-1}$ e $t e^{-t/T-1}$ (sistema).
+
+
+
+\subsection{Sistemi del primo ordine con uno zero}
+\begin{align*}
+    G(s) &= \mu \frac{1+ \alpha T s}{1+Ts} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s) U(s) = \mu k \frac{1+ \alpha T s}{s(1+Ts)}
+\end{align*}
+$\mu>0, k>0, T>0$
+\begin{center}
+    \includegraphics[scale=0.17]{Images/Primo_ordine_uno_zero_1.png}
+\end{center}
+\begin{align*}
+    y(t) &= \mu k (1+(\alpha-1) e^{-t/T})1(t)\\
+    y(0) &= \mu \alpha k & y_{\infty} &= \mu k
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.16]{Images/Primo_ordine_uno_zero_2.png}
+\end{center}
+Il grado relativo del sistema è zero, cioè il grado del numeratore è uguale al grado del denominatore; questo implica un collegamento algebrico tra ingresso e uscita, infatti $y(0) \neq 0$; nello spazio degli stati questo equivale ad avere $D \neq 0$.
+
+
+\subsection{Sistemi del secondo ordine con poli reali e zero}
+
+\subsubsection{Sistemi a fase non minima}
+\begin{align*}
+    G(s) &= \mu\frac{1 + \tau s}{(1+T_1s)(1+T_2s)} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s)U(s) = \mu k \frac{1+ \tau s}{s(1+T_1s)(1+T_2s)}
+\end{align*}
+$\mu>0,k>0,T_1>0,T_2>0$
+\begin{align*}
+    y(t) &= \mu k \left( 1 - \frac{T_1-\tau}{T_1-T_2} e^{-t/T-1} + \frac{T_2-\tau}{T_1-T_2}e^{-t/T_2} \right)1(t)\\
+    y(0) &= 0 & \dot y(0) &= \frac{\mu K \tau}{T_1T_2} & y_{\infty} &= \mu k
+\end{align*}
+\textbf{N.B.} il segno della derivata $\dot y(0)$ dipende da $\tau$.
+\vspace*{0.2cm}\\
+Nel caso in cui si abbia $T_1>T_2$ e $\tau<0$ il sistema è detto a \textbf{fase non minima}; in generale è detto sistema a \textbf{fase minima} un sistema caratterizzato da una funzione di trasferimento $G(s)$ con guadagno positivo, poli e zeri a parte reale negativa o nulla e non contenente ritardi (cioè se non ci sono esponenziali).
+\begin{center}
+    \includegraphics[scale=0.16]{Images/Poli_reali_zero_1.png}
+    \includegraphics[scale=0.16]{Images/Poli_reali_zero_2.png}
+\end{center}
+la sottoelongazione $\dot y(0)<0$ indica che il sistema inizialmente risponde in senso contrario rispetto all'ingresso.
+\vspace*{0.1cm}\\
+Una bici, o una moto, che sterza è un sistema a fase non minima.
+\vspace*{0.1cm}\\ 
+Dato un guadagno specifico, esiste \underline{uno e un solo} sistema a \textbf{fase minima} che produce quel guadagno, mentre esistono infiniti sistemi a \textbf{fase non minima} che producono lo stesso. Per più informazioni: \href{https://youtu.be/jGEkmDRsq_M}{What Are Non-Minimum Phase Systems?}.
+
+\subsubsection*{Domanda:}
+Dato un sistema a fase non minima
+\[
+    G(s) = \mu\frac{1 + \tau s}{(1+T_1 s)(1+T_2 s)} \tag*{$\tau < 0$}
+\]  
+posso progettare una $R(s) = \dfrac{1}{1+ \tau s}$ tale che
+\[
+    R(s) G(s) = \mu \frac{1+ \tau s}{(1+T_1 s)(1+T_2 s)(1+ \tau s)}
+\]  
+così da eliminare lo zero positivo?\\
+Ovviamente no, perché $1+ \tau s$ è un  modello della realtà, quindi, anche se matematicamente si può semplificare, nella realtà non si annullerà mai perfettamente. 
+
+
+\subsubsection{Sistemi a fase minima con sovraelongazione}
+Se $\tau>T_1>T_2$ abbiamo un sistema a \textbf{fase minima} con una sovraelongazione
+\begin{align*}
+    G(s) &= \mu\frac{1 + \tau s}{(1+T_1s)(1+T_2s)} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s)U(s) = \mu k \frac{1+ \tau s}{s(1+T_1s)(1+T_2s)}
+\end{align*}
+$\mu>0,k>0,T_1>0,T_2>0$
+
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Fase_minima_1.png}
+\end{center}
+
+\begin{align*}
+    y(t) &= \mu k \left( 1 - \frac{T_1-\tau}{T_1-T_2} e^{-t/T-1} + \frac{T_2-\tau}{T_1-T_2}e^{-t/T_2} \right)1(t)\\
+    y(0) &= 0 & \dot y(0) &= \frac{\mu K \tau}{T_1T_2} & y_{\infty} &= \mu k
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Fase_minima_2.png}
+\end{center}
+\textbf{Nota:} è presenta una sovraelongazione tanto più accentuata quanto più lo zero è vicino all'origine (cioè al crescere di $\tau$).
+
+
+\subsubsection{Sistemi a fase minima con code di assestamento}
+Se  $\tau \approx T_1 >> T_2$ abbiamo un sistema a fase minima con code di assestamento.
+\begin{align*}
+    G(s) &= \mu\frac{1 + \tau s}{(1+T_1s)(1+T_2s)} & U(s) &= \frac{k}{s}\\
+    Y(s) &= G(s)U(s) = \mu k \frac{1+ \tau s}{s(1+T_1s)(1+T_2s)}
+\end{align*}
+$\mu>0,k>0,T_1>0,T_2>0$
+\begin{center}
+    \includegraphics[scale=0.215]{Images/Fase_minima_code_ass_1.png}
+\end{center}
+\begin{align*}
+    y(t) &= \mu k \left( 1 - \frac{T_1-\tau}{T_1-T_2} e^{-t/T-1} + \frac{T_2-\tau}{T_1-T_2}e^{-t/T_2} \right)1(t)\\
+    y(0) &= 0 & \dot y(0) &= \frac{\mu K \tau}{T_1T_2} & y_{\infty} &= \mu k
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Fase_minima_code_ass_2.png}
+\end{center}
+A causa della non perfetta cancellazione polo/zero ($\tau \approx T_1$) il modo "lento" $e^{-t/T_1}$ è presente e il suo transitorio si esaurisce lentamente.
+
+
+
+
+
+
+
+
+\section{Risposta in frequenza}
+\subsection{Risposta a un segnale di ingresso sinusoidale}
+Dato un sistema lineare tempo invariante SISO con funzione di trasferimento $G(s)$ vogliamo calcolare l'uscita in corrispondenza di un ingresso sinusoidale
+\begin{equation}
+    u(t) = U \cos(\omega t + \varphi)
+\end{equation}
+la trasformata di Laplace di questo segnale è
+\begin{equation}
+    U(s) = U \frac{s \cos(\varphi) - \omega \sin(\varphi)}{s^2 + \omega^2}
+\end{equation}
+quindi
+\begin{equation}\label{trasformata sinusoide}
+    Y(s) = G(s) U(s) = G(s) U \frac{s \cos(\varphi) - \omega \sin(\varphi)}{s^2 + \omega^2}
+\end{equation}
+Consideriamo $G(s)$ con poli \textbf{distinti a parte reale negativa (BIBO stabile)}. Sviluppando in fratti semplici si ha
+\begin{equation}
+    Y(s) = \sum_{i=1}^n \underbrace{\frac{k_i}{s+p_i}}_{Y_1(s)} + \underbrace{\frac{k_u}{s-j \omega} + \frac{\overline{k}_u}{s+j \omega}}_{Y_2(s)}
+\end{equation}
+Eseguiamo lo sviluppo di Heaviside sulla \ref{trasformata sinusoide}:
+\begin{align}
+    Y(s) = G(s) U(s) &= G(s) U \frac{s \cos(\varphi) - \omega \sin(\varphi)}{s^2 + \omega^2}
+    \\
+    &=\frac{N(s)U(s \cos(\varphi) - \omega \sin(\varphi))}{(s+p_1)(s+p_2) \dots (s+p_n)(s^2 + \omega^2)}
+    \\
+    &= \frac{k_1}{s+p_1} + \frac{k_2}{s+p_2} + \dots + \frac{k_n}{s+p_n} + \frac{k_u}{s-j \omega} + \frac{\overline{k}_u}{s+j \omega}
+\end{align}
+quindi, antitrasformando
+\begin{align}
+    y(t) &= k_1 e^{-p_1t}1(t) + \dots k_n e^{-p_n t}1(t) + 2 |k_u|\underbrace{e^{- \sigma t}}_{\sigma = 0} \cos (\omega t + \arg(k_u))1(t)
+    \\
+    &= \underbrace{\sum_{i=1}^n k_i e^{-p_i t}1(t)}_{y_1(t)} + \underbrace{2 |k_u| \cos (\omega t + \arg(k_u))1(t)}_{y_2(t)}
+\end{align}
+Poiché i poli di $G(s)$ sono a parte reale negativa, i contributi $e^{-p_i t}1(t)$ sono tutti convergenti a zero. Pertanto $y_1(t) \rightarrow 0$ per $t \rightarrow \infty$.
+\vspace*{0.1cm}\\
+Il residuo $k_u$ è dato da
+\begin{align*}
+    k_u &= (s - j \omega) Y(s) \bigg|_{s = j\omega}
+    \\
+    &= U G(s) \frac{s \cos(\varphi) - \omega \sin(\varphi)}{s+j \omega}\bigg|_{s = j\omega}
+    \\
+    &= U G(j\omega) \frac{j\omega \cos(\varphi) - \omega \sin(\varphi)}{j\omega+j \omega}
+    \\
+    &=U G(j\omega) \frac{j \cos(\varphi) - \sin(\varphi)}{2j} 
+    \\
+    &= U G(j \omega) \frac{\cos(\varphi) + j\sin(\varphi)}{2}
+    \\
+    e^{j\varphi} = \cos(\varphi)+j \sin(\varphi) \Longrightarrow &= U G(j \omega) \frac{e^{j \varphi}}{2}
+    \\
+    &= \frac{U|G(j \omega)|}{2} e^{j (\arg(G(j\omega)) + \varphi)}
+\end{align*}
+dove abbiamo scritto $G(j \omega) = |G(j \omega)| e^{j \arg(G(j\omega))}$.
+\vspace*{0.1cm}\\
+Ora che abbiamo calcolato $k_u$ possiamo sostituirlo nell' espressione di $y(t)$
+\begin{equation}
+    y(t) = y_1(t) + U |G(j \omega)| \cos(\omega t + \varphi + \arg(G(j\omega)))
+\end{equation}
+Siccome $y_1(t) \rightarrow 0$ per $t \rightarrow \infty$, l'uscita $y(t)$ converge a 
+\begin{equation}
+    y_2(t) = U |G(j \omega)| \cos\left(\omega t + \varphi + \arg(G(j\omega))\right)
+\end{equation}
+ovvero, per $t$ sufficientemente grande si ha
+\begin{equation}
+    y(t) \approx U |G(j\omega)| \cos(\omega t + \varphi + \arg(G(j \omega)))
+\end{equation}
+quest'espressione viene chiamata \textbf{risposta a regime  permanente}
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Risposta_regime_perm.png}
+\end{center}
+
+\subsubsection{Teorema}
+Se a un sistema lineare tempo invariante con funzione di trasferimento $G(s)$ avente poli a parte reale negativa si applica l'ingresso sinusoidale
+\[
+    u(t) = U \cos(\omega t + \varphi)
+\]
+l'uscita, a transitorio esaurito, è data da
+\begin{equation}
+    y_2(t) = U |G(j\omega)| \cos(\omega +t + \varphi + \arg(G(j \omega)))
+\end{equation}
+
+
+\subsection{Risposta a segnali periodici sviluppabili in serie di Fourier}
+Consideriamo un segnale d'ingresso $u(t)$ periodico, cioè $\exists T>0$ tale che $\forall t \geq 0 \ u(t+T) = u(t)$, che può essere sviluppato in serie di Fourier
+\begin{equation}
+    u(t) = U_0 + 2 \sum_{n=1}^{+ \infty} |U_n| \cos \left(n \omega_0 t + \arg(U_n)\right)
+\end{equation}
+con $\omega_0 = \dfrac{2 \pi}{T}$ e 
+\[
+    U_n = \frac{1}{T} \int_{t_0}^{t_0+T} u(t) e^{-j n \omega_0 t} \ dt  \tag*{$n=0,1,...$}
+\]
+In base a quanto visto per un ingresso sinusoidale e sfruttando il principio di sovrapposizione degli effetti per sistemi BIBO stabili si può dimostrare che per $t$ elevati
+\begin{equation}
+    y(t) \approx Y_0 + 2 \sum_{n=1}^{+ \infty} |Y_n| \cos(n \omega_0 t + \arg(Y_n))
+\end{equation}
+con $\omega_0 = \dfrac{2 \pi}{T}$ e 
+\[
+    Y_n = G(jn\omega_0)U_n  \tag*{$n=0,1,...$}
+\]
+Il risultato appena visto può essere schematizzato come segue.\\
+Dato in ingresso un segnale periodico, esso può essere rappresentato come la somma delle armoniche dello sviluppo in serie di Fourier
+\begin{center}
+    \includegraphics[scale=0.12]{Images/Fourier_1.png}
+\end{center}
+Sfruttando la sovrapposizione degli effetti tale schema è equivalente a considerare lo schema seguente per $t$ elevati
+\begin{center}
+    \includegraphics[scale=0.11]{Images/Fourier_2.png}
+\end{center}
+
+
+
+\subsection{Risposta a segnali dotati di trasformata di Fourier}
+Dato un segnale non periodico dotato di trasformata di Fourier, possiamo scriverlo come
+\begin{equation}
+    u(t) = \frac{1}{2\pi} \int_{- \infty}^{+\infty} 2|U(j\omega)| \cos(\omega t + \arg(U(j\omega))) \ d\omega
+\end{equation}
+con 
+\[
+    U(j\omega) = \int_{-\infty}^{+\infty} u(t) e^{-j \omega t} \ dt
+\]
+Ovvero l'ingresso è scomponibile come una infinità non numerabile di armoniche con valori di $\omega$ reali maggiori o uguali a zero.
+\vspace*{0.1cm}\\
+Quindi se il sistema è BIBO stabile per $t$ elevati
+\begin{equation}
+    y(t) \approx \frac{1}{2 \pi} \int_{- \infty}^{+\infty} 2|Y(j\omega)| \cos(\omega t + \arg(Y(j\omega))) \ d\omega
+\end{equation}
+con 
+\[
+    Y(j\omega) = G(j \omega)U(j\omega)    
+\]
+
+
+
+\subsection{Richiami}
+\subsubsection{Spettro di un segnale}
+Ogni segnale reale si può ottenere sommando opportune onde sinusoidali
+\begin{center}
+    \includegraphics[scale=0.23]{Images/Spettro.png}
+\end{center}
+Uno stesso segnale può essere quindi visto equivalentemente nel dominio del tempo ($y(t)$) o delle frequenze ($Y(j\omega)$). Le funzioni $y(t)$ e $Y(j\omega)$ sono ugualmente informative e offrono due prospettive complementari per osservare lo stesso fenomeno.
+\vspace*{0.1cm}\\
+La pulsazione $\omega$ e la frequenza $f$ sono legate dalla relazione $\omega = 2\pi f$.
+
+
+
+
+
+\subsection{Risposta in frequenza}
+La funzione complessa $G(j\omega)$ ottenuta valutando $G(s)$ per $s = j \omega$ è detta \textit{risposta in frequenza}.
+\begin{equation}
+    G(s) \bigg|_{s=j\omega} = G(j\omega)
+\end{equation}
+La risposta in frequenza viene estesa anche a sistemi non asintoticamente stabili.
+\vspace*{0.1cm}\\
+Per un certo valore di $\omega$, $G(j\omega)$ è un numero complesso
+\begin{center}
+    \includegraphics[scale=0.12]{Images/Risposta_in_frequenza_1.png}
+\end{center}
+
+
+
+\subsubsection{Identificazione sperimentale della risposta in frequenza (approccio data-driven)}
+Nel caso in cui la risposta in frequenza non sia nota possiamo sfruttare i risultati precedenti per ricavarla sperimentalmente.
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Risposta_in_frequenza_2.png}
+\end{center}
+Diciamo che con questo tipo di approccio riusciamo a stimare la $G(j\omega)$ (non la $G(s)$!).
+
+
+\subsubsection{Rappresentazione della risposta in frequenza}
+Vi sono diversi modi di rappresentare la risposta in frequenza. Uno dei modi più usati sono i \textbf{diagrammi di Bode}, in cui si rappresentano separatamente $|G(j\omega)|$ e $\arg(G(j\omega))$ in funzione di $\omega$. Nei diagrammi di Bode si utilizza una scala logaritmica in base dieci per l'ascissa, dove è riportata la pulsazione $\omega$. In particolare, nei diagrammi di Bode si chiama \textit{decade} l'intervallo tra due pulsazioni che hanno un rapporto tra loro pari a dieci.\\
+Per come abbiamo definito i diagrammi, segue che la pulsazione nulla non compare nell'asse "finito" (si può avere pulsazione nulla solo a $-\infty$).
+\vspace*{0.2cm}\\
+Nel tracciamento dei diagrammi di Bode conviene scrivere la funzione $G(s)$ nella forma fattorizzata (\ref{Forma di bode}), qui riportata
+\[
+    G(s) = \frac{\mu \prod_i (1 + \tau_i s)\prod_i (1 + \frac{2\zeta_i}{\alpha_{ni}} + \frac{s^2}{\alpha^2_{ni}})}
+    {s^g \prod_i (1 + T_i s)\prod_i (1 + \frac{2\xi_i}{\omega_{ni}} + \frac{s^2}{\omega^2_{ni}})}
+\]
+e la risposta in frequenza associata corrispondente è
+\[
+    G(j\omega) = \frac{\mu \prod_i (1 + j\omega\tau_i)\prod_i (1 + 2j\zeta_i\frac{\omega}{\alpha_{ni}} - \frac{\omega^2}{\alpha^2_{ni}})}
+    {(j\omega)^g \prod_i (1 + j\omega T_i )\prod_i (1 + 2j\xi_i\frac{\omega}{\omega_{ni}} - \frac{\omega^2}{\omega^2_{ni}})}
+\]
+Il diagramma delle ampiezze è espresso in \textbf{decibel}: $|G(j\omega)|_{dB} = 20 \log|G(j\omega)|$.\\
+Il diagramma delle fasi è espresso in gradi: $\arg(G(j\omega))$
+
+
+\subsubsection{Proprietà dei numeri complessi e logaritmi}
+Dati due numeri complessi $a\in \mathbb{C}$ e $b \in \mathbb{C}$ si ha
+\[
+    |ab| = |a||b|
+\]
+e
+\begin{align*}
+    \log(|a||b|) &= \log(|a|) + \log(|b|) & \arg(ab) &= \arg(a) + \arg(b)\\
+    \log\left(\frac{|a|}{|b|}\right) &= \log(|a|) - \log(|b|) & \arg\left(\frac{a}{b}\right) &= \arg(a) - \arg(b)\\\
+    \log(|a|^k) &= k\log(|a|) & \arg(a^k) &= k\arg(a)
+\end{align*}
+
+
+\subsubsection{Esempio operazioni in decibel}
+Definiamo il \textit{modulo in decibel} di un numero $a$
+\[
+    |a|_{dB} = 20\log_{10}|a|
+\]
+\begin{center}
+    \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,xmax=20,
+                ymin=-2,ymax=2,
+                %ticks=none, %elimina i valori numerici
+                xtick={1},
+                ytick={0},
+                xticklabels={$1$},
+                axis x line=middle,
+                axis y line=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                ]
+                \addplot[domain=0:20, samples=100]{log10(x)}node [pos=0.3,anchor=south]{$\log(x)$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+inoltre
+\begin{align*}
+    |a| \geq 1 &\Longrightarrow |a|_{dB} \geq 0\\
+    0 \leq |a| \leq 1 &\Longrightarrow |a|_{db} \leq 0
+\end{align*}
+
+
+\subsection{Diagrammi di Bode}
+\subsubsection{Diagramma del modulo}
+Partiamo col calcolare il valore del modulo della risposta in frequenza in Decibel
+\[
+    |G(j\omega)|_{dB} = 20 \log_{10}|G(j\omega)|
+\]
+Prendiamo una risposta in frequenza così definita
+\[
+    G(j\omega) = \mu \frac{(1+j\omega\tau) \left(1 + 2 \frac{\zeta}{\alpha_n}j\omega - \frac{\omega^2}{\alpha_n^2}\right)}{j\omega(1+j\omega T)\left(1 + \frac{2 \xi}{\omega_n}j\omega - \frac{\omega^2}{\omega_n^2} \right)}
+\]
+\begin{align*}
+    |G(j\omega)|_{dB} &= 20 \log|G(j\omega)|\\
+    &=20\log|\mu| + 20 \log|1+j\omega\tau| + 20 \log\left|1+2 \frac{\zeta}{\alpha_n}j\omega - \frac{\omega^2}{\alpha_n^2}\right| - 20 \log|j\omega| - 20 \log|1+j\omega T| - 20 \log\left|1+\frac{2\xi}{\omega_n}j\omega - \frac{\omega^2}{\omega_n^2}\right|\\
+    &=|\mu|_{dB} + |1 + j\omega\tau|_{dB}  +\left|1+2 \frac{\zeta}{\alpha_n}j \omega - \frac{\omega^2}{\alpha_n^2} \right|_{dB} - |j\omega|_{dB} - |1+j\omega T|_{dB} - \left| 1+ \frac{2\xi}{\omega_n}j\omega - \frac{\omega^2}{\omega_n^2} \right|_{dB}
+\end{align*}
+
+
+\subsubsection{Diagramma della fase}
+\begin{align*}
+    \arg(G(j\omega)) &= \arg \mu - g \arg(j\omega) + \sum_{i} \arg(1+j\omega\tau_i) + \sum_i \arg\left(1 + 2 j \zeta_i \frac{\omega}{\alpha_{n,1}} - \frac{\omega^2}{\alpha^2_{n,i}}  \right) - \sum_{i} \arg(1+j\omega T_i) - \sum_i \arg\left(1 + 2 j \xi_i \frac{\omega}{\alpha_{n,1}} - \frac{\omega^2}{\omega^2_{n,i}}  \right)
+\end{align*}
+
+
+
+\subsubsection{Contributi elementari}
+Possiamo quindi studiare l'andamento dei seguenti contributi elementari
+\begin{align*}
+    G_a(j\omega) &=\mu\\
+    G_b(j\omega) &= \frac{1}{(j\omega)^g}\\
+    G_c(j\omega) &= (1+j\omega\tau_i) & G_c(j\omega) &=\frac{1}{1+j\omega T_i}\\
+    G_d(j\omega) &= \left( 1+2j \zeta_i \frac{\omega}{\alpha_{n,1} }- \frac{\omega^2}{\alpha^2_{n,1}} \right) & G_d(j\omega) &= \frac{1}{\left( 1+2j \zeta_i \frac{\omega}{\alpha_{n,1} }- \frac{\omega^2}{\alpha^2_{n,1}} \right)}
+\end{align*}
+La rappresentazione di questi diagrammi avviene su carte logaritmiche che vanno per \textit{decade}, cioè per potenze di dieci.\\
+
+
+
+\subsubsection{Guadagno statico}
+\begin{align*}
+    G_a(j\omega) &=\mu & |G_a(j\omega)|_{dB} &= 20\log|\mu| & \arg(G(j\omega)) = \arg(\mu)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_guadagno_statico_1.png}
+\end{center}
+Per quanto riguarda il diagramma dell'ampiezza, se $|\mu| \geq 1$ allora $20\log|\mu\ \geq 0$, se $|\mu| <1$ allora $20\log|\mu\ < 0$.\\
+Per il diagramma della fase invece, se $\mu >0$ allora $\arg(\mu)=0$, se $\mu <0$ allora $\arg(\mu)=-180^\circ$.
+
+
+\subsubsection{Zeri nell'origine}
+Consideriamo uno zero nell'origine (cioè $g=-1$)
+\begin{align*}
+    G_b(j\omega) &= \frac{1}{(j\omega)^g} = j\omega & |G_b(j\omega)|_{db} &= 20 \log \omega & \arg(G_b(j \omega)) &= \arg(j\omega)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zero_origine.png}
+\end{center}
+La retta che definisce l'ampiezza $\log \omega \mapsto 20 \log \omega$ ha pendenza $20 \ dB/dec$; se ho $g$ zeri nell'origine allora la pendenza della retta sarà $20g \ dB/dec$
+
+
+\subsubsection{Poli nell'origine}
+Consideriamo un polo nell'origine (cioè $g=1$)
+\begin{align*}
+    G_b(j\omega) &= \frac{1}{(j\omega)^g} = \frac{1}{j\omega} & |G_b(j\omega)|_{db} &= -20 \log \omega & \arg(G_b(j \omega)) &= -\arg(j\omega)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_poli_origine.png}
+\end{center}
+Anche in questo caso, se ho $g$ poli nell'origine allora la pendenza della retta sarà $-20  dB/dec$.\\
+Per quanto riguarda la fase $-j \omega$ è un punto sul semiasse immaginario negativo $\forall \omega>0$, quindi la fase è $-90^\circ$.
+
+
+
+\subsubsection{Zero reale (ampiezza)}
+Consideriamo uno zero reale
+\[
+    G_c(j\omega) = 1 + j \omega \tau  
+\]
+\[
+    |G_c(j\omega)|_{dB} = 20 \log \sqrt{1 + \omega^2\tau^2} \approx
+    \begin{cases}
+        20 \log 1 = 0 &\omega << \frac{1}{|\tau|}\\
+        20 \log \omega |\tau| = -20 \log \frac{1}{|\tau|} + 20 \log \omega &\omega >> \frac{1}{|\tau|}
+    \end{cases}
+\]
+\begin{align*}
+    |G_c\left(j \frac{1}{|\tau|} \right)|_{dB} &= 20 \log \sqrt{1+\frac{1}{|\tau|^2}\tau^2}\\
+    &= 20 \log \sqrt{2} \approx 3
+\end{align*}
+per $\omega = \frac{1}{|\tau|}$ abbiamo lo scostamento massimo.
+
+
+\subsubsection{Zero reale nagativo (fase)}
+Consideriamo uno zero reale negativo
+\[
+    G_c(j\omega) = 1 + j \omega \tau  \tag*{$\tau > 0$}
+\]
+\[
+    \arg(G_c(j\omega)) = \arg(1+j\omega \tau) \approx 
+    \begin{cases}
+        0 &\omega << \frac{1}{\tau}\\
+        90^\circ & \omega >> \frac{1}{\tau}
+    \end{cases}    
+\]
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zero_reale_negativo.png}
+\end{center}
+il cambio di fase inizia circa una decade prima e finisce circa una decade dopo la pulsazione di taglio $\omega = \frac{1}{\tau}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
