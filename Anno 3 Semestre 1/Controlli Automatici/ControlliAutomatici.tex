@@ -53,12 +53,12 @@ code to write section, subsection and subsubsection title in a specific color
 }
 
 
-\geometry{ 
- a4paper,
- left=10mm,
- right=10mm,
- top=10mm
- }
+%\geometry{ 
+% a4paper,
+% left=10mm,
+% right=10mm,
+% top=10mm
+% }
  
 \lstdefinestyle{mystyle}{ 
 bracketsstyle=\color{red}
@@ -1588,8 +1588,14 @@ Essendo una traiettoria vale
 Sviluppando in serie di Taylor (con $f$ e $h$ sufficientemente regolari) in $(xe , ue )$ \footnote[1]{i termini del tipo $\frac{\partial}{\partial x}f(x,u)$ vengono chiamati \textit{Jacobiani}}
 \begin{align*}
     \frac{d}{dt}(x_e + \tilde{x}(t)) &= \underbrace{f(x_e,u_e)}_{0} + \underbrace{\frac{\partial}{\partial x}f(x,u)\bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{A_e} \tilde{x}(t) + \underbrace{\frac{\partial}{\partial u}f(x,u)\bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{B_e} \tilde{u(t)} + \T{term. ord. sup.}\\
-    y_e+\tilde{y}(t) &= h(x_e,u_e) + \frac{\partial}{\partial x}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} \tilde{x}(t) + \frac{\partial}{\partial u}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} \tilde{u}(t) + \T{term. ord. sup.}
+    y_e+\tilde{y}(t) &= h(x_e,u_e) + \underbrace{\frac{\partial}{\partial x}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{C_e} \tilde{x}(t) + \underbrace{\frac{\partial}{\partial u}h(x,u) \bigg|_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}}_{D_e} \tilde{u}(t) + \T{term. ord. sup.}
 \end{align*} 
+\begin{align*}
+    A &= \frac{\partial f(x,u)}{\partial x} \Biggl |_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} &
+    B &= \frac{\partial f(x,u)}{\partial u} \Biggl |_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}\\
+    C &= \frac{\partial g(x,u)}{\partial x} \Biggl |_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}} &
+    D &= \frac{\partial g(x,u)}{\partial u} \Biggl |_{\substack{\text{$x=x_e$} \\ \text{$u=u_e$}}}\\
+\end{align*}
 quindi
 \begin{align*}
     \tilde{\dot x}(t) &= A_e \tilde{x}(t) + B_e \tilde{u}(t) + \T{term. ord. sup.} \tag*{$\tilde{x}(0) = \tilde{x}_0$}\\
@@ -1607,9 +1613,11 @@ Quindi le due equazioni di prima si possono approssimare
 \end{align*}
 Il sistema linearizzato è
 \begin{align*}
-    \Delta \dot x(t) &= A \Delta x(t) + B \Delta u(t)\\
-    \Delta y(t) &= C \Delta x(t) + D \Delta u(t)
-\end{align*} 
+    \Delta \dot x(t) &= A_e \Delta x(t) + B_e \Delta u(t)\\
+    \Delta y(t) &= C_e \Delta x(t) + D_e \Delta u(t)
+\end{align*}
+\textbf{N.B.} il pedice 'e' è una puntualizzazione ulteriore per sottolineare il fatto che le matrici sono valutate all'equilibrio, in altri testi potrebbero non avere questo pedice.
+\vspace*{0.2cm}\\
 Le traiettorie del sistema non lineare soddisfano
 \begin{align*}
     x(t) &= x_e + \tilde{x}(t) \approx x_e + \Delta x(t)\\
@@ -2982,7 +2990,7 @@ Caso $T_1 \neq T_2$ e $T_1 > T_2$
 
 
 \subsection{Sistemi a polo dominante}
-Consideriamo $T_1>>T_2$:
+Consideriamo $T_1\gg T_2$:
 \begin{center}
     \begin{tikzpicture}
             \begin{axis}[
@@ -2999,7 +3007,7 @@ Consideriamo $T_1>>T_2$:
             \end{axis}
         \end{tikzpicture}
     \end{center}
-Nella risposta $e^{-\frac{t}{T_2}}$ tende a zero velocemente, mentre $\dfrac{T_2}{T_1-T_2}<<\dfrac{T_1}{T_1<<T_2} \approx 1$, quindi
+Nella risposta $e^{-\frac{t}{T_2}}$ tende a zero velocemente, mentre $\dfrac{T_2}{T_1-T_2}\ll\dfrac{T_1}{T_1\ll T_2} \approx 1$, quindi
 \[
     y(t) \approx \mu k\left(1-e^{-\frac{t}{T_1}}\right)1(t)
 \]
@@ -3011,7 +3019,7 @@ Nella risposta $e^{-\frac{t}{T_2}}$ tende a zero velocemente, mentre $\dfrac{T_2
 \[
     G(s) = \mu \frac{\omega_n^2}{(s^2+2\xi\omega_n s +\omega_n^2)(s+p)}
 \]
-assumiamo $\dfrac{1}{T} >> \xi \omega_n$, cioè $-\dfrac{1}{T} << - \xi \omega_n$
+assumiamo $\dfrac{1}{T} \gg \xi \omega_n$, cioè $-\dfrac{1}{T} \ll - \xi \omega_n$
 \begin{center}
     \includegraphics[scale=0.22]{Images/Esempio_polo_dominante.png}
 \end{center}
@@ -3022,7 +3030,7 @@ Prendiamo $U(s) = \dfrac{k}{s}$
     &=\frac{\mu k \dfrac{\omega_n^2}{T}}{s(s^2+2\xi\omega_ns + \omega_n^2)\left(s+\dfrac{1}{T}\right)}\\
     &= \frac{k_1}{s} + \frac{k_2}{s+\xi\omega_n+j\omega_n \sqrt{1-\xi^2}} + \frac{\overline{k_2}}{s+\xi\omega_n-j\omega_n \sqrt{1-\xi^2}} + \frac{k_3}{s+\dfrac{1}{T}}
 \end{align*}
-Per $\dfrac{1}{T} >> \xi \omega_n$ la risposta si può approssimare a quella di sistemi del secondo ordine
+Per $\dfrac{1}{T} \gg \xi \omega_n$ la risposta si può approssimare a quella di sistemi del secondo ordine
 \[
     y(t) \approx \mu k \left(1-A e^{-\xi \omega_n t} \sin(\omega t + \varphi)\right)
 \]
@@ -3133,7 +3141,7 @@ $\mu>0,k>0,T_1>0,T_2>0$
 
 
 \subsubsection{Sistemi a fase minima con code di assestamento}
-Se  $\tau \approx T_1 >> T_2$ abbiamo un sistema a fase minima con code di assestamento.
+Se  $\tau \approx T_1 \gg T_2$ abbiamo un sistema a fase minima con code di assestamento.
 \begin{align*}
     G(s) &= \mu\frac{1 + \tau s}{(1+T_1s)(1+T_2s)} & U(s) &= \frac{k}{s}\\
     Y(s) &= G(s)U(s) = \mu k \frac{1+ \tau s}{s(1+T_1s)(1+T_2s)}
@@ -3434,7 +3442,7 @@ Per il diagramma della fase invece, se $\mu >0$ allora $\arg(\mu)=0$, se $\mu <0
 
 
 \subsubsection{Zeri nell'origine}
-Consideriamo uno zero nell'origine (cioè $g=-1$)
+Consideriamo una risposta con uno zero nell'origine (cioè $g=-1$)
 \begin{align*}
     G_b(j\omega) &= \frac{1}{(j\omega)^g} = j\omega & |G_b(j\omega)|_{db} &= 20 \log \omega & \arg(G_b(j \omega)) &= \arg(j\omega)
 \end{align*}
@@ -3445,7 +3453,7 @@ La retta che definisce l'ampiezza $\log \omega \mapsto 20 \log \omega$ ha penden
 
 
 \subsubsection{Poli nell'origine}
-Consideriamo un polo nell'origine (cioè $g=1$)
+Consideriamo una risposta con un polo nell'origine (cioè $g=1$)
 \begin{align*}
     G_b(j\omega) &= \frac{1}{(j\omega)^g} = \frac{1}{j\omega} & |G_b(j\omega)|_{db} &= -20 \log \omega & \arg(G_b(j \omega)) &= -\arg(j\omega)
 \end{align*}
@@ -3458,15 +3466,15 @@ Per quanto riguarda la fase $-j \omega$ è un punto sul semiasse immaginario neg
 
 
 \subsubsection{Zero reale (ampiezza)}
-Consideriamo uno zero reale
+Consideriamo una risposta con uno zero reale
 \[
     G_c(j\omega) = 1 + j \omega \tau  
 \]
 \[
     |G_c(j\omega)|_{dB} = 20 \log \sqrt{1 + \omega^2\tau^2} \approx
     \begin{cases}
-        20 \log 1 = 0 &\omega << \frac{1}{|\tau|}\\
-        20 \log \omega |\tau| = -20 \log \frac{1}{|\tau|} + 20 \log \omega &\omega >> \frac{1}{|\tau|}
+        20 \log 1 = 0 &\omega \ll \frac{1}{|\tau|}\\
+        20 \log \omega |\tau| = -20 \log \frac{1}{|\tau|} + 20 \log \omega &\omega \gg \frac{1}{|\tau|}
     \end{cases}
 \]
 \begin{align*}
@@ -3477,53 +3485,201 @@ per $\omega = \frac{1}{|\tau|}$ abbiamo lo scostamento massimo.
 
 
 \subsubsection{Zero reale nagativo (fase)}
-Consideriamo uno zero reale negativo
+Consideriamo una una risposta con uno zero reale negativo
 \[
     G_c(j\omega) = 1 + j \omega \tau  \tag*{$\tau > 0$}
 \]
 \[
     \arg(G_c(j\omega)) = \arg(1+j\omega \tau) \approx 
     \begin{cases}
-        0 &\omega << \frac{1}{\tau}\\
-        90^\circ & \omega >> \frac{1}{\tau}
+        0 &\omega \ll \frac{1}{\tau}\\
+        90^\circ & \omega \gg \frac{1}{\tau}
+    \end{cases}    
+\]
+Se $\omega \rightarrow 0$ allora $\arg(1+j\omega\tau) \approx \arg(1)=0$
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_zero_reale_negativo_1.png}
+\end{center}
+se $\omega \gg \dfrac{1}{\tau}$ allora graficamente
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_zero_reale_negativo_2.png}
+\end{center}
+
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zero_reale_negativo_3.png}
+\end{center}
+il cambio di fase inizia circa una decade prima e finisce circa una decade dopo la pulsazione di taglio $\omega = \dfrac{1}{\tau}$.
+\begin{center}
+    \includegraphics[scale=0.2]{Images/Diagramma_zero_reale_negativo_4.png}
+\end{center}
+$\dfrac{1}{5} \dfrac{1}{\tau} = 0.2 \dfrac{1}{\tau} = 2 \cdot 10^{-1} \dfrac{1}{\tau}$, il doppio in scala logaritmica è $\dfrac{1}{3}$ di una decade.
+
+
+\subsubsection{Zero reale positivo (fase)}
+Consideriamo $G_c(j\omega) = 1 + j\omega \tau,\  \tau <0$ (cioè una risposta con uno zero reale positivo)
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_zero_reale_positivo_1.png}
+\end{center}
+\[
+    \arg(G(j\omega)) = \arg(1+j\omega\tau) \approx 
+    \begin{cases}
+        0 & \omega \ll \frac{1}{|\tau|}\\
+        -90^{\circ} & \omega \gg \frac{1}{|\tau|}
+    \end{cases}   
+\]
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zero_reale_positivo_2.png}
+\end{center}
+
+
+\subsubsection{Polo reale}
+Consideriamo $G_c(j\omega) = \frac{1}{1+j\omega T}$ (cioè una risposta con un polo reale)
+\begin{align*}
+    |G_c(j\omega)|_{dB} &= 20 \log \left|\frac{1}{1+j\omega \tau}\right|\\
+    &= -20 \log |1+j\omega\tau|
+\end{align*}
+\begin{align*}
+    |G_c(j\omega)|_{dB} &= -20 \log \sqrt{1+\omega^2T^2} & \arg(G_c(j\omega)) = -\arg(1+j\omega T)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_polo_reale.png}
+\end{center}
+Il diagramma è uguale al diagramma dello zero ma ribaltato rispetto all'asse reale (consistentemente con il segno di $T$).
+
+
+
+\subsubsection{Polo reale nagativo}
+Consideriamo $G_c(j\omega) = \dfrac{1}{1+j\omega T}, \ T>0$ (cioè una risposta con un polo reale negativo)
+\begin{align*}
+    |G_c(j\omega)|_{dB} &= -20 \log \sqrt{1+\omega^2T^2} & \arg(G_c(j\omega)) = -\arg(1+j\omega T)
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_polo_reale_negativo_1.png}
+\end{center}
+Fino a $\dfrac{1}{T}$, \textbf{pulsazione di taglio}, si ha un andamento costante a $0 dB $, cioè il modulo della sinusoide in uscita non cambia. A partire da $\dfrac{1}{T}$ si ha una retta $\log\omega \mapsto 20 \log \dfrac{1}{|T|} - 20 \log \omega$ con pendenza $-20 \ dB/dec$.\\
+Lo scostamento massimo (tra diagramma asintotico e diagramma reale) si ha in $\omega = \dfrac{1}{T}$ dove
+\begin{align*}
+    |G_c(j\omega)|_{dB} &= -20 \log \sqrt{1+1}\\
+    &= -20 \log \sqrt{2} \approx -3
+\end{align*}
+Il cambio di fase inizia circa una decade prima e finisce circa una
+decade dopo la pulsazione di taglio $\omega = \dfrac{1}{T}$. 
+
+
+
+\subsubsection{Zeri complessi coniugati (ampiezza)}
+Consideriamo $G_d(j\omega) = 1+ 2j \zeta \dfrac{\omega}{\alpha_n} - \dfrac{\omega^2}{\alpha_n^2}$, una risposta con una coppia di zeri complessi coniugati
+\[
+    |G_d(j\omega)|_{dB} = 20 \log \sqrt{\left(1 - \frac{\omega^2}{\alpha_n^2}\right)^2 + 4 \zeta^2 \frac{\omega^2}{\alpha_n^2}}
+\]
+per $\omega \gg \alpha_n$
+\begin{align*}
+    |G_d(j\omega)|_{dB} &\approx 20 \log \sqrt{\left(\frac{\omega^2}{\alpha_n^2}\right)}\\
+    &=20 \log \frac{\omega^2}{\alpha_n^2}\\
+    &= 20 \log \left(\frac{\omega}{\alpha_n}\right)^2\\
+    &= 40 \log \frac{\omega}{\alpha_n}\\
+    &= \underbrace{40 \log \omega}_{\T{variabile}} - \underbrace{40 \log \alpha_n}_{\T{costante}}
+\end{align*}
+Quindi la risposta si comporta come una retta, di pendenza pari a 40 dB.\\
+Analizziamo ora la risposta per $\omega = \alpha_n$
+\begin{align*}
+    |G_d(j\omega)|_{dB} &20 \log \sqrt{\left(1 - \frac{\omega^2}{\alpha_n^2}\right)^2 + 4 \zeta^2 \frac{\omega^2}{\alpha_n^2}}\\
+    &= 20 \log \sqrt{4 \zeta^2}\\
+    &= 23 \log 2|\zeta|\\
+    &= \underbrace{20\log 2 }_{6 \ dB} +20 \log |\zeta|
+\end{align*}
+quindi scostamento significativo dipendente dal valore di $\zeta$.
+
+\begin{equation*}
+    |G_d(j\omega)|_{dB} = 20 \log \sqrt{\left(1 - \frac{\omega^2}{\alpha_n^2}\right)^2 + 4 \zeta^2 \frac{\omega^2}{\alpha_n^2}} \approx
+    \begin{cases}
+        20 \log(1) = 0 & \omega \ll \alpha_n\\
+        20 \log \dfrac{\omega^2}{\alpha_n^2} = -40 \log \alpha_n + 40 \log \omega &\omega  \gg \alpha_n
+    \end{cases}
+\end{equation*}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zeri_cc_ampiezza_1.png}
+\end{center}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Diagramma_zeri_cc_ampiezza_2.png}
+\end{center}
+Il minimo dell'ampiezza si ha alla pulsazione $\omega_r = \alpha_n \sqrt{1-2\zeta^2}$ con $|G_d(j\omega_r)| = 2 |\zeta|\sqrt{1-\zeta^2}$
+
+
+\subsubsection{Zeri complessi coniugati a parte reale nagativa (fase)}
+Consideriamo $G_d(j\omega) = 1+ 2j \zeta \dfrac{\omega}{\alpha_n} - \dfrac{\omega^2}{\alpha_n^2}, \ \zeta>0$, una risposta con una coppia di zeri complessi coniugati a parte reale negativa
+\[
+    \arg(G_d(j \omega)) \approx 
+    \begin{cases}
+        0 & \omega \ll \alpha_n\\
+        180^\circ &\omega \gg \alpha_n
     \end{cases}    
 \]
 \begin{center}
-    \includegraphics[scale=0.125]{Images/Diagramma_zero_reale_negativo.png}
+    \includegraphics[scale=0.175]{Images/Diagramma_zeri_cc_neg_1.png}
 \end{center}
-il cambio di fase inizia circa una decade prima e finisce circa una decade dopo la pulsazione di taglio $\omega = \frac{1}{\tau}$
+Vediamo che la risposta, per $\omega \gg \alpha_n$, nel piano complesso ha sicuramente una parte reale molto negativa, mentre la parte immaginaria dipende dal valore $\zeta$, il quale influenza molto l'andamento della fase. Ad esempio se $\zeta \rightarrow 0$ la parte immaginaria nel piano complesso tenderà anch'essa a 0, così da rendere molto facile appurare che l'argomento della nostra risposta sia quasi $180^\circ$. Anche con $\zeta =1$ l'argomento sarà circa $180^\circ$, ma solo per pulsazioni molto grandi, perché la parte reale tende a $\dfrac{\omega^2}{\alpha_n^2}$, che è $O(\dfrac{\omega}{\alpha_n})$ (la parte immaginaria) per $\omega \rightarrow \infty$.
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_zeri_cc_neg_2.png}
+\end{center}
+Nel diagramma di fase più $\zeta$ è piccolo e più la discontinuità da $0^\circ$ a $180^\circ$ è rapida. 
 
 
 
+\subsubsection{Zeri complessi coniugati a parte reale positiva}
+Il diagramma di fase di una risposta in frequenza con zeri complessi coniugati a parte reale positiva è speculare a quello precedente
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_zeri_cc_pos_1.png}
+\end{center}
 
 
 
+\subsubsection{Poli complessi coniugati a parte reale negativa}
+Consideriamo una risposta in frequenza con poli complessi coniugati a parte reale negativa
+$G_d(j\omega) = \dfrac{1}{1+2j \xi \frac{\omega}{\omega_n}-\frac{\omega^2}{\omega_n^2}}, \ \xi > 0$
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_poli_cc_neg_1.png}
+\end{center}
+I diagrammi sono quelli precedenti ribaltati rispetto all'asse reale, infatti la retta del diagramma di ampiezza asintotico dopo la pulsazione $\omega_n$ ha pendenza $-40$ dB/dec.\\
+Il picco di risonanza si trova alla pulsazione (di risonanza) $\omega_r = \omega_n \sqrt{1-2\xi^2}$ con $|G_d(j\omega_r)| = \frac{1}{2|\xi|\sqrt{1-2\xi^2}}$; alla frequenza $\omega_n$ si ha $|G_d(j\omega_n)| = \dfrac{1}{2|\xi|}$
+\vspace*{0.2cm}\\
+Soffermiamoci un attimo sul caso in cui $\xi \rightarrow 0$: se do una sinusoide con frequenza inferiore a $\omega_n$ essa non viene sfasata; se invece la sua frequenza è di poco superiore a $\omega_n$ la sua fase viene sfasata di $90^\circ$; il modulo viene amplificato di molto se la frequenza della sinusoide è nell'intorno di $\omega_n$.
 
 
 
+\subsubsection{Poli complessi coniugati a parte reale positiva}
+Consideriamo una risposta in frequenza con una coppia di poli complessi coniugati a parte reale positiva
+\[
+    G_d(j\omega) = \frac{1}{1+2j \xi \frac{\omega}{\omega_n} - \frac{\omega^2}{\omega_n^2}}  \tag*{$\xi < 0$}
+\]
+Calcoliamo i poli
+\begin{align*}
+    G_d(s) =& \frac{1}{1+2 \frac{\xi}{\omega_n}s + \frac{s^2}{\omega_n^2}}\\
+    =& \frac{\omega_n^2}{s^2+2 \xi \omega_n s + \omega_n^2}\\
+    \Longrightarrow& p_{1/2} = - \xi \omega_n \pm j \omega_n \sqrt{1 - \xi^2}
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_poli_cc_pos.png}
+\end{center}
+Diagramma ottenuto da quello degli zeri (caso $\zeta<0$) ribaltando rispetto all'asse reale.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection{Ritardo temporale}
+Consideriamo $G(s) = e^{-\tau s}$ con $G(j\omega) = e^{-j \omega\tau }$
+\begin{align*}
+    |G(j\omega)|_{dB} &= 20 \log |e^{-j \omega\tau}|\\
+    &= 20 \log 1\\
+    &=0
+\end{align*}
+\begin{align*}
+    \arg(G(j\omega)) &= \arg(e^{-j\omega\tau})\\
+    &= - \omega\tau
+\end{align*}
+Questo tipo di sistema ritarda di $\tau$ il segnale in ingresso, quindi la fase viene attenuata mentre il modulo rimane invariato.
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Diagramma_rit_temp.png}
+\end{center}
 
 
 
