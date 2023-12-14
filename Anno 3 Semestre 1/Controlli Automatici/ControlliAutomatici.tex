@@ -3627,7 +3627,8 @@ Nel diagramma di fase più $\zeta$ è piccolo e più la discontinuità da $0^\ci
 
 
 \subsubsection{Zeri complessi coniugati a parte reale positiva}
-Il diagramma di fase di una risposta in frequenza con zeri complessi coniugati a parte reale positiva è speculare a quello precedente
+Consideriamo $G_d(j\omega) = 1+ 2j \zeta \dfrac{\omega}{\alpha_n} - \dfrac{\omega^2}{\alpha_n^2}, \quad \zeta < 0$, una risposta con una coppia di zeri complessi coniugati a parte reale positiva.\\
+Il diagramma di fase di è speculare a quello precedente
 \begin{center}
     \includegraphics[scale=0.15]{Images/Diagramma_zeri_cc_pos_1.png}
 \end{center}
@@ -3681,6 +3682,161 @@ Questo tipo di sistema ritarda di $\tau$ il segnale in ingresso, quindi la fase 
     \includegraphics[scale=0.15]{Images/Diagramma_rit_temp.png}
 \end{center}
 
+
+\subsubsection{Proprietà bloccante degli zeri}
+Supponiamo di avere $G(s) = \mu\dfrac{s^2+\alpha_n^2}{(1+T_1 s)(1+T_2 s)}$, con $T_1,T_2 > 0$ (quindi abbiamo un sistema asintoticamente stabile). Calcoliamo l'uscita del sistema supponendo un ingresso del tipo $u(t) = U \cos(\omega_)u t$. La trasformata dell'ingresso è $U(s) = \dfrac{U s}{s^2 + \omega_u^2}$
+
+\begin{itemize}
+    \item Caso 1: $\omega_u \neq \alpha_n$.\\
+    La trasformata dell'uscita sarà uguale a
+    \[
+        Y(s) = G(s) U(s) = \mu \frac{U s (s^2+\alpha_n^2)}{(1+T_1 s)(1+T_2 s)(s^2 + \omega_u^2)} 
+    \]
+    In base al denominatore, i modi presenti nell'uscita sono:
+    \begin{itemize}
+        \item $e^{-t/T_1}$ dovuto al termine $1+T_1 s$
+        \item $e^{-t/T_2}$ dovuto al termine $1+T_2 s$
+        \item $|G(j \omega_u)|U \cos(\omega_u t + \arg(G(j\omega_u)))$ dovuto al termine $s^2+\omega_u^2$
+    \end{itemize}
+
+    \item Caso 2: $\omega_u = \alpha_n$.\\
+    La trasformata dell'uscita sarà uguale a
+    \[
+        Y(s) = G(s) U(s) = \mu \frac{U s \cancel{(s^2+\alpha_n^2)}}{(1+T_1 s)(1+T_2 s)\cancel{(s^2 + \alpha_n^2)}} = \mu \frac{U s}{(1+T_1 s)(1+T_2 s)}
+    \]
+    In base al denominatore, i modi presenti nell'uscita sono:
+    \begin{itemize}
+        \item $e^{-t/T_1}$ dovuto al termine $1+T_1 s$
+        \item $e^{-t/T_2}$ dovuto al termine $1+T_2 s$
+    \end{itemize}
+    Pertanto nell'uscita $y(t) = k_1 e^{-t/T_1} + k_2 e^{-t/T_2}$ non sono presenti i modi corrispondenti agli zeri del sistema.
+\end{itemize}
+
+
+\subsection{Risonanza}
+Supponiamo di avere un sistema con poli immaginari coniugati $\pm j \omega_n$, ovvero $G(s) = \mu \dfrac{\omega_n^2}{s^2+\omega_n^2}$ (rispetto al caso generale qui $\xi = 0$); il diagramma di Bode ha un picco di risonanza infinito alla pulsazione $\omega_n$.
+\vspace*{0.1cm}\\
+Analizziamone il significato calcolando l'uscita del sistema in corrispondenza dell'ingresso $u(t) = U \cos(\omega_n t)$. La trasformata dell'ingresso è $U(s) = U \dfrac{s}{s^2+\omega_n^2}$, quindi quella dell'uscita è
+\begin{equation*}
+    Y(s) = G(s)U(s) = \mu \frac{U \omega_n^2 s}{(s^2 + \omega_u^2)^2}
+\end{equation*}
+\begin{enumerate}[start=1,label={\arabic*)}]
+    \item $\omega_u \neq \omega_n$
+    \begin{equation*}
+        Y(s) = \frac{k_1}{s-j \omega_n} + \frac{\overline{k}_1}{s-j \omega_n} + \frac{k_2}{(s-j \omega_u)^2} + \frac{\overline{k}_2}{(s-j \omega_u)^2}
+    \end{equation*}
+    \begin{equation*}
+        y(t) = 2 |k_1| \cos(\omega_n t + \arg(k_1)) + 2|k_2| \cos(\omega_u t + \arg(k_2))
+    \end{equation*}
+    l'uscita è la somma di due sinusoidi a frequenza $\omega_n$ e $\omega_u$
+    \item $\omega_u = \omega_n$
+    \begin{align*}
+        Y(s) &= G(s) U(s) \\
+        &= \mu U \frac{s \omega_n^2}{(s^2+\omega_n^2)(s^2+\omega_n^2)} \\
+        &= \mu U \frac{s \omega_n^2}{(s^2+\omega_n^2)^2}\\
+        &= \frac{k_1}{s-j\omega_n} + \frac{\overline{k}_1}{s+j\omega_n} + \frac{k_2}{(s-j\omega_n)^2} + \frac{\overline{k}_2}{(s+j\omega_n)^2}
+    \end{align*}
+    \begin{equation*}
+        y(t) = 2 |k_1| \cos(\omega_n t + \arg(k_1)) + 2|k_2| \cos(\omega_n t + \arg(k_2))
+    \end{equation*}
+    L'uscita tende a infinito per $t \rightarrow \infty$, quindi il sistema non è BIBO stabile; questo fenomeno viene chiamato \textbf{risonanza}.
+    \begin{center}
+        \includegraphics[scale=0.25]{Images/Risonanza.png}
+    \end{center}
+\end{enumerate}
+
+
+\subsection{Azione filtrante dei sistemi dinamici}
+Quanto visto mostra come un sistema dinamico lineare e stazionario si comporta sostanzialmente come un \textit{filtro} per l'ingresso, modellandolo per produrre l'uscita.
+
+\subsubsection{Filtro passa-basso}
+Un filtro ideale passa-basso è un sistema che lascia passare inalterata, o amplificate di un valore costante, unicamente le armoniche del segnale di ingresso con pulsazione inferiore o uguale a un dato valore $\overline{\omega}$; il diagramma di Bode del filtro è costante dino a $\overline{\omega}$ e vale  $-\infty$ dB per $\omega > \overline{\omega}$, mentre il diagramma della fase è nullo fino a $\overline{\omega}$.\\
+La realizzazione di un filtro ideale passa-basso è di fatto impossibile, quindi definiamo un filtro reale passa-basso come un sistema con $G(j\omega)$ che soddisfa le seguenti relazioni
+\begin{equation}\label{Passa basso}
+    \begin{cases}
+        \dfrac{1}{\sqrt{2}} \leq \dfrac{|G(j\omega)|}{|G(j 0)|} \leq \sqrt{2} &\omega \leq \overline{\omega}\\
+        \\
+        \dfrac{|G(j\omega)|}{|G(j 0)|} < \dfrac{1}{\sqrt{2}} &\omega> \overline{\omega}
+    \end{cases}
+\end{equation}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Passa_basso.png}
+\end{center}
+N.B. Nella \ref{Passa basso} lo sfasamento introdotto da $G(s)$ non ha alcun ruolo, mentre in realtà il contributo di fase di un filtro può essere significativo e non va trascurato
+
+
+\subsubsection{Filtro passa-alto}
+Un \textit{filtro ideale passa-alto} è un sistema che lascia passare inalterate, o amplificate di una quantità costante, unicamente le armoniche del segnale di ingresso con pulsazione maggiore o uguale a $\tilde{\omega}$.\\
+Un \textit{filtro reale passa-alto} è un sistema caratterizzato da una risposta in frequenza $G(j\omega)$ il cui modulo soddisfa le seguenti relazioni
+\begin{equation}\label{passa-alto}
+    \begin{cases}
+        \dfrac{|G(j\omega)|}{|G(j 0)|} < \dfrac{1}{\sqrt{2}} & \omega< \tilde{\omega}\\
+        \\
+        \dfrac{1}{\sqrt{2}} \leq \dfrac{|G(j\omega)|}{|G(j 0)|} \leq \sqrt{2} &\omega \geq \tilde{\omega}
+    \end{cases}
+\end{equation}
+\begin{center}
+    \includegraphics[scale=0.125]{Images/Passa_alto.png}
+\end{center}
+Solo sistemi non strettamente propri possono avere le caratteristiche di un filtro passa-alto, dato che la \ref{passa-alto} implica che $G(j\infty) \neq 0$.
+
+\subsubsection{Passa banda}
+I \textit{filtri passa banda ideali} sono sistemi che lasciano passare solo armoniche del segnali in ingresso comprese tra $\omega_{B1}$ e $\omega_{B2}$.\\
+I \textit{filtri passa banda reali} sono sistemi che hanno una $G(j\omega)$ che soddisfa le seguenti relazioni
+\begin{equation}
+    \begin{cases}
+        \dfrac{1}{\sqrt{2}} \leq \dfrac{|G(j\omega)|}{|G(j\omega_{max})|} \leq \sqrt{2} &\omega \in [\omega_{B1}, \omega_{B2}]\\
+        \\
+        \dfrac{|G(j\omega)|}{|G(j\omega_{max})|} < \dfrac{1}{\sqrt{2}} & \omega \in [0, \omega_{B1}] \cup [\omega_{B2}, 0]
+    \end{cases}
+\end{equation}
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Passa_banda.png}
+\end{center}
+
+
+\subsubsection{Elimina banda}
+I \textit{filtri elimina banda ideali} sono sistemi che non lasciano passare solo armoniche del segnali in ingresso comprese tra $\omega_{B1}$ e $\omega_{B2}$.\\
+I \textit{filtri elimina banda reali} sono sistemi che hanno una $G(j\omega)$ che soddisfa le seguenti relazioni
+\begin{equation}
+    \begin{cases}
+        \dfrac{1}{\sqrt{2}} \leq \dfrac{|G(j\omega)|}{|G(j\omega_{max})|} \leq \sqrt{2}  & \omega \in [0, \omega_{B1}] \cup [\omega_{B2}, 0]\\
+        \\
+        \dfrac{|G(j\omega)|}{|G(j\omega_{max})|} < \dfrac{1}{\sqrt{2}}  &\omega \in [\omega_{B1}, \omega_{B2}]
+    \end{cases}
+\end{equation}
+\begin{center}
+    \includegraphics[scale=0.15]{Images/Elimina_banda.png}
+\end{center}
+
+
+\subsection{Esempio diagramma di Bode}
+Prendiamo una risposta in frequenza
+\[
+    G(s) = 10 \frac{1 + 0.1 s}{1+10 s}
+\]
+Il guadagno è $\mu = 10$, che in decibel è
+\begin{align*}
+    20 \log \mu &= 20 \log 10\\
+    &= 20 \T{dB}
+\end{align*}
+C'è uno zero 
+\begin{align*}
+    1+10^{-1}s &\longrightarrow s_z = -10 & \omega_z &= 10
+\end{align*} 
+e un polo 
+\begin{align*}
+    1+10^s &\longrightarrow s_p = -10^{-1} & \omega_p &= 10^{-1}
+\end{align*} 
+\[
+    G(j\omega) = 10 \frac{1 + 10^{-1}j \omega}{1 + 10 j \omega}
+\]
+Il diagramma d'ampiezza risultante può essere visto come la somma dei contributi del polo e dello zero (in {\color{green} verde} il contributo dello zero, in {\color{red} rosso} il contributo dell polo, in {\color{blue} blu} la somma)
+\begin{center}
+    \includegraphics[scale=0.25]{Images/Esempio_diagramma_amp.png}
+    \includegraphics[scale=0.25]{Images/Esempio_diagramma_fase.png}
+\end{center}
+Per quanto riguarda il diagramma di fase, $-90^{\circ}$ è un valore asintotico che si può raggiungere solo per $\omega \rightarrow \infty$, quindi non sarà mai raggiunto in un sistema reale; inoltre la presenza di uno zero aumenta la fase nel diagramma.
 
 
 
