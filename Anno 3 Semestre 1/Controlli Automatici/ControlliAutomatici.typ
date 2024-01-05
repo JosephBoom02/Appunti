@@ -4708,21 +4708,60 @@ Consideriamo il seguente schema di controllo in retroazione:
 
 === Riepilogo specifiche
 
-*Stabilità robusta rispetto a incertezze:* stabilità in presenza di errori di modello o incertezze di parametri.
+*Stabilità robusta rispetto a incertezze*\
+ stabilità in presenza di errori di modello o incertezze di parametri.
 
-*Precisione statica:* Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ il valore a regime dell'errore in risposta
+*Precisione statica*\
+ Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ il valore a regime dell'errore in risposta a riferimenti $w(t)$ o disturbi in uscita $d(t)$ "canonici"; la specifica da seguire è
+ $
+ |e_(infinity) <= e^* &space "oppure" & space e_infinity = 0
+ $
+
+*Precisione dinamica*\
+ Tipicamente specifiche in termini di sovraelongazione e tempo di assestamento massimi; le specifiche da seguire sono
+ $
+ S% <= S* &space T_(a, epsilon) <= T^*
+ $
+
+*Attenuazione disturbo in uscita*\
+ Il disturbo in uscita $d(t)$, con una banda limitata in un range di pulsazioni $[w_(d,min), w_(d,max)]$, deve essere attenuato di $A_d$ dB ($A_d > 0$).
+
+*Attenuazione disturbo di misura*\
+ Il disturbo di misura $n(t)$, con una banda limitata in un range di pulsazioni $[w_(n,min), w_(n,max)]$, deve essere attenuato di $A_n$ dB ($A_n > 0$).
+
+*Nota:* in applicazioni ingegneristiche in genere $w_(d,max) << omega_(n,min)$
+
+*Moderazione variabile di controllo $u(t)$*\
+ Contenimento dell'ampiezza della variabile di controllo $u$ in ingresso al sistema fisico (impianto).
+
+*Fisica realizzabilità del regolatore $R(s)$*\
+ Il regolatore deve essere un sistema proprio, quindi il grado relativo (differenza tra poli e zeri) deve essere maggiore o uguale a zero.
 
 
 
+== Specifiche in termini di guadagno d'anello
 
+*Stabilità robusta rispetto a incertezze*\
+ Stabilità in presenza di errori di modello o incertezze di parametri; ad esempio massimo ritardo temporale $tau_("max")$ o massima incertezza sul guadagno statico $Delta mu_"max"$.
 
+*Specifica su $L(j omega)$*
+ $
+    M_f >= M_f^*
+ $
 
+*Precisione statica*\
+ Per soddisfare tali specifiche va considerata l'analisi statica effettuata sulla funzione di sensitività $S(s)$.\
+ Ad esempio: $|e_infinity| <= e^*$ in risposta a un gradino $w(t) = W 1(t), thick d(t) = D 1(t)$ con $|W|<= W^*$ e $|D|<= D^*$.
+ $
+ e_infinity &= frac(W,1+mu) + frac(D,1+mu)\
+            &=frac(D+W,1+mu)\
+            &approx frac(D+W,mu)
 
+ $
 
-
-
-
-
+ $
+ mu = L(0) >= frac(D^*+W^*,e^*)
+ $
 
 
 
