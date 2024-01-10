@@ -2,7 +2,7 @@
 #import "@preview/physica:0.9.0": *
 #import "@preview/i-figured:0.2.3"
 #import "@preview/cetz:0.1.2" 
-#import "@preview/xarrow:0.2.0": xarrow,
+#import "@preview/xarrow:0.2.0": xarrow
 
 
 #import cetz.plot 
@@ -24,7 +24,7 @@
 
 #show ref: set text(green)
 
-#set page(margin: (y: 1cm))
+#set page(margin: (y: 0.5cm))
 
 #set heading(numbering: "1.1.1.1.1.1")
 //#set math.equation(numbering: "(1)")
@@ -43,6 +43,8 @@
 //Shortcut for centered figure with image
 #let cfigure(img, wth) = figure(image(img, width: wth))
 //Usage: #cfigure("Images/Es_Rettilineo.png", 70%)
+
+#let nfigure(img, wth) = figure(image("Images/"+img, width: wth))
 
 //Code to have sublevel equation numbering
 /*#set math.equation(numbering: (..nums) => {
@@ -2951,9 +2953,9 @@ $y(0) = 0, thick dot(y)(0) =  dfrac( mu k,T) , thick y_( infinity) =  mu k$
 #cfigure("Images/Sistemi_1_ordine_1.png", 50%)
 
 
-Definiamo il *tempo di assestamento $ T_( alpha, epsilon)$* come il tempo tale per cui 
+Definiamo il *tempo di assestamento $ T_(a, epsilon)$* come il tempo tale per cui 
 
-#tageq($(1-0.001 epsilon)y_( infinity)  <= y(t)  <= (1+0.01 epsilon)y_( infinity) $, $ forall t  >= T_( alpha, epsilon)$)
+#tageq($(1-0.001 epsilon)y_( infinity)  <= y(t)  <= (1+0.01 epsilon)y_( infinity) $, $ forall t  >= T_(a, epsilon)$)
 
 === Esempio
 Consideriamo un sistema con 
@@ -3002,14 +3004,14 @@ La risposta ottenuta ci dice che, dando in ingresso il gradino, il sistema ci me
 
 Per quanto riguarda invece il tempo di assestamento, esso si calcola
 $
-    T_( alpha, epsilon) = T  ln  ( frac(1,0.01 epsilon) )    
+    T_(a, epsilon) = T  ln  ( frac(1,0.01 epsilon) )    
 $
 
 $
-    T_( alpha,5) & approx 3T 
+    T_(a,5) & approx 3T 
     &space space  
-    T_( alpha,1) & approx 4.6T
-$
+    T_(a,1) & approx 4.6T
+$<tempo_assestamento>
 
 
 === Considerazioni
@@ -4270,13 +4272,21 @@ $
 
 == Margini di fase e ampiezza
 === Margine di fase
+In un sistema ad anello chiuso la funzione di trasferimento è $dfrac(G(s), 1+G(s))$. Sappiamo che un sistema è instabile se la funzione di trasferimento va a $infinity$; quindi nel nostro caso
+$
+    frac(G(s), 1+G(s)) = infinity <==> 1+G(s) = 0 <==> G(s) = -1
+$
+La funzione $G(s) = -1$ rappresenta un guadagno del sistema pari a 1, o 0 dB, e una fase di $-180 degree$ (riproduce l'input ribaltato). Per questo se nel diagramma di Bode di un sistema, in corrispondenza dello 0 dB del diagramma delle ampiezze, il diagramma di fase vale $-180 degree$ il sistema è instabile.\
+Il margine di fase quindi, esprime quanto siamo lontani dall'instabilità, ed è definito come
+
 $
     M_f = 180^( degree) +  arg(L(j omega_c)) "con"  omega_c "tale che" |L(j omega_c)|_("dB") = 0 
 $<margine_fase>
 
 
 Nota: $M_f =  arg(L(j omega_c)) - (-180^( degree)) = 180^( degree) +  arg(L(j omega_c))$.  
-La seguente figura può aiutare a comprendere meglio cos'è il margine di fase (in figura il margine di fase è indicato con $ phi_m$)
+
+La seguente figura (e questa risorsa: #link("https://youtu.be/ThoA4amCAX4")[Gain and Phase Margins Explained]) può aiutare a comprendere meglio cos'è il margine di fase (in figura il margine di fase è indicato con $ phi_m$)
 
 #cfigure("Images/Margine_fase.png", 65%)
 
@@ -4295,16 +4305,20 @@ $
 
 #cfigure("Images/Margine_fase_2.png", 90%)
 
- 
+
 
 === Margine di ampiezza
+La definizione di margine di ampiezza parte dallo stesso assunto del margine di fase, solo che in questo caso prendiamo come riferimento la frequenza alla quale il diagramma delle fasi ha valore $-180 degree$. Infatti anch'esso ci da una misura di quanto siamo distanti dall'instabilità.
+
 #align(center)[$M_a = -|L(j omega_( pi))|_( T("dB"))$ con $ omega_( pi)$ tale che $ arg(L(j omega_( pi))) = -180^( degree)$]
 
 La seguente figura può aiutare a comprendere meglio cos'è il margine di ampiezza (in figure il margine di ampiezza è indicato con $|k_m|_( T("dB"))$)
 
 #cfigure("Images/Margine_ampiezza.png", 60%)
 
-Il margine di ampiezza indica il guadagno massimo che può essere integralrodotto mantenendo il sistema asintoticamente stabile. Supponendo di integralrodurre un ulteriore guadagno $k$ nel sistema, esso rimane asintoticamente stabile per tutti i valori di $k$ inferiori a $M_a$.
+Il margine di ampiezza indica il guadagno massimo che può essere introdotto mantenendo il sistema asintoticamente stabile.
+
+Supponendo di introdurre un ulteriore guadagno $k$ nel sistema, esso rimane asintoticamente stabile per tutti i valori di $k$ inferiori a $M_a$.
 
 #cfigure("Images/Margine_ampiezza_2.png", 90%)
 
@@ -4417,7 +4431,7 @@ $<funzione_sensitivita>
 siccome $L(s) = R(s) G(s)$ la funzione di sensitività può essere scritta come
 $
     S(s) =  frac(1,1+L(s))
-$
+$<funzione_sensitivita_2>
 
 
 === Funzione di sensitività del controllo
@@ -4514,7 +4528,7 @@ $
 $
 
 
-=== Analisi in frequenza della funzione di sensitività complementare
+=== Analisi in frequenza della funzione di sensitività complementare <analisi_funzione_sensitivita_complementare>
 $
     F(s) =  frac(L(s),1+L(s))
 $
@@ -4544,7 +4558,7 @@ $
 
 
 
-=== Analisi in frequenza della funzione di sensitività
+=== Analisi in frequenza della funzione di sensitività <analisi_funzione_sensitivita>
 $
     S(s) &=  frac(1,1+L(s))
     space space &
@@ -4575,7 +4589,7 @@ $
 
 
 
-=== Analisi in frequenza della funzione di sensitività del controllo
+=== Analisi in frequenza della funzione di sensitività del controllo <analisi_funzione_sensitivita_controllo>
 $
     Q(s) &=  frac(R(s),1+R(s) G(s))
     space space&
@@ -4604,7 +4618,7 @@ A basse frequenze il modulo di $Q(j omega)$ dipende da $G(j omega)$, quindi non 
 
 
 
-=== Poli complessi coniugati di $bold(F(s))$ (sensitività complementare)
+=== Poli complessi coniugati di $bold(F(s))$ (sensitività complementare) <poli_complessi_coniugati_sens_complementare>
 La funzione di sensitività complementare può avere una coppia di poli c.c. dominanti
 $
     L(s) =  frac(20,(1+10s)(1+2s)(1+0.2s))
@@ -4709,7 +4723,7 @@ Consideriamo il seguente schema di controllo in retroazione:
 === Riepilogo specifiche
 
 *Stabilità robusta rispetto a incertezze*\
- stabilità in presenza di errori di modello o incertezze di parametri.
+ Stabilità in presenza di errori di modello o incertezze di parametri.
 
 *Precisione statica*\
  Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ il valore a regime dell'errore in risposta a riferimenti $w(t)$ o disturbi in uscita $d(t)$ "canonici"; la specifica da seguire è
@@ -4741,15 +4755,15 @@ Consideriamo il seguente schema di controllo in retroazione:
 
 == Specifiche in termini di guadagno d'anello
 
-*Stabilità robusta rispetto a incertezze*\
+=== Stabilità robusta rispetto a incertezze
  Stabilità in presenza di errori di modello o incertezze di parametri; ad esempio massimo ritardo temporale $tau_("max")$ o massima incertezza sul guadagno statico $Delta mu_"max"$.
 
-*Specifica su $L(j omega)$*
+=== Specifica su $L(j omega)$
  $
     M_f >= M_f^*
  $
 
-*Precisione statica*\
+=== Precisione statica
  Per soddisfare tali specifiche va considerata l'analisi statica effettuata sulla funzione di sensitività $S(s)$.\
  Ad esempio: $|e_infinity| <= e^*$ in risposta a un gradino $w(t) = W 1(t), thick d(t) = D 1(t)$ con $|W|<= W^*$ e $|D|<= D^*$.
  $
@@ -4762,6 +4776,245 @@ Consideriamo il seguente schema di controllo in retroazione:
  $
  mu = L(0) >= frac(D^*+W^*,e^*)
  $
+#v(5pt)
+Altro esempio: $e_(infinity) = 0$ in risposta a $W(s) = dfrac(W,s^k)$ e/o $D(s) = dfrac(D,s^k)$
+#v(3pt)
+#align(center)[$L(s)$ deve avere $k$ poli nell'origine]
+#v(5pt)
+Se $|e_infinity| <= e^*$ in riposta a $W(s) = dfrac(W,s^k)$ e $D(s) = dfrac(D,s^k)$ allora
+#v(3pt)
+#align(center)[$k-1$ poli in $L(s)$ e $mu >= dfrac(D^*+W^*, e^*)$]
+#v(3pt)
+Se $e_infinity = 0$ in risposta a un disturbo sull'attuatore $D_a (s) = dfrac(D_a,s^k)$, allora 
+$
+    D(s) = D_a (s) G(s) &space space E(s) = S(s)G(s)D_a (s)
+$
+quindi
+#align(center)[$k$ poli nell'origine in $R(s)$]
+
+
+=== Precisione dinamica
+Specifiche: $S% <= S^*$ e $T_(a,epsilon) <= T^*$.
+
+Se progettiamo $L(j omega)$ in modo che $F(j omega)$ abbia una coppia di poli complessi coniugati dominanti in $omega_n approx omega_c$ con coefficiente di smorzamento $xi$ allora, come abbiamo visto nella @poli_complessi_coniugati_sens_complementare[]
+$
+    xi approx frac(M_f,100)
+$
+
+Perché $S% <= S^*$ allora $xi >=xi^*$, con $S^* = e^(frac(-pi xi^*,sqrt(1-(xi^*)^2)))$, e quindi
+$
+    M_f >= 100 xi^*
+$
+
+Perché $T_(a,1) <= T^*$ allora, ricordando la @eqt:tempo_assestamento[], $xi omega_n >= dfrac(4.6, T^*)$
+$
+    M_f omega_c >= frac(460, T^*)
+$
+
+#cfigure("Images/Specifiche_dinamiche.png", 70%)
+La zona proibita per il diagramma di fase va evitata *solo a $omega_c$*.
+
+
+=== Attenuazione disturbo in uscita $d(t)$
+Il disturbo in uscita $d(t)$, con una banda limitata in un range di pulsazioni $[omega_(d,min) , omega_(d,max)]$, deve essere attenuato di $A_d$ dB. (Nota: $A_d$ > 0).
+
+Ricordiamo che se $d(t) = D cos(omega t + phi)$ allora
+$
+    y(t) = |S(j omega)|D cos(omega t + phi + arg(S(j omega)))
+$
+e che, grazie all' @analisi_funzione_sensitivita[analisi in frequenza della funzione di sensitività]
+$
+    |S(j omega)|_"dB" approx
+    cases(
+        -|L(j omega)|_"dB" &wide omega <= omega_c\
+        0 &wide omega > omega_c
+    )
+$
+Da specifica vogliamo $|S(j omega)|_"dB" ≤ -A_d "dB"$. Poiché $omega_(d,max) ≪ omega_c$ si ha
+$
+    |L(j omega)|_"dB" >= A_d "dB"
+$
+Ad esempio, se $d(t)$ deve essere attenuato di 20 dB allora $|L(j omega)|_"dB">= 20 "dB"$.
+
+#cfigure("Images/Attenuazione_disturbo_uscita.png", 54%)
+
+
+=== Attenuazione disturbo di misura $n(t)$
+Il disturbo di misura $n(t)$, con una banda limitata in un range di pulsazioni $[omega_n,min , omega_n,max]$, deve essere attenuato di $A_n$ dB.
+
+Ricordiamo che se $n(t) = N cos(omega t + phi)$ allora
+$
+    y(t) = |F (j omega)|N cos(omega t + φ - arg(F (j omega)))
+$
+e che, grazie all' @analisi_funzione_sensitivita_complementare[analisi in frequenza della funzione di sensitività complementare]
+$
+    |F (j omega)|_"dB" approx
+    cases(
+        0 &wide omega <= omega_c\
+        |L(j omega)|_"dB" &wide omega > omega_c
+    )
+$
+Da specifica vogliamo $|F (j omega)|_"dB" <= -A_n "dB"$. Poiché $omega_(n,min)>> omega_c$, si ha
+$
+    |L(j omega)|_"dB" <= -A_n "dB"
+$
+Ad esempio se $n(t)$ deve essere attenuato di 20 dB allora $|L(j omega)|_"dB" <= -20 "dB"$.
+#cfigure("Images/Attenuazione_disturbo_misura.png", 50%)
+
+
+=== Moderazione variabile di controllo $u(t)$
+Contenimento dell'ampiezza della variabile di controllo $u$ in ingresso al sistema fisico (impianto).
+
+Ricordiamo che se $w(t) = W cos(omega t + phi)$ allora
+$
+    u(t) = |Q(j omega)|W cos(omega t + phi + arg(Q(j omega)))
+$
+e che, grazie all' @analisi_funzione_sensitivita_controllo[analisi in frequenza della funzione di sensitività del controllo]
+$
+    |Q(j omega)|_"dB" approx
+    cases(
+        -|G(j omega)|_"dB" &wide omega <= omega_c\
+        |R(j omega)_"dB" &wide omega > omega_c
+    )
+$
+Poiché vogliamo contenere $|Q(j omega)|_"dB"$ e non abbiamo controllo su $G(j omega)$ dobbiamo
+- limitare $omega_c$;
+- realizzare $R(j omega)$ passa-basso.
+#cfigure("Images/Moderazione_u.png", 70%)
+/*-------------RIVEDI-----------------*/
+Il limite superiore su $omega_c$ può essere determinato dalle specifiche sulla variabile di controllo $u(t)$.
+
+
+=== Fisica realizzabilità del regolatore
+Il regolatore deve essere un sistema proprio, quindi il grado relativo (differenza poli-zeri) deve essere maggiore o uguale a zero.
+
+A pulsazioni elevate la pendenza $-k_L$ dB/dec di $|L(j omega)|_"dB"$ è determinata dalla differenza tra poli (ciascuno contribuisce con pendenza -20dB/dec) e zeri (ciascuno contribuisce con pendenza 20dB/dec).
+
+Se a pulsazioni elevate $|G(j omega)|_"dB"$ ha pendenza $-k_G$ dB/dec allora
+$
+    -k_L <= -k_G
+$
+perché sappiamo che $L(s) = R(s) G(s)$ e che i poli (che fanno diminuire la pendenza) di $R(s)$ sono maggiori o uguali agli zeri, quindi moltiplicando $R(s)$ con $G(s)$ otteniamo una funzione di trasferimento con una pendenza uguale o minore di quella di $G(s)$.
+
+
+#pagebreak()
+=== Riepilogo specifiche
+#cfigure("Images/Riepilogo_specifiche.png", 80%)
+
+
+
+== Sintesi del regolatore
+=== Loop Shaping
+Il _loop shaping_, o sintesi per tentativi, consiste nel "dare forma" alla $L(j omega)$ in modo che:
+- il diagramma delle ampiezze non attraversi le regioni proibite in bassa e alta frequenza;
+-  per $omega = omega_c$ rispetti il vincolo sul margine di fase.
+procedendo per tentativi basati su opportune considerazioni.
+
+
+== Struttura del regolatore
+È conveniente dividere il progetto in due fasi fattorizzando $R(s)$ come
+$
+    R(s) = R_s (s) R_d (s)
+$
+cioè come prodotto di due regolatori, uno statico e uno dinamico.
+
+*Regolatore statico:*
+$
+    R_s (s) = mu_s/s^k
+$
+progettato per soddisfare precisione statica e attenuazione dei disturbi $d(t)$.
+
+
+*Regolatore dinamico:*
+$
+    R_d (s) = mu_d frac(product_i (1+tau_i s) product_i (1+2 frac(zeta_i, alpha_(n,i))s + frac(s^2,alpha^2_(n,i))), product_i (1+T_i s) product_i (1+2 frac(xi_i, omega_(n,i))s + frac(s^2,omega^2_(n,i))))
+$
+progettato per soddisfare stabilità robusta, precisione dinamica, attenuazione dei disturbi $n(t)$, moderazione dell'ingresso di controllo e fisica realizzabilità.
+
+*Nota:* $mu_d$ può essere scelto solo se $mu_s$ non è stato imposto.
+
+
+== Sintesi del regolatore statico
+/*-------------------------RIVEDI----------------------------*/
+Il guadagno $mu_s$ e il numero di poli nell'origine in $R_s (s)$ dipende dalla specifica sull'errore a regime $e_infinity$ in risposta a segnali canonici.
+
+Ad esempio, se dobbiamo soddisfare la specifica $|e_infinity| <= e^*$ in risposta ai gradini $w$ e $d$, con $G(s)$ senza poli nell'origine:]
+
+possiamo scegliere
+$
+    R(s) = mu_s >= mu^*
+$
+
+oppure
+$
+    R(s) = mu_s / s
+$
+nel secondo caso potremo poi scegliere $mu_d$ “liberamente” purché consenta di rispettare i vincoli sull'attenuazione di $d$.
+
+
+
+== Sintesi del regolatore dinamico
+=== Obiettivi
+La progettazione di $R_d (s)$ mira a
+#list()
++  imporre $omega_c$ in un certo intervallo;
++  garantire un dato margine di fase $M_f$, cioè $arg(L(j omega_c)) >= -180 + M_f$;
++  garantire una certa attenuazione e pendenza di $L(j omega)$, e anche di $R(j omega)$ a pulsazioni elevate.
+
+Per la *terza specifica* è sufficiente introdurre poli del regolatore a pulsazioni elevate.
+
+Utilizzeremo la sintesi per tentativi individuando dei possibili scenari in base al diagramma di
+$
+    G_e(s) = R_s (s) G(s)
+$
+che chiameremo *sistema esteso*.
+
+
+
+=== Scenario A
+Nell'intervallo (“centrale”) di pulsazioni ammissibili per la pulsazione di attraversamento $omega_c$ esiste un sotto-intervallo in cui la fase di $G_e (j omega)$ rispetta il vincolo sul margine di fase.
+#cfigure("Images/Scenario_A.png", 60%)
+
+*Obiettivo:*
+- attenuare (selettivamente) il diagramma delle ampiezze (traslarlo in basso) in modo che $omega_c$ ricada nel sotto-intervallo in cui in vincolo sul margine di fase è rispettato;
+- alterare meno possibile la fase.
+
+*Azioni possibili:*
+- Se $mu_d$ libero, allora scegliere $R_d (s) = mu_d$ con $mu_d < 1$;
+- Se $mu_d$ bloccato (vincolato dalla scelta di $mu_s$), allora attenuare mediante inserimento di poli e zeri in $R_d (s)$.
+
+#pagebreak()
+==== Caso $mu_d$ libero
+#nfigure("mu_d_libero.png", 75%)
+
+==== Caso $mu_d$ vincolato
+Per attenuare solo nel range di pulsazioni selezionato progettiamo
+#tageq($R_d (s) = frac(1 + alpha tau s, 1+ tau s)$, $0<alpha<1$)
+cioè una rete ritardatrice
+#nfigure("mu_d_vincolato_1.png", 85%)
+#nfigure("mu_d_vincolato_2.png", 85%)
+
+#pagebreak()
+=== Rete ritardatrice
+#nfigure("Rete_ritardatrice.png", 85%)
+
+==== Tuning approssimato
+Il nostro obiettivo è calcolare $alpha$ e $tau$ in modo che $L(j omega)$ abbia una pulsazione di attraversamento $omega_c^*$ e valga $arg(L(j omega_c^*)) approx arg(G_e (j omega_c^*))$.
+
+Procediamo quindi a
+#list(tight: false, spacing: 12pt,
+[scegliere $alpha$ tale che $20 log alpha approx - |G_e (j omega_c^*)|_"dB"$;],
+[scegliere $tau$ tale che $dfrac(1,alpha tau) <= dfrac(omega_c^*, 10)$.]
+)
+
+
+
+
+
+
+
+
+
 
 
 
