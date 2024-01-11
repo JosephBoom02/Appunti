@@ -1884,13 +1884,13 @@ possiamo dire che $e^(- sigma t)$ ci aiuta a ottenere un integrale che converge.
 
 
 
-=== Trasformate razionali
+=== Trasformate razionali <poli_e_zeri>
 Di particolare importanza sono le _trasformate razionali_, cioè quelle in cui
 $
     F(s) =  frac(N(s),D(s))
 $<trasformate_razionali>
 
-con $N(s)$ e $D(s)$ polinomi primi tra loro. Le radici di $N(s)=0$ si dicono (zeri) e quelle di $D(s)=0$ si dicono (poli): nell'insieme, poli e zeri si dicono _singolarità_.
+con $N(s)$ e $D(s)$ polinomi primi tra loro. Le radici di $N(s)=0$ si dicono *zeri* e quelle di $D(s)=0$ si dicono *poli*: nell'insieme, poli e zeri si dicono _singolarità_.
  
 
 Se $f$ è reale allora i coefficienti dei polinomi $N(s)$ e $D(s)$ sono reali.
@@ -3091,9 +3091,9 @@ $
 
 Dal grafico possiamo evincere che la sovraelongazione percentuale indica di quanto supero il valore stabile prima del transitorio. 
 
-Come abbiamo visto prima, la sovraelongazione percentuale dipende solo dallo smorzamento, e, se scegliamo un valore massimo di sovraelongazione $S^*$, possiamo ricavare il valore di $ xi$ necessario:
+Come abbiamo visto prima, la sovraelongazione percentuale dipende solo dallo smorzamento, e, se scegliamo un valore massimo di sovraelongazione $S^star$, possiamo ricavare il valore di $ xi$ necessario:
 $
-    S %  <= S^*  <==>  xi  >=  frac( lr(|  ln  ( dfrac(S^*,100) )  |), sqrt( pi^2 +  ln^2  (  dfrac(s^*,100) )))
+    S %  <= S^star  <==>  xi  >=  frac( lr(|  ln  ( dfrac(S^star,100) )  |), sqrt( pi^2 +  ln^2  (  dfrac(s^star,100) )))
 $
 
 
@@ -3134,9 +3134,9 @@ Sul piano complesso i luoghi di punti a sovraelongazione costante sono semirette
 
 
 === Mappatura di specifiche temporali nel piano complesso
-Vogliamo caratterizzare i sistemi del secondo ordine (con poli complessi coniugati) con $S %  <= S^*$ e $T_(a,5)  <= T^*$. 
+Vogliamo caratterizzare i sistemi del secondo ordine (con poli complessi coniugati) con $S %  <= S^star$ e $T_(a,5)  <= T^star$. 
 
-Le specifiche sono soddisfatte per $ xi  >=  xi^*$ (con $ xi  <= 1$) e $ xi  omega_n  >=  dfrac(3,T^*)$ 
+Le specifiche sono soddisfatte per $ xi  >=  xi^star$ (con $ xi  <= 1$) e $ xi  omega_n  >=  dfrac(3,T^star)$ 
 
 #cfigure("Images/Specifiche_temporali.png", 75%)
 
@@ -4728,13 +4728,13 @@ Consideriamo il seguente schema di controllo in retroazione:
 *Precisione statica*\
  Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ il valore a regime dell'errore in risposta a riferimenti $w(t)$ o disturbi in uscita $d(t)$ "canonici"; la specifica da seguire è
  $
- |e_(infinity) <= e^* &space "oppure" & space e_infinity = 0
+ |e_(infinity) <= e^star &space "oppure" & space e_infinity = 0
  $
 
 *Precisione dinamica*\
  Tipicamente specifiche in termini di sovraelongazione e tempo di assestamento massimi; le specifiche da seguire sono
  $
- S% <= S* &space T_(a, epsilon) <= T^*
+ S% <= S* &space T_(a, epsilon) <= T^star
  $
 
 *Attenuazione disturbo in uscita*\
@@ -4760,12 +4760,12 @@ Consideriamo il seguente schema di controllo in retroazione:
 
 === Specifica su $L(j omega)$
  $
-    M_f >= M_f^*
+    M_f >= M_f^star
  $
 
 === Precisione statica
  Per soddisfare tali specifiche va considerata l'analisi statica effettuata sulla funzione di sensitività $S(s)$.\
- Ad esempio: $|e_infinity| <= e^*$ in risposta a un gradino $w(t) = W 1(t), thick d(t) = D 1(t)$ con $|W|<= W^*$ e $|D|<= D^*$.
+ Ad esempio: $|e_infinity| <= e^star$ in risposta a un gradino $w(t) = W 1(t), thick d(t) = D 1(t)$ con $|W|<= W^star$ e $|D|<= D^star$.
  $
  e_infinity &= frac(W,1+mu) + frac(D,1+mu)\
             &=frac(D+W,1+mu)\
@@ -4774,16 +4774,16 @@ Consideriamo il seguente schema di controllo in retroazione:
  $
 
  $
- mu = L(0) >= frac(D^*+W^*,e^*)
+ mu = L(0) >= frac(D^star+W^star,e^star)
  $
 #v(5pt)
 Altro esempio: $e_(infinity) = 0$ in risposta a $W(s) = dfrac(W,s^k)$ e/o $D(s) = dfrac(D,s^k)$
 #v(3pt)
 #align(center)[$L(s)$ deve avere $k$ poli nell'origine]
 #v(5pt)
-Se $|e_infinity| <= e^*$ in riposta a $W(s) = dfrac(W,s^k)$ e $D(s) = dfrac(D,s^k)$ allora
+Se $|e_infinity| <= e^star$ in riposta a $W(s) = dfrac(W,s^k)$ e $D(s) = dfrac(D,s^k)$ allora
 #v(3pt)
-#align(center)[$k-1$ poli in $L(s)$ e $mu >= dfrac(D^*+W^*, e^*)$]
+#align(center)[$k-1$ poli in $L(s)$ e $mu >= dfrac(D^star+W^star, e^star)$]
 #v(3pt)
 Se $e_infinity = 0$ in risposta a un disturbo sull'attuatore $D_a (s) = dfrac(D_a,s^k)$, allora 
 $
@@ -4794,21 +4794,21 @@ quindi
 
 
 === Precisione dinamica
-Specifiche: $S% <= S^*$ e $T_(a,epsilon) <= T^*$.
+Specifiche: $S% <= S^star$ e $T_(a,epsilon) <= T^star$.
 
 Se progettiamo $L(j omega)$ in modo che $F(j omega)$ abbia una coppia di poli complessi coniugati dominanti in $omega_n approx omega_c$ con coefficiente di smorzamento $xi$ allora, come abbiamo visto nella @poli_complessi_coniugati_sens_complementare[]
 $
     xi approx frac(M_f,100)
 $
 
-Perché $S% <= S^*$ allora $xi >=xi^*$, con $S^* = e^(frac(-pi xi^*,sqrt(1-(xi^*)^2)))$, e quindi
+Perché $S% <= S^star$ allora $xi >=xi^star$, con $S^star = e^(frac(-pi xi^star,sqrt(1-(xi^star)^2)))$, e quindi
 $
-    M_f >= 100 xi^*
+    M_f >= 100 xi^star
 $
 
-Perché $T_(a,1) <= T^*$ allora, ricordando la @eqt:tempo_assestamento[], $xi omega_n >= dfrac(4.6, T^*)$
+Perché $T_(a,1) <= T^star$ allora, ricordando la @eqt:tempo_assestamento[], $xi omega_n >= dfrac(4.6, T^star)$
 $
-    M_f omega_c >= frac(460, T^*)
+    M_f omega_c >= frac(460, T^star)
 $
 
 #cfigure("Images/Specifiche_dinamiche.png", 70%)
@@ -4938,11 +4938,11 @@ progettato per soddisfare stabilità robusta, precisione dinamica, attenuazione 
 /*-------------------------RIVEDI----------------------------*/
 Il guadagno $mu_s$ e il numero di poli nell'origine in $R_s (s)$ dipende dalla specifica sull'errore a regime $e_infinity$ in risposta a segnali canonici.
 
-Ad esempio, se dobbiamo soddisfare la specifica $|e_infinity| <= e^*$ in risposta ai gradini $w$ e $d$, con $G(s)$ senza poli nell'origine:]
+Ad esempio, se dobbiamo soddisfare la specifica $|e_infinity| <= e^star$ in risposta ai gradini $w$ e $d$, con $G(s)$ senza poli nell'origine:
 
 possiamo scegliere
 $
-    R(s) = mu_s >= mu^*
+    R(s) = mu_s >= mu^star
 $
 
 oppure
@@ -4965,7 +4965,7 @@ Per la *terza specifica* è sufficiente introdurre poli del regolatore a pulsazi
 
 Utilizzeremo la sintesi per tentativi individuando dei possibili scenari in base al diagramma di
 $
-    G_e(s) = R_s (s) G(s)
+    G_e (s) = R_s (s) G(s)
 $
 che chiameremo *sistema esteso*.
 
@@ -4985,7 +4985,7 @@ Nell'intervallo (“centrale”) di pulsazioni ammissibili per la pulsazione di 
 
 #pagebreak()
 ==== Caso $mu_d$ libero
-#nfigure("mu_d_libero.png", 75%)
+#nfigure("mu_d_libero.png", 85%)
 
 ==== Caso $mu_d$ vincolato
 Per attenuare solo nel range di pulsazioni selezionato progettiamo
@@ -4999,13 +4999,232 @@ cioè una rete ritardatrice
 #nfigure("Rete_ritardatrice.png", 85%)
 
 ==== Tuning approssimato
-Il nostro obiettivo è calcolare $alpha$ e $tau$ in modo che $L(j omega)$ abbia una pulsazione di attraversamento $omega_c^*$ e valga $arg(L(j omega_c^*)) approx arg(G_e (j omega_c^*))$.
+Il nostro obiettivo è calcolare $alpha$ e $tau$ in modo che $L(j omega)$ abbia una pulsazione di attraversamento $omega_c^star$ e valga $arg(L(j omega_c^star)) approx arg(G_e (j omega_c^star))$.
 
 Procediamo quindi a
 #list(tight: false, spacing: 12pt,
-[scegliere $alpha$ tale che $20 log alpha approx - |G_e (j omega_c^*)|_"dB"$;],
-[scegliere $tau$ tale che $dfrac(1,alpha tau) <= dfrac(omega_c^*, 10)$.]
+[scegliere $alpha$ tale che $20 log alpha approx - |G_e (j omega_c^star)|_"dB"$;],
+[scegliere $tau$ tale che $dfrac(1,alpha tau) <= dfrac(omega_c^star, 10)$.]
 )
+
+
+==== Formule di inversione
+Dobbiamo calcolare $alpha$ e $tau$ in modo che alla pulsazione $omega_c^star$ (pulsazione a cui vorremmo $|L(j omega)|_"dB" = 0$) la rete ritardatrice abbia una attenuazione $o < M^star < 1$ e uno sfasamento $frac(pi,2) < phi^star < 0$, ovvero
+$
+    R_d (j omega_c^star) = M^star e^(j phi^star)
+$
+
+Poniamo
+$
+    &frac(1+j alpha tau omega_c^star, 1+j tau omega_c^star) = M^star (cos phi^star + j sin phi^star)\
+    ==>&1+j alpha tau omega_c^star = M^star (cos phi^star + j sin phi^star) (1+j tau omega_c^star)
+$
+Uguagliano parte reale e parte immaginaria:
+$
+    1 &= M^star cos phi^star - M^star tau omega_c^star sin phi^star\
+    alpha tau omega_c^star &= M^star tau omega_c^star cos phi^star + M^star sin phi^star
+$
+Arriviamo così alle formule di inversione
+$
+    tau = frac(cos phi^star - dfrac(1,M^star), omega_c^star sin phi^star)
+    space space
+    alpha tau = frac(M^star - cos phi^star, omega_c^star sin phi^star)
+$
+*Nota:* perché si abbia $alpha > 0$ occorre che $M^star < cos phi^star$.
+
+Quindi, noi vogliamo che $|L(j omega)|_"dB" = 0$ per $omega = omega_c^star$. Per farlo scegliamo una $omega_c^star$ e ricaviamo il $M_f^star$ dalle specifiche.\
+Calcoliamo quindi $M^star$ e $phi^star$ imponendo
+$
+    |G_e (j omega_c^star)|_"dB" + 20 log M^star = 0 &space M_f^star = 180 degree + arg(G_e (j omega_c^star)) + phi^star
+$
+verificando che i risultati trovati soddisfino le relazioni seguenti
+$
+    0 < M^star < 1 space frac(pi,2) < phi^star < 0 space M^star < cos phi^star
+$
+e, infine, calcolare $alpha$ e $tau$ mediante formule di inversione.
+
+
+
+=== Scenario B
+Nell'intervallo "centrale" di pulsazioni ammissibili per la pulsazione di attraversamento $omega_c$ *NON* esistono pulsazioni in cui la fase di $G_e (j omega)$ rispetta il vincolo sul margine di fase.
+#nfigure("Scenario_B.png", 70%)
+
+*Obiettivo:*
+- modificare il diagramma delle fasi (aumentare la fase) nell'intervallo in modo che il vincolo sul margine di fase sia rispettato;
+- amplificare meno possibile l'ampiezza.
+
+*Azioni possibili:*
+- aggiungere uno o più zeri (a pulsazioni precedenti quella di attraversamento desiderata) per aumentare la fase;
+- aggiungere uno o più poli a pulsazioni più alte per la fisica realizzabilità e per evitare una eccessiva amplificazione.
+Definizione di poli e zeri: @poli_e_zeri[].
+
+
+==== Aggiunta di uno zero
+#nfigure("Scenario_B_aggiunta_zero.png", 70%)
+
+#pagebreak()
+==== Aggiunta di due zeri
+#nfigure("Scenario_B_aggiunta_2_zeri.png", 70%)
+
+
+==== Progettazione
+Tenendo conto dell'aggiunta di uno o due poli si può progettare $R_d (s)$ come segue.
+
+Si realizza una rete anticipatrice
+#tageq($R_d (s) = frac(1 + tau s, 1 + alpha tau s)$, $0< alpha < 1$)
+
+O, nel caso sia necessario un anticipo di fase maggiore, si possono aggiungere due zeri
+#tageq($R_d (s) = frac(1 + tau_1 s, 1 + alpha_1 tau_1 s) frac(1 + tau_2 s, 1 + alpha_2 tau_2 s)$, $0< alpha_1 < 1, #h(5pt) 0< alpha_2 < 1$)
+
+Una volta realizzata una rete anticipatrice (singola o multipla) si possono verificare due casi:
+#enum(numbering: n => $bold(B_#n)$,
+    [$omega_c$ è nell'intervallo di specifica e il vincolo sul margine di fase è rispettato. In questo caso il progetto è terminato;],
+    [$omega_c$ è fuori dall'intervallo di specifica o in un intervallo in cui il vincolo sul margine di fase non è rispettato (ci siamo comunque ricondotti ad uno scenario A , quindi esiste un sotto-intervallo in cui il vincolo sul margine di fase è rispettato).]
+)
+
+#heading(level: 5, numbering: none)[Caso *$B_2$*]
+- Se $mu_d$ libero allora scegliamo $mu_d < 1$ per attenuare
+  $
+    R_d (s) =  mu_d frac(1+ tau_b s, 1+ alpha_b tau_b s)
+  $
+- Se $mu_d$ bloccato
+  $
+    R_d (s) =  mu_d frac(1+ alpha_a tau_a s, 1+ tau_a s) frac(1+ tau_b s, 1+ alpha_b tau_b s)
+  $
+
+Quest'ultimo tipo di regolatore viene chiamato *rete ritardo-anticipo*.
+#nfigure("Rete_ritardo_anticipo.png", 66%)
+
+
+
+==== Rete anticipatrice
+#nfigure("Scenario_B_Rete_anticipatrice.png", 88%)
+
+#heading(level: 5, numbering: none)[Formule di inversione]
+Calcoliamo $alpha$ e $tau$ in modo che alla pulsazione $omega_c^star$ (pulsazione a cui vorremmo $|L(j omega)|_"dB" = 0$) la rete anticipatrice abbia una
+amplificazione $M^star > 1$ e uno sfasamento $0 < phi^star < pi/2$ , ovvero
+$
+    R_d (j omega_c^star) = M^star e^(j phi^star)
+$
+Poniamo 
+$
+    frac(1+j tau omega_c^star, 1+j alpha tau omega_c^star) = M^star (cos phi^star + j sin phi^star)
+    space
+    1 + j tau omega_c^star = M^* (cos phi^star + j sin phi^star)(1+j alpha tau omega_c^star)
+$
+Uguagliando parte reale e parte immaginaria
+$
+    1 &= M^star cos phi^star - M^star alpha tau omega_c^star sin phi^star\
+    tau omega_c^star &= M^star alpha tau omega_c^star cos phi^star + M^star sin phi^star
+$
+Quindi arriviamo alle seguenti formule di inversione
+$
+    tau = frac(M^star - cos phi^star, omega_c^star sin phi ^star)
+    space
+    tau = frac(cos phi^star - dfrac(1,M^star), omega_c^star sin phi ^star)
+$
+*Nota:* perché si abbia $alpha > 0$ occorre che cos $phi^star > dfrac(1,M^star)$.
+
+Come sempre, vogliamo che $|L(j omega)|_"dB" = 0$ per $omega = omega_c^star$, quindi
+- scegliamo $omega_c^star$ e ricaviamo $M_f^star$ dalle specifiche
+- calcoliamo $M^star$ e $phi^star$ imponendo
+  $
+    |G_e (j omega_c^star)|_"dB" + 20 log M^star = 0 
+    space
+    M_f^star = 180 degree + arg(G_e (j omega_c^star)) + phi^star
+  $
+- verifichiamo che $M^star > 1$, $0 < phi^star < pi , cos phi^star > dfrac(1,M^star)$
+- calcoliamo $alpha$ e $tau$ mediante le formule di inversione. 
+
+
+
+== Controllori PID
+I _controllori PID_, che sta per *controllori ad azione Proporzionale Integrale Derivativa*, sono tra i più usati in ambito industriale. Tra i motivi di questo c'è sicuramente il fatto di poter controllare in modo soddisfacente un'ampia gamma di processi; ma anche perché possono essere usati in casi un cui non vi sia un modello matematico preciso del sistema sotto controllo, perché sono state sviluppati negli anni delle regole per la loro taratura automatica.\
+Essi, grazie alla loro semplicità, possono essere realizzati con varie tecnologie, come: meccanica, pneumatica, idraulica, elettronica analogica e digitale, e questo ovviamente implica una grande disponibilità commerciale.
+
+Un PID ideale è rappresentato dalla seguente espressione:
+$
+    R(s) = K_p (1 + dfrac(1,T_i s) + T_d s)
+$
+ove $T_i$ è il _tempo integrale_ e $T_d$ il _tempo derivativo_.
+#nfigure("PID_1.png", 70%)
+L'ingresso di controllo è
+$
+    U(s) &= R(s) E(s) \
+    &= K_p E(s) + frac(K_p,T_i) frac(E(s),s) + K_p T_d s E(s) 
+$
+che nel dominio del tempo equivale a
+$
+    u(t) = cal(L)^(-1)  [U(s)] = underbrace(K_p e(t), #text(size: 10pt)[termine \ Proporzionale]) + underbrace(frac(K_p, T_i)integral_0^t e(tau) thick d tau, #text(size: 10pt)[termine \ Integrale]) + underbrace(K_p T_d frac(d e(t), d t),#text(size: 10pt)[termine \ Derivativo])
+$
+
+*Attenzione: * il PID ideale non è fisicamente realizzabile. Infatti, sviluppando i calcoli, si vede che la funzione di trasferimento del controllore ha un numeratore con grado più elevato del denominatore:
+$
+    R(s) 
+    &= K_p (1 + dfrac(1,T_i s) + T_d s)\
+    &= frac(K_p T_i s + K_p + K_p T_i T_d s^2, T_i s)
+$
+
+Il PID “reale” (fisicamente realizzabile) richiede di aggiungere un polo in alta frequenza:
+$
+    R^("fr") (s) = K_p (1 + dfrac(1,T_i s) + T_d s) frac(1, 1+T_p s)
+$
+
+Raccogliendo i termini e definendo opportunamente $tau_1$ , $tau_2$ possiamo vedere che il PID reale è una combinazione di una rete anticipatrice e di una rete ritardatrice:
+$
+    R^("fr") (s) 
+    &= underbrace(frac(K_p, T_i), mu) frac(T_i s + 1 + T_i T_d s^2, s) frac(1, 1+T_p s)\
+    &= mu frac((1+tau_1 s)(1+ tau_2 s), s) frac(1, 1+T_p s)
+$
+
+
+=== Casi speciali
+*Regolatori P:* se $T_i -> infinity$ e $T_d = 0$, quindi il termine integrale e quello derivativo sono assenti, si ottiene un regolatore proporzionale $R(s) = K_p$.
+
+*Regolatori I:* in assenza di termine proporzionale e derivativo, si ottiene un regolatore puramente integrale $R(s) = frac(K_i, s)$. Si può interpretare come una rete ritardatrice con il polo sposto nell'origine e con lo zero all'infinito.
+
+#par(leading: 1.2em)[
+    *Regolatori PI:* se $T_d = 0$, quindi manca il termine derivativo, si ottiene un regolatore proporzionale integrale $R(s) = K_p (1 + dfrac(1, T_i s))$. Possono essere visti come reti ritardatrici con polo nell'origine e zero in $-dfrac(1, T_i)$.
+] 
+
+*Regolatori PD:* se $T_i -> infinity$, quindi manca il termine integrale, si ottiene un regolatore proporzionale derivativo $R(s) = K_p (1+T_d s)$. Possono essere visti come reti anticipatrici con zero in $-dfrac(1,T_d)$ e un polo posto all'infinito (nel caso ideale).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
