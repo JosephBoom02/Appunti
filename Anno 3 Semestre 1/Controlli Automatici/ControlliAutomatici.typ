@@ -3657,15 +3657,15 @@ $
 === Contributi elementari
 Possiamo quindi studiare l'andamento dei seguenti contributi elementari
 $
-    G_a(j omega) &= mu 
+    G_a (j omega) &= mu 
     \ 
-    G_b(j omega) &=  frac(1,(j omega)^g)  
+    G_b (j omega) &=  frac(1,(j omega)^g)  
     \
-    G_c(j omega) &= (1+j omega tau_i) 
+    G_c (j omega) &= (1+j omega tau_i) 
     & space  
-    G_c(j omega) &= frac(1,1+j omega T_i)  
+    G_c (j omega) &= frac(1,1+j omega T_i)  
     \
-    G_d(j omega) &=  ( 1+2j  zeta_i  frac( omega, alpha_(n,1) )-  frac( omega^2, alpha^2_(n,1))  ) & G_d(j omega) &=  frac(1, ( 1+2j  zeta_i  frac( omega, alpha_(n,1) )-  frac( omega^2, alpha^2_(n,1))  ))
+    G_d (j omega) &=  ( 1+2j  zeta_i  frac( omega, alpha_(n,1) )-  frac( omega^2, alpha^2_(n,1))  ) & G_d (j omega) &=  frac(1, ( 1+2j  zeta_i  frac( omega, alpha_(n,1) )-  frac( omega^2, alpha^2_(n,1))  ))
 $
 La rappresentazione di questi diagrammi avviene su carte logaritmiche che vanno per _decade_, cioè per potenze di dieci.  
 
@@ -3673,9 +3673,9 @@ La rappresentazione di questi diagrammi avviene su carte logaritmiche che vanno 
 
 === Guadagno statico
 $
-    G_a(j omega) &= mu 
+    G_a (j omega) &= mu 
     & space 
-    |G_a(j omega)|_("dB") &= 20 log|mu| 
+    |G_a (j omega)|_("dB") &= 20 log|mu| 
     & space   
     arg(G(j omega)) =  arg( mu)
 $
@@ -3693,7 +3693,7 @@ Per il diagramma della fase invece
 === Zeri nell'origine
 Consideriamo una risposta con uno zero nell'origine (cioè $g=-1$)
 $
-    G_b(j omega) &=  frac(1,(j omega)^g) = j omega & |G_b(j omega)|_("dB") &= 20  log  omega &  arg(G_b(j  omega)) &=  arg(j omega)
+    G_b (j omega) &=  frac(1,(j omega)^g) = j omega & |G_b (j omega)|_("dB") &= 20  log  omega &  arg(G_b(j  omega)) &=  arg(j omega)
 $
 
 #cfigure("Images/Diagramma_zero_origine.png", 72%)
@@ -3704,9 +3704,9 @@ La retta che definisce l'ampiezza $ log  omega arrow.r.bar 20  log  omega$ ha pe
 === Poli nell'origine
 Consideriamo una risposta con un polo nell'origine (cioè $g=1$)
 $
-    G_b(j omega) &=  frac(1,(j omega)^g) =  frac(1,j omega) 
+    G_b (j omega) &=  frac(1,(j omega)^g) =  frac(1,j omega) 
     &space  
-    |G_b(j omega)|_("dB") &= -20  log  omega 
+    |G_b (j omega)|_("dB") &= -20  log  omega 
     &space  
     arg(G_b(j  omega)) &= - arg(j omega)
 $
@@ -3721,10 +3721,10 @@ Per quanto riguarda la fase $-j  omega$ è un punto sul semiasse immaginario neg
 === Zero reale (ampiezza)
 Consideriamo una risposta con uno zero reale
 $
-    G_c(j omega) = 1 + j  omega  tau  
+    G_c (j omega) = 1 + j  omega  tau  
 $
 $
-    |G_c(j omega)|_("dB") = 20  log  sqrt(1 +  omega^2 tau^2)  approx
+    |G_c (j omega)|_("dB") = 20  log  sqrt(1 +  omega^2 tau^2)  approx
     cases(
         20  log 1 = 0 & omega  <<  dfrac(1,|tau|)\  
         20  log  omega |tau| = -20  log  dfrac(1,|tau|) + 20  log  omega wide& omega  >>  dfrac(1,|tau|)
@@ -3740,10 +3740,10 @@ per $ omega =  frac(1,|tau|)$ abbiamo lo scostamento massimo.
 
 === Zero reale negativo (fase)
 Consideriamo una una risposta con uno zero reale negativo
-#tageq($G_c(j omega) = 1 + j  omega  tau$, $ tau > 0$)
+#tageq($G_c (j omega) = 1 + j  omega  tau$, $ tau > 0$)
 
 $
-    arg(G_c(j omega)) =  arg(1+j omega  tau)  approx 
+    arg(G_c (j omega)) =  arg(1+j omega  tau)  approx 
     cases(
         0 wide& omega  <<  frac(1, tau) \ 
         90^ degree &  omega  >>  frac(1, tau)
@@ -3766,7 +3766,7 @@ $ dfrac(1,5) dot dfrac(1, tau) = 0.2 dot dfrac(1, tau) = 2  dot 10^(-1)  dfrac(1
 
 
 === Zero reale positivo (fase)
-Consideriamo $G_c(j omega) = 1 + j omega  tau,    tau <0$ (cioè una risposta con uno zero reale positivo)
+Consideriamo $G_c (j omega) = 1 + j omega  tau,    tau <0$ (cioè una risposta con uno zero reale positivo)
 
 #cfigure("Images/Diagramma_zero_reale_positivo_1.png", 32%)
 
@@ -3783,16 +3783,16 @@ $
 
 
 === Polo reale
-Consideriamo $G_c(j omega) =  frac(1,1+j omega T)$ (cioè una risposta con un polo reale)
+Consideriamo $G_c (j omega) =  frac(1,1+j omega T)$ (cioè una risposta con un polo reale)
 $
-    |G_c(j omega)|_("dB") &= 20  log  | frac(1,1+j omega  tau) |  
+    |G_c (j omega)|_("dB") &= 20  log  | frac(1,1+j omega  tau) |  
     \
     &= -20  log |1+j omega tau|
 $
 $
-    |G_c(j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
     & space  
-    arg(G_c(j omega)) = - arg(1+j omega T)
+    arg(G_c (j omega)) = - arg(1+j omega T)
 $
 
 #cfigure("Images/Diagramma_polo_reale.png", 73%)
@@ -3802,11 +3802,11 @@ Il diagramma è uguale al diagramma dello zero ma ribaltato rispetto all'asse re
 
 
 === Polo reale negativo
-Consideriamo $G_c(j omega) =  dfrac(1,1+j omega T),   T>0$ (cioè una risposta con un polo reale negativo)
+Consideriamo $G_c (j omega) =  dfrac(1,1+j omega T),   T>0$ (cioè una risposta con un polo reale negativo)
 $
-    |G_c(j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
     & space  
-    arg(G_c(j omega)) = - arg(1+j omega T)
+    arg(G_c (j omega)) = - arg(1+j omega T)
 $
 
 #cfigure("Images/Diagramma_polo_reale_negativo_1.png", 53%)
@@ -3815,7 +3815,7 @@ Fino a $ dfrac(1,T)$, (pulsazione di taglio), si ha un andamento costante a $0 "
     
 Lo scostamento massimo (tra diagramma asintotico e diagramma reale) si ha in $ omega =  dfrac(1,T)$ dove
 $
-    |G_c(j omega)|_("dB") &= -20  log  sqrt(1+1) \ 
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+1) \ 
     &= -20  log  sqrt(2)  approx -3
 $
 Il cambio di fase inizia circa una decade prima e finisce circa una
@@ -3824,13 +3824,13 @@ decade dopo la pulsazione di taglio $ omega =  dfrac(1,T)$.
 
 
 === Zeri complessi coniugati (ampiezza)
-Consideriamo $G_d(j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2)$, una risposta con una coppia di zeri complessi coniugati
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2)$, una risposta con una coppia di zeri complessi coniugati
 $
-    |G_d(j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))
+    |G_d (j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))
 $
 per $ omega  >>  alpha_n$
 $
-    |G_d(j omega)|_("dB") & approx 20  log  sqrt( ( frac( omega^2, alpha_n^2) ))  \
+    |G_d (j omega)|_("dB") & approx 20  log  sqrt( ( frac( omega^2, alpha_n^2) ))  \
     &=20  log  frac( omega^2, alpha_n^2)  \
     &= 20  log  ( frac( omega, alpha_n) )^2  \
     &= 40  log  frac( omega, alpha_n)  \
@@ -3839,7 +3839,7 @@ $
 Quindi la risposta si comporta come una retta, di pendenza pari a 40 dB.  
 Analizziamo ora la risposta per $ omega =  alpha_n$
 $
-    |G_d(j omega)|_("dB") &20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  \
+    |G_d (j omega)|_("dB") &20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  \
     &= 20  log  sqrt(4  zeta^2)  \
     &= 23  log 2|zeta|  \
     &=  underbrace(20 log 2 ,6   "dB") +20  log |zeta|
@@ -3847,7 +3847,7 @@ $
 quindi scostamento significativo dipendente dal valore di $ zeta$.
 
 $
-    |G_d(j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  approx
+    |G_d (j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  approx
     cases(
         20  log(1) = 0 &  omega  <<  alpha_n  \
         20  log  dfrac( omega^2, alpha_n^2) = -40  log  alpha_n + 40  log  omega wide& omega   >>  alpha_n
@@ -3861,7 +3861,7 @@ Il minimo dell'ampiezza si ha alla pulsazione $ omega_r =  alpha_n  sqrt(1-2 zet
 
 
 === Zeri complessi coniugati a parte reale negativa (fase)
-Consideriamo $G_d(j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),    zeta>0$, una risposta con una coppia di zeri complessi coniugati a parte reale negativa
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),    zeta>0$, una risposta con una coppia di zeri complessi coniugati a parte reale negativa
 $
      arg(G_d(j  omega))  approx 
     cases(
@@ -3881,7 +3881,7 @@ Nel diagramma di fase più $ zeta$ è piccolo e più la discontinuità da $0^ de
 
 
 === Zeri complessi coniugati a parte reale positiva
-Consideriamo $G_d(j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),  quad  zeta < 0$, una risposta con una coppia di zeri complessi coniugati a parte reale positiva.  
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),  quad  zeta < 0$, una risposta con una coppia di zeri complessi coniugati a parte reale positiva.  
 Il diagramma di fase di è speculare a quello precedente
 
 #cfigure("Images/Diagramma_zeri_cc_pos_1.png", 73%)
@@ -3891,7 +3891,7 @@ Il diagramma di fase di è speculare a quello precedente
 
 === Poli complessi coniugati a parte reale negativa <poli_complessi_coniugati_parte_reale_negativa>
 Consideriamo una risposta in frequenza con poli complessi coniugati a parte reale negativa
-$G_d(j omega) =  dfrac(1,1+2j  xi  frac( omega, omega_n)- frac( omega^2, omega_n^2)),    xi > 0$
+$G_d (j omega) =  dfrac(1,1+2j  xi  frac( omega, omega_n)- frac( omega^2, omega_n^2)),    xi > 0$
 
 #cfigure("Images/Diagramma_poli_cc_neg_1.png", 63%)
 
@@ -3905,7 +3905,7 @@ Soffermiamoci un attimo sul caso in cui $ xi  arrow 0$: se do una sinusoide con 
 === Poli complessi coniugati a parte reale positiva
 Consideriamo una risposta in frequenza con una coppia di poli complessi coniugati a parte reale positiva
 
-#tageq($G_d(j omega) =  frac(1,1+2j  xi  frac( omega, omega_n) -  frac( omega^2, omega_n^2))$, $ xi < 0$)
+#tageq($G_d (j omega) =  frac(1,1+2j  xi  frac( omega, omega_n) -  frac( omega^2, omega_n^2))$, $ xi < 0$)
 
 Calcoliamo i poli
 $
