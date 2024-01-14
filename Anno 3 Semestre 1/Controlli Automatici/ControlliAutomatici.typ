@@ -3693,7 +3693,7 @@ Per il diagramma della fase invece
 === Zeri nell'origine
 Consideriamo una risposta con uno zero nell'origine (cioè $g=-1$)
 $
-    G_b (j omega) &=  frac(1,(j omega)^g) = j omega & |G_b (j omega)|_("dB") &= 20  log  omega &  arg(G_b(j  omega)) &=  arg(j omega)
+    G_b (j omega) &=  frac(1,(j omega)^g) = j omega & |G_b (j omega)|_("dB") &= 20  log  omega &  arg(G_b (j  omega)) &=  arg(j omega)
 $
 
 #cfigure("Images/Diagramma_zero_origine.png", 72%)
@@ -3708,7 +3708,7 @@ $
     &space  
     |G_b (j omega)|_("dB") &= -20  log  omega 
     &space  
-    arg(G_b(j  omega)) &= - arg(j omega)
+    arg(G_b (j  omega)) &= - arg(j omega)
 $
 
 #cfigure("Images/Diagramma_poli_origine.png", 75%)
@@ -3783,9 +3783,9 @@ $
 
 
 === Polo reale
-Consideriamo $G_c (j omega) =  frac(1,1+j omega T)$ (cioè una risposta con un polo reale)
+Consideriamo $G_c (j omega) =  dfrac(1,1+j omega T)$ (cioè una risposta con un polo reale)
 $
-    |G_c (j omega)|_("dB") &= 20  log  | frac(1,1+j omega  tau) |  
+    |G_c (j omega)|_("dB") &= 20  log  lr(| frac(1,1+j omega  tau) |)  
     \
     &= -20  log |1+j omega tau|
 $
@@ -3857,13 +3857,13 @@ $
 #cfigure("Images/Diagramma_zeri_cc_ampiezza_1.png", 55%)
 #cfigure("Images/Diagramma_zeri_cc_ampiezza_2.png", 55%)
 
-Il minimo dell'ampiezza si ha alla pulsazione $ omega_r =  alpha_n  sqrt(1-2 zeta^2)$ con $|G_d(j omega_r)| = 2 |zeta| sqrt(1- zeta^2)$
+Il minimo dell'ampiezza si ha alla pulsazione $ omega_r =  alpha_n  sqrt(1-2 zeta^2)$ con $|G_d (j omega_r)| = 2 |zeta| sqrt(1- zeta^2)$
 
 
 === Zeri complessi coniugati a parte reale negativa (fase)
 Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),    zeta>0$, una risposta con una coppia di zeri complessi coniugati a parte reale negativa
 $
-     arg(G_d(j  omega))  approx 
+     arg(G_d (j  omega))  approx 
     cases(
         0 &  omega  <<  alpha_n  \
         180^ degree wide& omega  >>  alpha_n
@@ -3896,7 +3896,7 @@ $G_d (j omega) =  dfrac(1,1+2j  xi  frac( omega, omega_n)- frac( omega^2, omega_
 #cfigure("Images/Diagramma_poli_cc_neg_1.png", 63%)
 
 I diagrammi sono quelli precedenti ribaltati rispetto all'asse reale, infatti la retta del diagramma di ampiezza asintotico dopo la pulsazione $ omega_n$ ha pendenza $-40$ "dB/dec".  
-Il picco di risonanza si trova alla pulsazione (di risonanza) $ omega_r =  omega_n  sqrt(1-2 xi^2)$ con $|G_d(j omega_r)| =  dfrac(1,2|xi| sqrt(1-2 xi^2))$; alla frequenza $ omega_n$ si ha $|G_d(j omega_n)| =  dfrac(1,2|xi|)$
+Il picco di risonanza si trova alla pulsazione (di risonanza) $ omega_r =  omega_n  sqrt(1-2 xi^2)$ con $|G_d (j omega_r)| =  dfrac(1,2|xi| sqrt(1-2 xi^2))$; alla frequenza $ omega_n$ si ha $|G_d (j omega_n)| =  dfrac(1,2|xi|)$
    
 Soffermiamoci un attimo sul caso in cui $ xi  arrow 0$: se do una sinusoide con frequenza inferiore a $ omega_n$ essa non viene sfasata; se invece la sua frequenza è di poco superiore a $ omega_n$ la sua fase viene sfasata di $90^ degree$; il modulo viene amplificato di molto se la frequenza della sinusoide è nell'intorno di $ omega_n$.
 
@@ -3909,7 +3909,7 @@ Consideriamo una risposta in frequenza con una coppia di poli complessi coniugat
 
 Calcoliamo i poli
 $
-    G_d(s) =&  frac(1,1+2  frac( xi, omega_n)s +  frac(s^2, omega_n^2))  
+    G_d (s) =&  frac(1,1+2  frac( xi, omega_n)s +  frac(s^2, omega_n^2))  
     \
     =&  frac( omega_n^2,s^2+2  xi  omega_n s +  omega_n^2)  
     \
@@ -4030,7 +4030,7 @@ $<passa_basso>
 
 #cfigure("Images/Passa_basso.png", 70%)
 
-N.B. Nella @eqt:passa_basso[] lo sfasamento introdotto da $G(s)$ non ha alcun ruolo, mentre in realtà il contributo di fase di un filtro (reale) può essere significativo e non va trascurato.
+N.B. Nella @eqt:passa_basso[] lo sfasamento introdotto da $G(s)$ non ha alcun ruolo, mentre il contributo di fase di un filtro #underline[reale] può essere significativo e non va trascurato.
 
 
 === Filtro passa-alto
