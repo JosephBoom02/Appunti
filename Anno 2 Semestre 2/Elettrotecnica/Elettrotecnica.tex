@@ -699,9 +699,9 @@ Prendiamo in esame il seguente circuito
 \begin{center}
     \includegraphics[scale=0.25]{Image/Esempio LKC.png}
 \end{center}
-Sapendo che il segno di ogni corrente è negativo se entra in un nodo e positivo se ne esce, non è difficile calcolare le correnti nei nodi A e B 
+Sapendo che il segno di ogni corrente è \textbf{positivo} se \textbf{entra} in un nodo e \textbf{negativo} se ne esce, non è difficile calcolare le correnti nei nodi A e B 
 \begin{align*}
-    A&: -i_1 -i_2+i_3=0 & B&: -i_5-i_4+i_3=0
+    A&: i_1 + i_2 - i_3=0 & B&: -i_5-i_4+i_6=0
 \end{align*}
 
 
@@ -1309,7 +1309,7 @@ Ipotesi:
     \includegraphics[scale=0.3]{Image/Thevenin_1.png}
     \includegraphics[scale=0.3]{Image/Thevenin_2.png}
 \end{center}
-$E_{eq}$ è la tensione vista ai morsetti A e B a circuito aperto.\\
+$V_{eq}$ è la tensione vista ai morsetti A e B a circuito aperto.\\
 $R_{eq}$ è la resistenza equivalente vista da A e B passivando i generatori indipendenti.
 
 
@@ -1330,7 +1330,7 @@ Utilizzando l'LKT sulla maglia più grande:
 \end{align*}
 mentre l'LKT sulla maglia più piccola a sinistra:
 \begin{align*}
-    E_1 - R_1i -E_{eq}=0 \underbrace{\Rightarrow}_{i=\frac{E_1-E_2}{R_1+R_2}} E_{eq} &= E-R_1 \cdot \frac{E_1-E_2}{R_1+R_2} \\
+    E_1 - R_1i -E_{eq}=0 \underbrace{\Rightarrow}_{i=\frac{E_1-E_2}{R_1+R_2}} E_{eq} &= E_1-R_1 \cdot \frac{E_1-E_2}{R_1+R_2} \\
     &= \frac{\cancel{E_1R_1}+E_1R_2-\cancel{R_1E_1}+R_1E_2}{R_1+R_2}\\
     & = \frac{E_1R_2+E_2R_1}{R_1+R_2}
 \end{align*}
@@ -1363,7 +1363,7 @@ e il circuito della $R_{eq}$ è il seguente
 \end{center}
 Da notare che le resistenze $R_1$ e $R_2$ (come anche $R_3$ e $R_4$) sono in serie viste da B e C, cosa non vera nel circuito ottenuto corto-circuitando la resistenza $R_5$.
 \[
-    R_{eq} = (R_1+R_2) // (R_3+R_4)
+    R_{eq} = (R_1//R_2) + (R_3//R_4)
 \]
 \begin{center}
     \includegraphics[scale=0.3]{Image/Esercizio_Thevenin_4.png}
@@ -2233,7 +2233,7 @@ Il generatore di tensione $E_1$ è costante, quindi abbiamo un regime stazionari
 
 \section{Regime sinusoidale}
 \subsection{Introduzione}
-La \textbf{corrente alternata} (CA o AC dall'inglese: Alternating Current) è un tipo di corrente elettrica nella quale il flusso di elettroni inverte la propria direzione continuativamente nel tempo. A differenza della corrente continua (rappresentata in rosso nella figura) in cui il flusso degli elettroni è unidirezionale, nella corrente alternata il flusso di elettroni inverte la propria direzione, con un'alternanza che avviene con frequenza fissa (tipicamente 50 Hz o 60 Hz). L'inversione di polarità però non avviene in modo repentino ma con una variazione progressiva secondo un andamento chiamato \textbf{sinusoidale}, nel quale il valore di corrente (e quindi di tensione) parte da zero e gradualmente aumenta in un determinato verso, raggiunge il suo valore massimo per poi diminuire fino a zero e riprendere nel verso opposto col medesimo andamento.
+La \textbf{corrente alternata} (CA o AC dall'inglese: Alternating Current) è un tipo di corrente elettrica nella quale il flusso di elettroni inverte la propria direzione continuativamente nel tempo. A differenza della corrente continua, in cui il flusso degli elettroni è unidirezionale, nella corrente alternata il flusso di elettroni inverte la propria direzione, con un'alternanza che avviene con frequenza fissa (tipicamente 50 Hz o 60 Hz). L'inversione di polarità però non avviene in modo repentino ma con una variazione progressiva secondo un andamento chiamato \textbf{sinusoidale}, nel quale il valore di corrente (e quindi di tensione) parte da zero e gradualmente aumenta in un determinato verso, raggiunge il suo valore massimo per poi diminuire fino a zero e riprendere nel verso opposto col medesimo andamento.
 
 \subsubsection{Segnali periodici}
 Una grandezza temporale $a(t)$ si definisce periodica quando si ripete a ogni periodo $T$
@@ -2935,8 +2935,8 @@ Bisogna trovare:
         \includegraphics[scale=0.26]{Image/Es_Regime_Sinusoiudale_1_1.png}
     \end{center}
     Ricordando che $S[a(t)]=A_e \cdot e^{j \alpha}$ e che $e(t) = \sqrt{2} E \cos(\omega t + \alpha)$
-    \[\underline{E}=230 \cdot e^{j \alpha}\]
-    e $\omega = 2 \pi f = 314,26 \ rad/s$.
+    \[\underline{E}=230 \cdot e^{j 30}\]
+    e $\omega = 2 \pi f = 314,16 \ rad/s$.
     \vspace*{0.1cm}\\
     Calcoliamo le impedenze:
     \begin{align*}
@@ -3244,7 +3244,7 @@ Dati:
 \end{align*}
 Bisogna trovare
 \begin{itemize}
-    \item $P$ e $Q$ del rame $RL$
+    \item $P$ e $Q$ del ramo $RL$
     \item $Q$ del condensatore
     \item $C$
     \item corrente assorbita

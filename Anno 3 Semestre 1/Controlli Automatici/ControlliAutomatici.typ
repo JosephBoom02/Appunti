@@ -4691,26 +4691,60 @@ questa equazione mette in relazione la $F(j omega)$ e la $L(j omega)$.
 
 
 == Analisi statica: errore a un gradino
-Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ con $e(t) = w(t) - y(t)$ errore in risposta a un _gradino_ $w(t) = W 1(t)$.
+Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ con $e(t) = w(t) - y(t)$ errore in risposta a un gradino $w(t) = W 1(t)$.
 
 Utilizzando il @teorema_valore_finale[teorema del valore finale]
 
 $
-    e_(infinity) &= display(lim_(s -> 0)) s E(s)
+    e_(infinity) &= lim_(s -> 0) s E(s) \
+    #text(fill: green, size: 9pt)[$E_w (s) = S(s) W(s) ==>$] &= lim_(s -> 0) s S(s)W(s)\
+    #text(fill: green, size: 9pt)[$cal(L)[W 1(t)] = W/s ==>$] &= lim_(s -> 0) s S(s)W/s\
+    &= W lim_(s -> 0)S(s)
 $
 
-//////////////////////////////////
-RIVEDI!!!
-////////////////////////////////////
+Sia $L(s) = dfrac(N_L (s), D_L (s)) = dfrac(N_L (s), s^g D'_L (s))$ con $N_L (0) = mu$ e $D'_L (0) = 1$, allora
 
+$
+    lim_(s -> 0)S(s) &= lim_(s->0) frac(D_L (s), N_L (s) + D_L (s)) \
+    &= lim_(s->0) frac(s^g D'_L (s), N_L (s) + s^g D'_L (s)) \
+    &= lim_(s->0)frac(s^g, mu + s^g)
+$
 
+Si ha quindi
+$
+    e_infinity = W lim_(s->0) frac(s^g, mu + s^g) =
+    cases(
+        dfrac(W, 1+mu) wide& g=0 \
+        0 &g>0
+    )
+$
 
+== Analisi statica: errore a ingressi $frac(W, s^k)$
 
+Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ con $e(t) = w(t) - y(t)$ errore in risposta a un ingresso con trasformata $W(s) = dfrac(W, s^k)$
+$
+    e_infinity &= lim_(s -> 0) s S(s) frac(W, s^k) \
+    &= W lim_(s->0) frac(s^(g-k+1), mu + s^g) = 
+    cases(
+        infinity wide& g<k -1 \
+        dfrac(W,mu) &g=k-1 \
+        0 & g>k-1
+    )
+$
+Quindi 
+- se $g< k-1$ l'errore diverge
+- se $g=k-1$ l'errore a regime è finito e diminuisce all'aumentare di $mu$
+- se $g>k-1$ l'errore a regime è nullo
 
+*Nota:* le precedenti valutazioni sono valide solo se il sistema in anello chiuso è asintoticamente stabile.
 
+Affinché l'errore a regime a $W(s) = dfrac(W, s^k)$ sia nullo occorre che $L(s)$ abbia un numero di poli almeno pari a $k$ (principio del modello interno).
 
+== Principio del modello interno
+//RIVEDI
+Possiamo generalizzare il risultato precedente come segue.
 
-
+Affinché un segnale di riferimento (rispetto un disturbo di misura) con una componente spettrale alla frequenza $omega_0$ sia inseguito a regime 
 
 
 
