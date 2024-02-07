@@ -71,12 +71,11 @@
 #align(center, text(15pt, author))
 #v(8.35mm, weak: true)
 
-#pagebreak()
 
 #outline()
 
 //Justify text
-#set par(justify: true)
+
 
 
 = Introduzione 
@@ -5155,7 +5154,7 @@ Quindi arriviamo alle seguenti formule di inversione
 $
     tau = frac(M^star - cos phi^star, omega_c^star sin phi ^star)
     space
-    tau = frac(cos phi^star - dfrac(1,M^star), omega_c^star sin phi ^star)
+    alpha tau = frac(cos phi^star - dfrac(1,M^star), omega_c^star sin phi ^star)
 $
 *Nota:* perché si abbia $alpha > 0$ occorre che cos $phi^star > dfrac(1,M^star)$.
 

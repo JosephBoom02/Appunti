@@ -711,6 +711,8 @@ Combinando la LKT e la LKC su un circuito è possibile verificare che la somma d
     \sum_{k=1}^{n^o \text{ generatori}} p_k = \sum_{j=1}^{n^o \text{ utilizzatori}} p_j
 \]
 
+\textbf{Versione estesa:}
+Si consideri una rete elettrica con l tensioni di lato ed l correnti di lato che soddisfino le \underline{leggi di Kirchhoff}. Si ha che $\sum\limits_{k=1}^l r_k i_k = 0$. Se $v$ e $i$ rappresentano le tensioni e le corrispondenti correnti di lato in uno stesso istante, si ha che il teorema di Tellegen si riduce al principio \textbf{di conservazione delle potenze istantanee}. È possibile esprimere la potenza \underline{erogata} dai bipoli attivi come $\sum\limits_{h=1}^M p_h$ dove $M$ è il numero di componenti che rispettano la convenzione \underline{del generatore}, e la potenza
 
 
 
@@ -1715,7 +1717,7 @@ Dal grafico si può facilmente vedere che $\tau_1<\tau_2$, quindi la tensione è
 \begin{align*}
     i(t) &= C \frac{dv_C}{dt}\\ 
     &= C \frac{d}{dt} \left[ \left(V_{C0}-E\right) e^{-t/RC}+E \right]\\
-    &= \cancel{C} -\left(\frac{1}{R \cancel{C}}\right) \left(V_{C0}-E\right)e^{-t/RC}\\
+    &= \cancel{C} \left(\frac{1}{R \cancel{C}}\right) \left(V_{C0}-E\right)e^{-t/RC}\\
     &\Rightarrow i(t) = \frac{E-V_{C0}}{R} e^{-t/RC}
 \end{align*}
 Dal grafico è evidente che la corrente non varia con continuità.
@@ -1980,7 +1982,7 @@ Dobbiamo trovare:
 \begin{itemize}
     \item $P_{E_1,max}$ e $t_{P_{E_1}, max}$
     \item $P_{E_1}(t=\infty)$
-    \item $t_{P_E^*}$ e $P_E^* = \dfrac{1}{2}P_{E,max}$
+    \item $t_{P_\delta^*}$ e $P_\delta^* = \dfrac{1}{2}P_{E,max}$
 \end{itemize}
 \[P_{E_1} = E_1 \cdot i_1\]
 \begin{align*}
@@ -3458,10 +3460,9 @@ Frequenza e tensione efficace sono di 50 Hz, 314 rad/s e 230 - 400 V in Europa, 
 Tre sono le motivazioni principali per l'utilizzo dei sistemi trifase:
 \begin{enumerate}
     \item La maggior parte di energia elettrica è generata da macchine elettriche rotanti a tre fasi (alternatori);
-    \item Nei sistemi a tre fasi bilanciati la \textbf{potenza istantanea totale} è costante;
-    nel tempo (le tre fasi si bilanciano nel tempo). Ciò si traduce in una trasmissione uniforme con meno vibrazioni lungo la linea
+    \item Nei sistemi a tre fasi bilanciati la \textbf{potenza istantanea totale} è costante nel tempo (le tre fasi si bilanciano nel tempo). Ciò si traduce in una trasmissione uniforme con meno vibrazioni lungo la linea
     \item Per la stessa quantità di energia trasportata, un sistema a tre fasi è più
-    economico di uno singola fase,
+    economico di uno singola fase.
 \end{enumerate}
 
 
@@ -3475,7 +3476,7 @@ Le tensioni concatenate $v_{12}(t), v_{23}(t) \T{ e } v_{31}(t)$ sono le tension
 \begin{align*}
     v_{12}(t) + v_{23}(t) + v_{31}(t) &= 0 & \dot V_{12} + \dot V_{23} + \dot V_{31} &= 0
 \end{align*}
-Anche per le tensioni di fase,$e_1 (t), e_2 (t) \T{ e } e_3(t)$, le tensioni fra il centro stella dei tre generatori e ciascuna linea, si ha:
+Anche per le tensioni di fase $e_1 (t), e_2 (t) \T{ e } e_3(t)$, le tensioni fra il centro stella dei tre generatori e ciascuna linea, si ha:
 \begin{align*}
     e_1 (t) + e_2 (t) + e_3(t) &= 0 & \dot E_1 + \dot E_2 + \dot E_3 &= 0
 \end{align*}
@@ -3612,7 +3613,7 @@ Ci sono $\infty^2$ serie di impedenze collegate a stella che inducono $\infty^2$
 
 
 \subsection{Sistemi trifase bilanciati}
-\subsection{Introduzione}
+
 Qualora si abbia un sistema di impedenze $\dot Z_1, \dot Z_2, \T{ e } \dot Z_3$ a stella o a
 triangolo uguali (cioè con uguale resistenza e uguale reattanza), il sistema è un \textbf{sistema di impedenze di carico bilanciato}.\\
 Qualora un sistema trifase simmetrico (con tensioni simmetriche) sia collegato ad un sistema di impedenze di carico bilanciato, il sistema
@@ -3680,7 +3681,7 @@ dove $I$ è il valore efficace delle correnti. La potenza istantanea totale asso
     \\
     &= EI \left[3 \cos(\phi) - \cos(2 \omega t - \phi) - \cos \left(2 \omega t - \phi - \frac{4 \pi}{3}\right)-\cos\left(2 \omega t - \phi - \frac{8 \pi}{3}\right)\right]
 \end{align*}
-Le tre sinusoidi a pulsazione $2 \omega$ a ultimo membro costituiscono una terna simmetrica diretta ed hanno quindi somma nulla in ogni istante, sicché la potenza
+Le tre sinusoidi a pulsazione $2 \omega$ all'ultimo membro costituiscono una terna simmetrica diretta ed hanno quindi somma nulla in ogni istante, sicché la potenza
 istantanea si riduce al solo addendo costante:
 \[p(t) = 3 EI \cos(\phi)\]
 Dunque la potenza istantanea in un sistema trifase simmetrico ed equilibrato è
@@ -3725,7 +3726,7 @@ Per i sistemi bilanciati e non, la rotazione del sistema trifase di correnti di 
 Il campo magnetico $\mathbf{H}$ è definito dalla prima
 legge di Maxwell (L. Ampere):
 \[\oint_l \mathbf{H} \ dl = i_c\]
-dove $i_c$ è il flusso di $\mathbf{J}_t$ (corrente di conduzione e spostamento) attraverso una superficie con contorno $l$. il cui verso è determinato dalla regola della vite destrogira.\\
+dove $i_c$ è il flusso di $\mathbf{J}_t$ (corrente di conduzione e spostamento) attraverso una superficie con contorno $l$ il cui verso è determinato dalla regola della vite destrogira.\\
 In un filo conduttore rettilineo percorso
 dalla corrente i viene indotto un campo H
 le cui linee di flusso sono in piani normali al
@@ -3971,7 +3972,7 @@ magnetico quindi è:
 \subsection{Isteresi magnetica}
 I materiali \textbf{ferromagnetici} sono caratterizzati dalla capacità di magnetizzarsi molto intensamente sotto l'azione di un campo magnetico esterno e di restare a lungo magnetizzati quando il campo si annulla, diventando così magneti. Invece i materiali \textbf{ferrimagnetici} sono caratterizzati da una magnetizzazione spontanea.
 \vspace*{0.1cm}\\
-I materiali ferromagnetici e ferrimagnetici per temperature inferiori alla temperatura di Curie hanno per la suscettività magnetica un comportamento \textbf{isteretico}. Perciò la relazione $\mathbf{B} = f(\mathbf{H})$ è una \textbf{funzione isterica}.\\
+I materiali ferromagnetici e ferrimagnetici per temperature inferiori alla temperatura di Curie hanno, per la suscettività magnetica, un comportamento \textbf{isteretico}. Perciò la relazione $\mathbf{B} = f(\mathbf{H})$ è una \textbf{funzione isterica}.\\
 \begin{center}
     \includegraphics[scale=0.27]{Image/Isteresi_magnetica_2.png}
 \end{center}
@@ -3986,13 +3987,8 @@ Si dimostra che la densità di energia dissipata per isteresi è data dall'area 
 \end{center}
 I materiali ferromagnetici (o ferrimagnetici)
 morbidi hanno alti valori di permeabilità magnetica e un piccolo campo coercitivo ($\mathbf{H}_c < 103 A/m$). Pertanto la superficie del ciclo di isteresi è piccola (quindi hanno delle perdite per isteresi ridotte).\\
-Questi materiali sono utilizzati per ridurre le
-correnti necessarie per produrre e controllare
-il flusso magnetico con perdite per isteresi con-
-tenute (nuclei elettromagnetici, nuclei di trasformatori, rotori e statori di macchine rotanti).\\
-Tipici materiali morbidi sono il ferro e le sue
-leghe di nichel, cobalto e silicio, acciaio a bas-
-so contenuto di carbonio e leghe di ferro dolce.
+Questi materiali sono utilizzati per ridurre le correnti necessarie per produrre e controllare il flusso magnetico con perdite per isteresi contenute (nuclei elettromagnetici, nuclei di trasformatori, rotori e statori di macchine rotanti).\\
+Tipici materiali morbidi sono il ferro e le sue leghe di nichel, cobalto e silicio, acciaio a basso contenuto di carbonio e leghe di ferro dolce.
 
 
 \subsubsection{Materiali ferromagnetici e ferrimagnetici duri}
@@ -4154,11 +4150,8 @@ $B_{M}$ è il valore massimo della induzione magnetica nel ciclo dell'isteresi, 
     \includegraphics[scale=0.24]{Image/Nucleo_ferro.png}
 \end{center}
 Nei nuclei in ferro, a causa della variazione nel
-tempo dell'induzione magnetica $\mathbf{B}$, vene indotta una f.e.m. perpendicolare a $\mathbf{B}$. Di  conseguenza, per l'elevata conduttività elettrica del ferro, vengono generate \textit{correnti parassite} nel ferro. Perciò viene dissipata energia elettromagnetica per effetto Joule.\\
-Assumendo il regime sinusoidale e, conseguente-
-mente un campo $\mathbf{B}(t) = \mathbf{B}_M \cos \omega t$ , detta $S$ la sezione di un tubo di flusso sul cui contorno si forma un circuito nel ferro per la corrente parassita e detta $R$ la
-resistenza del circuito in ferro, la potenza dissipata per correnti parassite $P_{DP}$ è
-data da:
+tempo dell'induzione magnetica $\mathbf{B}$, viene indotta una f.e.m. perpendicolare a $\mathbf{B}$. Di  conseguenza, per l'elevata conduttività elettrica del ferro, vengono generate \textit{correnti parassite} nel ferro. Perciò viene dissipata energia elettromagnetica per effetto Joule.\\
+Assumendo il regime sinusoidale e, conseguentemente un campo $\mathbf{B}(t) = \mathbf{B}_M \cos (\omega t)$ , detta $S$ la sezione di un tubo di flusso sul cui contorno si forma un circuito nel ferro per la corrente parassita e detta $R$ la resistenza del circuito in ferro, la potenza dissipata per correnti parassite $P_{DP}$ è data da:
 \[
     P_{DP} =\frac{S^2\mathbf{B}_M^2 \omega^2}{2R} = k_H f^2 \mathbf{B}_M^2
 \]
