@@ -2060,7 +2060,7 @@ $
 $
 Quindi possiamo definire la _derivata n-sima nel tempo_
 $
-     cal(L) [ frac(d^n, d t^n)f(t) ] = s^n F(s) =  sum_(i=1)^n s^(n-i)  lr(frac(d^(i-1), d t^(i-1))f(t)|)_(t=0)
+     cal(L) [ frac(d^n, d t^n)f(t) ] = s^n F(s) -  sum_(i=1)^n s^(n-i)  lr(frac(d^(i-1), d t^(i-1))f(t)|)_(t=0)
 $<derivata_n-sima_Laplace>
 La proprietà ci dice che, se la funzione e le sue derivate si annullano in $t=0$, derivare nel dominio del tempo equivale a moltiplicare per $s$ nel dominio della variabile complessa; infatti $s$ viene chiamato _operatore di derivazione_.
 
@@ -2084,7 +2084,7 @@ $
 
 
 === Integrazione nel tempo
-Supponiamo che la funzione $f(t)$ sia integralegrabile tra 0 e $+  infinity$. Allora
+Supponiamo che la funzione $f(t)$ sia integrabile tra 0 e $+  infinity$. Allora
 $
      cal(L)  [ integral_0^t f( tau)   d tau ] =  frac(1, s) F(s)
 $
@@ -2093,7 +2093,7 @@ $
 
 
 
-==Convoluzione nel tempo
+=== Convoluzione nel tempo
 Date due funzioni $f_1$ e $f_2$, il loro _prodotto di convoluzione_ è
 $
     f_1(t)  ast f_2(t) =  integral_(- infinity)^(+ infinity) f_1(t - tau)f_2(t)   d tau =  integral_(- infinity)^(+ infinity) f_1( eta)f_2( eta)   d eta = f_2(t- eta)  ast f_1(t)
@@ -2118,7 +2118,7 @@ Se una funzione reale $f(t)$ ha trasformata razionale $F(s)$ con grado del denom
 $
      lim_(t  arrow +  infinity) f(t) =  lim_(s arrow 0) s F(s)
 $<teorema_valore_finale_eq>
-L'equazione vale se esiste $ display(lim_(t  arrow +  infinity)f(t))$ esiste.
+L'equazione vale se $ display(lim_(t  arrow +  infinity)f(t))$ esiste.
 
 
 == Trasformata di segnali elementari
@@ -2238,14 +2238,14 @@ $
 $
 se raccolgo $X(s)$ nella prima equazione
 $
-    (s I-A)X(s) &=x_0+ B U(s)  
+    (s I-A)X(s) =& x_0+ B U(s)  \
+    Y(s) =& C X(s) + D U(s) 
+$
+$
+    X(s) &= overbrace((s I-A)^(-1)x_0, X_ ell (s)) + overbrace((s I-A)^(-1) B U(s),X_f (s))  \
     Y(s) &= C X(s) + D U(s) 
 $
-$
-    X(s) &= overbrace((s I-A)^(-1)x_0, X_ ell (s)) + overbrace((s I-A)^(-1) B U(s),X_f (s))  
-    Y(s) &= C X(s) + D U(s) 
-$
-Sottolineiamo che se avessimo un sistema generico non si potrebbe riscrivere come abbiamo fatto perché  underline(le matrici devono essere)  underline(costanti).
+Sottolineiamo che se avessimo un sistema generico non si potrebbe riscrivere come abbiamo fatto perché #underline[le matrici devono essere costanti].
 
 Inoltre per poter scrivere un sistema LTI come sopra la matrice $(s I-A)$ deve essere invertibile; una matrice è invertibile se il suo determinante è non nullo, quindi, se $s$ è autovalore della matrice della dinamica e $p(s)$ è il polinomio caratteristico associato:
 $
@@ -2267,7 +2267,7 @@ $
 $
 Consideriamo ora la trasformata dell'evoluzione forzata dell'uscita
 $
-    Y_f(s) =  (C(s I-A)^(-1)B+D ) U(s)
+    Y_f (s) =  (C(s I-A)^(-1)B+D ) U(s)
 $
 la matrice
 $
@@ -2275,7 +2275,7 @@ $
 $
 è detta _funzione di trasferimento_; se il sistema è SISO (Single Input Single Output) è una funzione scalare.
  
-Abbiamo così ottenuto una (rappresentazione ingresso-uscita)
+Abbiamo così ottenuto una *rappresentazione ingresso-uscita*
 $
     Y_f (s) = G(s)U(s)
 $<rappresentazione_ingresso_uscita>
@@ -2390,7 +2390,7 @@ $A^T := B = (b_(i j))$ con $b_(i j) = a_(j i)$ per ogni coppia di indici $(i,j)$
 
 
 === Complemento algebrico
-Definiamo $ hat A_(i j)$ complemento algebrico dell'elemento $a_(i j)$ il determinante della matrice ottenuta eliminando da $A$ la riga $i$ e la colonna $j$ (che chiamiamo $M$) e moltiplicando per $(-1)^(i+j)$
+Definiamo $ hat(A)_(i j)$ complemento algebrico dell'elemento $a_(i j)$ il determinante della matrice ottenuta eliminando da $A$ la riga $i$ e la colonna $j$ (che chiamiamo $M$) e moltiplicando per $(-1)^(i+j)$
 $
     hat(A)_(i j) = (-1)^(i+j)  det(M)
 $
@@ -2411,7 +2411,7 @@ $
 $
 con $C$ matrice $1  times n$ e $B$ matrice $m  times 1$.
   
-Definiamo ora la (matrice aggiunta) $ "adj"(A)$ come matrice dei complementi algebrici di $A$
+Definiamo ora la *matrice aggiunta* $ "adj"(A)$ come matrice dei complementi algebrici di $A$
 $
     "adj"(A) = 
     mat(delim: "[",
@@ -2423,7 +2423,7 @@ $
 $ 
 La matrice inversa può essere definita con la matrice aggiunta:
 $
-    A^(-1) =  frac( T("adj")(A), det(A))
+    A^(-1) =  frac( "adj"(A), det(A))
 $
 Quindi, se consideriamo la nostra matrice $(s I-A)$
 $
@@ -2431,7 +2431,7 @@ $
 $
 quindi scriviamo la matrice aggiunta di $(s I-A)$
 $
-     T("adj")(s I-A) = 
+    "adj"(s I-A) = 
     mat(delim: "[",
          hat((s I-A))_11 ,  hat((s I-A))_12 ,  dots ,   hat((s I-A))_(n 1);   
          hat((s I-A))_12 ,  hat((s I-A))_22 ,  dots ,  hat((s I-A))_(n 2);  
@@ -2469,7 +2469,7 @@ $
     &space space
     Y(s) &=  frac(1,s)U(s)
 $
-
+in questo caso $G(s) = dfrac(1,s)$, quindi il grado del denominatore è maggiore di quello del numeratore, per questo il sistema è causale.
 
 
 == Schema dell'utilizzo della trasformata di Laplace
@@ -2494,7 +2494,7 @@ Con
 - lo scalare $ rho$ è detto costante di trasferimento, $ mu$ il _guadagno_;
 - l'intero $g$ è detto _tipo_;
 - gli scalari $-z_i$ e $-p_i$ sono gli zeri e i poli reali non nulli;
-- gli scalari $ alpha_(n i) > 0$ e$ omega_(n i) > 0$ sono le _pulsazioni naturali_ delle coppie di zeri e poli complessi coniugati;
+- gli scalari $ alpha_(n i) > 0$ e $ omega_(n i) > 0$ sono le _pulsazioni naturali_ delle coppie di zeri e poli complessi coniugati;
 - gli scalari $ zeta_i$ e $ xi_i$, in modulo minori di 1, sono gli _smorzamenti_ degli zeri e dei poli complessi coniugati;
 - gli scalari $ tau_i  != 0$ e $T_i  != 0$ sono le costanti di tempo
 
