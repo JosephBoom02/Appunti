@@ -112,7 +112,7 @@ Controllo in anello aperto *“feedforward”*: il controllore utilizza solo il 
 
 #figure(image("Images/Anello_aperto.png", width: 75%))
 
-#text(weight: "bold")[Controllo in anello chiuso] (“fee"dB"ack” o retroazione): il controllore utilizza il segnale di riferimento e la variabile controllata ad ogni istante di tempo
+#text(weight: "bold")[Controllo in anello chiuso] (“*feedback*” o retroazione): il controllore utilizza il segnale di riferimento e la variabile controllata ad ogni istante di tempo
 
 #figure(image("Images/Anello_chiuso.png", width: 80%))
 
@@ -194,11 +194,11 @@ Da notare che $x(t)$ è un vettore mentre $x_1,...,x_n$ sono scalari; $x(t)$ è 
 
 
 ===  Equazione di stato
-L #text(style: "italic")[equazione di stato] è un'equazione ordinaria (ODE) vettoriale del primo ordine (cioè l'ordine massimo delle derivate è 1) 
+L #text(style: "italic")[equazione di stato] è un'equazione differenziale ordinaria (ODE) vettoriale del primo ordine (cioè l'ordine massimo delle derivate è 1) 
 $
-dot(x)_1(t) &= f_1 (x(t), u(t), t)  
-&dots  
-dot(x)_n (t) &= f_n (x(t), u(t), t)
+dot(x)_1(t) &= f_1 (mat(delim: "[", x_1 (t); dots.v; x_n (t)), mat(delim: "[", u_1 (t); dots.v; u_m (t)), t) \
+&dots.v \
+dot(x)_n (t) &= f_n (mat(delim: "[", x_1 (t); dots.v; x_n (t)), mat(delim: "[", u_1 (t); dots.v; u_m (t)), t)
 $
 $RR^n$ è detto #underline[spazio di stato], con $n$ ordine del sistema. La funzione di stato è $f: RR^n times RR^m times RR -> RR^n$.
 $
@@ -221,8 +221,8 @@ Avere solo derivate prime non è limitato, perché ad esempio posso inserire una
 ===  Equazione di uscita
 L'equazione di uscita è un'equazione algebrica
 $
-y_1(t) &= h_1 (x(t), u(t), t)  
-&dots  
+y_1(t) &= h_1 (x(t), u(t), t) \
+&dots.v \
 y_p (t) &= h_p (x(t), u(t), t)
 $
 $h : RR^n times RR^m , RR -> RR^p$ funzione di uscita
@@ -230,13 +230,13 @@ $
     mat(delim: "[",
         y_1(t);
         dots.v;
-        y_p(t)
+        y_p (t)
     ) 
     =
     mat(delim: "[",
-        h_1(x(t),u(t),t);
+        h_1 (x(t),u(t),t);
         dots.v;
-        h_p(x(t),u(t),t)
+        h_p (x(t),u(t),t)
     )
     := h(x(t),u(t),t)
 $
@@ -275,7 +275,7 @@ Riprendiamo l'esempio del @Circuito_elettrico[circuito elettrico]; la formula tr
 $
     underbrace(dot(v)_C(t), dot(x)(t)) = frac(1,R C) lr((underbrace(v_G (t),u(t)) - underbrace(v_C (t),x(t))), size: #35%)
 $
-In questo caso lo stato del sistema $x(t)$ è caratterizzato dalla variabile $v_C (t)$, l'ingresso dalla variabile $v_G (t)$. Supponiamo quindi di misurare (con un sensore) la tensione ai capi della resistenza, allora l'uscita del nostro sistema sarà $v_R(t)$
+In questo caso lo stato del sistema $x(t)$ è caratterizzato dalla variabile $v_C (t)$, l'ingresso dalla variabile $v_G (t)$. Supponiamo quindi di misurare (con un sensore) la tensione ai capi della resistenza, allora l'uscita del nostro sistema sarà $v_R (t)$
 $
     dot(x)(t) &= frac(1, R C) (u(t)-x(t)) #h(4em)
     f(x,u) &&= frac(1, R C)(u-x)
@@ -320,7 +320,7 @@ Definiamo quindi $x_1 := z$ e $x_2:=dot(z)$, con stato $x := [x_1x_2]^T$, e $u :
 
 Quindi possiamo scrivere, tenendo conto che $dot(x)_2(t) = dot.double(z)$
 $
-     dot(x)_1(t) &= x_2(t)  
+     dot(x)_1(t) &= x_2(t) \
      dot(x)_2(t) &= - frac(k,M) x_1(t) +  frac(u(t),M)
 $
 $
@@ -378,7 +378,7 @@ L'equazione della dinamica è
 $
     M  dot.double(z)(t) = -b dot(z)(t) + F_m (t)
 $
-Siccome siamo interessati a controllare la velocità e non la posizione, allora consideriamo come stato solo la velocità: $x :=  dot z$, $u := F_m$. Supponiamo di misurare $ dot z(t)$ (sensore velocità), allora $y := x$
+Siccome siamo interessati a controllare la velocità e non la posizione, allora consideriamo come stato solo la velocità: $x :=  dot(z)$, $u := F_m$. Supponiamo di misurare $ dot(z)(t)$ (sensore velocità), allora $y := x$
 $
     dot(x)(t) &= -frac(b,M)x(t) +  frac(1,M)u(t)  \
     y(t) &= x(t)
@@ -422,6 +422,7 @@ $
 
 
 == Traiettoria di un sistema
+<traiettoria_di_un_sistema>
 Dato un istante iniziale $t_0$ e uno stato iniziale $x_(t_0)$, la funzione del tempo $(x(t), u(t)),   t>t_0$, che soddisfa l'equazione di stato $ dot(x)(t) = f (x(t), u(t), t)$ si dice traiettoria (movimento) del sistema. In particolare, $x(t)$ si dice traiettoria dello stato. Consistentemente, $y(t)$ si dice traiettoria dell'uscita.
 
 *N.B.* per sistemi senza ingresso (quindi non forzati) la traiettoria dello stato $x(t),   t>t_0$ è determinata solo dallo stato iniziale $x_(t_0)$.
@@ -456,24 +457,13 @@ $
 $
 Se le equazioni di $ overline(x)_1$ e $ overline(x)_2$ soddisfano le condizioni iniziali e la funzione di stato ($dot(x)_1$ e $dot(x)_2$) allora quelle equazioni sono la traiettoria del sistema.  
 Infatti
-$
-    overline(x)_0 = 
-    mat(delim: "[",
-        5+3t+t^2;
-        3+2t
-    ,t=0) 
-    =
-    mat(delim: "[",
-        5;
-        3
-    )
-$
+
 $
     & overline(x_0) = 
     mat(delim: "[",
         5+3t+t^2; 
         3+2t
-    ,t=0) 
+    )_(t=0) 
     =
     mat(delim: "[",
         5;
@@ -544,23 +534,27 @@ $
 $ <sistemi_forma_stato> 
 
     - I sistemi *monovariabili* (SISO, Single Input Single Output) sono una sottoclasse di sistemi *multivariabili* (MIMO, Multiple Input Multiple Output); sono tali se $m=p=1$, altrimenti sono dei sistemi MIMO;
-    - I sistemi *strettamente propri* sono una sotto classe dei (sistemi propri); sono tali se $y(t) = h(x(t),t)$, quindi se l'uscita dipende esclusivamente dall'ingresso, chiamati quindi sistemi causali (tutti i sistemi che abbiamo visto fin'ora sono sistemi propri).
+    - I sistemi *strettamente propri* sono una sotto classe dei *sistemi propri*; sono tali se $y(t) = h(x(t),t)$, quindi se l'uscita dipende esclusivamente dall'ingresso, chiamati quindi sistemi causali (tutti i sistemi che abbiamo visto fin'ora sono sistemi propri).
     - I sistemi *non forzati* sono una sotto classe dei *sistemi forzati*; un esempio di sistema non forzato è il seguente
     $
-        dot(x)(t) &= f(x(t),t)  
+        dot(x)(t) &= f(x(t),t) \
         y(t) &= h(x(t),t)
     $
-    - I sistemi (tempo invarianti) sono una sotto classe di sistemi (tempo  varianti).  
+    - I sistemi *tempo invarianti* sono una sotto classe di sistemi *tempo  varianti*; sono sistemi in cui le funzioni $f$ e $h$ #underline[non dipendono esplicitamente] dal tempo, cioè risulti
+    $
+        dot(x)(t) = f(x(t), u(t)) \
+        y(t) = h(x(t), u(t))
+    $  
     I tempo invarianti sono tali se, data una traiettoria $ (x(t), u(t)), t >= t_0$, con $x(t_0)=x_0$, per ogni $ Delta  in RR$ vale che $x(t_0+ Delta)=x_0$ allora $(x_( Delta) (t), u_( Delta) (t)) = (x(t- Delta), u(t- Delta))$ è una traiettoria.  
     Si può dimostrare che sistemi tempo invarianti sono del tipo
     $
-        dot(x)(t) &= f (x(t), u(t)) &x(0)=x_0  
+        dot(x)(t) &= f (x(t), u(t)) &space x(0)=x_0 \
         y(t) &= h(x(t), u(t))
     $
     e senza senza perdita di generalità possiamo scegliere $t_0=0$.  
     Graficamente:
     #figure(image("Images/Sistemi_tempo_invarianti.png", width: 65%))
-    - I (sistemi lineari) sono una sotto classe di (sistemi non lineari).  
+    - I *sistemi lineari* sono una sotto classe di *sistemi non lineari*.  
     I sistemi lineari sono tali se le funzioni di stato e di uscita sono lineari in $x$ e $u$:
     $
         dot(x)_1 (t) &= a_(11) (t)x_1 (t) + a_(12) (t)x_2 (t) + . . . + a_(1n) (t)x_n (t)+ b_(11) (t)u_1 (t) + b_(12) (t)u_2 (t) + . . . + b_(1m) (t)u_m (t)  \
@@ -574,7 +568,7 @@ $ <sistemi_forma_stato>
         y_2 (t) &= c_(21) (t)x_1 (t) + c_(22) (t)x_2 (t) + . . . + c_(2n) (t)x_n (t)+ d_(21) (t)u_1 (t) + d_(22) (t)u_2 (t) + . . . + d_(2m) (t)u_m (t)  \
         &dots.v \ 
         y_p (t) &= c_(p 1) (t)x_1 (t) + c_(p 2) (t)x_2 (t) + . . . + c_(p n) (t)x_n (t)+ d_(p 1,t)u_1 (t) + d_(p 2) (t)u_2 (t) + . . . + d_(p m) (t)u_m (t)
-    $)
+    $
 
 
 
@@ -612,19 +606,37 @@ $
     mat(delim: "[",
         dot(x)_1(t) ; 
         dots.v;
-        dot(x)_n(t)
+        dot(x)_ n(t)
     )
     = A(t)
     mat(delim: "[",
         x_1(t)  ;
         dots.v;
-        x_n(t)
+        x_n (t)
     )
     + B(t)
     mat(delim: "[",
+        u_1 (t)  ;
+        dots.v;
+        u_m (t)
+    )
+    \
+    mat(delim: "[",
+        y_1 (t) ; 
+        dots.v;
+        y_n (t)
+    )
+    = C(t)
+    mat(delim: "[",
+        x_1(t)  ;
+        dots.v;
+        x_n (t)
+    )
+    + D(t)
+    mat(delim: "[",
         u_1(t)  ;
         dots.v;
-        u_m(t)
+        u_m (t)
     )
 $ <matrici_sistemi_lineari_2>
 che equivale a 
@@ -635,11 +647,11 @@ $ <sistema_lineare>
 
 
 == Sistemi lineari tempo-invarianti
+I _sistemi lineari tempo invarianti_ sono sistemi lineari in cui le matrici $A,B,C,D$ sono matrici costanti.
 $
     dot(x)(t) = A x(t) + B u(t)  \
     y(t) = C x(t) + D u(t)
 $ <sistemi_lineari_tempo_invarianti>
-con $A,B,C,D$ matrici costanti.
 
 
 ===  Esempio carrello
@@ -649,9 +661,9 @@ $
     dot(x)_1(t) &= x_2(t) &#h(5em) f_1(x,u,t) &= x_2  \
     dot(x)_2(t) &= -  frac(k(t),M)x_1(t) +  frac(1,M) u(t) & f_2(x,u,t) &= -  frac(k(t),M)x_1 +  frac(1,M)u  \
     y(t) &= x_1(t)
-$)
-$f_2$ dipende esplicitamente da $t$ attraverso $k(t)$ quindi è un sistema tempo  #underline[variante]. Se $k(t) =  overline(k)$ per ogni $t$ allora tempo  underline(invariante).  
-Siccome $f_1$ e $f_2$ dipendono linearmente da $x$ e $u$ il sistema è  #underline[lineare]. (Se $k(t) =  overline(k)$ il sistema è  #underline[lineare tempo invariante]).
+$
+$f_2$ dipende esplicitamente da $t$ attraverso $k(t)$ quindi è un sistema tempo  #underline[variante]. Se invece $k(t) =  overline(k)$ (quindi una costante) per ogni $t$ allora il sistema è tempo #underline[invariante].  
+Siccome $f_1$ e $f_2$ dipendono linearmente da $x$ e $u$ il sistema è  #underline[lineare].
 $
     mat(delim: "[",
         dot(x)_1(t) ; 
@@ -713,8 +725,8 @@ $
     dot(x)(t) &= A(t)x(t) + B(t)u(t)  \
     y(t) &= C(t)x(t) + D(t)u(t)
 $
-Sia $(x_a (t), u_a (t))$ traiettoria con $x_a (t_0)$ = $x_(0a)$. \
-Sia $(x_b (t), u_b (t))$ traiettoria con $x_b (t_0)$ = $x_(0b)$.\
+- sia $(x_a (t), u_a (t))$ traiettoria con $x_a (t_0)$ = $x_(0a)$ \
+- sia $(x_b (t), u_b (t))$ traiettoria con $x_b (t_0)$ = $x_(0b)$ \
 Allora $forall  alpha,  beta  in RR$ dato lo stato iniziale $x_(a b,t_0) =  alpha x_(0a)+ beta x_(0b)$, si ha che
 $
     (x_(a b)(t), u_(a b)(t)) = ( alpha x_(a)(t) +  beta x_b (t),  alpha u_a (t)+ beta u_b (t))
@@ -732,41 +744,39 @@ $ <sovrapposizione_effetti>
 
 #heading(level: 3, numbering: none)[Dimostrazione]
 
-Per dimostrarlo dobbiamo provare che soddisfa l'equazione differenziale
+Per dimostrarlo dobbiamo provare che soddisfa l'equazione differenziale. \
+Siccome $(x_a (t), u_a (t))$ e $(x_b (t), u_b (t))$ sono traiettorie del sistema, esse soddisfano la relazione (@traiettoria_di_un_sistema)
 $
-    frac(d,d t)x_(a b,t) &=  alpha dot(x)_a(t) +  beta dot(x)_b(t)  \
+    dot(x)_a = A(t) x_a (t) + B(t) u_a (t) \
+    dot(x)_b = A(t) x_b (t) + B(t) u_b (t)
+$
+$
+    frac(d,d t)x_(a b,t) &=  alpha dot(x)_a (t) +  beta dot(x)_b (t)  \
     &=  alpha(A(t)x_a (t) + B(t)u_a (t)) +  beta (A(t)x_b (t) + B(t)u_b (t))  \
-    &= A(t, alpha x_a (t) +  beta x_b (t)) + B(t,  alpha u_a (t) + u_b (t))
+    &= A(t) ( alpha x_a (t) +  beta x_b (t) ) + B(t) ( alpha u_a (t) + beta u_b (t) )
 $
 Per sistemi lineari sotto opportune ipotesi su $A(t)$ e $B(t)$ si può dimostrare che la soluzione è unica. \ 
 Si dimostra lo stesso anche per l'uscita.
 
 
 == Evoluzione libera e evoluzione forzata
-Sfruttando il principio di sovrapposizione degli effetti prendiamo due sistemi  #text(fill: red)[A)] e  #text(fill: blue )[B)] 
+Sia $x_ell (t), t >= t_0$ la traiettoria di stato ottenuta per $x_ell (t_0) = x_0$ e $u_ell (t) = 0, t >= t_0$. \
+Sia $x_f (t), t >= t_0$ la traiettoria di stato ottenuta per $x_f (t_0) = 0$ e $u_f (t) = u(t), t >= t_0$.
+
+Applicando il principio di sovrapposizione degli effetti si ha che, fissato lo stato iniziale $x(t_0) = x_0$ e applicando l'ingresso $u(t), t >= t_0$, la traiettoria di stato è data da
 $
-    #text(fill: red)[A)] quad  x(t_0) &= x_0 =x_(0a) #text(fill: purple)[$!=0$] &space #text(fill: blue )[B)] quad x_(0b)&=0  
-    \
-    u_a(t) &= 0      forall t  >= t_0 & u_b(t) &= u(t) #text(fill: purple)[$!=0$]
-$
-chiamiamo $x_a (t)=x_ ell (t)$ e $x_b (t) = x_f (t)$
-$
-    alpha x_(0a) +  beta x_(0b) &=  underbrace(alpha,1) x_0 = x_0 &space 
-    alpha u_a(t) +  beta u_b(t) &=  underbrace(beta,1)u(t) = u(t)
-$ 
-quindi
-$
-    x_(a b)(t) =  underbrace(x_ ell(t), "evoluzione" \ "libera") + underbrace(x_f(t), "evoluzione" \ "forzata")
+    x(t) =  underbrace(x_ ell(t), "evoluzione" \ "libera") + underbrace(x_f(t), "evoluzione" \ "forzata")
 $<evoluzione_libera_forzata>
 L'*evoluzione libera* è definita come $x_ ell (t)$ per $t  >= t_0$, tale che $x_ ell (t_0)=x_0$ e $u_l (t)=0$ per $t  >= t_0$, e uscita $y_ ell (t)=C(t)x_ ell (t)$. 
 
-L'*evoluzione forzata* è definita come $x_f(t)$ per $t >= t_0$, tale che $x_f (t_0)=0$ e $u_l (t)=u(t)$ per $t  >= t_0$, e uscita $y_f (t)=C(t)x_f (t)+D(t)u(t)$.
+L'*evoluzione forzata* è definita come $x_f (t)$ per $t >= t_0$, tale che $x_f (t_0)=0$ e $u_l (t)=u(t)$ per $t  >= t_0$, e uscita $y_f (t)=C(t)x_f (t)+D(t)u(t)$.
    
 *IMPORTANTE:* non vale per i sistemi non lineari.
 
+== Traiettorie di un sistema LTI
 
 ===  Traiettorie di un sistema LTI: esempio scalare
-Definiamo un sistema lineare tempo invariante (LTI) scalare $x  in RR$, $u  in RR$, $y  in RR$
+Definiamo un sistema lineare tempo invariante (LTI) scalare con $x  in RR$, $u  in RR$, $y  in RR$
 $
     dot(x)(t) &= a x(t) + b u(t) &space x(0) &= x_0  \
     y(t) &= c x(t) + d u(t) 
@@ -806,7 +816,7 @@ $ <traiettorie_LTI>
 
 ===  Esempio sistema non forzato
 $
-    dot(x)_1(t) =  lambda_1 x_1(t) & dot(x)_1(t) =  lambda_2 x_2(t)
+    dot(x)_1(t) =  lambda_1 x_1 (t) &wide dot(x)_2 (t) =  lambda_2 x_2(t)
 $
 $
     mat(delim: "[",
@@ -860,7 +870,7 @@ $
         frac(lambda_1^2 t^2,2!) , 0;  
         0 ,  frac( lambda_2^2 t^2,2!)
     ) + ... \
-    e^(a t) = 1 + at +  frac((a t)^2,2!) +  frac((a t)^3,3!) + ... ==> quad &=
+    e^(a t) = 1 + a t +  frac((a t)^2,2!) +  frac((a t)^3,3!) + ... ==> quad &=
     mat(delim: "[",
         e^( lambda_1 t) , 0;
         0 , e^( lambda_2 t);
@@ -935,7 +945,7 @@ $
     #text(fill: purple)[$T dot$] underbrace(T^(-1)  dot( hat(x))(t),dot(x)(t)) &= A  underbrace(T^(-1)  hat(x)(t),x(t)) + B u(t) #text(fill: purple)[$dot T$]
 $
 $
-    dot(hat(x))(t) &= T A T^(-1)  hat x(t) + T B u(t) \ 
+    dot(hat(x))(t) &= T A T^(-1)  hat(x)(t) + T B u(t) \ 
     y(t) &= C T^(-1)  hat(x)(t) + D u(t)
 $
 Allora chiamo $hat(A) = T A T^(-1),  hat(B)=T B,  hat(C) = C T^(-1),  hat(D) = D$
@@ -951,8 +961,10 @@ allora
 $
     dot(hat(x)) = J  hat(x)(t) + T B u(t)
 $
+
+L'evoluzione libera vale
 $
-    hat(x)_ ell (t) = e^(J T)  hat(x)_0 = T^(-1) e^(J t)T x_0
+    hat(x)_ ell (t) = e^(J T) hat(x)_0
 $
 
 
@@ -963,13 +975,13 @@ Prendiamo un sistema lineare tempo invariante con $x  in RR^n, u  in RR^m, y  in
 $
     dot(x)(t) &= A x(t) + B u(t)  \
     y(t) &= C x(t) + D u(t)
-$)
+$
 Indichiamo con $ lambda_1,..., lambda_r$ gli $r  <= n$ autovalori (reali o complessi coniugati) distinti della matrice $A$, con molteplicità algebrica $n_1,...,n_r  >= 0$ tali che $ display(sum ^r_(i=1)) n_i = n$.  
 
 Le componenti dell'evoluzione libera dello stato $x_ ell (t)$ si possono scrivere come
 #grid(columns: (1fr, 1fr, 1fr), column-gutter: 1fr,
   [],
-  math.equation(block: true ,numbering: none)[$ x_(ell, j) = sum_(i=1)^r sum_(q = 1)^h_i gamma_(j i q) t_(q-1)e^(lambda_i t) $],
+  math.equation(block: true ,numbering: none)[$ x_(ell, j) = sum_(i=1)^r sum_(q = 1)^h_i gamma_(j i q) t^(q-1)e^(lambda_i t) $],
   align(horizon)[$ j = 1,...,n $]
 )
 
@@ -980,7 +992,7 @@ I termini $t^(q-1)e^( lambda_i t)$  sono detti modi naturali del sistema. L'evol
 === Autovalori complessi  
 Se la matrice $A$ è reale e $ lambda_i =  sigma_i + j  omega_i$ è un autovalore complesso, allora il suo complesso coniugato $ overline(lambda)_i =  sigma_i - j  omega_i$ è anch'esso autovalore di $A$.  
 Inoltre si dimostra che i coefficienti $ gamma_(j i q)$ corrispondenti a $ lambda_i$ e $ overline(lambda)_i$ sono anch'essi complessi coniugati.  
-Scriviamo l'(esponenziale di autovalori complessi coniugati); se $ lambda_i =  sigma_i + j  omega_i$ e $ overline(lambda)_i =  sigma_i - j  omega_i$ allora
+Scriviamo allora l'*esponenziale di autovalori complessi coniugati*; se $ lambda_i =  sigma_i + j  omega_i$ e $ overline(lambda)_i =  sigma_i - j  omega_i$ allora
 $
     e^( lambda_i t) &= e^( sigma_i + j  omega_i) &space e^( overline( lambda)_i t) &= e^( sigma_i - j  omega_i) \ 
     &= e^( sigma_i t) e^(j  omega_i t) & &= e^( sigma_i t) e^(-j  omega_i t) \
@@ -1042,7 +1054,7 @@ Non bisogna quindi focalizzarsi sul calcolare con precisione il valore dei modi 
 
 
 === Esempio 1
-Consideriamo il seguente sistema LTI con $x  in RR^3 e u  in RR^3$
+Consideriamo il seguente sistema LTI con $x  in RR^3$ e $u  in RR^3$
 $
     dot(x)(t) =  underbrace(mat(delim: "[",
         0 , 1 , -1 ; 
@@ -1063,7 +1075,7 @@ $
         -1 , 1 , 0;  
         0 , -1 , 0; 
         0 , 0 , -2 
-    ), hat(A) = T A T^(-1))  hat x(t) +
+    ), hat(A) = T A T^(-1))  hat(x)(t) +
      underbrace(mat(delim: "[",
         1 , 0 , 0;  
         0 , 1 , 0;  
@@ -1135,7 +1147,7 @@ $
         1,1,0;  
         0,1,1;  
         1,1,1
-    ) ,T^(-1))  hat x_ ell (t) = 
+    ) ,T^(-1))  hat(x)_ ell (t) = 
     mat(delim: "[",
         e^(-t) + t e^(-t);  
         e^(-t);  
@@ -1214,7 +1226,7 @@ $
     ) &=
     mat(delim: "[",
         0 , 1;  
-        -  frac(k,M) , - frac(h,M)x_2
+        -  frac(k,M) , - frac(h,M)
     )
     mat(delim: "[",
         x_1(t);  
@@ -1269,11 +1281,11 @@ $
         1 , t;  
         0 , 1
     )
-$<big_matrices>
+$
 $
     hat(x)_ ell = 
     mat(delim: "[",
-        e^(-  frac(h,2M)t)  hat(x)_1(0) + t e^(-  frac(h,2M)t)  hat x_2(0);   
+        e^(-  frac(h,2M)t)  hat(x)_1(0) + t e^(-  frac(h,2M)t)  hat(x)_2(0);   
         e^(-  frac(h,2M)t)  hat(x)_2(0)
     )
     =
@@ -1367,7 +1379,7 @@ $
 $
 
 
-=== Definizioni
+=== Definizione generale
 Per sistemi tempo-invarianti (anche se si può generalizzare) la _stabilità interna_ di un sistema è l'insieme delle conseguenze sulla traiettoria legate a incertezze sullo stato iniziale con ingressi fissi e noti.
 
  
@@ -1384,34 +1396,42 @@ Per sistemi tempo-invarianti (anche se si può generalizzare) la _stabilità int
    
 *Equilibrio marginalmente stabile:* uno stato di equilibrio si dice marginalmente stabile se è stabile ma non asintoticamente.
  
-=== Rappresentazione grafica di un sistema in equilibrio stabile
-#cfigure("Images/Equilibrio_stabile.png", 55%)
+#figure(
+    image("Images/Equilibrio_stabile.png", width: 55%),
+    caption: [Rappresentazione grafica di un sistema in equilibrio stabile]
+)
 
+#figure(
+    image("Images/Equilibrio_attrattivo.png", width: 55%),
+    caption: [Rappresentazione grafica di un sistema in equilibrio attrattivo]
+)
 
-=== Rappresentazione grafica di un sistema in equilibrio attrattivo
-#cfigure("Images/Equilibrio_attrattivo.png", 55%)
+*N.B.* $delta < epsilon$.
 
 === Osservazioni
 Le definizioni date sottintendono la parola locale, ovvero che la proprietà vale in un intorno dello stato di equilibrio $x_e$.
    
-*Stabilità globale:* le proprietà di stabilità e asintotica stabilità sono globali se valgono per ogni $x  in RR^n$, invece che valere solo per $x_0$ tale che $|| x(0)-x_e ||  <=  delta $.
+*Stabilità globale:* le proprietà di stabilità e asintotica stabilità sono globali se valgono per ogni $x  in RR^n$, invece che valere solo per $x_0$.
     
 *Stabilità di una traiettoria:* le definizioni di stabilità si possono generalizzare a una traiettoria $ overline(x)(t), t  >= 0$.
 #cfigure("Images/Stabilita_traiettoria.png", 70%)
 
 
 == Stabilità interna di sistemi LTI
-Nei sistemi lineari $x=0$ è sempre un equilibrio.  
-Per sistemi lineari si può dimostrare che tutti gli equilibri e tutte le traiettorie hanno le stesse proprietà di stabilità, tutte uguali a $x=0$. Per questo motivo si parla di (stabilità del sistema).
+Nei sistemi lineari $x=0$ è sempre un equilibrio.
+Per sistemi lineari si può dimostrare che tutti gli equilibri e tutte le traiettorie hanno le stesse proprietà di stabilità, tutte uguali a $x=0$. Per questo motivo si parla di *stabilità del sistema*.
 
-=== Dimostrazione
+
+#heading(level: 3, numbering: none)[Dimostrazione]
+Sappiamo che
 $
-    cases(reverse: #true,
-        dot(x)(t) = A x(t) + B u(t)\  
-        u(t) = u_e      forall t  >= 0
-    )
-    ==> A x_e + B u_e = 0
+    dot(x)(t) =& A x(t) + B u(t) \
+    A x_e +& B u_e = 0
     
+$
+allora supponiamo che  
+$
+    u(t) = u_e wide forall t  >= 0
 $
 Sia $ tilde(x)(t) := x(t) - x_e$, allora
 $
@@ -1424,9 +1444,11 @@ quindi
 $
     dot(tilde(x))(t) = A  tilde(x)(t)
 $
+
 Concludiamo che
 $
-     tilde(x)=0  <==>    x = x_e
+    dot(tilde(x))(t) = A  tilde(x)(t) = 0 <==>
+    tilde(x)=0  <==>    x = x_e
 $
 cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso studiare l'equilibrio del sistema nell'origine.
 
@@ -1434,11 +1456,11 @@ cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso stu
 
 
 === Teorema  <Teorema_parte_reale_negativa>
-Un sistema LTI è (asintoticamente stabile) #underline[se e solo se] tutti gli autovalori hanno parte reale strettamente negativa.       
+Un sistema LTI è *asintoticamente stabile* #underline[se e solo se] tutti gli autovalori hanno parte reale strettamente negativa.       
 
 *N.B.* Se gli autovalori hanno parte reale strettamente negativa i modi del sistema tendono a 0 (vedi @Modi_naturali_autovalori_reali_semplici[modi naturali di autovalori semplici])
 
-#heading(level: 3, numbering: none)[Teorema]
+=== Teorema
 Un sistema LTI è stabile se e solo se tutti gli autovalori hanno parte reale minore o uguale a zero e tutti gli autovalori a parte reale nulla hanno molteplicità geometrica uguale alla molteplicità algebrica (i mini blocchi di Jordan associati hanno dimensione uno).
 
 #heading(level: 3, numbering: none)[Osservazione]
@@ -1460,7 +1482,7 @@ La stabilità asintotica di sistemi LTI è sempre globale
 
 #heading(level: 3, numbering: none)[Proprietà]
 Se un sistema LTI è globalmente asintoticamente stabile, $x=0$ è l'unico equilibrio. \ 
-*Nota:* anche per sistemi  underline(non lineari) se $x_e$ è GAS (Globalmente Asintoticamente Stabile) allora è l'unico equilibrio.
+*Nota:* anche per sistemi #underline[non lineari] se $x_e$ è GAS (Globalmente Asintoticamente Stabile) allora è l'unico equilibrio.
 
 //Questo perché RIVEDI
 
@@ -1490,7 +1512,7 @@ $
         0;  
          frac(1,M)
     ) u(t)
-      
+    \
     y(t) &= mat(delim: "[",
         1 , 0
     )
@@ -1502,11 +1524,11 @@ $
 Consideriamo $k$ costante, quindi sistema LTI.  
 Gli autovalori della matrice $A$ sono $ lambda_1 = j  sqrt( dfrac(k,M)),  lambda_2 = -j  sqrt( dfrac(k,M))$ immaginari puri, quindi sistema semplicemente (marginalmente) stabile.
   
-Se applichiamo $u=-h x_2$ gli autovalori diventano $ lambda_1 = -  frac(h,2M) +  sqrt( dfrac(h^2,4M^2)- dfrac(k,M))$ e $ lambda_2 =  dfrac(h,2M) -  sqrt( dfrac(h^2,4M^2)- dfrac(k,M))$.  
+Se applichiamo $u=-h x_2$ gli autovalori diventano $ lambda_1 = -  dfrac(h,2M) +  sqrt( dfrac(h^2,4M^2)- dfrac(k,M))$ e $ lambda_2 =  dfrac(h,2M) -  sqrt( dfrac(h^2,4M^2)- dfrac(k,M))$.  
 
     - Se $h^2  >= 4M k$ gli autovalori sono 2 reali negativi, quindi il sistema è asintoticamente stabile;
     - Se $h^2 < 4M k$ gli autovalori sono 2 complessi coniugati con parte reale negativa, quindi il sistema è asintoticamente stabile;
-    - Se $h^2 = 4M k$, $ lambda_1 =  lambda_2 = - frac(h,2M)$, con molteplicità algebrica pari a 2. Si può dimostrare che la molteplicità geometrica è pari a 1, quindi il blocco di Jordan sarà $2  times 2$ (guardare le  @proprieta_matrice_esponenziale[proprietà della matrice esponenziale]) 
+    - Se $h^2 = 4M k$, $ lambda_1 =  lambda_2 = - dfrac(h,2M)$, con molteplicità algebrica pari a 2. Si può dimostrare che la molteplicità geometrica è pari a 1, quindi il blocco di Jordan sarà $2  times 2$ (guardare le  @proprieta_matrice_esponenziale[proprietà della matrice esponenziale]) 
     $
         J &= T A T^(-1) = 
         mat(delim: "[",
@@ -1541,13 +1563,48 @@ con $K  in RR^(m  times n)$ una matrice di guadagni e $v(t)$ un ulteriore ingres
 $
     dot(x)(t) = (A+B K)x(t)+B v(t)
 $
-Se vogliamo il sistema in anello chiuso asintoticamente stabile allora dobbiamo progettare $K$ tale che $(A + B K)$ abbia autovalori tutti a parte reale negativa.  
-(Nota:) la possibilità di scegliere gli autovalori di $(A + B K)$ (e.g., per renderli tutti a parte reale negativa) dipende dalla coppia $(A, B)$ ed è legata alla proprietà di *raggiungibilità*.
+Se vogliamo il sistema in anello chiuso asintoticamente stabile allora dobbiamo progettare $K$ tale che $(A + B K)$ abbia autovalori tutti a parte reale negativa.\  
+*Nota:* la possibilità di scegliere gli autovalori di $(A + B K)$ (e.g., per renderli tutti a parte reale negativa) dipende dalla coppia $(A, B)$ ed è legata alla proprietà di *raggiungibilità*.
 
 Se non è possibile misurare l'intero stato, ovvero se $y(t) != x(t)$, esistono tecniche per ricostruire lo stato a partire dalle misure mediante sistemi ausiliari chiamati *osservatori*.
 
-Se sia possibile o meno ricostruire lo stato dipende dalla coppia $(A, C)$ ed è legato alla proprietà di (osservabilità).
+Se sia possibile o meno ricostruire lo stato dipende dalla coppia $(A, C)$ ed è legato alla proprietà di *osservabilità*.
 
+=== Proprietà di raggiungibilità (facoltativo)
+Uno stato $tilde(x)$ si un sistema LTI si dice _raggiungibile_ se esistono un istante di tempo finito $tilde(t)>0$ e un ingresso $tilde(u)$, definito tra 0 e $tilde(t)$, tali che, detto $tilde(x)_f (t)$, $0<=t<=tilde(t)$, il movimento forzato dello stato generato da $tilde(u)$, risulti $tilde(x)_f (t) = tilde(x)$.
+
+Un sistema i cui stati siano tutti raggiungibili si _completamente raggiungibile_.
+
+Quindi, un particolare vettore $tilde(x)$ costituisce uno stato raggiungibile se è possibile, con un'opportuna scelta dell'ingresso, trasferire dall'origine al vettore in questione lo stato del sistema.
+
+#heading(level: 3, numbering: none)[Teorema]
+Detta $M_r$ _matrice di raggiungibilità_ definita come
+$
+    M_r = [B thin A B thin A^2 B thin dots thin A^(n-1) B ] in RR^(n times m n)
+$
+un sistema LTI è completamente raggiungibile, ovvero la coppia $(A,B)$ è completamente raggiungibile, se e solo se il rango della matrice di raggiungibilità è pari a $n$, cioè
+$
+    rho (M_r) = n
+$
+
+
+=== Proprietà di osservabilità (facoltativo)
+Uno stato $tilde(x) != 0$ di un sistema LTI si dice _non osservabile_ se, qualunque sia $tilde(t) > 0$ finito, detto $tilde(y)_ell (t), t >= 0$, il movimento libero dell'uscita generato da $tilde(x)$ risulta $tilde(y)_ell (t) = 0, 0<=t<=tilde(t)$.
+
+Un sistema privo di stati non osservabili si dice _completamente osservabile_.
+
+Quindi, un particolare vettore $tilde(x)$ costituisce uno stato non osservabile se l'esame di un tratto di qualunque durata del movimento libero dell'uscita da esso generata non consente di distinguerlo dal vettore $x=0$.
+
+
+#heading(level: 3, numbering: none)[Teorema]
+Detta $M_o$ _matrice di osservabilità_, definita come
+$
+    M_o = [C^T thin A^T C^T thin A^T^2 C^T thin dots thin A^T^(n-1)C^T] in RR^(n times p n)
+$
+un sistema LTi è completamente osservabile, ovvero la coppia $(A,C)$ è completamente osservabile, se e solo se il rango della matrice di osservabilità è pari a $n$, cioè
+$
+    rho (M_o) = n
+$
 
 
 
@@ -1599,7 +1656,7 @@ quindi
 
 Se consideriamo i termini di ordine superiore come un resto $ cal(R) (x,u)$ si osserva che
 $
-    lim_(||(x,u)|| arrow 0)  frac(||cal(R)( tilde(x), tilde(u))||, ||( tilde(x), tilde(u))||) = 0
+    lim_(||(tilde(x),tilde(u))|| arrow 0)  frac(||cal(R)( tilde(x), tilde(u))||, ||( tilde(x), tilde(u))||) = 0
 $
 di fatto è come se si avesse $ display(lim_(x  arrow 0)) dfrac(x^2,x)$.  
 Quindi le due equazioni di prima si possono approssimare
@@ -1644,7 +1701,7 @@ $
 Prendiamo come equilibrio $x_e = mat(delim: "[", x_(1e); 0 )$, allora
 $
     &-  dfrac(g, ell)  sin(x_(1e)) -  dfrac(b,M  ell^2)  dot 0 +  dfrac(1,M  ell^2)u_e = 0\  
-     ==> & u_e = g M ell  sin(X_(1e))
+     ==> & u_e = g M ell  sin(x_(1e))
 $
 Eseguiamo la linearizzazione intorno a $(x_e,u_e)$
 $
@@ -1697,7 +1754,7 @@ $
             0 , 1 ; 
             - dfrac(g, ell) , - dfrac(b,M  ell^2)
         ) 
-        &
+        &space
         B_e &=
         mat(delim: "[",
             0;  
@@ -1711,7 +1768,7 @@ $
             0 , 1;  
             dfrac(g, ell) , - dfrac(b,M  ell^2)
         ) 
-        &
+        &space
         B_e &=
         mat(delim: "[",
             0;  
@@ -1725,7 +1782,7 @@ $
             0 , 1;  
             0 , - dfrac(b,M  ell^2)
         ) 
-        &
+        &space
         B_e &=
         mat(delim: "[",
             0;  
@@ -1737,8 +1794,9 @@ $
 
 
 === Stabilità di 3 sistemi lineari (linearizzazione intorno a 3 diversi equilibri)
-
-    + 
+    #v(2em)
+    #enum()[
+    Se $x_e = mat(delim: "[", 0 ; 0 )$ e $u_e = 0$
     $
         A_e &= mat(delim: "[", 
         0,1;
@@ -1752,8 +1810,9 @@ $
         lambda_(1 slash 2) = -frac(b,2M  ell^2)  plus.minus  sqrt( ( frac(b,2M ell^2) ) -  frac(g, ell))
     $
     Abbiamo 2 autovalori a parte reale negativa, quindi il sistema linearizzato è _asintoticamente stabile globalmente_.
-
-    + 
+    #v(2em)
+    ][
+    Se $x_e=mat(delim: "[",  pi ; 0 )$ e $u_e=0$
     $
         A_e &= mat(delim: "[", 
         0,1;
@@ -1772,9 +1831,9 @@ $
         )
     $
     Dato che abbiamo un autovalore a parte reale positiva il sistema è _instabile_.
-
-    + 
-    Se poniamo $x_e = mat(delim: "[",  pi/2   0 )$ e $M_e = M g ell$
+    #v(2em)
+    ][ 
+    Se poniamo $x_e = mat(delim: "[",  pi/2  ; 0 )$ e $u_e = M g ell$
     $
         A_e &= 
         mat(delim: "[", 
@@ -1787,17 +1846,18 @@ $
     $
          lambda_1 &= 0 &space space   lambda_2&=- frac(b,M ell^2)
     $
-    Il sistema linearizzato è _stabile_, ma non asintoticamente, cioè marginalmente stabile (ricordando il @Teorema_parte_reale_negativa[Teorema parte reale negativa])
-
+    Il sistema linearizzato è _stabile_, ma non asintoticamente, cioè marginalmente stabile (ricordando il @Teorema_parte_reale_negativa[Teorema])
+    ]
 
 
 
 == Stabilità e linearizzazione
-#heading(numbering: none, level: 3)[Teorema]
+
+=== Teorema
 
 Dato un sistema non lineare tempo invariante, $dot(x)(t)=f(x(t),u(t))$, sia $x_e,u_e$ una coppia di equilibrio. Se il sistema linearizzato intorno a $(x_e,u_e)$ è asintoticamente stabile, allora l'equilibrio $x_e$, relativo all'ingresso $u_e$, è #underline[(localmente) asintoticamente stabile].
 
-#heading(numbering: none, level: 3)[Teorema]
+=== Teorema
 Dato un sistema non lineare tempo invariante, $dot(x)(t)=f(x(t),u(t))$, sia $x_e,u_e$ una coppia di equilibrio. Se il sistema linearizzato intorno a $(x_e,u_e)$ ha almeno un autovalore a parte reale positiva, allora l'equilibrio $x_e$, relativo all'ingresso $u_e$, è #underline[instabile].
 
 
@@ -1842,7 +1902,7 @@ $
 se esiste per qualche $s$, ovvero se l'integrale converge.  
 Includiamo nell'integrale $0^(-)$ per tener conto di eventuali impulsi cone la _delta di Dirac_.
  
-(Notazione:) indichiamo la trasformata di Laplace con $ cal(L)$ tale che
+*Notazione:* indichiamo la trasformata di Laplace con $ cal(L)$ tale che
 $   
     f(t) xarrow(width: #3em, #text(size: 10pt)[$cal(L)$] ) F(s)
 $ 
@@ -1856,7 +1916,7 @@ con $F: CC  arrow  CC$; indichiamo l'applicazione della trasformata con $F(s) = 
 === Ascissa di convergenza
 Sia $ overline( sigma)>-  infinity$ estremo inferiore di $s= sigma + j  omega$ per cui l'integrale converge. Allora la trasformata di Laplace esiste nel semipiano $ Re (s)> overline( sigma)$. \
 $ overline( sigma)$ viene chiamata _ascissa di convergenza_.  
-La trasformata di Laplace risulta essere una _funzione analitica_ e, grazie alle particolari proprietà delle funzioni analitiche, la sua definizione può essere estesa anche in punti $s$ tali che $  Re(s) <=  overline(sigma)$, indipendentemente dal fatto che l'integrale non converga.
+La trasformata di Laplace risulta essere una _funzione analitica_ e, grazie alle particolari proprietà delle funzioni analitiche, la sua definizione può essere estesa anche in punti di $s$ tali che $  Re(s) <=  overline(sigma)$, indipendentemente dal fatto che l'integrale non converga.
   
 Dato che 
 $
@@ -1952,11 +2012,11 @@ $ tau$ deve essere maggiore di 0, altrimenti la $f(t)$ sarebbe diversa da 0 per 
 #heading(numbering: none, level: 3)[Dimostrazione]
 $
     cal(L)[f(t- tau)] &=  integral_(0^-)^(+  infinity) f(t -  tau)e^(-s t) thin d t\ 
-    & =_(rho = t- tau)  integral_(- tau^-)^(+  infinity) f( rho)e^(-s( rho+t)) thin  d rho  
+    & =_(rho = t- tau)  integral_(- tau^-)^(+  infinity) f( rho)e^(-s( rho+tau)) thin  d rho  
 $
 siccome la $f(t)$ è nulla per $t<0$ posso riscrivere gli estremi di integrazione
 $
-     integral_(0^-)^(+  infinity) f( rho)e^(-s( rho+t))   d rho
+     integral_(0^-)^(+  infinity) f( rho)e^(-s( rho+tau))   d rho
     &=  underbrace( integral_(0^-)^(+  infinity) f( rho)e^( rho)   d rho,F(s))  dot e^(-s tau)\  
     &= F(s) e^(-s tau)
 $

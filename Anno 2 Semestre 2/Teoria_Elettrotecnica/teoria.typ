@@ -8,6 +8,8 @@
 
 #set par(justify: true, leading: 0.9em)
 
+//Shortcut for centered figure with image
+#let cfigure(img, wth) = figure(image(img, width: wth))
 
 
 
@@ -17,11 +19,13 @@ Si consideri una rete elettrica con $l$ tensioni di lato ed $l$ correnti di lato
 che soddisfino le #underline[leggi di Kirchhoﬀ]. Si ha che $underline(sum_(k=1)^(l) v_k i_k=0)$ Se $underline(v)$ e $underline(i)$ rappresentano le tensioni e le corrispondenti correnti di lato in uno stesso istante, si ha che il teorema di Tellegen si riduce al principio #underline[di conservazione] delle #underline[potenze istantanee]. È possibile esprimere la potenza #underline[erogata] dai bipoli attivi come $sum_(h=1)^M P_h$ dove M è il numero di componenti che rispettano la convenzione #underline[del generatore], e la potenza #underline[assorbita] dai bipoli passivi come $sum_(j=1)^N P_j$ dove N è il numero di componenti che rispettano la convenzione #underline[dell' utilizzatore]. In questo
 caso il teorema di Tellegen afferma che la #underline[sommatoria] delle potenze
 elettriche #underline[generate] dai bipoli attivi è pari a quella delle potenze
-elettriche #underline[assorbite] dai bipoli passivi come descritto da $sum_(h=1)^M P_h = sum_(j=1)^N P_j$.
+elettriche #underline[assorbite] dai bipoli passivi come descritto da $underline(sum_(h=1)^M P_h = sum_(j=1)^N P_j)$.
 
 
 
 = Teorema del massimo trasferimento di potenza attiva su un bipolo (11/06/2022)
+
+#cfigure("Teorema_potenza.png", 30%)
 
 È data una sorgente di alimentazione sinusoidale (bipolo) e si vuole
 determinare qual è il valore dell'impedenza $overline(Z) = R + j X$ di carico tale
@@ -36,13 +40,13 @@ reattanza complessiva, ovvero quando $underline(X = -X_0)$. La potenza attiva as
 = Circuiti dinamici del secondo ordine (05/07/2022)
 
 Sia dato un circuito dinamico del secondo ordine. Per determinare la soluzione associata all'equazione omogenea si introduce #underline[il polinomio caratteristico] dell'equazione #underline[differenziale] di #underline[secondo] grado. Si distinguono tre casi caratterizzati da valore positivo negativo o nullo del #underline[discriminante] $Delta = underline( alpha^2 - omega_0^2 )$ dove $alpha$ è il #underline[coefficiente di smorzamento] e $omega_0$ è #underline[la pulsazione di risonanza].\
-Se $Delta > 0$ avremo due soluzioni #underline[reali distinte] e il circuito si dice #underline[sovrasmorzato]. Se $Delta < 0$ avremo due soluzioni #underline[complesse coniugate] ed il circuito si dice #underline[sottosmorzato]. Infine se avremo due soluzioni #underline[reali coincidenti] ed il circuito si dice #underline[criticamente smorzato].\ 
+Se $Delta > 0$ avremo due soluzioni #underline[reali distinte] e il circuito si dice #underline[sovrasmorzato]. Se $Delta < 0$ avremo due soluzioni #underline[complesse coniugate] ed il circuito si dice #underline[sottosmorzato]. Infine se $Delta = 0$ avremo due soluzioni #underline[reali coincidenti] ed il circuito si dice #underline[criticamente smorzato].\ 
 Dato un circuito RLC serie $alpha$ è pari a $underline( frac(R,2L) )$ e $omega_0$ è uguale a $underline( frac(1, L C) )$.
 
 = Il trasformatore (09/09/2022)
 Il trasformatore è costituito da un nucleo di materiale #underline[ferromagnetico] su cui
 sono avvolti #underline[due avvolgimenti]: il primario, costituito da $n_1$ spire ed il secondario, costituito da $n_2$ spire. Quando il primario è alimentato con una
-tensione $v_1$ ("tensione primaria"), #underline[alternata], ai capi dell'avvolgimento secondario si manifesta una tensione $v_2$ (tensione secondaria), #underline[isofrequenziale] con la tensione primaria. La tensione $v_2$ è generata da una fem #underline[trasformatorica].\ 
+tensione $v_1$ ("tensione primaria"), #underline[alternata], ai capi dell'avvolgimento secondario si manifesta una tensione $v_2$ ("tensione secondaria"), #underline[isofrequenziale] con la tensione primaria. La tensione $v_2$ è generata da una fem #underline[trasformatorica].\ 
 Se il secondario è chiuso su di un carico elettrico, il primario #underline[eroga] la corrente $i_1$ ("corrente primaria"), ed il secondario #underline[assorbe] la corrente $i_2$ (corrente secondaria), entrambe le correnti sono alternate, #underline[isofrequenziali] con le tensioni.\
 Mediante il trasformatore è quindi possibile trasferire potenza elettrica
 dall'avvolgimento primario a quello secondario, senza fare ricorso ad alcun
