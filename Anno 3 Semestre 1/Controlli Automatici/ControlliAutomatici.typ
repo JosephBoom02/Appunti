@@ -2529,7 +2529,7 @@ $
     s_(1 slash 2) &= -  xi_i omega_(n i)  plus.minus  sqrt( xi_i^2 omega_(n i)^2 -  omega_(n i)^2)\  
     &=-  xi_i  omega_(n i)  plus.minus  omega_(n i)  sqrt( xi_i^2 - 1)
 $
-Se $| xi_i|<1$ abbiamo dei _poli complessi coniugati_
+Se $|xi_i|<1$ abbiamo dei _poli complessi coniugati_
 $
     s_(1 slash 2) = -  xi_i  omega_(n i) + j  omega_(n i)  sqrt(1 -  xi_i^2)
 $
@@ -2596,7 +2596,7 @@ la funzione di trasferimento di questo sistema è
 $
     G(s) =  frac(cancel((s-1)), cancel((s-1))(s+2)) =  frac(1,s+2)
 $
-In questo caso stiamo cancellando un polinomio associato a un autovalore reale positivo, che quindi fa  underline(divergere) il sistema, perciò bisogna stare attenti quando si eseguono cancellazioni. Non basta guardare la funzione di trasferimento per conoscere l'andamento del sistema.
+In questo caso stiamo cancellando un polinomio associato a un autovalore reale positivo, che quindi fa #underline[divergere] il sistema, perciò bisogna stare attenti quando si eseguono cancellazioni. Non basta guardare la funzione di trasferimento per conoscere l'andamento del sistema.
 
 
 == Antitrasformazione di Laplace
@@ -2634,11 +2634,11 @@ per questo per la risposta all'impulso le radici di $D(s)$ sono i poli di $G(s)$
 
 Possiamo scrivere $Y(s)$ come 
 $
-    Y(s) =  frac(N(s),D(s)) =  frac(N(s), product_(i=1)^n (s + p_i)) =  sum_(i=1)^n  frac(k_1,s+p_i)
+    Y(s) =  frac(N(s),D(s)) =  frac(N(s), product_(i=1)^n (s + p_i)) =  sum_(i=1)^n  frac(k_i,s+p_i)
 $
 con $k_i$ detti residui. Consideriamo
 $
-    (s+p_i)  lr(frac(N(s),D(s))  |)_(s = -p_i) =  sum_( j=1  \ j != i)^n  lr(frac(k_j(s+p_i),s+p_j)  |)_(s=-p_i) + k_i
+    (s+p_i)  lr(frac(N(s),D(s))  |)_(s = -p_i) =  sum_( j=1  \ j != i)^n  lr(frac(k_j (s+p_i),s+p_j)  |)_(s=-p_i) + k_i
 $
 quindi ciascun residuo $k_i$ può essere calcolato come
 $
@@ -2678,20 +2678,16 @@ $
     lr((s+10)Y(s)  |)_(s=-10) &= 
     lr(frac(cancel((s+10))(s^2+s+1),(s+2) cancel((s+10))(s+1))  |)_(s=-10) \ 
     &= frac((-10)^2 + (-10)+1,(-10+2)(-10+1))\   
-    &= -frac(91,72) = k_2
+    &= frac(91,72) = k_2
 $
 
 $
     lr((s+1)Y(s) |)_(s=-1) &= 
     lr(frac(cancel((s+1))(s^2+s+1),(s+2)(s+10) cancel((s+1)))  |)_(s=-1) \ 
-    &= frac((-1)^2 + (-1)+1,(-1+2)(-1+1))  \ 
-    &= -  frac(1,9) = k_3
+    &= frac((-1)^2 + (-1)+1,(-1+2)(-1+10))  \ 
+    &= frac(1,9) = k_3
 $
 Quindi possiamo scrivere la $Y(s)$ come
-
-$
-Y(s) = -  frac(3,8) frac(1,s+2 \ arrow.b cal(L)^(-1))
-$
 
 $
 Y(s) = -frac(3,8) underbrace(frac(1,s+2), #h(2em) arrow.b cal(L)^(-1) \ e^(-2t) 1(t)) + frac(91,72) underbrace(frac(1,s+10), #h(2em) arrow.b cal(L)^(-1) \ e^(-10t) 1(t)) + frac(1,9) underbrace(frac(1,s+1), #h(2em) arrow.b cal(L)^(-1) \ e^(-t) 1(t))
@@ -2757,14 +2753,18 @@ $
                       
                     &= 2M e^(- sigma t)  frac((e^(-j( omega t +  phi)) + e^(j( omega t +  phi)) ),2) 1(t)\
                       
-                     frac(e^(j  phi) + e^(-j  phi),2) =  cos( alpha)  ==>
+                    frac(e^(j  alpha) + e^(-j  alpha),2) =  cos(alpha)  ==>
                     &= 2M e^(- sigma t)  cos( omega t +  phi) 1(t)
 $
 
 //#pagebreak()
 === Modi naturali di poli reali distinti
 #cfigure("Images/Modi_naturali_poli_distinti_1.png", 70%)
+
+=== Modi naturali di poli complessi coniugati distinti
 #cfigure("Images/Modi_naturali_poli_distinti_2.png", 70%)
+
+=== Modi naturali di un sistema LTI: poli distinti
 #cfigure("Images/Modi_naturali_poli_distinti_3.png", 70%)
 
 
