@@ -2810,8 +2810,8 @@ $
     k_2 
     &=  cancel((s+2))  lr(frac((s+3),(s+1)^2 cancel((s+2))) |)_(s=-2)
     &space
-    k_(1,1)
-    &=  cancel((s+2)^2)  lr(frac((s+3), cancel((s+1)^2)(s+2)) |)_(s=-1)\
+    k_(1,2)
+    &=  cancel((s+1)^2)  lr(frac((s+3), cancel((s+1)^2)(s+2)) |)_(s=-1)\
       
     &=  frac((-2+3),(-2+1)^2)
     &
@@ -2835,7 +2835,7 @@ $
       
     &=  frac(d,d s) lr(frac(s+3,s+2) |)_(s=-1)\
        
-    &=  lr(frac((s+3)-(s+2),(s+2)^2) |)_(s=-1)\
+    &=  lr(frac((s+2)-(s+3`),(s+2)^2) |)_(s=-1)\
       
     &= 1
 $
@@ -2843,9 +2843,11 @@ quindi possiamo scrivere la $Y(s)$ come
 $
     Y(s) =  frac(k_(1,1),(s+1)) +  frac(k_(1,2),(s+1)^2) +  frac(k_(2),(s+2)) =  frac(1,s+1) +  frac(2,(s+1)^2) +  frac(1,(s+2))
 $
-ricordando la  @Tabella_trasformate[tabella delle traformate] e la proprietà di @eqt:Traslazione_dominio_variabile__complessa_Laplace[traslazione nel dominio della variabile complessa], antitrasformiamo tutte le componenti della funzione di trasferimento
+ricordando che $cal(L)^(-1) [dfrac(1,s^2)] = t 1(t)$ dalla @Tabella_trasformate[tabella delle trasformate] e che $cal(L)[e^(alpha t)f(t)] = F(s- alpha)$ dalla proprietà di @eqt:Traslazione_dominio_variabile__complessa_Laplace[traslazione nel dominio della variabile complessa], antitrasformiamo tutte le componenti della funzione di trasferimento
 $
-    cal(L)^(-1) [ frac(1,(s+2)^2) ] &= e^(-2t) t 1(t) 
+    cal(L)^(-1) [ frac(1,(s+1)) ] &= e^(-t) 1(t) 
+    &space 
+    cal(L)^(-1) [ frac(1,(s+2)) ] &= e^(-2t) 1(t) 
     &space 
     cal(L)^(-1) [ frac(1,(s+1)^2) ] &= e^(-t) t 1(t)
 $
@@ -2922,7 +2924,7 @@ Quindi la risposta ad un impulso è una combinazione lineare dei modi naturali d
 Ricordiamo che 
 $
     Y(s) =  underbrace(C(s I-A)^(-1), 
-    #text(size: 6pt)[$dfrac(N_ ell (s),D(s))$] ) -x(0) +  underbrace(G(s)U(s), #text(size: 6pt)[$dfrac(N_f (s),D(s)) dfrac(N_u (s),D_u (s))$])
+    #text(size: 6pt)[$dfrac(N_ ell (s),D(s))$] ) -x(0) +  underbrace(G(s)U(s), #text(size: 6pt)[$dfrac(N_f (s),D_f (s)) dfrac(N_u (s),D_u (s))$])
 $
 
 
@@ -2933,7 +2935,7 @@ $
     y(t) 
     &= y_ ell(t) + y_f(t)\
       
-    &=y_ ell(t) + y_(f,G)(t) + y_(g,U)(t)
+    &=y_ ell(t) + y_(f,G)(t) + y_(f,U)(t)
 $
 in cui 
 
@@ -2996,7 +2998,7 @@ dove
 == Sistemi del primo ordine
 Definiamo un sistema nello spazio della funzione di trasferimento
 $
-    G(s) &=  frac( mu,1+T s) & U(s) =  frac(k,s)  
+    G(s) &=  frac( mu,1+T s) &space U(s) =  frac(k,s)  
 $
 $
     Y(s) = G(s) U(s) =  frac( mu k,s(1+T s))
@@ -3014,7 +3016,7 @@ $y(0) = 0, thick dot(y)(0) =  dfrac( mu k,T) , thick y_( infinity) =  mu k$
 
 Definiamo il *tempo di assestamento $ T_(a, epsilon)$* come il tempo tale per cui 
 
-#tageq($(1-0.001 epsilon)y_( infinity)  <= y(t)  <= (1+0.01 epsilon)y_( infinity) $, $ forall t  >= T_(a, epsilon)$)
+#tageq($(1-0.01 epsilon)y_( infinity)  <= y(t)  <= (1+0.01 epsilon)y_( infinity) $, $ forall t  >= T_(a, epsilon)$)
 
 === Esempio
 Consideriamo un sistema con 
@@ -3034,7 +3036,7 @@ $
     y(t)
     &=  cal(L)^(-1)  underbrace( [ frac(k_1,s+ frac(1,T)) ],y_(G,t)) +  cal(L)^(-1)  underbrace( [ frac(k_2,s) ],y_(U,t))\
       
-    &= k_1  underbrace(e^(-t slash T), "sistema") + k_2  underbrace(1(t), "ingresso")
+    &= k_1  underbrace(e^(-t slash T) 1(t), "sistema") + k_2  underbrace(1(t), "ingresso")
 $
 $
     k_1 
@@ -3152,7 +3154,7 @@ Dal grafico possiamo evincere che la sovraelongazione percentuale indica di quan
 
 Come abbiamo visto prima, la sovraelongazione percentuale dipende solo dallo smorzamento, e, se scegliamo un valore massimo di sovraelongazione $S^star$, possiamo ricavare il valore di $ xi$ necessario:
 $
-    S %  <= S^star  <==>  xi  >=  frac( lr(|  ln  ( dfrac(S^star,100) )  |), sqrt( pi^2 +  ln^2  (  dfrac(s^star,100) )))
+    S %  <= S^star  <==>  xi  >=  frac( lr(|  ln  ( dfrac(S^star,100) )  |), sqrt( pi^2 +  ln^2  (  dfrac(S^star,100) )))
 $
 
 
@@ -3161,7 +3163,7 @@ Adesso proviamo a caratterizzare i sistemi del secondo ordine (con poli compless
 
 Ricordiamo che 
 - abbiamo approssimato $T_(a,5)  approx  frac(3, xi  omega_n)$ e $T_(a,1)  approx  frac(4.6, xi  omega_n)$
-- $- xi  omega^n$ è la parte reale dei poli complessi coniugati
+- $- xi  omega_n$ è la parte reale dei poli complessi coniugati
 
 #cfigure("Images/Secondo_ordine_poli_complessi.png", 50%)
 
@@ -3231,8 +3233,8 @@ Consideriamo $T_1 >> T_2$:
 #align(center)[
     #cetz.canvas({
         import cetz.draw: *
-        content((1.8, 3.5), [#text(red)[$e^(-t slash T_1)$]])
-        content((1.7, 1.5), [#text(green)[$e^(-2t)1(t)$]])
+        content((1.8, 3.7), [#text(red)[$e^(-t slash T_1) 1(t)$]])
+        content((1.7, 1.7), [#text(green)[$e^(-t slash T_2)1(t)$]])
         plot.plot(
             size: (8,6), 
             x-tick-step: none, 
@@ -3253,7 +3255,7 @@ Consideriamo $T_1 >> T_2$:
 ]
 
 
-Nella risposta $e^(- frac(t,T_2))$ tende a zero velocemente, mentre $ dfrac(T_2,T_1-T_2) << dfrac(T_1,T_1 - T_2)  approx 1$, quindi
+Nella risposta $e^(- frac(t,T_2))$ tende a zero velocemente, quindi si può omettere, mentre $dfrac(T_2,T_1-T_2) << dfrac(T_1,T_1 - T_2)  approx 1$, quindi
 $
     y(t)  approx  mu k (1-e^(- frac(t,T_1)) )1(t)
 $
@@ -3298,7 +3300,7 @@ $
 $
 $ mu>0, k>0, T_1 >0$
 $
-    y(t) =  mu l  ( 1- e^(-t slash T_1) -  frac(t,T_1)e^(-t slash T_1)  ) 1(t)
+    y(t) =  mu k  ( 1- e^(-t slash T_1) -  frac(t,T_1)e^(-t slash T_1)  ) 1(t)
 $
 
 #cfigure("Images/Poli_reali_coincidenti.png", 40%)
