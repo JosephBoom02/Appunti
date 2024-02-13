@@ -3343,7 +3343,7 @@ $
 $
 $ mu>0,k>0,T_1>0,T_2>0$
 $
-    y(t) &=  mu k  ( 1 -  frac(T_1- tau,T_1-T_2) e^(-t/T-1) +  frac(T_2- tau,T_1-T_2)e^(-t/T_2)  )1(t)  
+    y(t) &=  mu k  ( 1 -  frac(T_1- tau,T_1-T_2) e^(-t/T_1) +  frac(T_2- tau,T_1-T_2)e^(-t/T_2)  )1(t)  
     \
     y(0) &= 0 
     & wide  
@@ -3387,7 +3387,7 @@ Ovviamente no, perché $1+  tau s$ è un  modello della realtà, quindi, anche s
 
 
 === Sistemi a fase minima con sovraelongazione
-Se $ tau>T_1>T_2$ abbiamo un sistema a (fase minima) con una sovraelongazione
+Se $ tau>T_1>T_2$ abbiamo un sistema a *fase minima* con una sovraelongazione
 $
     G(s) &=  mu frac(1 +  tau s,(1+T_1s)(1+T_2s)) 
     & space 
@@ -3425,9 +3425,13 @@ $ mu>0, thick k>0, thick T_1>0, thick T_2>0$
 
 $
     y(t) &=  mu k  ( 1 -  frac(T_1- tau,T_1-T_2) e^(-t/T-1) +  frac(T_2- tau,T_1-T_2)e^(-t/T_2))1(t)\  
+$
+$
     y(0) &= 0 
-    & space  
-    y(0) &=  frac( mu K  tau,T_1T_2) & y_( infinity) &=  mu k
+    &wide  
+    dot(y)(0) &=  frac( mu K  tau,T_1T_2) 
+    &wide 
+    y_( infinity) &=  mu k
 $
 
 #cfigure("Images/Fase_minima_code_ass_2.png", 40%)
@@ -3456,7 +3460,7 @@ $
     Y(s) = G(s) U(s) = G(s) U  frac(s cos( phi) -  omega  sin( phi),s^2 +  omega^2)
 $<risposta_trasformata_sinusoide>
 
-Consideriamo $G(s)$ con poli (distinti a parte reale negativa (BIBO stabile)). Sviluppando in fratti semplici si ha
+Consideriamo $G(s)$ con poli distinti a parte reale negativa (BIBO stabile). Sviluppando in fratti semplici si ha
 $
     Y(s) =  sum_(i=1)^n  underbrace(frac(k_i,s+p_i),Y_1(s)) +  underbrace(frac(k_u,s-j  omega) +  frac(overline(k)_u,s+j  omega),Y_2(s))
 $
@@ -3519,12 +3523,12 @@ $
 $
 l'uscita, a transitorio esaurito, è data da
 $
-    y(t) = U |G(j omega)|  cos( omega +t +  phi +  arg(G(j  omega)))
+    y(t) = U |G(j omega)|  cos(omega t +  phi +  arg(G(j  omega)))
 $
 
 
 == Risposta a segnali periodici sviluppabili in serie di Fourier
-Consideriamo un segnale d'ingresso $u(t)$ periodico, cioè $ exists T>0$ tale che $ forall t  >= 0   u(t+T) = u(t)$, che può essere sviluppato in serie di Fourier
+Consideriamo un segnale d'ingresso $u(t)$ periodico, cioè $ exists T>0$ tale che $ forall t  >= 0 thick u(t+T) = u(t)$, che può essere sviluppato in serie di Fourier
 $
     u(t) = U_0 + 2  sum_(n=1)^(+  infinity) |U_n|  cos  (n  omega_0 t +  arg(U_n) )
 $
@@ -3588,7 +3592,7 @@ La pulsazione $ omega$ e la frequenza $f$ sono legate dalla relazione $ omega = 
 
 
 
-== Risposta in frequenza
+== Definizione di Risposta in Frequenza
 La funzione complessa $G(j omega)$ ottenuta valutando $G(s)$ per $s = j  omega$ è detta _risposta in frequenza_.
 $
     G(s)  |_(s=j omega) = G(j omega)
@@ -3611,19 +3615,19 @@ Diciamo che con questo tipo di approccio riusciamo a stimare la $G(j omega)$ (no
 
 
 == Rappresentazione della risposta in frequenza
-Vi sono diversi modi di rappresentare la risposta in frequenza. Uno dei modi più usati sono i (diagrammi di Bode), in cui si rappresentano separatamente $|G(j omega)|$ e $ arg(G(j omega))$ in funzione di $ omega$. Nei diagrammi di Bode si utilizza una scala logaritmica in base dieci per l'ascissa, dove è riportata la pulsazione $ omega$. In particolare, nei diagrammi di Bode si chiama _decade_ l'intervallo tra due pulsazioni che hanno un rapporto tra loro pari a dieci.  
+Vi sono diversi modi di rappresentare la risposta in frequenza. Uno dei modi più usati sono i *diagrammi di Bode*, in cui si rappresentano separatamente $|G(j omega)|$ e $ arg(G(j omega))$ in funzione di $ omega$. Nei diagrammi di Bode si utilizza una scala logaritmica in base dieci per l'ascissa, dove è riportata la pulsazione $ omega$. In particolare, nei diagrammi di Bode si chiama _decade_ l'intervallo tra due pulsazioni che hanno un rapporto tra loro pari a dieci.  
 Per come abbiamo definito i diagrammi, segue che la pulsazione nulla non compare nell'asse "finito" (si può avere pulsazione nulla solo a $- infinity$).
    
 Nel tracciamento dei diagrammi di Bode conviene scrivere la funzione $G(s)$ nella forma fattorizzata @eqt:Forma_di_Bode[], qui riportata
 $
-    G(s) =  frac( mu  product_i (1 +  tau_i s) product_i (1 +  frac(2 zeta_i, alpha_(n i)) +  frac(s^2, alpha^2_(n i))),  (s^g  product_i (1 + T_i s) product_i (1 +  frac(2 xi_i, omega_(n i)) +  frac(s^2, omega^2_(n i)))))
+    G(s) =  frac( mu  product_i (1 +  tau_i s) product_i (1 +  frac(2 zeta_i, alpha_(n i)) +  frac(s^2, alpha^2_(n i))),  s^g  product_i (1 + T_i s) product_i (1 +  frac(2 xi_i, omega_(n i)) +  frac(s^2, omega^2_(n i))))
 $
 e la risposta in frequenza associata corrispondente è
 $
     G(j omega) =  frac(mu  product_i (1 + j omega tau_i) product_i (1 + 2j zeta_i frac( omega, alpha_(n i)) -  frac( omega^2, alpha^2_(n i))),
     (j omega)^g  product_i (1 + j omega T_i ) product_i (1 + 2j xi_i frac( omega, omega_(n i)) -  frac( omega^2, omega^2_(n i))))
 $
-Il diagramma delle ampiezze è espresso in (decibel): $|G(j omega)|_("dB") = 20  log|G(j omega)|$.  
+Il diagramma delle ampiezze è espresso in *decibel*: $|G(j omega)|_("dB") = 20  log|G(j omega)|$.
 Il diagramma delle fasi è espresso in gradi: $ arg(G(j omega))$
 
 
@@ -3656,7 +3660,7 @@ $
 #align(center)[
     #cetz.canvas({
         import cetz.draw: *
-        content((1.2, 3.1), [$log(x)$], name: "text")
+        content((1.2, 3.5), [$log(x)$], name: "text")
         plot.plot(
             size: (6.5,4.5),
             x-tick-step: none, 
@@ -3702,12 +3706,12 @@ $
     =&20 log|mu| + 20  log|1+j omega tau| + 20  log lr(|1+2  frac( zeta, alpha_n)j omega -  frac( omega^2, alpha_n^2) |)\
     & - 20  log|j omega| - 20  log|1+j omega T| - 20  log lr(|1+ frac(2 xi, omega_n)j omega -  frac( omega^2, omega_n^2) |)
     \  
-    =&|mu|_("dB") + |1 + j omega tau|_("dB")  + |1+2  frac( zeta, alpha_n)j  omega -  frac( omega^2, alpha_n^2)  |_("dB") - |j omega|_("dB")\
-    & - |1+j omega T|_("dB") -  | 1+  frac(2 xi, omega_n)j omega -  frac( omega^2, omega_n^2)  |_("dB")
+    =&|mu|_("dB") + |1 + j omega tau|_("dB")  + abs(1+2  frac( zeta, alpha_n)j  omega -  frac( omega^2, alpha_n^2))_("dB") - |j omega|_("dB")\
+    & - |1+j omega T|_("dB") -  abs(1+  frac(2 xi, omega_n)j omega -  frac( omega^2, omega_n^2))_("dB")
 $
 
 
-== Diagramma della fase
+=== Diagramma della fase
 $
     arg(G(j omega)) =&  arg  mu - g  arg(j omega) +  sum_(i)  arg(1+j omega tau_i) +  sum_i  arg (1 + 2 j  zeta_i  frac( omega, alpha_(n,1)) -  frac( omega^2, alpha^2_(n,i))   ) \
     &-  sum_(i)  arg(1+j omega T_i) -  sum_i  arg (1 + 2 j  xi_i  frac( omega, alpha_(n,1)) -  frac( omega^2, omega^2_(n,i))   )
@@ -3754,18 +3758,23 @@ Per il diagramma della fase invece
 === Zeri nell'origine
 Consideriamo una risposta con uno zero nell'origine (cioè $g=-1$)
 $
-    G_b (j omega) &=  frac(1,(j omega)^g) = j omega & |G_b (j omega)|_("dB") &= 20  log  omega &  arg(G_b (j  omega)) &=  arg(j omega)
+    G_b (j omega) &=  frac(1,(j omega)^(-1)) = j omega 
+    &wide 
+    |G_b (j omega)|_("dB") &= 20  log  omega 
+    &wide  
+    arg(G_b (j  omega)) &=  arg(j omega)
 $
 
 #cfigure("Images/Diagramma_zero_origine.png", 72%)
 
-La retta che definisce l'ampiezza $ log  omega arrow.r.bar 20  log  omega$ ha pendenza $20 "dB/dec"$; se ho $g$ zeri nell'origine allora la pendenza della retta sarà $20 dot g "dB/dec"$.
+La retta che definisce l'ampiezza $ log  omega arrow.r.bar 20  log  omega$ ha pendenza $20 "dB/dec"$; se ho $g$ zeri nell'origine allora la pendenza della retta sarà $20 dot g "dB/dec"$.\
+$j omega$ è un punto sul semiasse immaginario positivo $forall omega > 0$, quindi fase $90^degree forall > 0$.
 
 
 === Poli nell'origine
 Consideriamo una risposta con un polo nell'origine (cioè $g=1$)
 $
-    G_b (j omega) &=  frac(1,(j omega)^g) =  frac(1,j omega) 
+    G_b (j omega) &=  frac(1,(j omega)^1) =  frac(1,j omega) 
     &space  
     |G_b (j omega)|_("dB") &= -20  log  omega 
     &space  
@@ -3798,6 +3807,7 @@ $
 $
 per $ omega =  frac(1,|tau|)$ abbiamo lo scostamento massimo.
 
+#nfigure("Zero_reale_ampiezza.png", 60%)
 
 === Zero reale negativo (fase)
 Consideriamo una una risposta con uno zero reale negativo
@@ -3846,9 +3856,9 @@ $
 === Polo reale
 Consideriamo $G_c (j omega) =  dfrac(1,1+j omega T)$ (cioè una risposta con un polo reale)
 $
-    |G_c (j omega)|_("dB") &= 20  log  lr(| frac(1,1+j omega  tau) |)  
+    |G_c (j omega)|_("dB") &= 20  log  lr(| frac(1,1+j omega  T) |)  
     \
-    &= -20  log |1+j omega tau|
+    &= -20  log |1+j omega T|
 $
 $
     |G_c (j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
@@ -3891,7 +3901,7 @@ $
 $
 per $ omega  >>  alpha_n$
 $
-    |G_d (j omega)|_("dB") & approx 20  log  sqrt( ( frac( omega^2, alpha_n^2) ))  \
+    |G_d (j omega)|_("dB") & approx 20  log  sqrt( ( frac( omega^2, alpha_n^2) )^2)  \
     &=20  log  frac( omega^2, alpha_n^2)  \
     &= 20  log  ( frac( omega, alpha_n) )^2  \
     &= 40  log  frac( omega, alpha_n)  \
@@ -3956,7 +3966,7 @@ $G_d (j omega) =  dfrac(1,1+2j  xi  frac( omega, omega_n)- frac( omega^2, omega_
 
 #cfigure("Images/Diagramma_poli_cc_neg_1.png", 63%)
 
-I diagrammi sono quelli precedenti ribaltati rispetto all'asse reale, infatti la retta del diagramma di ampiezza asintotico dopo la pulsazione $ omega_n$ ha pendenza $-40$ "dB/dec".  
+I diagrammi sono quelli precedenti ribaltati rispetto all'asse reale, infatti la retta del diagramma di ampiezza asintotico dopo la pulsazione $ omega_n$ ha pendenza $-40$ dB/dec.  
 Il picco di risonanza si trova alla pulsazione (di risonanza) $ omega_r =  omega_n  sqrt(1-2 xi^2)$ con $|G_d (j omega_r)| =  dfrac(1,2|xi| sqrt(1-2 xi^2))$; alla frequenza $ omega_n$ si ha $|G_d (j omega_n)| =  dfrac(1,2|xi|)$
    
 Soffermiamoci un attimo sul caso in cui $ xi  arrow 0$: se do una sinusoide con frequenza inferiore a $ omega_n$ essa non viene sfasata; se invece la sua frequenza è di poco superiore a $ omega_n$ la sua fase viene sfasata di $90^ degree$; il modulo viene amplificato di molto se la frequenza della sinusoide è nell'intorno di $ omega_n$.
