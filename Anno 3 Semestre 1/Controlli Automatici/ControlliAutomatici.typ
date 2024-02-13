@@ -1456,15 +1456,15 @@ cioè per studiare l'equilibrio di un sistema nel generico punto $x_e$ posso stu
 
 
 === Teorema  <Teorema_parte_reale_negativa>
-Un sistema LTI è *asintoticamente stabile* #underline[se e solo se] tutti gli autovalori hanno parte reale strettamente negativa.       
+Un sistema LTI è *asintoticamente stabile* #underline[se e solo se] tutti gli autovalori della matrice della dinamica hanno parte reale strettamente negativa.       
 
-*N.B.* Se gli autovalori hanno parte reale strettamente negativa i modi del sistema tendono a 0 (vedi @Modi_naturali_autovalori_reali_semplici[modi naturali di autovalori semplici])
+*N.B.* Se gli autovalori della matrice della dinamica hanno parte reale strettamente negativa i modi del sistema tendono a 0 (vedi @Modi_naturali_autovalori_reali_semplici[modi naturali di autovalori semplici])
 
 === Teorema
-Un sistema LTI è stabile se e solo se tutti gli autovalori hanno parte reale minore o uguale a zero e tutti gli autovalori a parte reale nulla hanno molteplicità geometrica uguale alla molteplicità algebrica (i mini blocchi di Jordan associati hanno dimensione uno).
+Un sistema LTI è stabile se e solo se tutti gli autovalori della matrice della dinamica hanno parte reale minore o uguale a zero e tutti gli autovalori a parte reale nulla hanno molteplicità geometrica uguale alla molteplicità algebrica (i mini blocchi di Jordan associati hanno dimensione uno).
 
 #heading(level: 3, numbering: none)[Osservazione]
-Si ha instabilità se almeno un autovalore ha parte reale positiva o se almeno un autovalore con parte reale nulla ha molteplicità algebrica maggiore della molteplicità geometrica.
+Si ha instabilità se almeno un autovalore della matrice della dinamica ha parte reale positiva o se almeno un autovalore con parte reale nulla ha molteplicità algebrica maggiore della molteplicità geometrica.
 
 #heading(level: 3, numbering: none)[Osservazione]
 La stabilità asintotica di sistemi LTI è sempre globale
@@ -4047,9 +4047,9 @@ Supponiamo di avere $G(s) =  mu dfrac(s^2+ alpha_n^2,(1+T_1 s)(1+T_2 s))$, con $
 == Risonanza
 Supponiamo di avere un sistema con poli immaginari coniugati $ plus.minus j  omega_n$, ovvero $G(s) =  mu  dfrac( omega_n^2,s^2+ omega_n^2)$ (rispetto al caso generale qui $ xi = 0$); il diagramma di Bode ha un picco di risonanza infinito alla pulsazione $ omega_n$.
 
-Analizziamone il significato calcolando l'uscita del sistema in corrispondenza dell'ingresso $u(t) = U  cos( omega_n t)$. La trasformata dell'ingresso è $U(s) = U  dfrac(s,s^2+ omega_n^2)$, quindi quella dell'uscita è
+Analizziamone il significato calcolando l'uscita del sistema in corrispondenza dell'ingresso $u(t) = U  cos( omega_u t)$. La trasformata dell'ingresso è $U(s) = U  dfrac(s,s^2+ omega_u^2)$, quindi quella dell'uscita è
 $
-    Y(s) = G(s)U(s) =  mu  frac(U  omega_n^2 s,(s^2 +  omega_u^2)^2)
+    Y(s) = G(s)U(s) =  mu  frac(U  omega_n^2 s,(s^2 +  omega_n^2)(s^2 +  omega_u^2))
 $
 
 #set enum(numbering: "1)")
@@ -4059,7 +4059,7 @@ $
 
     + $ omega_u  !=  omega_n$
         $
-            Y(s) =  frac(k_1,s-j  omega_n) +  frac( overline(k)_1,s-j  omega_n) +  frac(k_2,(s-j  omega_u)^2) +  frac( overline(k)_2,(s-j  omega_u)^2)
+            Y(s) =  frac(k_1,s-j  omega_n) +  frac( overline(k)_1,s+j  omega_n) +  frac(k_2,s-j  omega_u) +  frac( overline(k)_2,s+j  omega_u)
         $
         $
             y(t) = 2 |k_1|  cos( omega_n t +  arg(k_1)) + 2|k_2|  cos( omega_u t +  arg(k_2))
@@ -4170,7 +4170,7 @@ $
 $ 
 e un polo 
 $
-    1+10^s & xarrow(width: #2em, "") s_p = -10^(-1) 
+    1+10 s & xarrow(width: #2em, "") s_p = -10^(-1) 
     & space  
     omega_p &= 10^(-1)
 $ 
@@ -4227,14 +4227,14 @@ $
 $<funzione_anello>
 
 come *funzione d'anello*, cioè la funzione di trasferimento in anello aperto del sistema.\  
-$R(s)$ è chiamato (regolatore).
+$R(s)$ è chiamato *regolatore*.
 
 === Sistema in anello chiuso
 Prendiamo un sistema in retroazione in anello chiuso (caso ideale senza rumore o disturbi)
 
 #cfigure("Images/Retroazione_anello_chiuso.png", 65%)
 
-*N.B.* Chiameremo sempre la $w(t)$ come uscita di riferimento $y_( T("RIF"))(t)$; quindi $y_( T("RIF"))(t)$ è quello che voglio ottenere dal sistema, mentre $y(t)$ è come si comporta il sistema.
+*N.B.* Chiameremo sempre la $w(t)$ come uscita di riferimento $y_("RIF")(t)$; quindi $y_("RIF")(t)$ è quello che voglio ottenere dal sistema, mentre $y(t)$ è come si comporta il sistema.
 $
     Y(s) = F(s)  underbrace(Y_("RIF")(s),W(s))
 $<relazione_ingresso_riferimento-uscita>
@@ -4259,9 +4259,9 @@ Così lo schema diventa
 - Sistemi: $R(s) = T(s)  tilde(R)(s),   G(s) = A(s)  tilde(G)(s)$
 - Segnali: $W(s) =  tilde(W)(s),   N(s) = T^(-1)(s) tilde(N)(s),   D(s) = D_a (s) tilde(G)(s) + D_u(s)$
 
-il disturbo sull'attuatore $d_a(t)$ viene filtrato dal sistema. Bisogna tenerne conto quando si fanno considerazioni sul disturbo in uscita $d(t)$.  
+il disturbo sull'attuatore $d_a (t)$ viene filtrato dal sistema. Bisogna tenerne conto quando si fanno considerazioni sul disturbo in uscita $d(t)$.  
 
-$R(s)$ è la funzione di trasferimento del regolatore e $G(s)$ del sistema sotto controllo; inoltre assumiamo che $R(s)$ e $G(s)$ sono funzioni razionali, con $G(s)$ strettamente propria, mentre $R(s)$ può essere rappresentativa di sistemi non strettamente propri e non dinamici. La funzione ad anello $L(s) = R(s)G(s)$ risulta sempre strettamente propria.
+$R(s)$ è la funzione di trasferimento del regolatore e $G(s)$ del sistema sotto controllo; inoltre assumiamo che $R(s)$ e $G(s)$ siano funzioni razionali, con $G(s)$ strettamente propria, mentre $R(s)$ può essere rappresentativa di sistemi non strettamente propri e non dinamici. La funzione ad anello $L(s) = R(s)G(s)$ risulta sempre strettamente propria.
 
 
 == Disaccoppiamento frequenziale dei segnali
@@ -4270,7 +4270,7 @@ Nelle applicazioni di interesse ingegneristico tipicamente le bande dei segnali 
 #cfigure("Images/Disacc_freq_segnali.png", 60%)
 
 - $w(t),   d(t)$ hanno bande a "basse frequenze", ad esempio  posizioni, rotazioni, velocità, etc ... di sistemi meccanici
-- $n(t)$ ha bande ad "alte frequenze", ad esempio disturbi termici in componenti elettronici, accoppiamenti con campi elettromagnetici, etc dots 
+- $n(t)$ ha bande ad "alte frequenze", ad esempio disturbi termici in componenti elettronici, accoppiamenti con campi elettromagnetici, etc ... 
 
 Lo stesso vale per le trasformate: $W(j omega), D(j omega)$ hanno valori non nulli a "basse frequenze", mentre $N(j omega)$ ha valori non nulli ad "alte frequenze".
 
@@ -4311,7 +4311,7 @@ Per studiare la stabilità robusta, in presenza di incertezze, del sistema retro
 $
     F(s) &=  frac(Y(s),W(s))  ==> Y(s) = F(s) W(s)
 $
-Tenendo conto che, logicamente, l'errore del sistema $e(t)$ è la differenza tra il l'uscita di riferimento $y_( T("RIF"))$ e l'uscita reale $y(t)$
+Tenendo conto che, logicamente, l'errore del sistema $e(t)$ è la differenza tra il l'uscita di riferimento $y_("RIF") (t)$ e l'uscita reale $y(t)$
 $
     Y(s) &= R(s) G(s)  overbrace(E(s), cal(L)[e(t)])  
     \
@@ -4343,11 +4343,11 @@ $
 
 == Margini di fase e ampiezza
 === Margine di fase
-In un sistema ad anello chiuso la funzione di trasferimento è $dfrac(G(s), 1+G(s))$. Sappiamo che un sistema è instabile se la funzione di trasferimento va a $infinity$; quindi nel nostro caso
+In un sistema ad anello chiuso la funzione di trasferimento è $dfrac(L(s), 1+L(s))$. Sappiamo che un sistema è instabile se la funzione di trasferimento va a $infinity$; quindi nel nostro caso
 $
-    frac(G(s), 1+G(s)) = infinity <==> 1+G(s) = 0 <==> G(s) = -1
+    frac(L(s), 1+L(s)) = infinity <==> 1+L(s) = 0 <==> L(s) = -1
 $
-La funzione $G(s) = -1$ rappresenta un guadagno del sistema pari a 1, o 0 dB, e una fase di $-180 degree$ (riproduce l'input ribaltato). Per questo se nel diagramma di Bode di un sistema, in corrispondenza dello 0 dB del diagramma delle ampiezze, il diagramma di fase vale $-180 degree$ il sistema è instabile.\
+La funzione $L(s) = -1$ rappresenta un guadagno del sistema pari a 1, o 0 dB, e una fase di $-180 degree$ (riproduce l'input ribaltato). Per questo se nel diagramma di Bode di un sistema, in corrispondenza dello 0 dB del diagramma delle ampiezze, il diagramma di fase vale $-180 degree$ il sistema è instabile.\
 Il margine di fase quindi, esprime quanto siamo lontani dall'instabilità, ed è definito come
 
 $
@@ -4367,7 +4367,7 @@ Consideriamo un sistema che ritarda il suo input di $ tau$, che quindi ha funzio
 Se $L(s) = e^(-s  tau)  tilde(L)(s)$ la pulsazione critica $ omega_c$ non cambia, è la stessa per entrambe.  
 Un ritardo quindi riduce il margine di fase in quanto, per $ omega =  omega_c$, riduce la fase:
 $
-     arg(L(j omega_c)) =  arg  ( tilde(L)(j omega_c) ) =  tau  omega_c
+     arg(L(j omega_c)) =  arg  ( tilde(L)(j omega_c) ) -  tau  omega_c
 $
 quindi per essere asintoticamente stabile, un sistema deve poter tollerare un ritardo $ tau$ che soddisfi la disequazione
 $
@@ -4381,9 +4381,9 @@ $
 === Margine di ampiezza
 La definizione di margine di ampiezza parte dallo stesso assunto del margine di fase, solo che in questo caso prendiamo come riferimento la frequenza alla quale il diagramma delle fasi ha valore $-180 degree$. Infatti anch'esso ci da una misura di quanto siamo distanti dall'instabilità.
 
-#align(center)[$M_a = -|L(j omega_( pi))|_( T("dB"))$ con $ omega_( pi)$ tale che $ arg(L(j omega_( pi))) = -180^( degree)$]
+#align(center)[$M_a = -|L(j omega_( pi))|_("dB")$ con $ omega_( pi)$ tale che $ arg(L(j omega_( pi))) = -180^( degree)$]
 
-La seguente figura può aiutare a comprendere meglio cos'è il margine di ampiezza (in figure il margine di ampiezza è indicato con $|k_m|_( T("dB"))$)
+La seguente figura può aiutare a comprendere meglio cos'è il margine di ampiezza (in figura il margine di ampiezza è indicato con $|k_m|_("dB")$)
 
 #cfigure("Images/Margine_ampiezza.png", 60%)
 
@@ -4425,7 +4425,7 @@ Ingressi del sistema in anello chiuso:
 - $n(t)$ disturbo di misura
 
 Uscite di interesse:
-- $e(t) = w(t)y(t)$ errore di inseguimento
+- $e(t) = w(t) - y(t)$ errore di inseguimento
 - $y(t)$ uscita controllata
 - $u(t)$ ingresso di controllo del sistema in anello aperto (impianto)
 
@@ -4459,7 +4459,7 @@ $
 
 Definiamo $y_w (t)$ l'uscita con ingresso $w(t)$, $y_d (t)$ l'uscita con ingresso $d(t)$ e $y_n (t)$ l'uscita con ingresso $n(t)$; per il principio di sovrapposizione degli effetti
 $
-    y(t) = y_w(t) + y_d(t) + y_n(t)
+    y(t) = y_w (t) + y_d (t) + y_n (t)
 $
 
 
@@ -4481,9 +4481,9 @@ Prendiamo in considerazione solo l'ingresso $d(t)$.
 #cfigure("Images/Funzione_di_sensitività.png", 65%)
 
 $
-    Y_d (s) &=  underbrace(D(s), cal(L)[d(t)]) + R(s) G(s)  underbrace(E_d(s), cal(L)[e(t)])  
+    Y_d (s) &=  underbrace(D(s), cal(L)[d(t)]) + R(s) G(s)  underbrace(E_d (s), cal(L)[e(t)])  
     \
-    &= D(s) + R(s) G(s)  (0 - Y_d (s) ) wide& #text(green)[$ <== E_d(s) =  underbrace(Y_w (s),0) - Y_d (s) $]
+    &= D(s) + R(s) G(s)  (0 - Y_d (s) ) wide& #text(green)[$ <== E_d (s) =  underbrace(Y_w (s),0) - Y_d (s) $]
 $
 riarrangiamo i termini
 $
@@ -4533,7 +4533,7 @@ $
     &space space  
     S(s) &=  frac(1,1+L(s))
 $
-e per annullare l'effetto del disturbo $d(t)$ vorremmo $S(s) = 0$. Tuttavia si nota che se annulliamo $F(s)$ il disturbo $n(t)$ non sarebbe per niente attenuato.
+e per annullare l'effetto del disturbo $d(t)$ vorremmo $S(s) = 0$. Tuttavia il disturbo $n(t)$ non sarebbe per niente attenuato.
    
 Inoltre $S(s)+F(s) = 1$ sempre
 $
@@ -4586,18 +4586,6 @@ $
 $
 
 
-$
-    E_n (s) &= W(s) - Y_n (s)  
-    \
-    &= 0 - Y_n (s)  
-    \
-    &= -Y_n (s)  
-    \
-    &= -  (-F(s)N(s) )  
-    \
-    &= F(s) N(s)
-$
-
 
 === Analisi in frequenza della funzione di sensitività complementare <analisi_funzione_sensitivita_complementare>
 $
@@ -4618,7 +4606,7 @@ $
 $
 Consideriamo $ omega_c$ pulsazione di taglio
 $
-    |F(j omega)|_( T("dB"))  approx
+    |F(j omega)|_("dB")  approx
     cases(
         0  "dB" & omega  <=  omega_c  \
         |L(j omega)|_("dB") wide& omega >  omega_c
@@ -4718,7 +4706,7 @@ dove $xi$ è lo smorzamento dei poli complessi coniugati.
 
 Altrimenti, tenendo conto che il modulo di $|L(j omega)|$ alla frequenza di taglio $omega_c$, come si vede dal grafico, vale $0$ dB (quindi 1)
 $
-    |F(j omega_c) &= frac(overbrace(|L(j omega_c)|, 1), |1 + L(j omega_c)|)
+    |F(j omega_c)| &= frac(overbrace(|L(j omega_c)|, 1), |1 + L(j omega_c)|)
     \
     &= frac(1, |1 + underbrace(L(j omega_c), #text(10pt)[$1 dot e^(j phi_c)$])|)
     \
@@ -4735,7 +4723,7 @@ $
     frac(1, sqrt(2(1+cos(phi_c)))) 
     &= frac(1, sqrt(2(1-cos M_(f)^("rad")) ) )
     \
-    #text(fill: green, baseline: -1pt, size: 9pt)[$1 - cos alpha = 2 sin^2 alpha ==>$]
+    #text(fill: green, baseline: -1pt, size: 9pt)[$1 - cos alpha = 2 sin^2 frac(alpha,2) ==>$]
     &= frac(1, sqrt(4 sin^2dfrac(M_(f)^("rad"), 2) ) )
     \
     &= frac(1,2 sin dfrac(M_(f)^("rad"), 2))
@@ -4778,7 +4766,7 @@ Sia $L(s) = dfrac(N_L (s), D_L (s)) = dfrac(N_L (s), s^g D'_L (s))$ con $N_L (0)
 $
     lim_(s -> 0)S(s) &= lim_(s->0) frac(D_L (s), N_L (s) + D_L (s)) \
     &= lim_(s->0) frac(s^g D'_L (s), N_L (s) + s^g D'_L (s)) \
-    &= lim_(s->0)frac(s^g, mu + s^g)
+    &= frac(s^g, mu + s^g)
 $
 
 Si ha quindi
@@ -4812,10 +4800,11 @@ Quindi
 Affinché l'errore a regime a $W(s) = dfrac(W, s^k)$ sia nullo occorre che $L(s)$ abbia un numero di poli almeno pari a $k$ (principio del modello interno).
 
 == Principio del modello interno
-//RIVEDI
 Possiamo generalizzare il risultato precedente come segue.
 
-Affinché un segnale di riferimento (rispetto un disturbo di misura) con una componente spettrale alla frequenza $omega_0$ sia inseguito a regime 
+Affinché un segnale di riferimento (rispetto un disturbo di misura) con una componente spettrale alla frequenza $omega_0$ sia inseguito a regime perfettamente in uscita è necessario e sufficiente che
+- il sistema chiuso in retroazione sia asintoticamente stabile;
+- il guadagno d'anello $L(s)$ abbia una coppia di poli c.c. sull'asse immaginario con pulsazione naturale pari a $omega_0$.
 
 
 
@@ -4833,17 +4822,17 @@ Consideriamo il seguente schema di controllo in retroazione:
 *Precisione statica*\
  Sia $e_infinity = display(lim_(t -> infinity)) e(t)$ il valore a regime dell'errore in risposta a riferimenti $w(t)$ o disturbi in uscita $d(t)$ "canonici"; la specifica da seguire è
  $
- |e_(infinity) <= e^star &space "oppure" & space e_infinity = 0
+ |e_(infinity)| <= e^star &space "oppure" & space e_infinity = 0
  $
 
 *Precisione dinamica*\
  Tipicamente specifiche in termini di sovraelongazione e tempo di assestamento massimi; le specifiche da seguire sono
  $
- S% <= S* &space T_(a, epsilon) <= T^star
+ S% <= S^star &space T_(a, epsilon) <= T^star
  $
 
 *Attenuazione disturbo in uscita*\
- Il disturbo in uscita $d(t)$, con una banda limitata in un range di pulsazioni $[w_(d,min), w_(d,max)]$, deve essere attenuato di $A_d$ dB ($A_d > 0$).
+ Il disturbo in uscita $d(t)$, con una banda limitata in un range di pulsazioni $[w_(d,min), w_(d,max)]$, deve essere attenuato di $A_d$ dB ($A_d > 0$).2
 
 *Attenuazione disturbo di misura*\
  Il disturbo di misura $n(t)$, con una banda limitata in un range di pulsazioni $[w_(n,min), w_(n,max)]$, deve essere attenuato di $A_n$ dB ($A_n > 0$).
@@ -4911,7 +4900,7 @@ $
     M_f >= 100 xi^star
 $
 
-Perché $T_(a,1) <= T^star$ allora, ricordando la @eqt:tempo_assestamento[], $xi omega_n >= dfrac(4.6, T^star)$
+Perché $T_(a,1) <= T^star$ allora, ricordando la @eqt:tempo_assestamento[], e sapendo che $T = dfrac(1, xi omega_n)$, $xi omega_n >= dfrac(4.6, T^star)$
 $
     M_f omega_c >= frac(460, T^star)
 $
@@ -5002,7 +4991,7 @@ $
 perché sappiamo che $L(s) = R(s) G(s)$ e che i poli (che fanno diminuire la pendenza) di $R(s)$ sono maggiori o uguali agli zeri, quindi moltiplicando $R(s)$ con $G(s)$ otteniamo una funzione di trasferimento con una pendenza uguale o minore di quella di $G(s)$.
 
 
-#pagebreak()
+
 === Riepilogo specifiche
 #cfigure("Images/Riepilogo_specifiche.png", 80%)
 
@@ -5114,7 +5103,7 @@ Procediamo quindi a
 
 
 ==== Formule di inversione
-Dobbiamo calcolare $alpha$ e $tau$ in modo che alla pulsazione $omega_c^star$ (pulsazione a cui vorremmo $|L(j omega)|_"dB" = 0$) la rete ritardatrice abbia una attenuazione $o < M^star < 1$ e uno sfasamento $frac(pi,2) < phi^star < 0$, ovvero
+Dobbiamo calcolare $alpha$ e $tau$ in modo che alla pulsazione $omega_c^star$ (pulsazione a cui vorremmo $|L(j omega)|_"dB" = 0$) la rete ritardatrice abbia una attenuazione $o < M^star < 1$ e uno sfasamento $-frac(pi,2) < phi^star < 0$, ovvero
 $
     R_d (j omega_c^star) = M^star e^(j phi^star)
 $
@@ -5144,7 +5133,7 @@ $
 $
 verificando che i risultati trovati soddisfino le relazioni seguenti
 $
-    0 < M^star < 1 space frac(pi,2) < phi^star < 0 space M^star < cos phi^star
+    0 < M^star < 1 space -frac(pi,2) < phi^star < 0 space M^star < cos phi^star
 $
 e, infine, calcolare $alpha$ e $tau$ mediante formule di inversione.
 
