@@ -2812,7 +2812,7 @@ Quindi, quando l'associazione ha delle informazioni, o più raramente del compor
     - Utilizzando Object Constraint Language (OCL)
     - Come testo in formato libero in un commento UML
 
-#cfigure("images/2024-03-22-16-18-49.png", 100%)
+#cfigure("images/2024-03-22-16-18-49.png", 85%)
 
 - Attenzione: nel caso di attributi con valore booleano
     “vero o falso”, “sì o no”, il nome dell'attributo
@@ -2941,41 +2941,33 @@ dell'operazione
 
 ==== Esempio
 
-- Modello del Dominio “Vendita Servizi” per il Villaggio Turistico
+Modello del Dominio “Vendita Servizi” per il Villaggio Turistico
+#cfigure("images/2024-03-26-12-01-43.png",100%)
 
+Modello del Dominio “Ospite” per il Villaggio Turistico
+#cfigure("images/2024-03-26-12-02-40.png", 100%)
 
-==== Esempio
+Modello del Dominio “Pagamenti” per il Villaggio Turistico
+#cfigure("images/2024-03-26-12-03-09.png", 100%)
 
-- Modello del Dominio “Ospite” per il Villaggio Turistico
-
-
-==== Esempio
-
-- Modello del Dominio “Pagamenti” per il Villaggio Turistico
-
-
-==== Esempio
-
-- Modello del Dominio “Log” per il Villaggio Turistico
+Modello del Dominio “Log” per il Villaggio Turistico
+#cfigure("images/2024-03-26-12-03-33.png", 100%)
 
 
 
 
 
-
-==== Architettura Logica: Struttura
+=== Architettura Logica: Struttura
 
 - La parte strutturale dell'Architettura Logica dovrebbe
     essere composta di due tipi differenti di diagrammi UML
-       - Diagramma dei Package
+       - #text(blue)[Diagramma dei Package] \
           che fornisce una visione di alto livello dell'architettura
-       - Diagramma delle classi (uno o più diagrammi in base
+       - #text(blue)[Diagramma delle classi] \ (uno o più diagrammi in base
           alla complessità) che fornisce una visione più dettagliata
           del contenuto dei singoli package
 - Sarebbe opportuno organizzare sin da subito
-    l'Architettura Logica usando un pattern architetturale
-
-chiamato Boundary-Control-Entity (BCE)
+    l'Architettura Logica usando un pattern architetturale chiamato #text(blue)[*Boundary-Control-Entity*] (BCE)
 
 
 ==== BCE
@@ -2983,16 +2975,17 @@ chiamato Boundary-Control-Entity (BCE)
 - BCE è un pattern architetturale che suggerisce di basare
     l'architettura di un sistema sulla partizione sistematica
     degli use case in oggetti di tre categorie:
-       - informazione
-       - presentazione
-       - controllo
+       - #highlight(fill: myred)[informazione]
+       - #highlight(fill: myred)[presentazione]
+       - #highlight(fill: myred)[controllo]
+
+#cfigure("images/2024-03-26-12-06-04.png", 65%)
+Noi useremo una convenzione più semplice → coloriamo package e classi in modo diverso
+
 - A ciascuna di queste dimensioni corrisponde
     uno specifico insieme di classi
 - Tale pattern è stato introdotto anche in RUP
     e sono state adottate icone ben particolari
-
-
-==== BCE
 
 - BCE è un pattern architetturale che suggerisce di basare
     l'architettura di un sistema sulla partizione sistematica
@@ -3000,36 +2993,21 @@ chiamato Boundary-Control-Entity (BCE)
        - informazione
        - presentazione
        - controllo
-- A ciascuna di queste dimensioni corrisponde
-    uno specifico insieme di classi
-- Tale pattern è stato introdotto anche in RUP
-    e sono state adottate icone ben particolari
 
 
-Noi useremo una
-convenzione più
-semplice →coloriamo
-package e classi in
-modo diverso
-
-
-==== BCE
-
-- _Entity:_ è la dimensione relativa alle entità
+- #highlight(fill: myblue)[_Entity:_] è la dimensione relativa alle entità
     cui corrisponde l'insieme delle classi che includono
     funzionalità relative alle informazioni
     che caratterizzano il problema
        - costituiscono gran parte del modello del dominio
-- _Boundary:_ è la dimensione relativa alle funzionalità
+- #highlight(fill: myblue)[_Boundary:_] è la dimensione relativa alle funzionalità
     che dipendono dall'ambiente esterno cui corrisponde
     l'insieme delle classi che incapsulano l'interfaccia
     del sistema verso il mondo esterno
-- _Control: è_ la dimensione relativa agli enti
+- #highlight(fill: myblue)[_Control:_] è la dimensione relativa agli enti
     che incapsulano il controllo
        - il loro compito èdi fare da _collante_ tra le interfacce e le entità
 
-
-==== BCE
 
 - Impostare l'architettura di un sistema software
     distinguendo tra _boundary_ , _control_ ed _entity_
@@ -3044,38 +3022,33 @@ modo diverso
        - sia le funzionalità di una specifica applicazione
        - sia le funzionalità tipiche della interazione con l'utente
 
-
-==== BCE
-
 - La conseguenza è che l'architettura
     di un sistema software risulta quasi fisiologicamente
-    articolata in una sequenza di livelli ( _layer_ ) verticali
+    articolata in una sequenza di livelli (_layer_) verticali
     che viene tipicamente mantenuta
     anche in fase di progetto e implementazione
 
 
 ==== Layer
 
-- Naturale separare la parte che realizza
+- È naturale separare la parte che realizza
     le entità dell'applicazione (dominio)
     dalla parte che realizza l'interazione con l'utente (logica
     di presentazione), introducendo una parte centrale
     di connessione (control)
 
 
-==== Layer
-
 - Nello specifico:
-    - il livello di *_presentazione_*
+    - il livello di #text(blue)[*_presentazione_*]
        comprende le parti che realizzano l'interfaccia utente
           - Per aumentare la riusabilità delle parti, questo livello èprogettato
              e costruito astraendo quanto più possibile
              dai dettagli degli specifici dispositivi di I/O
-    - il livello di *_applicazione_*
+    - il livello di #text(blue)[*_applicazione_*]
        comprende le parti che provvedono a elaborare
        l'informazione di ingresso, a produrre i risultati attesi
        e a presentare le informazioni in uscita
-    - il livello delle *_entità_*
+    - il livello delle #text(blue)[*_entità_*]
        forma il (modello del) dominio applicativo
 
 
@@ -3089,12 +3062,10 @@ modo diverso
     dell'Architettura Logica
 
 
-==== Struttura: Package
-
 - Il primo package che si può identificare
-    è il package costituito dal Modello del Dominio
+    è il package costituito dal #text(blue)[Modello del Dominio]
     creato nella fase precedente
-       - tale Modello (se ben realizzato) costituisce la parte “entity”
+       - tale Modello (se ben realizzato) costituisce la parte “#text(blue)[entity]”
           dell'architettura
 - Poi è possibile creare un package
     per ognuna delle diverse funzionalità identificate
@@ -3106,72 +3077,30 @@ modo diverso
 
 ==== Struttura: Package
 
-
-==== Struttura: Package
-
-
-Presentazione
+#cfigure("images/images/2024-03-26-13-48-53.png.png", 90%)
+#cfigure("images/2024-03-26-13-49-53.png", 90%)
 
 
-Applicazione
-
-
-Entità
-
-
-==== Struttura: Package
-
-
-Le dipendenze
-indicate sono solo
-a scopo di
-esempio. Le
-dipendenze, sono
-di solito suggerite
-dal problema
-stesso!
-
-Interazioni con
-sistemi / API
-Interazioni con utenti esterni
-
+#pagebreak()
 
 ==== Esempio
 
-- Diagramma dei Package per il Villaggio Turistico
+Diagramma dei Package per il Villaggio Turistico
 
-
-uses
-
-
-uses uses
-
-
-uses
-
-
-uses
-uses uses uses uses uses uses uses
-
-
-uses
-uses
+#cfigure("images/2024-03-26-13-50-45.png", 100%)
 
 
 ==== Struttura: Classi
 
 - Dopo aver stabilito la struttura di alto livello
     dell'Architettura Logica
-    si dettagliano le classi che compongono ogni package
+    #text(red)[si dettagliano le classi che compongono ogni package]
 - Il Package del Dominio è già stato identificato
     nel Modello del Dominio
 - Se le classi da specificare per ogni package sono poche
     si può realizzare un unico diagramma delle classi
 - Altrimenti è possibile creare un diagramma delle classi
     separato per ogni package
-
-
-==== Struttura: Classi
 
 - Attenzione a non introdurre scelte di progettazione
     in questa fase
@@ -3190,62 +3119,29 @@ uses
 ==== Esempio
 
 - Diagramma delle classi per il Villaggio Turistico
-    - Diagramma delle classi: InterfacciaCommesso&
-       GestionePuntoVendita
+    - Diagramma delle classi: `InterfacciaCommesso` &
+       `GestionePuntoVendita`
 
-
-==== Esempio
+#cfigure("images/2024-03-26-13-52-51.png", 90%)
 
 - Diagramma delle classi per il Villaggio Turistico
-    - Diagramma delle classi: InterfacciaLog& Log
+    - Diagramma delle classi: `InterfacciaLog` & `Log`
+
+#cfigure("images/2024-03-26-13-53-41.png", 100%)
 
 
-HomeLog
-
-
-ViewAnomalie
-
-
-uses
-
-
-uses
-
-
-uses ViewLog
-LogController
-+ getEntry(DateTime,DateTime)+ getEntry(Date)
-+ getAnomalieOperazioni (Date)+ getAnomalieMessaggi(Date)
-
-AnomalieOperazioni
-
-
-+ scanOperazioni(Date)
-
-AnomalieMesssaggi
-
-
-+ scanMessaggi(D ate)
 
 
 === Architettura Logica: Interazione
 
 
-
-
-
-==== Architettura Logica: Interazione
-
 - Descrivere le interazioni tra le entità identificate
     nella parte strutturale attraverso opportuni
     Diagrammi di Sequenza
-- Diagrammi di sequenza - evidenziano
+- I #text(blue)[Diagrammi di sequenza] evidenziano
     - lo scambio di messaggi (le interazioni) tra gli oggetti
     - l'ordine in cui i messaggi vengono scambiati tra gli oggetti
        (sequenza di invocazioni delle operazioni)
-
-
-==== Architettura Logica: Interazione
 
 - Non spingere la definizione dei diagrammi di sequenza
     sino ai minimi dettagli
@@ -3258,16 +3154,12 @@ AnomalieMesssaggi
 
 ==== Esempio
 
-- Diagramma di sequenza per il Villaggio Turistico
+Diagramma di sequenza per il Villaggio Turistico
+
+#cfigure("images/2024-03-26-13-56-06.png", 100%)
 
 
 === Architettura Logica: Comportamento
-
-
-
-
-
-====  Architettura Logica: Comportamento
 
 - Descrivere il comportamento delle entità
     identificate nella parte strutturale attraverso opportuni
@@ -3294,9 +3186,6 @@ AnomalieMesssaggi
     mostrando i possibili stati e gli eventi
     che attivano transizioni da uno stato all'altro
 
-====  Architettura Logica: Comportamento
-
-
 - A un oggetto possono essere assegnate responsabilità
     che comportano un insieme di elaborazioni complesse
     che devono essere eseguite in un ordine particolare
@@ -3305,81 +3194,15 @@ AnomalieMesssaggi
     mostrando le diverse elaborazioni che devono
     essere portate a termine e l'ordine di tali elaborazioni
 
-====  Architettura Logica: Comportamento
-
 
 ==== Esempio
 
-- Diagramma di stato per AnomalieMessaggi
+Diagramma di stato per `AnomalieMessaggi`
 
-
-RicezioneMessaggio
-entry / do / attesa messaggioelimina protezione
-exit /
-
-
-ScanMessaggio
-entry / do / memorizza messaggioelimina protezione
-exit /
-
-
-nuovo mes saggio
-
-
-AnalizzaMessaggio
-entry / do / analizza Etichettaestrai Mittente e Destinatario
-exit /
-
-
-DaDestinatario inviato
-entry / do / cerca tra i messaggi dei
-Mittenti se già presenteexit /
-
-
-no
-DaMittente
-entry / do / cerca tra i messaggi dei
-Destinatari se già presenteexit /
-
-
-sì
-
-
-presente presente
-Memorizza
-entry / do / memorizza messaggio
-exit /
-
-
-no no
-
-
-Confronta
-entry / do / confronta messaggi
-exit /
-
-
-sì sì
-
-
-CreaAnomalia
-entry / do / crea nuova AnomaliaMessaggio
-exit /
-
-
-mes sagg i uguali
-
-
-mes saggi uguali
-
+#cfigure("images/2024-03-26-13-57-51.png", 100%)
 
 === Definizione del Piano di Lavoro
 
-
-
-
-
-==== Definizione Piano di Lavoro
 
 - Dopo la creazione dell'Architettura Logica
     è possibile iniziare a suddividere il lavoro
@@ -3395,69 +3218,19 @@ mes saggi uguali
 
 ==== Esempio
 
-*Package* Progetto Sviluppo
-Dominio Team progettazione +
-Team DB
-
-Team sviluppo A +
-Team DB
-Gestione Ospite Team progettazione Team sviluppo A
-GestionePuntoVendita Team progettazione Team sviluppo B
-
-GestioneCatena Team progettazione Team sviluppo B
-Login Team sicurezza Team sviluppo
-sicurezza
-Log Team sicurezza Team sviluppo
-sicurezza
-InterfacciaOperatore Team progettazione +
-Team grafico
-
-Team sviluppo A +
-Team Grafico
-InterfacciaCommesso Team progettazione +
-Team grafico
-
-Team sviluppo B +
-Team Grafico
-InterfacciaCatena Team progettazione
-+Team grafico
-
-Team sviluppo B +
-Team Grafico
-InterfacciaLogin Team sicurezza+ Team
-grafico
-
-Team sicurezza+ Team
-grafico
-InterfacciaLog Team sicurezza+ Team
-grafico
-
-Team sicurezza+ Team
-grafico
-GestionePersonale Team progettazione +
-Team DB
-
-
-Team sviluppo A +
-Team DB
+#cfigure("images/2024-03-26-13-58-40.png", 100%)
 
 
 === Definizione del Piano del Collaudo
 
-
-
-
-
-==== Definizione Piano del Collaudo
-
 - Al termine dell'Analisi del Problema, i modelli
     che definiscono il dominio e l'Architettura Logica
-    dovrebbero dare sufficienti informazioni su *_cosa_*
+    dovrebbero dare sufficienti informazioni su #text(blue)[*_cosa_*]
     le varie parti del sistema debbano fare senza specificare
     ancora molti dettagli del loro comportamento
-- Il “ *_cosa fare_* ” di una parte dovrà comprendere
+- Il “#text(blue)[*_cosa fare_*]” di una parte dovrà comprendere
     anche le forme di interazione con le altre parti
-- Lo scopo del *_piano del collaudo_* è cercare di precisare
+- Lo scopo del #text(blue)[*_piano del collaudo_*] è cercare di precisare
     il comportamento atteso da parte di una entità
     prima ancora di iniziarne il progetto e la realizzazione
 - Focalizzando l'attenzione sulle interfacce delle entità
@@ -3466,35 +3239,33 @@ Team DB
     di una parte a uno “stimolo” di un'altra parte
 
 
-==== Definizione Piano del Collaudo
-
-- Lo sforzo di definire nel modo più preciso possibile
+- Lo sforzo di definire nel modo #text(red)[più preciso possibile]
     un piano del collaudo di un sistema
     prima ancora di averne iniziato la fase di progettazione
     viene ricompensato da
-       - una miglior comprensione dei requisiti
-       - un approfondimento nella comprensione dei problemi
+       - una #text(blue)[miglior comprensione] dei requisiti
+       - un approfondimento nella #text(blue)[comprensione dei problemi]
        - una più precisa definizione dell'insieme delle funzionalità
           (operazioni) che ciascuna parte deve fornire alle altre
-          per una effettiva integrazione nel “tutto” che costituirà
+          per una #text(blue)[effettiva integrazione] nel “tutto” che costituirà
           il sistema da costruire
-       - comprendere il significato delle entità e specificarne
-          nel modo più chiaro possibile il comportamento atteso
+       - comprendere il #text(blue)[significato delle entità] e specificarne
+          nel modo più chiaro possibile il #text(blue)[comportamento atteso]
 
 
 ==== Definizione Piano del Collaudo
 
 - Un piano del collaudo va concepito e impostato
-    da un punto di vista logico, cercando di individuare
+    da un punto di #text(blue)[_*vista logico*_], cercando di individuare
     categorie di comportamenti e punti critici
 - In molti casi tuttavia può anche risultare possibile
-    definire in modo precoce piani di collaudo
-    concretamente eseguibili, avvalendosi di strumenti
+    definire in modo precoce #text(blue)[piani di collaudo
+    concretamente eseguibili], avvalendosi di strumenti
     del tipo JUnit/NUnit che sono ormai diffusi
     in tutti gli ambienti di programmazione
 - Lo sforzo di definire un piano di collaudo concretamente
-    eseguibile promuove uno sviluppo controllato, sicuro
-    e consapevole del codice poiché il progettista
+    eseguibile promuove uno sviluppo #text(red)[controllato, sicuro
+    e consapevole] del codice poiché il progettista
     e lo sviluppatore possono verificare subito
     in modo concreto la correttezza di quanto sviluppato
 
