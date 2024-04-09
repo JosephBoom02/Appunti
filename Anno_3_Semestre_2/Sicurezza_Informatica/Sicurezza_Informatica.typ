@@ -734,4 +734,12 @@ consegnare un file report.pdf che contenga:
   ,"\x60\xd2\xff\xff"')
   ```
 
-== 
+== Return to libc
+Consegnare un file report.pdf che contenga:
+- Payload e screenshot che dimostra la capacità di sovrascrivere l'indirizzo di ritorno
+- Payload e screenshot dell'exploit finale lanciato
+- Spiegazione dettagliata di come si è proceduto ad analizzare ed exploitare la vulnerabilità
+
+- L'indirizzo della variabile `SHELL` è `0xffffd517`, quindi per avere la stringa che contenga solo il path dobbiamo aggiungere 6 byte all'indirizzo, ottenendo `FFFFD51D`
+- L'indirizzo di `system` `0xf7c4c830`
+- L'indirizzo di `exit` è `0xf7c3c130`
