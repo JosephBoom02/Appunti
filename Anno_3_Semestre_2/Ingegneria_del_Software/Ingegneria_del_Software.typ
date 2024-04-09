@@ -2959,6 +2959,8 @@ Modello del Dominio “Log” per il Villaggio Turistico
 
 === Architettura Logica: Struttura
 
+*N.B.* Le parti "Struttura", "Interazione" e "Comportamento" dell'architettura logica vanno sviluppate contestualmente (in contemporanea?).
+
 - La parte strutturale dell'Architettura Logica dovrebbe
     essere composta di due tipi differenti di diagrammi UML
        - #text(blue)[Diagramma dei Package] \
@@ -2998,7 +3000,7 @@ Noi useremo una convenzione più semplice → coloriamo package e classi in modo
 - #highlight(fill: myblue)[_Entity:_] è la dimensione relativa alle entità
     cui corrisponde l'insieme delle classi che includono
     funzionalità relative alle informazioni
-    che caratterizzano il problema
+    che caratterizzano il problema; sostanzialmente ci dice quali sono le entità di interesse nel dominio del problema
        - costituiscono gran parte del modello del dominio
 - #highlight(fill: myblue)[_Boundary:_] è la dimensione relativa alle funzionalità
     che dipendono dall'ambiente esterno cui corrisponde
@@ -3006,7 +3008,7 @@ Noi useremo una convenzione più semplice → coloriamo package e classi in modo
     del sistema verso il mondo esterno
 - #highlight(fill: myblue)[_Control:_] è la dimensione relativa agli enti
     che incapsulano il controllo
-       - il loro compito èdi fare da _collante_ tra le interfacce e le entità
+       - il loro compito è di fare da _collante_ tra le interfacce e le entità
 
 
 - Impostare l'architettura di un sistema software
@@ -3069,13 +3071,11 @@ Noi useremo una convenzione più semplice → coloriamo package e classi in modo
           dell'architettura
 - Poi è possibile creare un package
     per ognuna delle diverse funzionalità identificate
-    nella Tabella delle Funzionalità (“control”)
+    nella Tabella delle Funzionalità (“control”); ciascuna delle righe della tabella diventa un package di controllo
 - Vengono creati uno o più package
     per la parte di “boundary”
 - Infine si identificano le _dipendenze logiche_ tra i package
 
-
-==== Struttura: Package
 
 #cfigure("images/images/2024-03-26-13-48-53.png.png", 90%)
 #cfigure("images/2024-03-26-13-49-53.png", 90%)
@@ -3151,6 +3151,7 @@ Diagramma dei Package per il Villaggio Turistico
        - in fasi particolarmente significative
        - nei casi più critici
 
+- Non serve mostrare tutti i diagrammi di interazione, ma magari fare vedere quelli più interessanti e/o complicati
 
 ==== Esempio
 
@@ -3158,6 +3159,7 @@ Diagramma di sequenza per il Villaggio Turistico
 
 #cfigure("images/2024-03-26-13-56-06.png", 100%)
 
+*N.B.* Mai fare vedere la password nel modello del dominio. L'interfaccia che gestisce il login avrà un auto-anello, quindi solo lei dovrà gestire il controllo password; #underline[come] realizzare questa cosa si vedrà in progettazione. 
 
 === Architettura Logica: Comportamento
 
@@ -3274,7 +3276,7 @@ Diagramma di stato per `AnomalieMessaggi`
 
 - JUnit (https://junit.org/junit5/docs/current/user-guide/)
     è un framework per unit-testing per il linguaggio Java
-- Dovreste conoscerlo già bene da Fondamenti T- 2
+- Dovreste conoscerlo già bene da Fondamenti T-2
 
 
 ==== NUnit
@@ -3285,7 +3287,6 @@ Diagramma di stato per `AnomalieMessaggi`
     ma è stato totalmente riscritto dalla versione 3
 - Troverete la documentazione e la guida all'installazione
     a
-    https://github.com/nunit/docs/wiki/Framework-Release-
-    Notes
+    https://github.com/nunit/docs/wiki/Framework-Release-Notes
 
 
