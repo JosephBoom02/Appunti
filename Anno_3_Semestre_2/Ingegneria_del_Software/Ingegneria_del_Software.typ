@@ -26,7 +26,7 @@
 
 #set page(margin: (y: 0.5cm))
 
-#set text(15pt)
+#set text(13pt)
 
 #set heading(numbering: "1.1.1.1.1.1")
 //#set math.equation(numbering: "(1)")
@@ -3288,5 +3288,999 @@ Diagramma di stato per `AnomalieMessaggi`
 - Troverete la documentazione e la guida all'installazione
     a
     https://github.com/nunit/docs/wiki/Framework-Release-Notes
+
+
+= Framework .NET
+
+== Introduzione
+
+=== Tecnologia COM - Component Object Model
+
+- Nasce nel 1993
+- COM è un sistema platform-independent, distribuito,
+    object-oriented per la creazione di componenti
+    software binari
+- COM non è un linguaggio object-oriented
+    ma uno #text(blue)[*standard*]
+- COM specifica un modello a oggetti
+    e requisiti di programmazione che permettono
+    agli oggetti COM di interagire con altri oggetti
+
+- Ad esempio un programma Java può parlare con un programma C, utilizzando la Java Native Interface
+
+- COM fa la stessa cosa del linker C quando abbiamo bisogno che più programmi parlino tra loro (link dinamico)
+
+Esempio di oggetti COM che parlano tra di loro:
+
+```C
+interface IUnknown
+{
+    virtual HRESULT QueryInterface(IID iid, void **ppvObject) = 0;
+    virtual ULONG AddRef(void) = 0;
+    virtual ULONG Release(void) = 0;
+};
+```
+
+- `QueryInterface` è utilizzata per ottenere un puntatore
+    a un'altra interfaccia (a tempo di esecuzione, non di compilazione), dato un `GUID` che identifica univocamente
+    tale interfaccia (noto comunemente come interfaceID, o IID)
+       - se l'oggetto COM non implementa tale interfaccia,
+          viene restituito un errore `E_NOINTERFACE`
+- `AddRef` è utilizzato dai client per indicare che un oggetto COM
+    viene referenziato (usato)
+- `Release` è utilizzato dai client per indicare che hanno finito
+    di utilizzare l'oggetto COM
+
+
+
+- Le specifiche COM richiedono l'utilizzo di una tecnica
+    chiamata #text(blue)[*reference counting*] per assicurare
+    che i singoli oggetti rimangano “vivi” fintantoché esistono
+    client che hanno ottenuto l'accesso
+    a una o più delle loro interfacce e, di converso,
+    che gli stessi oggetti vengano appropriatamente
+    cancellati quando i clienti che li utilizzavano
+    hanno finito di usarli e non ne hanno più bisogno; il contatore viene incrementato a ogni `AddRef` e decrementato a ogni `Release`
+
+- #text(blue)[Un oggetto COM è responsabile della liberazione della propria memoria] una volta che il suo reference count arrivi a zero
+
+- Il reference counting può causare #text(blue)[problemi se due o più oggetti hanno riferimenti circolari]
+
+
+
+
+- Ereditarietà solo con composizione e delega
+
+#cfigure("images/2024-04-11-09-22-06.png",80%)
+
+
+- La #text(blue)[*posizione*] di ciascun componente è memorizzata
+    nel registro Windows
+
+- Di un certo componente può esistere un'unica versione installata
+
+- Questa limitazione può complicare seriamente
+il deployment di applicazioni basate su COM,
+a causa della possibilità che diversi programmi,
+o anche diverse versioni dello stesso programma,
+siano progettati per funzionare con versioni diverse
+dello stesso componente COM
+
+- Questa situazione è nota anche come inferno delle DLL (DLL hell)
+
+
+=== Cos'è il Framework .NET
+
+- Ambiente di esecuzione (runtime environment) + Libreria di classi (standard + estensioni MS)
+- Versione 1.0 del 2002 ► v. 4.8 (versione definitiva, 7/19)
+- Semplifica lo sviluppo e il deployment
+- Aumenta l'affidabilità del codice
+- Unifica il modello di programmazione
+- È completamente indipendente da COM
+- È fortemente integrato con COM
+
+
+- Ambiente object-oriented
+    - Qualsiasi entità è un oggetto
+    - Classi ed ereditarietà pienamente supportati
+- Riduzione errori comuni di programmazione
+    - #text(blue)[*Garbage Collector*]
+    - Linguaggi fortemente tipizzati - #text(blue)[*Type Checker*]
+    - Errori non gestiti ► generazione di eccezioni
+
+
+
+- Libertà di scelta del linguaggio
+    - Funzionalità del framework disponibili in tutti i linguaggi
+       .NET
+    - I componenti della stessa applicazione
+       possono essere scritti in linguaggi diversi
+    - Ereditarietà supportata anche tra linguaggi diversi
+- Possibilità di estendere una qualsiasi classe .NET
+    (non sealed) mediante ereditarietà
+- Diversamente da COM:
+    - si usa e si estende la classe stessa
+    - non si deve utilizzare composizione e delega
+
+
+- .NET è un'implementazione di CLI
+    - Common Language Infrastructure
+- CLI e il linguaggio C\# sono standard ECMA
+    - ECMA-334 (C\#), ECMA-335 (CLI)
+- Esistono altre implementazioni di CLI:
+    - SSCLI (Shared Source CLI by Microsoft, per Windows,
+       FreeBSD e Macintosh) - Rotor
+    - Mono (per Linux)
+    - DotGNU
+    - Intel OCL (Open CLI Library)
+    - ...
+
+
+=== Standard ECMA-335
+
+- Definisce la Common Language Infrastructure (CLI)
+    nella quale applicazioni scritte in #text(blue)[*diversi linguaggi
+    di alto livello*] possono essere eseguite in #text(blue)[*diversi
+    ambienti di sistema*] senza la necessità di riscrivere
+    l'applicazione per prendere in considerazione
+    le caratteristiche peculiari di tali ambienti
+- CLI è un #text(blue)[*ambiente a tempo di esecuzione*], con:
+    - un formato di file
+    - un sistema di tipi comune
+    - un sistema di metadati estensibile
+    - un linguaggio intermedio
+    - accesso alla piattaforma sottostante
+    - una libreria di classi base
+
+
+- Concetti chiave:
+    - #highlight(fill: myblue)[(Microsoft) Intermediate Language] - (MS)IL
+    - #highlight(fill: myblue)[Common Language Runtime] - CLR
+       - ambiente di esecuzione runtime per le applicazioni .NET
+       - il codice che viene eseguito sotto il suo controllo
+          si dice *codice gestito* (managed)
+    - #highlight(fill: myblue)[Common Type System] - CTS
+       - tipi di dato supportati dal framework .NET
+       - consente di fornire un modello di programmazione unificato
+    - #highlight(fill: myblue)[Common Language Specification] - CLS
+       - regole che i linguaggi di programmazione devono seguire
+          per essere interoperabili all'interno del framework .NET
+       - sottoinsieme di CTS
+
+
+=== Codice interpretato
+
+#cfigure("images/2024-04-11-09-29-02.png",90%)
+
+
+=== Codice nativo
+
+#cfigure("images/2024-04-11-09-29-30.png",90%)
+
+=== Codice IL
+
+#cfigure("images/2024-04-11-09-31-18.png",90%)
+JIT: just in time
+#cfigure("images/2024-04-11-09-33-15.png",90%)
+
+#cfigure("images/2024-04-11-09-32-32.png",90%)
+
+
+=== Assembly
+
+- Unità minima per la distribuzione e il versioning
+- Normalmente è composto da un solo file
+
+#cfigure("images/2024-04-11-09-33-50.png",90%)
+
+
+- Ma può essere composto anche da più file
+
+#cfigure("images/2024-04-11-09-35-05.png",70%)
+
+=== Metadati
+
+- Descrizione dell'assembly - Manifest
+    - Identità: nome, versione, cultura [, public key]
+    - Lista dei file che compongono l'assembly
+    - Riferimenti ad altri assembly da cui si dipende
+    - Permessi necessari per l'esecuzione
+    - ...
+- Descrizione dei tipi contenuti nell'assembly
+    - Nome, visibilità, classe base, interfacce
+    - Campi (attributi membro), metodi, proprietà, eventi, ...
+    - Attributi (caratteristiche aggiuntive)
+       - definiti dal compilatore
+       - definiti dal framework
+       - definiti dall'utente
+
+
+=== Chi usa i metadati?
+
+- Compilatori
+    - Compilazione condizionale
+- Ambienti RAD (Rapid Application Development)
+    - Informazioni sulle proprietà dei componenti
+       - Categoria
+       - Descrizione
+       - Editor specializzati per tipo di proprietà
+- Tool di analisi dei tipi e del codice
+    - Intellisense, ILDASM, Reflector, ...
+- Sviluppatori - *Reflection* (introspezione)
+    - Analisi del contenuto di un assembly, permetter agli altri di guardare dentro
+
+
+=== Esempio Assembly
+
+```yasm
+.assembly Hello { }
+.assembly extern mscorlib { }
+.method public static void main()
+{
+    .entrypoint
+    ldstr "Hello IL World!"
+    call void [mscorlib]System.Console::WriteLine
+    (class System.String)
+    ret
+}
+
+ilasm helloil.il
+```
+
+=== Dove trovare gli Assembly
+
+- #highlight(fill: myblue)[Assembly privati]
+    - Utilizzati da un'applicazione specifica
+    - Directory applicazione (e sub-directory)
+- #highlight(fill: myblue)[Assembly condivisi]
+    - Utilizzati da più applicazioni
+    - Global Assembly Cache (GAC)
+    - `c:\windows\assembly`
+- #highlight(fill: myblue)[Assembly scaricati da URL]
+    - Download cache
+    - `c:\windows\assembly\download`
+
+
+=== Deployment semplificato
+
+- Installazione senza effetti collaterali
+    - Applicazioni e componenti possono essere
+       - condivisi 
+       - privati
+- Esecuzione side-by-side
+    - Versioni diverse dello stesso componente
+       possono coesistere, anche nello stesso processo
+
+
+=== Common Language Runtime
+
+#cfigure("images/2024-04-11-09-38-34.png",60%)
+
+
+- IL CLR offre vari servizi alle applicazioni
+
+#cfigure("images/2024-04-11-09-39-17.png",75%)
+
+#cfigure("images/2024-04-11-09-40-06.png",70%)
+
+
+=== Garbage Collector
+
+- Gestisce il ciclo di vita di tutti gli oggetti .NET
+- Gli oggetti vengono distrutti automaticamente
+    quando non sono più referenziati
+- A differenza di COM,
+    non si basa sul Reference Counting
+       - #underline(stroke: 1.5pt + green)[Maggiore velocità di allocazione] 
+       - #underline(stroke: 1.5pt + green)[Consentiti i riferimenti circolari] 
+       - #underline(stroke: 1.5pt + red)[Perdita della distruzione deterministica]: non posso sapere in che momento un determinato oggetto verrà distrutto 
+       - Inoltre, essendo più complicato del garbage collector di COM, l'esecuzione dello stesso è un po' più pesante
+
+
+=== Gestione delle eccezioni
+
+- Praticamente uguali a quelle di Java
+
+- Un'eccezione è
+    - una condizione di errore
+    - un comportamento inaspettato
+incontrato durante l'esecuzione del programma
+- Un'eccezione può essere generata da
+    - codice del programma in esecuzione
+    - ambiente di runtime
+- In CLR, un'eccezione è un oggetto che eredita
+    dalla classe `System.Exception`
+- Gestione uniforme, elimina
+    - codici `HRESULT` di COM
+    - codici di errore Win32
+    - ...
+
+
+=== Gestione delle eccezioni
+
+- Concetti universali
+    - Lanciare un'eccezione (`throw`)
+    - Catturare un'eccezione (`catch`)
+    - Eseguire codice di uscita da un blocco controllato
+       (`finally`)
+- Disponibile in tutti i linguaggi .NET con sintassi diverse
+
+
+=== Common Type System
+
+- Tipi di dato supportati dal framework .NET
+    - Alla base di tutti i linguaggi .NET
+- Fornisce un modello di programmazione unificato
+- Progettato per linguaggi object-oriented, procedurali
+    e funzionali
+       - Esaminate caratteristiche di 20 linguaggi
+       - Tutte le funzionalità disponibili con IL
+       - Ogni linguaggio utilizza alcune caratteristiche
+
+
+- Alla base di tutto ci sono i tipi:
+    *classi, strutture, interfacce, enumerativi, delegati*
+- Fortemente tipizzato (compile-time)
+- Object-oriented
+    - Campi, metodi, tipi annidati, proprietà, ...
+- Overload di metodi (compile-time)
+- Invocazione metodi virtuali risolta a run-time
+- Ereditarietà singola di estensione
+- Ereditarietà multipla di interfaccia
+
+
+=== Common Language Specification
+
+- Definisce le regole di compatibilità tra linguaggi
+    (sottoinsieme di CTS)
+       - Regole per gli identificatori
+          - Unicode, case-sensitivity
+          - Keyword
+       - Regole per denominazione proprietà ed eventi
+       - Regole per costruttori degli oggetti
+       - Regole di overload più restrittive
+       - Ammesse interfacce multiple con metodi con lo stesso nome
+       - Non ammessi puntatori unmanaged
+       - ...
+
+#cfigure("images/2024-04-11-09-53-51.png",90%)
+
+==== Tipi nativi
+
+#cfigure("images/2024-04-11-09-54-55.png",90%)
+
+
+=== Common Type System
+
+- Tutto è un oggetto
+    - `System.Object` è la classe radice
+- Due categorie di tipi
+    - Tipi riferimento
+       - Riferimenti a oggetti allocati sull'*heap* gestito
+       - Indirizzi di memoria
+    - Tipi valore
+       - Allocati sullo *stack* o parte di altri oggetti
+       - Sequenza di byte
+- Sono memorizzati come in Java
+
+
+
+==== Tipi valore
+
+- I tipi valore comprendono:
+    - Tipi primitivi (built-in)
+       - Int32, ...
+       - Single, Double
+       - Decimal
+       - Boolean
+       - Char
+    - Tipi definiti dall'utente
+       - Strutture (`struct`)
+       - Enumerativi (`enum`)
+
+
+==== Tipi valore vs tipi riferimento
+
+#cfigure("images/2024-04-11-10-02-44.png",90%)
+Appena dichiaro la variabile `r`, questa viene salvato nello Stack, poi, quando viene inizializzata, viene creato un riferimento della classe `Csize` nello Heap.
+==== Common Type System
+
+
+```
+public struct Point
+{
+    private int _x, _y;
+    public Point(int x, int y)
+    {
+        _x = x;
+        _y = y;
+    }
+    public int X
+    {
+        get { return _x; }
+        set { _x = value; }
+    }
+    public int Y
+    {
+        get { return _y; }
+        set { _y = value; }
+    }
+}
+```
+
+
+```
+public class Rectangle
+{
+    Point v1;
+    Point v2;
+    ...
+}
+...
+Rectangle r = new Rectangle();
+```
+
+#cfigure("images/2024-04-11-10-05-02.png",90%)
+
+```
+...
+Point[] points = new Point[100];
+for (int i = 0; i < 100; i++)
+    points[i] = new Point(i, i);
+...
+```
+- Alla fine, rimane un solo oggetto nell'heap
+    (l'array di `Point`)
+
+```
+...
+Point[] points = new Point[100];
+for (int i = 0; i < 100; i++)
+{
+    points[i].X = i;
+    points[i].Y = i;
+}
+...
+```
+\
+```
+public class Point
+{
+    private int _x, _y;
+    public Point(int x, int y)
+    {
+        _x = x;
+        _y = y;
+    }
+    public int X
+    {
+        get { return _x; }
+        set { _x = value; }
+    }
+    public int Y
+    {
+        get { return _y; }
+        set { _y = value; }
+    }
+}
+```
+
+#cfigure("images/2024-04-11-10-18-32.png",90%)
+
+
+```
+...
+Point[] points = new Point[100];
+for (int i = 0; i < 100; i++)
+points[i] = new Point(i, i);
+...
+```
+- Alla fine, rimangono 101 oggetti nell'heap
+    (1 array di `Point` + 100 `Point` )
+
+```
+...
+Point[] points = new Point[100];
+for (int i = 0; i < 100; i++)
+{
+    points[i].X = i;
+    points[i].Y = i;
+}
+...
+```
+NO!
+
+
+==== Tipi valore e tipi riferimento
+
+#cfigure("images/2024-04-11-10-19-45.png",100%)
+
+
+=== Boxing / Unboxing
+
+- Un qualsiasi tipo valore può essere automaticamente
+    convertito in un tipo riferimento (#text(blue)[*boxing*])
+    mediante un up cast implicito a `System.Object`
+    ```
+    int i = 123;
+    object o = i;
+    ```
+
+- Un tipo valore “boxed” può tornare a essere
+    un tipo valore standard (#text(blue)[*unboxing*])
+    mediante un down cast esplicito
+    ```
+    int k = (int) o;
+    ```
+- Un tipo valore “boxed” è un #text(blue)[*clone indipendente*], quindi se, dopo aver eseguito il boxing, cambio il valore di `i`, il valore di `k` non viene modificato
+
+#cfigure("images/2024-04-11-10-40-03.png",90%)
+
+
+=== Bibliografia
+
+
+Libri di base:
+
+- D. S. Platt, IntroducingMicrosoft® .NET, Second Edition
+- J. Sharp, J. Jagger, Microsoft® Visual C\# `™` .NET Stepby Step
+- T. Archer, A. Whitechapel, Inside C\#, Second Edition
+- M. J. Young, XML Stepby Step, Second Edition
+- R. M. Riordan, Microsoft® ADO.NET Stepby Step
+
+
+Libri avanzati:
+
+- J. Richter, AppliedMicrosoft® .NET Framework Programming
+- C. Petzold, Programming Microsoft® Windows® with C\#
+- S. Lidin, Inside Microsoft® .NET IL Assembler
+
+
+
+
+== Garbage Collection
+
+
+=== Utilizzo di un oggetto
+
+- In un ambiente object-oriented, ogni oggetto che deve essere utilizzato dal programma
+    - È descritto da un tipo
+    - Ha bisogno di un'area di memoria dove memorizzare il suo stato
+    - Una volta che si conosce il tipo dell'oggetto sappiamo quanta memoria allocare per lo stesso
+- Passi per utilizzare un oggetto di tipo riferimento:
+    - #text(blue)[*Allocare memoria*] per l'oggetto
+    - #text(blue)[*Inizializzare la memoria*] per rendere utilizzabile l'oggetto
+    - #text(blue)[*Usare l'oggetto*]
+    - #text(blue)[*Eseguire un clean up*] dello stato dell'oggetto, se necessario; se, ad esempio, all'interno di quell'oggetto c'era un riferimento a un puntatore a file, quel file deve essere chiuso
+    - #text(blue)[*Liberare la memoria*]
+
+
+=== Ciclo di vita di un oggetto
+#cfigure("images/2024-04-15-11-20-16.png",90%)
+
+=== Allocazione della memoria
+
+- In C:
+    - `malloc ( calloc , realloc )`
+- In C++:
+    - `malloc ( calloc , realloc )`
+    - `new`
+- In Java:
+    - `new`
+- In IL:
+    - `newobj`
+- In C\#:
+    - `new`
+
+
+=== Inizializzazione della memoria
+
+- Definite Assignment: a ogni variabile deve essere sempre assegnato un valore prima che essa venga utilizzata
+
+- il compilatore deve assicurarsi che ciò sia sempre verificato
+- Data-flow analysis del codice
+- valori di default
+- usati in generale per tipi valore
+- ad esempio, in Java le variabili di classe, locali e i componenti di un array sono inizializzati al valore di default, non le variabili di istanza, perché in quel caso è il costruttore che si deve occupare di inizializzarle
+- costruttore
+- usato per i tipi classe (Java, C++, C\#)
+
+
+=== Definite Assignment
+
+```C
+int k;
+if (v > 0 && (k = System.in.read()) >= 0)
+    System.out.println(k);
+```
+Questo è corretto
+
+\
+```C
+int k;
+while (n < 4) {
+    k = n;
+    if (k >= 5) break;
+    n = 6;
+}
+System.out.println(k);
+```
+Questo è sbagliato, perché il compilatore non sa il valore di `n`
+
+\
+```C
+int k;
+while (true) {
+    k = n;
+    if (k >= 5) break;
+    n = 6;
+}
+System.out.println(k);
+```
+Questa è corretta
+
+\
+```C
+int k;
+int n=5;
+if (n>2) k=3;
+System.out.println(k);
+```
+Questo non è corretto perché, a differenza dell'esempio sopra, l'espressione all'interno dell'`if` non è costante; se pensiamo a `n` come variabile condivisa, il valore di `n` potrebbe cambiare tra l'assegnamento e la valutazione.
+
+
+=== Clean up dello stato
+
+- In C++/C\#:
+    - distruttore (più propriamente, finalizzatore): \~{nome della classe}
+    - unico, non ereditabile, no overload, senza parametri
+       e modificatori
+    - invocato automaticamente alla distruzione dell'oggetto
+       (non può essere invocato)
+- In java:
+    - `finalize()`
+    - metodo di `Object`
+    - invocato automaticamente alla distruzione dell'oggetto
+       (non può essere invocato)
+    - il momento in cui viene invocato un finalizzatore dipende
+       dalla JVM
+
+
+=== Liberazione della memoria
+
+- In C:
+    - `free()`
+- In C++:
+    - `free()`
+    - `delete`
+- In java/C\#: garbage collector (GC)
+
+
+=== Garbage Collection
+
+- Modalità automatica di rilascio delle risorse utilizzate da un oggetto
+
+- Migliora la stabilità dei programmi
+    - Evita errori connessi alla necessità, da parte del programmatore,
+       di manipolare direttamente i puntatori alle aree di memoria
+- Pro:
+    - dangling pointer: puntatore che fa riferimento a un'area di memoria non più valida
+    - doppia de-allocazione
+    - memory leak
+- Contro:
+    - aumentata richiesta risorse di calcolo
+    - incertezza del momento in cui viene effettuata la GC
+    - rilascio della memoria non deterministico; quindi non posso distruggere un oggetto quando voglio io
+
+
+- Strategie disponibili:
+    - Tracing
+        - determinare quali oggetti sono (potenzialmente) raggiungibili
+        - eliminare gli oggetti non raggiungibili
+    - Reference counting
+        - ogni oggetto contiene un contatore che indica
+        il numero di riferimenti a esso
+        - la memoria può essere liberata quando il contatore raggiunge lo 0
+    - Escape analysis
+        - si spostano oggetti dallo heap allo stack
+        - l'analisi viene effettuata a compile-time in modo da stabilire se un oggetto, allocato all'interno di una subroutine, non è accessibile al di fuori di essa
+        - riduce il lavoro del GC
+
+
+=== GC: Reference counting
+
+- Svantaggi:
+    - Cicli di riferimenti
+       - se due oggetti si referenziano a vicenda, il loro contatore
+          non raggiungerà mai 0
+    - Aumento dell'occupazione di memoria
+    - Riduzione della velocità delle operazioni sui riferimenti
+       - ogni operazione su un riferimento deve anche incrementare/decrementare
+          i contatori
+    - Atomicità dell'operazione
+       - ogni modifica a un contatore deve essere resa operazione atomica
+          in ambienti multi-threaded
+    - Assenza di comportamento real-time
+       - ogni operazione sui riferimenti può (potenzialmente)
+          causare la de-allocazione di diversi oggetti
+       - il numero di tali oggetti è limitato solamente dalla memoria allocata
+
+
+=== GC: Tracing
+
+- Siano #text(aqua)[p] e #text(aqua)[q] due oggetti
+- Sia #text(aqua)[q] un oggetto raggiungibile
+- Diremo che p è raggiungibile in maniera ricorsiva se e solo se:
+    - esiste un riferimento a #text(aqua)[p] tramite #text(aqua)[q]
+    - ovvero #text(aqua)[p] è raggiungibile attraverso un oggetto, a sua volta raggiungibile
+- Un oggetto è pertanto raggiungibile in due soli casi:
+- è un oggetto radice
+    - creato all'avvio del programma (oggetto globale)
+    - creato da una sub-routine (oggetto scope, riferito da variabile sullo stack)
+- è referenziato da un oggetto raggiungibile
+    - la raggiungibilità è una chiusura transitiva
+
+
+- La definizione di garbage tramite la raggiungibilità non è ottimale
+    - può accadere che un programma utilizzi per l'ultima volta un certo oggetto molto prima che questo diventi irraggiungibile
+- Distinzione:
+    - garbage *sintattico* \ (oggetti che il programma non può raggiungere)
+    - garbage *semantico* \ (oggetti che il programma non vuolepiù usare)
+        - problema solo parzialmente decidibile, quindi non possono essere creati algoritmi per risolvere questo problema
+```
+Object x = new Foo();
+Object y = new Bar();
+x = new Quux(); // qui l'oggetto Foo è garbage sintattico
+if(x.check_something())
+x.do_something(y); // qui y *potrebbe* essere garbage
+semantico
+```
+
+=== Allocazione della memoria
+
+- In fase di inizializzazione di un processo, il CLR
+    - Riserva una regione contigua di spazio di indirizzamento
+       managedheap
+    - Memorizza in un puntatore (`NextObjPtr`) l'indirizzo di partenza
+       della regione
+
+#cfigure("images/2024-04-15-11-42-57.png",90%)
+
+
+- Quando deve eseguire una `newobj`, il CLR
+    - Calcola la dimensione in byte dell'oggetto e aggiunge all'oggetto
+       due campi di 32 (o 64) bit
+          - Un puntatore alla tabella dei metodi
+          - Un campo `SyncBlockIndex`
+    - Controlla che ci sia spazio sufficiente a partire da `NextObjPtr`
+       - in caso di spazio insufficiente:
+          - garbage collection
+          - `OutOfMemoryException`
+    - `thisObjPtr= NextObjPtr;`
+    - `NextObjPtr += sizeof(oggetto);`
+    - Invoca il costruttore dell'oggetto ( `this` $equiv$ `thisObjPtr` )
+    - Restituisce il riferimento all'oggetto
+
+
+
+#cfigure("images/2024-04-15-11-47-22.png",90%)
+
+=== Garbage Collector
+
+- Verifica se nell'heap esistono oggetti non più utilizzati dall'applicazione
+
+- Ogni applicazione ha un insieme di radici (_root_)
+- Ogni radice è un puntatore che contiene l'indirizzo di un oggetto
+    di tipo riferimento oppure vale 'null'
+- Le radici sono:
+    - Variabili globali e field statici di tipo riferimento
+    - Variabili locali o argomenti attuali di tipo riferimento sugli stack
+       dei vari thread
+    - Registri della CPU che contengono l'indirizzo di un oggetto
+       di tipo riferimento
+- *Gli oggetti “vivi”* sono quelli *raggiungibili* direttamente
+    o indirettamente dalle radici
+- *Gli oggetti garbage* sono quelli *NON raggiungibili*
+    direttamente o indirettamente dalle radici
+
+
+- Quando parte, il GC ipotizza che tutti gli oggetti siano garbage
+- Quindi, scandisce le radici e per ogni radice *marca*
+    - l'eventuale oggetto referenziato e
+    - Tutti gli oggetti a loro volta raggiungibili a partire da tale oggetto
+- Se durante la scansione incontra un oggetto già marcato in precedenza, lo salta
+    - sia per motivi di prestazioni
+    - sia per gestire correttamente riferimenti ciclici
+- Una volta terminata la scansione delle radici, tutti gli oggetti NON marcati sono non raggiungibili e quindi garbage
+
+==== Fase 1: Mark
+
+#cfigure("images/2024-04-15-11-50-46.png",90%)
+
+
+- Rilascia la memoria usata dagli oggetti non raggiungibili
+- Compatta la memoria ancora in uso, modificando nello stesso tempo tutti i riferimenti agli oggetti spostati!
+
+- Unifica la memoria disponibile, aggiornando il valore di `NextObjPtr`
+- Tutte le operazioni che il GC effettua sono possibili in quanto
+    - Il tipo di un oggetto è sempre noto
+    - È possibile utilizzare i metadati per determinare quali field
+        dell'oggetto fanno riferimento ad altri oggetti
+
+
+==== Fase 2: Compact
+
+#cfigure("images/2024-04-15-11-52-49.png",90%)
+
+=== Finalization
+
+- Non è responsabilità del GC, ma del programmatore
+- Se un oggetto contiene esclusivamente
+    - tipi valore e/o
+    - riferimenti a oggetti managed
+ (maggior parte dei casi), non è necessario eseguire alcun codice particolare
+
+- Se un oggetto contiene almeno un riferimento a un oggetto _unmanaged_ (in genere, una risorsa del S.O.)
+- file, connessione a database, socket, mutex, bitmap, ...\
+ #text(blue)[*è necessario eseguire del codice per rilasciare la risorsa, prima della deallocazione dell'oggetto*]
+
+
+- Ad esempio, un oggetto di tipo `System.IO.FileStream`
+    - Prima deve aprire un file e memorizzare in un suo field l'handle del file (una risorsa di S.O. unmanaged)
+    - Quindi usa tale handle nei metodi *Read* e *Write*
+    - Infine, deve rilasciare l'handle nel metodo `Finalize`
+- In C\#
+    - NON è possibile definire il metodo `Finalize`
+    - È necessario definire un *distruttore* (sintassi C++)
+
+```
+public class OSHandle
+{
+//' Field contenente l'handledella risorsa unmanaged
+private readonly IntPtr handle;
+
+
+public IntPtr Handle
+{ get { return _handle; } }
+
+public OSHandle(IntPtr handle)
+{ _handle = handle; }
+
+~OSHandle()
+{ CloseHandle(_handle); }
+
+[System.Runtime.InteropServices.DllImport(“Kernel32”)]
+private extern static bool CloseHandle(IntPtr handle);
+}
+```
+
+
+- Il compilatore C\# trasforma il codice del distruttore
+
+```
+~OSHandle()
+{ CloseHandle(_handle); }
+```
+ nel seguente codice (ovviamente in IL):
+
+```
+protected override void Finalize()
+{
+    try
+    { CloseHandle(_handle); }
+    finally
+    { base.Finalize(); }
+}
+```
+
+- L'invocazione del metodo `Finalize` non avviene in modo deterministico
+- Inoltre, non essendo un metodo pubblico, il metodo `Finalize` non può essere invocato direttamente
+- Nel caso di utilizzo di risorse che devono essere rilasciate appena termina il loro uso, questa situazione è problematica
+- Si pensi a file aperti o a connessioni a database che vengono chiusi solo quando il GC invoca il corrispondente metodo `Finalize`
+
+- In questi casi, è di fondamentale importanza rilasciare (`Dispose`) o chiudere (`Close`) la risorsa in modo deterministico
+
+
+=== Rilascio deterministico senza gestione delle eccezioni
+
+```
+...
+Byte[] bytesToWrite = new Byte[] {1,2,3,4,5};
+FileStream fs;
+fs = new FileStream(“Temp.dat”, FileMode.Create);
+fs.Write(bytesToWrite, 0, bytesToWrite.Length);
+fs.Close();
+...
+```
+
+=== Rilascio deterministico con gestione delle eccezioni
+
+```
+...
+Byte[] bytesToWrite = new Byte[] {1,2,3,4,5};
+FileStream fs = null;
+try
+{
+    fs = new FileStream(“Temp.dat”, FileMode.Create);
+    fs.Write(bytesToWrite, 0, bytesToWrite.Length);
+}
+finally
+{
+    if(fs != null) fs.Close();
+}
+...
+```
+
+=== Il pattern Dispose
+
+ • Se un tipo `T` vuole offrire ai suoi utilizzatori un servizio di clean up esplicito, deve implementare l'interfaccia `IDisposable`
+
+```
+public interface IDisposable
+{
+    void Dispose();
+}
+```
+- I clienti di T possono utilizzare l'istruzione `using`
+
+```
+using (T tx = ...)
+{
+utilizzo di tx... #Invocazione automatica di tx.Dispose()
+}
+```
+
+=== Rilascio deterministico con using
+
+```
+...
+Byte[] bytesToWrite = new Byte[] {1,2,3,4,5};
+using (FileStream fs = new FileStream(“Temp.dat”, FileMode.Create))
+{
+    fs.Write(bytesToWrite, 0, bytesToWrite.Length);
+}
+...
+```
+- Il tipo della variabile definita nella parte iniziale di 'using'
+
+ deve implementare l'interfaccia IDisposable
+
+- All'uscita del blocco 'using' , viene sempre invocato
+
+ automaticamente il metodo Dispose
+
+
+=== Il pattern Dispose (altro esempio di utilizzo)
+
+```
+public class CursorReplacer : IDisposable
+{
+    private readonly Cursor _previous;
+    public CursorReplacer()
+    {
+        _previous = Cursor.Current;
+        Cursor.Current = Cursors.WaitCursor;
+    }
+    public void Dispose()
+    {
+        Cursor.Current = _previous;
+    }
+}
+```
+
+```
+List<DbTableWrapper> tableWrappers = new List<DbTableWrapper>();
+// Recupero di tutte le tabelle selezionate
+using (CursorReplacer cursorReplacer = new CursorReplacer())
+{
+    foreach (DbServerWrapper serverWrapper in SelectedDbServerWrappers)
+        foreach (DbCatalogWrapper catalogWrapper in serverWrapper.SelectedDbCatalogWrappers)
+            foreach (DbTableWrapper tableWrapper in catalogWrapper.SelectedDbTableWrappers)
+        {
+            tableWrappers.Add(tableWrapper);
+        }
+}
+```
+
 
 
