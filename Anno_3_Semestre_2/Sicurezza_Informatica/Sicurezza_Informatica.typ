@@ -333,6 +333,8 @@
   getcap -r /
   ```
 
+
+
 == OSINT in rete
 === ulis.se
 - Con un banale `ping ulis.se` vediamo che l'indirizzo del sito è `130.136.9.27`
@@ -643,6 +645,13 @@
   john es_zip.txt
   ```
 - Scopriamo che la password è `batman`
+
+
+== Web pentest Altoro
+- SQL injection: scrivere `'OR 1=1 --` nel campo username, come password possiamo scriverne una qualsiasi, tanto viene commentata
+
+
+
 
 == Brute forcing e buffer overflow
 

@@ -3315,7 +3315,7 @@ Esempio di oggetti COM che parlano tra di loro:
 ```C
 interface IUnknown
 {
-    virtual HRESULT QueryInterface(IID iid, void **ppvObject) = 0;
+    virtual HRESULT QueryInterface(IID iid, void *ppvObject) = 0;
     virtual ULONG AddRef(void) = 0;
     virtual ULONG Release(void) = 0;
 };
@@ -4071,7 +4071,7 @@ semantico
 
 - Ogni applicazione ha un insieme di radici (_root_)
 - Ogni radice è un puntatore che contiene l'indirizzo di un oggetto
-    di tipo riferimento oppure vale 'null'
+    di tipo riferimento oppure vale `null`
 - Le radici sono:
     - Variabili globali e field statici di tipo riferimento
     - Variabili locali o argomenti attuali di tipo riferimento sugli stack
@@ -4099,7 +4099,7 @@ semantico
 
 
 - Rilascia la memoria usata dagli oggetti non raggiungibili
-- Compatta la memoria ancora in uso, modificando nello stesso tempo tutti i riferimenti agli oggetti spostati!
+- *Compatta* la memoria ancora in uso, *modificando nello stesso tempo tutti i riferimenti agli oggetti spostati!* Quindi sposta tutti gli oggetti in ordine dall'inizio dell'heap.
 
 - Unifica la memoria disponibile, aggiornando il valore di `NextObjPtr`
 - Tutte le operazioni che il GC effettua sono possibili in quanto
@@ -4226,7 +4226,7 @@ public interface IDisposable
 ```
 using (T tx = ...)
 {
-utilizzo di tx... #Invocazione automatica di tx.Dispose()
+    utilizzo di tx... #Invocazione automatica di tx.Dispose()
 }
 ```
 
@@ -4241,13 +4241,9 @@ using (FileStream fs = new FileStream(“Temp.dat”, FileMode.Create))
 }
 ...
 ```
-- Il tipo della variabile definita nella parte iniziale di 'using'
+- Il tipo della variabile definita nella parte iniziale di `using` deve implementare l'interfaccia IDisposable
 
- deve implementare l'interfaccia IDisposable
-
-- All'uscita del blocco 'using' , viene sempre invocato
-
- automaticamente il metodo Dispose
+- All'uscita del blocco 'using' , viene sempre invocato automaticamente il metodo Dispose
 
 
 === Il pattern Dispose (altro esempio di utilizzo)
@@ -4282,5 +4278,2567 @@ using (CursorReplacer cursorReplacer = new CursorReplacer())
 }
 ```
 
+
+
+== Tipi in .NET
+
+- Dal punto di vista del modo in cui le istanze vengono gestite
+    in memoria (rappresentazione, tempo di vita, ...),
+    i tipi possono essere distinti in:
+       - _Reference type_
+       - _Value type_
+- Dal punto di vista sintattico (sintassi del linguaggio C\#),
+    i tipi possono essere distinti in:
+       - Classi - `class`
+       - Interfacce - `interface`
+       - Strutture - `struct`
+       - Enumerativi - `enum`
+       - Delegati - `delegate`
+       - Array - `[]`
+- In .NET, si concretizzano sempre in una classe (anche nel caso di tipi built-ine di interfacce)
+
+
+- In generale, un tipo può contenerela definizione di 0+:
+    - #highlight(fill: myblue)[Costanti] - sempre implicitamente associate al tipo
+    - #highlight(fill: myblue)[Campi] (field) - read-only o read-write, associati alle istanze o al tipo
+    - #highlight(fill: myblue)[Metodi] - associati alle istanze o al tipo
+    - #highlight(fill: myblue)[Costruttori] - di istanza o di tipo
+    - #highlight(fill: myblue)[Operatori] - sempre associati al tipo
+    - #highlight(fill: myblue)[Operatori di conversione] - sempre associati al tipo
+    - #highlight(fill: myblue)[Proprietà] - associate alle istanze o al tipo
+    - #highlight(fill: myblue)[Indexer] - sempre associati alle istanze
+    - #highlight(fill: myblue)[Eventi] - associati alle istanze o al tipo
+    - #highlight(fill: myblue)[Tipi] - annidati
+
+
+=== Modificatori di visibilità
+
+#cfigure("images/2024-04-17-10-02-56.png",100%)
+
+#cfigure("images/2024-04-17-17-46-42.png",100%)
+
+
+- Non sono applicabili nei seguenti casi:
+    - #highlight(fill: myblue)[Costruttori di tipo] (statici)
+       sempre inaccessibili - invocati direttamente dal CLR
+    - #highlight(fill: myblue)[Distruttori] (finalizer)
+       sempre inaccessibili - invocati direttamente dal CLR
+    - #highlight(fill: myblue)[Membri di interfacce]
+       sempre pubblici
+    - #highlight(fill: myblue)[Membri di enum]
+       sempre pubblici
+    - #highlight(fill: myblue)[Implementazione esplicita di membri di interfacce]
+       visibilità particolare (pubblici/privati), non modificabile
+    - #highlight(fill: myblue)[Namespace]
+       sempre pubblici
+
+
+=== Regole
+
+- *Massimizzare l'incapsulamento minimizzando la visibilità*
+
+- Information hiding a livello di assembly
+    - Dichiarare `public` solo i tipi significativi dal punto di vista concettuale
+- Information hiding a livello di classe
+    - Dichiarare `public` solo metodi, proprietà ed eventi significativi
+       dal punto di vista concettuale
+    - Dichiarare `protected` solo le funzionalità che devono essere visibili
+       nelle classi derivate, ma non esternamente
+       ad esempio, costruttori particolari, metodi e proprietà virtuali
+       non public
+- Information hidinga livello di field
+    - Field `private` e proprietà `public`
+    - Field `private` e proprietà `protected`
+
+
+=== Costanti
+
+- Una *costante* è un simbolo che identifica un valore
+    che non può cambiare
+- Il *tipo* della costante può essere solo un tipo considerato primitivo
+    dal CLR (compreso `string`)
+- Il *valore* deve essere determinabile _a tempo di compliazione_
+- Ad esempio, in `Int32` esistono:
+
+```
+public const int MaxValue = 2147483647;
+public const int MinValue = -2147483648;
+```
+- In una classe contenitore di dimensioni prefissate, si potrebbe definire:
+    ```
+    public const int MaxEntries = 100; // Warning!
+    ```
+
+- Si noti l'utilizzo della maiuscola iniziale
+- È possibile applicare `const` anche alle variabili locali
+
+
+=== Field
+
+- Un *field* è un _data member_ che può contenere:
+    - un *valore* (un istanza di un _value type_)
+    - un *riferimento* (a un'istanza di un _reference type_) in genere, la realizzazione di un'associazione
+- Può essere:
+    - di *istanza* (_default_)
+    - di *tipo* (`static`)
+- Può essere:
+    - *read-write* (_default_)
+    - *read-only* (`readonly`) \
+       inizializzato nella definizione o nel costruttore
+- Esiste sempre un *valore di default* (`0 , 0.0, false, null`)
+
+
+
+- Qual è la differenza tra le seguenti definizioni:
+
+```
+public const int MaxEntries = 100;
+public static readonly int MaxEntries = 100;
+```
+
+- Nel primo caso, la costante `MaxEntries` viene *“iniettata”* nel codice
+    del cliente
+       - se il valore viene modificato e se il cliente e il fornitore sono in assembly diversi, *è necessario ricompilare anche il codice del cliente*
+- Nel secondo caso, l'accesso al `fieldMaxEntries` è quello standard:
+    il valore è in memoria ed è necessario reperirlo
+       - se il valore viene modificato e se il cliente e il fornitore sono in _assembly_ diversi,
+          *NON è necessario ricompilare anche il codice del cliente*
+
+
+=== Regole
+
+- Definire `const` solo le costanti *“vere”*, cioè i valori
+    veramente immutabili nel tempo (nelle versioni del programma),
+    negli altri casi utilizzare field statici read-only
+       - il valore di `MaxEntries` non è una costante “vera”
+          perché in una versione successiva del programma potrebbe cambiare
+- *Costanti*
+    - il nome dovrebbe iniziare con una lettera maiuscola
+    - di solito, dovrebbe essere pubblica (ma non è sempre così)
+- *Field*
+    - il nome dovrebbe iniziare con “\_” seguito da una lettera minuscola
+    - deve essere privata (accesso sempre mediante proprietà)
+- *Field read-only*
+    - scegliere, a seconda delle situazioni,
+       una delle due convenzioni precedenti
+
+
+=== Modificatori di metodi
+
+- `virtual`
+- `abstract`
+- `override`
+- `override sealed / sealed override`
+- Applicabili a:
+    - *Metodi*
+    - *Proprietà* (metodi `get` e `set`)
+    - *Indexer* (metodi `get` e `set`)
+    - *Eventi* (metodi `add` e `remove`)
+ di istanza (cioè non statici)
+
+
+=== Modificatore `virtual`
+
+- *L'implementazione di un metodo virtuale può essere modificata* da un membro override di una classe derivata (discendente)
+
+- Quando il metodo virtuale viene invocato, viene valutato il tipo run-time dell'oggetto su cui è invocato per vedere la presenza di un membro sovrascritto
+    - Late binding
+    - Polimorfismo
+- *Per default, i metodi non sono virtuali*
+
+```
+protected virtual void Method()
+{ ... }
+public virtual int Property
+{ get { ... } set { ... } }
+public virtual int this[int index]
+{ get { ... } }
+```
+
+=== Modificatore `abstract`
+
+- Si usa il modificatore `abstract` per indicare che il metodo non contiene alcuna implementazione
+
+- I metodi astratti hanno le seguenti caratteristiche
+    - Un metodo virtuale è implicitamente virtuale
+    - La dichiarazione di metodi astratti è permessa solo in classi astratte
+- L'implementazione di un metodo astratto verrà fornita da un metodo sovrascrivente
+
+```
+protected abstract void Method();
+public abstract int Property
+{ get; set; }
+public abstract int this[int index]
+{ get; }
+```
+
+=== Modificatore `override`
+
+- Un metodo override *fornisce una (nuova) implementazione*
+    di un metodo ereditato da una classe base
+       - Il metodo sovrascritto da una dichiarazione override
+          è detto metodo basesovrascitto(overridden)
+- Il metodo base sovrascritto
+    - Deve essere *virtual*, *abstract*, o *override*
+    - Deve avere la stessa firma (signature) del metodo override
+- Una dichiarazione override *non può cambiare l'accessibilità*
+    del metodo base sovrascritto (diverso da Java)
+- L'uso del modificatore `sealed` impedisce a una qualsiasi classe derivata
+    l'ulteriore sovrascrittura del metodo
+    ```
+    protected override void Method()
+    { ... }
+    public override sealed int Property
+    { get { ... } set { ... } }
+    public override int this[int index]
+    { get { ... } }
+    ```
+
+=== Metodi
+
+====  Passaggio degli argomenti
+
+- Tre tipi di argomenti:
+    - *In* (`default` in C\#)
+       - L'argomento deve essere inizializzato
+       - L'argomento viene passato per *valore* (per *copia*)
+       - Eventuali modifiche del valore dell'argomento
+          *non hanno effetto* sul chiamante
+    - *In/Out* (`ref` in C\#)
+       - L'argomento deve essere inizializzato
+       - L'argomento viene passato per *riferimento*
+       - Eventuali modifiche del valore dell'argomento *hanno effetto* sul chiamante
+    - *Out* (`out` in C\#)
+       - L'argomento può NON essere inizializzato
+       - L'argomento viene passato per *riferimento*
+       - Le modifiche del valore dell'argomento (l'inizializzazione è obbligatoria)
+          *hanno effetto* sul chiamante
+
+
+====  Passaggio degli argomenti In
+
+- *Value type*
+    - Viene passata una copia dell'oggetto
+    - Eventuali modifiche vengono effettuate sulla copia
+       e *non hanno alcun effetto* sull'oggetto originale
+- *Reference type*
+    - Viene passata una copia del riferimento all'oggetto
+    - Eventuali modifiche dell'oggetto referenziato hanno effetto
+    - Eventuali modifiche del riferimento vengono effettuate sulla copia
+       e *non hanno alcun effetto* sul riferimento originale
+
+```
+Point p1 = new Point(0,0);
+Method1(p1);
+Console.WriteLine("{0}",p1);
+
+static void Method1(Point p)
+{
+    p.X = 100; p.Y = 100;
+}
+```
+- Se `Point` è una classe le modifiche vengono effettuate sull'oggetto referenziato\
+    `(100,100)`
+- Se `Point` è una struttura le modifiche vengono effettuate sulla copia\
+    `(0,0)`
+
+
+====  Passaggio degli argomenti In/Out
+
+- *Value type*
+    - Viene passato l'indirizzo dell'oggetto
+    - Eventuali modifiche *agiscono direttamente sull'oggetto* originale
+- *Reference type*
+    - Viene passato l'indirizzo del riferimento all'oggetto
+    - Eventuali modifiche dell'oggetto referenziato *hanno effetto*
+    - Eventuali modifiche del riferimento
+       *agiscono direttamente sul riferimento originale*
+```
+Point p1 = new Point(0,0);
+Method2(ref p1);
+Console.WriteLine("{0}",p1);
+
+static void Method2(ref Point p)
+{
+    p.X = 100; p.Y = 100;
+}
+```
+- Se `Point` è una classe\
+    `(100,100)`
+- Se `Point` è una struttura\
+    `(100,100)`
+
+
+====  Passaggio degli argomenti
+```C
+class/struct Persona ...
+
+...
+Persona p1 = new Persona(“Tizio”); // p1 == Tizio*
+
+Method1(p1);
+
+// p1 == Tizio
+
+Method2(ref p1);
+
+// p1 == Sempronio
+...
+static void Method1(Persona p)
+{
+    p = new Persona(“Caio”); //* p == Caio
+}
+
+static void Method2(ref Persona p)
+{
+    p = new Persona(“Sempronio”); //* p == Sempronio
+}
+```
+- `p1` all'inizio fa riferimento a un'istanza di `Persona` con nome "Tizio"
+- quando viene invocato ```c Method1()``` nello scope della funzione la variabile `p` fa riferimento a un'istanza di `Persona` di nome "Caio", ma quando si esce dalla funzione il record di attivazione viene distrutto e quindi nel `main` `p1` fa ancora riferimento all'istanza di `Persona` di prima, di nome "Tizio"
+- Nella funzione ```c Method2()``` viene creato un riferimento tra `p` e `p1`, cioè la variabile `p` punta alla variabile `p1`, che a sua volta punta all'istanaza di `Persona` "Tizio"; quindi quando si invoca il metodo ```c new Persona()```, siccome tutte le operazioni fatte su `p` vengono fatte su `p1`, è la variabile `p1` che punta a una nuova istanza di `Persona` "Sempronio"; quindi anche quando si esce dalla funzione e il record di attivazione viene distrutto, la variabile `p1` continua a puntare all'istanza di `Persona` "Sempronio"
+
+====  Passaggio degli argomenti Out
+
+- *Value type* e *Reference type*
+    - Viene passato l'indirizzo dell'oggetto o del riferimento all'oggetto
+       come nel caso In/Out
+    - Non è necessario che l'oggetto o il riferimento siano inizializzati
+       prima di essere passati come argomento
+    - L'oggetto o il riferimento *DEVONO essere inizializzati*
+       nel metodo a cui sono stati passati come argomento
+```
+Point p1;
+Method3(out p1);
+
+static void Method3(out Point p)
+{
+    // In questo punto il compilatore suppone che
+    // p NON sia inizializzato
+    p.X = 100; p.Y = 100; // Errore di compilazione!
+    p = new Point(100,100); // È indispensabile
+}
+```
+
+==== Regole
+
+- Utilizzare prevalentemente il passaggio _standard_ per valore
+- Utilizzare il passaggio per riferimento (`ref` o `out`) solo se strettamente necessario
+    - 2+ valori da restituire al chiamante
+    - 1+ valori da utilizzare e modificare nel metodo
+    - Scegliere `ref` se l'oggetto passato come argomento
+        deve essere già stato inizializzato
+    - Scegliere `out` se è responsabilità del metodo
+        inizializzare completamente l'oggetto passato come argomento
+
+
+==== Esempi
+```C
+public static void Swap<T>(ref T arg1, ref T arg2)
+{
+    T temp = arg1;
+    arg1 = arg2;
+    arg2 = temp;
+}
+
+public static void SplitCognomeNome(string cognomeNome,
+    out string cognome, out string nome)
+{
+    string[] words = cognomeNome.Split(' ');
+    if (words.Length == 2)
+    {
+        cognome = words[0];
+        nome = words[1];
+    }
+    else
+    {
+        ...
+    }
+}
+```
+
+
+====  Numero variabile di argomenti
+
+- Si supponga di dover scrivere:
+
+```C
+Add(a,b); // a+b
+Add(10,20,30); // 10+20+30
+Add(x1,x2,x3,x4); // x1+x2+x3+x4
+```
+- Soluzioni possibili:
+    - Overloadingdel metodo *`Add`*
+       - *Svantaggio*: posso solo codificare un numero finito di metodi
+    - Definire un solo metodo Addche accetti un numero variabile
+       di argomenti
+
+```C
+int Add(params int[] operands)
+{
+    int total = 0;
+    foreach (int operand in operands)
+        total += operand;
+    return total;
+}
+```
+
+
+- Non solo posso scrivere:
+
+```C
+Add(a,b);
+Add(10,20,30);
+Add(x1,x2,x3,x4);
+```
+- Ma anche:
+
+```C
+Add(); // restituisce 0
+int[] numbers = { 10,20,30,40,50 };
+Add(numbers);
+Add(new int[] { 10,20,30,40,50 });
+Add(new int[] { x1,x2,x3,x4,x5 });
+```
+- Zucchero sintattico:
+
+```C
+Add(x1,x2,x3,x4);
+```
+è uguale a
+```C
+Add(new int[] { x1,x2,x3,x4 });
+```
+
+=== Costruttori di istanza
+
+- *Responsabilità*: inizializzare correttamente lo stato dell'oggetto appena creato (nulla di più!)
+
+- In mancanza di altri costruttori, esiste sempre un costruttore di _default_ senza argomenti che, semplicemente, invoca il costruttore senza argomenti della classe base
+
+- Nel caso delle *classi*, il costruttore senza argomenti può essere definito dall'utente
+
+- Nel caso delle *strutture*, il costruttore senza argomenti NON può essere definito dall'utente (per motivi di efficienza)
+
+- In entrambi i casi, è possibile definire altri costruttori
+
+con differente signaturee differente visibilità
+
+```C
+public abstract class DataAdapterManager
+{
+    private readonly IDataTable _dataTable;
+    private readonly IConnectionManager _connectionManager;
+
+    protected DataAdapterManager(IDataTable dataTable,
+    IConnectionManager connectionManager)
+    {
+        if(dataTable == null)
+        throw new ArgumentNullException("dataTable");
+        if(connectionManager == null)
+        throw new ArgumentNullException("connectionManager");
+        _dataTable = dataTable;
+        _connectionManager = connectionManager;
+    }
+    ...
+}
+```
+
+
+```C
+public class XmlDataAdapterManager : DataAdapterManager
+{
+private readonly Encoding _encoding;
+
+
+public XmlDataAdapterManager(IDataTable dataTable,
+    XmlConnectionManager xmlConnectionManager)
+: this(dataTable, xmlConnectionManager, Encoding.Unicode)
+{ }
+
+public XmlDataAdapterManager(IDataTable dataTable,
+    XmlConnectionManager xmlConnectionManager,
+    Encoding encoding)
+: base(dataTable, xmlConnectionManager)
+{
+_encoding = encoding;
+}
+...}
+```
+
+=== Costruttori di tipo
+
+- *Responsabilità*: inizializzare correttamente lo stato comune a tutte le istanze della classe - _field_ statici
+
+- Dichiarato `static`
+- Implicitamente `private`
+- Sempre senza argomenti - no _overloading_
+- Può accedere esclusivamente ai membri (_field_, metodi, ...) statici della classe
+
+- Se esiste, viene invocato automaticamente dal CLR
+    - Prima della creazione della prima istanza della classe
+    - Prima dell'invocazione di un qualsiasi metodo statico della classe
+- Non basare il proprio codice sull'ordine di invocazione di costruttori di tipo
+
+
+```C
+class MyType
+{
+    static int _x = 5; #Viene definito implicitamente un costruttore di tipo
+    ...
+}
+
+class MyType
+{
+    static int _x;
+    static MyType() { _x = 5; } #Del tutto analogo al caso precedente
+    ...
+}
+
+class MyType
+{
+    static int _x = 5;
+    static MyType() { _x = 10; } #_x viene prima inizializzato a 5 e quindi a 10
+    ...
+}
+```
+
+=== Regole
+
+- Definire un costruttore di tipo solo se strettamente necessario, cioè se i campi statici della classe
+    - NON possono essere inizializzati in linea
+    - Devono essere inizializzati solo se la classe
+        viene effettivamente utilizzata
+
+```C
+public class A
+{
+    private static XmlDocument _xmlDocument;
+
+    static A()
+    {
+        _xmlDocument = new XmlDocument();
+        _xmlDocument.Load (...);
+    }
+    ...
+}
+```
+
+=== Costruttori ed eccezioni
+
+- Supponiamo che
+    - un costruttore lanci un'eccezione e
+    - l'eccezione non venga gestita all'interno del costruttore stesso
+       (quindi arrivi al chiamante)
+- *Nel caso di costruttori di istanza* nessun problema!\
+    In C++ è una situazione non facilmente gestibile
+
+- *Nel caso di costruttori di tipo* la classe NON è più utilizzabile!\
+    `TypeInitializationException`
+
+
+=== Interfacce
+
+- In C\#, un'interfaccia può contenere esclusivamente:
+    - *Metodi* - considerati pubblici e astratti
+    - *Proprietà* - considerate pubbliche e astratte
+    - *_Indexer_* - considerati pubblici e astratti
+    - *Eventi* - considerati pubblici e astratti
+- In CLR, un'interfaccia è considerata una particolare classe astratta
+    di sistema che (ovviamente) non deriva da `System.Object`
+       - però, le classi che la implementano derivano per forza
+          da `System.Object`
+- Un'interfaccia
+    - Può essere implementata sia dai _reference type_, sia dai _value type_
+    - È considerata sempre un *reference type*
+    - *Attenzione*: se si effettua il cast di un _value type_ a un'interfaccia,
+       avviene un *boxing del value type* (con conseguente copia del valore)!
+
+
+====  Implementazione di un'interfaccia
+
+```C
+public interface IBehavior
+{
+    void Method();
+    int Property { get; set; }
+    int this[int index] { get; }
+}
+
+public class A : IBehavior
+{
+    public void Method() // virtual sealed
+    { ... }
+    public int Property // virtual sealed
+    {
+        get { ... }
+        set { ... }
+    }
+    public int this[int index] // virtual sealed
+    {
+        get { ... }
+    }
+}
+```
+
+```C
+public class A : IBehavior
+{
+    public virtual void Method()
+    { ... }
+    public virtual int Property
+    {
+        get { ... }
+        set { ... }
+    }
+    public virtual int this[int index]
+    {
+        get { ... }
+    }
+}
+
+public class B : A
+{
+    public override void Method() ...
+    public override int Property ...
+    public override int this[int index ] ...
+}```
+
+
+====  Implementazione di un'interfaccia: classe astratta
+
+```C
+public abstract class A : IBehavior
+{
+    public abstract void Method();
+    public abstract int Property { get; set; }
+    public abstract int this[int index] { get; }
+}
+
+public class B : A
+{
+    public override void Method() ...
+    public override int Property ...
+    public override int this[int index] ...
+}```
+- Siccome `A` è una classe astratta, la sottoclasse `B` che la estende deve ridefinire tutti i metodi astratti di `A`
+
+====  Implementazione esplicita di un'interfaccia
+
+```C
+public class A : IBehavior
+{
+    void IBehavior.Method()
+    { ... }
+    int IBehavior.Property
+    {
+        get { ... }
+        set { ... }
+    }
+    int IBehavior.this[int index]
+    {
+        get { ... }
+    }
+}
+
+A a = new A(...);
+a.Method(); // Non compila!
+((IBehavior) a).Method(); // Ok!
+```
+- Questo per
+    - Name hiding
+    - Avoiding name ambiguity
+
+\
+```C
+public interface IMyInterface1
+{ void Close(); }
+
+public interface IMyInterface2
+{ void Close(); }
+
+public class MyClass : IMyInterface1, IMyInterface2
+{
+    void IMyInterface1.Close()
+    {...}
+    void IMyInterface2.Close()
+    {...}
+    public void Close()
+    {...}
+}
+
+MyClass a = new MyClass (...);
+((IMyInterface1) a).Close(); // Ok!
+((IMyInterface2) a).Close(); // Ok!
+a.Close(); // Ok!
+```
+
+#pagebreak()
+=== Interfaccia vs. Classe astratta
+
+#cfigure("images/2024-04-17-10-57-57.png",100%)
+
+#cfigure("images/2024-04-17-10-58-30.png",100%)
+
+#cfigure("images/2024-04-17-10-59-03.png",100%)
+
+#cfigure("images/2024-04-17-10-59-31.png",100%)
+
+
+== Classi e Interfacce Base
+
+=== Framework .NET: Overview
+
+#cfigure("images/2024-04-18-13-06-04.png",100%)
+
+
+=== `System.Object`
+
+- La radice della gerarchia dei tipi
+    - tutte le classi nel framework.NET Framework
+       sono derivate da `Object`
+- Ogni metodo definito nella classe `Object` è disponibile in tutti gli oggetti del sistema
+
+#cfigure("images/2024-04-18-13-06-35.png",90%)
+
+
+- Le classi derivate possono (e/o devono) sovrascrivere (override) alcuni di tali metodi, tra cui:
+    - `Equals` - Supporta il confronto tra oggetti
+    - `ToString` - Crea una stringa “comprensibile”che descrive un'istanza della classe
+    - `GetHashCode` - Genera un numero corrispondente al valore (stato) dell'oggetto per consentire l'uso di tabelle hash
+    - `Finalize` - Effettua operazioni di “pulizia”prima che un oggetto venga automaticamente distrutto
+
+
+=== `Object.Equals`
+
+- `public virtual bool Equals(object obj);`
+- Valore di ritorno: `true` se `this` è uguale a `obj`, cioè se referenziano lo stesso oggetto, altrimenti false
+
+#cfigure("images/2024-04-18-13-10-43.png",90%)
+
+- Le seguenti condizioni devono essere `true` per tutte le implementazioni del metodo Equals\
+    Nell'elenco, `x`, `y`, e `z` rappresentano riferimenti non nulli a oggetti
+    - `x.Equals(x)` restituisce true
+    - `x.Equals(y)` restituisce lo stesso valore di `y.Equals(x)`
+    - `x.Equals(y)` restituisce truese sia x che y sono `NaN`
+    - `(x.Equals(y) && y.Equals(z))` restituisce `true`
+        se e solo se `x.Equals(z)` restituisce `true`
+    - Chiamate successive a `x.Equals(y)` restituiscono sempre
+        lo stesso valore fintantoché gli oggetti rteferenziatida `x` e `y`
+        non vengono modificati
+    - `x.Equals` (un riferimento `null`) restituisce `false`
+- Le implementazioni di `Equals` non devono generare eccezioni
+
+
+- I tipi che sovrascrivono `Equals` devono anche sovrascrivere `GetHashCode`; altrimenti, `Hashtable` potrebbe non funzionare correttamente
+
+- Se il linguaggio permette l'overloading di operatori e, per un certo tipo, si effettua l'overloading dell'operatore di uguaglianza, tale tipo deve anche sovrascrivere il metodo `Equals` Tale implementazione del metodo `Equals` *deve restituire gli stessi risultati dell'operatore di uguaglianza*
+
+
+```C
+public class Point
+{
+    private readonly int _x, _y;
+    ...
+    public override bool Equals(object obj)
+    {
+    //Check for null and compare run-time types.
+    if(obj == null || GetType() != obj.GetType())
+        return false;
+    Point p = (Point) obj;
+    return (_x == p._x) && (_y == p._y);
+    }
+    public override int GetHashCode()
+    {
+        return _x ^ _y;
+    }
+}```
+
+
+=== Object.Equals
+
+```C
+public class SpecialPoint : Point
+{
+    private readonly int _w;
+    ...
+    public SpecialPoint(int x, int y, int w) : base(x, y)
+    {
+        _w = w;
+    }
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj) &&
+        _w == ((SpecialPoint) obj)._w;
+    }
+    public override int GetHashCode()
+    {
+        return base.GetHashCode() ^ _w;
+    }
+}```
+
+
+```C
+public class Rectangle
+{
+    private readonly Point _a, _b;
+    ...
+    public override bool Equals(object obj)
+    {
+        if(obj == null || GetType() != obj.GetType())
+        return false;
+        Rectangle r = (Rectangle) obj;
+        // Uses Equals to compare variables.
+        return _a.Equals(r._a) && _b.Equals(r._b);
+    }
+    public override int GetHashCode()
+    {
+        return _a.GetHashCode() ^ _b.GetHashCode();
+    }
+}```
+
+
+
+```C
+public struct Complex
+{
+    private readonly double _re, _im;
+    ...
+    public override bool Equals(object obj)
+    {
+        return obj is Complex && this == (Complex) obj;
+    }
+    public override int GetHashCode()
+    {
+        return _re.GetHashCode() ^ _im.GetHashCode();
+    }
+    public static bool operator ==(Complex x, Complex y)
+    {
+        return x._re == y._re && x._im == y._im;
+    }
+    public static bool operator !=(Complex x, Complex y)
+    {
+        return !(x == y);
+    }
+}```
+
+
+=== `System.ValueType`
+
+#cfigure("images/Value.Type.jpg",100%)
+
+#pagebreak()
+=== `System.Boolean`
+
+#cfigure("images/2024-04-18-13-21-43.png",100%)
+
+=== `System.Int32`
+
+#cfigure("images/2024-04-18-13-22-21.png",100%)
+
+=== `System.IComparable`
+
+- Confronta l'istanza corrente con un altro oggetto dello stesso tipo
+- *Valore di ritorno*: un 32-bit signed integer che indica
+    l'ordine relativo degli oggetti confrontati
+- La semantica del valore restituito è la seguente:
+    - Minore di zero - l'istanza `this` precede `obj`
+    - Zero - l'istanza `this` è uguale a `obj`
+    - Maggiore di zero - l'istanza `this` segue `obj`
+- Per definizione, ogni oggetto segue un riferimento `null`
+- Il parametro `obj` deve essere dello stesso tipo della classe
+    o valuetype che implementa questa interfaccia;
+    altrimenti, va lanciata una `ArgumentException`
+
+#cfigure("images/2024-04-18-13-23-39.png",60%)
+
+=== `System.IComparable`
+
+- Note per gli Implementatori:
+
+Per ogni oggetto `A`, `B` e `C`, devono valere le seguenti condizioni:
+
+- `A.CompareTo(A)` deve restituire zero
+- Se `A.CompareTo(B)` restituisce zero
+    allora anche `B.CompareTo(A)` deve restituire zero
+- Se `A.CompareTo(B)` restituisce zero e `B.CompareTo(C)`
+    restituisce zero allora anche `A.CompareTo(C)` deve restituire zero
+- Se `A.CompareTo(B)` restituisce un valore diverso da zero
+    allora `B.CompareTo(A)` deve restituire un valore dal segno opposto
+- Se `A.CompareTo(B)` restituisce un valore x diverso da zero,
+    e `B.CompareTo(C)` un valore `y` dello stesso segno di `x`,
+    allora `A.CompareTo(C)` deve restituire un valore dello stesso segno
+    di `x` e `y`
+
+
+- Se volessi:
+    - Ordinare i punti in ordine decrescente
+    - Ordinare dei film
+       - Per genere, oppure
+       - Per titolo
+    - Ordinare degli studenti
+       - Per cognome e nome, oppure
+       - Per matricola, oppure
+       - Per corso di studio
+    - ...
+
+
+====  `System.Collections.IComparer`
+
+- Questa interfaccia è usata, ad esempio,
+    dai metodi `Array.Sort` e `Array.BinarySearch`
+- Fornisce un modo per personalizzare il criterio di ordinamento
+
+#cfigure("images/240418_13h26m00s_screenshot.png",100%)
+
+=== `System.IConvertible`
+
+- Questa interfaccia fornisce metodi per convertire il valore di un'istanza di un tipo che implementa l'interfaccia in un valore equivalente di un tipo CLR
+
+- I tipi *CLR* sono `Boolean, SByte, Byte, Int16, UInt16, Int32, UInt32, Int64, UInt64, Single, Double, Decimal, DateTime, Char,` e `String`
+
+- Se non esiste una conversione sensata verso un tipo CLR, l'implementazione particolare del corrispondente metodo
+dell'interfaccia deve lanciare
+una InvalidCastException
+
+- Ad esempio, questa interfaccia è implementata dal tipo Boolean;
+    l'implementazione del metodo ToDateTimelancia un'eccezione
+    in quanto non esiste alcun valore DateTimeequivalente
+    a un valore del un tipo Boolean
+
+#cfigure("images/2024-04-18-13-49-39.png",20%)
+
+=== `System.Convert`
+
+- In `System.Int32`, l'implementazione
+    dell'interfaccia `System.IConvertible`
+    è un esempio di “_explicit interface
+    implementation_”:
+
+```C
+int x = 32;
+double d = x.ToDouble (...); // No!
+```
+È necessario scrivere:
+
+```C
+((IConvertible) x).ToDouble (...)
+```
+
+- Se necessario, utilizzare la classe Convert:
+
+```C
+Convert.ToDouble(x)
+```
+#cfigure("images/2024-04-18-13-50-59.png",20%)
+
+=== System.Convert
+
+- Lancia un'eccezione se la conversione non è supportata
+
+```C
+bool b = Convert.ToBoolean(DateTime.Today);
+// InvalidCastException
+```
+- Effettua conversioni controllate
+
+    ```C
+    int k = 300;
+    byte b = (byte) k; // b == 44
+    byte b = Convert.ToByte(k); // OverflowException
+    ```
+    - In alcuni casi, esegue un arrotondamento:
+    ```C
+    double d = 42.72;
+    int k = (int) d; // k == 42
+    int k = Convert.ToInt32(d); // k == 43
+    ```
+- È utile anche quando si ha una stringche deve essere convertita
+    in valore numerico:
+    ```C
+    string myString = "123456789";
+    int myInt = Convert.ToInt32(myString);```
+
+=== Conversione di tipo
+
+- *Una conversione di ampliamento* avviene quando un valore di un tipo viene convertito verso un altro tipo che è di dimensione uguale o superiore
+    - Da `Int32` a `Int64`
+    - Da `Int32` a `UInt64`
+    - Da `Int32` a `Single` (con possibile perdita di precisione)
+    - Da `Int32` a `Double`
+- Una conversione di restrizione avviene quando un valore di un tipo viene convertito verso un altro tipo che è di dimensione inferiore
+    - Da `Int32` a `Byte`
+    - Da `Int32` a `SByte`
+    - Da `Int32` a `Int16`
+    - Da `Int32` a `UInt16`
+    - Da `Int32` a `UInt32`
+
+
+
+- *Conversioni implicite* - non generano eccezioni
+    - *Conversioni numeriche*\
+       Il tipo di destinazione dovrebbe essere in grado di contenere,
+       senza perdita di informazione, tutti i valori ammessi dal tipo di partenza\
+       Eccezione:
+        ```C
+        int k1 = 1234567891;
+        float b = k1;
+        int k2 = (int) b; // k2 == 1234567936
+        ```
+    - *Up cast*\
+    *Principio di sostituibilità:* deve sempre essere possibile utilizzare
+    una classe derivata al posto della classe base
+
+        ```C
+        B b = new B(...); // class B : A
+        A a = b;
+        ```
+
+
+- *Conversioni esplicite* - possono generare eccezioni
+    - *Conversioni numeriche*
+       Il tipo di destinazione non sempre è in grado di contenere
+       il valore del tipo di partenza
+
+```C
+int k1 = -1234567891;
+uint k2 = (uint) k1; // k2 == 3060399405
+```
+```C
+int k1 = -1234567891;
+uint k2 = checked((uint) k1); // OverflowException
+```
+```C
+int k1 = -1234567891;
+uint k2 = Convert.ToUInt32(k1); // OverflowException
+```
+
+- *Conversioni esplicite* - possono generare eccezioni
+    - *Down cast*
+
+```C
+A a = new B(...); // class B : A
+B b = (B) a; // Ok
+```
+```C
+a = new A(...);
+b = (B) a; // InvalidCastException
+```
+```C
+if(a is B) // if(a.GetType() == typeof(B))
+{
+    b = (B) a; // Non genera eccezioni
+    ...
+}
+```
+```C
+b = a as B; // b = (a is B)? (B) a : null;
+if(b != null)
+{
+    ...
+}
+```
+
+
+- *Boxing - up cast* (conversione implicita)
+
+```C
+int k1 = 100;
+object o = k1; // Copia!
+k1 = 200;
+```
+- *Unboxing - down cast* (conversione esplicita)
+
+```C
+int k2 = (int) o; // k1 = 200, k2 = 100
+```
+```C
+double d1 = (double) k1; // Ok
+d1 = k1; // Ok
+d1 = o; // Non compila!
+d1 = (double) o; // InvalidCastException
+d1 = (int) o; // Ok
+```
+
+====  Conversione di tipo definite dall'utente
+
+```C
+public static implicit operator typeOut(typeIn obj)
+public static explicit operator typeOut(typeIn obj)
+```
+- Metodi statici di una classe o di una struttura
+- La keyword `implicit` indica l'utilizzo automatico (cast implicito)
+
+Il metodo non deve generare eccezioni
+
+- La keyword `explicit` indica la necessità di un cast esplicito
+
+Il metodo può generare eccezioni
+
+- `typeOut` è il tipo del risultato del cast
+- `typeIn` è il tipo del valore da convertire
+- `typeIn` o `typeOut` deve essere il tipo che contiene il metodo
+
+
+
+=== Conversioni a string
+
+- Conversioni a `string` (di un `Int32`):
+    - ```C ToString()```
+       ```c
+       int k1 = -1234567891;
+       string str = k1.ToString(); // str == “ - 1234567891”```
+    - ```c ToString(string formatString)```\
+       l'istanza è formattata secondo il `NumberFormatInfo`
+       dell'impostazione cultura (_culture_) corrente
+       ```C
+       k1.ToString(“X”); // = “B669FD2D”
+       k1.ToString(“C”); // = “ - € 1.234.567.891,00”
+       k1.ToString(“C0”); // = “ - € 1.234.567.891”
+       k1.ToString(“N0”); // = “ - 1.234.567.891”
+       k1.ToString(“E”); // = “ - 1,234568E+009”```
+
+
+- Conversioni a `string` (di un `Int32`):
+    - ```C String.Format(string format, params object[] args)```
+
+Il parametro `format` è costituito da uno o più elementi di formato
+nella forma: ```C {index[,alignment][:formatString]}```
+```C
+int k1 = -1234567891;
+String.Format (“{0}”,k1); // = “ - 1234567891”
+String.Format (“{0:X}”,k1); // = “B669FD2D”
+String.Format (“{0,5:X}”,k1); // = “B669FD2D”
+String.Format (“{0,10:X}”,k1); // = “ ΔΔ B669FD2D”
+String.Format (“{0, - 10:X}”,k1); // = “B669FD2D ΔΔ ”
+String.Format (“{0:N0}”,k1); // = “ - 1.234.567.891”
+```
+
+
+=== Conversioni da string
+- Conversioni da `string` (in un `Int32`):
+    - ```C Int32.Parse(string str)
+       Int32.Parse(“ - 1234567891”); // - 1234567891
+       Int32.Parse(“ - 1.234.567.891”); // FormatException
+       Int32.Parse(“”); // FormatException
+       Int32.Parse(“ - 1234567891999”); // OverflowException
+       Int32.Parse(null); // ArgumentNullException```
+    - ```C Int32.Parse(string str, System.Globalization.NumberStyles style)```
+       `NumberStyles` determina lo stile permesso per i parametri
+       stringa passati ai metodi Parsedelle classi basi numeriche
+
+
+- I simboli da usare per la valuta, il separatore delle migliaia, il separatore decimale e il simbolo del segno sono specificati da `NumberFormatInfo`
+- Gli attributi di NumberStylessono indicati usando l'OR (inclusivo) bit-a-bit dei vari flag di campo
+
+
+```C
+Int32.Parse(“ - 1.234.567.891”, System.Globalization.NumberStyles.Number); // ok
+Int32.Parse(“B669FD2D”, System.Globalization.NumberStyles.HexNumber); // ok
+```
+
+#cfigure("images/2024-04-18-14-02-35.png",25%)
+
+
+=== Conversioni a/da string
+
+- Conversioni a `string` (di un `Int32`):
+    - ```C Convert.ToString(int value, int toBase)
+       toBase= 2, 8, 10, 16```
+       ```C int k1 = -1234567891;
+       Convert.ToString (k1); // “ - 1234567891”
+       Convert.ToString (k1,10); // “ - 1234567891”
+       Convert.ToString (k1,16); // “b669fd2d”```
+- Conversioni da `string` (in un `Int32`):
+    - ```C Convert.ToInt32(string str, int fromBase)
+       fromBase= 2, 8, 10, 16```
+       ```C Convert.ToInt32(“-1234567891”); // -1234567891
+       Convert.ToInt32(“-1234567891”,10); // -1234567891
+       Convert.ToInt32(“B669FD2D”,16); // -1234567891
+       Convert.ToInt32(“0xB669FD2D”,16); // -1234567891
+       Convert.ToInt32(“B669FD2D”,10); // FormatException```
+
+
+=== `System.Double`
+
+- Segue le specifiche IEEE 754
+- Supporta ±0, ±Infinity, NaN
+- Epsilon rappresenta il più piccolo
+    Double positivo > 0
+- Il metodo TryParse è analogo al
+    metodo Parse, ma non lancia eccezioni
+    in caso di fallimento della conversione
+       - Se la conversione ha successo,
+          il valore di ritorno è true
+          e il parametro di uscita è posto
+          pari al risultato della conversione
+       - Se la conversione fallisce,
+          il valore di ritorno è false
+          e il parametro di uscita è posto
+          pari a zero
+
+#cfigure("images/2024-04-18-14-04-29.png",45%)
+
+=== `System.Enum`
+
+- `Enum` fornisce metodi per
+    - Confrontare istanze di questa classe
+    - Convertire il valore di un'istanza
+       nella sua rappresentazione a stringa
+    - Convertire la rappresentazione
+       a stringa di un numero in un'istanza
+       della classe
+    - Creare un'istanza di un'enumerazione e
+       valore specifico
+- È possibile trattare un `Enum` come un campo bit
+
+#cfigure("images/2024-04-18-16-02-37.png",40%)
+
+=== `System.DateTime`
+
+- Rappresenta un istante nel
+    tempo, tipicamente espresso
+    come data e ora del giorno
+- Il tipo di valore `DateTime`
+    rappresenta le date e le ore
+    con valori che vanno dalla
+    mezzanotte del 1 gennaio 0001
+    d.C. (Era Comune) alle 11:59:59
+    P.M., 31 dicembre 9999 d.C.
+- I valori temporali sono misurati
+    in unità di 100 ns chiamate tick
+- `DateTime` rappresenta
+    un istante nel tempo,
+    mentre `TimeSpan` rappresenta
+    un intervallo di tempo
+
+#cfigure("images/2024-04-18-16-04-04.png",55%)
+
+=== `System.String`
+
+#cfigure("images/2024-04-18-16-05-35.png",90%)
+
+- Una stringa immutabile di caratteri `Unicode` a lunghezza
+- Una `String` è detta immutabile perché, una volta creata,
+    il suo valore non può essere modificato
+- I metodi che sembrano modificare una `String`,
+    in realtà restituiscono una nuova `String` contenente la modifica
+- Se è necessario modificare il contenuto effettivo di un oggetto tipo stringa,
+    utilizzare la classe `System.Text.StringBuilder`
+- Per la classe `String` l'operatore di uguaglianza `==` è ridefinito, quindi, al contrario di Java, l'operatore ritorna `true` se le due stringhe che compara hanno lo stesso contenuto lessico-grafico
+
+
+
+=== `System.ICloneable`
+#cfigure("images/2024-04-18-16-06-07.png",30%)
+- Supporta la clonazione, che crea una nuova istanza di una classe con lo stesso stato di un'istanza esistente
+- `Clone` crea un nuovo oggetto che è una copia dell'istanza corrente
+- `Clone` può essere implementato come:
+    - una *copia superficiale* (shallow), vengono duplicati solo gli oggetti
+       di primo livello, non vengono create nuove istanze di alcun campo
+
+```C
+public object Clone()
+{
+    return MemberwiseClone();
+}
+```
+- una *copia profonda* (deiep), tutti gli oggetti vengono duplicati
+- `Clone` restituisce una nuova istanza dello stesso tipo (o eventualmente un tipo derivato) dell'oggetto corrente
+
+
+
+====  `System.Collections.IEnumerable`
+
+- `GetEnumerator` restituisce un enumeratore
+    che può essere utilizzato per scorrere una collezione
+- Espone l'enumeratore, che supporta una semplice iterazione su una collezione
+#cfigure("images/2024-04-18-16-09-07.png",60%)
+#cfigure("images/2024-04-18-16-12-59.png",40%)
+- Gli enumeratori permettono solamente di leggere i dati della collezione
+- Gli enumeratori non possono essere usati per modificare la collezione
+- `Reset` riporta l'enumeratore allo stato iniziale
+- `MoveNext` si sposta all'elemento successivo, restituendo
+    - `true` se l'operazione ha successo
+    - `false` se l'enumeratore ha oltrepassato l'ultimo elemento
+- `Current` restituisce l'oggetto attualmente referenziato
+
+
+====   `System.Collections.IEnumerator`
+
+- Non deve essere implementata direttamente da una classe contenitore
+- Deve essere implementata da una classe separata (eventualmente annidata nella classe contenitore) che fornisce la funzionalità di iterare sulla classe contenitore
+- Tale suddivisione di responsabilità permette di utilizzare contemporaneamente più enumeratori sulla stessa classe contenitore
+- La classe contenitore deve implementare l'interfaccia `IEnumerable`
+- Se una classe contenitore viene modificata, tutti gli enumeratori a essa associati vengono invalidati e non possono più essere utilizzati (`InvalidOperationException`)
+
+
+```C IEnumerator enumerator = enumerable.GetEnumerator();
+
+while (enumerator.MoveNext())
+
+{
+    MyType obj = (MyType) enumerator.Current;
+    ...
+}
+```
+\
+```C
+foreach (MyType obj in enumerable)
+{
+    ...
+}```
+
+
+```C public class Contenitore : IEnumerable
+{
+    ...
+    public IEnumerator GetEnumerator()
+    {
+        return new Enumeratore(this);
+    }
+
+    class Enumeratore : IEnumerator
+    {
+        public Enumeratore(Contenitore contenitore ) ...
+    }
+}```
+
+
+=== `System.Array`
+
+#cfigure("images/2024-04-18-16-18-17.png",80%)
+
+
+- Array mono-dimensionali
+
+    ```C
+    int[] a = new int[3];
+    int[] b = new int[] {3, 4, 5};
+    int[] c = {3, 4, 5};
+    // array of references
+    SomeClass[] d = new SomeClass[10];
+    // array of values (directly in the array)
+    SomeStruct[] e = new SomeStruct[10];
+    ```
+
+
+- Array multidimensionali (frastagliati): ogni array può avere dimensione diversa, per questo non possono essere inizializzati direttamente ("in un colpo solo")
+    ```C
+    // array of references to other arrays
+    int[][] a = new int[2][];
+    // cannot be initialized directly
+    a[0] = new int[] {1, 2, 3};
+    a[1] = new int[] {4, 5, 6};
+    ```
+- Array multidimensionali (matrici)
+
+    ```C
+    // block matrix
+    int[,] a = new int[2, 3];
+    // can be initialized directly
+    int[,] b = {{1, 2, 3}, {4, 5, 6}};
+    int[,,] c = new int[2, 4, 2];
+    ```
+
+
+- *Frastagliati* (come in Java)
+
+    ```C
+    int[][] a = new int[2][];
+    a[0] = new int[3];
+    a[1] = new int[4];
+    ...
+    int x = a[0][1];
+    ```
+#cfigure("images/2024-04-18-16-20-39.png",50%)
+- Matrici (come in C, più compatti ed efficienti)
+
+    ```C
+    int[,] a = new int[2, 3];
+    ...
+    int x = a[0, 1];
+    ```
+#cfigure("images/2024-04-18-16-20-57.png",45%)
+
+
+= Principi di Design
+
+
+
+== Qualità della progettazione
+
+- La #text(blue)[*Qualità della progettazione*] è un concetto vago
+- La qualità dipende da specifiche #text(blue)[*priorità
+    dell' organizazione*]
+- Un buon progetto potrebbe essere
+    - il più affidabile,
+    - il più efficiente,
+    - il più manutenibile,
+    - il più economico, ...
+- Gli argomenti qui discussi riguardano principalmente
+    la #text(blue)[*manutenibilità del progetto*]
+
+
+== Cosa rende un design “cattivo”?
+
+#text(blue)[*✓ Misdirection*]: non soddisfa i requisiti
+
+#text(blue)[*✓ Rigidità del software*]: una singola modifica influisce
+su molte altre parti del sistema
+
+#text(blue)[*✓ Fragilità del software*]: una singola modifica influisce
+su parti inaspettate del sistema
+
+#text(blue)[*✓ Immobilità del software*]: è difficile da riutilizzare
+in un'altra applicazione
+
+#text(blue)[*✓ Viscosità*]: è difficile fare la cosa giusta,
+ma facile fare la cosa sbagliata
+
+
+=== Rigidità del Software
+
+- La tendenza per il software a essere
+    #text(blue)[*difficile da modificare*]
+- #text(blue)[*Sintomo*]: ogni modifica provoca una cascata
+    di modifiche successive nei moduli dipendenti
+- #text(blue)[*Effetto*]: i manager hanno timore ad accettare
+    che gli sviluppatori risolvano problemi non critici -
+    non sanno se/quando gli sviluppatori termineranno
+    le modifiche
+
+
+=== Fragilità del Software
+
+- La tendenza del software a #text(blue)[*“rompersi” in molti punti*]
+    ogni volta che viene modificato: i cambiamenti tendono
+    a causare #text(blue)[*comportamenti inaspettati*] in altre parti
+    del sistema (spesso in aree che non hanno alcuna
+    relazione concettuale con l'area che è stata modificata)
+- #text(blue)[*Sintomo*]: ogni correzione peggiora le cose,
+    introducendo più problemi di quelli risolti: tale software
+    è impossibile da manutenere
+- #text(blue)[*Effetto*]: ogni volta che i manager autorizzano
+    una correzione, temono che il software si “rompa”
+    in modo inaspettato
+
+
+=== Immobilità del Software
+
+- L'#text(blue)[*impossibilità di riutilizzare il software*] di altri progetti
+    o di parti dello stesso progetto
+- #text(blue)[*Sintomo*]: uno sviluppatore scopre di aver bisogno
+    di un modulo simile a quello scritto da un altro
+    sviluppatore. Ma il modulo in questione ha troppe
+    dipendenze. Dopo molto lavoro, lo sviluppatore scopre
+    che il lavoro e il rischio necessari per separare le parti
+    desiderabili del software dalle parti indesiderabili sono
+    troppo grandi per essere tollerati
+- #text(blue)[*Effetto*]: e così il software viene semplicemente riscritto
+    anziché riutilizzato
+
+
+=== Viscosità del Software
+
+- Gli sviluppatori di solito trovano più di un modo per apportare
+    una modifica
+       - alcuni preservano il design, altri no (cioè sono hack)
+- La tendenza a #text(blue)[*incoraggiare modifiche al software
+    che sono hack*] piuttosto che modifiche al software
+    che preservano l'intento di progettazione originale
+       - #text(blue)[*Viscosità del design*]: i metodi che preservano il design
+          sono più difficili da utilizzare rispetto agli hack
+       - #text(blue)[*Viscosità dell'ambiente*]: l'ambiente di sviluppo è lento e
+          inefficiente (tempi di compilazione molto lunghi, il sistema
+          di controllo dei sorgenti richiede ore per archiviare pochi file, ...)
+- #text(blue)[*Sintomo*]: è facile fare la cosa sbagliata,
+    ma difficile fare la cosa giusta, cioè è difficile fare modifiche se seguano il design indicato nel documento
+- #text(blue)[*Effetto*]: la manutenibilità del software degenera
+    a causa di hack, scorciatoie, correzioni temporanee, ...
+
+
+===  Perché esistono risultati di progettazione scadenti?
+
+- Ragioni ovvie:
+    - mancanza di capacità/pratica di progettazione
+    - tecnologie in evoluzione
+    - vincoli di tempo/risorse
+    - complessità del dominio, ...
+- Non così ovvie:
+    - #text(blue)[*la “putrefazione” del software è un processo lento*] -
+       anche un design originariamente pulito ed elegante
+       può degenerare nel corso dei mesi/anni
+    - i #text(blue)[*requisiti*] spesso cambiano in modi che non erano stati
+       previsti dal design (o dal progettista) originale
+    - le #text(blue)[*dipendenze*] tra moduli non pianificate e improprie
+       si insinuano: le dipendenze non vengono gestite
+
+
+== Modifiche ai Requisiti
+
+- Come ingegneri del software, sappiamo benissimo
+    che i requisiti cambiano
+- In effetti, la maggior parte di noi si rende conto
+    che il documento dei requisiti è il #text(blue)[*documento
+    più volatile*] dell'intero progetto
+- Se i nostri progetti falliscono a causa del costante arrivo
+    di requisiti in continua evoluzione,
+    #text(blue)[*la colpa è della nostra progettazione*]
+- Dobbiamo in qualche modo trovare un modo
+    per rendere i nostri progetti resistenti a tali cambiamenti
+    e proteggerli dalla putrefazione
+
+
+== Gestione delle Dipendenze
+
+- Ciascuno dei quattro sintomi sopra menzionati è causato
+    (direttamente o indirettamente) da #text(blue)[*dipendenze
+    improprie tra moduli*] del software
+- È l'#text(blue)[*architettura delle dipendenze*]
+    che si sta degradando e con essa la capacità
+    del software di essere manutenuto
+- Per prevenire il degrado dell'architettura
+    delle dipendenze, è necessario gestire le dipendenze
+    tra i moduli in un'applicazione
+- La progettazione orientata agli oggetti è piena di #text(blue)[*principi*]
+    e #text(blue)[*tecniche*] per la gestione delle dipendenze dei moduli
+
+
+== Principi di Design
+
+- The #text(blue)[*Single Responsibility Principle*] (SRP)
+- The #text(blue)[*Dependency Inversion Principle*] (DIP)
+- The #text(blue)[*Interface Segregation Principle*] (ISP)
+- The #text(blue)[*Open/Closed Principle*] (OCP)
+- The #text(blue)[*Liskov Substitution Principle*] (LSP)
+
+
+===  Premessa
+
+==== Il principio zero
+
+- Il principio zero è un principio di logica noto come
+    #text(blue)[*rasoio di Occam*]:\
+    “_Entia non sunt multiplicanda praeter necessitatem_”\
+    ovvero: non bisogna introdurre concetti
+    che non siano strettamente necessari
+- È la forma “colta” di un principio pratico:\
+    “_Quello che non c'è non si rompe_” (H. Ford)
+- Tra due soluzioni bisogna preferire quella
+    - che introduce il minor numero di ipotesi
+    - che fa uso del minor numero di concetti
+
+
+
+==== Semplicità e semplicismo
+
+- La #text(blue)[*semplicità*] è un fattore importantissimo
+    - il software deve fare i conti con una notevole componente
+       di complessità, generata dal contesto in cui deve essere utilizzato
+    - quindi è estremamente importante #text(blue)[*non aggiungere
+       altra complessità*] arbitraria
+- Il problema è che
+    - la semplicità richiede uno #text(blue)[*sforzo non indifferente*]
+       (#text(blue)[è molto più facile essere complicati che semplici])
+    - in generale le soluzioni più semplici vengono in mente per ultime
+- Bisogna fare poi molta attenzione a essere semplici
+    ma non semplicistici\
+    “_Keep it as simple as possible but not simpler_”
+    (A. Einstein)
+
+
+==== Divide et impera
+
+- La #text(blue)[decomposizione] è una tecnica fondamentale
+    per il controllo e la gestione della complessità
+- Non esiste un solo modo per decomporre il sistema
+    - la #text(blue)[*qualità della progettazione*] dipende direttamente dalla #text(blue)[*qualità delle scelte di decomposizione*] adottate
+- In questo contesto il #text(blue)[*principio fondamentale*] è:
+    minimizzare il grado di accoppiamento
+    tra i moduli del sistema
+- Da questo principio è possibile ricavare diverse regole:
+    - minimizzare la quantità di interazione fra i moduli
+    - eliminare tutti i riferimenti circolari fra moduli
+    - ...
+
+
+====  Rendere privati tutti i dati degli oggetti
+
+- Le modifiche ai dati pubblici rischiano sempre di “aprire”
+    il modulo:
+       - possono avere un effetto domino che porta a richiedere
+          modifiche in molte posizioni impreviste
+       - gli errori possono essere difficili da trovare e correggere
+          completamente - le correzioni possono provocare errori altrove
+
+#cfigure("images/2024-04-22-17-37-29.png",100%)
+
+===  The Single Responsibility Principle
+
+- _There should never be more than one reason
+    for a class to change_ (R. Martin)
+- _A class has a single responsibility: it does it all,
+    does it well, and does it only_ (1-Responsibility Rule)
+
+- Se una classe ha più di una responsabilità,
+    queste diventano accoppiate
+- Le modifiche a una responsabilità
+    possono compromettere o inibire la capacità della classe
+    di realizzare le altre
+- Questo tipo di accoppiamento porta a #text(blue)[*design fragili*]
+    che si rompono in modi inaspettati quando modificati
+
+
+#cfigure("images/2024-04-22-17-38-36.png",90%)
+
+
+==== Esempio
+
+#cfigure("images/2024-04-22-17-39-18.png",90%)
+
+- Un'applicazione è di geometria computazionale
+    - usa `Rectangle` per aiutarsi con la matematica delle forme geometriche
+    - non disegna mai il rettangolo sullo schermo
+- L'altra applicazione è di natura grafica
+    - può anche fare un po' di geometria computazionale, ma
+    - disegna sicuramente il rettangolo sullo schermo
+
+
+- La classe `Rectangle` ha #text(blue)[*due responsabilità*]:
+    - la prima responsabilità è fornire un modello matematico
+       della geometria di un rettangolo
+    - la seconda responsabilità è disegnare
+       il rettangolo su un'interfaccia grafica
+
+
+====  Esempio - Refactoring
+
+- Un progetto migliore consiste nel #text(blue)[separare le due responsabilità
+    in due classi completamente distinte]
+- #text(blue)[Si estrae una classe]: si crea una nuova classe e si spostano
+    i campi e i metodi opportuni dalla vecchia classe alla nuova classe
+
+#cfigure("images/2024-04-22-17-40-54.png",80%)
+
+===  The Dependency Inversion Principle
+
+- #text(blue)[*Depend upon abstractions*]\
+    #text(blue)[*Do not depend upon concretions*]
+- Ogni dipendenza dovrebbe puntare a un'interfaccia
+    o a una classe astratta
+- Nessuna dipendenza dovrebbe puntare
+    a una classe concreta
+- I moduli di alto livello (i clienti) non dovrebbero dipendere
+    dai moduli di basso livello (i fornitori di servizi)\
+    Entrambi dovrebbero dipendere da astrazioni
+
+#cfigure("images/2024-04-22-17-43-15.png",50%)
+
+- I #text(blue)[*moduli di basso livello*] contengono la maggior parte del codice
+    e della logica implementativa e quindi #text(blue)[*sono i più soggetti
+    a cambiamenti*]
+- Se #text(blue)[*i moduli di alto livello*] dipendono dai dettagli dei moduli
+    di basso livello (sono accoppiati in modo troppo stretto),
+    i cambiamenti si propagano e le conseguenze sono:
+- #text(blue)[*Rigidità*]: bisogna intervenire su un numero elevato di moduli
+- #text(blue)[*Fragilità*]: si introducono errori in altre parti del sistema
+- #text(blue)[*Immobilità*]: i moduli di alto livello non si possono riutilizzare perché non si riescono a separare da quelli di basso livello
+
+- Soluzione:
+    - i moduli di basso livello implementano un'intefaccia
+    - i moduli di alto livello utilizzano quell'interfaccia
+
+
+#cfigure("images/2024-04-22-17-43-41.png",100%)
+
+- Questo principio funziona perché:
+    - #text(blue)[*le astrazioni*] contengono pochissimo codice (in teoria nulla)
+       e quindi #text(blue)[*sono poco soggette a cambiamenti*]
+    - i #text(blue)[*moduli non astratti sono soggetti a cambiamenti*]
+       ma questi cambiamenti sono sicuri perché nessuno dipende
+       da questi moduli
+- I dettagli del sistema sono stati isolati, separati
+    da un #text(blue)[*muro di astrazioni stabili*], e questo impedisce
+    ai cambiamenti di propagarsi (#text(blue)[*design for change*])
+- Nel contempo i singoli moduli sono #text(blue)[*maggiormente
+    riusabili*] perché sono disaccoppiati fra di loro
+    (#text(blue)[*design for reuse*])
+
+
+
+====  Dipendenze transitive
+
+- “_...all well structured object-oriented architectures
+    have clearly-defined layers, with each layer
+    providing some coherent set of services though a
+    well-defined and controlled interface_” (Grady Booch)
+- I sistemi software dovrebbero essere stratificati,
+    cioè organizzati a livelli
+- Le #text(blue)[*dipendenze transitive*] devono essere eliminate
+
+#cfigure("images/2024-04-22-17-45-51.png",80%)
+
+
+#cfigure("images/2024-04-22-17-46-39.png",90%)
+
+
+====  Dipendenze cicliche
+
+- Le #text(blue)[*dipendenze cicliche*] devono essere eliminate
+
+#cfigure("images/2024-04-22-17-47-24.png",90%)
+
+
+====  Stabilità delle astrazioni
+
+#cfigure("images/2024-04-22-17-47-58.png",90%)
+
+===  The Interface Segregation Principle
+
+- #text(blue)[*Clients should not be forced to depend
+    upon interfaces that they do not use*]
+- Molte interfacce specifiche per un cliente sono meglio
+    di un'unica interfaccia general purpose
+
+
+====  Fat Interface
+
+#cfigure("images/2024-04-22-17-55-04.png",90%)
+
+===  The Interface Segregation Principle
+
+- I clienti non dovrebbero dipendere da servizi che non utilizzano
+- Le _fat interface_ creano una forma indiretta di accoppiamento (inutile)
+    fra i clienti -se un cliente richiede l'aggiunta
+    di una nuova funzionalità all'interfaccia, ogni altro cliente è costretto
+    a cambiare anche se non è interessato alla nuova funzionalità
+- Questo crea un'inutile sforzo di manutenzione e può rendere difficile
+    trovare eventuali errori
+
+- Se i servizi di una classe possono essere suddivisi in gruppi
+    e ogni gruppo viene utilizzato da un diverso insieme di clienti,
+    creare interfacce specifiche per ogni tipo di cliente
+    e implementare tutte le interfacce nella classe
+
+
+
+====  Segregated Interfaces
+
+#cfigure("images/2024-04-22-17-58-26.png",100%)
+
+
+#cfigure("images/2024-04-22-17-59-19.png",100%)
+
+=== The Open/Closed Principle
+
+- #text(blue)[*Il principio più importante per la progettazione
+    di entità riutilizzabili*]
+- _Software entities (classes, modules, functions _, ...)_
+    should be open for extension, but closed for
+    modification_
+- #text(blue)[*Open*]:
+    - #text(blue)[*Possono essere estese*] aggiungendo nuovo stato
+       o proprietà comportamentali
+- #text(blue)[*Closed*]:
+    - Hanno un'interfaccia ben-definita, pubblica e stabile
+       che #text(blue)[*non può essere cambiata*]
+
+
+
+- Dobbiamo scrivere i moduli in modo che
+    - #text(blue)[*possano essere estesi*],
+    - #text(blue)[*senza*] la necessità di #text(blue)[*essere modificati*]
+- In altre parole, vogliamo
+    - cambiare quello che fanno i moduli
+    - senza cambiare il codice dei moduli
+- Apparentemente si tratta di una #text(blue)[*contraddizione*]:
+    come può un modulo immutabile esibire un
+    comportamento che non sia fisso nel tempo?
+- La risposta risiede #text(blue)[*nell'astrazione*] : è possibile creare
+    astrazioni che rendono un modulo immutabile,
+    ma rappresentano un gruppo illimitato di comportamenti
+
+
+- Il segreto sta nell'utilizzo di #text(blue)[*interfacce*]
+    (o di #text(blue)[*classi astratte*])
+- A un'interfaccia #text(blue)[*immutabile*] possono corrispondere
+    innumerevoli classi concrete che realizzano
+    comportamenti diversi
+- Un modulo che utilizza astrazioni
+    - non dovrà mai essere modificato,
+       dal momento che le astrazioni sono immutabili
+       (#text(blue)[*il modulo è chiuso per le modifiche*])
+    - potrà cambiare comportamento, se si utilizzano nuove
+       classi che implementano le astrazioni
+       (#text(blue)[*il modulo è aperto per le estensioni*])
+
+
+
+==== Esempio 1
+
+- Consideriamo un semplice
+    programma che si occupa
+    di copiare su una stampante
+    i caratteri digitati su una
+    tastiera
+- Assumiamo, inoltre,
+    che la piattaforma di
+    implementazione
+    non possieda un sistema
+    operativo in grado di
+    supportare l'indipendenza
+    dal dispositivo
+
+#cfigure("images/2024-04-22-18-03-59.png",60%)
+
+```C
+void Copy()
+{
+    int c;
+    while ((c = ReadKeyboard()) != EOF)
+        WritePrinter(c);
+}
+```
+```
+Copy
+```
+```
+ReadKeyboard WritePrinter
+```
+
+
+- #text(blue)[*I due moduli di basso livello
+    sono riutilizzabili*]: possono
+    essere usati in tanti altri programmi
+    per accedere alla tastiera e alla
+    stampante - è la stessa riusabilità
+    offerta dalle librerie di classi
+- #text(blue)[*Il modulo “Copy” non è
+    riutilizzabile*] in un qualsiasi
+    contesto che non includa una
+    tastiera o una stampante
+- È un peccato, perché tale modulo
+    contiene “l'intelligenza del sistema”
+    - è il modulo “Copy” che incapsula
+    la funzionalità cui siamo interessati
+    per il riuso
+
+
+- Consideriamo un nuovo
+    programma che copi caratteri
+    da tastiera a un file su disco
+- Potremmo modificare il modulo
+    “Copy” per fornirgli questa nuova
+    funzionalità
+- Con l'andar del tempo, più e più
+    dispositivi verranno aggiunti
+    a questo programma di copia,
+    e il modulo “Copy” sarà tappezzato
+    di istruzioni if/else, diventando
+    dipendente da diversi moduli
+    di più basso livello
+    - alla fine diverrà #text(blue)[*rigido*] e #text(blue)[*fragile*]
+
+```C
+enum OutputDevice
+{
+    Printer,
+    Disk
+};
+void Copy(OutputDevice dev)
+{
+    int c;
+    while ((c = ReadKeyboard()) != EOF)
+    {
+        if (dev == Printer)
+            WritePrinter(c);
+        else
+            WriteDisk(c);
+    }
+}
+```
+
+- Un modo per caratterizzare il problema visto in precedenza è di
+    notare che il modulo che contiene la politica di alto livello (Copy)
+    dipende dai moduli di dettaglio e di più basso livello che controlla
+    (WritePrintere ReadKeyboard)
+- Se potessimo trovare un modo di rendere il modulo Copy
+    indipendente dai dettagli che controlla, allora
+       - potremmo #text(blue)[*riutilizzarlo*] liberamente
+       - potremmo produrre altri programmi che usano questo modulo per
+          #text(blue)[*copiare caratteri da un qualsiasi dispositivo di input
+          a un qualsiasi dispositivo di output*]
+
+
+```C
+interface IReader
+{
+    int Read();
+}
+
+interface IWriter
+{
+    void Write(char);
+}
+
+void Copy(IReader r, IWriter w)
+{
+    int c;
+    while ((c = r.Read()) != EOF)
+        w.Write(c);
+}```
+
+#cfigure("images/2024-04-22-18-06-54.png",50%)
+
+
+==== Esempio 2
+
+#cfigure("images/2024-04-22-18-07-24.png",100%)
+
+- #text(blue)[*Se dovessi creare una nuova*] shape, come `Triangle`,
+    #text(blue)[dovrei modificare] `drawShape`
+- In un'applicazione complessa l'istruzione `switch/case`
+    verrebbe ripetuta più e più volte per ogni operazione
+    possa essere effettuata su una shape
+- Ancor peggio, ogni modulo che contenesse
+    una tale istruzione `switch/case` statement
+    #text(blue)[*manterrebbe una dipendenza da qualsiasi shape*]
+    possa essere disegnata
+       - Quindi, ogni volta una singola shape dovesse essere
+          modificata in un qualsiasi modo, tutti i moduli dovrebbero
+          essere ricompilati ed eventualmente modificati
+
+#cfigure("images/2024-04-22-18-10-04.png",100%)
+
+
+
+==== Esempio 3
+
+#cfigure("images/2024-04-22-18-10-47.png",75%)
+
+- Supponiamo di dover utilizzare un nuovo tipo di server!
+
+#cfigure("images/2024-04-22-18-11-15.png",80%)
+
+- `Client` è chiuso alle modifiche dell'implementazione
+    di `IServer`
+- `Client` è aperto all'estensione
+    tramite nuove implementazioni di `IServer`
+- Senza `IServer` , `Client` sarebbe aperto alle modifiche
+    di `Server`
+
+
+#cfigure("images/2024-04-22-18-12-06.png",90%)
+
+
+==== Esempio 4
+
+#cfigure("images/2024-04-22-18-12-33.png",90%)
+- E se volessimo accendere un motore?
+#cfigure("images/2024-04-22-18-12-50.png",100%)
+
+==== Conlcusioni
+
+- Se la maggior parte dei moduli di un'applicazione
+    segue OCP, allora
+       - è possibile aggiungere nuove funzionalità
+          all'applicazione
+             - #text(blue)[*aggiungendo nuovo codice*]
+             - invece che #text(blue)[*cambiando codice funzionante*]
+       - il codice che già funziona non è esposto a rotture
+
+
+===  The Liskov Substitution Principle
+
+- _Subclasses should be substitutable
+    for their base classes_ (Barbara Liskov)
+- _All derived classes must honor the contracts
+    of their base classes_ (Design by Contract -
+    Bertrand Meyer)
+
+- Il cliente di una classe base deve continuare
+    a funzionare correttamente se gli viene passato
+    un sottotipo di tale classe base
+- In altre parole: un cliente che usa istanze di una classe A
+    deve poter usare istanze di una qualsiasi sottoclasse
+    di A #text(blue)[*senza accorgersi della differenza*]
+
+
+
+====  Example
+#cfigure("images/2024-04-22-18-15-04.png",100%)
+#cfigure("images/2024-04-22-18-15-25.png",100%)
+
+
+- OCP si basa sull'uso di classi concrete derivate
+    da un'astrazione (interfaccia o classe astratta)
+- LSP costituisce una guida per creare queste classi
+    concrete mediante l'ereditarietà
+- La principale causa di violazioni al principio di Liskov
+    è dato dalla #text(blue)[*ridefinizione di metodi virtuali*]
+    nelle classi derivate:
+    è qui che bisogna riporre la massima attenzione
+- La chiave per evitare le violazioni al principio di Liskov
+    risiede nel #text(blue)[*Design by Contract*] (B. Meyer)
+
+
+== Design by Contract
+
+- Nel Design by Contract ogni metodo ha
+    - un insieme di #text(blue)[*pre-condizioni*] - requisiti minimi che devono essere
+       soddisfatti dal #underline[chiamante] perché il metodo possa essere eseguito
+       correttamente
+    - un insieme di #text(blue)[*post-condizioni*] - requisiti che devono essere
+       soddisfatti dal #underline[metodo] nel caso di esecuzione corretta
+- Questi due insiemi di condizioni costituiscono
+    #text(blue)[*un contratto*] tra chi invoca il metodo (cliente)
+    e il metodo stesso (e quindi la classe a cui appartiene)
+    - le #text(blue)[*pre-condizioni vincolano il chiamante*]
+    - le #text(blue)[*post-condizioni vincolano il metodo*]
+    - se il chiamante garantisce il verificarsi delle pre-condizioni,
+       il metodo garantisce il verificarsi delle post-condizioni
+
+
+- Quando un metodo viene ridefinito in una sottoclasse
+    - le #text(blue)[*pre-condizioni*] devono essere #text(blue)[*identiche
+       o meno stringenti*]
+    - le #text(blue)[*post-condizioni*] devono essere #text(blue)[*identiche
+       o più stringenti*]
+- Questo perché un cliente che invoca il metodo conosce
+    il contratto definito a livello della classe base,
+    quindi non è in grado:
+    - di soddisfare pre-condizioni più stringenti o
+    - di accettare post-condizioni meno stringenti
+- In caso contrario, il cliente dovrebbe conoscere
+    informazioni sulla classe derivata e questo porterebbe
+    a una violazione del principio di Liskov
+
+
+```C
+public class BaseClass
+{
+    public virtual int Calculate(int val)
+    {
+    Precondition(-10000 <= val && val <= 10000);
+    int result = val / 100;
+    Postcondition(-100 <= result && result <= 100);
+    return result;
+    }
+}
+
+public class SubClass : BaseClass
+{
+    public override int Calculate(int val)
+    {
+        Precondition(-20000 <= val && val <= 20000);
+        int result = Math.Abs(val) / 200;
+        Postcondition(0 <= result && result <= 100);
+        return result;
+    }
+}```
+
+
+== Il Quadrato è un Rettangolo?
+
+```C public class Rectangle
+{
+    private double _width;
+    private double _height;
+
+    public double Width
+    {
+        get { return _width; }
+        set { _width = value; }
+    }
+
+    public double Height
+    {
+        get { return _height; }
+        set { _height = value; }
+    }
+    public double Area
+    {
+        get { return Width * Height; }
+    }
+}```
+
+- Immaginiamo che questa
+    applicazione funzioni
+    correttamente e sia installata
+    in diversi ambienti
+- Come per tutti i software
+    di successo, le necessità
+    degli utenti cambiano
+    e si rendono necessarie nuove
+    funzionalità
+- Immaginiamo che, un bel
+    giorno, gli utenti chiedano
+    la possibilità di manipolare
+    quadrati oltre che rettangoli
+
+
+#cfigure("images/2024-04-22-18-18-52.png",30%)
+- L'ereditarietà è una relazione IsA
+- In altre parole, perché un nuovo
+    tipo di oggetto verifichi la
+    relazione IsAcon un tipo di
+    oggetto esistente, la classe del
+    nuovo oggetto deve essere
+    derivata dalla classe dell'oggetto
+    esistente
+- Chiaramente, un quadrato
+    è un rettangolo per tutti
+    gli utilizzi e intenti normali
+- Poiché vale la relazione IsA,
+    è logico medellare Square
+    come sottoclasse di `Rectangle`
+
+
+- Questo utilizzo della relazione IsA è considerato
+    da molti come una delle tecniche più importanti
+    dell'Analisi Object Oriented
+- Un quadrato è un tipo particolare di rettangolo,
+    quindi la classe `Square` deve venire derivata
+    dalla classe `Rectangle`
+- Questo modo di pensare, però, può portare a problemi
+    sottili, ma significativi
+- In genere, tali problemi non vengono scoperti
+    se non nella fase di implementazione dell'applicazione
+
+
+
+```C public class Square : Rectangle
+{
+    public new double Width
+    {
+        get { return base.Width; }
+        set
+        {
+            base.Width = value;
+            base.Height = value;
+        }
+    }
+    public new double Height
+    {
+        get { return base.Height; }
+        set
+        {
+            base.Height = value;
+            base.Width = value;
+        }
+    }
+}```
+
+- È necessario ridefinire le
+    proprietà `Width` e `Height` ...
+- Notevoli differenze tra Java
+    e C++/C\#
+    - In Java tutti i metodi sono
+       virtuali
+          - a parte i metodi `final`
+    - In C++ / C\# è possibile
+       definire
+          - sia metodi virtuali,
+          - sia #text(blue)[*metodi non virtuali*]
+             (non polimorfici)
+
+
+
+```C ...
+Square s = new Square();
+s.Width = 5; // 5 x 5
+...
+... Method1(s); //?
+...
+
+void Method1(Rectangle r)
+{
+    r.Width = 10;
+}```
+
+- Se invochiamo `Method1` con un
+    riferimento a un oggetto `Square`,
+    l'oggetto `Square` non funzionerà
+    correttamente in quanto l'altezza
+    non verrà modificata
+- Questa è una chiara violazione
+    di LSP
+- `Method1` non funziona
+    per sottotipi dei suoi parametri
+- Il motivo di questo
+    malfunzionamento è che
+    Width e Height non sono state
+    dichiarate virtuali in Rectangle
+
+
+```C public class Rectangle
+{
+    ...
+    public virtual double Width
+    { ... }
+    public virtual double Height
+    { ... }
+    ...
+}
+
+public class Square : Rectangle
+{
+    public override double Width
+    { ... }
+    public override double Height
+    { ... }
+}```
+
+- Possiamo risolvere facilmente
+- In ogni modo, quando la creazione
+    di una classe derivata ci obbliga
+    a modificare la classe base, spesso
+    significa che il design è difettoso
+- Infatti, viola l'OCP
+- Potremmo rispondere argomentando
+    che il vero difetto di progettazione
+    è stato dimenticare di rendere virtuali
+    Width e Height , e solo ora
+    lo stiamo risolvendo
+- Tuttavia, questo è difficile da giustificare
+    poiché impostare l'altezza e la larghezza
+    di un rettangolo sono operazioni
+    estremamente primitive -con quale
+    ragionamento le avremmo dovute
+    rendere virtuali se non prevedendo
+    l'esistenza del quadrato?
+
+
+
+- A questo punto abbiamo due classi, `Square` e `Rectangle`,
+    che apparentemente funzionano correttamente
+- Indipendentemente da ciò che facciamo con un oggetto
+    `Square`, questo rimarrà coerente con un quadrato
+    matematico
+- E indipendentemente da ciò che facciamo con un oggetto
+    `Rectangle`, questo rimarrà un rettangolo matematico
+- Inoltre, possiamo passare uno `Square` a una funzione
+    che accetta un riferimento a un `Rectangle` e lo `Square`
+    agirà comunque come un quadrato e rimarrà consistente
+- Pertanto, potremmo concludere che il modello ora
+    è consistente e corretto in sé
+- Tuttavia, #text(blue)[*un modello consistente in sé
+    non è necessariamente consistente con tutti i suoi utenti!*]
+
+
+
+```C
+public void Scale(Rectangle rectangle)
+{
+    rectangle.Width = rectangle.Width * ScalingFactor;
+    rectangle.Height = rectangle.Height * ScalingFactor;
+}
+```
+- `Scale` invoca membri di ciò che crede essere
+    un `Rectangle`
+- Sostituendovi uno Square otterremo
+    che il quadrato verrà ridimensionato due volte!
+- E allora qui sta il #text(blue)[*vero problema*]:
+    il programmatore che ha scritto `Scale` era giustificato
+    nel presumere che la modifica della larghezza
+    di un `Rectangle` lasci invariata la sua altezza?
+
+
+
+- Chiaramente, il programmatore di `Scale` ha fatto questa ipotesi assai ragionevole
+- Passare uno `Square` a funzioni i cui programmatori
+    hanno fatto questa ipotesi provocherà problemi
+- Pertanto, esistono funzioni che accettano riferimenti
+    a oggetti `Rectangle` , ma non possono operare
+    correttamente su oggetti `Square`
+- Queste funzioni espongono una violazione di LSP
+- L'aggiunta del sottotipo `Square` di `Rectangle`
+    ha guastato queste funzioni: l'OCP è stato violato
+
+
+
+- Cosa non va nel modello di `Square` e `Rectangle`?
+    - Dopo tutto, un quadrato non è un rettangolo?
+    - La relazione IsA non vale?
+- No! Un quadrato sarà anche un rettangolo,
+    ma un oggetto `Square` non è sicuramente
+    un oggetto `Rectangle`
+- Perché? Perché il #text(blue)[*comportamento di un oggetto
+    `Square` non è consistente con il comportamento
+    di un oggetto `Rectangle`*]
+- Dal punto di vista comportamentale,
+    uno `Square` non è un `Rectangle`!\
+    E il software si basa proprio sul comportamento
+
+
+
+- LSP chiarisce che #text(blue)[*in OOD la relazione IsA
+    riguarda il comportamento*]
+       - Non comportamento privato intrinseco,
+          ma #text(blue)[*comportamento pubblico estrinseco*]
+       - Comportamento da cui dipendono i clienti
+
+
+- Ad esempio, l'autore di `Scale` dipendeva dal fatto che i rettangoli si comportano in modo tale che #text(blue)[*le loro altezza e larghezza possano variare
+indipendentemente l'una dall'altra*]
+- Tale indipendenza delle due variabili
+    è un #text(blue)[*comportamento pubblico estrinseco*]
+    da cui probabilmente dipenderanno altri programmatori
+- Affinché LSP possa valere, e con esso OCP,
+    #text(blue)[*tutti i sottotipi devono essere conformi
+    al comportamento che i clienti si aspettano
+    dalle classi base che utilizzano*]
+
+- La regola per le pre-condizioni e le post-condizioni
+    per i sottotipi è:\
+       “quando si ridefinisce una routine, si può sostituire
+          #text(blue)[*la sua pre-condizione solo con una più debole*] e #text(blue)[*la sua post-condizione solo con una più forte*]”
+- In altre parole, quando si utilizza un oggetto
+    attraverso l'interfaccia della sua classe base,
+    #text(blue)[*l'utente conosce solo le pre-condizioni
+    e le post-condizioni della classe base*]
+
+
+
+- Pertanto, le classi derivate non devono aspettarsi
+    che tali utenti obbediscano a pre-condizioni più forti
+    di quelle richieste dalla classe base
+    - devono accettare tutto ciò che la classe base può accettare
+- Inoltre, le classi derivate devono essere conformi
+    a tutte le post-condizioni della classe base
+    - i loro comportamenti e output non devono violare nessuno dei vincoli stabiliti per la classe base
+
+
+- Il contratto di `Rectangle`
+    - Altezza e larghezza sono indipendenti,
+       si può modificarne una mantenendo costante l'altra
+- `Square` viola il contratto della classe base
+
+
+== Il Quadrato è un Rettangolo?
+
+- Guardando al codice di test della classe `Rectangle`
+    possiamo avere qualche idea del contratto di `Rectangle`:
+
+```C [TestFixture]
+public class RectangleFixture
+{
+    [Test]
+    public void SetHeightAndWidth()
+    {
+        Rectangle rectangle = new Rectangle();
+        int expectedWidth = 3, expectedHeight = 7;
+        rectangle.Width = expectedWidth;
+        rectangle.Height = expectedHeight;
+        Assertion.AssertEquals(expectedWidth, rectangle.Width);
+        Assertion.AssertEquals(expectedHeight, rectangle.Height);
+    }
+}```
+
+
+
+```C [TestFixture] public class RectangleFixture
+{
+    [Test] public void SetHeightAndWidth()
+    {
+        Rectangle rectangle = GetShape();
+        ...
+    }
+    protected virtual Rectangle GetShape()
+    { return new Rectangle(); }
+}
+
+[TestFixture] public class SquareFixture : RectangleFixture
+{
+    protected override Rectangle GetShape()
+    { return new Square(); }
+}```
+
+
+==  Principi di Architettura dei Package
+
+- #text(blue)[*Reuse/Release Equivalency Principle*] (REP)
+- #text(blue)[*Common Closure Principle*] (CCP)
+- #text(blue)[*Common Reuse Principle*] (CRP)
+
+
+===  Release/Reuse Equivalency Principle
+
+- _The granule of reuse is the granule of release_
+
+
+- Un elemento riutilizzabile, sia esso un componente,
+    una classe o un insieme di classi, non può essere riutilizzato
+    a meno che non sia gestito da un sistema di rilascio di qualche tipo
+- I clienti dovrebbero rifiutare di riutilizzare un elemento a meno che
+    l'autore non prometta di tenere traccia dei numeri di versione
+    e di mantenere le vecchie versioni per qualche tempo
+    - un criterio per raggruppare le classi in package è il riutilizzo
+- Poiché i pacchetti sono l'unità di rilascio in Java,
+    sono anche l'unità di riutilizzo
+- Pertanto, gli architetti farebbero bene a raggruppare in package
+    le classi riutilizzabili assieme
+
+
+===  Common Closure Principle
+
+- _Classes that change together, belong together_
+
+
+- Il lavoro per gestire, testare e rilasciare un pacchetto
+    in un sistema di grandi dimensioni non è banale
+- Più pacchetti cambiano in un dato rilascio, maggiore
+    è il lavoro per ricostruire, testare e distribuire il rilascio
+    - vorremmo #text(blue)[*ridurre al minimo il numero di pacchetti
+    che vengono modificati in un dato ciclo di rilascio
+    del prodotto*]
+- Per raggiungere questo obiettivo, raggruppiamo assieme
+    classi che pensiamo cambieranno insieme
+
+
+===  Common Reuse Principle
+
+- _Classes that aren't reused together should not be grouped together_
+
+
+- Una dipendenza da un package è una dipendenza
+    da tutto ciò che è contenuto nel package
+- Quando un package cambia e il suo numero di rilascio
+    viene aggiornato, tutti i client di quel package
+    devono verificare di funzionare con il nuovo package -
+    anche se nulla di ciò che hanno usato all'interno
+    del package è effettivamente cambiato
+- Pertanto, le classi che non vengono riutilizzate insieme
+    non dovrebbero essere raggruppate insieme
+
+
+==  Principi di Architettura dei Package
+
+===  Discussione
+
+- Questi tre principi non possono essere soddisfatti
+    contemporaneamente
+- REP e CRP semplificano la vita ai riutilizzatori,
+    mentre CCP semplifica la vita ai manutentori
+- CCP cerca di rendere i package più grandi possibile
+    (dopotutto, se tutte le classi stanno in un solo package,
+    allora solo quel package cambierà)
+- CRP, tuttavia, cerca di creare package molto piccoli
+- All'inizio di un progetto, gli architetti possono impostare
+    la struttura dei package in modo tale che CCP domini
+    per facilità di sviluppo e manutenzione
+- Successivamente, quando l'architettura si stabilizza,
+    gli architetti possono ri-fattorizzare la struttura dei package
+    per massimizzare REP e CRP per i riutilizzatori esterni
+
+
+==  Relazioni tra i Package
+
+- #text(blue)[*Acyclic Dependencies Principle*] (ADP)
+- #text(blue)[*Stable Dependencies Principle*] (SDP)
+- #text(blue)[*Stable Abstractions Principle*] (SAP)
+
+
+===  Acyclic Dependencies Principle
+
+- _The dependencies between packages must not form cycles_
+
+
+- Una volta apportate le modifiche a un package, gli sviluppatori possono rilasciare i package al resto del progetto
+       - Prima di poter eseguire questo rilascio, tuttavia, devono verificare
+          che il package funzioni
+       - Per farlo, devono compilarlo e collegarlo a tutti i package da cui dipende
+- Una singola dipendenza ciclica che sfugge al controllo può rendere
+    l'elenco delle dipendenze molto lungo
+- Quindi, qualcuno deve osservare la struttura delle dipendenze
+    dei package con regolarità e interrompere i cicli ovunque compaiano
+
+
+
+===  Esempio: Grafo dei Package Aciclico
+
+#cfigure("images/2024-04-22-18-48-39.png",70%)
+
+
+===  Esempio: Grafo dei Package Ciclico
+
+#cfigure("images/2024-04-22-18-49-05.png",70%)
+
+==  Acyclic Dependencies Principle
+
+===  Discussione
+
+- Nello scenario aciclico per rilasciare il package protocol,
+    gli ingegneri dovrebbero compilarlo con l'ultima versione
+    del package comm_error ed eseguire i loro test
+- Nello scenario ciclico per rilasciare il package protocol,
+    gli ingegneri dovrebbero compilarlo con l'ultima versione
+    di comm_error, gui, comm, process, modem, file ed
+    eseguire i loro test
+- Come rompere un ciclo:
+    - Inframezzare un nuovo package
+    - Aggiungere una nuova interfaccia
+
+
+
+===  Rompere il Ciclo Introducendo un'Interfaccia
+
+#cfigure("images/2024-04-22-18-52-30.png",80%)
+
+===  Stable Dependencies Principle
+
+- _The dependencies between packages in a design
+    should be in the direction of the stability
+    of the packages_.\
+    _A package should only depend upon packages
+    that are more stable than it is_.
+- I design non possono essere completamente statici
+    - Una certa volatilità è necessaria se il progetto deve essere mantenuto
+- Raggiungiamo questo obiettivo conformandoci al CCP
+- Alcuni package sono progettati per essere volatili,
+    ci aspettiamo che cambino
+- Un pacchetto con molte dipendenze in entrata è molto stabile
+    perché richiede molto lavoro per riconciliare qualsiasi modifica
+    con tutti i pacchetti dipendenti
+
+
+#pagebreak()
+===  Esempio
+
+#cfigure("images/2024-04-22-18-53-44.png",90%)
+
+===  Stable Abstractions Principle
+
+- _Stable packages should be abstract packages_
+
+
+- La stabilità è relativa alla quantità di lavoro richiesta
+    per apportare una modifica
+- Un pacchetto con molte dipendenze in entrata
+    è molto stabile perché richiede molto lavoro
+    per riconciliare le modifiche con tutti i pacchetti
+    dipendenti
+
+
+===  Esempio
+
+#cfigure("images/2024-04-22-18-55-31.png",90%)
+
+==  Stable Dependencies/Abstractions Principles
+
+===  Discussione
+
+- I package in alto sono instabili e flessibili
+- I package in basso sono molto difficili da modificare
+- I package altamente stabili nella parte inferiore del grafo
+    delle dipendenze possono essere molto difficili
+    da modificare, ma secondo l'OCP non devono essere
+    difficili da estendere
+- Se anche i pacchetti stabili in fondo sono molto astratti,
+    possono essere facilmente estesi
+- È possibile creare la nostra applicazione a partire
+    da package instabili facili da modificare
+    e package stabili facili da estendere
 
 
