@@ -1565,7 +1565,7 @@ di dati ospedalieri
 -  il database dei pazienti
 -  i record di ogni paziente
 
-• Quali sono le minacce?
+Quali sono le minacce?
 
 - furto identità dell'amministratore
 - furto identità di utente autorizzato
@@ -1911,7 +1911,7 @@ Cifratura Simmetrica:
 - Cifratura Asimmetrica:
 - Memorizzazione chiave privata
 
-Architettura Client/Server • DoS
+Architettura Client/Server DoS
 
 - Man in the Middle
 - Sniffing delle comunicazioni
@@ -3290,6 +3290,488 @@ Diagramma di stato per `AnomalieMessaggi`
     https://github.com/nunit/docs/wiki/Framework-Release-Notes
 
 
+
+
+== Progettazione
+=== Introduzione
+- #text(red)[Obiettivo:] attraverso una serie di raffinamenti successivi dell'Architettura Logica arrivare ad ottenere #text(blue)[l'Architettura del Sistema]\
+#text(blue)[Vanno considerati anche tutti gli aspetti vincolanti che sono stati trascurati nelle fasi precedenti]
+    - Questa fase deve mirare non solo a individuare e descrivere una soluzione al problema (#text(red)[what/how]), ma soprattutto a descrivere i #text(blue)[motivi] (#text(red)[why]) che l'hanno determinata
+
+- #text(red)[Risultato]:
+    - Architettura del Sistema
+    - Schema Persistenza
+    - Piano finale del Collaudo
+    - Indicazioni per il Deployment
+
+
+#cfigure("images/2024-04-26-12-52-24.png",15%)
+
+
+
+
++ #text(blue)[*Progettazione Architetturale*]\
+    #underline[Obiettivo:] definire l'Architettura del Sistema tenendo conto di tutti i vincoli e delle forze in gioco
++ #text(blue)[*Progettazione di Dettaglio*]\
+    #underline[Obiettivo:] progettare nel dettaglio ogni aspetto del Sistema
++ #text(blue)[*Progettazione della Persistenza*]\
+    #underline[Obiettivo:] progettare i meccanismi per la persistenza dei dati
++ #text(blue)[*Progettazione del Collaudo*]\
+    #underline[Obiettivo:] definire in modo chiaro e preciso come il sistema dovrà essere collaudato una volta terminata l'implementazione
++ #text(blue)[*Progettazione per il Deployment*]\
+    #underline[Obiettivo:] progettare il sistema in modo da rendere semplice il deployment sulle macchine e per garantire la sicurezza
+
+
+#cfigure("images/2024-04-26-12-55-41.png",100%)
+
+=== Progettazione Architetturale
+- Nella Progettazione Architetturale gli ingegneri devono prendere delle decisioni che influenzano profondamente il sistema
+- Basandosi sulle proprie esperienze e conoscenze devono rispondere ad alcune domande fondamentali:
+    + C'è un'architettura applicativa generica che può essere utilizzata come modello per il sistema che sto progettando?
+    + Come sarà distribuito il sistema tra più processori?
+    + Quale stile o quali stili sono adatti al sistema?
+    + Quale sarà l'approccio fondamentale utilizzato per strutturare il sistema?
+    + Come saranno scomposte in moduli le unità strutturali del sistema?
+    + Quale strategia sarà usata per controllare l'operato delle unità del sistema?
+
+
+#cfigure("images/2024-04-26-12-57-50.png",100%)
+
+==== Requisiti Non Funzionali
+
+- L'architettura del sistema influenza
+    - le #highlight(fill: myred)[prestazioni]
+    - la #highlight(fill: myred)[robustezza]
+    - la #highlight(fill: myred)[distribuibilità]
+    - la #highlight(fill: myred)[manutenibilità]
+    di un sistema
+
+- La struttura dell'architettura tipicamente è condizionata
+    - dalla #text(blue)[tipologia di applicazione] che si vuole realizzare
+
+    - dai #text(blue)[requisiti non funzionali]
+
+
+- Se le #text(blue)[*prestazioni*] sono un requisito critico l'architettura dovrebbe essere progettata
+    - localizzando le operazioni critiche all'interno di un piccolo numero di componenti
+    - minimizzando le comunicazioni possibile tra essi
+
+- Questo porta a dover definire componenti “#text(blue)[grandi]” per ridurre la comunicazione
+
+
+- Se la #text(blue)[*protezione dei dati (_security_)*] è un requisito critico l'architettura dovrebbe essere progettata
+    - con una struttura “stratificata”
+    - collocando le risorse più critiche nello strato più interno e protetto
+- Questo porta a dover definire una struttura con un alto livello di convalida di protezione a ogni strato
+- *NB:* Quando si valuta l'aspetto della protezione dei dati tenere conto di tutte le indicazioni che sono emerse nella parte della Security Engineering
+
+
+- Se la sicurezza (safety) è un requisito critico l'architettura dovrebbe essere progettata
+    - in modo tale che le operazioni relative siano tutte collocate in un singolo componente o in un piccolo insieme di componenti
+    - riduzione dei costi e dei problemi di convalida della sicurezza, possibilità di poter fornire sistemi di protezione correlati
+- Questo porta a dover definire componenti “#text(blue)[grandi]” per localizzare le operazioni
+
+
+
+
+- Se la #text(blue)[*disponibilità*] è un requisito critico l'architettura dovrebbe essere progettata
+    - per comprendere componenti ridondanti
+    - in modo che sia possibile sostituirli e aggiornarli senza fermare il sistema
+
+- Questo porta a dover sviluppare un numero maggiore di componenti rispetto a quelli strettamente necessari
+
+
+
+
+- Se la #text(blue)[*manutenibilità*] è un requisito critico l'architettura dovrebbe essere progettata
+    - usando componenti piccoli, atomici, autonomi
+    - che possano essere modificati velocemente
+    - i produttori di informazione dovrebbero essere separati dai consumatori e le strutture dati condivise dovrebbero essere evitate
+- Questo porta a dover sviluppare componenti di piccole dimensioni
+
+
+- Ci sono dei conflitti potenziali tra alcune di queste architetture così come abbiamo visto sussistono conflitti tra i requisiti non funzionali
+
+- Esempio: usare componenti “grossi” migliora le prestazioni ma peggiora la manutenibilità e viceversa
+- Se sono entrambi requisiti critici occorre trovare un compromesso
+
+
+==== Esempio
+
+Nell'Analisi del Problema (Tabella Vincoli) sono emersi tre requisiti non funzionali che
+impongono dei vincoli al sistema:
+
+- Tempo di risposta
+- Usabilità
+- Sicurezza
+
+Nello specifico caso in esame, Usabilità e Sicurezza hanno pochi conflitti a parte l'eventuale
+richiesta di un ulteriore login se per caso scade la sessione di lavoro. L'Usabilità impatta molto
+di più la struttura delle interfacce che andranno progettate in modo tale da mantenere nelle
+stesse View le informazioni necessarie alle funzionalità richieste
+Diversa la questione che riguarda Tempo di risposta e Sicurezza, aggiungere strati (layer) e
+meccanismi di cifratura per migliorare la sicurezza ovviamente porta ad un peggioramento
+delle prestazioni del sistema, occorre quindi trovare un bilanciamento tra i due aspetti.
+Considerando la tipologia di sistema che deve essere sviluppato, si ritiene maggiormente
+critico l'aspetto di sicurezza dei dati in quanto la “Tabella Valutazione Beni” mette in luce che
+nel caso di attacchi al sistema andati a buon fine si rischia un'esposizione molto alta con
+perdite finanziarie e di immagine. Inoltre, gli utenti principali di tale sistema sono operatori
+umani che spesso non sono in grado di percepire se il Sistema impiega qualche frazione di
+secondo in più o in meno nella risposta, non si hanno vincoli real-time da soddisfare.
+
+
+==== Scelta Architettura
+
+- La scelta dell'Architettura del Sistema deve basarsi su:
+    - Architettura Logica definita in fase di Analisi del Problema
+    - Trade-off requisiti non funzionali
+    - Tipologia di applicazione che si intende sviluppare
+    - Adozione di Pattern Architetturali
+        - Blackboard
+        - MVC/BCE
+        - Layers
+        - Client/Server
+        - Broker
+        - Pipe & Filters
+        - ...
+
+
+===== Blackboard
+
+- Il pattern Blackboard aiuta a strutturare quelle applicazioni in cui vengono applicate strategie di soluzione non deterministiche (tipici problemi di intelligenza artificiale)
+
+- I diversi sotto-sistemi condividono la stesse conoscenze attraverso la Blackboard al fine di costruire una soluzione approssimata o parziale
+
+#cfigure("images/2024-04-26-13-09-07.png",80%)
+
+===== MVC
+
+- Il pattern MVC divide le applicazioni in tre distinte parti:
+
+    - Il model che gestisce i dati
+
+    - Il controller che manipola i dati
+
+    - La view che mostra i dati
+
+#cfigure("images/2024-04-26-13-10-16.png",90%)
+
+===== Layer
+
+- Il pattern Layer aiuta a strutturare quelle applicazioni che possono essere scomposte in gruppi di sotto-attività in cui ciascun gruppo si trova a un ben definito livello di astrazione
+
+#cfigure("images/2024-04-26-13-10-44.png",20%)
+
+===== Client/Server
+
+- Il pattern client/server aiuta a strutturare un'applicazione come un insieme di servizi forniti da uno o più server e un insieme di client che utilizza tali servizi
+
+#cfigure("images/2024-04-26-13-11-26.png",90%)
+
+Tre diverse possibilità:
+#cfigure("images/2024-04-26-13-11-54.png",90%)
+
+===== Broker
+
+- Il pattern Broker può essere usato per strutturare sistemi distribuiti con un disaccoppiamento tra i diversi sotto-sistemi che comunicano tra loro attraverso remote server invocation
+
+- Il Broker è responsabile della coordinazione delle comunicazioni,come inoltro richieste, invio risposte ed eccezioni
+
+#cfigure("images/2024-04-29-16-49-33.png",100%)
+
+===== Pipe & Filters
+
+- Il pattern Pipe & Filters aiuta a strutturare quelle applicazioni che processano flussidi dati
+
+- Ogni passo del processo è incapsulato in un apposito filtro e i dati attraversano una pipe di filtri
+
+- Variando l'ordine dei filtri si possono ottenere diversi tipi di sistemi
+
+#cfigure("images/2024-04-26-13-12-43.png",90%)
+
+
+===== Conclusioni
+
+- Come non esiste un processo di sviluppo ideale, non esiste un'Architettura ideale sempre utilizzabile
+
+- Talvolta è necessario usare stili architetturali diversi per parti diverse del sistema al fine di soddisfare tutti i vincoli imposti dai requisiti
+
+- L'adozione dei pattern architetturali può aiutare a trovare il giusto compromesso tra tutte le forze in gioco
+
+
+===== Esempio: Villaggio Turistico
+#cfigure("images/2024-04-26-13-13-35.png",100%)
+
+==== Scelte Tecnologiche
+
+- L'uso di una specifica tecnologia (intesa anche come linguaggio di programmazione, piattaforma, strumento, etc.) non è sempre neutro
+
+- In taluni casi potrebbe risultare vantaggioso scegliere le tecnologie già in fase di progettazione legando così il progetto alla specifica tecnologia
+
+- Nel caso si decida di scegliere la tecnologia in fase di progettazione, va specificato chiaramente e va fatta un'analisi costi/benefici
+
+- Vanno attentamente studiate le parti della tecnologia adottata in modo che sia poi possibile inserirle nei diagrammi di progettazione
+
+
+=== Progettazione di dettaglio
+
+- La Progettazione di Dettaglio definisce il dettaglio dell'Architettura del Sistema nelle sue tre viste:
+
+    - Struttura
+
+    - Interazione
+
+    - Comportamento
+- Quindi non più architettura logica, ma architettura di sistema
+
+- Per realizzare un sistema funzionante, occorre considerare GUI, DB, Framework, librerie, componenti, modifiche al modello per avere #text(blue)[software estensibile e modulare...]
+
+- È compito della Progettazione di Dettaglio #text(blue)[identificare e definire altre classi] in accordo alla specifica architettura scelta
+
+
+- Durante la Progettazione di Dettaglio, i modelli prodotti nell'Analisi devono essere #text(blue)[estesi] al fine di progettare i quattro layer principali che compongono il sistema
+
+- #highlight(fill: myblue)[APPLICATION LOGIC] - logica dell'applicazione e controllo degli altri componenti
+
+- #highlight(fill: myblue)[PRESENTATION LOGIC] - gestione dell'interazione con l'utente a livello logico nuovi oggetti: finestre, menù, bottoni, toolbar , ...
+
+- #highlight(fill: myblue)[DATA LOGIC] - gestione dei dati che il sistema deve manipolare
+
+- #highlight(fill: myblue)[MIDDLEWARE] - gestione dell'interazione con i sistemi esterni, con la rete e tra i sotto-sistemi
+
+- Durante la Progettazione di Dettaglio, i modelli di Analisi devono essere #text(blue)[modificati] al fine di:
+
+- definire in dettaglio le classi e delle loro relazioni
+
+- supportare #text(blue)[caratteristiche specifiche] per comunicazioni,
+
+- diagnostica, protezione dei dati,...
+
+- #text(blue)[riuso] di classi e/o componenti disponibili
+
+- miglioramento delle #text(blue)[prestazioni]
+
+- supporto alla #text(blue)[portabilità]
+
+- ...
+
+
+- #text(blue)[*Massima indipendenza possibile*] da
+
+    - Linguaggio (e ambiente) di programmazione
+
+    - DBMS
+
+    - Sistema Operativo
+
+    - Hardware
+
+- Le caratteristiche specifiche del contesto utilizzato devono essere tenute in conto solo se
+    - sono vincolanti (requisiti non funzionali)
+
+    - si è esplicitamente scelto di legarsi a una tecnologia nella progettazione architetturale
+
+#cfigure("images/2024-04-26-13-17-41.png",90%)
+
+==== Architettura: Struttura
+
+- Durante la Progettazione di Dettaglio della parte di Struttura è necessario definire
+
+    - #text(blue)[tipi di dato] che non sono stati definiti in precedenza
+
+    - #text(blue)[navigabilità delle associazioni] tra classi
+
+    - #text(blue)[strutture dati] necessarie per l'effettiva implementazione del sistema
+
+    - #text(blue)[operazioni] che non erano emerse durante la fase di Analisi del Problema
+
+    - eventuali #text(blue)[nuove classi] necessarie per il corretto funzionamento del sistema
+
+
+
+- Attenzione alla presenza dei “Sistemi Esterni” individuati in fase di Analisi del Problema
+
+- Se nella tabella “Tabella dei Sistemi Esterni” era stato individuato un problema nel “Livello di Protezione” e il Sistema Esterno non risulta avere il livello di sicurezza minimo richiesto occorre applicate il #text(red)[*pattern Adapter*]
+
+    - si ingloba (wrappa) il Sistema Esterno in una nostra struttura
+
+    - si progetta la struttura in modo tale che soddisfi i livelli minimi di sicurezza richiesti
+
+
+
+- Attenzione se si è deciso di vincolarsi a una specifica tecnologia
+
+- Va condotta una #text(blue)[attenta analisi] e #text(red)[valutazione del livello di protezione offerto] dalla tecnologia scelta
+
+- Se tale livello non risulta essere quello minimo richiesto dall'applicazione occorre progettare specifiche parti del sistema per prevenire i buchi di sicurezza legati alla specifica tecnologia
+
+- Ove possibile cercare di applicare il pattern Adapter
+
+
+
+- Applicazione dei #text(red)[*design pattern*] al fine di realizzare #text(blue)[*software di qualità*] facilmente estensibile e modulare
+
+- Applicazione dei #text(red)[principi di progettazione] con particolare attenzione al #text(red)[“Dependency Inversion Principle”]
+
+- Disaccoppiare i layer del sistema porta molti vantaggi
+
+    - possibile cambiare implementazione di parti del sistema senza che la modifica si ripercuota sulla restante parte: #text(red)[*design for change*]
+
+    - possibile cambiare l'aspetto grafico anche variando la tecnologia realizzativa senza dover modificare l'application logic
+
+    - facile inserire nuove funzionalità con impatto minimo sul sistema
+
+
+==== Struttura: Esempio
+
+#cfigure("images/2024-04-26-13-22-07.png",100%)
+#cfigure("images/2024-04-26-13-22-26.png",100%)
+#cfigure("images/2024-04-26-13-22-43.png",100%)
+#cfigure("images/2024-04-26-13-23-04.png",100%)
+
+#cfigure("images/2024-04-26-13-23-22.png",50%)
+
+#cfigure("images/2024-04-26-13-23-57.png",100%)
+
+
+==== Architettura: Interazione
+
+- Durante la Progettazione di Dettaglio della parte di Interazione è necessario
+
+    - #text(blue)[ridefinire i protocolli di interazione] emersi in fase di Analisi dettagliandoli tenendo conto delle nuove entità emerse in progettazione
+
+    - #text(blue)[progettare accuratamente] i protocolli di interazione verso i sistemi esterni
+
+    - #text(blue)[definire nuovi protocolli di interazione] tra le classi che sono state introdotte nella progettazione
+
+
+===== Interazione: Esempio
+#cfigure("images/2024-04-26-13-25-50.png",100%)
+#cfigure("images/2024-04-26-13-31-15.png",100%)
+#cfigure("images/2024-04-26-13-31-32.png",100%)
+
+
+
+
+
+
+=== Architettura: Comportamento
+
+- Durante la progettazione di dettaglio della parte di Comportamento è necessario
+
+- #text(blue)[definire gli algoritmi] che implementano le operazioni complesse/complicate in modo chiaro e preciso avvalendosi eventualmente di diagrammi delle attività
+
+- #text(blue)[dettagliare] i diagrammi di stato/attività già definiti nella fase precedente
+
+- eventualmente #text(blue)[aggiungere diagrammi] di stato/attività per le nuove entità emerse in questa fase
+
+
+=== Progettazione della persistenza
+
+- La persistenza dei dati è un fattore cruciale nello sviluppo di un sistema
+
+- Il progettista dopo un'attenta valutazione di 
+    - vincoli imposti dai requisiti funzionali (tempi di risposta, requisiti di protezione e privacy, ...)
+
+    - tipologia di accesso accesso ai dati (lettura, scrittura, ricerche)
+
+    - frequenza di accesso ai dati (quanto spesso devo accedere ai dati?)
+
+    - criticità e consistenza dei dati (quanto spesso cambiano i dati? quali sono i costi di eventuale “perdite” nelle modifiche dei dati?)
+    dovrà scegliere la tecnica migliore di persistenza
+
+- Per ogni sistema va valutato attentamente quale strategia dà il miglior bilanciamento tra i vincoli e le forze in gioco nel sistema
+
+- Non è sempre detto che l'adozione di un (R)DBMS sia la risposta corretta
+
+- Per esempio se dobbiamo memorizzare dei log la strategia migliore è quella delle scrittura su file:
+    - la maggior parte delle funzionalità “scrivono” solamente una o più righe nel log e l'accesso deve essere molto veloce: il log non deve pesare troppo nei tempi di risposta nel sistema
+
+    - solo gli strumenti di analisi accedono in lettura al loge solitamente occorre analizzare ogni singola riga nel corretto ordine temporale, non c'è bisogno di fare ricerche
+
+
+==== Quando usare un DBMS
+
+- In generale possiamo affermare che quando si ha a che fare con:
+
+    - gestionali che trattano un numero considerevole di dati anche di natura eterogenea
+
+    - dati che cambiano molto spesso e devono essere costantemente aggiornati
+
+    - la “perdita” di modifiche può essere un problema
+    - necessità di ripristino di versioni precedenti a seguito di un malfunzionamento
+    #text(blue)[la scelta consigliata è quella di avvalersi di un DBMS]
+
+#line(length: 100%)
+
+- L'output di questa fase può essere rappresentato da:
+
+    - lo schema E-R del DB che dovrà supportare l'applicazione
+
+    - il formato del/i file che dovranno essere scritti/letti dall'applicazione
+
+- Sarebbe bene che sia nel caso di DB che di file ci fosse una #text(red)[piccola analisi del rischio] per capire se
+
+    - il DB è protetto in modo adeguato
+
+    - il/i file necessitano di meccanismi di protezione
+
+- Il punto di partenza di tale analisi sono #text(blue)[i livelli di protezione e privacy richiesti per i diversi dati] che saranno memorizzati
+
+
+==== Esempio: DB Villaggio Turistico
+#cfigure("images/2024-04-26-19-02-08.png",100%)
+
+==== Esempio: log Villaggio Turistico
+
+- Formato file per Log delle operazioni
+
+    `DataOra operazione esecutore`
+
+- Formato file per Log dei messaggi
+
+  `DataOra messaggio protetto invio/ricezione autore`
+
+
+=== Progettazione del collaudo
+
+- La base di partenza di questa attività è il Piano del Collaudo sviluppato nell'analisi
+
+- Dopo la Progettazione di Dettaglio è possibile scrivere i #text(blue)[test unitari di ciascuna classe]
+
+- Successivamente vanno progettati con cura anche #text(blue)[i test di integrazione] del sistema
+
+- L'output di questa attività è rappresentato dalla Suite completa dei test unitari e di integrazione
+
+
+=== Progettazione per il deployment
+
+- Seguiremo le linee guida già viste nel blocco della sicurezza:
+
+    + Includere supporto per visionare e analizzare le configurazioni
+
+    + Minimizzare i privilegi di default
+
+    + Localizzare le impostazioni di configurazione
+
+    + Fornire modi per rimediare a vulnerabilità di sicurezza
+
+
+==== Deployment: Esempio
+
+#cfigure("images/2024-04-26-19-04-46.png",100%)
+
+#underline[Lato server:]
+
+- i server dovranno essere installati su macchine all'interno di una rete privata
+
+- la rete privata dovrà essere opportunamente protetta da un firewall a cifratura di pacchetti
+
+- l'unico punto di contatto verso l'esterno è il Broker
+
+
+
+
 = Framework .NET
 
 == Introduzione
@@ -4213,7 +4695,7 @@ finally
 
 === Il pattern Dispose
 
- • Se un tipo `T` vuole offrire ai suoi utilizzatori un servizio di clean up esplicito, deve implementare l'interfaccia `IDisposable`
+ Se un tipo `T` vuole offrire ai suoi utilizzatori un servizio di clean up esplicito, deve implementare l'interfaccia `IDisposable`
 
 ```
 public interface IDisposable
@@ -6713,7 +7195,6 @@ public class RectangleFixture
     non dovrebbero essere raggruppate insieme
 
 
-==  Principi di Architettura dei Package
 
 ===  Discussione
 
@@ -6756,18 +7237,17 @@ public class RectangleFixture
 
 
 
-===  Esempio: Grafo dei Package Aciclico
+====  Esempio: Grafo dei Package Aciclico
 
 #cfigure("images/2024-04-22-18-48-39.png",70%)
 
 
-===  Esempio: Grafo dei Package Ciclico
+====  Esempio: Grafo dei Package Ciclico
 
 #cfigure("images/2024-04-22-18-49-05.png",70%)
 
-==  Acyclic Dependencies Principle
 
-===  Discussione
+====  Discussione
 
 - Nello scenario aciclico per rilasciare il package protocol,
     gli ingegneri dovrebbero compilarlo con l'ultima versione
@@ -6782,7 +7262,7 @@ public class RectangleFixture
 
 
 
-===  Rompere il Ciclo Introducendo un'Interfaccia
+====  Rompere il Ciclo Introducendo un'Interfaccia
 
 #cfigure("images/2024-04-22-18-52-30.png",80%)
 
@@ -6793,6 +7273,8 @@ public class RectangleFixture
     of the packages_.\
     _A package should only depend upon packages
     that are more stable than it is_.
+
+
 - I design non possono essere completamente statici
     - Una certa volatilità è necessaria se il progetto deve essere mantenuto
 - Raggiungiamo questo obiettivo conformandoci al CCP
@@ -6803,8 +7285,8 @@ public class RectangleFixture
     con tutti i pacchetti dipendenti
 
 
-#pagebreak()
-===  Esempio
+
+====  Esempio
 
 #cfigure("images/2024-04-22-18-53-44.png",90%)
 
@@ -6821,16 +7303,16 @@ public class RectangleFixture
     dipendenti
 
 
-===  Esempio
+====  Esempio
 
 #cfigure("images/2024-04-22-18-55-31.png",90%)
 
-==  Stable Dependencies/Abstractions Principles
+===  Stable Dependencies/Abstractions Principles
 
-===  Discussione
+====  Discussione
 
 - I package in alto sono instabili e flessibili
-- I package in basso sono molto difficili da modificare
+- I package in basso sono molto difficili da modificare, perché ogni modifica a un package ne provoca altre
 - I package altamente stabili nella parte inferiore del grafo
     delle dipendenze possono essere molto difficili
     da modificare, ma secondo l'OCP non devono essere
@@ -6840,5 +7322,746 @@ public class RectangleFixture
 - È possibile creare la nostra applicazione a partire
     da package instabili facili da modificare
     e package stabili facili da estendere
+
+
+
+= Sicurezza
+
+
+== Progettazione per la Sicurezza
+
+- #text(blue)[*La sicurezza non è qualcosa
+    che può essere aggiunto al sistema*]
+- La sicurezza #text(red)[*deve essere progettata insieme
+    al sistema*] prima dell'implementazione
+- “Sicurezza” #text(blue)[*è anche un problema implementativo*]:
+    spesso le vulnerabilità sono introdotte
+    durante la fase di implementazione
+       - È possibile ottenere un'implementazione non sicura
+          da una progettazione sicura
+       - Non è possibile ottenere un'implementazione sicura
+          partendo da una progettazione non sicura
+
+
+== Progettazione Architetturale
+
+- La scelta dell'architettura del sistema
+    influenza profondamente la sicurezza
+- Un'architettura inappropriata non garantisce
+    - riservatezza ed integrità delle informazioni
+    - il livello di disponibilità richiesto
+- Due problemi fondamentali vanno considerati
+    quando si progetta l'architettura del sistema:
+       - _Protezione_: come dovrebbe essere organizzato il sistema
+          in modo che i beni critici possano essere protetti
+          dagli attacchi esterni?
+       - _Distribuzione_: come dovrebbero essere distribuiti i beni
+          in modo da minimizzare gli effetti di un attacco
+          andato a buon fine?
+
+
+
+- I due problemi sono potenzialmente in conflitto:
+    - se si mettono tutti i beni in un unico posto si può costruire
+       un buon livello di protezione a un costo non eccessivo
+    - se però la protezione fallisce tutti i beni sono compromessi
+    - distribuire i beni porta ad un maggiore costo
+       per la protezione
+    - ci sono più possibilità che la protezione possa fallire
+       se i beni sono distribuiti, ma se questo avviene
+       vi è la perdita solo parziale dei beni
+
+
+
+- Tipicamente la migliore architettura per fornire
+    un alto grado di protezione è quella a layer
+- I beni critici da proteggere sono posizionati
+    al livello più basso
+- Il numero di layer necessari varia da applicazione
+    ad applicazione e dipende dalla criticità dei beni
+    che devono essere protetti
+- Per migliorare la protezione inoltre sarebbe bene
+    che le credenziali di accesso ai diversi livelli
+    fossero diverse tra loro
+       - Esempio: se si adotta un meccanismo di accesso
+          con password, ogni livello deve avere
+          una propria password diversa da quelle degli altri livelli
+
+
+=== Esempio
+
+#cfigure("images/2024-04-23-14-12-12.png",100%)
+
+
+- Se la protezione dei dati è un requisito critico
+    si potrebbe anche usare un'architettura client-server
+    con i meccanismi di protezione nella macchina server
+
+
+
+- La versione tradizionale client-server ha molte limitazioni
+- Se la sicurezza viene compromessa
+    - le perdite associate ad un attacco saranno alte
+       Esempio: tutte le credenziali di accesso
+       verranno compromesse
+    - i costi di recupero saranno anch'essi elevati
+       Esempio: tutte le credenziali di accesso al sistema
+       andranno rigenerate
+- Il sistema è inoltre maggiormente soggetto ad attacchi
+    DoS che sovraccaricano il server
+- Una possibile soluzione può essere quella
+    di adottare una architettura distribuita
+    in cui il server viene replicato in punti diversi della rete
+
+
+=== Esempio
+
+#cfigure("images/2024-04-23-14-13-01.png",100%)
+
+=== Esempio
+
+- I beni del sistema sono distribuiti in diversi nodi
+    della rete ognuno dei quali ha un proprio meccanismo
+    di protezione dei dati
+- I dati “più importanti” sono replicati nei diversi nodi
+- Attacco ad uno specifico nodo:
+    - alcuni beni non saranno disponibili
+    - il sistema comunque potrà ancora funzionare
+       e fornire i servizi più importanti
+    - grazie alla replicazione, il ripristino dei dati
+       nel nodo attaccato sarà più facile e meno costoso
+
+
+#line(length: 100%)
+- Tipico problema: lo stile architetturale più appropriato
+    per la sicurezza potrebbe essere in conflitto
+    con gli altri requisiti dell'applicazione (analisi trade-off)
+- Esempio:
+
+
+a. riservatezza dei dati memorizzati su un vasto database
+b. accesso molto veloce ai dati
+
+- Soddisfare entrambi i requisiti nella stessa architettura
+    presenta molti problemi
+       / a.: 
+        - layer per garantire la riservatezza
+        - diminuzione netta della velocità di accesso ai dati
+       / b.: 
+            - architettura “snella”
+            - diminuzione netta della riservatezza
+
+
+
+- Tipico problema: lo stile architetturale più appropriato
+    per la sicurezza potrebbe essere in conflitto
+    con gli altri requisiti dell'applicazione (analisi trade-off)
+- Va valutato attentamente
+    quale «requisito» è prioritario
+    e l'architettura sarà scelta
+    di conseguenza
+
+== Linee Guida di Progettazione
+
+- Non ci sono regole rigide per ottenere un sistema sicuro
+- #text(blue)[*Differenti tipi di sistema richiedono differenti misure
+    tecniche per ottenere un livello di sicurezza accettabile*]
+- La posizione e i requisiti di diversi gruppi di utenti
+    influenzano pesantemente #text(blue)[*cosa è*] e #text(blue)[*cosa non è*]
+    accettabile
+- Ci sono comunque linee guida generali
+    di ampia applicabilità per la progettazione di sistemi sicuri
+    che possono fungere da:
+       - mezzo per migliorare la consapevolezza dei problemi
+          di sicurezza in un team di progettisti software
+       - base per una lista di controlli da fare durante il processo
+          di validazione del sistema
+
+
+
++ Basare le decisioni della sicurezza su una politica esplicita
++ Evitare un singolo punto si fallimento
++ Fallire in modo certo
++ Bilanciare sicurezza e usabilità
++ Essere consapevoli dell'esistenza dell'ingegneria sociale
++ Usare ridondanza e diversità riduce i rischi
++ Validare tutti gli input
++ Dividere in compartimenti i beni
++ Progettare per il deployment
++ Progettare per il ripristino
+
+
+=== Basare la Sicurezza su Policy
+
+- La #text(blue)[*Security Policy*] è un documento di alto livello
+    che definisce “cosa” è la sicurezza
+    ma non “come” ottenerla
+- La policy non dovrebbe definire i meccanismi usati
+    per fornire e far rispettare la sicurezza
+- Gli aspetti della security policy dovrebbero originare
+    dei requisiti di sistema
+- In pratica ciò è poco probabile, specie se viene adottato
+    un processo di sviluppo rapido
+- I progettisti dovrebbero quindi consultare la policy
+    sia nelle decisioni di progettazione
+    che nella loro valutazione
+
+
+==== Progettazione delle Politiche
+
+- Le politiche di sicurezza devono essere incorporate
+    nella progettazione al fine di:
+       - specificare come le informazioni possono essere accedute
+       - quali precondizioni devono essere testate per l'accesso
+       - a chi concedere l'accesso
+- Tipicamente le politiche vengono rappresentate
+    come un insieme di regole e condizioni
+- Tali regole devono essere incorporate in uno specifico
+    componente del sistema chiamato “#text(blue)[*_Security Authority_*]”
+    che avrà il compito di far rispettare le politiche all'interno
+    dell'applicazione
+
+
+- A livello progettuale le politiche di sicurezza
+    sono suddivise in sei specifiche categorie:
+    - #highlight(fill: myred)[Identity policies:] definiscono le regole per la verifica    delle credenziali degli utenti
+    - #highlight(fill: myred)[Access control policies:] definiscono le regole da applicare sia alle richieste di accesso alle risorse sia all'esecuzione di specifiche operazioni messe a disposizione dall'applicazione
+    - #highlight(fill: myred)[Content-specific policies:] definiscono le regole da applicare a specifiche informazioni durante la memorizzazione e la comunicazione
+    - #highlight(fill: myred)[Network and infrastructure policies:] definiscono le regole per controllare il flusso dei dati e il deployment sia delle reti  che dei servizi infrastrutturali di hosting pubblici e privati
+    - #highlight(fill: myred)[Regulatory policies:] definiscono le regole a cui    l'applicazione deve sottostare per soddisfare i requisiti legali    e di regolamentazione delle leggi in vigore nel Paese/Stato  in cui il sistema opera
+    - #highlight(fill: myred)[Advisor and information policies:] queste regole    non sono imposte, ma sono caldamente consigliate  in riferimento alle regole dell'organizzazione e al ruolo delle attività di business. Per esempio queste regole possono essere applicate per informare il personale sull'accesso ai dati sensibili o per stabilire comunicazioni commerciali con partner esterni
+
+
+=== Evitare Punto Singolo di Fallimento
+
+- Nei sistemi critici è buona norma di progettazione quella
+    di cercare di #text(blue)[*evitare un singolo punto di fallimento*]
+- Questo perché un singolo fallimento in una parte del
+    sistema non si trasformi nel fallimento di tutto il sistema
+- Per quanto riguarda la sicurezza questo significa
+    che #text(blue)[*non ci si dovrebbe affidare a un singolo
+    meccanismo per assicurarla*], ma si dovrebbero
+    impiegare differenti tecniche
+- Questo viene spesso chiamato “#text(red)[*difesa in profondità*]”
+- Esempio: se si usa la password per autenticare
+    si dovrebbe anche includere un meccanismo
+    sfida e risposta
+
+
+=== Fallire in Modo Certo
+
+- Qualche tipo di fallimento è inevitabile in tutti i sistemi,
+    ma i sistemi critici per la sicurezza dovrebbero sempre
+    #text(red)[*_fallire in modo sicuro_*]
+- Non si dovrebbero avere procedure di fall-back
+    meno sicure del sistema stesso
+- Anche se il sistema fallisce #text(blue)[*non deve essere
+    consentito a un attaccante di accedere ai dati
+    riservati*]
+- Esempio: i dati dei pazienti dovrebbero essere scaricati
+    sul client all'inizio di ogni sessione clinica, così se il
+    server fallisce i dati sono comunque mantenuti sul client.
+    I dati vengono cifrati per non essere letti da personale
+    non autorizzato. Questa pratica non vale per username e password, non è necessario inserire la password nel modello del dominio.
+
+
+=== Bilanciare Sicurezza e Usabilità
+
+- Sicurezza e usabilità sono spesso in contrasto
+    - #text(blue)[per avere sicurezza bisogna introdurre un numero
+       di controlli] che garantiscano che gli utenti siano autorizzati
+       a usare il sistema e che nello stesso tempo agiscano
+       in accordo alle politiche di sicurezza
+    - questo inevitabilmente ricade sull'utente che ha bisogno
+       di più tempo per imparare ad utilizzare il sistema
+- #text(red)[*Ogni volta che si aggiunge una caratteristica di sicurezza
+    al sistema questo inevitabilmente diventa meno usabile*]
+- A volte può diventare contro produttivo introdurre
+    nuove caratteristiche di sicurezza a spese dell'usabilità
+       - Esempio: obbligare l'utente all'adozione di password forti
+
+
+=== Essere Consapevoli dell'Ingegneria Sociale
+
+- #text(red)[*Ingegneria sociale*]: trovare modi per convincere
+    con l'inganno utenti accreditati al sistema a rivelare
+    informazioni riservate
+- Questi approcci si avvantaggiano della “#text(blue)[*volontà di aiutare*]”
+    delle persone e della loro fiducia nell'organizzazione
+- Dal punto di vista della progettazione contrastare
+    l'ingegneria sociale #text(blue)[*è quasi impossibile*]
+- Se la sicurezza è molto critica non si dovrebbe affidarsi
+    solo a meccanismi di autenticazione basati su password, ma
+    bisognerebbe utilizzare meccanismi di autenticazione forte
+- Meccanismi di log che tracciano sia la locazione
+    che l'identità dell'utente e programmi di analisi del log
+    potrebbero essere utili ad identificare brecce nella sicurezza
+
+
+=== Usare Ridondanza e Diversità
+
+- Ridondanza significa #text(blue)[*mantenere più di una versione*]
+    del software e dei dati nel sistema
+- Diversità significa #text(blue)[*che le diverse versioni del sistema
+    non dovrebbero usare la stessa piattaforma
+    o essere basati sulle stesse tecnologie*]
+- In questo modo una vulnerabilità della piattaforma
+    o della tecnologia non influirà su tutte le versioni
+    e non condurrà a un comune punto di fallimento
+- Esempio:
+    - mantenere i dati dei pazienti sia sul client che sul server
+    - client e server devono avere un diverso sistema operativo
+    - attacco basato su vulnerabilità del SO non influenza
+       sia client che server
+
+
+=== Validare tutti gli Input
+
+- Un comune attacco al sistema consiste nel fornire input
+    inaspettati che causano un comportamento imprevisto
+       - crash
+       - perdita della disponibilità del servizio
+       - esecuzione di codice malevolo
+- Tipici esempi sono buffer overflow e SQL injection
+- Si possono evitare molti di questi problemi progettando
+    la validazione dell'input in tutto il sistema
+- Nei requisiti dovrebbero essere definiti tutti i controlli
+    che devono essere applicati
+- Bisogna usare la conoscenza dell'input per definire
+    questi controlli
+
+
+=== Dividere in Compartimenti i Beni
+
+- #text(blue)[*Compartimentalizzare*] significa organizzare
+    le informazioni nel sistema in modo che gli #text(red)[*utenti
+    abbiano accesso solo alle informazioni necessarie*]
+    piuttosto che a tutte le informazioni del sistema
+- Gli effetti di un attacco in questo modo sono più
+    contenuti: qualche informazione sarà persa o
+    danneggiata, ma è poco probabile che
+    tutte le informazioni del sistema siano coinvolte
+- Esempio:
+    - lo staff clinico può avere accesso soltanto ai record
+       dei pazienti che hanno un appuntamento
+       o sono ricoverati nella clinica
+    - esiste un meccanismo per gestire accessi inaspettati
+
+
+=== Progettazione per il Deployment
+
+- Molti problemi di sicurezza sorgono perché il sistema
+    #text(red)[*non viene configurato correttamente*]
+    al momento del deployment
+- Bisogna sempre progettare il sistema in modo che
+    - siano inclusi programmi di utilità per semplificare
+       il deployment
+    - verificare potenziali errori di configurazione e omissioni
+       nel sistema di deployment
+
+
+=== Progettazione per il Ripristino
+
+- Bisogna sempre progettare il sistema con l'assunzione
+    che gli errori di sicurezza possano accadere
+- Si deve quindi pensare a come ripristinare il sistema
+    dopo possibili errori e riportarlo a uno stato operazionale
+    sicuro
+- Esempio:
+    - persone non autorizzate accedono ai dati dei pazienti
+    - non è noto come abbiano ottenuto le credenziali
+       per l'accesso
+    - occorre quindi cambiare tutte le credenziali del sistema
+       in modo che la persona non autorizzata non abbia accesso
+       al meccanismo di cambiamento delle password
+
+
+== Progettazione per il Deployment
+
+- Il deployment di un sistema coinvolge:
+    - configurazione del sistema per operare nell'ambiente:
+       - semplice impostazione di parametri delle preferenze
+          degli utenti
+       - definizione di regole e modelli di business che governano
+          l'esecuzione del software
+    - installazione del sistema sui computer dell'ambiente
+    - configurazione del sistema installato
+
+
+=== Deployment del Software
+
+#cfigure("images/2024-04-23-14-26-30.png",100%)
+
+#line(length: 100%)
+
+- Nella fase di deployment vengono spesso introdotte
+    in modo accidentale delle vulnerabilità
+- Esempio:
+    - il software deve spesso essere configurato
+       con una lista di utenti autorizzati
+    - quando il software è rilasciato questa lista consiste
+       di un login per l'amministratore generico come “admin”
+       e la password di default è “password”
+    - come prima azione l'amministratore dovrebbe modificare
+       i dati di login, ma è molto facile dimenticare di farlo
+    - un attaccante che conosce il login di default
+       potrebbe essere capace di guadagnare privilegi di accesso
+       al sistema
+
+
+
+- La configurazione e il deployment sono spesso visti
+    solo come problemi di amministrazione
+    e quindi al di fuori del processo di ingegnerizzazione
+- I progettisti software hanno la responsabilità
+    di progettare per il deployment
+- Bisogna sempre fornire supporti per il deployment
+    che riducano la probabilità che gli amministratori
+    compiano degli errori quando configurano il software
+- Esistono delle linee guida per la progettazione
+    per il deployment
+
+
+=== Linee Guida
+
+1. Includere supporto per visionare
+    e analizzare le configurazioni
+2. Minimizzare i privilegi di default
+3. Localizzare le impostazioni di configurazione
+4. Fornire modi per rimediare a vulnerabilità di sicurezza
+
+
+==== Supporto per le Configurazioni
+
+- Si devono sempre includere #text(blue)[*programmi di utilità*]
+    che consentano agli amministratori di esaminare
+    la configurazione corrente del sistema
+- Sorprendentemente questi programmi #text(blue)[*mancano*]
+    nella maggior parte dei sistemi software
+- Gli utenti sono spesso frustrati dalla difficoltà di trovare
+    i dettagli della configurazione
+       - per un quadro completo della configurazione
+          spesso occorre visionare diversi menu
+          e questo porta a errori e omissioni
+- Idealmente in fase di visualizzazione delle configurazioni
+    si dovrebbero evidenziare impostazioni critiche
+    per la sicurezza
+
+
+==== Minimizzare i Privilegi di Default
+
+- Il software deve essere progettato in modo tale
+    che la #text(red)[*configurazione di default fornisca
+    i minimi privilegi essenziali*]
+- In questo modo vengono limitati i danni
+    di un possibile attacco
+- Esempio:
+    - l'autenticazione di default dell'amministratore dovrebbe
+       solo consentire l'accesso a un modulo che permette
+       all'amministratore di inserire nuove credenziali
+    - non dovrebbe essere consentito l'accesso
+       a nessuna altra funzionalità
+    - quando vengono modificate le credenziali, quella di default
+       dovrebbe essere automaticamente cancellata
+
+
+==== Localizzare le Impostazioni di Configurazione
+
+- Quando si progetta il supporto per le configurazioni
+    del sistema bisognerebbe assicurarsi che ogni risorsa
+    che appartiene alla stessa parte del sistema
+    venga configurata nella stessa posizione
+- Se le informazioni di configurazione non sono localizzate
+    - è facile dimenticarsi di farlo
+    - può capitare di non essere a conoscenza dell'esistenza
+       di meccanismi per la sicurezza già inclusi nel sistema
+    - se tali meccanismi presentano configurazioni di default
+       si potrebbe essere esposti ad attacchi
+
+
+==== Rimediare a Vulnerabilità
+
+- Bisogna includere #text(red)[*meccanismi diretti*] per:
+    - aggiornare il sistema
+    - riparare le vulnerabilità di sicurezza che vengono scoperte
+- Questi potrebbero includere
+    - verifiche automatiche per aggiornamenti di sicurezza
+    - download di tali aggiornamenti non appena sono disponibili
+- Va comunque considerato che gli aggiornamenti devono
+    coinvolgere contemporaneamente centinaia di PC
+    su cui tipicamente il software è installato
+
+
+
+== Testare la Sicurezza
+
+- Il test di un sistema gioca #text(blue)[*un ruolo chiave*] nel processo
+    di sviluppo software e dovrebbe essere eseguito
+    con molta attenzione
+- È quindi sorprendente che #text(blue)[*l'area dei test
+    della sicurezza sia quella più trascurata
+    durante lo sviluppo del sistema*]
+- Questo può essere attribuito a diversi fattori:
+    - mancanza di comprensione dell'importanza
+       dei test relativi alla sicurezza
+    - mancanza di tempo
+    - mancanza di conoscenza su come svolgere
+       un test di sicurezza
+    - mancanza di tool integrati per compiere test
+
+
+- Il test della sicurezza è un lavoro molto lungo e tedioso,
+    spesso molto più complesso dei test funzionali
+    che vengono svolti normalmente
+- Inoltre esso coinvolge diverse discipline
+    - ci sono tradizionali test per accertare la sicurezza
+       dei requisiti applicativi che possono essere svolti
+       normalmente dal team di testing
+    - ma esistono dei test non funzionali di “rottura”
+       del sistema che devono essere condotti da esperti
+       di sicurezza
+       - Black box testing
+       - White box testing
+
+
+=== Black Box Testing
+
+- Questo test ha come assunzione di base
+    la non conoscenza dell'applicazione
+- I tester affrontano l'applicazione
+    come farebbe un attaccante
+       - indagando sulle informazioni riguardanti la struttura interna
+       - successivamente applicano un insieme di tentativi
+          di violazione del sistema basati sulle informazioni ottenute
+- Esempio: se un URL di una applicazione contiene
+    una estensione “.cgi” allora può essere inferito
+    che l'applicazione è stata sviluppata con la tecnologia
+    CGI e applicare quindi le ben conosciute tecniche
+    di violazione di questa tecnologia
+
+
+
+- I tester possono impiegare una varietà di strumenti
+    per scansionare e indagare l'applicazione
+       - ci sono centinaia di tool in rete per l'hacking di applicazioni
+          che permettono di “scandagliare” le porte dei sistemi
+          perpetuando attacchi sfruttando le debolezze
+          ben conosciute di svariati linguaggi di programmazione
+- Questo test non prende in esame solo debolezze
+    del codice, ma vengono svolti test mirati anche al livello
+    infrastrutturale
+       - errori di configurazione di reti e host
+       - falle di sicurezza nelle macchine virtuali
+       - problemi legati ai linguaggi di implementazione
+
+
+=== White Box Testing
+
+- Questo test ha come assunzione di base
+    la completa conoscenza dell'applicazione
+- I tester hanno accesso a tutte le informazioni
+    di configurazione e anche al codice sorgente
+- Essi operano una revisione del codice
+    cercando possibili debolezze
+- Inoltre scrivono test per stabilire come trarre vantaggio
+    dalle debolezze scoperte
+- Tipicamente questi tester sono ex-sviluppatori o persone
+    che conoscono molto bene l'ambiente di sviluppo
+
+
+
+- I tool a disposizione differiscono molto
+    da quelli usati nel black box test
+- Tipicamente sono tool di debugging che consentono
+    di trovare bachi e vulnerabilità specifici del sistema
+- I bachi tipici riguardano problemi di corsa critici
+    e la mancanza di verifica dei parametri di input
+    e sono specifici di ogni applicazione
+- Questi test portano a scoprire anche altri problemi
+    come i memory leak e problemi di prestazione
+    che contribuiscono al danneggiamento della disponibilità
+    e dell'affidabilità dell'intero sistema
+
+
+
+
+== Capacità di Sopravvivenza del Sistema
+TUTO QUESTO CAPITOLO NON È DA STUDIARE
+- Con il termine #text(blue)[*capacità di sopravvivenza*] (_survivability_)
+    si intende la capacità del sistema di continuare
+    a fornire i servizi essenziali agli utenti legittimi
+       - mentre è sotto attacco
+       - dopo che parti del sistema sono state danneggiate
+          come conseguenza di un attacco o di un fallimento
+- La capacità di sopravvivenza è una proprietà
+    dell'intero sistema, non dei singoli componenti di questo
+- Il lavoro sulla capacità di sopravvivenza è molto critico
+    poiché l'economia e la vita sociale dipendono
+    da infrastrutture controllate da computer
+
+
+- L'analisi e la progettazione della capacità
+    di sopravvivenza dovrebbero essere parte del processo
+    di ingegnerizzazione dei sistemi sicuri
+- #text(blue)[La disponibilità dei servizi critici è l'essenza
+    della sopravvivenza]
+- Questo significa conoscere
+    - quali sono i servizi #text(blue)[maggiormente critici]
+    - come questi servizi possono essere compromessi
+    - qual è la #text(blue)[qualità minima dei servizi] che deve essere
+       mantenuta
+    - come proteggere questi servizi
+    - come #text(blue)[ripristinare velocemente] il sistema
+       se i servizi diventano non disponibili
+
+
+=== Esempio
+
+- Un sistema informatico che gestisce l'invio
+    delle ambulanze in risposta alle chiamate di emergenza
+- Servizi:
+    - prendere le chiamate e inviare le ambulanze
+    - log delle chiamate
+    - gestione locazione delle ambulanze
+- Il servizio critico è quello legato a prendere le chiamate
+    e inviare le ambulanze perché necessita di un processo
+    real-time per la gestione degli eventi
+
+
+=== Analisi della Sopravvivenza
+
+- Il Survivable Analysis Systems è un metodo di analisi
+    ideato agli inizi del 2000 per:
+       - valutare le vulnerabilità nel sistema
+       - supportare la progettazione di architetture e caratteristiche
+          che promuovono la sopravvivenza del sistema
+- In questo metodo la sopravvivenza del sistema
+    - dipende da tre strategie complementari
+    - è un processo a 4 fasi
+
+
+=== Strategie
+
+- #highlight(fill: myblue)[Resistenza:]
+    - evitare problemi costruendo all'interno del sistema
+       le capacità di respingere attacchi
+    - es: firma digitale per l'autenticazione
+- #highlight(fill: myblue)[Identificazione:]
+    - individuare problemi costruendo all'interno del sistema
+       le capacità di riconoscere attacchi e fallimenti
+       e valutare il danno risultante
+    - es: aggiungere checksum ai dati critici
+- #highlight(fill: myblue)[Ripristino:]
+    - tollerare problemi costruendo all'interno del sistema
+       le capacità di fornire servizi essenziali durante un attacco
+    - ripristinare le complete funzionalità dopo l'attacco
+
+
+=== Fasi Analisi di Sopravvivenza
+
+#cfigure("images/2024-04-24-16-59-07.png",100%)
+
+=== Principali Attività
+
+- #highlight(fill: myblue)[Capire il sistema:] riesaminare gli obiettivi del sistema,
+    i requisiti e l'architettura
+- #highlight(fill: myblue)[Identificare servizi critici:] identificare i servizi
+    che devono essere mantenuti e i componenti
+    che devono svolgere tale compito
+- #highlight(fill: myblue)[Simulare gli attacchi:] identificare gli scenari o i casi d'uso
+    dei possibili attacchi insieme ai componenti influenzati
+    da questi attacchi
+- #highlight(fill: myblue)[Analizzare la sopravvivenza:] identificare
+    - i componenti che sono sia essenziali che a rischio
+    - le strategie di sopravvivenza basate su resistenza,
+       identificazione e ripristino
+
+
+=== Esempio
+
+#cfigure("images/2024-04-24-17-00-19.png",100%)
+
+=== Esempio
+
+- Sistema che gestisce l'equità dei prezzi nei mercati
+    internazionali
+- Qual è il minimo supporto che il sistema fornisce già
+    per la sopravvivenza?
+       - gli account dei clienti e i prezzi internazionali
+          sono replicati in tutti i nodi
+- Servizio chiave che deve sempre essere mantenuto:
+    capacità di piazzare ordini
+       - mantenere l'integrità dei dati
+       - ordini accurati e che riflettano le vendite e gli acquisti
+          degli utenti
+
+
+=== Esempio
+
+- Per mantenere questo servizio ci sono tre componenti
+    del sistema
+       - _autenticazione dell'utente_ : consente agli utenti autorizzati
+          di accedere al sistema
+       - quotazione dei prezzi: consente che la vendita e l'acquisto
+          degli stock dei beni siano quotati
+       - piazzamento ordini: consente di vendere o comprare beni
+          al dato prezzo di mercato
+
+- Questi componenti fanno uso dei dati
+
+- relativi agli utenti
+- accedono al database delle transazioni
+
+
+=== Esempio
+
+- Possibili attacchi al sistema:
+    - utente malevolo guadagna le credenziali di accesso
+       di utente verso cui nutre forte rancore
+       - vengono piazzati ordini di vendita e acquisto in modo
+          tali da causare seri problemi all'utente legittimo
+    - utente non autorizzato corrompe il database
+       delle transazioni guadagnando permessi
+       per eseguire direttamente query SQL
+       - riconciliare gli acquisti e le vendite diventa quindi impossibile
+
+
+=== Esempio
+
+#cfigure("images/2024-04-24-17-01-24.png",100%)
+
+=== Capacità di Sopravvivenza
+
+- Aggiungere le tecniche di sopravvivenza costa soldi
+- Spesso le aziende sono molto riluttanti ad investire
+    sulla sopravvivenza, specie se non hanno mai subito
+    attacchi e perdite
+- È comunque sempre buona norma investire
+    nella sopravvivenza prima piuttosto che dopo aver già
+    subito un attacco
+- L'analisi della sopravvivenza non è ancora inclusa
+    nella maggior parte dei processi di ingegnerizzazione
+    del software
+- Con la crescita dei sistemi critici sembra probabile
+    che questo tipo di analisi sarà sempre più utilizzato
+
+
+
+== Conclusioni
+
+- La sicurezza deve #text(blue)[*essere onnipresente
+    attraverso tutto il ciclo di sviluppo del software*]
+- Inoltre la sicurezza deve essere tenuta in considerazione
+    anche attraverso tutti gli strati dell'infrastruttura
+    su cui l'applicazione viene sviluppata
+- Per ottenere questo è imperativa l'adozione
+    di un processo che tenga in considerazione
+    le problematiche relative alla sicurezza
+    sin dalle prime fasi dello sviluppo del sistema
+- È inoltre necessario che vengano compiuti #text(blue)[*severi test
+    periodici*] a verifica del livello di sicurezza del sistema
+
+
+
 
 
