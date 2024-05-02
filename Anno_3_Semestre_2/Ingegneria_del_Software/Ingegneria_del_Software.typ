@@ -3526,34 +3526,34 @@ Tre diverse possibilità:
 
 - Per realizzare un sistema funzionante, occorre considerare GUI, DB, Framework, librerie, componenti, modifiche al modello per avere #text(blue)[software estensibile e modulare...]
 
-- È compito della Progettazione di Dettaglio #text(blue)[identificare e definire altre classi] in accordo alla specifica architettura scelta
+- È compito della Progettazione di Dettaglio #text(blue)[identificare e definire altre classi] in accordo alla specifica architettura scelta, siamo arrivati al _come_
 
 
 - Durante la Progettazione di Dettaglio, i modelli prodotti nell'Analisi devono essere #text(blue)[estesi] al fine di progettare i quattro layer principali che compongono il sistema
 
-- #highlight(fill: myblue)[APPLICATION LOGIC] - logica dell'applicazione e controllo degli altri componenti
+    - #highlight(fill: myblue)[Application Logic] - logica dell'applicazione e controllo degli altri componenti
 
-- #highlight(fill: myblue)[PRESENTATION LOGIC] - gestione dell'interazione con l'utente a livello logico nuovi oggetti: finestre, menù, bottoni, toolbar , ...
+    - #highlight(fill: myblue)[Presentation logic] - gestione dell'interazione con l'utente a livello logico nuovi oggetti: finestre, menù, bottoni, toolbar , ...
 
-- #highlight(fill: myblue)[DATA LOGIC] - gestione dei dati che il sistema deve manipolare
+    - #highlight(fill: myblue)[Data logic] - gestione dei dati che il sistema deve manipolare
 
-- #highlight(fill: myblue)[MIDDLEWARE] - gestione dell'interazione con i sistemi esterni, con la rete e tra i sotto-sistemi
+    - #highlight(fill: myblue)[Middleware] - gestione dell'interazione con i sistemi esterni, con la rete e tra i sotto-sistemi
 
 - Durante la Progettazione di Dettaglio, i modelli di Analisi devono essere #text(blue)[modificati] al fine di:
 
-- definire in dettaglio le classi e delle loro relazioni
+    - definire in dettaglio le classi e delle loro relazioni
 
-- supportare #text(blue)[caratteristiche specifiche] per comunicazioni,
+    - supportare #text(blue)[caratteristiche specifiche] per comunicazioni,
 
-- diagnostica, protezione dei dati,...
+    - diagnostica, protezione dei dati,...
 
-- #text(blue)[riuso] di classi e/o componenti disponibili
+    - #text(blue)[riuso] di classi e/o componenti disponibili
 
-- miglioramento delle #text(blue)[prestazioni]
+    - miglioramento delle #text(blue)[prestazioni]
 
-- supporto alla #text(blue)[portabilità]
+    - supporto alla #text(blue)[portabilità]
 
-- ...
+    - ...
 
 
 - #text(blue)[*Massima indipendenza possibile*] da
@@ -3567,9 +3567,9 @@ Tre diverse possibilità:
     - Hardware
 
 - Le caratteristiche specifiche del contesto utilizzato devono essere tenute in conto solo se
-    - sono vincolanti (requisiti non funzionali)
+    - #text(blue)[sono vincolanti] (requisiti non funzionali)
 
-    - si è esplicitamente scelto di legarsi a una tecnologia nella progettazione architetturale
+    - si è #text(blue)[esplicitamente scelto] di legarsi a una tecnologia nella progettazione architetturale, ad esempio una specifica tecnologia utilizzabile solo da un linguaggio di programmazione
 
 #cfigure("images/2024-04-26-13-17-41.png",90%)
 
@@ -3638,7 +3638,7 @@ Tre diverse possibilità:
 
 - Durante la Progettazione di Dettaglio della parte di Interazione è necessario
 
-    - #text(blue)[ridefinire i protocolli di interazione] emersi in fase di Analisi dettagliandoli tenendo conto delle nuove entità emerse in progettazione
+    - #text(blue)[ridefinire i protocolli di interazione] emersi in fase di Analisi dettagliandoli tenendo conto delle nuove entità emerse in progettazione, quindi definiamo il _come_
 
     - #text(blue)[progettare accuratamente] i protocolli di interazione verso i sistemi esterni
 
