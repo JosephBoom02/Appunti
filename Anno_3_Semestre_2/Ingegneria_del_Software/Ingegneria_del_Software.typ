@@ -2378,7 +2378,7 @@ in base ai risultati dell'Analisi del Problema
           se la funzionalità si comporta come ci si aspetta
 
 
-==== Analisi delle Funzionalità
+#line(length: 100%)
 
 - Si possono predisporre diverse tabelle di analisi
 
@@ -2903,7 +2903,7 @@ Quindi, quando l'associazione ha delle informazioni, o più raramente del compor
     - Applicabilità dell'operazione
     - ...
 
-- PRE-CONDIZIONE
+- #highlight(fill: myblue)[Pre-condizione]\
     Espressione logica riguardante le aspettative sullo stato
     del sistema prima che venga eseguita un'operazione
        - Esplicita in modo chiaro che è responsabilità della procedura
@@ -2912,7 +2912,7 @@ Quindi, quando l'associazione ha delle informazioni, o più raramente del compor
           *`CalcolaRadiceQuadrata(valore)`* ,
           la pre-condizione potrebbe essere: “ *`valore ≥ 0`* ”
 
-- POST-CONDIZIONE
+- #highlight(fill: myblue)[Post-condizione]\
     Espressione logica riguardante le aspettative sullo stato
     del sistema dopo l'esecuzione di un'operazione
        - Ad esempio, per l'operazione
@@ -2920,7 +2920,7 @@ Quindi, quando l'associazione ha delle informazioni, o più raramente del compor
           la post-condizione potrebbe essere:
           `valore == risultato * risultato`
 
-- #text(red)[INVARIANTE di classe]\
+- #highlight(fill: myred)[Invariante di classe]\
     Vincolo di classe (espressione logica) che deve essere
     sempre verificato
        - sia all'inizio
@@ -2930,7 +2930,6 @@ Può non essere verificato solo durante l'esecuzione
 dell'operazione
 
 
-==== Individuazione delle Operazioni
 
 - ECCEZIONE
     Si verifica quando un'operazione
@@ -3772,6 +3771,956 @@ Tre diverse possibilità:
 
 
 
+
+=== Design Pattern
+
+
+Nel 1977, Christopher Alexander disse:
+
+#align(center)[_«Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use the solution a million times over, without ever doing it the same way twice»_]
+
+Parlava di costruzioni civili e di città
+
+
+
+
+- La stessa frase è applicabile anche alla progettazione object-oriented
+
+- In questo caso, le soluzioni utilizzeranno
+        - oggetti, classi e interfacce
+        - invece che pareti e porte...
+
+
+- #text(blue)[Obiettivi]
+    - Risolvere problemi progettuali specifici
+    - Rendere i progetti object-oriented più flessibili e riutilizzabili
+
+- Ogni design pattern
+    - Cattura e formalizza l'esperienza acquisita nell'affrontare e risolvere uno specifico problema progettuale
+    - Permette di riutilizzare tale esperienza in altri casi simili
+
+
+
+
+- Ogni design pattern ha #text(blue)[quattro elementi essenziali]
+
+    - un nome (significativo) - identifica il pattern
+
+    - il problema - descrive quando applicare il pattern
+
+    - la soluzione - descrive il pattern, cioè gli elementi che lo compongono (classi e istanze) e le loro relazioni, responsabilità e collaborazioni
+
+    - le conseguenze - descrivono vantaggi e svantaggi dell'applicazione del pattern e permettono di valutare le alternative progettuali
+
+
+==== L'importanza dei nomi dei Pattern
+
+- Gli schemi progettuali del software hanno nomi suggestivi:
+
+    - Observer, Singleton, Strategy ...
+- Perché i nomi sono importanti?
+    - Supportano il chunking, ovvero fissano il concetto nella nostra memoria e ci aiutano a capirlo
+
+    - Facilitano la comunicazione tra progettisti
+
+
+==== Classificazione dei Design Pattern
+
+- #highlight(fill: myblue)[Pattern di creazione] (creational pattern)\
+    Risolvono problemi inerenti il processo di creazione di oggetti
+
+- #highlight(fill: myblue)[Pattern strutturali] (structural pattern)\
+    Risolvono problemi inerenti la composizione di classi o di oggetti
+
+- #highlight(fill: myblue)[Pattern comportamentali] (behavioral pattern)\
+    Risolvono problemi inerenti le modalità di interazione e di distribuzione delle responsabilità tra classi o tra oggetti
+
+#cfigure("images/2024-05-03-13-03-37.png",100%)
+
+
+==== Pattern SINGLETON
+
+- Assicura che una classe abbia una sola istanza  fornisce un punto di accesso globale a tale istanza
+
+- La classe deve:
+
+    - tenere traccia della sua sola istanza
+
+    - intercettare tutte le richieste di creazione, al fine di garantire che nessuna altra istanza venga creata
+
+    - fornire un modo per accedere all'istanza unica
+
+
+```C public class Singleton
+
+{
+
+    ... attributi membro di istanza ...
+
+    private static Singleton instance = null;
+
+    protected Singleton()
+
+    { inizializzazione istanza }
+
+
+    public static Singleton GetInstance()
+    {
+        if(_instance == null)
+        _instance = new Singleton();
+        return _instance;
+    }
+
+    ... metodi pubblici, protetti e privati ...
+
+}```
+
+- Alternativa: classe non istanziabile (`static class`) con soli membri statici
+
+    - Math
+
+    - Convert
+
+    - ...
+
+- Perché un _singleton_?
+
+- Il _singleton_ #text(blue)[può implementare 1+ interfacce]
+
+- Il _singleton_ #text(blue)[può essere specializzato] ed è possibile creare nella GetInstance un'istanza specializzata che dipende dal contesto corrente
+
+
+```C public static Singleton GetInstance()
+
+{
+
+
+if(_instance == null)
+_instance = CreateInstance();
+return _instance;
+
+}
+
+private static Singleton CreateInstance()
+
+{
+
+
+    if(...)
+        return new SubSingletonA();
+    else if(...)
+        return new SubSingletonB();
+    else
+        return new SubSingletonC();
+
+}```
+
+#cfigure("images/2024-05-03-13-07-12.png",50%)
+
+==== Pattern OBSERVER
+
+- #text(blue)[*Contesto*]
+
+    - Talvolta una modifica a un oggetto (il #text(blue)[*soggetto*]) richiede che altri oggetti (#text(blue)[*osservatori*]) siano modificati a loro volta
+
+    - Questa relazione può essere esplicitamente codificata nel soggetto, ma questo richiede che questo sappia come gli osservatori debbano essere aggiornati
+
+        - si crea accoppiamento tra gli oggetti (#text(blue)[*closely coupled*]) e #text(blue)[*non possono essere facilmente  riusati*] 
+
+#cfigure("images/2024-05-03-13-09-40.png",50%)
+
+
+
+- #text(blue)[*Soluzione*]
+
+    - Creare una relazione uno-a-molti più lasca tra un oggetto e gli altri che dipendono da esso
+
+    - Una modifica dell'oggetto farà sì che gli altri #text(blue)[*ricevano una notifica*], consentendo loro di aggiornarsi di conseguenza
+
+#cfigure("images/2024-05-03-13-10-49.png",90%)
+
+===== Esempio Boss-Worker
+
+- È necessario modellare un'interazione tra due componenti
+    - un #text(blue)[*Worker*] che effettua un'attività (o lavoro)
+    - un #text(blue)[*Boss*] che controlla l'attività dei suoi Worker
+- Ogni _Worker_ deve notificare al proprio Boss:
+    - quando il lavoro inizia
+    - quando il lavoro è in esecuzione
+    - quando il lavoro finisce
+- Soluzioni possibili:
+
++ #text(blue)[*class-based*] callback relationship
+
++ #text(blue)[*interface-based*] callback relationship
+
++ #text(blue)[*pattern Observer*] (lista di notifiche)
+
++ #text(blue)[*delegate-based*] callback relationship
+
++ #text(blue)[*event-based*] callback relationship
+
+
+#heading(level: 6, numbering: none)[Class-based callback relationship]
+
+#cfigure("images/2024-05-03-13-33-18.png",90%)
+
+#heading(level: 6, numbering: none)[Interface-based callback relationship]
+
+#cfigure("images/2024-05-03-13-34-46.png",100%)
+
+#heading(level: 6, numbering: none)[Pattern Observer (lista di notifiche)]
+
+#cfigure("images/2024-05-03-13-35-30.png",100%)
+
+
+==== Pattern Model / View / Controller (MVC)
+
+- Utilizzato per realizzare le interfacce utenti in _Smalltalk- 80_
+
+- Permette di suddividere un'applicazione, o anche la sola interfaccia dell'applicazione, in tre parti
+
+- #text(blue)[*Modello*]: elaborazione/stato
+- #text(blue)[*View*]: (o viewport) output
+- #text(blue)[*Controller*]: input
+
+#line(length: 100%)
+
+#text(blue)[*Modello*]
+
+- Gestisce un insieme di dati logicamente correlati
+- Risponde alle interrogazioni sui dati
+- Risponde alle istruzioni di modifica dello stato
+- Genera un evento quando lo stato cambia
+- Registra (in forma anonima) gli oggetti interessati alla notifica dell'evento
+- In Java, deve estendere la classe `java.util.Observable`
+
+#line(length: 100%)
+
+#text(blue)[*View*]
+
+- Gestisce un'area di visualizzazione, nella quale presenta all'utente una vista dei dati gestiti dal modello
+    - Mappa (parte de) i dati del modello in oggetti visuali
+    - Visualizza tali oggetti su un particolare dispositivo di output
+
+- Si registra presso il modello per ricevere l'evento di cambiamento di stato
+
+- In Java, deve implementare l'interfaccia `java.util.Observer`
+
+
+#text(blue)[*Controller*]
+
+- Gestisce gli input dell'utente (mouse, tastiera, ...)
+- Mappa le azioni dell'utente in comandi
+- Invia tali comandi al modello e/o alla view che effettuano le operazioni appropriate
+- In Java, è un #text(blue)[_listener_]
+
+
+#cfigure("images/2024-05-03-13-38-55.png",55%)
+
+Con view passiva:
+#cfigure("images/2024-05-03-13-39-41.png",55%)
+
+==== Pattern FLYWEIGHT
+
+- Descrive come condividere oggetti “leggeri” (cioè a granularità molto fine) in modo tale che il loro uso non sia troppo costoso
+
+- Un _flyweight_ è un #text(blue)[*oggetto condiviso*] che può essere utilizzato simultaneamente ed efficientemente da più clienti (del tutto indipendenti tra loro)
+
+- Benché condiviso, #text(blue)[*non deve essere distinguibile da un oggetto non condiviso
+*]
+- Non deve fare ipotesi sul contesto nel quale opera
+
+
+- Per assicurare una corretta condivisione, i clienti
+
+    - non devono istanziare direttamente i flyweight
+
+    - ma devono ottenerli esclusivamente tramite una `FlyweightFactory`
+
+```C private DictionaryKeyType, FlyweightType> flyweights;
+
+...
+
+public FlyweightType GetFlyweight(KeyType key)
+
+{
+    if(!flyweights.ContainsKey(key))
+    {
+        flyweights.Add(key, CreateFlyweight(key));
+    }
+    return flyweights[key];
+}```
+
+
+
+- Distinzione tra stato intrinseco e stato estrinseco
+
+- #text(blue)[*Stato intrinseco*]:
+
+    - #text(blue)[*Non dipende dal contesto di utilizzo*] e quindi #text(blue)[*può essere condiviso*] da tutti i clienti
+
+    - Memorizzato nel flyweight
+
+- #text(blue)[*Stato estrinseco*]
+
+    - #text(blue)[*Dipende dal contesto di utilizzo*] e quindi #text(blue)[*non può essere condiviso*] dai clienti
+
+    - Memorizzato nel cliente o calcolato dal cliente
+
+    - Viene passato al _flyweight_ quando viene invocata una sua operazione
+
+
+#cfigure("images/2024-05-03-13-43-19.png",100%)
+
+
+===== Esempio
+
+- Si supponga di usare il pattern flyweight per condividere delle icone tra vari clienti
+
+#cfigure("images/2024-05-03-13-43-59.png",100%)
+
+
+
+- Lo #text(blue)[*stato intrinseco*] (memorizzato nel flyweight) comprenderà tutte le informazioni che i clienti devono (e possono) condividere:
+
+    - Nome dell'icona
+
+    - Bitmap dell'icona
+
+    - Dimensioni originali, ...
+
+- Lo #text(blue)[*stato estrinseco*] (memorizzato nel cliente) comprenderà il contesto in cui l'icona dovrà essere disegnata (dipendente dal singolo cliente):
+
+    - Posizione dell'icona
+
+    - Dimensioni richieste, ...
+
+
+
+
+==== Pattern STRATEGY
+
+- Permette di
+
+    - definire un insieme di algoritmi tra loro correlati,
+
+    - incapsulare tali algoritmi in una gerarchia di classi e
+
+    - rendere gli algoritmi intercambiabili
+
+#cfigure("images/2024-05-03-13-46-13.png",90%)
+
+
+#cfigure("images/2024-05-03-13-47-41.png",90%)
+
+===== Esempio
+
+- #text(blue)[*Allineamento del testo di un paragrafo*]\
+    Esistono politiche diverse di allineamento
+
+#cfigure("images/2024-05-03-13-48-58.png",90%)
+
+- #text(blue)[*AlignerBase*]
+
+    - suddivide il testo in linee (`Format`)
+
+    - delega alle sue sottoclassi l'allineamento delle singole linee (`FormatLine`)
+
+- `Paragraph` utilizza i servizi di un _“Aligner”_ specificato dinamicamente run-time
+
+- È possibile realizzare gli “Aligner” utilizzando il pattern #text(blue)[_*flyweight*_]
+
+Esempio
+
+
+==== Pattern ADAPTER
+
+- Converte l'interfaccia originale di una classe nell'interfaccia (diversa) che si aspetta il cliente
+
+- Permette a classi che hanno interfacce incompatibili di lavorare insieme
+
+- Si usa quando
+
+    - si vuole riutilizzare una classe esistente 
+
+    - la sua interfaccia non è conforme a quella desiderata
+
+- Noto anche come #text(blue)[_*wrapper*_]
+
+
+#cfigure("images/2024-05-03-13-51-00.png",90%)
+
+===== Esempio
+#cfigure("images/2024-05-03-13-51-38.png",80%)
+
+
+
+
+==== Pattern DECORATOR
+
+- Permette di #text(blue)[*aggiungere responsabilità*] a un oggetto dinamicamente
+
+- Fornisce un'#text(blue)[*alternativa flessibile alla specializzazione*]
+
+    - In alcuni casi, le estensioni possibili sono talmente tante che per poter supportare ogni possibile combinazione, si dovrebbe definire un numero troppo elevato di sottoclassi
+
+
+
+
+- TextBox
+
+    - BorderTextBox
+
+    - FilledTextBox
+
+    - VerticalTextBox
+
+    - BorderFilledTextBox
+
+    - BorderVerticalTextBox
+
+    - BorderFilledVerticalTextBox
+
+    - FilledVerticalTextBox
+
+- E se volessi
+
+    - 2 o più bordi
+
+    - Cambiare il font
+
+    - ...
+
+
+
+#cfigure("images/2024-05-03-13-53-22.png",90%)
+
+
+- #text(blue)[*Component*] (*interfaccia o classe astratta*)
+    - Dichiara l'interfaccia di tutti gli oggetti ai quali deve essere possibile aggiungere dinamicamente responsabilità
+
+- #text(blue)[*ConcreteComponent*]
+    - Definisce un tipo di oggetto al quale deve essere possibile aggiungere dinamicamente responsabilità
+
+- #text(blue)[*Decorator*] (*classe astratta*)
+    - Mantiene un riferimento a un oggetto di tipo Component e  definisce un'interfaccia conforme all'interfaccia di Component
+
+- #text(blue)[*ConcreteDecorator*]
+    - Aggiunge responsabilità al componente referenziato
+
+
+#cfigure("images/2024-05-03-13-55-03.png",90%)
+
+
+==== Ereditarietà Dinamica
+
+- Una sotto-classe deve sempre essere una #text(blue)[*versione più specializzata*] della sua super-classe (o classe base)
+
+- Un buon test sul corretto utilizzo dell'ereditarietà è che sia valido il #text(blue)[*principio di sostituibilità di Liskov*]:\
+    _“B è una sotto-classe di A se e solo se ogni programma che utilizzi oggetti di classe A può utilizzare oggetti di classe B senza che il comportamento logico del programma cambi”_
+
+- Perché ciò sia valido, è necessario che:
+
+    - le *pre-condizioni* di tutti i metodi della sotto-classe siano uguali o più deboli
+
+    - le *post-condizioni* di tutti i metodi della sotto-classe siano uguali o più forti
+
+    - ogni metodo ridefinito nella sotto-classe deve mantenere la *semantica* del metodo originale
+
+
+
+#cfigure("images/2024-05-03-13-57-52.png",90%)
+
+
+- Il metodo `Modifica` della classe `ModificatoreDiDimensioni`
+
+    - funziona correttamente su un `Rettangolo`
+    - ma NON funziona correttamente su un `Quadrato`
+
+- Quindi non è possibile passare un'istanza di `Quadrato` dove è prevista un'istanza di `Rettangolo`
+
+    - il principio di sostituibilità di Liskovè violato!
+
+- *Conclusione*: un quadrato NON è un rettangolo perché pone dei nuovi vincoli al concetto di rettangolo
+
+- Come possiamo tenere conto di ciò che il rettangolo e il quadrato hanno in comune?
+
+
+#cfigure("images/2024-05-03-14-14-23.png",90%)
+
+- Cosa intendiamo esattamente per Rettangolo e per Quadrato?
+
+- #text(blue)[*Rettangolo*]: parallelogramma i cui angoli sono retti
+
+- #text(blue)[*Parallelogramma*]: quadrilatero i cui lati opposti sono paralleli tra loro
+
+- #text(blue)[*Quadrilatero*]: poligono avente quattro lati e quattro angoli
+
+    - Quadrilateri notevoli sono il quadrato, il rettangolo, il parallelogramma, il rombo e il trapezio
+
+- #text(blue)[*Poligono*]: figura geometrica limitata da una linea poligonale chiusa
+
+- #text(blue)[*Rombo*]: parallelogramma equilatero in cui gli angoli adiacenti sono diversi tra loro
+
+- #text(blue)[*Quadrato*]: parallelogramma equilatero ed equiangolo
+
+
+- Cosa intendiamo esattamente per Rettangolo e per Quadrato nella nostra applicazione?
+
+- *Ipotesi*: abbiamo a che fare esclusivamente con parallelogrammi
+
+
+
+#text(blue)[*1. Lati e angoli NON sono modificabili*]
+
+    - Definire quattro classi concrete che derivano dalla classe astratta `Parallelogramma` (o implementano `IParallelogramma`): `Rettangolo , Quadrato , Rombo , ParallelogrammaGenerico`
+
+    - Usare una factory che in base ai valori dei lati e degli angoli istanzia un rettangolo (che NON deve avere i lati uguali), un quadrato, un rombo o un parallelogramma generico
+
+#text(blue)[*2. Lati e angoli sono modificabili*]
+
+- Definire un'unica classe concreta `Parallelogramma` le cui istanze possono comportarsi a seconda del loro stato come: un rettangolo, un quadrato, un rombo, o un parallelogramma generico
+
+
+
+- Come può un oggetto cambiare comportamento, al cambiare del suo stato?
+
+- #underline[1 possibilità]: #text(blue)[*si cambia la classe dell'oggetto run-time*]
+
+    - nella maggior parte dei linguaggi di programmazione a oggetti, questo non è possibile (inoltre, è meglio che un oggetto non possa cambiare classe durante la sua esistenza)
+
+- la classe di un oggetto deve basarsi sulla sua essenza e non sul suo stato
+
+- #underline[2 possibilità]: #text(blue)[*si utilizza il _pattern_ State*] che usa un #text(blue)[*meccanismo di delega*], grazie al quale l'oggetto è in grado di comportarsi #text(blue)[*come se*] avesse cambiato classe
+
+
+==== Pattern STATE
+
+#cfigure("images/2024-05-03-14-21-05.png",80%)
+
+- Localizza il comportamento specifico di uno stato e suddivide il comportamento in funzione dello stato
+
+- Le classi concrete contengono la logica di transizione da uno stato all'altro
+
+- Permette anche di emulare l'ereditarietà multipla
+
+#cfigure("images/2024-05-03-14-21-45.png",100%)
+
+
+==== Pattern COMPOSITE
+
+- Permette di comporre oggetti in una #text(blue)[*struttura ad albero*], al fine di rappresentare una #text(blue)[*gerarchia di oggetti contenitori-oggetti contenuti*]
+
+- Permette ai clienti di #text(blue)[*trattare in modo uniforme oggetti singoli e oggetti composti*]
+
+#cfigure("images/2024-05-03-14-22-54.png",80%)
+
+
+
+- #text(blue)[*Component*] (classe astratta)
+
+    - Dichiara l'interfaccia
+
+    - Realizza il comportamento di default
+
+- #text(blue)[*Client*]
+
+    - Accede e manipola gli oggetti della composizione attraverso l'interfaccia di *Component*
+
+
+- #text(blue)[*Leaf*]
+
+    - Descrive oggetti che non possono avere figli -foglie
+
+    - Definisce il comportamento di tali oggetti
+
+- #text(blue)[*Composite*]
+
+    - Descrive oggetti che possono avere figli -contenitori
+
+    - Definisce il comportamento di tali oggetti
+
+#cfigure("images/2024-05-03-14-24-35.png",70%)
+
+- Il contenitore dei figli deve essere un attributo di #text(blue)[*Composite*] e può essere di qualsiasi tipo (array, lista, albero, tabella hash, ...)
+
+#line(length: 100%)
+
+- #text(blue)[*Riferimento esplicito al genitore*] (parent)
+
+    - Semplifica l'attraversamento e la gestione della struttura
+
+    - L'attributo che contiene il riferimento al genitore e la relativa gestione devono essere posti nella classe #text(blue)[*Component*]
+
+- #text(blue)[*Invariante*]
+    - Tutti gli elementi che hanno come _parent_ lo stesso componente devono essere (gli unici) figli di quel componente
+
+        - incapsulare l'assegnamento di parent nei metodi `Add` e `Remove` della classe Composite , oppure
+
+        - incapsulare le operazioni di `Add` e `Remove` nella set dell'attributo _parent_ della classe `Component`
+
+
+
+
+public class Composite : Component
+
+```C{
+
+    ...
+
+    public void Add(Component aChild)
+
+    {
+
+        if(aChild.Parent != null)
+
+            throw new ArgumentException(...);
+
+        _children.Add(aChild);
+
+        aChild._parent = this;
+
+    }
+
+    ...
+
+}```
+
+
+
+```C
+public class Composite : Component
+
+{
+
+    ...
+
+    public void Remove(Component aChild)
+
+    {
+
+        if(aChild.Parent != this)
+
+            throw new ArgumentException(...);
+
+        if(!_children.Contains(aChild))
+
+            throw new ArgumentException(...);
+
+        _children.Remove(aChild);
+
+        aChild._parent = null;
+
+    }
+
+    ...
+
+}```
+
+
+
+```C public class Component
+
+{
+
+
+    ...
+    public Composite Parent
+    {
+        get { return _parent; }
+        set
+        {
+            if(value != _parent)
+            {
+                if(_parent != null)
+                    _parent.Remove(this);
+                if(value != null)
+                    value.Add(this);
+            }
+        }
+    }
+    ...
+
+}```
+
+
+
+
+- #text(blue)[*Massimizzazione dell'interfaccia `Component`*]
+
+    - Un obiettivo del pattern Composite è quello di fare in modo che il cliente veda solo l'interfaccia di Component: in `Component` devono essere inserite tutte le operazioni che devono essere utilizzate dai clienti
+
+        - nella maggior parte dei casi, Component definisce una realizzazione di default che le sotto classi devono ridefinire
+
+- Alcune di queste operazioni possono essere prive di significato per gli oggetti foglia (`Add` ,`Remove` , ...)
+
+
+
+- #text(blue)[*Trasparenza*]
+    - Dichiaro tutto al livello più alto, in modo che il cliente possa trattare gli oggetti in modo uniforme ma... #text(blue)[*il cliente potrebbe cercare di fare cose senza senso*], come aggiungere figli alle foglie
+
+- Se scegliamo la trasparenza
+
+    - `Add` e `Remove` devono avere una realizzazione di default che genera un'eccezione
+
+    - dovremmo disporre di un modo per verificare se è possibile aggiungere figli all'oggetto su cui si vuole agire
+
+
+
+
+```C // Il cliente conosce solo Component
+
+Component parent = ComponentFactory.CreateInstance(...);
+...
+Component child = ComponentFactory.CreateInstance(...);
+...
+// Prima di inserire un figlio,
+// occorre controllare se è possibile
+
+if(parent.IsComposite())
+    parent.Add(child);
+```
+
+
+- #text(blue)[*Sicurezza*]
+- Tutte le operazioni sui figli vengono messe in `Composite` - a questo punto, qualsiasi invocazione sulle foglie genera un errore in fase di compilazione ma... #text(blue)[*il cliente deve conoscere e gestire due interfacce differenti*]
+
+- Se scegliamo la sicurezza
+    - dobbiamo disporre di un modo per verificare se l'oggetto su cui si vuole agire è un `Composite`
+
+
+
+```C // Il cliente conosce Component e Composite
+
+Component child = ComponentFactory.CreateComponent(...);
+Composite parent1 = ComponentFactory.CreateComposite(...);
+parent1.Add(child);
+...
+Component parent2 = ComponentFactory.CreateComponent(...);
+// Errore di compilazione
+parent2.Add(child);
+// Prima di inserire un figlio,
+// occorre controllare se è possibile e fare un cast
+
+if(parent2 is Composite)
+    ((Composite) parent2).Add(child);
+```
+
+==== Pattern VISITOR
+
+- Permette di #text(blue)[*definire una nuova operazione*] da effettuare su gli elementi di una struttura, #text(blue)[*senza dover modificare le classi degli elementi coinvolti*]
+- Ad esempio, si consideri la rappresentazione di un programma come “#text(blue)[*abstract syntax tree*]” (AST) - i cui nodi descrivono elementi sintattici del programma
+
+- Su tale albero devono poter essere effettuate molte operazioni di tipo diverso
+
+    - Controllare che tutte le variabili siano definite
+
+    - Eseguire delle ottimizzazioni
+
+    - Generare il codice macchina
+
+    - Stampare l'albero in un formato leggibile
+
+    - ...
+
+
+
+
+Per l'AST utilizziamo il _pattern Composite_
+
+#cfigure("images/2024-05-03-18-17-58.png",90%)
+
+
+- In seguito potremmo voler effettuare #text(blue)[*altri tipi di operazioni*]
+
+    - controllare che le variabili siano state inizializzate prima dell'uso
+
+    - ristrutturare automaticamente il programma
+
+    - calcolare varie metriche
+
+    - ...
+
+- Se distribuiamo le operazioni sui vari tipi di nodo, otteniamo un sistema che è difficile da
+
+    - capire
+
+    - modificare
+
+    - estendere
+
+
+
+
+- La soluzione è quella di eliminare le singole operazioni dall'AST (la cui responsabilità principale è quella di rappresentare un programma sotto forma di albero)
+- #text(blue)[*Tutto il codice relativo ad un singolo tipo di operazione*] (ad es., generazione del codice) viene raccolto in #text(blue)[*una singola classe*]
+- I nodi dell'AST devono #text(blue)[*accettare la visita*] delle istanze di queste nuove classi (#text(blue)[_*visitor*_])
+- Per aggiungere un #text(blue)[*nuovo tipo di operazione*], è sufficiente progettare una #text(blue)[*nuova classe*]
+
+
+
+
+- Il Visitor deve dichiarare #text(blue)[*un'operazione per ogni tipo di nodo*] concreto
+
+#cfigure("images/2024-05-03-18-20-32.png",100%)
+
+
+
+- Ogni nodo deve dichiarare #text(blue)[*un'operazione per accettare un generico _visitor_*]
+
+#cfigure("images/2024-05-03-18-21-23.png", 90%)
+
+#line(length: 100%)
+
+- #text(blue)[*Visitor*] (classe astratta o interfaccia)
+    - Dichiara un metodo #text(blue)[`Visit`] per ogni classe di elementi concreti
+
+- #text(blue)[*ConcreteVisitor*]
+    - Definisce tutti i metodi #text(blue)[`Visit`]
+
+    - Globalmente #text(blue)[*definisce l'operazione da effettuare sulla struttura*] e (se necessario) ha un proprio stato
+
+#cfigure("images/2024-05-03-18-23-17.png",100%)
+
+
+- #text(blue)[*Element*] (classe astratta o interfaccia)
+    - Dichiara un metodo #text(blue)[`Accept`] che accetta un Visitor come argomento
+
+- #text(blue)[*ConcreteElement*]
+    - Definisce il metodo #text(blue)[`Accept`]
+
+#cfigure("images/2024-05-03-18-24-20.png",90%)
+
+
+- #text(blue)[*ObjectStructure*]
+    - Può essere realizzata come Composite o come normale collezione (array, lista, ...)
+    - Deve poter enumerare i suoi elementi
+    - Deve dichiarare un'interfaccia che permetta a un cliente di far visitare la struttura a un Visitor
+
+#cfigure("images/2024-05-03-18-25-00.png",50%)
+
+#line(length: 100%)
+
+- #text(blue)[*Facilita l'aggiunta di nuove operazioni*]
+    - È possibile aggiungere nuove operazioni su una struttura esistente, semplicemente aggiungendo un nuovo visitor concreto
+    - Senza il pattern Visitor, sarebbe necessario aggiungere un metodo ad ogni classe degli elementi della struttura
+- Ogni Visitor concreto
+    - Raggruppa i metodi necessari a eseguire una data operazione
+    - Nasconde i dettagli di come tale operazione debba essere eseguita
+
+
+- #text(blue)[*Incapsulamento*]
+    - Ogni Visitor deve essere in grado di accedere allo stato degli elementi su cui deve operare
+- È difficile aggiungere una nuova classe `ConcreteElement`
+    - Per ogni nuova classe `ConcreteElement` è necessario inserire un nuovo metodo `Visit` in tutti i `Visitor` esistenti
+        - la gerarchia `Element` deve essere poco o per nulla modificabile - cioè essere #text(blue)[*stabile*]
+
+
+- #text(blue)[*Visita di elementi non correlati*]
+    - Non è necessario che tutti gli elementi da visitare derivino da una classe comune
+    `VisitClasseA(ClasseGerarchiaA a);`\
+    `VisitClasseB(ClasseGerarchiaB b);`
+
+- #text(blue)[*Stato*]
+    - Durante l'operazione ogni Visitor può modificare il proprio stato - ad esempio, per accumulare dei valori o altro
+
+
+
+```C
+public class CompositeElement : Element
+
+{
+    ...
+    private List<Element> _children;
+    ...
+    public override void Accept(Visitor visitor)
+    {
+        foreach (Element aChild in _children)
+            aChild.Accept(visitor);
+        visitor.VisitCompositeElement(this);
+    }
+    ...
+}
+```
+
+
+#cfigure("images/2024-05-03-18-29-03.png",90%)
+
+
+- #text(blue)[*Double dispatch*]
+    - L'operazione che deve essere effettuata dipende dal tipo di due oggetti
+    - il visitor
+    - l'elemento
+
+- `Accept` è un'operazione di tipo #text(blue)[*double dispatch*]
+
+Esempio + EsempioDecorator
+
+
+==== Anti Pattern
+
+- Oltre ai pattern utili esistono anche gli anti-pattern, che descrivono situazioni ricorrenti e soluzioni notoriamente dannose
+- Esempio: _Interface Bloat_, che consiste nell'aggiungere così tante funzionalità a un'interfaccia da renderla impossibile da implementare (o usare!)
+- Sostanzialmente, sono soluzioni che non soddisfano i design principle!
+
+
+==== Pattern ABSTRACT FACTORY
+
+- #text(blue)[*Problema*]:
+    - creazione di oggetti connessi o dipendenti tra loro, senza bisogno che il client debba specificare i nomi delle classi concrete all'interno del proprio codice
+    - esempio:
+```C    
+    Menu m;
+    if (style == Macos) m = new MacosMenu;
+    else if(style == ...) m = new...
+```
+- la stessa cosa va ripetuta per pulsanti, view...
+
+- #text(blue)[*Requisito*]:
+    - si vuole un sistema indipendente da come gli oggetti vengono creati, composti e rappresentati
+    - si vuole permettere la configurazione del sistema come scelta tra diverse famiglie di prodotti
+    - si vuole che i prodotti che sono organizzati in famiglie siano vincolati ad essere utilizzati con prodotti della stessa famiglia
+
+
+- #text(blue)[*Soluzione*]:
+    - Definizione di una classe
+        - astrae la creazione di una famiglia di oggetti
+        - istanze diverse costituiscono implementazioni diverse di membri di tale famiglia
+
+#cfigure("images/2024-05-03-18-32-32.png",50%)
+
+
+- #text(blue)[*Soluzione*]:
+    - La creazione dei prodotti è responsabilità delle classi `ConcreteFactory`
+
+#cfigure("images/2024-05-03-18-33-42.png",50%)
+#cfigure("images/2024-05-03-18-34-15.png",90%)
+
+- #text(blue)[*Conseguenze*]:
+    - isola le classi concrete
+        - il codice successivo all'istanziazione è indipendente dalla classe concreta
+    - consente di cambiare in modo semplice la famiglia di prodotti utilizzata
+        - la coerenza col resto del codice è assicurata dall'utilizzo delle interfacce astratte e non delle classi concrete, secondo l'OCP
+    - promuove la coerenza nell'utilizzo dei prodotti
+
+
+- #text(blue)[*Conseguenze*]:
+    - difficile aggiungere supporto per nuove tipologie di prodotti
+        - Dato che AbstractFactory definisce tutte le varie tipologie di prodotti che è possibile istanziare, aggiungere una tipologia richiede di modificare l'interfaccia della factory
+
+
+
+
+
+
+
+
+
+
+
+
+
 = Framework .NET
 
 == Introduzione
@@ -4078,7 +5027,6 @@ incontrato durante l'esecuzione del programma
     - ...
 
 
-=== Gestione delle eccezioni
 
 - Concetti universali
     - Lanciare un'eccezione (`throw`)
@@ -4438,7 +5386,7 @@ Questo non è corretto perché, a differenza dell'esempio sopra, l'espressione a
 - In java/C\#: garbage collector (GC)
 
 
-=== Garbage Collection
+=== Cos'è il Garbage Collection
 
 - Modalità automatica di rilascio delle risorse utilizzate da un oggetto
 
