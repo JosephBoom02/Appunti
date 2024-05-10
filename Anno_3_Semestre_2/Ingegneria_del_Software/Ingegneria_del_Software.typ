@@ -3802,25 +3802,24 @@ Parlava di costruzioni civili e di città
 
 
 
-- Ogni design pattern ha #text(blue)[quattro elementi essenziali]
+- Ogni design pattern ha #text(blue)[*quattro elementi essenziali*]
 
-    - un nome (significativo) - identifica il pattern
+    - un #text(blue)[*nome*] (significativo) - identifica il pattern
 
-    - il problema - descrive quando applicare il pattern
+    - il #text(blue)[*problema*] - descrive quando applicare il pattern
 
-    - la soluzione - descrive il pattern, cioè gli elementi che lo compongono (classi e istanze) e le loro relazioni, responsabilità e collaborazioni
+    - la #text(blue)[*soluzione*] - descrive il pattern, cioè gli elementi che lo compongono (classi e istanze) e le loro relazioni, responsabilità e collaborazioni
 
-    - le conseguenze - descrivono vantaggi e svantaggi dell'applicazione del pattern e permettono di valutare le alternative progettuali
+    - le #text(blue)[*conseguenze*] - descrivono vantaggi e svantaggi dell'applicazione del pattern e permettono di valutare le alternative progettuali
 
 
 ==== L'importanza dei nomi dei Pattern
 
 - Gli schemi progettuali del software hanno nomi suggestivi:
 
-    - Observer, Singleton, Strategy ...
+    - _Observer, Singleton, Strategy ..._
 - Perché i nomi sono importanti?
-    - Supportano il chunking, ovvero fissano il concetto nella nostra memoria e ci aiutano a capirlo
-
+    - Supportano il _chunking_, ovvero fissano il concetto nella nostra memoria e ci aiutano a capirlo
     - Facilitano la comunicazione tra progettisti
 
 
@@ -3845,67 +3844,48 @@ Parlava di costruzioni civili e di città
 - La classe deve:
 
     - tenere traccia della sua sola istanza
-
-    - intercettare tutte le richieste di creazione, al fine di garantire che nessuna altra istanza venga creata
-
+    - intercettare tutte le richieste di creazione, al fine di garantire che nessuna altra istanza venga creata; sostanzialmente viene dato a chi da la richiesta di creazione il riferimento all'istanza 
     - fornire un modo per accedere all'istanza unica
 
 
 ```C public class Singleton
 
 {
-
     ... attributi membro di istanza ...
-
     private static Singleton instance = null;
-
     protected Singleton()
-
     { inizializzazione istanza }
-
-
     public static Singleton GetInstance()
     {
         if(_instance == null)
         _instance = new Singleton();
         return _instance;
     }
-
     ... metodi pubblici, protetti e privati ...
 
 }```
 
 - Alternativa: classe non istanziabile (`static class`) con soli membri statici
 
-    - Math
-
-    - Convert
-
+    - `Math`
+    - `Convert`
     - ...
 
 - Perché un _singleton_?
 
-- Il _singleton_ #text(blue)[può implementare 1+ interfacce]
+- Il _singleton_ #text(blue)[*può implementare 1+ interfacce*]
 
-- Il _singleton_ #text(blue)[può essere specializzato] ed è possibile creare nella GetInstance un'istanza specializzata che dipende dal contesto corrente
+- Il _singleton_ #text(blue)[*può essere specializzato*] ed è possibile creare nella `GetInstance` un'istanza specializzata che dipende dal contesto corrente
 
 
 ```C public static Singleton GetInstance()
-
 {
-
-
 if(_instance == null)
 _instance = CreateInstance();
 return _instance;
-
 }
-
 private static Singleton CreateInstance()
-
 {
-
-
     if(...)
         return new SubSingletonA();
     else if(...)
@@ -3921,7 +3901,7 @@ private static Singleton CreateInstance()
 
 - #text(blue)[*Contesto*]
 
-    - Talvolta una modifica a un oggetto (il #text(blue)[*soggetto*]) richiede che altri oggetti (#text(blue)[*osservatori*]) siano modificati a loro volta
+    - Talvolta una modifica a un oggetto (il #text(blue)[*soggetto*]) richiede che altri oggetti (#text(blue)[*osservatori*]) siano modificati a loro volta, o quantomeno richiedano di essere notificati se il soggetto viene modificato
 
     - Questa relazione può essere esplicitamente codificata nel soggetto, ma questo richiede che questo sappia come gli osservatori debbano essere aggiornati
 
@@ -3938,7 +3918,8 @@ private static Singleton CreateInstance()
     - Una modifica dell'oggetto farà sì che gli altri #text(blue)[*ricevano una notifica*], consentendo loro di aggiornarsi di conseguenza
 
 #cfigure("images/2024-05-03-13-10-49.png",90%)
-
+- Ogni `Subject` può attaccarsi o staccarsi da un `Observer`
+- Con questo pattern il Soggetto da chi sono gli Osservatori, mentre gli Osservatori non sanno chi è il soggetto
 ===== Esempio Boss-Worker
 
 - È necessario modellare un'interazione tra due componenti
@@ -3950,15 +3931,15 @@ private static Singleton CreateInstance()
     - quando il lavoro finisce
 - Soluzioni possibili:
 
-+ #text(blue)[*class-based*] callback relationship
++ #text(blue)[*class-based*] _callback relationship_
 
-+ #text(blue)[*interface-based*] callback relationship
++ #text(blue)[*interface-based*] _callback relationship_
 
 + #text(blue)[*pattern Observer*] (lista di notifiche)
 
-+ #text(blue)[*delegate-based*] callback relationship
++ #text(blue)[*delegate-based*] _callback relationship_
 
-+ #text(blue)[*event-based*] callback relationship
++ #text(blue)[*event-based*] _callback relationship_
 
 
 #heading(level: 6, numbering: none)[Class-based callback relationship]
@@ -3976,7 +3957,7 @@ private static Singleton CreateInstance()
 
 ==== Pattern Model / View / Controller (MVC)
 
-- Utilizzato per realizzare le interfacce utenti in _Smalltalk- 80_
+- Utilizzato per realizzare le interfacce utenti in _Smalltalk-80_
 
 - Permette di suddividere un'applicazione, o anche la sola interfaccia dell'applicazione, in tre parti
 
@@ -3995,7 +3976,7 @@ private static Singleton CreateInstance()
 - Registra (in forma anonima) gli oggetti interessati alla notifica dell'evento
 - In Java, deve estendere la classe `java.util.Observable`
 
-#line(length: 100%)
+
 
 #text(blue)[*View*]
 
@@ -4020,7 +4001,8 @@ private static Singleton CreateInstance()
 
 Con view passiva:
 #cfigure("images/2024-05-03-13-39-41.png",55%)
-
+- In questo caso è il Presenter a parlare con il Model
+- Posso avere diversi Presenter per lo stesso Model
 ==== Pattern FLYWEIGHT
 
 - Descrive come condividere oggetti “leggeri” (cioè a granularità molto fine) in modo tale che il loro uso non sia troppo costoso
@@ -4039,11 +4021,8 @@ Con view passiva:
     - ma devono ottenerli esclusivamente tramite una `FlyweightFactory`
 
 ```C private DictionaryKeyType, FlyweightType> flyweights;
-
 ...
-
 public FlyweightType GetFlyweight(KeyType key)
-
 {
     if(!flyweights.ContainsKey(key))
     {
@@ -4060,7 +4039,7 @@ public FlyweightType GetFlyweight(KeyType key)
 
     - #text(blue)[*Non dipende dal contesto di utilizzo*] e quindi #text(blue)[*può essere condiviso*] da tutti i clienti
 
-    - Memorizzato nel flyweight
+    - Memorizzato nel _flyweight_
 
 - #text(blue)[*Stato estrinseco*]
 
@@ -4711,6 +4690,541 @@ Esempio + EsempioDecorator
 
 
 
+
+== Diagramma dei componenti e di Deployment
+
+
+=== Diagramma dei Componenti
+
+- Da UML 2.0 il concetto di componente si è evoluto
+    rispetto alla versione precedente dello standard
+- Specifica un #text(blue)[contratto formale di servizi offerti e richiesti]
+    in termini di interfacce (eventualmente esposte tramite
+    porte)
+- Il concetto di componente è strettamente legato a quello
+    di #text(blue)[*struttura composita*] che spesso viene impiegata
+    per rappresentare le parti interne del componente
+- Un componente è tipicamente specificato da uno o più
+    classificatori (ad es. classi) e può essere implementato
+    da uno o più artefatti (file eseguibile, script, ...)
+- Gli internals (parti interne) sono inaccessibili solo
+    attraverso le interfacce
+
+
+==== Struttura Composita
+
+- Il Diagramma di Struttura Composita ha l'obiettivo
+    di rappresentare la struttura interna (le parti)
+    di un classificatore (classe, componente...),
+    inclusi i punti di interazione (porte) utilizzati per accedere
+    alle caratteristiche della struttura
+
+
+#cfigure("images/2024-05-09-10-49-46.png",80%)
+
+- Introdotto per scomporre gerarchicamente
+    un classificatore, mostrandone la struttura interna:
+       - mostra la struttura interna di un classificatore complesso
+       - mostra in modo separato l'#text(blue)[*interfaccia*] di un classificatore
+          dalla sua #text(blue)[*struttura interna*]
+       - descrive i ruoli che i diversi elementi della struttura
+          giocano per soddisfare l'obiettivo della struttura stessa
+          e le interazioni richieste
+- Questo permette al progettista di prendere un oggetto
+    complesso e spezzarlo in parti più piccole e semplici
+- È una sorta di strumento di zoom utile per gestire
+    la complessità di rappresentazione
+
+
+==== Package vs. Struttura Composita
+
+- Per capire bene la differenza tra i package e le strutture
+    composite bisogna pensare che
+       - i primi rappresentano un raggruppamento logico al momento
+          dell'analisi
+       - mentre le seconde fanno riferimento a quello che succede
+          durante l'esecuzione
+- Di conseguenza le strutture composite sono adatte
+    a rappresentare i componenti e le loro parti,
+    e sono usate spesso nei diagrammi dei componenti
+
+
+#line(length: 100%)
+
+- Da UML 2 è una specializzazione della metaclasse
+    `Class`
+- Quindi un componente può avere attributi e metodi,
+    una struttura interna, porte e connettori
+- Da UML 2 l'icona del componente è cambiata
+
+#cfigure("images/2024-05-09-10-51-40.png",90%)
+
+#cfigure("images/2024-05-09-10-52-00.png",90%)
+- Interfaccia fornita e interfaccia richiesta devono essere
+    compatibili a livello di tipo (attributi e associazioni)
+    e di vincoli sul comportamento (operazioni, eventi)
+
+#cfigure("images/2024-05-09-10-52-26.png",60%)
+
+==== Componenti: White-box
+
+#cfigure("images/2024-05-09-10-53-06.png",80%)
+
+- I classificatori interni (internals) che realizzano
+    un componente possono essere mostrati in due modi:
+       - innestati nel componente
+
+#cfigure("images/2024-05-09-10-53-31.png",60%)
+
+
+- In modo esplicito tramite la dipendenza di #text(blue)[*realization*]
+  #cfigure("images/2024-05-09-10-54-05.png",50%)
+- Il componente _Ordine_ è implementato istanziando le classi
+    _Ordine_ e _RigaOrdine_
+- La #text(blue)[*realization*] è una dipendenza specializzata tra due insiemi
+    di elementi di modellazione, di cui uno rappresenta la specifica
+    e l'altro una sua implementazione
+- Per un componente la #text(blue)[*realization*] definisce i classificatori
+    che realizzano il contratto offerto dal componente stesso
+    in termini delle sue interfacce offerte e richieste
+
+#cfigure("images/2024-05-09-10-55-01.png",100%)
+
+- Le parti interne sono collegate direttamente tra loro
+    (#text(blue)[assembly connector]) oppure connesse a porte
+    sul confine del componente (#text(blue)[delegated connector])
+- I delegated connector sono utilizzati per esporre servizi
+    di una “parte” all'esterno del container
+
+
+==== Connettori Multiple Wiring
+#cfigure("images/2024-05-09-10-56-22.png",90%)
+- Entrambi i componenti, Ordine e OrdineInterno,
+    richiedono l'interfaccia Persona: l'applicazione non conosce,
+    fino al momento dell'esecuzione, quale componente,
+    Cliente o Organizzazione, fornirà il servizio richiesto
+- Si tratta di #text(blue)[*_un'interazione polimorfica_*]
+
+#cfigure("images/2024-05-09-10-56-41.png",90%)
+
+
+#line(length: 100%)
+- UML 2.0 permette di connettere alla stessa porta
+    più interfacce
+
+#cfigure("images/2024-05-09-10-57-23.png",90%)
+
+==== Componenti e sottosistemi
+
+- Mentre in UML 1.x un #text(blue)[*subsystem*] è un tipo di package
+- In UML 2 è un tipo di componente
+- È quindi possibile specificare per un subsystem
+    le interfacce richieste e quelle fornite,
+    per evidenziare le relazioni con altri subsystem
+
+#cfigure("images/2024-05-09-10-58-13.png",100%)
+
+#line(length: 100%)
+
+==== Il diagramma
+
+- Il diagramma dei componenti deve essere impiegato
+    solamente negli stadi finali della fase di progettazione
+    del sistema
+- Tale diagramma rispecchia molto da vicino la struttura
+    che dovrebbe avere il codice e, in un qualche modo,
+    rappresenta l'architettura del sistema
+- Potrebbe essere pensato come lo stadio finale
+    dell'evoluzione dell'architettura logica
+    che in fase di analisi viene rappresentata
+    attraverso il diagramma dei package
+
+
+==== Esempio Villaggio Turistico
+
+#cfigure("images/2024-05-09-10-59-12.png",90%)
+
+=== Diagramma di Deployment
+
+- I diagrammi di deployment #text(blue)[*documentano
+    la distribuzione fisica*] di un sistema,
+    mostrando i vari pezzi di software in esecuzione
+    sulle macchine fisiche
+- I diagrammi di deployment quindi mostrano:
+    - i collegamenti che permettono la comunicazione fisica
+       tra i pezzi hardware
+    - le relazioni tra macchine fisiche e processi software,
+       con l'indicazione dei vari punti in cui viene eseguito
+       il codice
+
+
+- Gli elementi principali del diagramma:
+    - #highlight(fill: myblue)[Artifact]
+       - rappresenta una specifica porzione fisica di informazioni utilizzata
+          o prodotta dal processo di sviluppo del software
+       - esempi di artifact(manufatti): i modelli (un diagramma dei casi d'uso,
+          un diagramma delle classi, ...), file sorgenti, script, file eseguibili, ...
+       - tipicamente viene utilizzata una relazione di dipendenza
+          \<\<manifest>> che illustra gli elementi di modellazione (in genere,
+          componenti) utilizzati nella costruzione o generazione di un artefatto
+    - #highlight(fill: myblue)[Node]
+       - un'unità sulla quali risiedono e/o sono eseguiti componenti/artefatti
+       - i nodi comunicano tra loro tramite CommunicationPath
+       - l'allocazione degli artefatti su un nodo viene rappresentata
+          con una relazione di dipendenza \<\<deploy>> tra il nodo e l'artefatto
+    - #highlight(fill: myblue)[Device]
+       - è una risorsa fisica computazionale con capacità elaborative
+          sulla quale possono essere allocati artefatti per l'esecuzione
+
+
+- “Manifest” è la relazione di dipendenza che illustra
+    gli elementi di modellazione utilizzati nella costruzione
+    o generazione di un artefatto
+#cfigure("images/2024-05-09-11-01-48.png",90%)
+
+==== Esempio Villaggio Turistico
+#cfigure("images/2024-05-09-11-03-02.png",90%)
+
+#line(length: 100%)
+
+- Un #text(blue)[*nodo*] rappresenta qualsiasi cosa possa eseguire
+    un lavoro: un server, un device o un'unità organizzativa
+- È una risorsa su cui gli artefatti possono essere allocati
+    per l'esecuzione, questo fatto viene rappresentato
+    con una dipendenza di tipo \<\<deploy>> tra il nodo e l'artefatto
+#cfigure("images/2024-05-09-11-03-42.png",80%)
+L'immagine ci dice che su ogni `AppServer` viene installato `Order.jar`, e ogni `AppServer` comunica con un `DBServer`.
+#cfigure("images/2024-05-09-11-04-33.png",100%)
+
+Tipicamente viene utilizzato il #text(red)[*type-level*], ma l'#text(red)[*instance-level*] è più dettagliato.
+
+#line(length: 100%)
+
+- L'Execution Environment è un nodo che offre l'ambiente per l'esecuzione di specifici tipi di componenti che sono allocati su di esso
+
+```<<OS>>
+
+- <<databasesystem>>
+- <<J2EE container>>
+- ...
+```
+#cfigure("images/2024-05-09-11-08-07.png",30%)
+
+Con l'#text(red)[*instance-level*] stiamo specificando che, per far funzionare un particolare componente, su quel dispositivo devono essere presenti tutti quegli artefatti.
+
+- Deployment Specification: è un insieme di proprietà
+    che determinano i parametri di esecuzione di un artefatto
+    allocato su un nodo
+#cfigure("images/2024-05-09-11-10-21.png",90%)
+
+==== Esempio Villaggio Turistico
+
+#cfigure("images/2024-05-09-11-11-01.png",100%)
+
+- In questo caso, `Broker.exe` e `Login.exe` devono essere presenti sulla stessa macchina `ServerLogin`
+- C'è un solo `ClientLog`, e possono esserci tanti (indefiniti) `ClientPuntoVendita` e `ClientHotel`
+- Nella parte sottostante non è necessario specificare il deployment del componente `ServerLogin`, perché già specificato sopra
+- Il fatto che siano separati non implica che ci debbano essere due interfacce di rete diverse, ma solo che i percorsi sono diversi
+
+*Importante:* in una applicazione web il deployment degli artefatti che manifestano #underline[un client] non avviene sul client in sè, ma sul server; il client in questi casi è un semplice browser web.
+
+
+
+== Progettazione Concettuale (E/R)
+
+#cfigure("images/2024-05-09-16-52-44.png",90%)
+
+=== Raccolta dei requisiti
+
+- I requisiti devono innanzitutto essere acquisiti
+- Le fonti possono essere molto diversificate tra loro:
+    - #text(teal)[utenti], attraverso:
+       - interviste
+       - documentazione apposita
+    - #text(teal)[documentazione esistente]:
+       - normative (leggi, regolamenti di settore)
+       - regolamenti interni, procedure aziendali
+       - realizzazioni preesistenti
+    - #text(teal)[modulistica]
+- La raccolta dei requisiti è un'attività difficile
+    e non standardizzabile
+       - in genere procede di pari passo con la fase di analisi
+          (la prima analisi stimola nuove domande, ecc...)
+
+
+=== Interagire con gli utenti
+
+- È un'attività da considerare con molta attenzione,
+    in quanto:
+       - utenti diversi possono fornire informazioni diverse
+       - utenti a livello più alto hanno spesso una visione più ampia
+          ma meno dettagliata
+- In generale, risulta utile:
+    - effettuare spesso #text(teal)[verifiche] di comprensione e coerenza
+    - verificare anche per mezzo di #text(teal)[esempi]
+       (generali e relativi a casi limite)
+    - richiedere #text(teal)[definizioni] e #text(teal)[classificazioni]
+    - far evidenziare gli #text(teal)[aspetti essenziali] rispetto a quelli marginali
+
+
+=== Requisiti: documentazione descrittiva
+
+- Regole generali:
+    - scegliere il corretto #text(teal)[livello di astrazione]
+    - #text(teal)[standardizzare] la struttura delle frasi
+    - #text(teal)[suddividere] le frasi articolate
+    - #text(teal)[separare] le frasi sui #text(teal)[dati] da quelle sulle #text(teal)[funzioni]
+       (operazioni)
+- Per meglio evidenziare i concetti che sono espressi nei requisiti, è opportuno:
+
+    - costruire un #text(teal)[glossario dei termini]
+    - individuare #text(green)[omonimi] e #text(green)[sinonimi] e unificare i termini
+    - rendere esplicito il #text(green)[riferimento fra termini]
+    - riorganizzare le frasi per concetti
+
+
+==== Esempio: BD bibliografica (1)
+
+
+Si vogliono organizzare i dati di interesse per
+automatizzare la gestione dei riferimenti bibliografici,
+con tutte le informazioni da riportarsi in una bibliografia.
+
+Per ogni pubblicazione deve esistere
+un codice identificante #underline[costituito da sette caratteri,
+indicanti le iniziali degli autori, l'anno di pubblicazione
+e un carattere aggiuntivo per la discriminazione
+delle collisioni] (ad es. BL2007a)
+
+- Dettagli marginali tendono solo a distrarre
+    e non forniscono nessuna indicazione sulla struttura
+    dello schema che si deve progettare
+
+==== Esempio: BD bibliografica (2)
+
+Si vogliono organizzare i dati di interesse per
+automatizzare la gestione dei riferimenti bibliografici,
+con tutte le informazioni da riportarsi in una bibliografia.
+
+*Le pubblicazioni sono di due tipi, monografie (per le quali
+interessano editore, data e luogo di pubblicazione) e articoli su
+rivista (con nome della rivista, volume, numero, pagine
+e anno di pubblicazione); per entrambi i tipi
+si debbono ovviamente riportare i nomi degli autori.*
+
+Per ogni pubblicazione deve esistere un codice
+identificante...
+
+- Il paragrafo in grassetto fornisce informazioni utili per derivare
+    lo schema concettuale, in quanto introduce concetti importanti
+    nella realtà in esame
+
+
+==== Un altro esempio più articolato
+
+- Si vuole realizzare una base di dati per una società che eroga corsi,
+    di cui vogliamo rappresentare i dati deipartecipantiai corsi e deidocenti.
+- Per gli studenti(circa 5000), identificati da un codice, si vuole memorizzare
+    il codice fiscale, il cognome, l'età, il sesso, il luogodi nascita, il nome dei loro
+    attuali datori di lavoro, i posti dove hanno lavorato in precedenza insieme al periodo,
+    l'indirizzo e il numero di telefono, icorsiche hanno frequentato
+    (i corsi sono in tutto circa 200) e il giudizio finale.
+- Rappresentiamo anche iseminariche stanno attualmente frequentando e,
+    per ogni giorno, i luoghie le ore dove sono tenute le lezioni.
+- I corsi hanno un codice, untitoloe possono avere varie edizioni con date di inizio
+    e fine e numero di partecipanti.
+- Se gli studenti sono liberi professionisti, vogliamo conoscere l'area di interesse e,
+    se lo possiedono, iltitolo. Per quelli che lavorano alle dipendenze di altri,
+    vogliamo conoscere invece il loro livello e la posizione ricoperta.
+- Per gliinsegnanti(circa 300), rappresentiamo il cognome, l'età, ilpostodove sono
+    nati, il nome del corso che insegnano, quelli che hanno insegnato nel passato
+    e quelli che possono insegnare. Rappresentiamo anche tutti i loro recapiti telefonici.
+    I docenti possono essere dipendenti interni della società o collaboratori esterni.
+
+
+==== Glossario dei termini, omonimi e sinonimi
+
+- Raramente i requisisti espressi in linguaggio naturale
+    sono privi di ambiguità. È infatti frequente il caso di\
+       #text(teal)[Omonimi]: lo stesso termine viene usato per descrivere concetti
+          differenti
+          (es: libro e copia di libro, posto: di lavoro e geografico)\
+       #text(teal)[Sinonimi]: termini diversi vengono usati per descrivere lo stesso
+          concetto
+          (es: studente e partecipante)
+- Un modo conveniente per rappresentare sinteticamente
+    i concetti più rilevanti emersi dall'analisi è il glossario dei
+    #text(teal)[termini], il cui scopo è fornire per ogni concetto rilevante:
+       - Una breve descrizione del concetto
+       - Eventuali sinonimi
+       - Relazioni con altri concetti del glossario stesso
+
+
+===== Esempio
+
+#cfigure("images/2024-05-09-17-00-53.png",90%)
+
+==== Ristrutturazione dei requisiti
+
+- Oltre a costruire il glossario, al fine di semplificare
+    le analisi successive, è utile riformulare i requisiti:
+       - Eliminare le omonimie
+       - Usare un termine univoco per ogni concetto
+       - Riorganizzare le frasi raggruppandole in base al concetto
+          cui si riferiscono
+          Nell'esempio:
+             - Frasi di carattere generale
+             - Frasi riferite ai partecipanti
+             - Frasi riferite ai docenti
+             - Frasi riferite ai corsi
+             - Frasi riferite alle società
+
+
+===== Esempio: frasi relative ai partecipanti
+
+Per i partecipanti (circa 5000), identificati
+da un codice, rappresentiamo il codice fiscale,
+il cognome, l'età, il sesso, la città di nascita,
+i nomi dei loro attuali datori di lavoro
+e di quelli precedenti (insieme alle date di inizio
+e fine rapporto), le edizioni dei corsi che stanno
+attualmente frequentando e quelli che hanno
+frequentato nel passato, con la relativa
+votazione finale.
+
+
+==== Dai concetti allo schema E/R
+
+- Va sempre ricordato che un concetto non è di per sé
+    un'entità, un'associazione, un attributo, o altro
+       #text(teal)[DIPENDE DAL CONTESTO!]
+- Come regole guida, un concetto verrà rappresentato
+    come
+       - Entità
+          - se ha proprietà significative e descrive oggetti con esistenza
+             autonoma
+       - Attributo
+          - se è semplice e non ha proprietà
+       - Associazione
+          - se correla due o più concetti
+       - Generalizzazione/specializzazione
+          - se è caso più generale/particolare di un altro
+
+
+==== Strategie di progettazione
+
+- Per affrontare progetti complessi è opportuno adottare
+    uno specifico modo di procedere, ovvero una #text(green)[strategia di
+    progettazione]
+- I casi notevoli sono:
+    - Strategia #highlight(fill: teal)[top-down:]\
+       Si parte da uno schema iniziale molto astratto ma completo,
+       che viene successivamente raffinato fino ad arrivare
+       allo schema finale
+    - Strategia #highlight(fill: teal)[bottom-up:]\
+       Si suddividono le specifiche in modo da sviluppare semplici
+       schemi parziali ma dettagliati, che poi vengono integrati tra loro
+    - Strategia #highlight(fill: teal)[inside-out:]\
+       Lo schema si sviluppa “a macchia d'olio”, partendo dai concetti
+       più importanti, che quindi vengono espansi aggiungendo
+       quelli a essi correlati, e così via
+
+
+===== Pro e controlo delle strategie
+
+#cfigure("images/2024-05-09-17-08-07.png",90%)
+
+===== Un approccio “misto”
+
+- Nella pratica si fa spesso uso di una strategia ibrida,
+    nella quale:
+
+    + si individuano i concetti principali e si realizza uno #text(teal)[schema scheletro], che contiene solamente i concetti più importanti
+    + sulla base di questo si può #text(teal)[decomporre]
+    + poi si raffina, si espande, si integra
+
+... vediamo cosa succede nel caso della società di
+formazione...
+
+
+===== Società di formazione: schema scheletro
+
+#cfigure("images/2024-05-09-17-10-42.png",70%)
+
+#heading(level: 5, numbering: none)[Raffinamento di Partecipanti]
+
+#cfigure("images/2024-05-09-17-11-51.png",90%)
+- Dato che i partecipanti possono essere o dipendenti o professionisti, facciamo una gerarchie totale ed esclusiva (t,e)
+- I dipendenti possono avere (impiego corrente) un unico datore di lavoro, mentre i datori possono avere da 0 a n dipendenti
+- Impiego passato si riferisce alla classe generale Partecipanti perché uno che adesso è un Professionista può essere stato, in passato, un Dipendente
+#heading(level: 5, numbering: none)[Raffinamento di Corsi]
+
+#cfigure("images/2024-05-09-17-12-33.png",90%)
+- La chiave di Edizioni Corsi è il Codice del corso e la Data inizio
+#heading(level: 5, numbering: none)[Raffinamento di Docenti]
+
+#cfigure("images/2024-05-09-17-13-09.png",90%)
+
+#heading(level: 5, numbering: none)[Integrazione: schema di riferimento]
+
+#cfigure("images/2024-05-09-17-14-14.png",90%)
+
+#heading(level: 5, numbering: none)[Integrazione: Partecipanti e Corsi]
+#cfigure("images/2024-05-09-17-17-59.png",90%)
+
+#heading(level: 5, numbering: none)[Integrazione: Docenti e Corsi]
+
+#cfigure("images/2024-05-09-17-18-50.png",90%)
+- C'è un vincolo non espresso sulla data di Docenza corrente e Docenza passata
+==== Qualità di uno schema concettuale
+
+- #text(teal)[Lo schema E/R deve essere verificato] accuratamente per verificare che risponda a requisiti di:
+
+- #highlight(fill: teal)[Correttezza]
+    - Non devono essere presenti errori (sintattici o semantici)
+- #highlight(fill: teal)[Completezza]
+    - Tutti i dati di interesse devono essere specificati
+- #highlight(fill: teal)[Leggibilità]
+    - Riguarda anche aspetti prettamente estetici dello schema
+- #highlight(fill: teal)[Minimalità]
+    - È importante capire se esistono elementi ridondanti
+       nello schema; in alcuni casi ciò non è un problema,
+       ma può essere viceversa una scelta di progettazione
+       volta a favorire l'esecuzione di certe operazioni
+
+
+==== Metodologia basata sulla strategia mista
+
+#text(green)[Analisi dei requisiti]
+- Analizzare i requisiti ed eliminare le ambiguità
+- Costruire un glossario dei termini, raggruppare i requisiti
+#text(green)[Passo base]
+- Definire uno schema scheletro con i concetti più rilevanti
+#text(green)[Passo di decomposizione] (se necessario o appropriato)
+- Decomporre i requisiti con riferimento ai concetti nello schema scheletro
+#text(green)[Passo iterativo] (da ripetere finché non si è soddisfatti)
+- Raffinare i concetti presenti sulla base delle loro specifiche
+- Aggiungere concetti per descrivere specifiche non descritte
+#text(green)[Passo di integrazione] (se si è decomposto)
+- Integrare i vari sottoschemi in uno schema complessivo, facendo riferimento allo schema scheletro
+#text(green)[Analisi di qualità] (ripetuta e distribuita)
+- Verificare le qualità dello schema e modificarlo
+
+
+==== Riassumendo
+
+- La #text(teal)[fase di analisi dei requisiti] è fondamentale
+    per poter progettare una base di dati che rispetti
+    i requisiti
+- Mancando la possibilità di standardizzarla,
+    tale fase si avvale necessariamente di regole
+    di buon senso e di una serie di strumenti che riducono
+    il rischio di commettere errori grossolani,
+    oltre a costituire una valida documentazione
+- Per la #text(green)[progettazione dello schema E/R] sono possibili
+    diverse strategie, di cui quella #text(teal)[mista] è senz'altro
+    la più diffusa e adeguata anche nel caso
+    di progetti estremamente complessi
 
 
 
