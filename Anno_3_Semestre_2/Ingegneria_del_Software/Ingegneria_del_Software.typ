@@ -4118,7 +4118,7 @@ Esempio
 - Converte l'interfaccia originale di una classe nell'interfaccia (diversa) che si aspetta il cliente
 
 - Permette a classi che hanno interfacce incompatibili di lavorare insieme
-
+- Si inserisce, tra le due classi, l'interfaccia Adapter, che ingloba la classe che deve erogare i servizi, in modo che possa comunicare con la classe che li deve usare
 - Si usa quando
 
     - si vuole riutilizzare una classe esistente 
@@ -4126,6 +4126,7 @@ Esempio
     - la sua interfaccia non è conforme a quella desiderata
 
 - Noto anche come #text(blue)[_*wrapper*_]
+- Si realizza con composizione-delega
 
 
 #cfigure("images/2024-05-03-13-51-00.png",90%)
@@ -7604,6 +7605,388 @@ foreach (MyType obj in enumerable)
     int x = a[0, 1];
     ```
 #cfigure("images/2024-04-18-16-20-57.png",45%)
+
+
+
+
+== Delegati ed eventi
+
+=== Delegati
+
+- Sono oggetti che possono contenere *il riferimento* (_type safe_)
+    *a un metodo*, tramite il quale il metodo può essere invocato
+- *Oggetti funzione* (_functor_): oggetti che si comportano come una funzione (metodo)
+- Simili ai puntatori a funzione del C/C++,
+    ma _object-oriented_ e molto più potenti
+- Utilizzo standard: funzionalità di _*callback*_
+    - *Elaborazione asincrona*
+    - *Elaborazione cooperativa* (il chiamato fornisce una parte del servizio,
+       il chiamante fornisce la parte rimanente - es. qsortin C)
+    - *Gestione degli eventi* (chi è interessato a un certo evento
+       si registra presso il generatore dell'evento,
+       specificando il metodo che gestirà l'evento)
+
+
+==== C/C++: Puntatori a funzioni
+
+```C int funX(char c);
+int funY(char c);
+int (g)(char c) = NULL;
+...
+g = cond1? funX : funY;
+oppure: g = cond1? &funX : &funY;
+...
+... g('H') ... ≡ ... (g)('H') ...
+```
+
+==== C/C++: Array di puntatori a funzioni
+
+```C void fun0(char s);
+void fun1(char s);
+void fun2(char s);
+void (fun[])(char s) 
+{ fun0, fun1, fun2 };
+...
+fun[m]("stringa di caratteri"); ≡
+    (fun[m])("stringa di caratteri");
+```
+#cfigure("images/2024-05-16-10-25-22.png",60%)
+
+
+==== C/C++: Elaborazione cooperativa
+
+```C void qsort(void base, int num, int width,
+int (compare)(void , void ));```
+#cfigure("images/2024-05-16-10-27-11.png",90%)
+
+
+
+=== Delegati
+
+- *Dichiarazione* di un nuovo *tipo* di *delegato*
+    che può contenere il riferimento a un metodo
+    che ha un unico argomento intero e restituisce un intero:\
+    ```C delegate int Azione(int param);```
+- *Definizione* di un *delegato*:
+
+    ```C Azione azione;```
+
+- *Inizializzazione* di un delegato:
+
+
+```C azione = new Azione(nomeMetodoStatico);
+azione = new Azione(obj.nomeMetodo);
+azione = nomeMetodoStatico; // C2.
+azione = obj.nomeMetodo; // C2.```
+
+- *Invocazione del metodo* referenziato dal delegato:
+
+```C int k1 = azione(10);```
+
+
+
+==== Delegati: Multicasting
+
+- È possibile assegnare al delegato una *lista di metodi*
+    (invocation list)
+- All'atto della chiamata del delegato, i metodi vengono invocati
+    - in *sequenza*
+    - in *modo sincrono*
+- Per aggiungere un metodo alla lista: `+=`
+
+```C Azione azione = Fun1;
+... azione(10) ... // Fun1(10)
+azione += Fun2;
+... azione(10) ... // Fun1(10), Fun2(10)```
+
+- Per *togliere un metodo* dalla lista: `-=`
+
+```C azione -= Fun1;
+... azione(10) ... // Fun2(10)```
+
+
+
+#line(length: 100%)
+
+- Un'istanza di delegato incapsula uno o più metodi (con una lista di parametri e tipo restituito specifici), ciascuno dei quali è indicato come entità  invocabile (*callable entity*)
+    - per i metodi statici, un'entità invocabile consiste
+        solo in un metodo
+    - per i metodi di istanza, un'entità invocabile consiste
+        in un'istanza e un metodo su quell'istanza
+- Un delegato
+    - applica solo una singola firma del metodo (non un nome)
+    - non conosce o non si preoccupa della classe dell'oggetto a cui fa riferimento
+- Ciò rende i delegati utili per chiamate anonime (*anonymous invocation*)
+
+
+#cfigure("images/2024-05-16-10-32-48.png",90%)
+
+
+
+- L'invocazione di un'istanza del delegato la cui lista di metodi
+    contiene più elementi procede richiamando ciascuno dei metodi
+    nella lista, in modo sincrono, in ordine
+- A ogni metodo così invocato viene passato lo stesso
+    insieme di parametri fornito all'istanza del delegato
+- Se tale chiamata di delegato include parametri di tipo riferimento
+    - ogni invocazione di metodo avverrà con un riferimento alla stessa
+       variabile
+    - le modifiche a tale variabile da parte di un metodo nella lista
+       saranno visibili ai metodi successivi in lista
+- Se la chiamata del delegato include parametri di output
+    o un valore di ritorno
+       - il loro valore finale verrà dall'invocazione dell'ultimo delegato nell'elenco
+
+#cfigure("images/2024-05-16-10-33-37.png",100%)
+
+
+- In C\#, la dichiarazione di un nuovo tipo di delegato definisce automaticamente una nuova classe derivata dalla classe `System.MulticastDelegate`
+
+
+```C System.Object
+    System.Delegate
+        System.MulticastDelegate
+            Azione```
+
+- Pertanto, sulle istanze di Azione è possibile invocare i metodi definiti a livello di classi di sistema
+
+
+
+==== Esempio Boss-Worker
+
+- È necessario modellare un'interazione tra due componenti
+    - un *Worker* che effettua un'attività (o lavoro)
+    - un *Boss* che controlla l'attività dei suoi Worker
+- Ogni Worker deve notificare al proprio Boss:
+    - quando il lavoro inizia
+    - quando il lavoro è in esecuzione
+    - quando il lavoro finisce
+- Soluzioni possibili:
+    + class-based callback relationship
+    + interface-based callback relationship
+    + pattern Observer(lista di notifiche)
+    + delegate-based callback relationship
+    + event-based callback relationship
+
+
+==== Una Relazione di Chiamata Basata su Delegati
+
+- Un delegato è un'entità _type-safe_ che si pone tra 1 caller e 0+ call
+    target e che agisce come un'interfaccia con un solo metodo
+
+```C interface IWorkerEvents
+{
+    void WorkStarted(Worker worker);
+    void WorkProgressing(Worker worker);
+    int WorkCompleted(Worker worker);
+}
+
+delegate void WorkStarted(Worker worker);
+delegate void WorkProgressing(Worker worker);
+delegate int WorkCompleted(Worker worker);```
+
+
+#cfigure("images/2024-05-16-11-12-01.png",90%)
+
+
+*Dai Delegati agli Eventi*\
+- L'utilizzo di campi pubblici per la registrazione
+    fornisce un accesso eccessivo
+       - I client possono sovrascrivere altri client
+          precedentemente registrati\
+          ```C peter.Started = WorkStarted;```
+       - I client possono invocare i chiamati\
+          ```C peter.Completed(peter);```
+- Fornire metodi di registrazione pubblica abbinati al campo
+    del delegato è una soluzione migliore,
+    ma pesante se implementata manualmente
+- Il modificatore event automatizza il supporto per
+    - #text(blue)[*public [un]registration*]
+    - #text(blue)[*private implementation*]
+
+
+
+#cfigure("images/2024-05-16-11-15-06.png",90%)
+
+
+*Personalizzare la Registrazione a Eventi*\
+
+- È possibile definire gestori di registrazione a eventi
+- Uno dei vantaggi di scrivere metodi propri di registrazione è l'aumentato controllo
+- La sintassi alternativa, analoga a una proprietà, supporta gestori di registrazione definiti dall'utente
+- Consente di rendere la registrazione condizionale o diversamente personalizzata
+- Sintassi di accesso lato client non modificata
+- È necessario fornire spazio per i client registrati
+
+
+```C class Worker
+{ ...
+    public event WorkProgressing Progressing
+    {
+        add
+        {
+            if(DateTime.Now.Hour < 12)
+            { _progressing += value; }
+            else
+            { throw new InvalidOperationException
+                ("Must register before noon."); }
+        }
+        remove
+        { _progressing -= value; }
+    }
+    private WorkProgressing _progressing;
+    ...
+}```
+
+
+=== Eventi
+
+- *Evento*: “Fatto o avvenimento determinante nei confronti
+    di una situazione oggettiva o soggettiva”
+- In programmazione, un evento può essere scatenato
+    - Dall'interazione con l'utente (click del mouse, ...)
+    - dalla logica del programma
+- *Event sender* - l'oggetto (o la classe) che scatena
+    (raiseso triggers) l'evento (sorgente dell'evento)
+- *Event receiver* - l'oggetto (o la classe) per il quale l'evento
+    è determinante e che quindi desidera essere notificato
+    quando l'evento si verifica (cliente)
+- *Event handler* - il metodo (dell'_event receiver_)
+    che viene eseguito all'atto della notifica
+
+
+- Quando si verifica l'evento, il sender invia un messaggio di notifica a tutti i receiver
+    - in pratica, invoca gli eventhandler di tutti i receiver
+- In genere, il sender NON conosce né i _receiver_, né gli _handler_
+
+- Il meccanismo che viene utilizzato per collegare sender e receiver/handler è il delegato (che permette *invocazioni anonime*)
+
+
+==== Dichiarazione di un Evento - Convenzione .NET
+
+- Un evento incapsula un delegato
+    - è necessario dichiarare un tipo di delegato prima di poter dichiarare un evento
+- Per convenzione, i delegati degli eventi in .NET hanno 2 parametri
+    - la *sorgente* che ha scatenato l'evento e
+    - i *dati* relativi all'evento
+- Molti eventi, inclusi eventi della GUI come i click del mouse,
+    non generano dati
+- In tali situazioni, è sufficiente usare il delegato dell'evento
+    fornito dalla libreria di classi per gli eventi senza dati,
+    ```C System.EventHandler```
+- Delegati di eventi personalizzati sono necessari solamente
+    quando un evento genera dati
+
+
+
+
+```C public delegate void EventHandler(object sender, EventArgs e);
+
+System.Object
+    System.Delegate
+        System.MulticastDelegate
+            System.EventHandler```
+
+- La classe `System.EventArgs` viene utilizzata quando un evento
+    non deve passare informazioni aggiuntive ai propri gestori
+- Se i gestori dell'evento hanno bisogno di informazioni aggiuntive,
+    è necessario derivare una classe dalla classe EventArgs ,
+    aggiungere i dati necessari e utilizzare il delegate
+    ```C EventHandler<TEventArgs>```
+
+
+
+```C public event EventHandler Changed;```
+
+- In pratica, `Changed` è un delegato, ma la _keyword_ #text(blue)[`event`] ne limita
+    - la visibilità e
+    - le possibilità di utilizzo
+- Una volta dichiarato, l'evento può essere trattato
+    come un delegato di tipo speciale
+- In particolare, può:
+    - essere #text(blue)[`null`] se nessun cliente si è registrato
+    - essere associato a uno o più metodi da invocare
+
+
+==== Invocazione di un Evento
+
+- Per scatenare un evento è opportuno definire un metodo protetto
+    virtuale `OnNomeEvento` e invocare sempre quello
+    public event EventHandler Changed ;
+    protected virtual void OnChanged()
+    ```C {
+       if ( Changed != null )
+          Changed ( this , EventArgs.Empty );
+    }
+    ...
+    OnChanged ();
+    ...```
+- #underline[*Limitazione rispetto ai delegati*]\
+    L'invocazione dell'evento può avvenire solo
+    all'interno della classe nella quale l'evento è stato dichiarato
+    (benché l'evento sia stato dichiarato #text(blue)[`public`])
+
+
+
+- Al di fuori della classe in cui l'evento è stato dichiarato,
+    un evento viene visto come un *delegato con accessi molto limitati*
+- Le sole operazioni effettuabili dal cliente sono:
+    - #text(blue)[agganciarsi a un evento]: aggiungere un nuovo delegato
+       all'evento mediante l'operatore `+=`
+    - #text(blue)[sganciarsi da un evento]: rimuovere un delegato dall'evento
+       mediante l'operatore `-=`
+
+
+===== Agganciarsi a un Evento
+
+
+Per iniziare a ricevere le notifiche di un evento, il cliente deve:
+
+- *Definire il metodo* (_event handler_) che dovrà essere invocato
+    all'atto della notifica dell'evento (con la stessa signature dell'evento):
+    ```C void ListChanged(object sender, EventArgs e)
+    { ... }```
+- *Creare un delegato* dello stesso tipo dell'evento,
+    farlo riferire al metodo
+    e aggiungerlo alla lista dei delegati associati all'evento :
+    ```C List.Changed += new EventHandler(ListChanged);
+    List.Changed += ListChanged; // C# 2.0```
+
+
+===== Sganciarsi da un Evento
+
+
+Per smettere di ricevere le notifiche di un evento, il cliente deve:
+- *Rimuovere il delegato* dalla lista dei delegati associati all'evento:
+
+```C List.Changed -= new EventHandler ( ListChanged );
+List.Changed -= ListChanged ; // C# 2.0```
+
+
+#line(length: 100%)
+
+- Poiché `+=` e `-=` sono gli unici operatori permessi su un evento al di
+    fuori del tipo che dichiara l'evento, il codice esterno al tipo
+       - può aggiungere e rimuovere handlerper un evento, ma
+       - non può in nessun altro modo ottenere o modificare
+          la lista di handlersottostante
+- Gli eventi forniscono agli oggetti un modo utile
+    per segnalare modifiche allo stato a clienti di tali oggetti
+- Gli eventi sono un componente fondamentale
+    *per la creazione di classi che possano essere riutilizzate
+    in un gran numero di programmi differenti*
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 = Principi di Design
