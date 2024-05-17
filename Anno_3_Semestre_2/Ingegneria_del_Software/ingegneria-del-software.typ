@@ -5229,6 +5229,372 @@ formazione...
 
 
 
+== Dalla Progettazione all'Implementazione
+
+
+=== Introduzione
+
+- Arrivati a questo punto apparentemente
+    occorre “solamente” implementare tutte le classi
+    che abbiamo individuato nelle varie fasi
+    (analisi, progettazione, ecc.)
+- “Sfortunatamente” anche a questo livello
+    occorre effettuare delle scelte progettuali
+    che hanno un impatto sulle caratteristiche del SW
+    (efficienza, riusabilità, ecc.)
+- Il #text(blue)[*progetto di dettaglio*] rappresenta
+    una descrizione del sistema molto vicina alla codifica,
+    ovvero che la vincola in maniera sostanziale
+       - Per esempio, descrivendo non solo le classi in astratto
+          ma anche i loro attributi e metodi, con relativi tipi e firma
+
+
+=== Progettazione di Dettaglio
+
+- Durante la progettazione di dettaglio
+    è necessario definire
+       - #highlight(fill: myblue)[Tipi di dato]
+          che non sono stati definiti nel modello OOA
+       - #highlight(fill: myblue)[Navigabilità delle associazioni] tra classi
+          e relativa implementazione
+       - #highlight(fill: myblue)[Strutture dati]
+          necessarie per l'implementazione del sistema
+       - #highlight(fill: myblue)[Operazioni]
+          necessarie per l'implementazione del sistema
+       - #highlight(fill: myblue)[Algoritmi]
+          che implementano le operazioni
+       - #highlight(fill: myblue)[Visibilità] di classi, (attributi,) operazioni, ...
+
+
+==== Navigabilità di un'Associazione
+
+- Possibilità di spostarsi da un qualsiasi oggetto
+    della classe origine a uno o più oggetti
+    della classe destinazione (a seconda della molteplicità)
+- I messaggi possono essere inviati
+    solo nella direzione della freccia Ogni docente deve avere un riferimento al proprio
+       dipartimento di afferenza
+
+
+#cfigure("images/2024-05-17-17-38-14.png",90%)
+
+
+
+- #text(blue)[*A livello di analisi del problema*],
+    le associazioni di composizione e di aggregazione
+    hanno una direzione precisa detti #text(blue)[*A il contenitore*]
+    e #text(blue)[*B l'oggetto contenuto*], è A che contiene B,
+    e non viceversa
+- #text(blue)[*A livello implementativo*], un'associazione può essere
+    - #text(blue)[*mono-direzionale*] quando
+       da A si deve poter accedere a B, ma non viceversa
+    - #text(blue)[*bi-direzionale*] quando
+       da A si deve poter accedere a B e
+       da B si deve poter accedere velocemente ad A
+
+
+- Dal punto di vista implementativo, la #text(blue)[*bi-direzionalità*]
+    - è molto efficiente
+    - ma occorre tenere sotto controllo la consistenzadelle strutture
+       dati utilizzate per la sua implementazione
+
+#cfigure("images/2024-05-17-17-39-28.png",90%)
+
+==== Implementazione delle Associazioni
+
+#heading(level: 5, numbering: none)[Associazioni con molteplicità 0..1 o 1..1]
+- Aggiungere alla classe cliente un attributo membro
+    che rappresenta
+       - il #text(blue)[*riferimento all'oggetto*] della classe fornitore
+       - e/o l'#text(blue)[*identificatore univoco*] dell'oggetto della classe
+          fornitore (solo se persistente)
+       - o il #text(blue)[*valore dell'oggetto*] della classe fornitore
+          (solo nel caso di #text(blue)[*composizione*] e #text(blue)[*molteplicità 1..1*])
+
+#cfigure("images/2024-05-17-17-39-50.png",60%)
+#cfigure("images/2024-05-17-17-40-07.png",60%)
+
+#heading(level: 5, numbering: none)[Associazioni con molteplicità 0..\* o 1..\*]
+- Aggiungere alla classe cliente un attributo membro
+    che referenzia un'#text(blue)[*istanza di una classe contenitore*]
+- Una #text(blue)[*classe contenitore*] è una classe le cui istanze
+    sono #text(blue)[*collezioni*] di (riferimenti a) oggetti della classe
+    fornitore
+- La classe contenitore può essere
+    - realizzata, oppure
+    - presa da una libreria (preferibilmente) 
+
+
+#cfigure("images/2024-05-17-17-40-36.png",80%)
+#cfigure("images/2024-05-17-17-40-51.png",80%)
+
+#cfigure("images/2024-05-17-17-41-03.png",80%)
+#cfigure("images/2024-05-17-17-41-12.png",80%)
+#cfigure("images/2024-05-17-17-41-22.png",80%)
+
+
+==== Classi Contenitore
+
+- Una #text(blue)[*classe contenitore*] (o semplicemente contenitore)
+    è una classe le cui istanze contengono oggetti
+    di altre classi
+- Se gli oggetti contenuti sono in #text(blue)[*numero fisso*],
+    è sufficiente un vettore predefinito del linguaggio
+- Se gli oggetti contenuti sono in #text(blue)[*numero variabile*],
+    un vettore predefinito non basta e occorre
+    una classe contenitore
+- Esempi di classi contenitore sono
+    - Vettori, stack, liste, alberi, ...
+- Funzionalità minime di una classe contenitore
+    - #text(blue)[*Inserire, rimuovere, trovare*] un oggetto in una collezione
+    - #text(blue)[*Enumerare*] (iterare su) gli oggetti della collezione
+
+
+- I contenitori possono essere classificati in funzione
+    - del modo in cui contengono gli oggetti
+       - #text(blue)[*contenimento per riferimento*]: gli oggetti sono reference type
+       - #text(blue)[*contenimento per valore*]: gli oggetti sono value type
+    - dell'omogeneità o eterogeneità di tali oggetti
+       - #text(blue)[*oggetti omogenei*]: tutti gli oggetti contenuti sono dello stesso tipo
+       - #text(blue)[*oggetti eterogenei*]: gli oggetti contenuti possono essere di tipo diverso
+
+
+===== Contenimento per Riferimento
+
+- L'oggetto contenuto #text(blue)[*esiste per conto proprio*]
+- L'oggetto contenuto può essere #text(blue)[*in più contenitori
+    contemporaneamente*]
+- Quando un oggetto viene inserito in un contenitore,
+    #text(blue)[*non viene duplicato*]
+    ma ne viene memorizzato solo il riferimento
+- La distruzione del contenitore non comporta
+    la #text(blue)[*distruzione degli oggetti contenuti*]
+
+
+===== Contenimento per Valore
+
+- L'oggetto contenuto
+    - viene memorizzato nella struttura dati del contenitore
+    - esiste solo in quanto contenuto fisicamente
+       in un altro oggetto
+- Quando un oggetto deve essere inserito
+    in un contenitore, #text(blue)[*viene duplicato*]
+- La distruzione del contenitore comporta
+    la #text(blue)[*distruzione degli oggetti contenuti*]
+
+
+===== Contenimento di Oggetti Omogenei
+
+- Per implementare #text(blue)[*contenitori di oggetti omogenei*]
+    (sia per valore, sia per riferimento)
+    sono ideali le #text(blue)[*classi generiche*]
+- Il tipo degli oggetti contenuti viene lasciato generico
+    e ci si concentra sugli algoritmi di gestione della
+    collezione di oggetti
+- Quando serve una classe contenitore di oggetti
+    appartenenti a una classe specifica,
+    #text(blue)[*è sufficiente istanziare la classe generica*],
+    specificando il tipo desiderato
+
+
+#cfigure("images/2024-05-17-17-42-03.png",60%)
+#cfigure("images/2024-05-17-17-42-12.png",80%)
+
+
+===== Contenimento di Oggetti Eterogenei
+
+- Per implementare #text(blue)[*contenitori di oggetti eterogenei*]
+    (solo per riferimento) è necessario usare l'#text(blue)[*ereditarietà*]
+    e sfruttare la proprietà che un puntatore
+    alla superclasse radice della gerarchia può puntare
+    a un'istanza di una qualunque sottoclasse
+- La classe contenitore può essere generica,
+    ma il tipo deve essere la #text(blue)[*superclasse radice
+    della gerarchia*] (nel peggiore dei casi, `object`)
+
+
+=== Implementazione delle Associazioni
+
+- Un modo alternativo per implementare un'associazione
+    tra due oggetti è tramite un #text(blue)[*dizionario*]
+- Un dizionario è un tipo particolare di contenitore,
+    che associa due oggetti: #text(blue)[*la chiave e il rispettivo valore*]
+- La chiave
+    - Può essere un oggetto qualsiasi, non necessariamente una stringa o un intero
+    - Deve essere unica
+- Il dizionario, data una chiave, ritrova in modo efficiente
+    il valore ad essa associato
+
+
+#cfigure("images/2024-05-17-17-42-33.png",85%)
+
+==== Identificazione degli Oggetti
+
+- Un oggetto (contenitore o meno) può contenere un #text(blue)[*riferimento univoco*] a un altro oggetto
+- Come è possibile #text(blue)[*identificare univocamente*] un oggetto per poterlo associare a un altro?
+- Nel caso di #text(blue)[*strutture dati interamente contenute nello spazio di indirizzamento*] dell'applicazione, un oggetto può essere identificato univocamente mediante il suo #text(blue)[*indirizzo*] (logico) #text(blue)[*di memoria*]
+
+
+- Nel caso di #text(blue)[*database*] o di #text(blue)[*sistemi distribuiti*],
+    a ogni oggetto deve essere associato
+    un #text(blue)[*identificatore univoco persistente*] tramite il quale
+    deve essere possibile risalire all'oggetto stesso,
+    sia che risieda in memoria, su disco o in rete
+- L'identificatore univoco è un attributo che al momento
+    della creazione dell'oggetto viene inizializzato con:
+       - un valore generato automaticamente dal sistema
+       - il valore della chiave primaria di una tabella relazionale, ...
+- Il nome di tale attributo #underline[*potrebbe*] essere
+    - idDocente
+    - idStudente, ...
+
+
+===== Un Esempio Reale
+
+- La #text(blue)[*tecnologia COM*] (MS) permette a un'applicazione
+di trovare, caricare e utilizzare _run-time_ i #text(blue)[*componenti*]
+    necessari per la sua esecuzione
+- Ogni componente è memorizzato in una DLL
+    (#text(red)[Dynamic Link Library]) - un file locale o remoto
+- Quando l'applicazione ha bisogno di un componente,
+    #text(blue)[*il sistema deve essere in grado di localizzare la DLL*]
+    che contiene quel particolare componente
+
+
+
+- L'indipendenza dalla collocazione fisica
+    non consente di utilizzare un indirizzo fisico (_pathname_)
+- Pertanto, deve essere utilizzato un #text(red)[meccanismo
+    di indirizzamento logico] che permetta di identificare
+    univocamente il file che contiene il componente
+- Si utilizzano degli #text(red)[identificatori globali]
+    (#text(blue)[*GUID*] = _Globally Unique Identifier_)
+
+
+
+
+- Il concetto di GUID è stato introdotto,
+    con un nome leggermente diverso (#text(blue)[UUID] = Universally
+    Unique Identifier), dall'OSF (Open Software Foundation)
+    nelle specifiche #text(blue)[DCE] (Distributed Computing
+    Environment)
+- In DCE gli UUID vengono utilizzati per identificare
+    i destinatari delle chiamate di procedura remota (RPC)
+
+
+
+
+- Un GUID è un numero di 128 bit (16 byte)
+    generato in modo da garantire l'unicità nello spazio
+    e nel tempo: MAC (48/64 bit) + ticks (64 bit - 100ns)
+    rappresentato così:\
+    `{32bb8320-b41b-11cf-a6bb-0080c7b2d682}`
+- COM utilizza diversi tipi di GUID
+- Il tipo più importante di GUID serve a identificare
+    le classi di componenti:
+    ogni classe di componenti COM è caratterizzata
+    da un proprio identificatore che viene chiamato
+    #text(blue)[*CLSID*] (Class Identifier)
+
+
+
+
+- Disponendo di un CLSID, un'applicazione può chiedere
+    alla funzione di sistema #text(blue)[`CoCreateInstance`]
+    di creare un istanza del componente e di restituire
+    un riferimento nel spazio di indirizzamento
+    dell'applicazione stessa
+- Il database di sistema di Windows (#text(blue)[*registry*])
+    mantiene una corrispondenza tra CLSID ed entità fisiche
+    (DLL, EXE) che contengono l'implementazione
+    dei componenti (server)
+
+
+
+- `CoCreateInstance` provvede a
+    - reperire il server tramite il _registry_
+    - caricarlo in memoria (se non è già presente)
+    - creare un'istanza e restituirne un riferimento
+#cfigure("images/2024-05-17-17-43-16.png",90%)
+
+
+- In .NET esiste la classe `System.Guid` che permette di gestire istanze di GUID
+
+- Ad esempio, per ottenere un nuovo GUID, è sufficiente
+    invocare il metodo statico
+    `Guid.NewGuid()` che, ovviamente, restituisce un `System.Guid`
+- Altri metodi e operatori permettono di confrontare GUID
+
+
+
+===== Modifiche per Utilizzare il Livello di Ereditarietà Supportato
+
+- Se esistono strutture con ereditarietà multipla
+- Se il linguaggio di programmazione non ammette
+    l'ereditarietà multipla
+- È necessario convertire
+    le strutture con ereditarietà multipla
+    in strutture con solo ereditarietà semplice
+
+
+
+#cfigure("images/2024-05-17-17-43-39.png",70%)
+
+#heading(level: 6, numbering: none)[$1^a$ possibilità (composizione e delega)]
+- Scegliere la più significativa tra le superclassi
+    ed ereditare esclusivamente da questa
+- Tutte le altre superclassi diventano possibili “ruoli”
+    e vengono connesse mediante composizione
+- Le caratteristiche delle superclassi escluse
+    vengono incorporate nella classe specializzata
+    tramite composizione e delega
+    e non tramite ereditarietà
+#cfigure("images/2024-05-17-17-43-54.png",65%)
+
+
+
+
+#heading(level: 6, numbering: none)[$2^a$ possibilità (interfaccia)]
+- Appiattire tutto in una gerarchia semplice
+    e implementare un'interfaccia
+- In questo modo, una o più relazioni di ereditarietà
+    si perdono e #text(blue)[*gli attributi e le operazioni corrispondenti
+    devono essere ripetuti nelle classi specializzate*]
+
+
+
+#cfigure("images/2024-05-17-17-44-15.png",65%)
+#cfigure("images/2024-05-17-17-44-26.png",68%)
+
+=== Miglioramento delle Prestazioni
+
+- Il software con le prestazioni migliori
+    - fa la cosa giusta “abbastanza velocemente”
+       (cioè, soddisfacendo i requisiti e/o le attese
+       del cliente)
+    - pur rimanendo entro costi e tempi preventivati
+- Per migliorare la velocità percepita può bastare
+    - la #text(blue)[*memorizzazione di risultati intermedi*]
+    - un'#text(blue)[*accurata progettazione dell'interazione con l'utente*]
+       (ad es. utilizzando multi-threading)
+- Un #text(blue)[*traffico di messaggi molto elevato tra oggetti*]
+    può invece richiedere dei cambiamenti
+    per aumentare la velocità
+
+
+- Di norma, la soluzione è che un oggetto possa accedere
+    direttamente ai valori di un altro oggetto (aggirando
+    l'incapsulamento!)
+       - Utilizzare metodi inline
+       - Utilizzare la dichiarazione friend
+       - Combinare insieme due o più classi
+- Questo tipo di modifica deve essere presa
+    in considerazione solo dopo che tutti gli altri aspetti
+    del progetto sono stati soggetti a misure e modifiche
+- L'unico modo per sapere se una modifica contribuirà
+    in modo significativo a rendere il software “abbastanza
+    veloce” è tramite le misure e l'osservazione
+
 
 
 
