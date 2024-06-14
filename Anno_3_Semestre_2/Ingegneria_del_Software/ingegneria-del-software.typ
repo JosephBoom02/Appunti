@@ -5,8 +5,6 @@
 #import "@preview/xarrow:0.2.0": xarrow
 
 
-#import cetz.plot 
-
 #let title = "Ingegneria del Software"
 #let author = "Bumma Giuseppe"
 
