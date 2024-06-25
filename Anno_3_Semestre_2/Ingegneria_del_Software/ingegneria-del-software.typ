@@ -5270,8 +5270,7 @@ formazione...
     della classe origine a uno o più oggetti
     della classe destinazione (a seconda della molteplicità)
 - I messaggi possono essere inviati
-    solo nella direzione della freccia Ogni docente deve avere un riferimento al proprio
-       dipartimento di afferenza
+    solo nella direzione della freccia Ogni docente deve avere un riferimento al proprio dipartimento di afferenza
 
 
 #cfigure("images/2024-05-17-17-38-14.png",90%)
