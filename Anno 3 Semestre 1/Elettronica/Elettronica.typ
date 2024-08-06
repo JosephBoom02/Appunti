@@ -164,7 +164,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   $
   Quindi ora calcoliamo la $S P$ con la formula
   $
-    S P = (R_("RIF P"))/(R P) &= (10 thin k ohm)/(331 thin ohm)\
+    S_P = (R_("RIF P"))/(R_P) &= (10 thin k ohm)/(331 thin ohm)\
     &= 30,21\
     &= 31
   $
@@ -176,14 +176,34 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   $
     R_P = (R_("eq P") - dfrac(R_("RIF" P),S P) dot N )/K 
   $
-  dove $N$ è il numero di MOS del percorso critico che interessano anche un percorso non critico e $K$ è il numero di MOS del percorso non critico cosiddetti "nuovi", cioè che non fanno parte del percorso critico.
+  dove $N$ è il numero di MOS del percorso critico che interessano anche un percorso non critico e $K$ è il numero di MOS del percorso non critico cosiddetti "nuovi", cioè che non fanno parte del percorso critico. Inoltre $K+N$ è il numero di MOS del percorso non critico; quando si devono calcolare $K$ e $N$ di solito si calcola prima $K$ e poi si ricava $N$ dall'ultima formula.
 
   In questo caso consideriamo $A X overline(C)$. Abbiamo 2 pMOS nuovi e nessun pMOS del percorso critico, quindi $N=0$ e $K=2$
   $
-    R_(P 2) = (R_("eq P") - cancel(dfrac(R_("RIF" P),S P) dot overbrace(N, 0)) )/K &= 994/2\
-    &= 497
+    R_(P 2) = (R_("eq P") - cancel(dfrac(R_("RIF" P),S P) dot overbrace(N, 0)) )/K &= 994/2 thin ohm\
+    &= 497 thin ohm
+  $
+  $
+    S P_2 = (R_("RIF P"))/(R_(P 2)) &= (10000 thin ohm)/(497 thin ohm)\
+    &=20,12\
+    &=21
   $
 
+  *Terzo caso*
+
+  Consideriamo il percorso $overline(A) thin overline(B) C$. Abbiamo un nMOS nuovo e un nMOS del percorso critico, quindi $N=1$ e $K=1$.\
+  *N.B.* Bisogna specificare $overline(B)$ e non $X$ perché si deve cosiderare solo il percorso di $overline(A) C$, e se $B$ fosse accesso il percorso sarebbe diverso.
+
+  $
+    R_(P 3) = (R_("eq P") - dfrac(R_("RIF" P),S P) dot N)/K &= (994 thin ohm - dfrac(10000 thin ohm,31) dot 1)/1\
+    &=994 thin ohm - 323 thin ohm \
+    &= 671 thin ohm
+  $
+  $
+    S P_2 = (R_("RIF P"))/(R_(P 2)) &= (10000 thin ohm)/(671 thin ohm)\
+    &=14,9\
+    &=15
+  $
 
 
 
