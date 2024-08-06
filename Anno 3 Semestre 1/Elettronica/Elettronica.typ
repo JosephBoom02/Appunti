@@ -82,31 +82,38 @@
 = Tipi di esercizi
 
 == D 
+=== Formule notevoli
+$
+  C_(min) = "Cox" dot L_(min) dot ("SP" + "SN") \
+  "Resistenza equivalente pull-up" space R_("eq P") &= t_("LH")/(ln(2) dot C_(min)) \
+  "Resistenza equivalente pull-down" space R_("eq N") &= t_("HL")/(ln(2) dot C_(min))\
+  R_(P n) &= (R_("eq P") - dfrac(R_("RIF" P),S_P) dot N )/K \
+  "Per percorsi critici" space R_p &= R_("eq P")/K\
+  S_(P) &= R_("RIF" P)/(R P)
+$
+*Note:* 
+- $ln(2) = 0,69$
+- la $S_p$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
+- $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinchè il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
+- $p s$ sono pico secondi
+
+
+=== Esame 14/06/2023
 + Della rete in figura si calcoli l'espressione booleana al nodo O.
 + Dimensionare i transistori pMOS affinchè il tempo di salita al nodo F sia inferiore o uguale a 90ps. Ottimizzare il progetto. Si tenga conto che i transistori dell'inverter di uscita hanno le seguenti geometrie : Sp = 200, Sn = 100.
 + Progettare la PDN
 #cfigure("images/2024-08-02-17-44-29.png", 40%)
 
 *Parametri tecnologici:*\
-$R_("RIF" P) = 10 k ohm$\ 
-$R_("RIF" N) = 5 k ohm$\
-$"Cox" = 7 f\F \/ mu m^2$\
-$L_(min) = 0,25 mu m$\
-$"Vdd" = 3V$
+$
+  &R_("RIF" P) = 10 k ohm space "si riferisce alla rete di pull-up" \ 
+  &R_("RIF" N) = 5 k ohm space "si riferisce alla rete di pull-down"\ 
+  &"Cox" = 7 f\F \/ mu m^2\
+  &L_(min) = 0,25 mu m\
+  &"Vdd" = 3V
+$
 
 *N.B.* I #text(fill: red)[numeri rossi] indicano la dimensione massima che possono assumere i transistor\
-
-=== Formule notevoli
-$
-  C_(min) = "Cox" dot L_(min) dot ("SP" + "SN") \
-  "Resistenza equivalente pull-up" space R_("eq P") &= t_("LH")/(ln(2) dot C_(min)) \
-  "Resistenza equivalente pull-down" space R_("eq N") &= t_("HL")/(ln(2) dot C_(min))
-$
-*N.B.* $ln(2) = 0,69$
-
-Con $t_("LH")$ tempo di salita e $t_("HL")$ tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinchè il tempo di salita al nodo $X$ sia inferiore o uguale a $Y$ ps" vuol dire che prenderemo $t_("LH") = Y$.
-
-*N.B.* ps sono pico secondi
 
 Per prima cosa si calcola $C_(min)$
 $
@@ -135,7 +142,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   PD := rete di pull-down \
   PU := rete di pull-up
 
-  Reti di pull-up al nodo $F$:
+  Rete di pull-up al nodo $F$:
   $
     P U = ((C dot B) + overline(A)) dot C + A dot overline(C) = F
   $
@@ -205,7 +212,17 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
     &=15
   $
 
+  *Nota:* le $S_p$ trovate denotano la dimensione massima dei transistori che interessano il percorso; in particolare si assegna prima la dimnesione ai transistori presenti nel percorso critico, poi agli altri, in modo che il valore trovato per un transistori del percorso critico sia dominante rispetto al valore trovato per lo stesso transistore per un percorso non critico.
 
++ *Progettare la PDN*
+  
+  La formula della rete di pull-down è la seguente (prima l'abbiamo calcolata scrivendola in forma negata)
+  $
+    P D = (((C+B) dot overline(A)) + C) dot (A+overline(C))
+  $
+  quindi, seguendo le regole dell'algebra booleana, la rete può essere rappresentata come segue
+  #cfigure("images/Screenshot_20240806-182202.png",40%)
+  
 
 
 
