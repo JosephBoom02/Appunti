@@ -88,8 +88,8 @@
 #cfigure("images/2024-08-02-17-44-29.png", 40%)
 
 *Parametri tecnologici:*\
-$R_("RIF" p) = 10 k ohm$\ 
-$R_("RIF" n) = 5 k ohm$\
+$R_("RIF" P) = 10 k ohm$\ 
+$R_("RIF" N) = 5 k ohm$\
 $"Cox" = 7 f\F \/ mu m^2$\
 $L_(min) = 0,25 mu m$\
 $"Vdd" = 3V$
@@ -119,7 +119,8 @@ $
   R_("eq P") = t_("LH")/(ln(2) dot C_(min)) &= (90 thin p s)/(0,69 dot 131,25 thin f F) \
   &=(90 dot 10^(-9) s)/(0,69 dot 131,25 dot 10^(-12))\
   &=0,99378 dot 10^3 thin ohm \
-  &=993,79 thin ohm
+  &=993,79 thin ohm\
+  &= 994 thin ohm
 $
 
 Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percorso critico.\
@@ -151,11 +152,37 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
 
 + *Dimensionare i transistor*
   
+  *Primo caso peggiore*
+
   Si calcola la $R P$, che solo per il percorso critico vale
-  $(R_("eq P"))/("nMOS")$. In questo caso il percorso critico è $X overline(B) thin overline(C)$; la $X$ sta a significare che il valore di $A$ non ci interessa; se un elemento è negato vuol dire che il transistor è acceso.
+  $(R_("eq P"))/("nMOS")$. In questo caso il percorso critico è $X B C$; la $X$ sta a significare che il valore di $A$ non ci interessa; se un elemento è negato vuol dire che il transistor è acceso.
 
+  $
+    R_(P) &= (994 thin ohm)/3\
+    &=331,33 thin ohm \
+    &= 331 thin ohm
+  $
+  Quindi ora calcoliamo la $S P$ con la formula
+  $
+    S P = (R_("RIF P"))/(R P) &= (10 thin k ohm)/(331 thin ohm)\
+    &= 30,21\
+    &= 31
+  $
+  *N.B.* Arrotondare sempre all'intero successivo
 
+  *Secondo caso peggiore*
 
+  Per ottimizzare un percorso non critico si ha una formula che varia in base alle caratteristiche del percorso stesso
+  $
+    R_P = (R_("eq P") - dfrac(R_("RIF" P),S P) dot N )/K 
+  $
+  dove $N$ è il numero di MOS del percorso critico che interessano anche un percorso non critico e $K$ è il numero di MOS del percorso non critico cosiddetti "nuovi", cioè che non fanno parte del percorso critico.
+
+  In questo caso consideriamo $A X overline(C)$. Abbiamo 2 pMOS nuovi e nessun pMOS del percorso critico, quindi $N=0$ e $K=2$
+  $
+    R_(P 2) = (R_("eq P") - cancel(dfrac(R_("RIF" P),S P) dot overbrace(N, 0)) )/K &= 994/2\
+    &= 497
+  $
 
 
 
