@@ -77,23 +77,148 @@
 
 
 
+= SI
 
+== Unità derivate SI
+
+#table(
+  columns: (13em, auto, auto, 13em),
+  inset: 10pt,
+  align: horizon,
+  table.header(
+    [*Grandezza*], [*Simbolo*], [*Unità SI non di base*], [*Unità SI di base*]
+  ),
+    [Carica elettrica],
+    [$C$ (Coulomb)],
+    [],
+    [$s times A$],
+    
+    [Tensione elettrica e differenza di potenziale elettrico ],
+    [$V$ "(Volt)"],
+    [$ dfrac(W,A)$],
+    [$m^2 times k g times s^(-3) times A^(-1)$],
+    
+    [Forza],
+    [$N$ (Newton)],
+    [],
+    [$m times k g times s^(-2)$],
+
+    [Energia/Lavoro],
+    [$J$ (Joule)],
+    [$N times m$],
+    [$m^2 times k g times s^(-2)$],
+    
+    [Potenza],
+    [$W$ (Watt)],
+    [$dfrac(J,s)$],
+    [$m^2 times k g times s^(-3)$],
+     
+    [Flusso magnetico],
+    [$W b$ (Weber)],
+    [$V times s$],
+    [$m^2 times k g times s-2 times A^(-1)$],
+     
+    [Induzione magnetica],
+    [$T$ (Tesla)],
+    [$dfrac(W b,m^2)$],
+    [$k g times s^(-2) times A^(-1)$],
+     
+    [Resistenza elettrica],
+    [$Omega$ (Ohm)],
+    [$dfrac(V,A)$],
+    [$m^2 times k g times s^(-3) times A^(-2)$],
+     
+    [Conduttanza elettrica],
+    [$S$ (Siemens)],
+    [$dfrac(A,V)$],
+    [$m^(-2) times k g^(-1) times s^3 times A^2$],
+     
+    [Capacità],
+    [$F$ (Farad)],
+    [$dfrac(C,V)$],
+    [$m^(-2) times k g^(-1) times s^4 times A^2$],
+     
+    [Induttanza],
+    [$H$ (Henry)],
+    [$dfrac(W b,A)$],
+    [$m^2 times k g times s^(-2) times A^(-2)$],
+    
+    [Frequenza],
+    [$H z$ (Hertz)],
+    [],
+    [$s^(-1)$]
+)
+
+#pagebreak()
+
+== Prefissi
+
+#align(center)[
+  #table(
+    columns: (auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header(
+      [*Factor*], [*Name*], [*Symbol*]
+    ),        
+      [$10^(-24)$] , [yocto]  , [y],
+      
+      [$10^(-21)$] , [zepto] , [z],
+      
+      [$10^(-18)$] , [atto] , [a],
+      
+      [$10^(-15)$] , [femto] , [f],
+      
+      [$10^(-12)$] , [pico] , [p],
+      
+      [$10^(-9)$] , [nano] ,[n],
+      
+      [$10^(-6)$] , [micro] , [$mu$],
+      
+      [$10^(-3)$] , [milli] , [m],
+      
+      [$10^(-2)$] , [centi] , [c],
+      
+      [$10^(-1)$] , [deci] , [d],
+      
+      [$10^(1)$] , [deca] , [da],
+      
+      [$10^(2)$] , [hecto] , [mh],
+      
+      [$10^(6)$] , [mega] , [M],
+      
+      [$10^(9)$] , [giga] , [G],
+      
+      [$10^(12)$] , [tera] , [T],
+      
+      [$10^(15)$] , [peta] ,[P],
+      
+      [$10^(18)$] , [exa] , [E],
+      
+      [$10^(21)$] , [zetta] , [Z],
+      
+      [$10^(24)$] , [yotta] , [Y]
+  )
+]
+
+
+#pagebreak()
 
 = Tipi di esercizi
 
 == D 
 === Formule notevoli
 $
-  C_(min) = "Cox" dot L_(min) dot ("SP" + "SN") \
+  C_(min) = "Cox" dot L_(min)^2 dot ("SP" + "SN") \
   "Resistenza equivalente pull-up" space R_("eq P") &= t_("LH")/(ln(2) dot C_(min)) \
   "Resistenza equivalente pull-down" space R_("eq N") &= t_("HL")/(ln(2) dot C_(min))\
   R_(P n) &= (R_("eq P") - dfrac(R_("RIF" P),S_P) dot N )/K \
-  "Per percorsi critici" space R_p &= R_("eq P")/K\
+  "Per percorsi critici" space R_P &= R_("eq P")/K\
   S_(P) &= R_("RIF" P)/(R P)
 $
 *Note:* 
 - $ln(2) = 0,69$
-- la $S_p$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
+- la $S_P$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
 - $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinchè il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
 - $p s$ sono pico secondi
 
@@ -117,14 +242,14 @@ $
 
 Per prima cosa si calcola $C_(min)$
 $
-  C_(min) &= "Cox" dot L_(min) dot ("SP" + "SN") \
+  C_(min) &= "Cox" dot L_(min)^2 dot ("SP" + "SN") \
   &= 7 f\F \/ mu m^2 dot (0,25 mu m)^2 dot (200 + 100) \
   &= 131,35 f F
 $
 Poi la resistenza equivalente
 $
   R_("eq P") = t_("LH")/(ln(2) dot C_(min)) &= (90 thin p s)/(0,69 dot 131,25 thin f F) \
-  &=(90 dot 10^(-9) s)/(0,69 dot 131,25 dot 10^(-12))\
+  &=(90 dot 10^(-12) s)/(0,69 dot 131,25 dot 10^(-15))\
   &=0,99378 dot 10^3 thin ohm \
   &=993,79 thin ohm\
   &= 994 thin ohm
@@ -162,7 +287,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   *Primo caso peggiore*
 
   Si calcola la $R P$, che solo per il percorso critico vale
-  $(R_("eq P"))/("nMOS")$. In questo caso il percorso critico è $X B C$; la $X$ sta a significare che il valore di $A$ non ci interessa; se un elemento è negato vuol dire che il transistor è acceso.
+  $(R_("eq P"))/("nMOS")$. In questo caso il percorso critico è $X B C$; la $X$ sta a significare che il valore di $A$ non ci interessa.
 
   $
     R_(P) &= (994 thin ohm)/3\
@@ -212,7 +337,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
     &=15
   $
 
-  *Nota:* le $S_p$ trovate denotano la dimensione massima dei transistori che interessano il percorso; in particolare si assegna prima la dimnesione ai transistori presenti nel percorso critico, poi agli altri, in modo che il valore trovato per un transistori del percorso critico sia dominante rispetto al valore trovato per lo stesso transistore per un percorso non critico.
+  *Nota:* le $S_P$ trovate denotano la dimensione massima dei transistori che interessano il percorso; in particolare si assegna prima la dimnesione ai transistori presenti nel percorso critico, poi agli altri, in modo che il valore trovato per un transistori del percorso critico sia dominante rispetto al valore trovato per lo stesso transistore per un percorso non critico.
 
 + *Progettare la PDN*
   
@@ -222,13 +347,72 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   $
   quindi, seguendo le regole dell'algebra booleana, la rete può essere rappresentata come segue
   #cfigure("images/Screenshot_20240806-182202.png",40%)
+
+
+
+=== Esame 12/06/2024
++ Determinare l'espressione booleana al nodo O
++ Dimensionare i transistori nMOS e pMOS in modo che i tempi di salita e discesa, al nodo F, siano inferiori o uguali a $100 thin p s$. Si ottimizzi il progetto per minimizzare l'area occupata da tutti i transistori.
+Si tenga conto che i transistori dell'inverter di uscita hanno le seguenti geometrie : $S_P=300$, $S_n= 150$.
   
+*Parametri tecnologici:*
+$
+  R_("rif" p) &= 10 thin k ohm \
+  R_("rif" n) &= 5 thin k ohm \
+  C_(o x) &= 7 thin f F \/mu m^2 \
+  L_(min) &= 0,25 thin mu m \
+  V_(C C) &= 3,3 V
+$
 
+#cfigure("images/2024-08-07-16-26-24.png", 45%)
 
++ *Espressione booleana*
+  $
+    "PD" = ( (C+B) dot (A+D) dot (B+ overline(C)) ) dot "CLK" + overline("CLK")
+  $
+  Nota: Il CLK non negato è in serie con il resto del circuito della rete di pull-down, quello negato è in parallelo a tutta la rete di pull-down.
 
+  $
+    "F" = overline("PD")\
+    "O" = overline("F") = overline(overline("PD")) \
+    "O" = overline(overline("PD"))
+  $
+  quindi
+  $
+    "O" &= overline(overline(( (C+B) dot (A+D) dot (B+ overline(C)) ) dot "CLK" + overline("CLK"))) \
+    &= overline(( (overline(C) dot overline(B)) + (overline(A) dot overline(D)) + (overline(B) dot C) + overline("CLK") ) dot "CLK" )
+  $
++ *Dimensionare transistori nMOS e pMOS*
+  
+  - Rete pull-up\
+    C'è solo un CLK nella rete di pull-up, quindi $K=1$
+    $
+      space space R_P  = dfrac(R_("eq" P), K) = 736 thin ohm space
+      S_P = dfrac(R_("RIF" P), R_P) &= dfrac(10000 thin ohm, 736 thin ohm)\
+      &= 13,58\
+      &= 14
+    $
+  - Rete pull-down
+    In questo caso ci sono diversi percorsi critici:
+    - $A B C overline(D)$
+    - $overline(A) B C D$
+    - $A B overline(C) overline(D)$
+    - $overline(A) B overline(C) D$
 
+    Il numeri di MOS in un percorso non è sempre un intero, infatti, se ci sono dei transistor in parallelo, il numero di MOS corrispondente è uguale a $dfrac(1,"numero di transistor in parallelo")$
 
+    #cfigure("images/Screenshot_20240807-163312.png", 70%)
 
+    Quindi per tutti i percrosi critici individuati $K=3,5$
+
+    $
+      R_N = dfrac(R_("eq" N),K) &= dfrac(736 thin ohm,3.5) &space S_N = dfrac(R_("RIF" N), R_N) &= dfrac(5000 thin ohm,210 thin ohm) \
+      &= 210 thin ohm &space &=24
+    $
+
+    Tutti i transistori della rete pull-down avranno quindi dimensione 24
+
+    #cfigure("images/2024-08-07-18-12-47.png", 50%)
 
 
 
