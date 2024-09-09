@@ -43,9 +43,9 @@
 
 //Shortcut for centered figure with image
 #let cfigure(img, wth) = figure(image(img, width: wth))
-//Usage: #cfigure("Images/Es_Rettilineo.png", 70%)
+//Usage: #cfigure("images/Es_Rettilineo.png", 70%)
 
-#let nfigure(img, wth) = figure(image("Images/"+img, width: wth))
+#let nfigure(img, wth) = figure(image("images/"+img, width: wth))
 
 //Code to have sublevel equation numbering
 /*#set math.equation(numbering: (..nums) => {
@@ -212,7 +212,286 @@
 
 
 == A
-*N.B.* Le formule notevoli si trovano nel #link("./Formulario_elettronica.pdf")[Formulario].
+
+
+=== Formule notevoli
+*N.B.* Alcune formule si trovano nel #link("./Formulario_elettronica.pdf")[Formulario].
+
+
+==== Formule simboliche di resistore, induttore e condensatore
+$
+  &bold("Resistore") &space space &bold("Induttore") &space space &bold("Condensatore") 
+  \
+  &V =  R I   &   &V = j omega L I  &   &V = - dfrac(j, omega C) I
+  \
+  &Z = R      &   &Z = j omega L    &   Z = &dfrac(1, j omega C) = - dfrac(j,omega C)
+$
+
+
+=== Diagrammi di Bode
+
+
+==== Guadagno statico
+$
+    G_a (j omega) &= mu 
+    & space 
+    |G_a (j omega)|_("dB") &= 20 log|mu| 
+    & space   
+    arg(G(j omega)) =  arg( mu)
+$
+
+#cfigure("images/Diagramma_guadagno_statico_1.png", 63%)
+
+Per quanto riguarda il diagramma dell'ampiezza,
+- se $|mu|  >= 1$ allora $20 log|mu|   >= 0$
+- se $|mu| <1$ allora $20 log|mu|  < 0$.  
+Per il diagramma della fase invece
+- se $ mu >0$ allora $ arg( mu)=0$
+- se $ mu <0$ allora $ arg( mu)=-180 degree$.
+
+
+==== Zeri nell'origine
+Consideriamo una risposta con uno zero nell'origine (cioè $g=-1$)
+$
+    G_b (j omega) &=  frac(1,(j omega)^(-1)) = j omega 
+    &wide 
+    |G_b (j omega)|_("dB") &= 20  log  omega 
+    &wide  
+    arg(G_b (j  omega)) &=  arg(j omega)
+$
+
+#cfigure("images/Diagramma_zero_origine.png", 72%)
+
+La retta che definisce l'ampiezza $ log  omega arrow.r.bar 20  log  omega$ ha pendenza $20 "dB/dec"$; se ho $g$ zeri nell'origine allora la pendenza della retta sarà $20 dot g "dB/dec"$.\
+$j omega$ è un punto sul semiasse immaginario positivo $forall omega > 0$, quindi fase $90^degree forall > 0$.
+
+
+==== Poli nell'origine
+Consideriamo una risposta con un polo nell'origine (cioè $g=1$)
+$
+    G_b (j omega) &=  frac(1,(j omega)^1) =  frac(1,j omega) 
+    &space  
+    |G_b (j omega)|_("dB") &= -20  log  omega 
+    &space  
+    arg(G_b (j  omega)) &= - arg(j omega)
+$
+
+#cfigure("images/Diagramma_poli_origine.png", 75%)
+
+Anche in questo caso, se ho $g$ poli nell'origine allora la pendenza della retta sarà $-20  "dB/dec"$.  
+Per quanto riguarda la fase $-j  omega$ è un punto sul semiasse immaginario negativo $ forall  omega>0$, quindi la fase è $-90^ degree$.
+
+
+
+==== Zero reale (ampiezza)
+Consideriamo una risposta con uno zero reale
+$
+    G_c (j omega) = 1 + j  omega  tau  
+$
+$
+    |G_c (j omega)|_("dB") = 20  log  sqrt(1 +  omega^2 tau^2)  approx
+    cases(
+        20  log 1 = 0 & omega  <<  dfrac(1,|tau|)\  
+        20  log  omega |tau| = -20  log  dfrac(1,|tau|) + 20  log  omega wide& omega  >>  dfrac(1,|tau|)
+    )
+$
+
+$
+    lr(|G_c (j  frac(1,|tau|)  )|)_("dB") &= 20  log  sqrt(1+ frac(1,|tau|^2) tau^2) \
+    &= 20  log  sqrt(2)  approx 3
+$
+per $ omega =  frac(1,|tau|)$ abbiamo lo scostamento massimo.
+
+#nfigure("Zero_reale_ampiezza.png", 60%)
+
+==== Zero reale negativo (fase)
+Consideriamo una una risposta con uno zero reale negativo
+#tageq($G_c (j omega) = 1 + j  omega  tau$, $ tau > 0$)
+
+$
+    arg(G_c (j omega)) =  arg(1+j omega  tau)  approx 
+    cases(
+        0 wide& omega  <<  frac(1, tau) \ 
+        90^ degree &  omega  >>  frac(1, tau)
+    )    
+$
+Se $ omega  arrow 0$ allora $ arg(1+j omega tau)  approx  arg(1)=0$
+
+#cfigure("images/Diagramma_zero_reale_negativo_1.png", 60%)
+
+se $ omega  >>  dfrac(1, tau)$ allora graficamente
+
+#cfigure("images/Diagramma_zero_reale_negativo_2.png", 60%)
+#cfigure("images/Diagramma_zero_reale_negativo_3.png", 72%)
+
+il cambio di fase inizia circa una decade prima e finisce circa una decade dopo la pulsazione di taglio $ omega =  dfrac(1, tau)$.
+
+#cfigure("images/Diagramma_zero_reale_negativo_4.png", 60%)
+
+$ dfrac(1,5) dot dfrac(1, tau) = 0.2 dot dfrac(1, tau) = 2  dot 10^(-1)  dfrac(1, tau)$, il doppio in scala logaritmica è $ dfrac(1,3)$ di una decade.
+
+
+==== Zero reale positivo (fase)
+Consideriamo $G_c (j omega) = 1 + j omega  tau,    tau <0$ (cioè una risposta con uno zero reale positivo)
+
+#cfigure("images/Diagramma_zero_reale_positivo_1.png", 32%)
+
+$
+     arg(G(j omega)) =  arg(1+j omega tau)  approx 
+    cases(
+        0 &  omega  <<  frac(1,|tau|) \  
+        -90^( degree) wide&  omega  >>  frac(1,|tau|)
+    )   
+$
+
+#cfigure("images/Diagramma_zero_reale_positivo_2.png", 70%)
+
+
+
+==== Polo reale
+Consideriamo $G_c (j omega) =  dfrac(1,1+j omega T)$ (cioè una risposta con un polo reale)
+$
+    |G_c (j omega)|_("dB") &= 20  log  lr(| frac(1,1+j omega  T) |)  
+    \
+    &= -20  log |1+j omega T|
+$
+$
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
+    & space  
+    arg(G_c (j omega)) = - arg(1+j omega T)
+$
+
+#cfigure("images/Diagramma_polo_reale.png", 73%)
+
+Il diagramma è uguale al diagramma dello zero ma ribaltato rispetto all'asse reale (consistentemente con il segno di $T$).
+
+
+
+==== Polo reale negativo
+Consideriamo $G_c (j omega) =  dfrac(1,1+j omega T),   T>0$ (cioè una risposta con un polo reale negativo)
+$
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+ omega^2T^2) 
+    & space  
+    arg(G_c (j omega)) = - arg(1+j omega T)
+$
+
+#cfigure("images/Diagramma_polo_reale_negativo_1.png", 53%)
+
+Fino a $ dfrac(1,T)$, (pulsazione di taglio), si ha un andamento costante a $0 "dB" $, cioè il modulo della sinusoide in uscita non cambia. A partire da $ dfrac(1,T)$ si ha una retta $ log omega  arrow.r.bar 20  log  dfrac(1,|T|) - 20  log  omega$ con pendenza $-20   "dB/dec"$.  
+    
+Lo scostamento massimo (tra diagramma asintotico e diagramma reale) si ha in $ omega =  dfrac(1,T)$ dove
+$
+    |G_c (j omega)|_("dB") &= -20  log  sqrt(1+1) \ 
+    &= -20  log  sqrt(2)  approx -3
+$
+Il cambio di fase inizia circa una decade prima e finisce circa una
+decade dopo la pulsazione di taglio $ omega =  dfrac(1,T)$. 
+
+
+
+==== Zeri complessi coniugati (ampiezza)
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2)$, una risposta con una coppia di zeri complessi coniugati
+$
+    |G_d (j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))
+$
+per $ omega  >>  alpha_n$
+$
+    |G_d (j omega)|_("dB") & approx 20  log  sqrt( ( frac( omega^2, alpha_n^2) )^2)  \
+    &=20  log  frac( omega^2, alpha_n^2)  \
+    &= 20  log  ( frac( omega, alpha_n) )^2  \
+    &= 40  log  frac( omega, alpha_n)  \
+    &=  underbrace(40  log  omega, "variabile") -  underbrace(40  log  alpha_n, "costante")
+$
+Quindi la risposta si comporta come una retta, di pendenza pari a 40 dB.  
+Analizziamo ora la risposta per $ omega =  alpha_n$
+$
+    |G_d (j omega)|_("dB") &20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  \
+    &= 20  log  sqrt(4  zeta^2)  \
+    &= 23  log 2|zeta|  \
+    &=  underbrace(20 log 2 ,6   "dB") +20  log |zeta|
+$
+quindi scostamento significativo dipendente dal valore di $ zeta$.
+
+$
+    |G_d (j omega)|_("dB") = 20  log  sqrt( (1 -  frac( omega^2, alpha_n^2) )^2 + 4  zeta^2  frac( omega^2, alpha_n^2))  approx
+    cases(
+        20  log(1) = 0 &  omega  <<  alpha_n  \
+        20  log  dfrac( omega^2, alpha_n^2) = -40  log  alpha_n + 40  log  omega wide& omega   >>  alpha_n
+    )
+$
+
+#cfigure("images/Diagramma_zeri_cc_ampiezza_1.png", 55%)
+#cfigure("images/Diagramma_zeri_cc_ampiezza_2.png", 55%)
+
+Il minimo dell'ampiezza si ha alla pulsazione $ omega_r =  alpha_n  sqrt(1-2 zeta^2)$ con $|G_d (j omega_r)| = 2 |zeta| sqrt(1- zeta^2)$
+
+
+==== Zeri complessi coniugati a parte reale negativa (fase)
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),    zeta>0$, una risposta con una coppia di zeri complessi coniugati a parte reale negativa
+$
+     arg(G_d (j  omega))  approx 
+    cases(
+        0 &  omega  <<  alpha_n  \
+        180^ degree wide& omega  >>  alpha_n
+    )    
+$
+
+#cfigure("images/Diagramma_zeri_cc_neg_1.png", 60%)
+
+Vediamo che la risposta, per $ omega  >>  alpha_n$, nel piano complesso ha sicuramente una parte reale molto negativa, mentre la parte immaginaria dipende dal valore $ zeta$, il quale influenza molto l'andamento della fase. Ad esempio se $ zeta  arrow 0$ la parte immaginaria nel piano complesso tenderà anch'essa a 0, così da rendere molto facile appurare che l'argomento della nostra risposta sia quasi $180^ degree$. Anche con $ zeta =1$ l'argomento sarà circa $180^ degree$, ma solo per pulsazioni molto grandi, perché la parte reale tende a $ dfrac( omega^2, alpha_n^2)$, che è $O( dfrac( omega, alpha_n))$ (la parte immaginaria) per $ omega  arrow  infinity$.
+
+#cfigure("images/Diagramma_zeri_cc_neg_2.png", 73%)
+
+Nel diagramma di fase più $ zeta$ è piccolo e più la discontinuità da $0^ degree$ a $180^ degree$ è rapida. 
+
+
+
+==== Zeri complessi coniugati a parte reale positiva
+Consideriamo $G_d (j omega) = 1+ 2j  zeta  dfrac( omega, alpha_n) -  dfrac( omega^2, alpha_n^2),  quad  zeta < 0$, una risposta con una coppia di zeri complessi coniugati a parte reale positiva.  
+Il diagramma di fase di è speculare a quello precedente
+
+#cfigure("images/Diagramma_zeri_cc_pos_1.png", 73%)
+
+
+
+
+==== Poli complessi coniugati a parte reale negativa <poli_complessi_coniugati_parte_reale_negativa>
+Consideriamo una risposta in frequenza con poli complessi coniugati a parte reale negativa
+$G_d (j omega) =  dfrac(1,1+2j  xi  frac( omega, omega_n)- frac( omega^2, omega_n^2)),    xi > 0$
+
+#cfigure("images/Diagramma_poli_cc_neg_1.png", 63%)
+
+I diagrammi sono quelli precedenti ribaltati rispetto all'asse reale, infatti la retta del diagramma di ampiezza asintotico dopo la pulsazione $ omega_n$ ha pendenza $-40$ dB/dec.  
+Il picco di risonanza si trova alla pulsazione (di risonanza) $ omega_r =  omega_n  sqrt(1-2 xi^2)$ con $|G_d (j omega_r)| =  dfrac(1,2|xi| sqrt(1-2 xi^2))$; alla frequenza $ omega_n$ si ha $|G_d (j omega_n)| =  dfrac(1,2|xi|)$
+   
+Soffermiamoci un attimo sul caso in cui $ xi  arrow 0$: se do una sinusoide con frequenza inferiore a $ omega_n$ essa non viene sfasata; se invece la sua frequenza è di poco superiore a $ omega_n$ la sua fase viene sfasata di $90^ degree$; il modulo viene amplificato di molto se la frequenza della sinusoide è nell'intorno di $ omega_n$.
+
+
+
+==== Poli complessi coniugati a parte reale positiva
+Consideriamo una risposta in frequenza con una coppia di poli complessi coniugati a parte reale positiva
+
+#tageq($G_d (j omega) =  frac(1,1+2j  xi  frac( omega, omega_n) -  frac( omega^2, omega_n^2))$, $ xi < 0$)
+
+Calcoliamo i poli
+$
+    G_d (s) =&  frac(1,1+2  frac( xi, omega_n)s +  frac(s^2, omega_n^2))  
+    \
+    =&  frac( omega_n^2,s^2+2  xi  omega_n s +  omega_n^2)  
+    \
+    ==>& p_(1 slash 2) = -  xi  omega_n  plus.minus j  omega_n  sqrt(1 -  xi^2)
+$
+
+#cfigure("images/Diagramma_poli_cc_pos.png", 68%)
+
+Diagramma ottenuto da quello degli zeri (caso $ zeta<0$) ribaltando rispetto all'asse reale.
+
+
+
+
+
+
+
 
 
 
@@ -329,7 +608,9 @@
 #cfigure("images/Esame_17-06-2021.jpg", 60%)
 #cfigure("images/Esame_17-06-2021_Disegno_1.png", 60%)
 
-+ #text(fill: purple, size: 12pt)[Calcolo funzione di trasferimento]\
+#enum(
+enum.item(1)[
+  #text(fill: purple, size: 12pt)[Calcolo funzione di trasferimento]\
   OPAMP ideale ($L_+ = L_- = 0$) e in alto guadagno ($v_0=0$), quindi il circuito è lineare, e quindi si può applicare la sovrapposizione degli effetti.
   #circle(radius: 7pt)[#set align(center + horizon) 
                         1] $v_a != 0, v_B = 0 ==>$ Filtro attivo passa basso\
@@ -370,79 +651,100 @@ $
   &= v_"IN" thin dfrac(2 + 3 j omega R C, 4 thin (1 + j omega R C))
   \
   &= v_"IN" dfrac(1 + 3/2 j omega R C, 2 thin (1 + j omega R C))
-$
-quindi
-$
-  H(j omega) = 1/2 thin dfrac(1 + 3/2 j omega R C, 1 + j omega R C)
-$
+  $
+  quindi
+  $
+    H(j omega) = 1/2 thin dfrac(1 + 3/2 j omega R C, 1 + j omega R C)
+  $
 
-Ora dobbiamo disegnare il diagramma di Bode della funzione di trasferimento appena ricavata.\
-Iniziamo con il diagramma del modulo:\
-- la funzione ha uno #text(fill: green)[zero], rappresentato da $1 + 3/2 j omega R C$
-- e un #text(fill: red)[polo], rappresentato da $1 + j omega R C$
+  Ora dobbiamo disegnare il diagramma di Bode della funzione di trasferimento appena ricavata.\
+  Iniziamo con il diagramma del modulo:\
+  - la funzione ha uno #text(fill: green)[zero], rappresentato da $1 + 3/2 j omega R C$
+  - e un #text(fill: red)[polo], rappresentato da $1 + j omega R C$
 
-Possiamo utilizzare due metodi per tracciare il diagramma del modulo:
-- tracciare il diagramma del modulo dello #text(fill: green)[zero] e del #text(fill: red)[polo] e "sommarli"
-- calcolare il valore di $H(j omega)$ per $omega -> 0$ e $omega -> + infinity$ e trasformarlo in decibel
-Di seguito li illustrerò entrambi.
+  Possiamo utilizzare due metodi per tracciare il diagramma del modulo:
+  - tracciare il diagramma del modulo dello #text(fill: green)[zero] e del #text(fill: red)[polo] e "sommarli"
+  - calcolare il valore di $H(j omega)$ per $omega -> 0$ e $omega -> + infinity$ e trasformarlo in decibel
+  Di seguito li illustrerò entrambi.
 
-$
-  omega -> 0 ==> H(j omega) = 1/2 space space omega -> + infinity ==> H(j omega) = 3/4
-  \
-  abs(1/2)_"dB" = 20 log (1/2) = -6 space space abs(3/4)_"dB" = 20 log (3/4) = -2,5
-$
+  $
+    omega -> 0 ==> H(j omega) = 1/2 space space omega -> + infinity ==> H(j omega) = 3/4
+    \
+    abs(1/2)_"dB" = 20 log (1/2) = -6 space space abs(3/4)_"dB" = 20 log (3/4) = -2,5
+  $
 
-Calcoliamo le pulsazioni di taglio di #text(fill: red)[polo] e #text(fill: green)[zero]
-$
-  omega_p &= dfrac(1,R C) &space space omega_z &= dfrac(1, 3/2 R C)
-  \
-  &= 3030 "rad/"s & &=4545 "rad/"s
-  \
-  &= 3 thin k"rad/"s & &=4,5 thin k"rad/"s
-$
+  Calcoliamo le pulsazioni di taglio di #text(fill: red)[polo] e #text(fill: green)[zero]
+  $
+    omega_p &= dfrac(1,R C) &space space omega_z &= dfrac(1, 3/2 R C)
+    \
+    &= 3030 "rad/"s & &=4545 "rad/"s
+    \
+    &= 3 thin k"rad/"s & &=4,5 thin k"rad/"s
+  $
 
-Adesso possiamo disegnare il diagramma del modulo tenendo conto che prima di $omega_z$ vale $-6 "dB"$ e dopo $omega_p$ vale $-2,5 "dB"$, e che all'interno delle due pulsazioni di taglio aumenta con una pendenza di $20 "dB/dec"$
+  Adesso possiamo disegnare il diagramma del modulo tenendo conto che prima di $omega_z$ vale $-6 "dB"$ e dopo $omega_p$ vale $-2,5 "dB"$, e che all'interno delle due pulsazioni di taglio aumenta con una pendenza di $20 "dB/dec"$
 
-#cfigure("images/Esame_17-06-2021_Disegno_4.png",35%)
+  #cfigure("images/Esame_17-06-2021_Disegno_4.png",35%)
 
-Per quanto riguarda il diagramma della fase anche qui si può tracciare il diagrammi di #text(fill: red)[polo] e #text(fill: green)[zero] e sommarli ma, siccome le pulsazioni di taglio si trovano nella stessa fase, il diagramma risultante dalla somma sarebbe impreciso, quindi dobbiamo utilizzare un altro metodo.
+  Per quanto riguarda il diagramma della fase anche qui si può tracciare il diagrammi di #text(fill: red)[polo] e #text(fill: green)[zero] e sommarli ma, siccome le pulsazioni di taglio si trovano nella stessa fase, il diagramma risultante dalla somma sarebbe impreciso, quindi dobbiamo utilizzare un altro metodo.
 
-Calcoliamo l'argomento della nostra funzione di trasferimento
-$
-  arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &= arg( 1 + 3/2 j omega R C ) - arg( 2 + 2 j omega R C )
-$
+  Calcoliamo l'argomento della nostra funzione di trasferimento
+  $
+    arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &= arg( 1 + 3/2 j omega R C ) - arg( 2 + 2 j omega R C )
+  $
 
-$
-  arg( 1 + 3/2 j omega R C ) = arctan( 3/2 w R C) &=
-  cases(
-    0 degree &wide omega << omega_z,
-    45 degree &wide omega = omega_z,
-    56 degree &wide omega = omega_p,
-    90 degree &wide omega >> omega_z
-  )
-  \
-  arg( 1 + j omega R C ) = arctan( w R C) &=
-  cases(
-    0 degree &wide omega << omega_p,
-    -45 degree &wide omega = omega_p,
-    -33 degree &wide omega = omega_z,
-    -90 degree &wide omega >> omega_p
-  )
-$
+  $
+    arg( 1 + 3/2 j omega R C ) = arctan( 3/2 w R C) &=
+    cases(
+      0 degree &wide omega << omega_z,
+      45 degree &wide omega = omega_z,
+      56 degree &wide omega = omega_p,
+      90 degree &wide omega >> omega_z
+    )
+    \
+    arg( 1 + j omega R C ) = arctan( w R C) &=
+    cases(
+      0 degree &wide omega << omega_p,
+      -45 degree &wide omega = omega_p,
+      -33 degree &wide omega = omega_z,
+      -90 degree &wide omega >> omega_p
+    )
+  $
 
-quindi sommiamo tutte le quantità (tra l'altro si può immaginare senza difficoltà anche il valore che assume a metà tra le due pulsazioni di taglio)
+  quindi sommiamo tutte le quantità (tra l'altro si può immaginare senza difficoltà anche il valore che assume a metà tra le due pulsazioni di taglio)
 
-$
-  arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &=
-  cases(
-    0 degree &wide omega << omega_z wide omega << omega_p,
-    12 degree &wide omega = omega_z,
-    11.5 degree &wide omega = dfrac(omega_z + omega_p,2),
-    11 degree &wide omega = omega_p,
-    0 degree &wide omega >> omega_z wide omega << omega_p
-  )
-$
-Quindi il diagramma delle fasi inizia metà decade prima di $omega_z$ a salire (da $0 degree$) fino a raggiungere il valore di circa $dfrac(pi,16)$ per tutto l'intervallo $[omega_z,omega_p]$, per poi scendere per metà decade dopo $omega_p$ e stabilizzarsi al valore $0 degree$.
+  $
+    arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &=
+    cases(
+      0 degree &wide omega << omega_z wide omega << omega_p,
+      12 degree &wide omega = omega_z,
+      11.5 degree &wide omega = dfrac(omega_z + omega_p,2),
+      11 degree &wide omega = omega_p,
+      0 degree &wide omega >> omega_z wide omega << omega_p
+    )
+  $
+  Quindi il diagramma delle fasi inizia metà decade prima di $omega_z$ a salire (da $0 degree$) fino a raggiungere il valore di circa $dfrac(pi,16)$ per tutto l'intervallo $[omega_z,omega_p]$, per poi scendere per metà decade dopo $omega_p$ e stabilizzarsi al valore $0 degree$.
+],
+enum.item(2)[
+  #text(fill: purple, size: 12pt)[Calcolo $I_(O_"MAX")$]\
+  Siccome siamo in condizioni statiche il circuito con $C$ è aperto, e nella relazione tra $v_"IN"$ e $v_"OUT"$ $omega=0$
+  $
+    v_"OUT" = 1/2 thin v_"IN"
+  $
+
+  $
+    v_"IN" = -5 V ==> v_"OUT" = -2,5 V space space v_"IN" = 5 V ==> v_"OUT" = 2,5 V
+  $
+
+  $
+    I_O = i_1 + I_L &= dfrac( v_"OUT"- v_"IN" , 2R ) + dfrac( v_"OUT", R_L )\
+    &= 0,01654 thin A\
+    &= 16,54 thin m A
+  $
+]
+)
+
+
 
 
 === Esercizio diagramma di Bode non ideale
@@ -474,9 +776,61 @@ $
 
 
 
+=== Esame 09/11/2021 (frequenza di taglio)
+Dal seguente circuito si calcolino i valori di $R_1$ e $R_2$ in modo che la frequenza di taglio sia $20 "Hz"$ e il guadagno in centro banda risulti pari a 10. Si supponga l'OPAMP ideale e in alto guadagno.
 
+#cfigure("images/Esame_9-11-2021_Disegno_1.png", 55%)
 
+Dati:
+$
+  R_3 &= 9 thin k ohm &space f_T &= 20 "Hz" \
+  C &= 1 thin mu F & A_(v_"CB")&= 10 \
+  L_+ = - L_- &= 10 V
+$
 
+#text(fill: green, size: 12pt)[OPAMP non invertente]
+$
+  v_"OUT" &= (1+ R_3/R_2) dot v_x \
+  &= ( dfrac( R_2 + R_3, R_2 ) ) dot v_x
+$
+
+#text(fill: purple, size: 12pt)[Partitore di tensione]
+$
+  v_x &= v_"IN" dot dfrac( R_1, Z_C + R_1 ) \
+  &= v_"IN" dot dfrac( R_1, dfrac(1,j omega C) + R_1 ) \
+  &= v_"IN" dot dfrac( R_1, dfrac(1 + j omega C R_1,j omega C)) \
+  &= v_"IN" dot dfrac( j omega C R_1, 1 + j omega C R_1 )
+$
+
+Quindi la funzione di trasferimento è:
+$
+  H(j omega) = underbrace( dfrac(R_2 + R_3, R_2) , mu ) dot dfrac( j omega C R_1, 1 + j omega C R_1 )
+$
+$
+  abs(A_(v_"CB"))_"dB" = 20 log_10 (10) = 20 "dB"
+$
+
+#cfigure("images/Esame_9-11-2021_Disegno_2.png", 45%)
+
+$
+  omega_T = 1/(R_1 C) space omega_T = 2 pi f_T wide ==> wide  R_1 = 1/(omega_T C) &= dfrac(1,2 pi f_T C)
+  \
+  &= dfrac( 1 , 2 pi dot 20 "Hz" dot 1 times 10^(-6) F )
+  \
+  &= 7,96 thin k ohm
+$
+
+$
+  abs(A_(v_"CB"))_"dB" = mu  = dfrac(R_2 + R_3 , R_2) = 10 ==> &R_2 + R_3 = 10 dot R_2
+  \
+  &R_2 - 10 dot R_2 = - R_3
+  \
+  &-9 dot R_2 = - R_3
+  \
+  &9 R_2 = R_3 
+  \
+  &R_2 = R_3/9 = 1 thin k ohm
+$
 
 
 
