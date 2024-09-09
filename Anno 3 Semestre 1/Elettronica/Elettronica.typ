@@ -72,6 +72,10 @@
 #align(center, text(15pt, author))
 #v(8.35mm, weak: true)
 
+// Color in math mode
+#let colpurp(x) = text(fill: purple, $#x$)
+#let colred(x) = text(fill: red, $#x$)
+
 
 #outline()
 
@@ -206,6 +210,288 @@
 
 = Tipi di esercizi
 
+
+== A
+*N.B.* Le formule notevoli si trovano nel #link("./Formulario_elettronica.pdf")[Formulario].
+
+
+
+=== Esame 14/09/2021
+#cfigure("images/Esame_14-09-2021.jpg",43%)
+#cfigure("images/Screenshot_20240904-100842.png", 55%)
+
+#set enum(numbering: "1)")
+
++ Usiamo la sovrapposizione degli effetti per calcolare $v_O$
+  #circle(radius: 7pt)[#set align(center + horizon) 
+                        1] $v_a != 0, v_B = 0 $\
+   \
+   $
+    space space underbrace(v_(O_1) &= dfrac(R_2,R_1) dot v_a, "amplificatore lineare " \ "invertente")
+    space space
+    underbrace(v_("OUT"_A) &= - dfrac(R_4,R_3) dot v_(O_1) , "amplificatore lineare" \ "invertente")
+    =  dfrac(R_4,R_3) dot  dfrac(R_2,R_1) dot v_A
+   $
+
+   #circle(radius: 7pt)[#set align(center + horizon) 
+                        2] $v_a = 0, v_B != 0 $\
+    $
+      space space v_(O_1) = 0 space space wide underbrace(v_("OUT"_B) = (1 +  dfrac(R_4,R_3) dot v_B), "amplificatore lineare" \ "non invertente") =  dfrac(R_3 + R_4,R_3) dot v_B
+    $
+  
+  
+  $
+    v_"OUT" = v_("OUT"_A) + v_("OUT"_B) =  colpurp( dfrac(R_4,R_3) dot  dfrac(R_2,R_1) ) dot v_A + colpurp( dfrac(R_3 + R_4,R_3) ) dot v_B
+  $
++ #text(fill: purple, size: 12pt)[Sommatore tra $v_A$ e $v_B$]\
+  Si eguagliano i coefficienti davanti a $v_A$ e $v_B$
+
+  $
+    colpurp( dfrac(R_4,R_3) dot  dfrac(R_2,R_1) ) = colpurp( dfrac(R_3 + R_4,R_3) ) &==> 
+    dfrac(40 k ohm dot 40 k ohm, 10 k ohm dot R_1) = (10 k ohm + 40 k ohm, 10 k ohm ) \
+    &==> dfrac(160 k ohm, R_1) = 5 k ohm \
+    &==> R_1 = dfrac(150,5) k ohm = 32 k ohm
+  $
+  
+
+
+=== Esame 28/01/2021
+#cfigure("images/Esame_28-01-2021.jpg", 45%)
+#cfigure("images/Screenshot_20240904-113654.png", 35%)
+
+
++ Usiamo la sovrapposizione degli effetti per calcolare $v_0$
+  #circle(radius: 7pt)[#set align(center + horizon) 
+                        1] $v_a != 0, v_B = 0 $, abbiamo come $"OPAMP"_1$ un FOLLOWER e come $"OPAMP"_2$ un NON INVERTENTE \
+   
+   #cfigure("images/ResizedImage_2024-09-04_11-47-37_2619.png",45%)
+
+   $
+    space space underbrace(v_x &= 0, "follower spento")
+    space space
+    v_y &= (1 + dfrac(20 R,10 R) ) dot v_A \
+    &=  3 v_A
+   $
+
+   $
+      i_(0_1) = dfrac(3v_A,R)
+   $
+
+   #circle(radius: 7pt)[#set align(center + horizon) 
+                        2] $v_a = 0, v_B != 0 $, abbiamo come $"OPAMP"_1$ un FOLLOWER e come $"OPAMP"_2$ un INVERTENTE \ 
+
+    #cfigure("images/ResizedImage_2024-09-04_11-49-06_2358.png",45%)
+
+    $
+      space space underbrace(v_x = v_B, "follower acceso") 
+      space space wide 
+      v_y = - dfrac(20 R,10 R) dot v_x &=  dfrac(R_3 + R_4,R_3) dot v_B \
+      &= - dfrac(20 R,10 R) dot v_B \
+      &= -2 v_B
+    $
+  
+  
+  $
+    v_y - v_x - v_(0_2) = 0 ==> v_(0_2) = v_y - v_x
+  $
+
+  $
+    i_(0_2) &= dfrac(v_y - v_B, R)\
+    &=dfrac(-2 v_B - v_B, R)\
+    &= - dfrac(3v_b,R)
+  $
+
+  $
+    i_0 = i_(0_1) + i_(0_2) &= dfrac(3v_A,R) - dfrac(3v_b,R)\
+    &= dfrac(3v_A - 3v_b,R)\
+    &= dfrac(3,R) (v_A - v_B)
+  $
+
++ #text(fill: purple, size: 12pt)[Modulo massimo corrente]\
+  $
+    i_("OUT"_"MAX") = i_0 + i_1 &=  dfrac(3,R) (v_A - v_B) + dfrac(3v_a - 2v_B - v_A,20R)\
+    &= dfrac(1,R) ( dfrac(30v_A - 30 v_B +v_A - v_B,10) )\
+    &= dfrac(31,10R) (v_A - v_B)
+  $
+  Adesso, siccome il testo dell'esercizio ci dice che $v_A$ e $v_B$ possono assumere valori all'interno dell'intervallo $[-2V .. thin 2V]$, impostiamo i seguenti valori: $v_A = 2V$, $v_B = -2V$
+
+  $
+    i_("OUT"_"MAX") = dfrac(31,10R) dot 4 V\
+    &= dfrac(124 V,10 R)\
+    &=1,24 dot 10^(-4) A \
+    &= 12,4 thin m A
+  $
+
+
+
+
+=== Esame 17/06/2021 (Diagramma di Bode)
+#cfigure("images/Esame_17-06-2021.jpg", 60%)
+#cfigure("images/Esame_17-06-2021_Disegno_1.png", 60%)
+
++ #text(fill: purple, size: 12pt)[Calcolo funzione di trasferimento]\
+  OPAMP ideale ($L_+ = L_- = 0$) e in alto guadagno ($v_0=0$), quindi il circuito è lineare, e quindi si può applicare la sovrapposizione degli effetti.
+  #circle(radius: 7pt)[#set align(center + horizon) 
+                        1] $v_a != 0, v_B = 0 ==>$ Filtro attivo passa basso\
+  #cfigure("images/Esame_17-06-2021_Disegno_2.png", 60%)
+  $
+    v_"OUT"_1 &= - dfrac(R,R) dot dfrac(1,1+ j omega C R) dot v_"IN" \
+    &= - dfrac(1,1+ j omega C R) dot v_"IN"
+  $
+
+  #circle(radius: 7pt)[#set align(center + horizon) 
+                        2] $v_a = 0, v_B != 0 ==>$ OPAMP non invertente\
+  #cfigure("images/Esame_17-06-2021_Disegno_3.png",60%)
+  $
+  dfrac(1,Z_2) &= dfrac(1,R) + j omega C \
+  &= dfrac(1+ j omega R C,R) ==> Z_2 = dfrac(R,1+ j omega R C)
+  $
+
+  Per calcolare la tensione $v_"BB"$ si usa la formula del partitore di tensione
+  $
+    v_"BB" = v_B dot dfrac(3R,3R+R)
+  $
+
+  $
+    v_"OUT"_2 &= (1+ dfrac(Z_2,R) ) dot v_"BB" 
+    \
+    &= ( 1 + dfrac(Z_2,R) ) dot underbrace( v_B,v_"IN" ) dot underbrace( dfrac(3R, 3R + R), 3/4 ) 
+    \
+    &= dfrac(3,4) thin v_"IN" thin ( 1+ dfrac(1,1+j omega R C) )
+  $
+
+$
+  v_"OUT" = v_"OUT"_1 + v_"OUT"_2 &=  - dfrac(1,1+ j omega C R) dot v_"IN" + dfrac(3,4) thin v_"IN" thin ( 1+ dfrac(1,1+j omega R C) )
+  \
+  &= v_"IN" ( - dfrac(1,1+ j omega C R) + dfrac(3,4) + dfrac(3,4 thin (1+j omega R C)) )
+  \
+  &= v_"IN" ( dfrac(-4 + 3 (1+j omega R C) + 3, 4 thin (1 + j omega R C)) )
+  \
+  &= v_"IN" thin dfrac(2 + 3 j omega R C, 4 thin (1 + j omega R C))
+  \
+  &= v_"IN" dfrac(1 + 3/2 j omega R C, 2 thin (1 + j omega R C))
+$
+quindi
+$
+  H(j omega) = 1/2 thin dfrac(1 + 3/2 j omega R C, 1 + j omega R C)
+$
+
+Ora dobbiamo disegnare il diagramma di Bode della funzione di trasferimento appena ricavata.\
+Iniziamo con il diagramma del modulo:\
+- la funzione ha uno #text(fill: green)[zero], rappresentato da $1 + 3/2 j omega R C$
+- e un #text(fill: red)[polo], rappresentato da $1 + j omega R C$
+
+Possiamo utilizzare due metodi per tracciare il diagramma del modulo:
+- tracciare il diagramma del modulo dello #text(fill: green)[zero] e del #text(fill: red)[polo] e "sommarli"
+- calcolare il valore di $H(j omega)$ per $omega -> 0$ e $omega -> + infinity$ e trasformarlo in decibel
+Di seguito li illustrerò entrambi.
+
+$
+  omega -> 0 ==> H(j omega) = 1/2 space space omega -> + infinity ==> H(j omega) = 3/4
+  \
+  abs(1/2)_"dB" = 20 log (1/2) = -6 space space abs(3/4)_"dB" = 20 log (3/4) = -2,5
+$
+
+Calcoliamo le pulsazioni di taglio di #text(fill: red)[polo] e #text(fill: green)[zero]
+$
+  omega_p &= dfrac(1,R C) &space space omega_z &= dfrac(1, 3/2 R C)
+  \
+  &= 3030 "rad/"s & &=4545 "rad/"s
+  \
+  &= 3 thin k"rad/"s & &=4,5 thin k"rad/"s
+$
+
+Adesso possiamo disegnare il diagramma del modulo tenendo conto che prima di $omega_z$ vale $-6 "dB"$ e dopo $omega_p$ vale $-2,5 "dB"$, e che all'interno delle due pulsazioni di taglio aumenta con una pendenza di $20 "dB/dec"$
+
+#cfigure("images/Esame_17-06-2021_Disegno_4.png",35%)
+
+Per quanto riguarda il diagramma della fase anche qui si può tracciare il diagrammi di #text(fill: red)[polo] e #text(fill: green)[zero] e sommarli ma, siccome le pulsazioni di taglio si trovano nella stessa fase, il diagramma risultante dalla somma sarebbe impreciso, quindi dobbiamo utilizzare un altro metodo.
+
+Calcoliamo l'argomento della nostra funzione di trasferimento
+$
+  arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &= arg( 1 + 3/2 j omega R C ) - arg( 2 + 2 j omega R C )
+$
+
+$
+  arg( 1 + 3/2 j omega R C ) = arctan( 3/2 w R C) &=
+  cases(
+    0 degree &wide omega << omega_z,
+    45 degree &wide omega = omega_z,
+    56 degree &wide omega = omega_p,
+    90 degree &wide omega >> omega_z
+  )
+  \
+  arg( 1 + j omega R C ) = arctan( w R C) &=
+  cases(
+    0 degree &wide omega << omega_p,
+    -45 degree &wide omega = omega_p,
+    -33 degree &wide omega = omega_z,
+    -90 degree &wide omega >> omega_p
+  )
+$
+
+quindi sommiamo tutte le quantità (tra l'altro si può immaginare senza difficoltà anche il valore che assume a metà tra le due pulsazioni di taglio)
+
+$
+  arg( 1/2 thin dfrac( 1 + 3/2 j omega R C, 1 + j omega R C ) ) &=
+  cases(
+    0 degree &wide omega << omega_z wide omega << omega_p,
+    12 degree &wide omega = omega_z,
+    11.5 degree &wide omega = dfrac(omega_z + omega_p,2),
+    11 degree &wide omega = omega_p,
+    0 degree &wide omega >> omega_z wide omega << omega_p
+  )
+$
+Quindi il diagramma delle fasi inizia metà decade prima di $omega_z$ a salire (da $0 degree$) fino a raggiungere il valore di circa $dfrac(pi,16)$ per tutto l'intervallo $[omega_z,omega_p]$, per poi scendere per metà decade dopo $omega_p$ e stabilizzarsi al valore $0 degree$.
+
+
+=== Esercizio diagramma di Bode non ideale
+Questo esercizio specifica di tracciare anche il diagramma di Bode considerando l'OPAMP non ideale, quindi ci da il #text(fill: purple)[prodotto guadagno-banda finito dell'OPAMP]
+$
+  A_v dot B = 1 M"Hz"
+$
+che bisogna trasformare in rad/s (basta moltiplicare per $2 pi$)
+$
+  A_v dot B = 6,28 "rad/"s #colred($:= omega_T$)
+$
+dove $omega_T$ è la #text(fill: red)[posizione della pulsazione al guadagno di taglio]. 
+
+Prima si traccia il grafico del circuito ideale, dopo si modifica tale grafico in base alla pulsazione del guadagno di taglio. In particolare, per il diagramma del modulo, bisogna considerare una retta con pendenza $-20 "dB/dec"$ che interseca l'asse $log omega$; dopo il punto di intersezione tra il diagramma ideale e la retta, il diagramma reale segue l'andamento della retta; per il diagramma della fase, metà decade prima di $omega_T$ vi è uno sfasamento di $45 degree$.
+
+#cfigure("images/Esercizio_Bode_non_ideale.png",60%)
+
+
+Abbiamo la seguente funzione di trasferimento 
+$
+  H(j omega) = - 30 thin dfrac( 1+j omega C thin 35/3 thin R , 1+ j omega C thin 50 thin R )
+$
+$
+  omega -> 0 ==> H(j omega) = -30 space space omega -> + infinity ==> H(j omega) = -5
+  \
+  abs(-30)_"dB" = 20 log (1/2) = 29 space space abs(-5)_"dB" = 20 log (3/4) = 14
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 == D 
 === Formule notevoli
 $
@@ -219,13 +505,13 @@ $
 *Note:* 
 - $ln(2) = 0,69$
 - la $S_P$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
-- $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinchè il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
+- $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinché il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
 - $p s$ sono pico secondi
 
 
 === Esame 14/06/2023
 + Della rete in figura si calcoli l'espressione booleana al nodo O.
-+ Dimensionare i transistori pMOS affinchè il tempo di salita al nodo F sia inferiore o uguale a 90ps. Ottimizzare il progetto. Si tenga conto che i transistori dell'inverter di uscita hanno le seguenti geometrie : Sp = 200, Sn = 100.
++ Dimensionare i transistori pMOS affinché il tempo di salita al nodo F sia inferiore o uguale a 90ps. Ottimizzare il progetto. Si tenga conto che i transistori dell'inverter di uscita hanno le seguenti geometrie : Sp = 200, Sn = 100.
 + Progettare la PDN
 #cfigure("images/2024-08-02-17-44-29.png", 40%)
 
@@ -261,7 +547,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
 + *Espressione booleana*
   
   *Regole:*
-  - Gli elementi in serie sono il prodotto boolenano degli elementi
+  - Gli elementi in serie sono il prodotto booleano degli elementi
   - Gli elementi in parallelo sono la somma booleana deli elementi
 
   PD := rete di pull-down \
@@ -324,7 +610,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
   *Terzo caso*
 
   Consideriamo il percorso $overline(A) thin overline(B) C$. Abbiamo un nMOS nuovo e un nMOS del percorso critico, quindi $N=1$ e $K=1$.\
-  *N.B.* Bisogna specificare $overline(B)$ e non $X$ perché si deve cosiderare solo il percorso di $overline(A) C$, e se $B$ fosse accesso il percorso sarebbe diverso.
+  *N.B.* Bisogna specificare $overline(B)$ e non $X$ perché si deve considerare solo il percorso di $overline(A) C$, e se $B$ fosse accesso il percorso sarebbe diverso.
 
   $
     R_(P 3) = (R_("eq P") - dfrac(R_("RIF" P),S P) dot N)/K &= (994 thin ohm - dfrac(10000 thin ohm,31) dot 1)/1\
@@ -337,7 +623,7 @@ Per *dimensionare* si divide $R_("eq P")$ per il numero di transistor nel percor
     &=15
   $
 
-  *Nota:* le $S_P$ trovate denotano la dimensione massima dei transistori che interessano il percorso; in particolare si assegna prima la dimnesione ai transistori presenti nel percorso critico, poi agli altri, in modo che il valore trovato per un transistori del percorso critico sia dominante rispetto al valore trovato per lo stesso transistore per un percorso non critico.
+  *Nota:* le $S_P$ trovate denotano la dimensione massima dei transistori che interessano il percorso; in particolare si assegna prima la dimensione ai transistori presenti nel percorso critico, poi agli altri, in modo che il valore trovato per un transistori del percorso critico sia dominante rispetto al valore trovato per lo stesso transistore per un percorso non critico.
 
 + *Progettare la PDN*
   
@@ -403,7 +689,7 @@ $
 
     #cfigure("images/Screenshot_20240807-163312.png", 70%)
 
-    Quindi per tutti i percrosi critici individuati $K=3,5$
+    Quindi per tutti i percorsi critici individuati $K=3,5$
 
     $
       R_N = dfrac(R_("eq" N),K) &= dfrac(736 thin ohm,3.5) &space S_N = dfrac(R_("RIF" N), R_N) &= dfrac(5000 thin ohm,210 thin ohm) \
