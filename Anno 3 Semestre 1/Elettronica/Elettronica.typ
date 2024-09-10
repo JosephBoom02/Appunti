@@ -834,11 +834,26 @@ $
 
 
 
+=== Esame 30/06/2021 (grafico corrente)
+Si deve tracciare nel piano la relazione $I_"IN""-"I_"OUT"$ per $I_"IN" in [-10 m A thin .. thin 10 m A ]$.
 
+La relazione trovata è
+$
+  I_"OUT" = -0,1 dot I_"IN" + 0,4 m A
+$
 
+Calcoliamo i valori interessanti di $I_"OUT"$ in relazione a $I_"IN"$ e in relazione ai valori di saturazione $L_+ = L_- = 10 V$, tenendo conto che $v_"OUT" = - 1 k ohm dot I_"IN" + 4 V$
+$
+  I_"IN" &= -10 m A &space space I_"OUT" &= 1,4 m A
+  \
+  I_"IN" &= 10 m A & I_"OUT" &= -0,6 m A
+  \
+  I_"IN" &= 0 m A &space space I_"OUT" &= 0,4 m A
+  \
+  L_+: space - 1 k ohm dot I_"IN" + 4 V &=10 V & I_"IN" &= -6
+$
 
-
-
+#cfigure("images/Screenshot_20240910-101122.png",55%)
 
 
 
@@ -861,6 +876,34 @@ $
 - la $S_P$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
 - $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinché il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
 - $p s$ sono pico secondi
+
+
+
+=== Regole generali per la rete di pull-up e pull-down
+Abbiamo questa rete
+#cfigure("images/240909_18h24m35s_screenshot.png",30%)
+Conoscendo la funzione $O$, e sapendo che $X = overline(O)$:
+- la rete di pull-up sarà uguale a la $X$, senza il negato e con somma e prodotto invertiti
+- la rete di pull-down sarà uguale a la $X$ senza il negato
+
+Se la $O = overline(A overline(C) + C overline(A) + B overline(D))$, allora
+$
+  X = overline(O) &= overline( overline(A overline(C)) dot overline(C overline(A)) dot overline(B overline(D)) )
+  \
+  &=overline( (overline(A) + C) dot (overline(C) + A) dot (overline(B) + D) )
+$
+Rete di pull-up:
+$
+  overline(A) C + overline(C) A + overline(B) D
+$ 
+
+Rete di pull-down:
+$
+  (overline(A) + C) dot (overline(C) + A) dot (overline(B) + D)
+$
+
+#cfigure("images/240909_18h34m03s_screenshot.png",40%)
+
 
 
 === Esame 14/06/2023
