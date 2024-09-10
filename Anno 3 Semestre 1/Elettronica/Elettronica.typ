@@ -10,6 +10,8 @@
 #let title = "Elettronica"
 #let author = "Bumma Giuseppe"
 
+#set page(numbering: "1")
+
 #set document(title: title, author: author)
 
 
@@ -24,7 +26,7 @@
 
 #show ref: set text(green)
 
-#set page(margin: (y: 0.5cm))
+#set page(margin: (y: 1cm))
 
 #set heading(numbering: "1.1.1.1.1.1")
 //#set math.equation(numbering: "(1)")
@@ -600,6 +602,75 @@ Diagramma ottenuto da quello degli zeri (caso $ zeta<0$) ribaltando rispetto all
     &=1,24 dot 10^(-4) A \
     &= 12,4 thin m A
   $
+
+
+
+
+
+=== Esame 08/02/2021 (Diagramma di Bode standard + saturazione)
+
+#cfigure("images/Esame_08-02-2021_Disegno_1.png",40%)
+
+Dati:
+$
+  R_1 &= 10 k ohm &space space R_2 &= 90 k ohm
+  \
+  C &= 180 p F & L_+=L_- &= 10V
+$
+
+#text(fill: purple, size: 12pt)[1) Calcolo funzione di trasferimento]\
+
+È stata ricavata la seguente funzione di trasferimento
+$
+  H(j omega) = dfrac( 1+ dfrac( j omega C R_2, 10 ),1 + j omega C R_2 )
+$
+Calcoliamo i valori della funzione di trasferimento a $0$ e a $+ infinity$
+$
+  omega -> 0 ==> H(j omega) = 10 space space omega -> + infinity ==> H(j omega) = 1
+$
+e trasformiamo tali valori in dB
+$
+  abs(10)_"dB" = 20 "dB" space space abs(1)_"dB" = 0 "dB"
+$
+Ora si calcolano le pulsazioni di taglio del polo e dello zero
+$
+  omega_z = 10/(C R_2) = 617 thin k"rad/"s space space omega_p = 1/(C R_2) = 61,7 thin k"rad/"s
+$
+#cfigure("images/Esame_08-02-2021_Disegno_2.png",50%)
+
+Per il diagramma delle fasi teniamo a mente che
+- uno #text(fill: green)[zero] negativo aumenta la fase di $90 degree$
+- un #text(fill: red)[polo] negativo abbassa la fase di $90 degree$
+- lo scostamento di fase avviene tra metà decade prima e metà decade dopo la pulsazione di taglio
+- se il guadagno è positivo, il diagramma parte da $O degree$, se negativo parte da $- pi /2$
+
+
+2) Calcolare il minimo valore di $R_L$ che garantisce staticamente la non saturazione dell'OPAMP sapendo che questo può erogare massimo $plus.minus 10 m A$ in uscita.
+
+Siccome siamo in condizioni statiche $C$ è un circuito aperto, quindi il nostro circuito diventa
+
+#cfigure("images/Esame_08-02-2021_Disegno_3.png",37%)
+
+Abbiamo un OPAMP non invertente, quindi
+$
+  v_"OUT" = (1 + R_1/R_2) dot v_"IN" ==> v_"IN" = dfrac(R_1,R_1+R_2) dot v_"OUT"
+$
+Siccome non deve raggiungere la saturazione, dobbiamo considerare $v_"OUT" = plus.minus 10 V$; troviamo la formula per $i_"OUT"$, che sappiamo dalla consegna che deve essere $10 m A$
+
+$
+  i_"OUT" = i_1 + i_(R_L) =& dfrac( v_"OUT" , R_1 + R_2 ) + v_"OUT"/R_L 
+  \
+  ==>& R_L = dfrac( v_"OUT", i_"OUT" - dfrac( v_"OUT" , R_1 + R_2 ) ) 
+$
+
+
+
+
+
+
+
+
+
 
 
 
