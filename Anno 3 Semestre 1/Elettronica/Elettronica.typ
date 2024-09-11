@@ -1171,14 +1171,45 @@ $
 
 
 
+=== Esame 28/01/2021
+
+2) 
+$
+  t_"LH" = t_"HL" = 100 p s  
+$
+$
+  R_("EQ"_N) = dfrac(t_"HL", ln (2) dot C_"INV") &= dfrac(100 dot 10^(-12) s , 0.69 dot 90 dot 10^(-15)  )
+  \
+  &= 1610 ohm
+$
+
+*Primo caso peggiore - percorso critico $bold( overline(A) B C overline(D) "CLK" )$*
+
+In questo caso $K = 4$ (numero di nMOS)
+
+$
+  R_N = R_"EQ"_N/K &= dfrac( 1610 ohm , 4 ) &space space S_N &= dfrac( 5000 ohm , 402.5 ohm )
+  \
+  &= 402.5 ohm & &=12.43 tilde.equiv 13
+$
+
+*Secondo caso peggiore $bold( A overline(B) overline(C) D "CLK" )$*
+$ K = 2, N = 1$
+
+$
+  R_N_2 = dfrac( R_"EQ"_N - R_"RIF"_N/S_N dot N,K ) 
+  &= dfrac( 1610 ohm - dfrac( 5000 ohm,13 ), 2 ) &space space S_N &= dfrac( 5000 ohm , 612.7 ohm )
+  \
+  &= 612.7 ohm & &= 8.16 tilde.equiv 9
+$
+
+*Terzo caso peggiore $bold( A B overline(C) D "CLK" )$*
 
 
-
-
-
-
-
-
+Per passare per D bisogna "aprire" anche A, ma in questo modo la corrente, tra il percorso BD e il percorso A in parallelo, sceglie sempre di passare da A, perché fa un solo salto, e non passa mai da D. Per questo diamo a D la dimensione minima
+$
+  D = 1
+$
 
 
 
