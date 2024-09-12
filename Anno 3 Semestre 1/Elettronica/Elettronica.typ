@@ -817,8 +817,8 @@ enum.item(2)[
 
 
 
-
-=== Esercizio diagramma di Bode non ideale
+/*
+=== Esercizio diagramma di Bode con OPAMP non ideale
 Questo esercizio specifica di tracciare anche il diagramma di Bode considerando l'OPAMP non ideale, quindi ci da il #text(fill: purple)[prodotto guadagno-banda finito dell'OPAMP]
 $
   A_v dot B = 1 M"Hz"
@@ -829,7 +829,7 @@ $
 $
 dove $omega_T$ è la #text(fill: red)[posizione della pulsazione al guadagno di taglio]. 
 
-Prima si traccia il grafico del circuito ideale, dopo si modifica tale grafico in base alla pulsazione del guadagno di taglio. In particolare, per il diagramma del modulo, bisogna considerare una retta con pendenza $-20 "dB/dec"$ che interseca l'asse $log omega$; dopo il punto di intersezione tra il diagramma ideale e la retta, il diagramma reale segue l'andamento della retta; per il diagramma della fase, metà decade prima di $omega_T$ vi è uno sfasamento di $45 degree$.
+Prima si traccia il grafico del circuito ideale, dopo si modifica tale grafico in base alla pulsazione del guadagno di taglio. In particolare, per il diagramma del modulo, bisogna considerare una retta con pendenza $-20 "dB/dec"$ che interseca l'asse $log omega$; dopo il punto di intersezione tra il diagramma ideale e la retta, il diagramma reale segue l'andamento della retta; per il diagramma della fase, metà decade prima di $omega_T$ vi è uno sfasamento di $90 degree$.
 
 #cfigure("images/Esercizio_Bode_non_ideale.png",60%)
 
@@ -843,6 +843,100 @@ $
   \
   abs(-30)_"dB" = 20 log (1/2) = 29 space space abs(-5)_"dB" = 20 log (3/4) = 14
 $
+
+*/
+
+
+
+=== Esercizio Diagramma di Bode non ideale
+
+#cfigure("images/Esercizio_2_Bode_non_ideale.png",70%)
+
+*Amplificatore invertente*
+$
+  v_O_1 = - dfrac(R_2,R_1) dot v_"IN"
+$ 
+
+*Filtro attivo passa basso*
+$
+  v_O_2 = - dfrac(R_1,R_2) dot dfrac(1,1+j omega C R_4) dot v_"IN"
+$
+
+Applico la sovrapposizione degli effetti
+
+#circle(radius: 7pt)[#set align(center + horizon) 
+                        1] $v_O_1 != 0, v_O_2 = 0 $\
+$
+  v_"OUT"_1  = - dfrac(R_6,R_5) dot v_O_1 &= dfrac(R_6,R_5) dot dfrac(R_2,R_1) dot v_"IN"
+  \
+  &= 200 dot v_"IN" 
+$
+
+#circle(radius: 7pt)[#set align(center + horizon) 
+                        2] $v_O_1 = 0, v_O_2 != 0 $\
+Per calcolare $v_22$ utilizziamo la formula del partitore di tensione
+$
+  v_22 = v_O_2 dot dfrac(R_8,R_7+R_8)
+$
+
+$
+  v_"OUT"_2 = (1 + R_6/R_5) dot v_22 &= (1 + R_6/R_5) (dfrac(R_8,R_7+R_8)) dot v_O_2
+  \
+  &= (1 + (20 cancel(R))/cancel(R)) (dfrac(R,6 R + R)) dot v_O_2
+  \
+  &=(1+20) dot 1/7 dot v_O_2
+  \
+  &= 3 v_O_2
+$
+
+$
+  v_"OUT"_2 = -180 dot dfrac(1,1+j omega C R_4) dot v_"IN"
+$
+
+$
+  v_"OUT" = 200 dot  v_"IN" - 180 dfrac(1,1+j omega 60 C R) dot v_"IN"
+  = 20 dfrac(1 + j omega 600 C R, 1 + j omega 60 C R) dot v_"IN"
+$
+$
+  H(j omega) = 20 dfrac(1 + j omega 600 C R, 1 + j omega 60 C R)
+$
+
+Questo esercizio specifica di tracciare anche il diagramma di Bode considerando l'OPAMP non ideale, quindi ci da il #text(fill: purple)[prodotto guadagno-banda finito dell'OPAMP]
+$
+  A_v dot B = 1 M"Hz"
+$
+che bisogna trasformare in rad/s (basta moltiplicare per $2 pi$)
+$
+  A_v dot B = 6,28 "rad/"s 
+$
+da cui si ricava $omega_H$, cioè la posizione della pulsazione al guadagno di taglio
+$
+  omega_H = dfrac(A_v dot B, abs(mu dot dfrac("coeff zero", "coeff polo") ))
+$
+
+Prima si traccia il grafico del circuito ideale, dopo si modifica tale grafico in base alla pulsazione del guadagno di taglio. In particolare, per il diagramma del modulo, bisogna considerare una retta con pendenza $-20 "dB/dec"$ che interseca l'asse $log omega$; dopo il punto di intersezione tra il diagramma ideale e la retta, il diagramma reale segue l'andamento della retta; per il diagramma della fase, metà decade prima di $omega_T$ vi è uno sfasamento di $90 degree$.
+
+$
+  w -> 0 ==> H(j omega) tilde 20 = 26 "dB" space space w -> + infinity ==> H(j omega) tilde 200 = 46 "dB"
+$
+
+$
+  omega_z = dfrac(1,600 C R)= 297,6 "rad/"s space space omega_p = dfrac(1,60 C R)= 2976 "rad/"s 
+  \
+  omega_H = dfrac(A_v dot B, abs(20 dot 600/60))= 31,4 thin k"rad/"s
+$
+
+#cfigure("images/Esercizio_2_Bode_non_ideale_2.png",80%)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -936,8 +1030,9 @@ $
 === Formule notevoli
 $
   C_(min) = "Cox" dot L_(min)^2 dot ("SP" + "SN") \
-  "Resistenza equivalente pull-up" space R_("eq P") &= t_("LH")/(ln(2) dot C_(min)) \
-  "Resistenza equivalente pull-down" space R_("eq N") &= t_("HL")/(ln(2) dot C_(min))\
+   ln(2) dot R_("eq") dot C_"INV" <= t \
+  "Resistenza equivalente pull-up" space R_("eq P") &= t_("LH")/(ln(2) dot C_(min)) wide  R_("eq P") = dfrac(t_"LH",ln(2) dot C_"INV")  \
+  "Resistenza equivalente pull-down" space R_("eq N") &= t_("HL")/(ln(2) dot C_(min)) wide R_("eq N") = dfrac(t_"HL",ln(2) dot C_"INV") \
   R_(P n) &= (R_("eq P") - dfrac(R_("RIF" P),S_P) dot N )/K \
   "Per percorsi critici" space R_P &= R_("eq P")/K\
   S_(P) &= R_("RIF" P)/(R P)
@@ -947,6 +1042,7 @@ $
 - la $S_P$ che compare nella formula di $R_(P n)$ è sempre quella del percorso critico 
 - $t_("LH")$ è il tempo di salita e $t_("HL")$ è il tempo di discesa. In generale negli esercizi se chiede di "dimensionare affinché il tempo di salita al nodo $X$ sia inferiore o uguale a $Y p s$" vuol dire che prenderemo $t_("LH") = Y$.
 - $p s$ sono pico secondi
+- quando non vengono dati SP e SN utilizzare le altre formule della resistenza equivalente
 
 
 
@@ -956,6 +1052,8 @@ Abbiamo questa rete
 Conoscendo la funzione $O$, e sapendo che $X = overline(O)$:
 - la rete di pull-up sarà uguale a la $X$, senza il negato e con somma e prodotto invertiti
 - la rete di pull-down sarà uguale a la $X$ senza il negato
+- gli elementi in serie sono il prodotto booleano degli elementi
+- gli elementi in parallelo sono la somma booleana deli elementi
 
 Se la $O = overline(A overline(C) + C overline(A) + B overline(D))$, allora
 $
