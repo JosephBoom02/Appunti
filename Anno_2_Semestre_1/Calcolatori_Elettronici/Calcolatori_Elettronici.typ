@@ -231,18 +231,84 @@ Come si evince dal codice il trasferimento dei dati da `INPUT_PORT_1` a `OUTPUT_
 
 
 
+=== Trasferimenti da diverse porte di Input
+Riferimento all'esame del 17/01/2023.
+
+Progettare un sistema, basato su un processore DLX nel quale sono presenti quattro porte in input (denominate `INPUT_PORT_0`, `INPUT_PORT_1`, `INPUT_PORT_2` e `INPUT_PORT_3`) e una porta in output (denominata
+`OUTPUT_PORT`).\
+Sin dall'avvio, e mediante l'ausilio di opportune reti logiche: *ogni 6
+trasferimenti di un byte di tipo #highlight(fill: yellow)[_signed_] da `INPUT_PORT_0`, dovrà essere
+eseguito un unico trasferimento* (a 32 bit) *dalle 4 porte in input* e così via
+(i.e., 6 trasferimenti da `INPUT_PORT_0`, un unico trasferimento a 32 bit dalle
+quattro porte, 6 trasferimenti da `INPUT_PORT_0`, eccetera). Inoltre, il byte letto
+da `INPUT_0` (indipendentemente dal fatto che si stia leggendo da una singola o
+dalle quattro porte in input) dovrà essere contemporaneamente inviato, nel
+caso questo sia possibile, anche a `OUTPUT_PORT`.\
+Quanto letto dalla/e porta/e in input dovrà essere scritto, come word,
+all'indirizzo `0xF0000008`.
+
+I Chip Select delle porte saranno:
+```yasm
+CS_PORT 60000000h
+  CS_INPUT_PORT_0 60000000h (CS_PORT + 0)
+  CS_INPUT_PORT_1 60000001h (CS_PORT + 1)
+  CS_INPUT_PORT_2 60000002h (CS_PORT + 2)
+  CS_INPUT_PORT_3 60000003h (CS_PORT + 3)
+```
+#cfigure("Images/2025-02-09-11-44-36.png", 90%)
+#cfigure("Images/2025-02-09-11-45-00.png", 90%)
 
 
+Un contatore modulo 8 consente di tenere traccia dei trasferimenti
+dalla/dalle porta/e in input in accordo a quanto indicato nel testo
+del problema. In particolare, il segnale `32_BIT` asserito indica che il
+trasferimento dovrà essere effettuato contemporaneamente dalle 4 porte
+in input. Tale segnale, ottenuto elaborando l'uscita del contatore,
+risulta:
+#cfigure("Images/2025-02-09-12-26-10.png",90%)
 
+Il segnale `32_BIT` è utilizzato anche per condizionare la richiesta di
+interrupt inviata al `DLX` nel modo seguente:
+```yasm
+INT_DLX = INT_INPUT_0·32_BIT* +
+          INT_INPUT_0·INT_INPUT_1·INT_INPUT_2·INT_INPUT_3·32_BIT
+```
 
+Per velocizzare l'esecuzione dell'interrupt handler, si evita di
+verificare quale tipo di trasferimento è abilitato. Pertanto, non si
+legge il segnale `32_BIT` che indica se il trasferimento deve avvenire
+unicamente da `INPUT_PORT_0` o contemporaneamente dalle quattro porte in
+input.
+A tal fine, con l'ausilio della rete seguente, il codice
+dell'interrupt handler eseguirà sempre una lettura di una word anche
+quando è necessario trasferire solo da `INPUT_PORT_0` (i.e., quando
+`32_BIT=0`) evitando così la lettura via software di `32_BIT` e una
+consecutiva istruzione di branch.
+#cfigure("Images/2025-02-09-12-28-49.png", 70%)
+*N.B.* Siccome il byte da leggere da `INPUT_PORT_0` è di tipo _signed_, non possiamo semplicemente mettere i bit `BD[31..8]` a 0, ma bisogna seguire la regola dell'esetensione del segno:
+- se il numero è positivo, si pongono a 0 i bit rimanenti
+- se il numero è negativo, si pongono a 1 i bit rimanenti
+ed è per questo che #highlight(fill: yellow)[colleghiamo a `BD[15..8]`, `BD[23..16]`, e `BD[31..24]` il bit `(BD7)^8`] (che indica il segno del numero), e non semplicemente degli 0.
 
+Infine, nel sistema è anche presente una porta in output attraverso la
+quale trasferire, quando possibile, il dato letto da `INPUT_PORT_0`
+contemporaneamente all'esecuzione di questa operazione.
 
+#cfigure("Images/2025-02-09-12-35-16.png", 70%)
+Il segnale #text(fill: red)[`OUTPUT_ENABLED`], utilizzato per condizionare il chip-select
+di `OUTPUT_PORT_0`, è ottenuto campionando sul fronte di salita di `MEMRD`
+il segnale `INT_OUTPUT_0` come segue:
+#cfigure("Images/2025-02-09-12-34-49.png", 70%)
 
+Codice `DLX` dell'interrupt handler:
 
-
-
-
-
+```yasm
+00000000: LHI R20,0x6000      ; R20 = 60000000h
+00000004: LW R21,0x0000(R20)  ; legge in R21 una word a 60000000h
+00000008: LHI R22,0xF000      ; R22 = F0000000h
+0000000C: SW R21,0x0008(R22)  ; scrive R21 a F0000008h
+00000010: RFE
+```
 
 
 
