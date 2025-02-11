@@ -230,6 +230,11 @@ Codice DLX dell'interrupt handler:
 Come si evince dal codice il trasferimento dei dati da `INPUT_PORT_1` a `OUTPUT_PORT` non avviene via software, ma solo con l'ausilio di reti combinatorie.
 
 
+=== Scrivere quando `OUTPUT_PORT` è in grado di eseguire un trasferimento
+Nel sistema è anche presente una porta in output, nella quale dovrà
+essere inviato il dato letto dalla porta A #highlight(fill: yellow)[quando la porta in output è in grado di eseguire un trasferimento]. Tale evenienza è codificata dal
+segnale #text(fill: fuchsia)[`OUTPUT_PORT_READY`], ottenuto come indicato in seguito:
+#cfigure("Images/2025-02-11-14-07-28.png", 90%)
 
 === Trasferimenti da diverse porte di Input
 Riferimento all'esame del 17/01/2023.
@@ -312,13 +317,50 @@ Codice `DLX` dell'interrupt handler:
 
 
 
+=== Trasferire l'ultimo byte da `INPUT_PORT` a `OUTPUT_PORT`
+Riferimento: esame del 29/01/2025.
+
+Nel sistema sono presenti una porta in input (`INPUT_PORT`) e una porta in
+output (`OUTPUT_PORT`), già progettate e ciascuna in grado di trasferire 8 bit
+utilizzando il protocollo di handhsake, mediante le quali dovrà sempre essere
+eseguito un unico trasferimento contemporaneo. Il dato da trasferire verso
+`OUTPUT_PORT` dovrà essere l'*ultimo dato letto* attraverso `INPUT_PORT`. #highlight(fill: red)[Il
+primo dato in assoluto da trasferire verso `OUTPUT_PORT` dovrà essere `F0h`]
+
+#cfigure("Images/2025-02-10-12-09-18.png", 90%)
+
+Il dato trasferito dalla porta in output dovrà essere il dato letto
+dalla porta in input nel precedente trasferimento. Per memorizzare il
+valore precedente letto da `INPUT_PORT` si utilizzano 8 FFD, come
+mostrato in seguito. Inoltre, poiché #highlight(fill: orange)[il primo dato da trasferire verso
+la porta in output dovrà essere `F0h`, all'avvio gli 8 flip-flop sono
+inizializzati a tale valore mediante il segnale RESET.]
+
+#cfigure("Images/2025-02-10-12-11-52.png",80%)
+#cfigure("Images/2025-02-10-12-11-19.png", 80%)
 
 
 
+=== Pulsante per inverire i byte di un bus
+Sono presenti due porte in input, denominate `INPUT_A` e `INPUT_B`; nel sistema è anche presente un pulsante P che, se premuto, indica che
+il dato letto da `INPUT_A` dovrà essere considerato il byte più significativo
+tra i 16 bit letti contemporaneamente dalle due porte. Si faccia l'ipotesi
+semplificativa che, una volta premuto il pulsante P, esso possa essere premuto
+nuovamente solo dopo che la pressione abbia avuto effetto durante un
+trasferimento.
+#cfigure("Images/2025-02-11-14-21-18.png", 90%)
+Il pulsante P che condiziona le connessioni delle
+due porte in input al bus dati BD[15..0] in funzione del segnale
+`SWITCH_BUS` definito come segue:
+#cfigure("Images/2025-02-11-14-22-07.png", 90%)
+In particolare ci tengo a far notare che il segnale P viene collegato al clock dell `FFD` perché non abbiamo un segnale di clock del processore vero e proprio, per questo è l'unica soluzione ragionevole.
 
 
-
-
+Se `SWITCH_BUS` è asserito `INPUT_PORT_A` sarà connessa a `BD[15..8]` (e
+`INPUT_PORT_B` a `BD[7..0]`) mentre se SWITCH_BUS non è asserito
+`INPUT_PORT_A` sarà connessa a `BD[7..0]` (e `INPUT_PORT_B` a `BD[15..8]`),
+come mostrato nell'immagine successiva
+#cfigure("Images/2025-02-11-14-23-20.png", 90%)
 
 
 
