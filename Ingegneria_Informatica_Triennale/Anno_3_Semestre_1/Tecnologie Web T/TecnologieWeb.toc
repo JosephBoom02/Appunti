@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Storia}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Gli ipertesti}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}WWW come sistema ipertestuale}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Elementi del Web}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}URI e URL}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}URI}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Problematiche fondamentali}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Cosa sono}{4}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Sintassi}{4}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Specializzazioni di URI: URN e URL}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}URN}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}URL}{4}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Compobenti di un URL}{4}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}URI opache e gerarchiche}{5}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Operazioni sulle URI gerarchiche}{5}{subsubsection.2.5.1}%
