@@ -13,9 +13,9 @@
 #show ref: set text(green)
 
 #set page(margin: (y: 0.5cm))
-#set page(margin: (x: 1cm))
+// #set page(margin: (x: 1cm))
 
-#set text(12pt)
+#set text(13pt)
 
 #set heading(numbering: "1.1.1.1.1.1")
 //#set math.equation(numbering: "(1)")
@@ -45,13 +45,13 @@
 
 
 //Code to have sublevel equation numbering
-/*#set math.equation(numbering: (..nums) => {
-   locate(loc => {
+/*#set math.equation(numbering: (..nums) => (
+   locate(loc => (
       "(" + str(counter(heading).at(loc).at(0)) + "." + str(nums.pos().first()) + ")"
     })
 },)
-#show heading: it => {
-    if it.level == 1 {
+#show heading: it => (
+    if it.level == 1 (
       counter(math.equation).update(0)
     }
 }*/
@@ -155,8 +155,8 @@ Here's an example:
       int(send_time.timestamp())
   )
 
-  print(f"🔒 Message encrypted at: {send_time}")
-  print(f"📱 Encrypted token: {encrypted_token[:50]}...")
+  print(f"🔒 Message encrypted at: (send_time}")
+  print(f"📱 Encrypted token: (encrypted_token[:50]}...")
   ```
 ] <Time-Based-Security-Generating-token>
 
@@ -177,12 +177,12 @@ Here's an example:
           current_time=int(user_access_time.timestamp())
       )
       
-      print(f"✅ SUCCESS at {user_access_time.strftime('%I:%M %p')}")
-      print(f"📄 Message: {decrypted_message.decode()}")
+      print(f"✅ SUCCESS at (user_access_time.strftime('%I:%M %p')}")
+      print(f"📄 Message: (decrypted_message.decode()}")
       print(f"⏰ Message age: 3 minutes (within 5-minute limit)")
       
   except Exception as e:
-      print(f"❌ FAILED: {e}")
+      print(f"❌ FAILED: (e}")
   ```
 ] <Time-Based-Security-User-decrypt-the-message>
 
@@ -304,3 +304,157 @@ The `iterations` variable represents the number of times the KDF repeatedly appl
   b'a secret message'
   ```
 ]
+
+- ```py iv = os.urandom(16)```
+  - This line generates a cryptographically secure random *Initialization Vector (IV)*.
+  - 16 bytes are generated, which corresponds to a 128-bit IV.
+  - This number is the same size of AES block size, which is 128 bit.
+  - CBC mode requires an IV to ensure that encrypting the same plaintext block multiple times (even with the same key) results in different ciphertext blocks.  This prevents patterns in the plaintext from being visible in the ciphertext.
+- ```py ct = encryptor.update(b"a secret message") + encryptor.finalize()```
+  - This line encrypts the plaintext message.
+  - ```py encryptor.update(data)```: This method processes the data and returns any encrypted bytes that are ready.
+  - ```py encryptor.finalize()```: This method finalizes the encryption process. It handles any remaining data in the buffer (e.g., by applying padding if necessary for modes like CBC) and returns the last part of the ciphertext.
+  - The results of `update()` and `finalize()` are concatenated to form the complete ciphertext `ct`.
+
+
+== Exercise 1
+- A Key Distribution Center (KDC) in cryptography is a system responsible for
+providing keys to users in a network that shares sensitive or private data
+It is usually implemented as a server that shares symmetric keys with all
+registered users
+- Suppose that Alice and Bob are two registered users, whose keys are
+  respectively K A-KDC and KB-KDC
+- Implement the key exchange protocol that allows Alice and Bob to 
+  securely communicate with each other
+- Once the symmetric key has been retrieved, use it to securely exchange messages
+
+#cfigure("figures/2025-05-29-16-13-11.png", 70%)
+
+This is how it should work:
++ Alice asks a key session to the KDC
++ The KDC replies with $K_(A-K D C)(R, K_(B-K D C)(A, R))$, where $R$ is the session key
++ Alice decrypts the message, memorize the session key, 
+  then sends $K_(B-K D C)(A,R)$ to Bob
++ Bob decrypts the message and memorize the session key and the sender
++ Alice and Bob can securely exchange messages by 
+  encrypting them with the session key
+
+=== `App.py`
+#figure()[
+  #codly(header: [#align(center)[*User Creation and Registration*]])
+  ```py
+# Generate secret keys for Alice and Bob
+alice_key = Fernet.generate_key()
+bob_key = Fernet.generate_key()
+
+# Create user objects
+alice = User("alice", alice_key)
+bob = User("bob", bob_key)
+
+# Register users with KDC
+kdc.add_user_key(alice.name, alice_key)
+kdc.add_user_key(bob.name, bob_key)
+  ```
+]
+
+- Each user gets a unique secret key $K_(A-K D C)$ and $K_(B-K D C)$
+- These keys are registered with the KDC for future authentication
+
+#figure()[
+  #codly(header: [#align(center)[*Session Key Request*]])
+  ```py
+session_key, receiver_message = kdc.get_session_key(alice.name, bob.name)
+  ```
+]
+
+The KDC's `get_session_key` method:
+- Generates a fresh session key $R$
+- Encrypts $R$ with Bob's secret key: $K_(B-K D C)(R)$
+- Encrypts $R$ with Alice's secret key:$K_(A-K D C)(R)$
+- Encrypts the message for Bob with Alice's key: $K_(A-K D C)(K_(B-K D C)(R))$
+- Returns both encrypted session keys
+
+
+#figure()[
+  #codly(header: [#align(center)[*Session Key Distribution*]])
+  ```py
+alice.add_session_key(session_key, bob.name)
+receiver_message = alice.decrypt(receiver_message)
+bob.obtain_session_key(alice.name, receiver_message)
+  ```
+]
+
+- Alice decrypts her session key using $K_(A-K D C)$
+- Alice decrypts Bob's message and forwards it to Bob
+- Bob decrypts his session key using $K_(B-K D C)$
+- Both now share the same session key $R$
+
+
+=== `kdc_server.py`
+Let's break down the `get_session_key` method.
+
+==== Generate Fresh Session Key
+
+#figure()[
+  ```py
+  session_key = Fernet.generate_key()
+  ```
+]
+
+- *What:* Creates a new random symmetric key $R$
+- *Why:* Each communication session gets a unique key for forward secrecy
+- *Security:* Even if one session key is compromised, other sessions remain secure
+
+==== Prepare Encryption Objects
+#figure()[
+  ```py
+f_r = Fernet(self.registered_users[receiver])  # Bob's secret key
+f_s = Fernet(self.registered_users[sender])    # Alice's secret key
+  ```
+]
+
+- *What:* Creates Fernet cipher objects using each user's pre-shared secret key
+- *Why:* The KDC needs to encrypt data that only specific users can decrypt
+
+==== Create Message for Receiver (Bob)
+#figure()[
+  ```py
+receiver_message = f_r.encrypt(session_key)
+  ```
+]
+
+- *What:* Encrypts the session key with Bob's secret key → $K_(B-K D C)(R)$
+- *Why:* Only Bob can decrypt this to get the session key
+- *Important:* Alice cannot read this even though she'll receive it
+
+
+==== Return Encrypted Data for Sender (Alice)
+```py
+return f_s.encrypt(session_key), f_s.encrypt(receiver_message)
+```
+
+This returns *two encrypted messages* for Alice:
+- *First Return Value:* $K_(A- K D C)(R)$
+  ```py
+  f_s.encrypt(session_key)
+  ```
+  - *What:* Session key encrypted with Alice's secret key
+  - *Purpose:* Allows Alice to decrypt and obtain the session key $R$
+  - *Usage:* Alice uses this to get her copy of the session key
+- *Second Return Value:* $K_(A-K D C)(K_B-K D C(R))$
+  ```py
+  f_s.encrypt(receiver_message)
+  ```
+  - *What:* Nested encryption - Bob's encrypted session key, encrypted again with Alice's key
+  - *Purpose:* Secure delivery mechanism for Bob's session key
+  - *Critical Point:* Alice can decrypt the outer layer but cannot read the inner content
+
+==== Why This Double Encryption?
++ *Authenticated Delivery:*
+  - Bob knows the message came from the KDC (via Alice) because
+    only Alice could have decrypted the outer layer
+  - Prevents man-in-the-middle attacks where an attacker tries 
+    to send fake session keys to Bob
++ *Confidentiality from Alice:*
+  - Alice cannot read Bob's session key even though she handles the delivery
+  - The inner encryption $K_(B-K D C)(R)$ protects against Alice being malicious
