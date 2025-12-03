@@ -59,6 +59,7 @@ def convert_markdown_to_typst(input_file, output_file=None):
     image_pattern = r'!\[\]\(([^)]+)\)'
     # Replace with #figure(image("images/\1"))
     content = re.sub(image_pattern, r'#figure(image("images/\1"))', content)
+    content = content.replace(".jpeg", "_2.2.jpeg")
     
     # Determine output file if not provided
     if output_file is None:

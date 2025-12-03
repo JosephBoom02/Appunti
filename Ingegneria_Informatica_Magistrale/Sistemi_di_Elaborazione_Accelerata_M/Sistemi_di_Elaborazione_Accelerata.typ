@@ -18,7 +18,7 @@
       name: "",
       icon: box(
         fill: rgb("#22c55e"),
-        inset: 0.3em,
+        inset: (x: 0.3em, y: 0.15em),
         radius: 0.2em,
         text(fill: white, weight: "bold", size: 0.8em)[CUDA]
       ),
@@ -91,7 +91,19 @@
 #set text(font: "Segoe UI")
 #show raw.where(block: false): set text(size: 8pt)
 
+// Funzione helper per cerchiare il testo
+#let circled(body) = box(
+  stroke: (paint: red, dash: "dashed", thickness: 1pt),
+  radius: 100%, // Rende il box ovale
+  inset: (x: 3pt, y: 0pt), // Spazio laterale interno
+  outset: (y: 2.5pt), // Estende il bordo verticalmente per creare l'ovale senza muovere il testo
+  body
+)
 
+#let dashed-line = grid.cell(
+  colspan: 3, 
+  line(length: 100%, stroke: (dash: "dashed", thickness: 0.5pt, paint: gray))
+)
 
 
 = Introduzione
@@ -2906,7 +2918,7 @@ __global__ void sumMatrixOnGPU1D2D(float MatA, float MatB, float MatC, int W, in
   }
 }
 ```
-
+// Griglia
 #grid(
   columns: (1fr, 1fr),
   gutter: 1.5em,
@@ -4191,4 +4203,1020 @@ __global__ void cudaConvolution2D(float* input, float* output, float* filter, in
 ]
 
 
+= Modello di Esecuzione CUDA
 
+== Introduzione al Modello di Esecuzione CUDA
+
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Modello di Esecuzione CUDA")
+
+  In generale, un *modello di esecuzione* fornisce una *visione operativa* di come le istruzioni vengono eseguite su una specifica architettura di calcolo (nel nostro caso, le GPU).
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Caratteristiche Principali*
+
+  - Fornisce un'*astrazione portabile dell'architettura* (Grid, Block, Thread, Warp, SM).
+  - Preserva *concetti fondamentali* tra generazioni differenti di GPU.
+  - Esposizione delle *funzionalità architetturali* chiave per la programmazione CUDA.
+  - Descrive come kernel, griglie e blocchi vengono effettivamente *mappati* sull'hardware GPU.
+  - Basato sul *parallelismo massivo* e sul *modello SIMT* (Single Instruction, Multiple Thread).
+
+  *Importanza*
+
+  - Offre una *visione unificata* dell'esecuzione su diverse GPU.
+  - Fornisce indicazioni utili per *l'ottimizzazione* del codice in termini di:
+    - *Throughput* delle istruzioni.
+    - *Accessi alla memoria.*
+  - Facilita la comprensione della *relazione* tra il modello di programmazione e l'esecuzione effettiva.
+  - Permette di interpretare correttamente i risultati dei profiler CUDA, collegando i fenomeni osservati (latenze, occupancy, conflitti di memoria) alla struttura del modello di esecuzione.
+]
+
+
+
+== Streaming Multiprocessor (SM)
+
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cosa sono?")
+  - Gli *Streaming Multiprocessors* (SM) sono le #underline[unità fondamentali di elaborazione]
+   all'interno delle GPU.
+  - Ogni SM contiene diverse *unità di calcolo*, *memoria condivisa* e *altre risorse essenziali* per gestire
+   l'esecuzione concorrente e parallela di migliaia di thread.
+  - Il parallelismo hardware delle GPU è ottenuto attraverso la *replica* di questo blocco architetturale.
+]
+
+
+#figure(image("images/_page_3_Figure_5_2.2.jpeg"))
+
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("1. CUDA Cores")
+    - Unità di elaborazione che eseguono istruzioni aritmetico/logiche.
+
+  #green_heading("2. Shared Memory/L1 Cache")
+  - Memoria ad alta velocità condivisa tra i thread di un blocco.
+
+  #green_heading("3. Register Files")
+  - Memoria privata di ogni thread per dati temporanei.
+
+  #green_heading("4. Load/Store Units (LD/ST)")
+  - Gestiscono il trasferimento dati da/verso la memoria.
+
+  #green_heading("5. Special Function Units (SFU)")
+  - Accelerano calcoli matematici complessi (funzioni trascendenti).
+
+  #green_heading("6. Warp Scheduler")
+  - Seleziona thread pronti per l'esecuzione nell'SM.
+
+  #green_heading("7. Dispatch Unit")
+  - Assegna i thread selezionati alle unità di esecuzione.
+
+  #green_heading("8. Instruction Cache")
+  - Memorizza temporaneamente le istruzioni usate di frequente.
+
+
+]
+
+
+#figure(image("images/_page_4_Figure_18_2.2.png", width: 45%))
+
+
+== CUDA Core - Unità di Elaborazione CUDA
+
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cos'è un CUDA Core?")
+  - Un *CUDA Core* è l'*unità di elaborazione* di base all'interno di un SM di una GPU NVIDIA.
+  - L'architettura e la funzionalità dei CUDA Core sono evolute nel tempo, 
+    passando da unità generiche a unità specializzate.
+  #figure(image("images/_page_5_Picture_4_2.2.jpeg", width: 30%))
+
+  #green_heading("Composizione e Funzionamento (Architettura Fermi e Precedenti)")
+
+  - Inizialmente, i CUDA Core erano unità di calcolo relativamente semplici, in grado
+    di eseguire sia operazioni intere (INT) che in virgola mobile (FP) in un ciclo di 
+    clock (fully pipelined, non simultaneamente).
+    - *ALU (Arithmetic Logic Unit):* Ogni CUDA Core contiene un'unità logico-aritmetica 
+    che esegue operazioni matematiche di base come addizioni, sottrazioni, moltiplicazion
+    e operazioni logiche.
+    - *FPU (Floating Point Unit)*: Include anche una FPU per gestire le operazioni 
+    in virgola mobile, supportando principalmente calcoli a precisione singola (FP32).
+  - I CUDA Core usano *registri condivisi* a livello di Streaming Multiprocessor
+    per memorizzare temporaneamente dati durante l'esecuzione dei thread.
+]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Evoluzione dell'Architettura (Kepler e successive)")
+  // Elenco puntato principale
+    #list(marker: [•], body-indent: 0.5em)[
+      Dall'architettura Kepler, NVIDIA ha introdotto la *specializzazione delle unità di calcolo* all'interno di uno SM:
+    ]
+    
+    #v(0.5em)
+
+    // --- Griglia per la sezione strutturata (General, AI, Grafica) ---
+    // La griglia ha 2 colonne: etichette ruotate e contenuto
+    #grid(
+      columns: (auto, 1fr),
+      column-gutter: 1em,
+      row-gutter: 0.8em,
+      
+      // --- Riga 1: Separatore tratteggiato ---
+      grid.cell(colspan: 2, line(length: 100%, stroke: (dash: "dashed", thickness: 0.5pt, paint: gray))),
+
+      // --- Riga 2: General ---
+      grid.cell(align: center + horizon)[
+        #rotate(-90deg, reflow: true)[*General*]
+      ],
+      [
+        #set list(marker: circle(radius: 1.5pt, stroke: black))
+        #list(
+          [*Unità FP64*: Dedicate alle operazioni in virgola mobile a _doppia precisione_.],
+          [*Unità FP32*: Dedicate alle operazioni in virgola mobile a _singola precisione_.],
+          [*Unità INT*: Dedicate alle _operazioni intere_.]
+        )
+      ],
+
+      // --- Riga 3: Separatore tratteggiato ---
+      grid.cell(colspan: 2, line(length: 100%, stroke: (dash: "dashed", thickness: 0.5pt, paint: gray))),
+
+      // --- Riga 4: AI ---
+      grid.cell(align: center + horizon)[
+        #rotate(-90deg, reflow: true)[*AI*]
+      ],
+      [
+        #set list(marker: circle(radius: 1.5pt, stroke: black))
+        #list(
+          [*Tensor Core - TC* (Architettura Volta e successive): Unità specializzate particolarmente ottimizzate per moltiplicazioni fra matrici in _precisione ridotta/mista_ (FP32, FP16, TF32, INT8, etc.).]
+        )
+      ],
+
+      // --- Riga 5: Separatore tratteggiato ---
+      grid.cell(colspan: 2, line(length: 100%, stroke: (dash: "dashed", thickness: 0.5pt, paint: gray))),
+
+      // --- Riga 6: Grafica ---
+      grid.cell(align: center + horizon)[
+        #rotate(-90deg, reflow: true)[*Grafica*]
+      ],
+      [
+        #set list(marker: circle(radius: 1.5pt, stroke: black))
+        #list(
+          [*Ray Tracing Core - RT* (Ampere e successive): Unità dedicate per l'accelerazione del _ray tracing_.],
+          [*Unità di Texture*: Ottimizzate per gestire _texture_ e _operazioni di filtraggio_.],
+          [*Unità di Rasterizzazione*: Utilizzate per la _rasterizzazione_ delle immagini durante il rendering.]
+        )
+      ]
+    )
+
+  #green_heading("Ruolo del Modello CUDA")
+  - *Esecuzione Parallela*: Ogni unità di elaborazione esegue un thread in 
+    #underline[parallelo] con altri nel medesimo SM.
+
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Differenze rispetto alle CPU")
+    - *Semplicità Architetturale*: Le varie unità di gestione all'interno di un SM 
+      sono più semplici rispetto ai core delle CPU, #underline[senza unità di controllo 
+      complesse], permettendo una maggiore densità di unità specializzate.
+  - *Specializzazione*: Mentre le CPU sono general purpose, le GPU, attraverso 
+    i CUDA Core e le unità specializzate, offrono performance elevate anche 
+    per compiti specifici come l'*Intelligenza Artificale* ed il *rendering grafico*.
+]
+
+== Streaming Multiprocessor (SM) - Evoluzione
+
+#figure(image("images/Evoluzione_1.png"))
+#figure(image("images/Evoluzione_2.png"))
+#figure(image("images/Evoluzione_3.png"))
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - *Aumento di SM e CUDA Core*: Ogni generazione ha generalmente aumentato
+    il numero di SM e CUDA Core.
+  - *Miglioramento del Parallelismo*: L'aumento delle unità di elaborazione 
+    permettono un #underline[maggiore parallelismo], migliorando le prestazioni 
+    complessive della GPU.
+  - *Calcolo CUDA Core Totali*: Totale CUDA Core = (SM per GPU) x (CUDA Core per SM)
+]
+
+#block(
+  width: 100%,
+  fill: rgb("#F3F3F3"),
+  radius: 8pt,
+  inset: 15pt,
+)[
+  // Funzione helper per formattare la prima colonna (Nome Architettura + Serie)
+  #let arch-cell(name, series) = {
+    text(font: "Liberation Mono", weight: "bold", fill: nvidia-green, size: 1.1em)[#name]
+    h(0.5em)
+    text(weight: "bold")[#series]
+  }
+
+  // Funzione helper per i numeri (font monospaziato)
+  #let num-cell(val) = {
+    text(font: "Liberation Mono", size: 1em)[#val]
+  }
+
+  #table(
+    columns: (1fr, auto, auto, auto),
+    column-gutter: 1em,
+    row-gutter: -0.5em,
+    stroke: none,
+    align: (x, y) => if x == 0 { left + horizon } else { center + horizon },
+
+    // --- Intestazioni ---
+    [*Architettura*],
+    [*SM per GPU*],
+    align(center)[*CUDA Cores*\ *FP32 per SM*],
+    align(center)[*Totale CUDA*\ *FP32 Cores*],
+
+    // --- Righe Dati ---
+    arch-cell("Tesla", "(GTX 200 series)"),       num-cell("30"),  num-cell("8"),   num-cell("240"),
+    arch-cell("Fermi", "(GTX 400/500 series)"),   num-cell("16"),  num-cell("32"),  num-cell("512"),
+    arch-cell("Kepler", "(GTX 600/700 series)"),  num-cell("15"),  num-cell("192"), num-cell("2880"),
+    arch-cell("Maxwell", "(GTX 900 series)"),     num-cell("16"),  num-cell("128"), num-cell("2048"),
+    arch-cell("Pascal", "(GTX 10 series)"),       num-cell("20"),  num-cell("128"), num-cell("2560"),
+    arch-cell("Volta", "(Tesla V100)"),           num-cell("80"),  num-cell("64"),  num-cell("5120"),
+    arch-cell("Turing", "(RTX 20 series)"),       num-cell("72"),  num-cell("64"),  num-cell("4608"),
+    arch-cell("Ampere", "(RTX 30 series)"),       num-cell("84"),  num-cell("128"), num-cell("10752"),
+    arch-cell("Ada Lovelace", "(RTX 40 series)"), num-cell("128"), num-cell("128"), num-cell("16384"),
+    arch-cell("Hopper", "(GH series)"),           num-cell("144"), num-cell("128"), num-cell("18432"),
+    arch-cell("Blackwell", "(RTX 50 series)"),    num-cell("170"), num-cell("128"), num-cell("21760"),
+  )
+
+  #v(1em)
+  
+  // Nota a piè di pagina
+  #text(size: 0.95em)[
+    *Nota:* I valori mostrati sono tipici dei modelli di punta. Possono esserci variazioni tra i diversi modelli di una stessa serie.
+  ]
+]
+
+
+== Tensor Core: Acceleratori per l'Intelligenza Artificiale (Volta+)
+
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  {
+    block(
+        stroke: 1pt + light_green,
+        radius: 0.8em,
+        inset: 1.5em,
+        width: 100%,
+        breakable: false,
+        // height: 22em
+      )[
+        #text(fill: light_green, weight: "bold")[Cosa sono i Tensor Core?]
+        
+        - *Unità di elaborazione specializzata* per operazioni tensoriali (array multidimensionali).
+        - Progettata per accelerare calcoli di *AI* e *HPC*  (Riduzione dei tempi di training e inferenza).
+        - Presenti in GPU NVIDIA RTX da Volta (2017) in poi.
+
+        #green_heading("Caratteristiche")
+        - Esegue operazioni *matrice-matrice* (es. GEMM General Matrix Multiply) 
+          in *precisione mista*.
+        - Supporta formati *FP8*, *FP16*, *FP32*, *FP64*, *INT8*, *INT4*, 
+          *BF16* e nuovi formati come *TF32 (TensorFloat-32).*
+        - Offrono un significativo *speedup* nel calcolo senza compromettere l'accuratezza.
+      ]
+      // GreenBlock
+      block(
+        fill: rgb("#F3F3F3"),
+        radius: 0.8em,
+        inset: 1.5em,
+        width: 100%,
+        // height: 21em,
+        breakable: false
+      )[
+        #green_heading("Evoluzione")
+      - *Miglioramenti*: Volta → ..→ .. → Hopper → Blackwell
+      - Integrazione con CUDA, cuDNN, TensorRT
+      ]
+  },
+  //Box destro
+  figure(image("images/_page_12_Picture_12_2.2.jpeg"))
+)
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - *Fused Multiply-Add (FMA):* Un'operazione che combina una moltiplicazione 
+    e un'addizione di *scalari* in un unico passo, eseguendo . Un CUDA core 
+    esegue 1 FMA per ciclo di clock in FP32.
+  - *Matrix Multiply-Accumulate (MMA):* Operazione che calcola il prodotto 
+    di due *matrici* e somma il risultato a una terza matrice, eseguendo
+  - Per matrici ( ), ( ) e ( ), l'operazione produce ( ) e richiede operazioni 
+    FMA, dove ogni elemento di necessita di moltiplicazioni-addizioni.
+]
+
+
+#figure(image("images/_page_13_Figure_4_2.2.jpeg"))
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Esecuzione Parallela")
+  - Ogni Tensor Core esegue *64 operazioni FMA (4x4x4)* in un singolo ciclo di clock, grazie al parallelismo interno.
+- Per operazioni su matrici più grandi, queste vengono *decomposte in sottomatrici 4x4*.
+- Più operazioni 4x4 vengono eseguite *in parallelo su diversi Tensor Cores*.
+]
+
+
+
+== Evoluzione dei NVIDIA Tensor Core
+
+Le generazioni più recenti di GPU hanno ampliato la flessibilità dei Tensor Cores, supportando *dimensioni di matrici più grandi e/o sparse* con un maggiore numero di formati numerici.
+
+#figure(image("images/_page_14_Figure_2_2.2.jpeg"))
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Impatto delle Approssimazioni")
+  - *Accelerazione* significativa dei calcoli
+  - *Riduzione* del consumo di memoria
+  - *Perdita di Precisione*: di è dimostrato che ha un impatto minimo
+    sull'accuratezza finale dei modelli di deep learning
+]
+
+== Organizzazione e gestione dei thread
+
+=== SM, Thread Blocks e Risorse
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Parallelismo Hardware")
+  - Più SM per GPU permettono l'*esecuzione simultanea* di 
+    migliaia di thread (anche da kernel differenti).
+
+  #green_heading("Distribuzione dei Thread Blocks")
+  - Quando un kernel viene lanciato, i blocchi di vengono *automaticamente
+    e dinamicamente distribuiti dal GigaThread Engine* (scheduler globale) 
+    agli SM disponibili.
+  - Le variabili di identificazione e dimensione 
+    (*gridDim*, *blockIdx*, *blockDim*, e *threadIdx)* sono rese disponibili 
+    ad ogni thread e condivise nello stesso SM.
+  - Una volta assegnato a un SM, un blocco rimane vincolato 
+    a quell'SM *per tutta la durata dell'esecuzione*.
+  
+  #green_heading("Gestione delle Risorse e Scheduling")
+  - *Più blocchi di thread* possono essere assegnati 
+    *allo stesso SM* contemporaneamente.
+  - Lo scheduling dei blocchi dipende dalla *disponibilità 
+    delle risorse* dell'SM (registri, memoria condivisa) e 
+    dai *limiti architetturali* di ciascun SM (max blocks, max threads, etc.).
+  - Tipicamente, la maggior parte delle grid contiene 
+    *molti più blocchi di quanti possano essere eseguiti* in parallelo 
+    sugli SM disponibili.
+  - Il *runtime system* mantiene quindi una coda di blocchi 
+    in attesa, assegnandone di nuovi agli SM non appena quelli 
+    precedenti terminano l'esecuzione.
+]
+
+
+=== Corrispondenza tra Vista Logica e Vista Hardware
+
+#figure(image("images/_page_17_Picture_1_2.2.jpeg"))
+
+
+#figure(image("images/_page_18_Picture_1_2.2.jpeg"))
+
+
+#figure(image("images/_page_19_Figure_1_2.2.jpeg"))
+
+=== Distribuzione dei Blocchi su Streaming Multiprocessors
+
+#figure(image("images/_page_20_Picture_1_2.2.jpeg"))
+
+Supponiamo di dover realizzare un algoritmo parallelo che effettui il calcolo parallelo su un'immagine.
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - Il Gigathread Engine *smista* i blocchi di thread agli SM in base alle risorse disponibili.
+  - CUDA non garantisce l'ordine di esecuzione e non è possibile scambiare dati tra i blocchi.
+  - Ogni blocco viene elaborato in modo *indipendente*.
+]
+#figure(image("images/_page_21_Picture_1_2.2.png"))
+Quando un blocco completa l'esecuzione e libera le risorse, un nuovo blocco viene schedulato al suo posto nell'SM, e questo processo continua fino a quando tutti i blocchi del grid non sono stati elaborati.
+#figure(image("images/_page_22_Picture_2_2.2.jpeg"))
+
+=== Concetto di Wave in CUDA
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cosa si intende per Wave?")
+  - Un "*Wave*" rappresenta l'insieme dei blocchi di thread che vengono
+    eseguiti #underline[simultaneamente] su tutti gli SM della GPU in un dato momento.
+  - La *Full Wave Capacity*, invece, rappresenta la *#underline[capacità teorica 
+    massima]* della GPU, ossia il numero totale di blocchi che possono
+    essere residenti simultaneamente su tutti gli SM.
+    ```
+    Full Wave Capacity = (Numero di SM) * (Numero massimo di blocchi attivi per SM)
+    ```
+
+    ⚠️ *Attenzione*: Questo numero massimo di blocchi *#underline[dipende 
+    dall'architettura GPU] (Compute Capability)* e *#underline[dalle risorse 
+    richieste da ciascun blocco]* (come registri, memoria condivisa), 
+    che influenzano *l'occupancy* (lo vedremo).
+]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Full Wave vs Partial Wave")
+  - *Full Wave*: tutti gli SM sono occupati al massimo della loro capacità → utilizzo 100%
+  - *Partial Wave*: solo parte degli SM è occupata, oppure non tutti al massimo → utilizzo < 100%
+  - *Esempio*: GPU con 80 SM e fino a 4 blocchi attivi per SM → *Full Wave Capacity* = 80 x 4 = 320 blocchi simultanei.
+    - Se il kernel lancia:
+      - *320 blocchi* → esegue in *1 full wave* (320/320 = 100% utilizzo)
+      - *100 blocchi* → esegue in *1 partial wave* (100/320 = ~31% utilizzo)
+      - Cosa succede se il numero di blocchi è *superiore alla capacità massima*? (es. 500 blocchi)
+]
+
+==== Numero di Waves per un Kernel CUDA
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Calcolo del Numero di Waves")
+  - Quando si lanciano più blocchi di quelli che la GPU può gestire 
+    simultaneamente, l'esecuzione avviene in più *ondate successive (waves)*:
+  - Il numero di blocchi attivi è una proprietà *statica*, 
+    determinata dall'architettura e dalle risorse richieste dal kernel.
+    ```
+  Numero di waves = ⌈(Blocchi totali) / (Full wave capacity)⌉
+  ```
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Esempio*
+
+  Consideriamo una GPU con *8 SM* e un kernel con *12 blocchi totali*
+  che consente *1 solo blocco attivo per SM*.
+
+  - *Full wave capacity =* 8 SM x 1 blocco/SM = 8 blocchi
+  - *Numero di waves* = ⌈12 / 8⌉ = 2 waves
+
+  *Esecuzione*:
+
+  - *Wave 1 (full wave):* 8 blocchi su 8 SM → *utilizzo 100%*
+  - *Wave 2 (partial wave):* 4 blocchi su 8 SM *→ utilizzo 50%*
+  - *Efficienza media di esecuzione:* (8 + 4) / (8 + 8) = 12/16 = 75%
+  - Il secondo wave è un esempio di *tail effect*.
+] 
+#figure(image("images/_page_24_Figure_14_2.2.jpeg", width: 66%))
+
+=== Scalabilità in CUDA
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cosa si intende?")
+  - Per *scalabilità* in CUDA ci si riferisce alla capacità di un'applicazione
+    di migliorare le prestazioni proporzionalmente all'*aumento delle risorse*
+    hardware disponibili.
+  - *Più SM* disponibili = *Più blocchi eseguiti* contemporaneamente
+    \= *Maggiore Parallelismo*.
+  - *Nessuna modifica al codice* richiesta per sfruttare hardware più potente.
+]
+
+#figure(image("images/_page_25_Figure_5_2.2.jpeg"))
+
+== Modello di Esecuzione SIMT e Warp
+
+=== Modello di Esecuzione: SIMD
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("SIMD (Single Instruction, Multiple Data)")
+  - È un *modello di esecuzione parallela* in cui una singola istruzione opera
+    simultaneamente su più elementi di dato, utilizzando *unità vettoriali
+    dedicate* (vector units) presenti nei core della CPU
+- Utilizza *registri vettoriali* che possono contenere più elementi
+  (es. 4 float, 8 int16, 16 byte).
+- Il programma segue un *flusso di controllo centralizzato* 
+  (singolo thread di controllo).
+- *Limitazioni*:
+  - Larghezza vettoriale *fissa* nell'hardware (es. AVX-512 
+    consente 512 bit), limitando gli elementi per istruzione.
+  - Tutti gli elementi vettoriali in un vettore vengono elaborati
+    in *lockstep* (perfettamente sincroni).
+  - *La divergenza non è ammessa:* se occorrono percorsi 
+    condizionali (*if*-*else*), si impiegano *maschere vettoriali*
+    che selezionano gli elementi su cui applicare l'operazione.
+
+]
+
+#codly(header: [#align(center)[*Somma di Due Array (SIMD con Neon intrinsics - ARM)*]])
+
+```
+void array_sum(uint32_t *a, uint32_t *b, uint32_t *c, int n){ 
+  for(int i=0; i<n; i+=4) {
+    //calcola c[i], c[i+1], c[i+2], c[i+3] 
+    uint32x4_t a4 = vld1q_u32(a+i); 
+    uint32x4_t b4 = vld1q_u32(b+i); 
+    uint32x4_t c4 = vaddq_u32(a4,b4);
+    vst1q_u32(c+i,c4);
+  }}
+```
+*N.B.* I dati vengono suddivisi in vettori di dimensione fissa e 
+il loop elabora questi vettori utilizzando istruzioni _intrinsics_ 
+con nomenclatura specifica dell'architettura. 
+
+=== Modello di Esecuzione: SIMT
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("SIMT (Single Instruction, Multiple Thread)")
+  - *Modello ibrido* adottato in CUDA che combina parallelismo 
+    multi-thread con esecuzione SIMD-like.
+  - *Caratteristiche Chiave*:
+    - A differenza del SIMD, non ha un controllo centralizzato delle istruzioni.
+    - Ogni thread possiede un proprio *Program Counter (PC)*, 
+      *registri* e *stato* indipendenti (maggiore flessibilità).
+    - *Supporta divergenza* del flusso di controllo (thread possono 
+      avere percorsi di esecuzione indipendenti).
+    - Hardware gestisce *automaticamente* la divergenza (trasparente al programmatore).
+  - *Implementazione*
+    - In CUDA, i thread sono organizzati in #underline[gruppi di 32] 
+      chiamati #circled[*warps*] (unità minima di esecuzione in un SM).
+    - I thread in un warp iniziano insieme allo *stesso 
+      indirizzo del programma (PC),* ma #underline[possono divergere].
+    - Divergenza in un warp causa *esecuzione seriale dei percorsi 
+      diversi*, riducendo l'efficienza (da evitare).
+    - La divergenza è *gestita automaticamente dall'hardware*, ma 
+      con un impatto negativo sulle prestazioni.
+]
+
+#codly(header: [#align(center)[*Somma di Due Array (SIMT)*]])
+```cpp
+__global__ void array_sum(float *A, float *B, float *C, int N) {
+  int idx = blockDim.x * blockIdx.x + threadIdx.x;
+  if (idx < N) C[idx] = A[idx] + B[idx]; //Questa riga rappresenta l'essenza del SIMT
+} 
+```
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #align(center)[*Perché 32 Thread in un Warp CUDA?*]
+  - *Efficienza Hardware*: Massimizza l'utilizzo delle risorse hardware dell'SM
+    - Warp troppo piccolo sarebbe inefficiente, mentre uno troppo grande
+      complicherebbe lo scheduling e potrebbe sovraccaricare gli SM / la memoria.
+  - *Efficienza della Memoria*: Un warp di 32 thread accede a indirizzi di memoria
+    consecutivi, permettendo aggregazioni in poche transazioni e massimizzando
+    l'efficienza delle linee di connessione per evitare accessi parziali.
+  - *Flessibilità Software*: Offre una granularità gestibile per il controllo
+    della divergenza e per il bilanciamento del carico di 
+    lavoro tra thread.
+  - *Adattabilità*: Questa dimensione si è dimostrata efficace per varie
+    generazioni di GPU NVIDIA, pur rimanendo aperta a future evoluzioni.
+]
+
+
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+  breakable: false,
+)[
+  #align(center)[#text(size: 1.3em)[*Modello di Esecuzione: SIMD vs. SIMT*]]
+  #grid(
+    columns: (auto, 1fr, 1fr),
+    column-gutter: 1.5em,
+    row-gutter: 0.8em,
+    
+    // --- Intestazione ---
+    [], // Cella vuota sopra la prima colonna
+    align(center, text(fill: device-blue, weight: "bold", size: 1.1em)[SIMD]),
+    align(center, text(fill: nvidia-green, weight: "bold", size: 1.1em)[SIMT]),
+
+    // --- Riga 1: Unità di Esecuzione ---
+    [*Unità di Esecuzione*],
+    [Un *singolo thread* controlla vettori di dimensione fissa],
+    [*Molti thread* leggeri raggruppati in warp (32 thread)],
+
+    dashed-line,
+
+    // --- Riga 2: Registri ---
+    [*Registri*],
+    [*Registri vettoriali* condivisi tra le unità di calcolo],
+    [Set completo di *registri per thread*],
+
+    dashed-line,
+
+    // --- Riga 3: Flessibilità ---
+    [*Flessibilità*],
+    [*Bassa*: Stessa operazione per tutti gli elementi vettore],
+    [*Alta*: Ogni thread può eseguire operazioni e percorsi indipendenti],
+
+    dashed-line,
+
+    // --- Riga 4: Indipendenza ---
+    [*Indipendenza*],
+    [*Non applicabile*, controllo centralizzato],
+    [Ogni thread mantiene il *proprio stato di esecuzione* (vedi nota\*)],
+
+    dashed-line,
+
+    // --- Riga 5: Branching ---
+    [*Branching*],
+    [Gestito *esplicitamente* con *maschere* (no divergenza)],
+    [Gestito *via hardware* con *thread masking automatico*],
+
+    dashed-line,
+
+    // --- Riga 6: Scalabilità ---
+    [*Scalabilità*],
+    [*Limitata* dalla larghezza vettoriale],
+    [*Massiva* (migliaia/milioni di thread)],
+
+    dashed-line,
+
+    // --- Riga 7: Sincronizzazione ---
+    [*Sincronizzazione*],
+    [*Intrinseca* (lock-step automatico)],
+    [*Esplicita* (es., #text(font: "Liberation Mono",
+      fill: nvidia-green, weight: "bold")[\_\_syncthreads])],
+
+    dashed-line,
+
+    // --- Riga 8: Utilizzo Tipico ---
+    [*Utilizzo Tipico*],
+    [*Estensioni CPU* (SSE, AVX, NEON)],
+    [*GPU* Computing (CUDA, OpenCL)],
+  )
+]
+
+*Nota*: Con l'architettura Volta, NVIDIA ha introdotto l'Independent Thread Scheduling.
+- *Pre-Volta*, un Program Counter (PC) era condiviso per warp; 
+- *Post-Volta*, ogni thread ha il proprio PC, migliorando la gestione della divergenza e la flessibilità d'esecuzione.
+
+=== Modello di Esecuzione Gerarchico di CUDA
+
+// --- Riquadro Esterno Tratteggiato ---
+#block(
+  width: 100%,
+  stroke: (dash: "dashed", thickness: 1pt, paint: black),
+  radius: 8pt,
+  inset: 15pt,
+)[
+  // Titolo
+  #text(weight: "bold")[Livello di Programmazione]
+  
+  #v(0.8em)
+
+  // Griglia a due colonne per i codici
+  #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+
+    ```cpp
+    __global__ void array_sum(float *A, float *B, float *C, int N) {
+      int idx = blockDim.x * blockIdx.x + threadIdx.x;
+      if (idx < N) C[idx] = A[idx] + B[idx];
+    }
+    ```,
+    ```cpp
+    int main(int argc, char **argv){
+      // ...
+      // Chiamata del kernel
+      array_sum<<<gridDim ,blockDim >>>(args);
+    }
+    ```
+  )
+]
+
+#block(
+  width: 100%,
+  stroke: (dash: "dashed", thickness: 1pt, paint: black),
+  radius: 8pt,
+  inset: 15pt,
+)[
+  #figure(image("images/_page_31_Figure_2_2.2.jpeg"))
+]
+#figure(image("images/_page_32_Picture_1_2.2.jpeg"))
+
+=== Warp: L'Unità Fondamentale di Esecuzione nelle SM
+
+// Griglia 
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1.5em,
+    // Box sinistro
+    block(
+        stroke: 1pt + nvidia-green,
+        radius: 0.8em,
+        inset: 1.5em,
+        width: 100%,
+        breakable: false,
+        // height: 22em
+      )[
+        #set text(size: 8pt)
+        #green_heading("Distribuzione dei Thread Block")
+        - Quando si lancia una griglia di thread block, questi 
+          vengono *distribuiti* tra i diversi SM disponibili.
+        #green_heading("Partizionamento in Warp")
+        I thread di un thread block vengono suddivisi in 
+        *warp di 32 thread (con ID consecutivi).*
+
+        #green_heading("Esecuzione SIMT")
+
+        - I thread in un warp eseguono la *stessa istruzione* 
+          su *dati diversi*, con possibilità di *divergenza*.
+
+        #green_heading("Esecuzione Logica vs Fisica")
+
+        - Thread eseguiti in parallelo *logicamente*, ma non sempre fisicamente.
+
+        #green_heading("Scheduling Dinamico (Warp Scheduler)")
+
+        - L'SM gestisce *dinamicamente* l'esecuzione di un numero 
+          limitato di warp, switchando efficientemente tra di essi.
+
+        #green_heading("Sincronizzazione")
+
+        - Possibile all'interno di un thread block, ma non tra thread block diversi.
+
+      ],
+    //Box destro
+    image("images/_page_33_Figure_13_2.2.jpeg")
+  )
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Thread Blocks e Warp")
+  - *Punto di Vista Logico:* Un blocco di thread è una collezione 
+    di thread organizzati in un layout 1D, 2D o 3D.
+  - *Punto di Vista Hardware:* Un blocco di thread è una #underline[collezione 
+    1D di warp]. I thread in un blocco sono organizzati in un layout 
+    1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
+]
+
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Esempio 1D*
+
+  Un blocco 1D con 128 thread viene suddiviso in 4 warp, ognuno composto da 32 thread (*ID Consecutivi*).
+
+  ```
+  Warp 0: thread 0, thread 1, thread 2, ... thread 31
+  Warp 1: thread 32, thread 33, thread 34, ... thread 63
+  Warp 2: thread 64, thread 65, thread 66, ... thread 95
+  Warp 3: thread 96, thread 97, thread 98, ... thread 127
+  ```
+]
+#align(center)[*Thread Block N (Caso 1D)*]
+#figure(
+  image("images/_page_34_Figure_8_2.2.jpeg")
+  )
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Mapping Multidimensionale (2D e 3D)*
+  - Il *programmatore* usa *`threadIdx`* e *`blockDim`* per identificare 
+    i thread nel #underline[layout logico].
+  - Il *runtime CUDA* si occupa automaticamente di linearizzare 
+    gli indici multidimensionali in ordine row-major, raggruppare 
+    i thread in warp, gestire il mapping hardware.
+  - L'ID di un thread in un blocco multidimensionale viene 
+    calcolato usando *threadIdx* e *blockDim*
+  ```
+  ○ Caso 2D: 
+  ○ Caso 3D:
+        threadIdx.z * blockDim.y * blockDim.x +/
+            + threadIdx.y * blockDim.x + threadIdx.x
+              threadIdx.y * blockDim.x + threadIdx.x
+  ```
+]
+
+
+
+
+- *Calcolo del Numero di Warp: ceil(*ThreadsPerBlock/warpSize*)*
+- L'hardware alloca sempre un numero *discreto* di warp.
+
+== Organizzazione dei Thread e Warp
+
+=== Thread Blocks e Warp
+
+- Punto di Vista Logico: Un blocco di thread è una collezione di thread organizzati in un layout 1D, 2D o 3D.
+- Punto di Vista Hardware: Un blocco di thread è una <u>collezione 1D di warp</u>. I thread in un blocco sono organizzati in un layout 1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
+
+=== Mapping Multidimensionale (Caso 2D)
+
+Esempio 2D: Un thread block 2D con 40 thread in x e 2 in y (80 thread totali) richiederà 3 warp (96 thread hardware). L'ultimo semi-warp (16 thread) sarà inattivo, consumando comunque risorse.
+
+#figure(image("images/_page_36_Figure_6_2.2.jpeg"))
+
+== Warp: L'Unità Fondamentale di Esecuzione nell'SM
+
+- Un warp viene assegnato a una sub-partition, solitamente in base al suo ID, dove rimane fino al completamento.
+- Una sub-partition gestisce un "pool" di warp concorrenti di dimensione fissa (es., Turing 8 warp, Volta 16 warp).
+
+#figure(image("images/_page_37_Figure_3_2.2.jpeg"))
+
+= Compute Capability (CC) - Limiti su Blocchi e Thread
+
+- La *Compute Capability (CC)* di NVIDIA è un numero che identifica le *caratteristiche* e le *capacità* di una GPU NVIDIA in termini di funzionalità supportate e limiti hardware.
+- È composta da *due numeri*: il numero principale indica la *generazione* dell'architettura, mentre il numero secondario indica *revisioni* e *miglioramenti* all'interno di quella generazione.
+
+|                       |              |           |                        |                     | *Valori concorrenti per singolo SM |
+|-----------------------|--------------|-----------|------------------------|---------------------|------------------------------------|
+| Compute<br>Capability | Architettura | Warp Size | Max Blocchi<br>per SM* | Max Warp<br>per SM* | Max Threads<br>per SM*             |
+| 1.x                   | Tesla        | 32        | 8                      | 24/32               | 768/1024                           |
+| 2.x                   | Fermi        | 32        | 8                      | 48                  | 1536                               |
+| 3.x                   | Kepler       | 32        | 16                     | 64                  | 2048                               |
+| 5.x                   | Maxwell      | 32        | 32                     | 64                  | 2048                               |
+| 6.x                   | Pascal       | 32        | 32                     | 64                  | 2048                               |
+| 7.x                   | Volta/Turing | 32        | 16/32                  | 32/64               | 1024/2048                          |
+| 8.x                   | Ampere/Ada   | 32        | 16/24                  | 48/64               | 1536/2048                          |
+| 9.x                   | Hopper       | 32        | 32                     | 64                  | 2048                               |
+| 10.x/12.x             | Blackwell    | 32        | 32                     | 64/48               | 2048/1536                          |
+
+// [https://en.wikipedia.org/wiki/CUDA=Version\features\and\specifications](https://en.wikipedia.org/wiki/CUDA=Version_features_and_specifications)
+
+== Warp: Contesto di Esecuzion
