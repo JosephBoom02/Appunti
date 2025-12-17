@@ -1,6 +1,6 @@
-#figure(image("images/_page_0_Picture_0_2.2.jpeg"))
+#image("images/_page_0_Picture_0_2.2.jpeg")
 
-= Modello di Esecuzione CUDA
+=== Modello di Esecuzione CUDA
 
 Sistemi di Elaborazione Accelerata, Modulo 2
 
@@ -8,47 +8,47 @@ A.A. 2025/2026
 
 Fabio Tosi, Università di Bologna
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
-== Architettura Hardware GPU
+#green_heading("Architettura Hardware GPU")
 
 - Introduzione al Modello di Esecuzione CUDA
 - Organizzazione degli Streaming Multiprocessors (SM)
 - Panoramica delle Architetture GPU NVIDIA
 
-== Organizzazione e Gestione dei Thread
+#green_heading("Organizzazione e Gestione dei Thread")
 
 - Mappatura tra Vista Logica e Hardware
 - Distribuzione e Schedulazione dei Blocchi sui SM
 
-== Modello di Esecuzione SIMT e Warp
+#green_heading("Modello di Esecuzione SIMT e Warp")
 
 - Confronto tra SIMD e SIMT
 - Warp e Gestione dei Warp
 - Latency Hiding e Legge di Little
 - Warp Divergence e Thread Independent Scheduling
 
-== Sincronizzazione e Comunicazione
+#green_heading("Sincronizzazione e Comunicazione")
 
 - Meccanismi di Sincronizzazione
 - Operazioni Atomiche
 
-== Ottimizzazione delle Risorse
+#green_heading("Ottimizzazione delle Risorse")
 
 - Resource Partitioning
 - Occupancy
 
-== Parallelismo Avanzato
+#green_heading("Parallelismo Avanzato")
 
 CUDA Dynamic Parallelism
 
-= Introduzione al Modello di Esecuzione CUDA
+=== Introduzione al Modello di Esecuzione CUDA
 
-== Modello di Esecuzione CUDA
+#green_heading("Modello di Esecuzione CUDA")
 
 In generale, un *modello di esecuzione* fornisce una *visione operativa* di come le istruzioni vengono eseguite su una specifica architettura di calcolo (nel nostro caso, le GPU).
 
-== Caratteristiche Principali
+#green_heading("Caratteristiche Principali")
 
 - Fornisce un'*astrazione portabile dell'architettura* (Grid, Block, Thread, Warp, SM).
 - Preserva *concetti fondamentali* tra generazioni differenti di GPU.
@@ -56,7 +56,7 @@ In generale, un *modello di esecuzione* fornisce una *visione operativa* di come
 - Descrive come kernel, griglie e blocchi vengono effettivamente *mappati* sull'hardware GPU.
 - Basato sul *parallelismo massivo* e sul *modello SIMT* (Single Instruction, Multiple Thread).
 
-== Importanza
+#green_heading("Importanza")
 
 - Offre una *visione unificata* dell'esecuzione su diverse GPU.
 - Fornisce indicazioni utili per *l'ottimizzazione* del codice in termini di:
@@ -65,75 +65,75 @@ In generale, un *modello di esecuzione* fornisce una *visione operativa* di come
 - Facilita la comprensione della *relazione* tra il modello di programmazione e l'esecuzione effettiva.
 - Permette di interpretare correttamente i risultati dei profiler CUDA, collegando i fenomeni osservati (latenze, occupancy, conflitti di memoria) alla struttura del modello di esecuzione.
 
-= Streaming Multiprocessor (SM)
+=== Streaming Multiprocessor (SM)
 
-== Cosa sono?
+#green_heading("Cosa sono?")
 
 - Gli *Streaming Multiprocessors* (SM) sono le unità fondamentali di elaborazione all'interno delle GPU.
 - Ogni SM contiene diverse *unità di calcolo*, *memoria condivisa* e *altre risorse essenziali* per gestire l'esecuzione concorrente e parallela di migliaia di thread.
 - Il parallelismo hardware delle GPU è ottenuto attraverso la *replica* di questo blocco architetturale.
 
-#figure(image("images/_page_3_Figure_5_2.2.jpeg"))
+#image("images/_page_3_Figure_5_2.2.jpeg")
 
-= Streaming Multiprocessor (SM) Fermi SM (2010)
+=== Streaming Multiprocessor (SM) Fermi SM (2010)
 
-== 1. CUDA Cores
+#green_heading("1. CUDA Cores")
 
 Unità di elaborazione che eseguono istruzioni aritmetico/logiche.
 
-== 2. Shared Memory/L1 Cache
+#green_heading("2. Shared Memory/L1 Cache")
 
 Memoria ad alta velocità condivisa tra i thread di un blocco.
 
-== 3. Register Files
+#green_heading("3. Register Files")
 
 Memoria privata di ogni thread per dati temporanei.
 
-== 4. Load/Store Units (LD/ST)
+#green_heading("4. Load/Store Units (LD/ST)")
 
 Gestiscono il trasferimento dati da/verso la memoria.
 
-== 5. Special Function Units (SFU)
+#green_heading("5. Special Function Units (SFU)")
 
 Accelerano calcoli matematici complessi (funzioni trascendenti).
 
-== 6. Warp Scheduler
+#green_heading("6. Warp Scheduler")
 
 Seleziona thread pronti per l'esecuzione nell'SM.
 
-== 7. Dispatch Unit
+#green_heading("7. Dispatch Unit")
 
 Assegna i thread selezionati alle unità di esecuzione.
 
-== 8. Instruction Cache
+#green_heading("8. Instruction Cache")
 
 Memorizza temporaneamente le istruzioni usate di frequente.
 
-#figure(image("images/_page_4_Figure_18_2.2.jpeg"))
+#image("images/_page_4_Figure_18_2.2.jpeg")
 
 Uniform Cache 64 KB Shared Memory / L1 Cache
 
-= CUDA Core - Unità di Elaborazione CUDA
+=== CUDA Core - Unità di Elaborazione CUDA
 
-== Cos'è un CUDA Core?
+#green_heading("Cos'è un CUDA Core?")
 
 - Un *CUDA Core* è l'*unità di elaborazione* di base all'interno di un SM di una GPU NVIDIA.
 - L'architettura e la funzionalità dei CUDA Core sono evolute nel tempo, passando da unità generiche a unità specializzate.
 
-#figure(image("images/_page_5_Picture_4_2.2.jpeg"))
+#image("images/_page_5_Picture_4_2.2.jpeg")
 
 Fermi SM (2010)
 
-== Composizione e Funzionamento (Architettura Fermi e Precedenti)
+#green_heading("Composizione e Funzionamento (Architettura Fermi e Precedenti)")
 
 - Inizialmente, i CUDA Core erano unità di calcolo relativamente semplici, in grado di eseguire sia operazioni intere (INT) che in virgola mobile (FP) in un ciclo di clock (fully pipelined, non simultaneamente).
   - *ALU (Arithmetic Logic Unit):* Ogni CUDA Core contiene un'unità logico-aritmetica che esegue operazioni matematiche di base come addizioni, sottrazioni, moltiplicazioni e operazioni logiche.
   - *FPU (Floating Point Unit)*: Include anche una FPU per gestire le operazioni in virgola mobile, supportando principalmente calcoli a precisione singola (FP32).
 - I CUDA Core usano *registri condivisi* a livello di Streaming Multiprocessor per memorizzare temporaneamente dati durante l'esecuzione dei thread.
 
-== CUDA Core - Unità di Elaborazione CUDA
+#green_heading("CUDA Core - Unità di Elaborazione CUDA")
 
-==== Evoluzione dell'Architettura (Kepler e successive)
+============ Evoluzione dell'Architettura (Kepler e successive)
 
 Dall'architettura Kepler, NVIDIA ha introdotto la specializzazione delle unità di calcolo all'interno di uno SM:
 
@@ -148,48 +148,48 @@ Grafica
 - Tensor Core TC (Architettura Volta e successive): Unità specializzate particolarmente ottimizzate per moltiplicazioni fra matrici in *precisione ridotta/mista* (FP32, FP16, TF32, INT8, etc.).
 - Ray Tracing Core RT (Ampere e successive): Unità dedicate per l'accelerazione del *ray tracing*.
 - Unità di Texture: Ottimizzate per gestire *texture* e *operazioni di filtraggio*.
-- Unità di Rasterizzazione: Utilizzate per la *rasterizzazione* delle immagini durante il rendering.
+- Unità di Rasterizzazione: Utilizzate per la *rasterizzazion*e delle immagini durante il rendering.
 
-==== Ruolo nel Modello CUDA
+============ Ruolo nel Modello CUDA
 
 Esecuzione Parallela: Ogni unità di elaborazione esegue un thread in <u>parallelo</u> con altri nel medesimo SM.
 
-=== Differenze rispetto alle CPU
+========= Differenze rispetto alle CPU
 
 - Semplicità Architetturale: Le varie unità di gestione all'interno di un SM sono più semplici rispetto ai core delle CPU, senza unità di controllo complesse, permettendo una maggiore densità di unità specializzate.
 - Specializzazione: Mentre le CPU sono general purpose, le GPU, attraverso i CUDA Core e le unità specializzate, offrono performance elevate anche per compiti specifici come l'Intelligenza Artificale ed il rendering grafico.
 
-= Streaming Multiprocessor - Evoluzione
+=== Streaming Multiprocessor - Evoluzione
 
-#figure(image("images/_page_7_Figure_1_2.2.jpeg"))
+#image("images/_page_7_Figure_1_2.2.jpeg")
 
 - Architettura *unificata* per grafica e calcolo.
 - *Concurrent Kernel Execution*: Esecuzione simultanea di più kernel.
 - Supporto *FMA* e calcolo scientifico avanzato (FP64, ECC)
 
-== [Kepler GK100X SMX \(2012\)](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/NVIDIA-Kepler-GK110-GK210-Architecture-Whitepaper.pdf)
+#green_heading("[Kepler GK100X SMX \(2012\)](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/NVIDIA-Kepler-GK110-GK210-Architecture-Whitepaper.pdf)")
 
-#figure(image("images/_page_7_Figure_6_2.2.jpeg"))
+#image("images/_page_7_Figure_6_2.2.jpeg")
 
 - Nuovo design *SMX* con 192 CUDA Cores → più parallelismo per SM.
 - *Dynamic Parallelism*: I kernel GPU possono lanciare altri kernel senza intervento della CPU.
 - *Hyper-Q*: Fino a 32 connessioni simultanee CPU-GPU per ridurre le latenze.
 
-== [Maxwell SM \(2014\)](https://www.techpowerup.com/gpu-specs/docs/nvidia-gtx-980.pdf=:~:text=In%20many%20DX11%20applications%2C%20the%20GTX%20750,factor%20PCs%2C%20in%20addition%20to%20mainstream%20desktops.)
+#green_heading("[Maxwell SM \(2014\)](https://www.techpowerup.com/gpu-specs/docs/nvidia-gtx-980.pdf=:~:text=In%20many%20DX11%20applications%2C%20the%20GTX%20750,factor%20PCs%2C%20in%20addition%20to%20mainstream%20desktops.)")
 
 Streaming Multiprocessor Sub-Partition (SMSP)
 
-#figure(image("images/_page_7_Figure_12_2.2.jpeg"))
+#image("images/_page_7_Figure_12_2.2.jpeg")
 
 - *•* Maggiore *efficienza energetica* rispetto a Kepler.
 - *Delta Color Compression* per ridurre la larghezza di banda.
 - *Divisione degli SM in 4* per ottimizzare l'uso delle risorse.
 
-= Streaming Multiprocessor - Evoluzione
+=== Streaming Multiprocessor - Evoluzione
 
-== [Pascal SM \(2016\)](https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf) [Volta SM \(2017\)](https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf)
+#green_heading("[Pascal SM \(2016\)](https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf) [Volta SM \(2017\)](https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf)")
 
-#figure(image("images/_page_8_Figure_2_2.2.jpeg"))
+#image("images/_page_8_Figure_2_2.2.jpeg")
 
 - *•* Introduzione di *NVLink* per connessioni ad alta velocità.
 - *•* Supporto *HMB2* (High Bandwidth Memory).
@@ -197,55 +197,55 @@ Streaming Multiprocessor Sub-Partition (SMSP)
 - Supporto nativo per *FP16* (half precision)
 - *16nm FinFET*: Processo produttivo con 2x efficienza energetica rispetto a Maxwell (28nm).
 
-#figure(image("images/_page_8_Figure_9_2.2.jpeg"))
+#image("images/_page_8_Figure_9_2.2.jpeg")
 
 - *•* Introduzione dei *Tensor Core* per accelerare l'AI.
 - *Independent Thread Scheduling* per un'esecuzione più flessibile dei thread.
 - *Supporto FP32/INT32*  simultaneo e *NVLink 2.0*
 
-== [Turing \(2018\)](https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf)
+#green_heading("[Turing \(2018\)](https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf)")
 
-#figure(image("images/_page_8_Figure_14_2.2.jpeg"))
+#image("images/_page_8_Figure_14_2.2.jpeg")
 
 - Introduzione dei *RT Cores*: Ray-tracing in tempo reale.
 - *DLSS* (Deep Learning Super Sampling)
 - *Variable Rate Shading*
 
-= Streaming Multiprocessor - Evoluzione
+=== Streaming Multiprocessor - Evoluzione
 
-#figure(image("images/_page_9_Figure_2_2.2.jpeg"))
+#image("images/_page_9_Figure_2_2.2.jpeg")
 
 - *•* Aumento del throughput FP32 per i CUDA Cores.
 - *•* Miglioramenti per *Tensor Cores* e *RT Cores*.
 - *GPU Scheduler* ottimizzato per la gestione del carico di lavoro.
 
-== [Ampere \(2020\)](https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf) [Ada Lovelace \(2022\)](https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf)
+#green_heading("[Ampere \(2020\)](https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf) [Ada Lovelace \(2022\)](https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf)")
 
-#figure(image("images/_page_9_Figure_7_2.2.jpeg"))
+#image("images/_page_9_Figure_7_2.2.jpeg")
 
 - *•* Incremento delle prestazioni FP32 con *più CUDA Cores*.
 - *•* Introduzione di *DLSS 3.0* con frame generation.
 - *RT Cores migliorati* per ray tracing avanzato.
 
-== [Hopper \(2022\)](https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c)
+#green_heading("[Hopper \(2022\)](https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c)")
 
-#figure(image("images/_page_9_Figure_12_2.2.jpeg"))
+#image("images/_page_9_Figure_12_2.2.jpeg")
 
 - *Tensor Cores di quarta generazione* per AI.
 - *Multi-Instance GPU (MIG).*
 - *Thread Block Clusters*
 - *FP8 Precision* per migliorare il throughput.
 
-== [Blackwell \(2025\)](https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf)
+#green_heading("[Blackwell \(2025\)](https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf)")
 
-#figure(image("images/_page_9_Figure_18_2.2.jpeg"))
+#image("images/_page_9_Figure_18_2.2.jpeg")
 
 - *Tensor Core di quinta generazione* per AI accelerata
 - *Seconda generazione* di *Transformer Engine*
 - *RT Cores di 4° generazione*
 - Supporto per *precision FP4 e MXFP6/MXFP4*
 
-== Streaming Multiprocessor (SM) - Evoluzione
+#green_heading("Streaming Multiprocessor (SM) - Evoluzione")
 
 - Aumento di SM e CUDA Core: Ogni generazione ha generalmente aumentato il numero di SM e CUDA Core.
 - Miglioramento del Parallelismo: L'aumento delle unità di elaborazione permettono un <u>maggiore parallelismo</u>, migliorando le prestazioni complessive della GPU.
@@ -267,7 +267,7 @@ Streaming Multiprocessor Sub-Partition (SMSP)
 
 Nota: I valori mostrati sono tipici dei modelli di punta. Possono esserci variazioni tra i diversi modelli di una stessa serie.
 
-== Streaming Multiprocessor (SM) - Evoluzione
+#green_heading("Streaming Multiprocessor (SM) - Evoluzione")
 
 - Aumento di SM e CUDA Core: Ogni generazione ha generalmente aumentato il numero di SM e CUDA Core.
 - Miglioramento del Parallelismo: L'aumento delle unità di elaborazione permettono un maggiore parallelismo,
@@ -290,42 +290,42 @@ Nota: I valori mostrati sono tipici dei modelli di punta. Possono esserci variaz
 
 Nota: I valori mostrati sono tipici dei modelli di punta. Possono esserci variazioni tra i diversi modelli di una stessa serie.
 
-= Tensor Core: Acceleratori per l'Intelligenza Artificiale (Volta+)
+=== Tensor Core: Acceleratori per l'Intelligenza Artificiale (Volta+)
 
-== Cosa sono i Tensor Core?
+#green_heading("Cosa sono i Tensor Core?")
 
 - *Unità di elaborazione specializzata* per operazioni tensoriali (array multidimensionali).
 - Progettata per accelerare calcoli di *AI* e *HPC*  (Riduzione dei tempi di training e inferenza).
 - Presenti in GPU NVIDIA RTX da Volta (2017) in poi.
 
-== Caratteristiche
+#green_heading("Caratteristiche")
 
 - Esegue operazioni *matrice-matrice* (es. GEMM General Matrix Multiply) in *precisione mista*.
 - Supporta formati *FP8*, *FP16*, *FP32*, *FP64*, *INT8*, *INT4*, *BF16* e nuovi formati come *TF32 (TensorFloat-32).*
 - Offrono un significativo *speedup* nel calcolo senza compromettere l'accuratezza.
 
-== Evoluzione
+#green_heading("Evoluzione")
 
 - *Miglioramenti*: Volta → ..→ .. → Hopper → Blackwell
 - Integrazione con CUDA, cuDNN, TensorRT
 
-#figure(image("images/_page_12_Picture_12_2.2.jpeg"))
+#image("images/_page_12_Picture_12_2.2.jpeg")
 
-= Tensor Core: Acceleratori di Intelligenza Artificiale
+=== Tensor Core: Acceleratori di Intelligenza Artificiale
 
 - *Fused Multiply-Add (FMA):* Un'operazione che combina una moltiplicazione e un'addizione di *scalari* in un unico passo, eseguendo . Un CUDA core esegue 1 FMA per ciclo di clock in FP32.
 - *Matrix Multiply-Accumulate (MMA):* Operazione che calcola il prodotto di due *matrici* e somma il risultato a una terza matrice, eseguendo
 - Per matrici ( ), ( ) e ( ), l'operazione produce ( ) e richiede operazioni FMA, dove ogni elemento di necessita di moltiplicazioni-addizioni.
 
-#figure(image("images/_page_13_Figure_4_2.2.jpeg"))
+#image("images/_page_13_Figure_4_2.2.jpeg")
 
-== Esecuzione Parallela
+#green_heading("Esecuzione Parallela")
 
 - Ogni Tensor Core esegue *64 operazioni FMA (4x4x4)* in un singolo ciclo di clock, grazie al parallelismo interno.
 - Per operazioni su matrici più grandi, queste vengono *decomposte in sottomatrici 4x4*.
 - Più operazioni 4x4 vengono eseguite *in parallelo su diversi Tensor Cores*.
 
-= Evoluzione dei NVIDIA Tensor Core
+=== Evoluzione dei NVIDIA Tensor Core
 
 *Perdita di Precisione*: Si è dimostrato che ha un impatto
 
@@ -333,9 +333,9 @@ minimo sull'accuratezza finale dei modelli di deep learning.
 
 Le generazioni più recenti di GPU hanno ampliato la flessibilità dei Tensor Cores, supportando *dimensioni di matrici più grandi e/o sparse* con un maggiore numero di formati numerici.
 
-#figure(image("images/_page_14_Figure_2_2.2.jpeg"))
+#image("images/_page_14_Figure_2_2.2.jpeg")
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
 - *Architettura Hardware GPU*
   - Introduzione al Modello di Esecuzione CUDA
@@ -358,66 +358,66 @@ Le generazioni più recenti di GPU hanno ampliato la flessibilità dei Tensor Co
 - *Parallelismo Avanzato*
   - CUDA Dynamic Parallelism
 
-= SM, Thread Blocks e Risorse
+=== SM, Thread Blocks e Risorse
 
-== Parallelismo Hardware
+#green_heading("Parallelismo Hardware")
 
 Più SM per GPU permettono l'*esecuzione simultanea* di migliaia di thread (anche da kernel differenti).
 
-== Distribuzione dei Thread Blocks
+#green_heading("Distribuzione dei Thread Blocks")
 
 - Quando un kernel viene lanciato, i blocchi di vengono *automaticamente e dinamicamente distribuiti dal GigaThread Engine* (scheduler globale) agli SM disponibili.
 - Le variabili di identificazione e dimensione (*gridDim*, *blockIdx*, *blockDim*, e *threadIdx)* sono rese disponibili ad ogni thread e condivise nello stesso SM.
 - Una volta assegnato a un SM, un blocco rimane vincolato a quell'SM *per tutta la durata dell'esecuzione*.
 
-== Gestione delle Risorse e Scheduling
+#green_heading("Gestione delle Risorse e Scheduling")
 
 - *Più blocchi di thread* possono essere assegnati *allo stesso SM* contemporaneamente.
 - Lo scheduling dei blocchi dipende dalla *disponibilità delle risorse* dell'SM (registri, memoria condivisa) e dai *limiti architetturali* di ciascun SM (max blocks, max threads, etc.).
 - Tipicamente, la maggior parte delle grid contiene *molti più blocchi di quanti possano essere eseguiti* in parallelo sugli SM disponibili.
 - Il *runtime system* mantiene quindi una coda di blocchi in attesa, assegnandone di nuovi agli SM non appena quelli precedenti terminano l'esecuzione.
 
-= Corrispondenza tra Vista Logica e Vista Hardware
+=== Corrispondenza tra Vista Logica e Vista Hardware
 
-#figure(image("images/_page_17_Picture_1_2.2.jpeg"))
+#image("images/_page_17_Picture_1_2.2.jpeg")
 
-= Corrispondenza tra Vista Logica e Vista Hardware
+=== Corrispondenza tra Vista Logica e Vista Hardware
 
-#figure(image("images/_page_18_Picture_1_2.2.jpeg"))
+#image("images/_page_18_Picture_1_2.2.jpeg")
 
-== Corrispondenza tra Vista Logica e Vista Hardware
+#green_heading("Corrispondenza tra Vista Logica e Vista Hardware")
 
-#figure(image("images/_page_19_Figure_1_2.2.jpeg"))
+#image("images/_page_19_Figure_1_2.2.jpeg")
 
-= Distribuzione dei Blocchi su Streaming Multiprocessors
+=== Distribuzione dei Blocchi su Streaming Multiprocessors
 
-#figure(image("images/_page_20_Picture_1_2.2.jpeg"))
+#image("images/_page_20_Picture_1_2.2.jpeg")
 
 Supponiamo di dover realizzare un algoritmo parallelo che effettui il calcolo parallelo su un'immagine.
 
-= Distribuzione dei Blocchi su Streaming Multiprocessors
+=== Distribuzione dei Blocchi su Streaming Multiprocessors
 
 - Il Gigathread Engine *smista* i blocchi di thread agli SM in base alle risorse disponibili.
 - CUDA non garantisce l'ordine di esecuzione e non è possibile scambiare dati tra i blocchi.
 - Ogni blocco viene elaborato in modo *indipendente*.
 
-#figure(image("images/_page_21_Picture_4_2.2.jpeg"))
+#image("images/_page_21_Picture_4_2.2.jpeg")
 
-#figure(image("images/_page_21_Picture_5_2.2.jpeg"))
+#image("images/_page_21_Picture_5_2.2.jpeg")
 
-#figure(image("images/_page_21_Figure_6_2.2.jpeg"))
+#image("images/_page_21_Figure_6_2.2.jpeg")
 
 *Capacità Massima Raggiunta*
 
-= Distribuzione dei Blocchi su Streaming Multiprocessors
+=== Distribuzione dei Blocchi su Streaming Multiprocessors
 
 Quando un blocco completa l'esecuzione e libera le risorse, un nuovo blocco viene schedulato al suo posto nell'SM, e questo processo continua fino a quando tutti i blocchi del grid non sono stati elaborati.
 
-#figure(image("images/_page_22_Picture_2_2.2.jpeg"))
+#image("images/_page_22_Picture_2_2.2.jpeg")
 
-= Concetto di Wave in CUDA
+=== Concetto di Wave in CUDA
 
-== Cosa si intende per Wave?
+#green_heading("Cosa si intende per Wave?")
 
 - Un "*Wave*" rappresenta l'insieme dei blocchi di thread che vengono eseguiti simultaneamente su tutti gli SM della GPU in un dato momento.
 - La *Full Wave Capacity*, invece, rappresenta la *capacità teorica massima* della GPU, ossia il numero totale di blocchi che possono essere residenti simultaneamente su tutti gli SM.
@@ -428,7 +428,7 @@ Full Wave Capacity = (Numero di SM) * (Numero massimo di blocchi attivi per SM)
 
 *Attenzione*: Questo numero massimo di blocchi *dipende dall'architettura GPU (Compute Capability)* e *dalle risorse richieste da ciascun blocco* (come registri, memoria condivisa), che influenzano *l'occupancy* (lo vedremo).
 
-== Full Wave vs Partial Wave
+#green_heading("Full Wave vs Partial Wave")
 
 - *Full Wave*: tutti gli SM sono occupati al massimo della loro capacità → utilizzo 100%
 - *Partial Wave*: solo parte degli SM è occupata, oppure non tutti al massimo → utilizzo < 100%
@@ -438,9 +438,9 @@ Full Wave Capacity = (Numero di SM) * (Numero massimo di blocchi attivi per SM)
     - *100 blocchi* → esegue in *1 partial wave* (100/320 = ~31% utilizzo)
     - Cosa succede se il numero di blocchi è *superiore alla capacità massima*? (es. 500 blocchi)
 
-= Numero di Waves per un Kernel CUDA
+=== Numero di Waves per un Kernel CUDA
 
-== Calcolo del Numero di Waves
+#green_heading("Calcolo del Numero di Waves")
 
 - Quando si lanciano più blocchi di quelli che la GPU può gestire simultaneamente, l'esecuzione avviene in più *ondate successive (waves)*:
 - Il numero di blocchi attivi è una proprietà *statica*, determinata dall'architettura e dalle risorse richieste dal kernel.
@@ -450,33 +450,33 @@ Numero di waves = (Blocchi totali) / (Full wave capacity)
            ⌈ ⌉
 ```
 
-== Esempio
+#green_heading("Esempio")
 
 Consideriamo una GPU con *8 SM* e un kernel con *12 blocchi totali* che consente *1 solo blocco attivo per SM*.
 
 - *Full wave capacity =* 8 SM × 1 blocco/SM = 8 blocchi
 - *Numero di waves* = ⌈12 / 8⌉ = 2 waves
 
-=== Esecuzione:
+========= Esecuzione:
 
 - *Wave 1 (full wave):* 8 blocchi su 8 SM → *utilizzo 100%*
 - *Wave 2 (partial wave):* 4 blocchi su 8 SM *→ utilizzo 50%*
 - *Efficienza media di esecuzione:* (8 + 4) / (8 + 8) = 12/16 = 75%
 - Il secondo wave è un esempio di *tail effect*.
 
-#figure(image("images/_page_24_Figure_14_2.2.jpeg"))
+#image("images/_page_24_Figure_14_2.2.jpeg")
 
-= Scalabilità in CUDA
+=== Scalabilità in CUDA
 
-== Cosa si intende?
+#green_heading("Cosa si intende?")
 
 - Per *scalabilità* in CUDA ci si riferisce alla capacità di un'applicazione di migliorare le prestazioni proporzionalmente all'*aumento delle risorse* hardware disponibili.
 - *Più SM* disponibili = *Più blocchi eseguiti* contemporaneamente = *Maggiore Parallelismo*.
 - *Nessuna modifica al codice* richiesta per sfruttare hardware più potente.
 
-#figure(image("images/_page_25_Figure_5_2.2.jpeg"))
+#image("images/_page_25_Figure_5_2.2.jpeg")
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
 - *Architettura Hardware GPU*
   - Introduzione al Modello di Esecuzione CUDA
@@ -499,7 +499,7 @@ Consideriamo una GPU con *8 SM* e un kernel con *12 blocchi totali* che consente
 - *Parallelismo Avanzato*
   - CUDA Dynamic Parallelism
 
-=== SIMD (Single Instruction, Multiple Data)
+========= SIMD (Single Instruction, Multiple Data)
 
 - È un *modello di esecuzione parallela* in cui una singola istruzione opera simultaneamente su più elementi di dato, utilizzando *unità vettoriali dedicate* (vector units) presenti nei core della CPU
 - Utilizza *registri vettoriali* che possono contenere più elementi (es. 4 float, 8 int16, 16 byte).
@@ -509,7 +509,7 @@ Consideriamo una GPU con *8 SM* e un kernel con *12 blocchi totali* che consente
   - Tutti gli elementi vettoriali in un vettore vengono elaborati in *lockstep* (perfettamente sincroni).
   - *La divergenza non è ammessa:* se occorrono percorsi condizionali (*if*-*else*), si impiegano *maschere vettoriali* che selezionano gli elementi su cui applicare l'operazione.
 
-=== Somma di Due Array (SIMD con Neon intrinsics - ARM)
+========= Somma di Due Array (SIMD con Neon intrinsics - ARM)
 
 ```
 void array_sum(uint32_t *a, uint32_t *b, uint32_t *c, int n){ // I dati vengono suddivisi in vettori di
@@ -522,9 +522,9 @@ for(int i=0; i<n; i+=4) { // dimensione fissa e il loop elabora
  }}
 ```
 
-= Modello di Esecuzione: SIMT
+=== Modello di Esecuzione: SIMT
 
-=== SIMT (Single Instruction, Multiple Thread)
+========= SIMT (Single Instruction, Multiple Thread)
 
 - *Modello ibrido* adottato in CUDA che combina parallelismo multi-thread con esecuzione SIMD-like.
 - *Caratteristiche Chiave*:
@@ -538,7 +538,7 @@ for(int i=0; i<n; i+=4) { // dimensione fissa e il loop elabora
   - Divergenza in un warp causa *esecuzione seriale dei percorsi diversi*, riducendo l'efficienza (da evitare).
   - La divergenza è *gestita automaticamente dall'hardware*, ma con un impatto negativo sulle prestazioni.
 
-== Somma di Due Array (SIMT)
+#green_heading("Somma di Due Array (SIMT)")
 
 ```
 __global__ void array_sum(float *A, float *B, float *C, int N) {
@@ -547,18 +547,18 @@ __global__ void array_sum(float *A, float *B, float *C, int N) {
 } Questa riga rappresenta l'essenza del SIMT
 ```
 
-== Modello di Esecuzione: SIMT
+#green_heading("Modello di Esecuzione: SIMT")
 
-#figure(image("images/_page_29_Figure_1_2.2.jpeg"))
+#image("images/_page_29_Figure_1_2.2.jpeg")
 
-= Modello di Esecuzione: SIMD vs. SIMT
+=== Modello di Esecuzione: SIMD vs. SIMT
 
 |                     | SIMD                                                       | SIMT                                                                 |
 |---------------------|------------------------------------------------------------|----------------------------------------------------------------------|
 | Unità di Esecuzione | Un singolo thread controlla<br>vettori di dimensione fissa | Molti thread leggeri raggruppati in<br>warp (32 thread)              |
 | Registri            | Registri vettoriali condivisi<br>tra le unità di calcolo   | Set completo di registri per thread                                  |
 | Flessibilità        | Bassa: Stessa operazione per<br>tutti gli elementi vettore | Alta: Ogni thread può eseguire<br>operazioni e percorsi indipendenti |
-| Indipendenza        | Non applicabile,<br>controllo centralizzato                | Ogni thread mantiene il proprio<br>stato di esecuzione (vedi nota\*)  |
+| Indipendenza        | Non applicabile,<br>controllo centralizzato                | Ogni thread mantiene il proprio<br>stato di esecuzione (vedi nota*)  |
 | Branching           | Gestito esplicitamente con<br>maschere (no divergenza)     | Gestito via hardware con thread<br>masking automatico                |
 | Scalabilità         | Limitata dalla larghezza vettoriale                        | Massiva (migliaia/milioni di thread)                                 |
 | Sincronizzazione    | Intrinseca (lock-step automatico)                          | Esplicita (es.,syncthreads)                                          |
@@ -567,52 +567,52 @@ __global__ void array_sum(float *A, float *B, float *C, int N) {
 
 *<sup>\*</sup>Nota*: Con l'architettura Volta, NVIDIA ha introdotto l'Independent Thread Scheduling. *Pre-Volta*, un Program Counter (PC) era condiviso per warp; *post-Volta*, ogni thread ha il proprio PC, migliorando la gestione della divergenza e la flessibilità d'esecuzione (verrà affrontato nelle prossime slide).
 
-= Modello di Esecuzione Gerarchico di CUDA
+=== Modello di Esecuzione Gerarchico di CUDA
 
-==== \_\_global\_\_ void array\_sum(float \A, float \B, float \C, int N) { int idx = blockDim.x \ blockIdx.x + threadIdx.x; if (idx < N) C[idx] = A[idx] + B[idx]; } Livello di Programmazione int main(int argc, char \\argv){ // ... // Chiamata del kernel array\_sum<<<gridDim,blockDim>>>(args) ; }
+============ \_\_global\_\_ void array\_sum(float \A, float \B, float \C, int N) { int idx === blockDim.x \ blockIdx.x + threadIdx.x; if (idx < N) C[idx] === A[idx] + B[idx]; } Livello di Programmazione int main(int argc, char \\argv){ // ... // Chiamata del kernel array\_sum<<<gridDim,blockDim>>>(args) ; }
 
-#figure(image("images/_page_31_Figure_2_2.2.jpeg"))
+#image("images/_page_31_Figure_2_2.2.jpeg")
 
-= Modello di Esecuzione Gerarchico di CUDA
+=== Modello di Esecuzione Gerarchico di CUDA
 
-#figure(image("images/_page_32_Picture_1_2.2.jpeg"))
+#image("images/_page_32_Picture_1_2.2.jpeg")
 
-= Warp: L'Unità Fondamentale di Esecuzione nelle SM
+=== Warp: L'Unità Fondamentale di Esecuzione nelle SM
 
-=== Distribuzione dei Thread Block
+========= Distribuzione dei Thread Block
 
 Quando si lancia una griglia di thread block, questi vengono *distribuiti* tra i diversi SM disponibili.
 
-=== Partizionamento in Warp
+========= Partizionamento in Warp
 
 I thread di un thread block vengono suddivisi in *warp di 32 thread (con ID consecutivi).*
 
-=== Esecuzione SIMT
+========= Esecuzione SIMT
 
 I thread in un warp eseguono la *stessa istruzione* su *dati diversi*, con possibilità di *divergenza*.
 
-=== Esecuzione Logica vs Fisica
+========= Esecuzione Logica vs Fisica
 
 Thread eseguiti in parallelo *logicamente*, ma non sempre fisicamente.
 
-=== Scheduling Dinamico (Warp Scheduler)
+========= Scheduling Dinamico (Warp Scheduler)
 
 L'SM gestisce *dinamicamente* l'esecuzione di un numero limitato di warp, switchando efficientemente tra di essi.
 
-=== Sincronizzazione
+========= Sincronizzazione
 
 Possibile all'interno di un thread block, ma non tra thread block diversi.
 
-#figure(image("images/_page_33_Figure_13_2.2.jpeg"))
+#image("images/_page_33_Figure_13_2.2.jpeg")
 
-= Organizzazione dei Thread e Warp
+=== Organizzazione dei Thread e Warp
 
-== Thread Blocks e Warp
+#green_heading("Thread Blocks e Warp")
 
 - *Punto di Vista Logico:* Un blocco di thread è una collezione di thread organizzati in un layout 1D, 2D o 3D.
 - *Punto di Vista Hardware:* Un blocco di thread è una collezione 1D di warp. I thread in un blocco sono organizzati in un layout 1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
 
-== Esempio 1D
+#green_heading("Esempio 1D")
 
 Un blocco 1D con 128 thread viene suddiviso in 4 warp, ognuno composto da 32 thread (*ID Consecutivi*).
 
@@ -624,18 +624,18 @@ Warp 3: thread 96, thread 97, thread 98, ... thread 127
                                                          threadIdx.x
 ```
 
-== Thread Block N (Caso 1D)
+#green_heading("Thread Block N (Caso 1D)")
 
-#figure(image("images/_page_34_Figure_8_2.2.jpeg"))
+#image("images/_page_34_Figure_8_2.2.jpeg")
 
-= Organizzazione dei Thread e Warp
+=== Organizzazione dei Thread e Warp
 
-== Thread Blocks e Warp
+#green_heading("Thread Blocks e Warp")
 
 - *Punto di Vista Logico:* Un blocco di thread è una collezione di thread organizzati in un layout 1D, 2D o 3D.
 - *Punto di Vista Hardware:* Un blocco di thread è una collezione 1D di warp. I thread in un blocco sono organizzati in un layout 1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
 
-== Mapping Multidimensionale (2D e 3D)
+#green_heading("Mapping Multidimensionale (2D e 3D)")
 
 - Il *programmatore* usa *threadIdx* e *blockDim* per identificare i thread nel layout logico.
 - Il *runtime CUDA* si occupa automaticamente di linearizzare gli indici multidimensionali in ordine row-major, raggruppare i thread in warp, gestire il mapping hardware.
@@ -653,27 +653,27 @@ Warp 3: thread 96, thread 97, thread 98, ... thread 127
 - *Calcolo del Numero di Warp: ceil(*ThreadsPerBlock/warpSize*)*
 - L'hardware alloca sempre un numero *discreto* di warp.
 
-== Organizzazione dei Thread e Warp
+#green_heading("Organizzazione dei Thread e Warp")
 
-=== Thread Blocks e Warp
+========= Thread Blocks e Warp
 
 - Punto di Vista Logico: Un blocco di thread è una collezione di thread organizzati in un layout 1D, 2D o 3D.
 - Punto di Vista Hardware: Un blocco di thread è una <u>collezione 1D di warp</u>. I thread in un blocco sono organizzati in un layout 1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
 
-=== Mapping Multidimensionale (Caso 2D)
+========= Mapping Multidimensionale (Caso 2D)
 
 Esempio 2D: Un thread block 2D con 40 thread in x e 2 in y (80 thread totali) richiederà 3 warp (96 thread hardware). L'ultimo semi-warp (16 thread) sarà inattivo, consumando comunque risorse.
 
-#figure(image("images/_page_36_Figure_6_2.2.jpeg"))
+#image("images/_page_36_Figure_6_2.2.jpeg")
 
-== Warp: L'Unità Fondamentale di Esecuzione nell'SM
+#green_heading("Warp: L'Unità Fondamentale di Esecuzione nell'SM")
 
 - Un warp viene assegnato a una sub-partition, solitamente in base al suo ID, dove rimane fino al completamento.
 - Una sub-partition gestisce un "pool" di warp concorrenti di dimensione fissa (es., Turing 8 warp, Volta 16 warp).
 
-#figure(image("images/_page_37_Figure_3_2.2.jpeg"))
+#image("images/_page_37_Figure_3_2.2.jpeg")
 
-= Compute Capability (CC) - Limiti su Blocchi e Thread
+=== Compute Capability (CC) - Limiti su Blocchi e Thread
 
 - La *Compute Capability (CC)* di NVIDIA è un numero che identifica le *caratteristiche* e le *capacità* di una GPU NVIDIA in termini di funzionalità supportate e limiti hardware.
 - È composta da *due numeri*: il numero principale indica la *generazione* dell'architettura, mentre il numero secondario indica *revisioni* e *miglioramenti* all'interno di quella generazione.
@@ -691,9 +691,9 @@ Esempio 2D: Un thread block 2D con 40 thread in x e 2 in y (80 thread totali) ri
 | 9.x                   | Hopper       | 32        | 32                     | 64                  | 2048                               |
 | 10.x/12.x             | Blackwell    | 32        | 32                     | 64/48               | 2048/1536                          |
 
-// [https://en.wikipedia.org/wiki/CUDA=Version\features\and\specifications](https://en.wikipedia.org/wiki/CUDA=Version_features_and_specifications)
+[https://en.wikipedia.org/wiki/CUDA=Version\\_features\\_and\\_specifications](https://en.wikipedia.org/wiki/CUDA=Version_features_and_specifications)
 
-== Warp: Contesto di Esecuzione
+#green_heading("Warp: Contesto di Esecuzione")
 
 Il contesto di *esecuzione locale* di un warp in un SM contiene:
 
@@ -708,15 +708,15 @@ Il contesto di *esecuzione locale* di un warp in un SM contiene:
 - Warp ID: Identificatore che consente di distinguere i warp e calcolare l'offset nel register file per ogni thread nel warp.
 - L'SM mantiene on-chip il contesto di ogni warp <u>per tutta la</u> <u>sua durata</u>, quindi il cambio di contesto è senza costo.
 
-==== Warp
+============ Warp
 
-#figure(image("images/_page_39_Figure_12_2.2.jpeg"))
+#image("images/_page_39_Figure_12_2.2.jpeg")
 
 thread 0..31
 
-#figure(image("images/_page_39_Figure_14_2.2.jpeg"))
+#image("images/_page_39_Figure_14_2.2.jpeg")
 
-= Parallelismo a Livello di Warp nell'SM
+=== Parallelismo a Livello di Warp nell'SM
 
 ```
 Codice CUDA
@@ -759,19 +759,19 @@ I warp possono appartenere anche a blocchi differenti
 
 *Warp N Instruction 15*
 
-#figure(image("images/_page_40_Picture_8_2.2.jpeg"))
+#image("images/_page_40_Picture_8_2.2.jpeg")
 
 *SMSP (SM Sub-Partition)*
 
-= Classificazione dei Thread Block e Warp
+=== Classificazione dei Thread Block e Warp
 
-== Thread Block Attivo (Active Block)
+#green_heading("Thread Block Attivo (Active Block)")
 
 - Un thread block viene considerato *attivo* (o *residente*) quando gli vengono allocate risorse di calcolo di un SM come registri e memoria condivisa (non significa che tutti i suoi warp siano in esecuzione simultaneamente sulle unità).
 - I warp contenuti in un thread block attivo sono chiamati *warp attivi.*
 - Il numero di blocchi/warp attivi in ciascun istante è *limitato dalle risorse* dell'SM (compute capability).
 
-== Tipi di Warp Attivi
+#green_heading("Tipi di Warp Attivi")
 
 - 1. *Warp Selezionato (Selected Warp)*
   - Un warp in esecuzione attiva su un'unità di elaborazione (FP32, INT32, Tensor Core, etc.).
@@ -785,60 +785,60 @@ I warp possono appartenere anche a blocchi differenti
     - *Prontezza Dati*: Gli argomenti dell'istruzione corrente devono essere pronti (es. dati dalla memoria).
     - *Nessuna Dipendenza Bloccante*: Risolte tutte le dipendenze con le istruzioni precedenti.
 
-== Classificazione degli Stati dei Thread
+#green_heading("Classificazione degli Stati dei Thread")
 
-=== Thread all'interno di un Warp
+========= Thread all'interno di un Warp
 
 - Un warp contiene sempre 32 thread, ma non tutti potrebbero essere logicamente attivi.
 - Lo stato di ogni thread è tracciato attraverso una thread mask o maschera di attività (un registro hardware a 32 bit).
 
-==== Stati dei Thread
+============ Stati dei Thread
 
 - 1. Thread Attivo (Active Thread)
   - Esegue l'istruzione corrente del warp.
   - o Contribuisce attivamente all'esecuzione *SIMT*.
 
-#figure(image("images/_page_42_Figure_8_2.2.jpeg"))
+#image("images/_page_42_Figure_8_2.2.jpeg")
 
-==== 2. Thread Inattivo (Inactive Thread)
+============ 2. Thread Inattivo (Inactive Thread)
 
 - o *Divergenza*: Ha seguito un percorso diverso nel warp per istruzioni di controllo flusso, come salti condizionali.
 - *Terminazione*: Ha completato la sua esecuzione prima di altri thread nel warp.
 - *Padding*: I thread di padding sono utilizzati in situazioni in cui il numero totale di thread nel blocco non è un multiplo di 32, per garantire che il warp sia completamente riempito (puro overhead).
 
-==== Gestione degli Stati
+============ Gestione degli Stati
 
 - Gli stati sono *gestiti automaticamente dall'hardware* attraverso maschere di esecuzione.
 - La transizione tra stati è dinamica durante l'esecuzione, quindi il numero di thread attivi può variare nel tempo.
 
-= Scheduling dei Warp
+=== Scheduling dei Warp
 
-== Introduzione al Warp Scheduler
+#green_heading("Introduzione al Warp Scheduler")
 
 - Un'*unità hardware* presente in più copie all'interno di ogni SM, responsabile della *selezione* e *assegnazione* dei warp alle unità di calcolo CUDA.
 - *Obiettivo*: Massimizzare l'utilizzo delle risorse di calcolo dell'SM, selezionando in modo efficiente i warp pronti e minimizzando i tempi di inattività.
 - *Latency Hiding*: Contribuiscono a nascondere la latenza eseguendo warp alternativi quando altri sono in stallo, garantendo un utilizzo efficace delle risorse computazionali (prossime slide).
 
-== Funzionamento Generale
+#green_heading("Funzionamento Generale")
 
 - *Processo di Schedulazione*: I warp scheduler all'interno di un SM selezionano i warp eleggibili ad ogni ciclo di clock e li inviano alle dispatch unit, responsabili dell'assegnazione effettiva alle unità di esecuzione.
 - *Gestione degli Stalli*: Se un warp è in stallo, il warp scheduler seleziona un altro warp eleggibile per l'esecuzione, garantendo consentendo l'esecuzione continua e l'uso ottimale delle risorse di calcolo.
 - *Cambio di Contesto*: Il cambio di contesto tra warp è estremamente rapido (on-chip per tutta la durata del warp) grazie alla partizione delle risorse di calcolo e alla struttura hardware della GPU.
 
-=== Limiti Architettonici
+========= Limiti Architettonici
 
 - Il numero di warp attivi su un SM è limitato dalle risorse di calcolo. (Esempio: 64 warp concorrenti su un SM Kepler).
 - Il numero di warp selezionati ad ogni ciclo è limitato dal numero di scheduler di warp. (Esempio: 4 su un SM Kepler).
 
-= Warp Scheduler e Dispatch Unit
+=== Warp Scheduler e Dispatch Unit
 
-== Warp Scheduler
+#green_heading("Warp Scheduler")
 
 - È il "*cervello strategico*" che decide *quali* warp mandare in esecuzione.
 - *Monitora* continuamente lo *stato dei warp* per identificare quelli eleggibili.
 - Gestisce la *priorità* e l'*ordine* di esecuzione dei warp, cercando di minimizzare le latenze (latency hiding).
 
-== Dispatch Unit
+#green_heading("Dispatch Unit")
 
 - È il "*braccio esecutivo*" che si occupa di *come* eseguire i warp selezionati.
 - Si occupa di:
@@ -847,96 +847,96 @@ I warp possono appartenere anche a blocchi differenti
   - *Recuperare i dati* dai registri e dalla memoria necessaria per l'esecuzione.
   - *Assegnare fisicamente le risorse* hardware (registri, unità di calcolo) ai thread.
 
-== Fermi SM (2010)
+#green_heading("Fermi SM (2010)")
 
-#figure(image("images/_page_44_Figure_13_2.2.jpeg"))
+#image("images/_page_44_Figure_13_2.2.jpeg")
 
-= Scheduling dei Warp: TLP e ILP
+=== Scheduling dei Warp: TLP e ILP
 
-== Thread-Level Parallelism (TLP)
+#green_heading("Thread-Level Parallelism (TLP)")
 
 - *Definizione*: Esecuzione simultanea di più warp per sfruttare il parallelismo tra thread.
 - *Funzionamento*: Quando un warp è in attesa (ad esempio, per completare un'istruzione), un altro warp viene selezionato ed eseguito, aumentando l'occupazione delle unità di calcolo.
 
-== Instruction-Level Parallelism (ILP)
+#green_heading("Instruction-Level Parallelism (ILP)")
 
 - *Definizione*: Esecuzione di istruzioni indipendenti all'interno dello stesso warp.
 - *Funzionamento:* Se ci sono più istruzioni pronte da eseguire in un warp, il warp scheduler può emettere queste istruzioni in parallelo alle unità di esecuzione, massimizzando l'utilizzo delle risorse (pipelining).
 
-== Importanza di TLP e ILP
+#green_heading("Importanza di TLP e ILP")
 
 - *Massimizzazione delle Risorse*: TLP e ILP contribuiscono a mantenere le unità di calcolo attive e occupate, riducendo i tempi morti durante l'esecuzione.
 - *Nascondere la Latenza*: TLP e ILP insieme aiutano a nascondere la latenza delle operazioni di memoria e di calcolo, migliorando le prestazioni complessive del sistema (vedi latency hiding).
 
-= Esecuzione Parallela dei Warp - Esempio con Fermi SM
+=== Esecuzione Parallela dei Warp - Esempio con Fermi SM
 
-== Componenti Chiave per il Parallelismo
+#green_heading("Componenti Chiave per il Parallelismo")
 
 - *Due Scheduler di Warp*: Selezionano due warp pronti da eseguire dai thread block assegnati all'SM.
 - *Due Unità di Dispatch delle Istruzioni*: Inviano le istruzioni dei warp selezionati alle unità di esecuzione.
 
-== Flusso di Esecuzione
+#green_heading("Flusso di Esecuzione")
 
 - I blocchi vengono assegnati all'SM e *divisi in warp*.
 - Due scheduler selezionano warp *pronti* per l'esecuzione.
 - Ogni dispatch unit invia un'istruzione per warp a 16 CUDA Core, 16 unità di caricamento/memorizzazione (LD/ST), 4 unità di funzioni speciali (SFU).
 - Questo processo *si ripete ciclicamente*, consentendo l'esecuzione parallela di più warp da più blocchi.
 
-=== Capacità
+========= Capacità
 
 Fermi (compute capability 2.x) può gestire simultaneamente *48 warp* per SM, per un totale di *1.536 thread residenti* in un singolo SM. Ad ogni ciclo, al più *2 selected warps*.
 
-=== Fermi SM (2010)
+========= Fermi SM (2010)
 
-#figure(image("images/_page_46_Figure_12_2.2.jpeg"))
+#image("images/_page_46_Figure_12_2.2.jpeg")
 
 Poiché le risorse di calcolo sono partizionate tra i warp e mantenute *on-chip* durante l'intero ciclo di vita del warp, il cambio di contesto tra warp è immediato.
 
-== Scheduling Dinamico dell Istruzioni - Fermi SM
+#green_heading("Scheduling Dinamico dell Istruzioni - Fermi SM")
 
 - Ad ogni ciclo di clock, un warp scheduler *emette un'istruzione* pronta per l'esecuzione.
 - L'istruzione può provenire dallo stesso warp (ILP), se indipendente, o più spesso da un warp diverso (TLP).
 - Se le risorse sono occupate, lo scheduler passa a un altro warp pronto (latency hiding).
 
-#figure(image("images/_page_47_Figure_4_2.2.jpeg"))
+#image("images/_page_47_Figure_4_2.2.jpeg")
 
-#figure(image("images/_page_47_Picture_5_2.2.jpeg"))
+#image("images/_page_47_Picture_5_2.2.jpeg")
 
-= Latency, Throughput e Concurrency
+=== Latency, Throughput e Concurrency
 
 - *Mean Latency:* La latenza media è la *media delle latenze* degli elementi individuali. La latenza di un singolo elemento è la differenza tra il suo tempo di inizio e il suo tempo di fine.
 - *Throughput:* Il throughput rappresenta la velocità di elaborazione. È definito come il *numero di elementi completati entro un dato intervallo di tempo* diviso per la durata dell'intervallo stesso.
 - *Concurrency:* La concurrency misura *quanti elementi vengono processati contemporaneamente* in un determinato momento. Si può definire sia istantaneamente che come media su un intervallo di tempo.
 
-#figure(image("images/_page_48_Figure_4_2.2.jpeg"))
+#image("images/_page_48_Figure_4_2.2.jpeg")
 
-= Latency Hiding nelle GPU
+=== Latency Hiding nelle GPU
 
-== Cosa è il Latency Hiding?
+#green_heading("Cosa è il Latency Hiding?")
 
 - Una tecnica che permette di *mascherare i tempi di attesa* dovuti ad operazioni ad alta latenza (come gli accessi alla memoria globale) attraverso l'esecuzione concorrente di più warp all'interno di un SM.
 - Si ottiene *intercambiando la computazione tra warp*, per massimizzare l'uso delle unità di calcolo di ogni SM.
 
-== Funzionamento
+#green_heading("Funzionamento")
 
 - Ogni SM può gestire decine di warp concorrentemente da più blocchi (vedi compute capability della GPU).
 - Quando un warp è in stallo (es. accesso memoria), l'SM passa immediatamente all'esecuzione di altri warp pronti.
 - I Warp Scheduler dell'SM selezionano costantemente (ad ogni ciclo di clock) i warp pronti all'esecuzione (occorre che abbiano sempre warp eleggibili ad ogni ciclo).
 
-== Vantaggi del Latency Hiding
+#green_heading("Vantaggi del Latency Hiding")
 
 - *Migliore Utilizzo delle Risorse*: Le unità di elaborazione della GPU sono mantenute costantemente attive.
 - *Maggiore Throughput*: Completamento di un maggior numero di operazioni nello stessa unità di tempo.
 - *Minore Latenza Effettiva*: Minimizza l'impatto delle operazioni ad alta latenza.
 
-== Tipi di Latenza (variano a seconda dell'architettura e dalla tipologia di operazione)
+#green_heading("Tipi di Latenza (variano a seconda dell'architettura e dalla tipologia di operazione)")
 
 - *Latenza Aritmetica*: Tempo di completamento di operazioni matematiche (bassa, es. 4-20 cicli).
 - *Latenza di Memoria*: Tempo di accesso ai dati in memoria (alta, es. 400-800 cicli per la memoria globale).
 
-= Latency Hiding nelle GPU
+=== Latency Hiding nelle GPU
 
-== Meccanismo dei Warp Scheduler
+#green_heading("Meccanismo dei Warp Scheduler")
 
 - L'immagine mostra *due warp scheduler* che gestiscono l'esecuzione di diversi warp nel tempo.
 - Warp Scheduler 0 e 1 *alternano l'esecuzione di warp diversi* per mantenere le unità di elaborazione occupate.
@@ -945,29 +945,29 @@ Poiché le risorse di calcolo sono partizionate tra i warp e mantenute *on-chip*
 - Questo approccio permette di *mascherare i tempi di latenza* e aumentare l'efficienza complessiva.
 - Risorse pienamente utilizzate quando ogni scheduler ha un warp eleggibile ad *ogni ciclo di clock*.
 
-#figure(image("images/_page_50_Figure_8_2.2.jpeg"))
+#image("images/_page_50_Figure_8_2.2.jpeg")
 
-= Legge di Little
+=== Legge di Little
 
-== Cos'è la Legge di Little?
+#green_heading("Cos'è la Legge di Little?")
 
 La Legge di Little (dalla teoria delle code) ci aiuta a calcolare *quanti warp (approssimativamente) devono essere in esecuzione concorrente* per ottimizzare il latency hiding e mantenere le unità di elaborazione della GPU occupate.
 
-== Warp Richiesti = Latenza × Throughput
+#green_heading("Warp Richiesti = Latenza × Throughput")
 
 - *Latenza:* Tempo di completamento di un'istruzione (in cicli di clock).
 - *Throughput:* Numero di warp (e, quindi, di operazioni) eseguiti per ciclo di clock.
 - *Warp Richiesti:* Numero di warp attivi necessari per nascondere la latenza.
 - Indica che per nascondere la latenza, è necessario avere un *numero sufficiente di warp in esecuzione o pronti per l'esecuzione*, in modo che mentre uno è in attesa, altri possano essere eseguiti.
 
-== Note
+#green_heading("Note")
 
 - La *latenza* e il *throughput* possono variare a seconda dell'architettura della GPU e del tipo di istruzioni.
 - Questa è una *stima*, il numero effettivo di warp necessari potrebbe essere leggermente diverso.
 
-= Legge di Little
+=== Legge di Little
 
-== Esempio della Legge di Little
+#green_heading("Esempio della Legge di Little")
 
 *Latenza*: 5 Cicli
 
@@ -979,9 +979,9 @@ In questo caso, per mantenere un throughput di 6 warp/ciclo con una latenza di 5
 
 *Nota*: Un warp (32 thread) che esegue un'istruzione corrisponde a *32 operazioni*  (1 operazione per thread)
 
-#figure(image("images/_page_52_Picture_7_2.2.jpeg"))
+#image("images/_page_52_Picture_7_2.2.jpeg")
 
-== Massimizzare il Parallelismo per Operazioni Aritmetiche
+#green_heading("Massimizzare il Parallelismo per Operazioni Aritmetiche")
 
 | Architettura | Latenza Istruzione<br>(Cicli) | Throughput<br>(Operazioni/Ciclo) | Parallelismo Necessario<br>(Operazioni) |
 |--------------|-------------------------------|----------------------------------|-----------------------------------------|
@@ -992,26 +992,26 @@ Esempio: Operazione Multiply-Add a 32-bit Floating-Point (a + b  $\times$  c)
 
 Limite Warp/SM in Kepler è 64
 
-=== Consideriamo una GPU con architettura Fermi:
+========= Consideriamo una GPU con architettura Fermi:
 
 - Throughput: 32 operazioni/ciclo/SM
   - Un singolo SM può eseguire 32 operazioni di multiply-add a 32-bit floating-point per ciclo di clock.
 - Warp Richiesti per SM: 640 ÷ 32 (operazioni per warp) = 20 warp/SM
   - Per raggiungere il throughput massimo e per mantenere il pieno utilizzo delle risorse computazionali, sono necessari 20 warp attivi contemporaneamente su ogni SM.
 
-==== Esistono due modi principali per aumentare il parallelismo:
+============ Esistono due modi principali per aumentare il parallelismo:
 
 - ILP (Instruction-Level Parallelism): Aumentare il numero di istruzioni indipendenti all'interno di un singolo thread.
 - TLP (Thread-Level Parallelism): Aumentare il numero di thread (e quindi di warp) che possono essere eseguiti contemporaneamente.
 
-== Massimizzare il Parallelismo per Operazioni di Memoria
+#green_heading("Massimizzare il Parallelismo per Operazioni di Memoria")
 
 | Architettura | Latenza<br>(Cicli) | Bandwidth<br>(GB/s) | Bandwidth<br>(B/ciclo) | Parallelismo<br>(KB) |
 |--------------|--------------------|---------------------|------------------------|----------------------|
 | Fermi        | 800                | 144                 | 92                     | 74                   |
 | Kepler       | 800                | 250                 | 96                     | 77                   |
 
-=== Esempio: Operazione di Memoria
+========= Esempio: Operazione di Memoria
 
 1/2
 
@@ -1033,14 +1033,14 @@ Recuperare la Memory Frequency di una GPU NVIDIA (da terminale)
 $ nvidia-smi -a -q -d CLOCK | fgrep -A 3 "Max Clocks" | fgrep "Memory"
 ```
 
-== Massimizzare il Parallelismo per Operazioni di Memoria
+#green_heading("Massimizzare il Parallelismo per Operazioni di Memoria")
 
 | Architettura | Latenza<br>(Cicli) | Bandwidth<br>(GB/s) | Bandwidth<br>(B/ciclo) | Parallelismo<br>(KB) |  |
 |--------------|--------------------|---------------------|------------------------|----------------------|--|
 | Fermi        | 800                | 144                 | 92                     | 74                   |  |
 | Kepler       | 800                | 250                 | 96                     | 77                   |  |
 
-==== Esempio: Operazione di Memoria
+============ Esempio: Operazione di Memoria
 
 2/2
 
@@ -1051,14 +1051,14 @@ $ nvidia-smi -a -q -d CLOCK | fgrep -A 3 "Max Clocks" | fgrep "Memory"
   - Per 16 SM: 579 warp ÷ 16 SM = 36 warp per SM
 - Ovviamente, se ogni thread eseguisse più di un caricamento indipendente da 4 byte o un tipo di dato più grande (es. FP64), sarebbero necessari meno thread per mascherare la latenza di memoria.
 
-==== Esistono due modi principali per aumentare il parallelismo di memoria:
+============ Esistono due modi principali per aumentare il parallelismo di memoria:
 
 - Maggiore Granularità: Spostare più dati per thread (ad esempio, caricare più float per thread).
 - Più Thread Attivi: Aumentare il numero di thread concorrenti per aumentare il numero di warp attivi.
 
-= Warp Divergence
+=== Warp Divergence
 
-== Cosa è la Warp Divergence?
+#green_heading("Cosa è la Warp Divergence?")
 
 - In un warp, idealmente tutti i thread eseguono la *stessa istruzione contemporaneamente* per massimizzare il parallelismo SIMT (condividono un unico *Program Counter* [Architetture Pre-Volta] ).
 - Tuttavia, se un'*istruzione condizionale* (come un *if*-*else* o *switch*) porta thread diversi a percorrere *rami diversi* del codice, si verifica la *Warp Divergence.*
@@ -1067,7 +1067,7 @@ $ nvidia-smi -a -q -d CLOCK | fgrep -A 3 "Max Clocks" | fgrep "Memory"
 - La Warp Divergence *può significativamente degradare le prestazioni* perché i thread non vengono eseguiti in parallelo durante la divergenza (le risorse non vengono pienamente utilizzate).
 - Notare che il fenomeno della divergenza occorre *solo all'interno di un warp*.
 
-== Esempio
+#green_heading("Esempio")
 
 ```
 if (threadIdx.x % 2 == 0) {
@@ -1077,7 +1077,7 @@ if (threadIdx.x % 2 == 0) {
 }
 ```
 
-= CPU vs GPU: Gestione del Branching e della Warp Divergence
+=== CPU vs GPU: Gestione del Branching e della Warp Divergence
 
 |                           | CPU                                                                       | GPU                                                                                                                         |
 |---------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -1089,52 +1089,52 @@ if (threadIdx.x % 2 == 0) {
 | Ottimizzazioni            | Meno critiche, gestite in parte<br>dall'hardware.                         | Branch predication (non lo vedremo) e<br>riorganizzazione del codice essenziali.                                            |
 | Considerazioni            | Il costo della predizione errata<br>è relativamente basso.                | Il costo della warp divergence è elevato<br>a causa della perdita di parallelismo e<br>dell'overhead di esecuzione seriale. |
 
-= Warp Divergence: Analisi del Flusso di Esecuzione
+=== Warp Divergence: Analisi del Flusso di Esecuzione
 
-#figure(image("images/_page_58_Figure_1_2.2.jpeg"))
+#image("images/_page_58_Figure_1_2.2.jpeg")
 
-== Flusso
+#green_heading("Flusso")
 
 - All'inizio, tutti i thread eseguono lo stesso codice (*blocchi blu*).
 - Quando si incontra un'*istruzione condizionale* (*blocchi arancioni*), il warp si *divide*.
 - Alcuni thread eseguono la clausola "*then*" (*blocchi verdi*), mentre altri sono in *stallo* (*blocchi viola*).
 - Nei momenti di divergenza, l'efficienza può scendere al 50% (in questo caso, 16 thread attivi su 32).
 
-= Serializzazione nella Warp Divergence
+=== Serializzazione nella Warp Divergence
 
-== Divergenza
+#green_heading("Divergenza")
 
 Quando i thread di un warp seguono percorsi diversi a causa di istruzioni condizionali (es. *if*), il warp esegue ogni ramo in serie, *disabilitando i thread inattivi*.
 
-== Località
+#green_heading("Località")
 
 - La divergenza si verifica solo all'interno di un *singolo warp*.
 - Warp diversi operano *indipendentemente*.
 - I passi condizionali in *differenti warp* non causano divergenza.
 
-== Impatto
+#green_heading("Impatto")
 
 La divergenza può ridurre il parallelismo *fino a 32 volte.*
 
-#figure(image("images/_page_59_Picture_9_2.2.jpeg"))
+#image("images/_page_59_Picture_9_2.2.jpeg")
 
-= Serializzazione nella Warp Divergence
+=== Serializzazione nella Warp Divergence
 
-== Divergenza
+#green_heading("Divergenza")
 
 Quando i thread di un warp seguono percorsi diversi a causa di istruzioni condizionali (es. *if*), il warp esegue ogni ramo in serie, *disabilitando i thread inattivi*.
 
-== Località
+#green_heading("Località")
 
 - La divergenza si verifica solo all'interno di un *singolo warp*.
 - Warp diversi operano *indipendentemente*.
 - I passi condizionali in *differenti warp* non causano divergenza.
 
-== Impatto
+#green_heading("Impatto")
 
 La divergenza può ridurre il parallelismo *fino a 32 volte.*
 
-== Caso Peggiore
+#green_heading("Caso Peggiore")
 
 ```
 __global__ void WorstDivergence(int* x) {
@@ -1156,7 +1156,7 @@ __global__ void WorstDivergence(int* x) {
 
 Le prestazioni diminuiscono con l'aumento della divergenza nei warp.
 
-= Confronto delle Condizioni di Branch
+=== Confronto delle Condizioni di Branch
 
 *Kernel 1 Kernel 2*
 
@@ -1181,42 +1181,42 @@ __global__ void mathKernel2(float *sum) {
                    con atomicAdd dopo)
 ```
 
-==== Funzionamento
+============ Funzionamento
 
 Valuta la parità dell'*ID* di ogni singolo thread.
 
-==== Effetto sui thread
+============ Effetto sui thread
 
 - *Thread pari* (ID 0, 2, 4, ...): eseguono il ramo *if*.
 - *Thread dispari* (ID 1, 3,...): eseguono il ramo *else*.
 
-==== Impatto sul warp
+============ Impatto sul warp
 
 In ogni warp (32 thread), 16 thread eseguono *if* e 16 eseguono *else*.
 
-==== Risultato
+============ Risultato
 
 *Warp divergence*, con esecuzione serializzata dei due percorsi all'interno del warp.
 
-==== Funzionamento
+============ Funzionamento
 
 - tid/*warpSize*: Identifica l'*ID del warp* a cui appartiene il thread.
 - (...) % 2: Determina la parità del numero del warp.
 
-==== Effetto sui warp
+============ Effetto sui warp
 
 - *Warp pari*: tutti i 32 thread eseguono il ramo *if*.
 - *Warp dispari*: tutti i 32 thread eseguono il ramo *else*.
 
-=== Impatto sul warp
+========= Impatto sul warp
 
 Tutti i thread in un warp eseguono lo *stesso percorso.*
 
-==== Risultato
+============ Risultato
 
 *Eliminazione del warp divergence*, con esecuzione parallela all'interno di ogni warp (nessun overhead).
 
-= Confronto delle Condizioni di Branch
+=== Confronto delle Condizioni di Branch
 
 *Kernel 1 Kernel 2*
 
@@ -1241,7 +1241,7 @@ __global__ void mathKernel2(float *sum) {
                    con atomicAdd dopo)
 ```
 
-==== Branch Efficiency (calcolata in Nsight Compute)
+============ Branch Efficiency (calcolata in Nsight Compute)
 
 La *Branch Efficiency* misura la percentuale di branch non divergenti rispetto al totale dei branch eseguiti da un warp.
 
@@ -1258,78 +1258,78 @@ mathKernel2: Branch Efficiency 100.00%
 
 *Nota*: Nonostante la warp divergence, il compilatore CUDA applica ottimizzazioni anche con *-G* abilitato, risultando in una branch efficiency di *mathKernel1* superiore al 50% teorico.
 
-= Architetture Pre-Volta (< CC 7.0)
+=== Architetture Pre-Volta (< CC 7.0)
 
-== Pre-Volta 32 Thread Warp Program Counter (PC) and Stack (S)
+#green_heading("Pre-Volta 32 Thread Warp Program Counter (PC) and Stack (S)")
 
 - *Singolo Program Counter* e *Call Stack* condiviso per tutti i 32 thread del warp (puntano alla stessa istruzione).
 - Il warp agisce come una unità di esecuzione coesa/sincrona (stato dei thread è tracciato a livello di warp intero).
 - *Maschera di Attività (Active Mask)* per specificare i thread attivi nel warp in ciascun istante.
 - La maschera viene *salvata* fino alla riconvergenza del warp, poi *ripristinata* per riesecuzione sincrona.
 
-== Limitazioni
+#green_heading("Limitazioni")
 
 - Quando c'è divergenza, i thread che prendono branch diverse *perdono concorrenza* fino alla riconvergenza.
 - Possibili *deadlock* tra thread in un warp, se i thread dipendono l'uno dall'altro in modo circolare.
 
-== Esempio di Divergenza (Pseudo-Code) if (threadIdx.x < 4) { A; B; } else { X; Y; } Z;
+#green_heading("Esempio di Divergenza (Pseudo-Code) if (threadIdx.x < 4) { A; B; } else { X; Y; } Z;")
 
-#figure(image("images/_page_63_Figure_10_2.2.jpeg"))
+#image("images/_page_63_Figure_10_2.2.jpeg")
 
 Una volta scelto un ramo, questo deve essere completato prima di poter iniziare l'altro (unico PC).
 
-= Architetture Pre-Volta (< CC 7.0)
+=== Architetture Pre-Volta (< CC 7.0)
 
-== Pre-Volta 32 Thread Warp Program Counter (PC) and Stack (S)
+#green_heading("Pre-Volta 32 Thread Warp Program Counter (PC) and Stack (S)")
 
 - *Singolo Program Counter* e *Call Stack* condiviso per tutti i 32 thread del warp (puntano alla stessa istruzione).
 - Il warp agisce come una unità di esecuzione coesa/sincrona (stato dei thread è tracciato a livello di warp intero).
 - *Maschera di Attività (Active Mask)* per specificare i thread attivi nel warp.
 - La maschera viene *salvata* fino alla riconvergenza del warp, poi *ripristinata* per riesecuzione sincrona.
 
-== Limitazioni
+#green_heading("Limitazioni")
 
 - Quando c'è divergenza, i thread che prendono branch diverse *perdono concorrenza* fino alla riconvergenza.
 - Possibili *deadlock* tra thread in un warp, se i thread dipendono l'uno dall'altro in modo circolare.
 
-==== Esempio di Potenziale Deadlock diverge A; waitOnB(); ... Tempo if (threadIdx.x < 4) { A; waitOnB(); } else { B; waitOnA(); } Thread divergenti dello stesso warp non possono comunicare. B non verrà mai eseguito
+============ Esempio di Potenziale Deadlock diverge A; waitOnB(); ... Tempo if (threadIdx.x < 4) { A; waitOnB(); } else { B; waitOnA(); } Thread divergenti dello stesso warp non possono comunicare. B non verrà mai eseguito
 
-== Architettura Volta (CC 7.0+) e Independent Thread Scheduling
+#green_heading("Architettura Volta (CC 7.0+) e Independent Thread Scheduling")
 
-==== Concetto chiave
+============ Concetto chiave
 
 L'Independent Thread Scheduling (ITS) consente <u>piena concorrenza tra i thread</u>, indipendentemente dal warp.
 
-#figure(image("images/_page_65_Picture_3_2.2.jpeg"))
+#image("images/_page_65_Picture_3_2.2.jpeg")
 
-==== Stato di Esecuzione per Thread
+============ Stato di Esecuzione per Thread
 
 - Ogni thread mantiene il *proprio stato di esecuzione*, inclusi program counter e stack di chiamate.
 - Permette di <u>cedere l'esecuzione</u> a livello di *singolo thread* (non sono più obbligati a eseguire in lockstep).
 
-==== Attesa per Dati
+============ Attesa per Dati
 
 - Un thread può attendere che un altro thread produca dati, facilitando la comunicazione e la sincronizzazione tra di essi.
 - Ottimizzazione della Pianificazione
   - Un ottimizzatore di scheduling raggruppa i thread attivi dello stesso warp in unità SIMT.
   - Così facendo, si mantiene l'alto throughput dell'esecuzione SIMT, come nelle GPU NVIDIA precedenti.
 
-=== Flessibilità Maggiore
+========= Flessibilità Maggiore
 
 - I thread possono ora divergere e riconvergere indipendentemente con granularità sub-warp.
 - Apre a pattern di programmazione che erano impossibili o problematici nelle architetture precedenti.
 
-= Confronto Pre-Volta vs Post-Volta
+=== Confronto Pre-Volta vs Post-Volta
 
-#figure(image("images/_page_66_Figure_1_2.2.jpeg"))
+#image("images/_page_66_Figure_1_2.2.jpeg")
 
-= Confronto Pre-Volta vs Post-Volta
+=== Confronto Pre-Volta vs Post-Volta
 
-#figure(image("images/_page_67_Figure_1_2.2.jpeg"))
+#image("images/_page_67_Figure_1_2.2.jpeg")
 
-= Introduzione di \_\_syncwarp in Volta
+=== Introduzione di \_\_syncwarp in Volta
 
-== Scopo
+#green_heading("Scopo")
 
 - Introdotta dall'architettura Volta *per supportare l'ITS* e *migliorare la gestione della divergenza* dei thread.
 - Permette di *sincronizzare esplicitamente e riconvergere* i thread all'interno di un warp.
@@ -1339,13 +1339,13 @@ L'Independent Thread Scheduling (ITS) consente <u>piena concorrenza tra i thread
 void __syncwarp(unsigned mask=0xffffffff);
 ```
 
-== Vantaggi
+#green_heading("Vantaggi")
 
 - *Evita comportamenti non deterministici* dovuti alla divergenza intra-warp.
 - Garantisce che tutti i thread del warp specificato *siano allineati prima di comunicare o accedere a dati condivisi*.
 - Abilita l'*esecuzione sicura di algoritmi a grana fine* (riduzioni, scambi in shared memory, operazioni cooperative).
 
-== Esempio di Utilizzo
+#green_heading("Esempio di Utilizzo")
 
 ```
 if (threadIdx.x < 16) {
@@ -1367,7 +1367,7 @@ Dopo una divergenza:
 
 *\_\_syncwarp*(); *// Sincronizza tutti i thread del warp qui*
 
-= Confronto Pre-Volta vs Post-Volta
+=== Confronto Pre-Volta vs Post-Volta
 
 |                            | Pre-Volta                                                 | Post-Volta                                                                 |
 |----------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------|
@@ -1379,11 +1379,11 @@ Dopo una divergenza:
 | Prestazioni con Divergenza | Penalità per serializzazione                              | Penalità simile, nessun miglioramento<br>intrinseco                        |
 | Complessità del Codice     | Workaround necessari per<br>certi algoritmi               | Implementazioni più naturali possibili<br>(ma richiede gestione esplicita) |
 
-== Confronto Pre-Volta vs Post-Volta
+#green_heading("Confronto Pre-Volta vs Post-Volta")
 
 Pre-Volta Post-Volta ITS: Limitazioni Prog ITS non può esonerare gli sviluppatori da una programmazione parallela impropria. Nessuno scheduling hardware può salvare dal livelock (ovvero thread che sono Sche tecnicamente in esecuzione ma non fanno progressi reali). Il progresso è garantito *solo per i warp residenti* al momento. I thread rimarranno in Sinc attesa infinita se il loro progresso dipende da un warp che non lo è. Non garantisce la riconvergenza, quindi le assunzioni relative alla programmazione a Dive ssibile livello di warp potrebbero non essere valide (usare esplicitamente syncwarp). Bisogna prestare più attenzione per garantire il comportamento SIMD dei warp. Dead ITS introduce *overhead hardware* per la gestione indipendente di program counter e Pres call stack per ogni thread, aumentando la flessibilità ma richiedendo più risorse. Implementazioni più naturali possibili Complessità del Codice Workaround necessari per certi algoritmi (ma richiede gestione esplicita)
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
 - *Architettura Hardware GPU*
   - Introduzione al Modello di Esecuzione CUDA
@@ -1406,44 +1406,44 @@ Pre-Volta Post-Volta ITS: Limitazioni Prog ITS non può esonerare gli sviluppato
 - *Parallelismo Avanzato*
   - CUDA Dynamic Parallelism
 
-= Sincronizzazione in CUDA - Motivazioni
+=== Sincronizzazione in CUDA - Motivazioni
 
-== 1. Asincronia tra Host e Device
+#green_heading("1. Asincronia tra Host e Device")
 
 - *Comportamento di Base*: L'host e il device operano in modo *asincrono*.
 - Senza sincronizzazione, l'host potrebbe tentare di utilizzare risultati *non ancora pronti* o *modificare dati ancora in uso* dalla GPU.
 
-== 2. Sincronizzazione tra Thread all'Interno di un Blocco
+#green_heading("2. Sincronizzazione tra Thread all'Interno di un Blocco")
 
 - *Comportamento di Base*: I thread all'interno di un blocco possono eseguire in ordine arbitrario e a velocità diverse.
 - Quando i thread dello stesso blocco necessitano di condividere dati (utilizzando, ad esempio, la shared memory) o coordinare le loro azioni, è necessaria una sincronizzazione esplicita.
 
-== 3. Coordinazione all'Interno dei Warp
+#green_heading("3. Coordinazione all'Interno dei Warp")
 
 - *Comportamento di Base*:
   - *Pre-Volta*: I thread all'interno di un warp eseguivano sempre la stessa istruzione contemporaneamente (modello SIMD).
   - *Post-Volta* (CUDA 9.0+): Introdotta l'esecuzione indipendente dei thread (ITS) nel warp.
 - Con l'esecuzione indipendente dei thread, la sincronizzazione esplicita diventa necessaria per garantire la *coerenza nelle operazioni intra-warp*.
 
-= Race Condition (Hazard)
+=== Race Condition (Hazard)
 
-== Cos'è?
+#green_heading("Cos'è?")
 
 Una *race condition* si verifica quando più thread accedono *concorrentemente (almeno uno in scrittura)* e in modo *non sincronizzato* alla stessa locazione di memoria, causando *risultati imprevedibili ed errori*.
 
-== Tipi di Race Condition (Noti anche nella pipeline dei processori)
+#green_heading("Tipi di Race Condition (Noti anche nella pipeline dei processori)")
 
 - *Read-After-Write (RAW):* Un thread legge prima che un altro finisca di scrivere.
 - *Write-After-Read (WAR):* Un thread scrive dopo che un altro ha letto, invalidando il valore.
 - *Write-After-Write (WAW):* Più thread scrivono nella stessa locazione, rendendo il valore indeterminato.
 
-== Perché si verificano?
+#green_heading("Perché si verificano?")
 
 - I thread in un blocco sono logicamente paralleli ma non sempre fisicamente simultanei.
 - Sono eseguiti in warp che possono trovarsi in punti diversi del codice.
 - *Senza sincronizzazione*, l'ordine di esecuzione tra thread è *imprevedibile*.
 
-== Prevenzione delle Race Condition
+#green_heading("Prevenzione delle Race Condition")
 
 - *All'interno di un Thread Block*
   - *○* Utilizzare *\_\_syncthreads()* per sincronizzare i thread e garantire la visibilità dei dati condivisi.
@@ -1451,30 +1451,30 @@ Una *race condition* si verifica quando più thread accedono *concorrentemente (
 - *Tra Thread Block diversi:*
   - Non esiste sincronizzazione diretta. L'unico modo sicuro è terminare il kernel e avviarne uno nuovo.
 
-= Deadlock in CUDA
+=== Deadlock in CUDA
 
-== Cos'è?
+#green_heading("Cos'è?")
 
 - Un *deadlock* (o stallo) in CUDA si verifica quando i thread di un blocco si bloccano reciprocamente in attesa di sincronizzazioni o risorse non raggiungibili, causando il *blocco permanente* dell'esecuzione del kernel.
 - Può insorgere in presenza di *sincronizzazioni condizionali* o *dipendenze* non gestite correttamente.
 
-== Condizioni per il Deadlock
+#green_heading("Condizioni per il Deadlock")
 
 - *Sincronizzazione Condizionale:* Uso di *\_\_syncthreads()* all'interno di condizioni (*if*, *else*), dove solo una parte dei thread del blocco raggiunge il punto di sincronizzazione.
 - *Dipendenze Circolari:* Situazioni in cui gruppi di thread attendono reciprocamente il completamento di operazioni, creando un ciclo di dipendenze irrisolvibile.
 - *Risorse Condivise:* Gestione non corretta dell'accesso alla memoria condivisa o ad altre risorse comuni.
 
-== Prevenzione/Gestione del Deadlock
+#green_heading("Prevenzione/Gestione del Deadlock")
 
 - *Sincronizzazione Completa*: Evitare *\_\_syncthreads()* nei rami condizionali divergenti; assicurarsi che tutti i thread del blocco raggiungano i punti di sincronizzazione.
 - *Ristrutturazione del Codice*: Rimuovere le dipendenze condizionali organizzando le operazioni in modo che tutti i thread completino una fase prima di passare alla successiva.
 - *Independent Thread Scheduling*: Con architetture *Volta* e successive, i thread di un warp possono avanzare in modo più indipendente, grazie all'Independent Thread Scheduling ed alleviare il problema.
 
-= Sincronizzazione in CUDA
+=== Sincronizzazione in CUDA
 
 La sincronizzazione è il meccanismo che permette di *coordinare* l'esecuzione di thread paralleli e garantire la *correttezza* dei risultati, evitando *race condition*/*deadlock* e *accessi concorrenti non sicuri* alla memoria.
 
-== Livelli di Sincronizzazione in CUDA
+#green_heading("Livelli di Sincronizzazione in CUDA")
 
 - *Livello di Sistema (Host-Device)*:
   - Blocca l'applicazione host finché tutte le operazioni sul device non sono completate.
@@ -1491,13 +1491,13 @@ La sincronizzazione è il meccanismo che permette di *coordinare* l'esecuzione d
   - *Ottimizza la cooperazione* tra thread dello stesso warp.
   - *Firma: \_\_device\_\_ void \_\_syncwarp*(*unsigned mask*=0xffffffff); *// minimo overhead*
 
-= Sincronizzazione in CUDA
+=== Sincronizzazione in CUDA
 
 La sincronizzazione è il meccanismo che permette di *coordinare* l'esecuzione di thread paralleli e garantire la *correttezza* dei risultati, evitando *race condition*/*deadlock* e *accessi concorrenti non sicuri* alla memoria.
 
-== Esempi
+#green_heading("Esempi")
 
-== Livello di Sistema
+#green_heading("Livello di Sistema")
 
 ```
 __global__ void simpleKernel() {
@@ -1527,7 +1527,7 @@ __global__ void blockSyncKernel() {
 }
 ```
 
-=== Livello di Blocco Livello di Warp
+========= Livello di Blocco Livello di Warp
 
 ```
 __global__ void warpSyncKernel() 
@@ -1543,15 +1543,15 @@ sharedData);
 }
 ```
 
-= Operazioni Atomiche in CUDA
+=== Operazioni Atomiche in CUDA
 
-== Perché sono Necessarie le Operazioni Atomiche?
+#green_heading("Perché sono Necessarie le Operazioni Atomiche?")
 
 - *Problema:* Race condition in operazioni *Read-Modify-Write*
   - Più thread *accedono e modificano* la stessa locazione di memoria contemporaneamente.
   - Risultati *imprevedibili* e *inconsistenti*.
 
-== Scenario Tipico
+#green_heading("Scenario Tipico")
 
 ```
 __global__ void increment(int *counter) {
@@ -1561,36 +1561,36 @@ __global__ void increment(int *counter) {
  }
 ```
 
-== Conseguenze
+#green_heading("Conseguenze")
 
 - *Conteggi Errati:* Il valore finale potrebbe non riflettere correttamente il numero di incrementi eseguiti.
 - *Aggiornamenti di Dati Persi:* Le modifiche apportate da alcuni thread potrebbero essere sovrascritte da altri.
 - *Comportamento Non Deterministico:* L'applicazione potrebbe dare risultati diversi ad ogni esecuzione.
 
-== Soluzione
+#green_heading("Soluzione")
 
 Operazioni atomiche *garantiscono l'integrità* delle operazioni Read-Modify-Write in ambiente concorrente.
 
-= Operazioni Atomiche in CUDA
+=== Operazioni Atomiche in CUDA
 
-== Cosa sono le Operazioni Atomiche? [\(Documentazione Online\)](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html=atomic-functions)
+#green_heading("Cosa sono le Operazioni Atomiche? [\(Documentazione Online\)](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html=atomic-functions)")
 
 Operazioni *Read-Modify-Write* eseguite (solo su funzioni device) come *singola istruzione hardware indivisibile*.
 
-== Caratteristiche
+#green_heading("Caratteristiche")
 
 - *Esclusività dell'accesso alla memoria*: L'hardware assicura che solo un thread alla volta può eseguire l'operazione sulla stessa locazione di memoria. I thread che eseguono operazioni atomiche sulla stessa posizione vengono messi in coda ed eseguiti in serie (correttezza garantita).
 - *Prevenzione delle interferenze*: Evitano che i thread interferiscano tra loro durante la modifica dei dati.
 - *Compatibilità con memoria globale e condivisa*: Operano su word di 32, 64 bit o 128 bit.
 - *Riduzione del parallelismo effettivo*, poiché i thread devono aspettare il proprio turno per accedere alla memoria.
 
-== Tipiche Operazioni Atomiche:
+#green_heading("Tipiche Operazioni Atomiche:")
 
 - *Matematiche*: Addizione, sottrazione, massimo, minimo, incremento, decremento.
 - *Bitwise*: Operazioni bit a bit come AND, OR, XOR.
 - *Swap*: Scambio del valore in memoria con un nuovo valore.
 
-== Utilizzo di Base
+#green_heading("Utilizzo di Base")
 
 ```
 __global__ void safeIncrement(int *counter) {
@@ -1598,9 +1598,9 @@ __global__ void safeIncrement(int *counter) {
 }
 ```
 
-= Operazioni Atomiche in CUDA - Esempi d'Uso
+=== Operazioni Atomiche in CUDA - Esempi d'Uso
 
-=== Operazioni Atomiche
+========= Operazioni Atomiche
 
 ```
 // Operazioni atomiche aritmetiche
@@ -1622,7 +1622,7 @@ int atomicXor(int* addr, int val); // XOR tra *addr e val, aggiorna addr
 - Leggono il valore originale dalla memoria, eseguono l'operazione e salvano il risultato *nello stesso indirizzo*, *restituendo il valore originale pre-modifica*.
 - *Supporto a Tipi Estesi:* Esistono anche varianti atomiche per operazioni su tipi a 64 bit (*long long int*) e floating point (*float* e *double*), supportate su architetture recenti.
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
 - *Architettura Hardware GPU*
   - Introduzione al Modello di Esecuzione CUDA
@@ -1645,15 +1645,15 @@ int atomicXor(int* addr, int val); // XOR tra *addr e val, aggiorna addr
 - *Parallelismo Avanzato*
   - CUDA Dynamic Parallelism
 
-= Resource Partitioning in CUDA
+=== Resource Partitioning in CUDA
 
-== Cos'è il Resource Partitioning?
+#green_heading("Cos'è il Resource Partitioning?")
 
 - Come abbiamo visto, assegnare molti warp a un SM aiuta a nascondere la latenza, ma i limiti delle risorse possono impedire di raggiungere il massimo supportato.
 - Il *Resource Partitioning* riguarda la *suddivisione e la gestione delle risorse hardware* limitate all'interno di una GPU, in particolare all'interno di ogni SM.
 - L'obiettivo è *trovare un equilibrio* nella distribuzione di registri e memoria condivisa tra thread e blocchi, *ottimizzando l'efficienza complessiva dell'esecuzione* dei kernel CUDA.
 
-== Partizionamento delle Risorse nell'SM
+#green_heading("Partizionamento delle Risorse nell'SM")
 
 - Ogni SM ha una quantità limitata di registri e memoria condivisa:
   - *Register File*: Un insieme di registri a 32 bit, partizionati tra i thread attivi.
@@ -1663,29 +1663,29 @@ int atomicXor(int* addr, int val); // XOR tra *addr e val, aggiorna addr
   - *Richiesta del Kernel*: Quantità di registri e memoria condivisa richiesti dal kernel per l'esecuzione.
 - Se le risorse di uno SM non permettono di eseguire almeno un blocco di thread, il kernel *fallisce*.
 
-= Anatomia di un Thread Block
+=== Anatomia di un Thread Block
 
-== Requisiti di Risorse per SM
+#green_heading("Requisiti di Risorse per SM")
 
 Tutti i blocchi in una griglia eseguono lo stesso programma usando lo stesso numero di thread, portando a *3 requisiti di risorse fondamentali*:
 
-== 1. Dimensione del Blocco
+#green_heading("1. Dimensione del Blocco")
 
 Il numero di thread che devono essere concorrenti.
 
-== 2. Memoria Condivisa
+#green_heading("2. Memoria Condivisa")
 
 È comune a tutti i thread dello stesso blocco.
 
-== 3. Registri
+#green_heading("3. Registri")
 
 Dipendono dalla complessità del programma.
 
 (*thread-per-blocco* × *registri-per-thread*)
 
-==== Thread Block
+============ Thread Block
 
-#figure(image("images/_page_82_Picture_11_2.2.jpeg"))
+#image("images/_page_82_Picture_11_2.2.jpeg")
 
 Un blocco mantiene un numero costante di thread ed esegue unicamente su un singolo SM
 
@@ -1702,15 +1702,15 @@ __global__ void simpleKernel(float* out) {
 
 *Risorse SM (Architettura Ampere)*
 
-#figure(image("images/_page_83_Figure_2_2.2.jpeg"))
+#image("images/_page_83_Figure_2_2.2.jpeg")
 
-==== Thread Block
+============ Thread Block
 
-#figure(image("images/_page_83_Picture_4_2.2.jpeg"))
+#image("images/_page_83_Picture_4_2.2.jpeg")
 
 Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo SM
 
-== Esempio di Requisiti di Risorse per i Blocchi
+#green_heading("Esempio di Requisiti di Risorse per i Blocchi")
 
 *Thread per Blocco* 256
 
@@ -1724,13 +1724,13 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 *Risorse SM (Architettura Ampere)*
 
-#figure(image("images/_page_84_Figure_2_2.2.jpeg"))
+#image("images/_page_84_Figure_2_2.2.jpeg")
 
-#figure(image("images/_page_84_Picture_4_2.2.jpeg"))
+#image("images/_page_84_Picture_4_2.2.jpeg")
 
 Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo SM
 
-== Esempio di Requisiti di Risorse per i Blocchi
+#green_heading("Esempio di Requisiti di Risorse per i Blocchi")
 
 *Thread per Blocco* 256
 
@@ -1742,13 +1742,13 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 32Kb
 
-#figure(image("images/_page_85_Figure_1_2.2.jpeg"))
+#image("images/_page_85_Figure_1_2.2.jpeg")
 
 *Risorse SM (Architettura Ampere)*
 
-#figure(image("images/_page_86_Figure_2_2.2.jpeg"))
+#image("images/_page_86_Figure_2_2.2.jpeg")
 
-== Esempio di Requisiti (Griglia Blu)
+#green_heading("Esempio di Requisiti (Griglia Blu)")
 
 *Thread per Blocco* 256
 
@@ -1758,7 +1758,7 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 *Shared Memory per Blocco* 48Kb
 
-== Esempio di Requisiti (Griglia Arancione)
+#green_heading("Esempio di Requisiti (Griglia Arancione)")
 
 *Thread per Blocco* 512
 
@@ -1770,15 +1770,15 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 *Risorse SM (Architettura Ampere)*
 
-#figure(image("images/_page_87_Figure_2_2.2.jpeg"))
+#image("images/_page_87_Figure_2_2.2.jpeg")
 
-#figure(image("images/_page_87_Figure_3_2.2.jpeg"))
+#image("images/_page_87_Figure_3_2.2.jpeg")
 
-#figure(image("images/_page_87_Picture_4_2.2.jpeg"))
+#image("images/_page_87_Picture_4_2.2.jpeg")
 
 Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo SM
 
-== Esempio di Requisiti di Risorse per i Blocchi
+#green_heading("Esempio di Requisiti di Risorse per i Blocchi")
 
 *Thread per Blocco*
 
@@ -1796,15 +1796,15 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 *Risorse SM (Architettura Ampere)*
 
-#figure(image("images/_page_88_Figure_2_2.2.jpeg"))
+#image("images/_page_88_Figure_2_2.2.jpeg")
 
-==== Thread Block
+============ Thread Block
 
-#figure(image("images/_page_88_Picture_4_2.2.jpeg"))
+#image("images/_page_88_Picture_4_2.2.jpeg")
 
 Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo SM
 
-== Esempio di Requisiti di Risorse per i Blocchi
+#green_heading("Esempio di Requisiti di Risorse per i Blocchi")
 
 *Thread per Blocco*
 
@@ -1822,7 +1822,7 @@ Un blocco contiene un numero fisso di thread ed esegue unicamente su un singolo 
 
 Anche se possiamo allocare solo 2 blocchi in entrambi i casi, perché la seconda configurazione è migliore?
 
-== Compute Capability (CC) - Limiti SM
+#green_heading("Compute Capability (CC) - Limiti SM")
 
 - La Compute Capability (CC) di NVIDIA è un numero che identifica le caratteristiche e le capacità di una GPU NVIDIA in termini di <u>funzionalità supportate</u> e <u>limiti hardware</u>.
 - È composta da *due numeri*: il numero principale indica la *generazione* dell'architettura, mentre il numero secondario indica *revisioni* e *miglioramenti* all'interno di quella generazione.
@@ -1841,40 +1841,40 @@ Anche se possiamo allocare solo 2 blocchi in entrambi i casi, perché la seconda
 
 https://en.wikipedia.org/wiki/CUDA=Version\_features\_and\_specifications
 
-= Occupancy
+=== Occupancy
 
-== Cosa è l'Occupancy?
+#green_heading("Cosa è l'Occupancy?")
 
 - L'occupancy rappresenta il *grado di utilizzo delle risorse* di calcolo dell'SM.
 - L'occupancy è il *rapporto* tra i warp attivi e il numero massimo di warp supportati per SM (vedi compute capability):
 
 *Occupancy [%]* = *Active Warps* / *Maximum Warps*
 
-== Punti Chiave
+#green_heading("Punti Chiave")
 
 - L'occupancy misura l'efficacia nell'uso delle risorse dell'SM:
   - *Occupancy Ottimale*: Quando raggiunge un livello sufficiente per nascondere la latenza. Un ulteriore aumento potrebbe degradare le prestazioni a causa della riduzione delle risorse disponibili per thread.
   - *Occupancy Bassa*: Risulta in una scarsa efficienza nell'emissione delle istruzioni, poiché non ci sono abbastanza warp eleggibili per nascondere la latenza tra istruzioni dipendenti.
 - *Un'occupancy elevata non garantisce sempre prestazioni migliori*: Oltre certa soglia, fattori come i pattern di accesso alla memoria e il parallelismo delle istruzioni possono diventare più rilevanti per l'ottimizzazione.
 
-== Strumenti per l'Ottimizzazione
+#green_heading("Strumenti per l'Ottimizzazione")
 
 - *Strumenti di Profiling:* Nsight Compute consente di recuperare facilmente l'occupancy, offrendo dettagli sul numero di warp attivi per SM e sull'efficienza delle risorse di calcolo (tuttavia, l'occupancy non deve mai essere guardata in isolamento. Diventa utile se combinata con altre metriche del profiler).
 - *Suggerimento*: Osservare gli effetti sul tempo di esecuzione del kernel a diversi livelli di occupancy.
 
-= Occupancy Teorica vs Effettiva
+=== Occupancy Teorica vs Effettiva
 
-== Misure di Occupancy
+#green_heading("Misure di Occupancy")
 
 L'occupancy di un kernel CUDA si divide in *teorica*, basata sui limiti hardware, ed *effettiva*, misurata a runtime.
 
-== Occupancy Teorica (Theoretical)
+#green_heading("Occupancy Teorica (Theoretical)")
 
 - L'occupancy teorica è *determinata dalla configurazione di lancio* (numero di blocchi/thread, quantità di memoria condivisa, numero di registri per thread) e i limiti dell'SM (compute capability).
 - *Limite massimo warp attivi per SM* = (*Limite massimo blocchi attivi*) × (*Warp per blocco*)
 - È possibile aumentare il limite incrementando il numero di warp per blocco (dimensioni del blocco) o modificando i fattori limitanti (registri e/o shared memory) per aumentare i blocchi attivi per SM.
 
-== Occupancy Effettiva (Achieved)
+#green_heading("Occupancy Effettiva (Achieved)")
 
 - Misura il *numero reale di warp attivi* durante l'esecuzione del kernel.
 - Il numero reale di warp attivi varia durante l'esecuzione del kernel, man mano che i warp iniziano e terminano.
@@ -1883,15 +1883,15 @@ L'occupancy di un kernel CUDA si divide in *teorica*, basata sui limiti hardware
   - I conteggi vengono sommati su tutti i warp scheduler di ogni SM (1 per SMSP) e divisi per i cicli di clock attivi dell'SM per calcolare la *media dei warp attivi*.
   - Dividendo per il numero massimo di warp attivi supportati dall'SM (Maximum Warps), si ottiene l'*occupazione effettiva media* per SM durante l'esecuzione del kernel.
 
-= Occupancy Teorica vs Effettiva
+=== Occupancy Teorica vs Effettiva
 
-== Obiettivi di Ottimizzazione
+#green_heading("Obiettivi di Ottimizzazione")
 
 - L'occupazione effettiva *non può* superare l'occupazione teorica (rappresenta il limite superiore).
 - Pertanto, il primo passo per aumentare l'occupazione è *incrementare quella teorica*, modificando i fattori limitanti.
 - Successivamente, è necessario verificare se il valore ottenuto è vicino a quello teorico per ridurre il gap.
 
-== Cause di Bassa Occupazione Effettiva
+#green_heading("Cause di Bassa Occupazione Effettiva")
 
 - L'occupancy effettiva sarà inferiore a quella teorica quando il numero teorico di warp attivi non viene mantenuto durante l'attività dello SM (il problema forse non è il resource partitioning). Ciò può accadere quando si ha:
   - *Carico di lavoro sbilanciato nei blocchi*: Quando i warp in un blocco hanno tempi di esecuzione diversi (es. warp divergence), si crea un "*tail effect*" che riduce l'occupazione. Soluzione: bilanciare il carico tra i warp.
@@ -1899,13 +1899,13 @@ L'occupancy di un kernel CUDA si divide in *teorica*, basata sui limiti hardware
   - *Numero insufficiente di blocchi lanciati*: Se la grid ha meno blocchi del numero di SM del device, alcuni SM rimarranno inattivi. Ad esempio, lanciare 60 blocchi su un dispositivo con 80 SM lascia 20 SM sempre inattivi, riducendo l'utilizzo complessivo della GPU.
   - *Wave Parziale*: L'ultima ondata di blocchi potrebbe non saturare tutti gli SM. Ad esempio, con 80 SM che supportano 2 blocchi ciascuno e una grid di 250 blocchi: le prime due wave eseguono 160 blocchi (80 SM × 2), ma la terza wave ha solo 90 blocchi, lasciando alcuni SM parzialmente utilizzati o inattivi.
 
-= Nota Importante sull'Occupancy
+=== Nota Importante sull'Occupancy
 
-== Ricorda
+#green_heading("Ricorda")
 
 L'obiettivo finale *non è massimizzare l'occupancy*, ma *minimizzare il tempo di esecuzione del kernel.*
 
-== Linee guida pratiche
+#green_heading("Linee guida pratiche")
 
 - *Occupancy < 25–30 % → problema serio*
   - Non ci sono abbastanza warp per nascondere le latenze (critico soprattutto per kernel memory-bound).
@@ -1920,7 +1920,7 @@ L'obiettivo finale *non è massimizzare l'occupancy*, ma *minimizzare il tempo d
   - Oltre una certa soglia, più occupancy potrebbe non migliorare le performance.
 - *Occupancy =* strumento per trovare il *giusto equilibrio tra latency hiding e risorse per thread*.
 
-== Nsight Compute: Occupancy Calculator
+#green_heading("Nsight Compute: Occupancy Calculator")
 
 Nsight Compute offre uno strumento utile chiamato "Occupancy Calculator" (<u>Documentazione</u>) che consente di:
 
@@ -1928,13 +1928,13 @@ Nsight Compute offre uno strumento utile chiamato "Occupancy Calculator" (<u>Doc
 - Ottimizzare le Risorse: Mostra l'impatto di registri e memoria condivisa sull'occupancy.
 - *Migliorare le Prestazioni*: Fornisce suggerimenti per massimizzare l'uso delle risorse dell'SM e migliorare le prestazioni complessive.
 
-#figure(image("images/_page_94_Figure_5_2.2.jpeg"))
+#image("images/_page_94_Figure_5_2.2.jpeg")
 
-== Nsight Compute: Occupancy Calculator
+#green_heading("Nsight Compute: Occupancy Calculator")
 
 Nsight Compute offre uno strumento utile chiamato "Occupancy Calculator" (Documentazione) che consente di: Stimare l'Occupancy: Calcola l'occupancy di un kernel CUDA su una determinata GPU. Ottimizzare le Risorse: Mostra l'impatto di registri e memoria condivisa sull'occupancy. Linee Guida per le Dimensioni di Griglia e Blocchi Mantenere il numero di thread per block multiplo della dimensione del warp (32). Evitare dimensioni di block piccole: Iniziare con almeno 128 o 256 thread per block. Regolare la dimensione del blocco in base ai requisiti di risorse del kernel. Mantenere il *numero di blocchi molto maggiore del numero di SM* per esporre sufficiente parallelismo al dispositivo (latency hiding). Condurre esperimenti per scoprire la migliore configurazione di esecuzione e utilizzo delle risorse. Impatto della Variazione dell'Uso della Memoria Condivisa Per Blocco
 
-= Panoramica del Modello di Esecuzione CUDA
+=== Panoramica del Modello di Esecuzione CUDA
 
 - *Architettura Hardware GPU*
   - Introduzione al Modello di Esecuzione CUDA
@@ -1957,33 +1957,33 @@ Nsight Compute offre uno strumento utile chiamato "Occupancy Calculator" (Docume
 - *Parallelismo Avanzato*
   - CUDA Dynamic Parallelism
 
-= Introduzione al CUDA Dynamic Parallelism
+=== Introduzione al CUDA Dynamic Parallelism
 
-== Il Problema:
+#green_heading("Il Problema:")
 
 - Algoritmi complessi (altamente dinamici) possono richiedere *strutture di parallelismo più flessibili.*
 - La suddivisione dei problemi in kernel separati da lanciare in sequenza *dalla CPU* creano un collo di bottiglia.
 
-== La Soluzione: Dynamic Parallelism
+#green_heading("La Soluzione: Dynamic Parallelism")
 
 - Introdotto in CUDA 5.0 nel 2012 (Architettura Kepler), il CUDA Dynamic Parallelism (CDP) è disponibile su device con una Compute Capability 3.5 o superiore.
 - Permette la *creazione* e *sincronizzazione* dinamica (on the fly) di nuovi kernel direttamente dalla GPU.
 - È possibile posticipare a *runtime* la decisione su quanti blocchi e griglie creare sul device (utile quando la *quantità di lavoro nidificato è sconosciuta*)
 - Supporta un approccio *gerarchico* e *ricorsivo* al parallelismo *evitando* continui passaggi fra CPU e GPU.
 
-== Possibili Applicazioni
+#green_heading("Possibili Applicazioni")
 
 - *Algoritmi ricorsivi* (es: Quick Sort, Merge Sort) → [Ricorsione con profondità sconosciuta]
 - *Strutture dati ad albero* (es: Alberi di ricerca, Alberi decisionali) → [Elaborazione parallela nidificata irregolare]
 - *Elaborazione di immagini e segnali* (es. Region growing) → [Decomposizione dinamica delle aree di elaborazione]
 
-== Vantaggi
+#green_heading("Vantaggi")
 
 - *Flessibilità*: Adattamento dinamico del parallelismo in base ai dati elaborati, senza dover prevedere tutto a priori.
 - *Scalabilità*: Sfruttamento ottimale delle risorse GPU, creando nuovi blocchi e griglie solo quando necessario.
 - *Efficienza*: Riduzione del collo di bottiglia CPU-GPU, spostando parte del controllo dell'esecuzione sulla GPU.
 
-= Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
+=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
 
 *Lancio da CPU (Approccio Tradizionale)*
 
@@ -2017,15 +2017,15 @@ int main() {
 }
 ```
 
-= Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
+=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
 
-#figure(image("images/_page_99_Figure_1_2.2.jpeg"))
+#image("images/_page_99_Figure_1_2.2.jpeg")
 
-#figure(image("images/_page_99_Figure_2_2.2.jpeg"))
+#image("images/_page_99_Figure_2_2.2.jpeg")
 
-= Esecuzione Nidificata con CUDA Dynamic Parallelism
+=== Esecuzione Nidificata con CUDA Dynamic Parallelism
 
-== Come Funziona:
+#green_heading("Come Funziona:")
 
 - Un thread, un blocco di thread o una griglia (*parent*) lancia una nuova griglia (*child grid*).
 - Una child grid lanciata con dynamic parallelism *eredita* dal kernel padre certi attributi e limiti come, ad esempio, la configurazione della *cache L1/memoria condivisa* e *dimensione dello stack*.
@@ -2034,14 +2034,14 @@ int main() {
 - Il *child deve sempre completare prima che il thread/blocco/griglia parent sia considerato completo.*
 - Un parent si considera *completato* solo quando tutte le griglie child create dai suoi thread (tutti) hanno terminato l'esecuzione.
 
-== Visibilità e Sincronizzazione:
+#green_heading("Visibilità e Sincronizzazione:")
 
 - Ogni child grid lanciata da un thread è *visibile a tutti i thread dello stesso blocco*.
 - Se i thread di un blocco terminano prima che tutte le loro griglie child abbiano completato, il sistema attiva automaticamente una *sincronizzazione implicita* per attendere il completamento di queste griglie.
 - Un thread può *sincronizzarsi esplicitamente* con le proprie griglie child e con quelle lanciate da altri thread *nel suo blocco* utilizzando *primitive di sincronizzazione* (*cudaDeviceSynchronize*).
 - Quando un thread parent lancia una child grid, *l'esecuzione della griglia figlio non è garantita immediatamente*, a meno che il blocco di thread genitore non esegua una *sincronizzazione esplicita*.
 
-= Esempio di CUDA Dynamic Parallelism
+=== Esempio di CUDA Dynamic Parallelism
 
 ```
 // Kernel Figlio
@@ -2064,7 +2064,7 @@ __global__ recursiveKernel(void* data){
 }
 ```
 
-=== Struttura del Codice
+========= Struttura del Codice
 
 - *Stessa sintassi* usata nel codice host.
 - Si noti che ogni thread che incontra un lancio di kernel *lo esegue*.
@@ -2079,57 +2079,57 @@ if ( threadIdx.x == 0 )
 
 *Configurazione Griglia/Blocco:* I kernel lanciati dinamicamente possono avere una configurazione di griglia e blocco indipendente dal kernel genitore.
 
-= Memoria in CUDA Dynamic Parallelism
+=== Memoria in CUDA Dynamic Parallelism
 
-== Memoria Globale e Costante:
+#green_heading("Memoria Globale e Costante:")
 
 - Le griglie parent e child *condividono lo stesso spazio di memoria globale* (accesso *concorrente*) *e memoria costante.* Tuttavia*, la memoria locale e condivisa* (shared memory) sono *distinte* fra parent e child*.*
 - La coerenza della memoria globale non è garantita tra parent e child (be careful), tranne che:
   - *All'avvio della griglia child.*
   - *Quando la griglia child completa.*
 
-== Visibilità della Memoria:
+#green_heading("Visibilità della Memoria:")
 
 - Tutte le operazioni sulla memoria globale eseguite dal thread parent *prima* di lanciare una griglia child sono garantite essere *visibili e accessibili* ai thread della griglia child.
 - Tutte le operazioni di memoria eseguite dalla griglia child sono garantite essere visibili al thread genitore *dopo che il genitore si è sincronizzato* con il completamento della griglia child.
 
-== Memoria Locale e Condivisa (Shared Memory):
+#green_heading("Memoria Locale e Condivisa (Shared Memory):")
 
 - La memoria locale e condivisa sono *private* per un thread o un blocco di thread, rispettivamente.
 - La memoria locale e condivisa *non sono visibili* o *coerenti* tra parent e child.
 - La memoria locale è uno spazio di archiviazione privato per un thread e *non è visibile al di fuori di quel thread*.
 
-== Limitazioni
+#green_heading("Limitazioni")
 
 - *Non è valido* passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
 - È possibile passare variabili *per copia* (by value).
 
-== Memoria in CUDA Dynamic Parallelism
+#green_heading("Memoria in CUDA Dynamic Parallelism")
 
-==== Memoria Globale e Costante:
+============ Memoria Globale e Costante:
 
-== Passaggio dei Puntatori alle Child Grid
+#green_heading("Passaggio dei Puntatori alle Child Grid")
 
-==== Possono Essere Passati
+============ Possono Essere Passati
 
 - Memoria Globale (sia variabili \_\_device\_
    sia memoria allocata con cudaMalloc)
 - Memoria Zero-Host Copy
 - Memoria Costante (ereditata dal parent e non può essere modificata)
 
-=== Non Possono Essere Passati X
+========= Non Possono Essere Passati X
 
 - Memoria Condivisa (variabili shared )
 - Local Memory (incluse variabili dello stack)
 
 \* Analizzeremo meglio queste memorie in seguito ("2.3 Modello di Memoria in CUDA")
 
-==== Limitazioni
+============ Limitazioni
 
 - Non è valido passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
 - È possibile passare variabili per copia (by value).
 
-= Gestione dello Scambio Dati nel Parallelismo Dinamico
+=== Gestione dello Scambio Dati nel Parallelismo Dinamico
 
 *Quindi, Come Restituire un Valore da un Child Kernel?*
 
@@ -2143,7 +2143,7 @@ __global__ void parentKernel(void) {
                                  Versione Errata
 ```
 
-== Versione Corretta
+#green_heading("Versione Corretta")
 
 ```
 __device__ int v = 0; // Variabile in memoria globale
@@ -2154,14 +2154,14 @@ __global__ void parentKernel(void) {
 }
 ```
 
-= Consistenza della Memoria nel Parallelismo Dinamico
+=== Consistenza della Memoria nel Parallelismo Dinamico
 
-== Scenario Sicuro:
+#green_heading("Scenario Sicuro:")
 
 - Quando il thread parent scrive in memoria globale *prima* di lanciare la griglia child.
 - Il thread figlio vedrà *correttamente* il valore scritto dal padre.
 
-== Scenario Problematico:
+#green_heading("Scenario Problematico:")
 
 - *Scrittura da parte del child*:
   - Il thread parent potrebbe *non* vedere i valori scritti dal child.
@@ -2189,7 +2189,7 @@ __global__ void parentKernel(void) {
                                          Non c'è sincronizzazione esplicita
 ```
 
-= Dipendenze Annidate in CUDA
+=== Dipendenze Annidate in CUDA
 
 ```
 CPU
@@ -2222,14 +2222,14 @@ void main()
                  Stessa Sintassi
 ```
 
-= Sincronizzazione con cudaDeviceSynchronize()
+=== Sincronizzazione con cudaDeviceSynchronize()
 
-== Funzione Principale
+#green_heading("Funzione Principale")
 
 - *cudaDeviceSynchronize() attende il completamento* di tutte le griglie (kernel) precedentemente lanciate da qualsiasi thread del blocco corrente, includendo tutti i kernel discendenti (child, nipoti, ecc.) nella gerarchia.
 - Se chiamata da un singolo thread, gli altri thread del blocco *continueranno* l'esecuzione.
 
-== Sincronizzazione a Livello di Blocco
+#green_heading("Sincronizzazione a Livello di Blocco")
 
 - *Attenzione*: *cudaDeviceSynchronize()* non implica una sincronizzazione fra thread del blocco.
 - Il blocco di tutti i thread può essere ottenuto sia chiamando *cudaDeviceSynchronize()* da tutti i thread, sia facendo seguire la chiamata di *cudaDeviceSynchronize()* da parte di un singolo thread con *\_\_synchthreads()*.
@@ -2247,15 +2247,15 @@ __global__ void parentKernel(float *a, float *b, float *c) {
 }
 ```
 
-== Sincronizzazione con cudaDeviceSynchronize()
+#green_heading("Sincronizzazione con cudaDeviceSynchronize()")
 
-=== Funzione Principale
+========= Funzione Principale
 
 cudaDeviceSynchronize() attende il completamento di tutte le griglie (kernel) precedentemente lanciate da qualsiasi thread del blocco corrente, includendo tutti i kernel discendenti (child, nipoti, ecc.) nella gerarchia.
 
-==== Sincre
+============ Sincre
 
-== Limiti
+#green_heading("Limiti")
 
 - cudaDeviceSynchronize() è un'operazione computazionalmente costosa perché:
   - Può causare la sospensione (swap-out) del blocco in esecuzione.
@@ -2270,20 +2270,20 @@ cendo
 
 Ĺ
 
-= Esecuzione Nidificata con CUDA Dynamic Parallelism
+=== Esecuzione Nidificata con CUDA Dynamic Parallelism
 
-#figure(image("images/_page_109_Figure_1_2.2.jpeg"))
+#image("images/_page_109_Figure_1_2.2.jpeg")
 
 - *Esecuzione Nidificata*: Il thread CPU lancia la griglia parent (*blu*), che a sua volta lancia una griglia child (*verde*).
 - *Sincronizzazione Esplicita*: La barriera nella griglia parent dimostra una *sincronizzazione esplicita* (*cudaDeviceSynchronize*) con la griglia child, assicurando che il parent attenda il completamento del child.
 - *Completamento Gerarchico*: La griglia parent si considera *completata* solo dopo che la griglia child ha terminato.
 
-= Parallelismo Dinamico su GPU: Nested Hello World
+=== Parallelismo Dinamico su GPU: Nested Hello World
 
 - Il kernel seguente è un esempio di come utilizzare la *parallelizzazione dinamica* sulla GPU per eseguire un kernel ricorsivo.
 - Il kernel viene invocato dalla applicazione *host* con una griglia di 8 thread in un singolo blocco. Il thread 0 di questo grid invoca un *nuovo grid* con la metà dei thread, e così via fino a quando non rimane solo un thread.
 
-#figure(image("images/_page_110_Picture_3_2.2.jpeg"))
+#image("images/_page_110_Picture_3_2.2.jpeg")
 
 ```
 __global__ void nestedHelloWorld(int const iSize, int iDepth) {
@@ -2307,7 +2307,7 @@ __global__ void nestedHelloWorld(int const iSize, int iDepth) {
  }}
 ```
 
-= Nested Hello World : Compilazione ed Esecuzione
+=== Nested Hello World : Compilazione ed Esecuzione
 
 Per compilare il codice abilitando il parallelismo dinamico:
 
@@ -2320,7 +2320,7 @@ $ nvcc -arch=sm_86 -rdc=true -lcudadevrt nested_hello_world.cu -o nested_hello_w
 
 Profiling con *Nsight Compute* (tuttavia, il tracciamento dei kernel CDP per le architetture GPU Volta e superiori non è supportato).
 
-== Output (Terminale)
+#green_heading("Output (Terminale)")
 
 ```
 ./nestedHelloWorld Configuration: grid 1 block 8
@@ -2344,7 +2344,7 @@ Recursion=0: Hello World from thread 7 block 0
                                                        Recursion=3: Hello World from thread 0 block 0
 ```
 
-= Nested Hello World : Compilazione ed Esecuzione
+=== Nested Hello World : Compilazione ed Esecuzione
 
 Ora, si provi a invocare la griglia parent con 2 blocchi invece di uno solo:
 
@@ -2358,9 +2358,9 @@ Perché l'ID dei blocchi per le griglie child è sempre 0 nei messaggi di output
 nestedHelloWorld<<<1, nthreads>>>(nthreads, ++iDepth);
 ```
 
-#figure(image("images/_page_112_Figure_5_2.2.jpeg"))
+#image("images/_page_112_Figure_5_2.2.jpeg")
 
-==== Output (Terminale)
+============ Output (Terminale)
 
 ```
 ./nestedHelloWorld Configuration: grid 1 block 8
@@ -2402,35 +2402,35 @@ Recursion=3: Hello World from thread 0 block 0
 Recursion=3: Hello World from thread 0 block 0
 ```
 
-= Restrizioni sul Parallelismo Dinamico
+=== Restrizioni sul Parallelismo Dinamico
 
-== Compatibilità dei Dispositivi
+#green_heading("Compatibilità dei Dispositivi")
 
 Supportato solo da device con capacità di calcolo *≥ 3.5*.
 
-== Limitazioni di Lancio
+#green_heading("Limitazioni di Lancio")
 
 I kernel *non* possono essere lanciati su device *fisicamente separati*.
 
-== Profondità Massima di Nidificazione
+#green_heading("Profondità Massima di Nidificazione")
 
 - Nesting depth imitata a *24 livelli*
 - Nella pratica, limitata dalla memoria richiesta dal *runtime* del device.
 - Runtime riserva *memoria aggiuntiva* per sincronizzazione griglia padre-figlio.
 
-== Deprecazione
+#green_heading("Deprecazione")
 
 - L'uso di *cudaDeviceSynchronize* nel *codice device* è stato *deprecato* in CUDA 11.6 (la versione host-side rimane supportata). Rimosso per compute capability > 9.0.
 - Per GPU con compute capability < 9.0 (es. Tesla T4 in Google Colab) e versione di CUDA ≥ 11.6 è possibile *forzare il supporto* usando il flag di compilazione *-D CUDA\_FORCE\_CDP1\_IF\_SUPPORTED*.
 
-= Riferimenti Bibliografici
+=== Riferimenti Bibliografici
 
-== Testi Generali
+#green_heading("Testi Generali")
 
 - Cheng, J., Grossman, M., McKercher, T. (2014). *Professional CUDA C Programming*. Wrox Pr Inc. (1^ edizione)
 - Kirk, D. B., Hwu, W. W. (2022). *Programming Massively Parallel Processors*. Morgan Kaufmann (4^ edizione)
 
-== NVIDIA Docs
+#green_heading("NVIDIA Docs")
 
 - CUDA Programming:
   - <http://docs.nvidia.com/cuda/cuda-c-programming-guide/>

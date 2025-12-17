@@ -38,13 +38,19 @@ def convert_markdown_to_typst(input_file, output_file=None):
     processed_lines = []
     
     for line in lines:
+        if line.startswith('== '):
+            # Convert ""== String" in #green_heading("String")
+            new_line = line[2:].strip().replace('*','')
+            line = f'#green_heading("{new_line}")'
         if line.startswith('='):
             # Remove all * from header lines
             line = line.replace('*', '')
+            line = line.replace('=','===')
         else:
             # Replace ** with * in non-header lines
             line = line.replace('**', '*')
         processed_lines.append(line)
+        
     
     content = '\n'.join(processed_lines)
     
@@ -57,9 +63,10 @@ def convert_markdown_to_typst(input_file, output_file=None):
     # Replace image references
     # Pattern to match ![](_some_image_path)
     image_pattern = r'!\[\]\(([^)]+)\)'
-    # Replace with #figure(image("images/\1"))
-    content = re.sub(image_pattern, r'#figure(image("images/\1"))', content)
+    # Replace with #image("images/\1")
+    content = re.sub(image_pattern, r'#image("images/\1")', content)
     content = content.replace(".jpeg", "_2.2.jpeg")
+
     
     # Determine output file if not provided
     if output_file is None:

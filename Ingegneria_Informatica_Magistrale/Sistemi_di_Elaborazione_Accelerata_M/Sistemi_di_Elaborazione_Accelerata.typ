@@ -8,6 +8,8 @@
 //Codly
 #show: codly-init.with()
 
+// Disabilita la funzione smallcaps per le celle (di tabelle)
+#show smallcaps: it => it.body
 
 #codly(
   languages: (
@@ -57,10 +59,12 @@
     ]
   )
 )
+
 #set heading(numbering: "1.1.1.1.1.1")
 
 // Variables
 #let dark_orange = rgb("#e6a700")
+#let light_orange = rgb("#FF9900")
 #let light_green = rgb("#85B911")
 #let light_blue = rgb("#3D85C6")
 #let nvidia-green = rgb("#76B900")
@@ -83,6 +87,10 @@
 
 #let blue_heading(body) = {
   text(weight: "bold", fill: light_blue)[#body]
+}
+
+#let orange_heading(body) = {
+  text(weight: "bold", fill: light_orange)[#body]
 }
 
 
@@ -5103,6 +5111,9 @@ __global__ void array_sum(float *A, float *B, float *C, int N) {
     image("images/_page_33_Figure_13_2.2.jpeg")
   )
 
+==== Organizzazione dei Thread e Warp
+
+
 // GreenBlock
 #block(
   //fill: rgb("#F5F9E8"),
@@ -5164,59 +5175,3029 @@ __global__ void array_sum(float *A, float *B, float *C, int N) {
     i thread in warp, gestire il mapping hardware.
   - L'ID di un thread in un blocco multidimensionale viene 
     calcolato usando *threadIdx* e *blockDim*
-  ```
-  ○ Caso 2D: 
-  ○ Caso 3D:
-        threadIdx.z * blockDim.y * blockDim.x +/
-            + threadIdx.y * blockDim.x + threadIdx.x
-              threadIdx.y * blockDim.x + threadIdx.x
-  ```
+
+    - *Caso 2D*: #h(1em) `threadIdx.y * blockDim.x + threadIdx.x`
+    - *Caso 3D*: #h(1em) `threadIdx.z * blockDim.y * blockDim.x +
+          + threadIdx.y * blockDim.x + threadIdx.x`
+    - *Calcolo del Numero di Warp*: #h(1em) `ceil(ThreadsPerBlock/warpSize)`
+  - L'hardware alloca #underline[sempre] un numero *discreto* di warp.
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Mapping Multidimensionale (Caso 2D)*
+
+  - Esempio 2D: Un thread block 2D con 40 thread in x e 2 in y 
+    (80 thread totali) richiederà 3 warp (96 thread hardware). 
+    L'ultimo semi-warp (16 thread) sarà inattivo, consumando comunque risorse.
 ]
 
 
 
-
-- *Calcolo del Numero di Warp: ceil(*ThreadsPerBlock/warpSize*)*
-- L'hardware alloca sempre un numero *discreto* di warp.
-
-== Organizzazione dei Thread e Warp
-
-=== Thread Blocks e Warp
-
-- Punto di Vista Logico: Un blocco di thread è una collezione di thread organizzati in un layout 1D, 2D o 3D.
-- Punto di Vista Hardware: Un blocco di thread è una <u>collezione 1D di warp</u>. I thread in un blocco sono organizzati in un layout 1D e ogni insieme di 32 thread consecutivi (con ID consecutivi) forma un warp.
-
-=== Mapping Multidimensionale (Caso 2D)
-
-Esempio 2D: Un thread block 2D con 40 thread in x e 2 in y (80 thread totali) richiederà 3 warp (96 thread hardware). L'ultimo semi-warp (16 thread) sarà inattivo, consumando comunque risorse.
-
 #figure(image("images/_page_36_Figure_6_2.2.jpeg"))
 
-== Warp: L'Unità Fondamentale di Esecuzione nell'SM
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Warp: L'Unità Fondamentale di Esecuzione nell'SM")
 
-- Un warp viene assegnato a una sub-partition, solitamente in base al suo ID, dove rimane fino al completamento.
-- Una sub-partition gestisce un "pool" di warp concorrenti di dimensione fissa (es., Turing 8 warp, Volta 16 warp).
+  - Un warp viene *assegnato* a una sub-partition, solitamente in base al 
+    suo ID, dove rimane #underline[fino al completamento].
+  - Una sub-partition gestisce un *"pool" di warp concorrenti* di #underline[dimensione 
+    fissa] (es., Turing 8 warp, Volta 16 warp).
+]
+
+
 
 #figure(image("images/_page_37_Figure_3_2.2.jpeg"))
 
-= Compute Capability (CC) - Limiti su Blocchi e Thread
+==== Compute Capability (CC) - Limiti su Blocchi e Thread
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - La *Compute Capability (CC)* di NVIDIA è un numero che identifica 
+    le *caratteristiche* e le *capacità* di una GPU NVIDIA in termini 
+    di funzionalità supportate e limiti hardware.
+  - È composta da *due numeri*: il numero principale indica la *generazione*
+    dell'architettura, mentre il numero secondario indica *revisioni* e 
+    *miglioramenti* all'interno di quella generazione.
+]
 
-- La *Compute Capability (CC)* di NVIDIA è un numero che identifica le *caratteristiche* e le *capacità* di una GPU NVIDIA in termini di funzionalità supportate e limiti hardware.
-- È composta da *due numeri*: il numero principale indica la *generazione* dell'architettura, mentre il numero secondario indica *revisioni* e *miglioramenti* all'interno di quella generazione.
+// --- Helper Functions ---
+// Per i nomi delle architetture (Verde, Bold, Mono)
+#let arch(name) = text(font: "Liberation Mono", weight: "bold", fill: nvidia-green, name)
+// Per i dati numerici (Nero, Mono)
+#let num(val) = text(font: "Liberation Mono", val)
+// Per le intestazioni (Bold, Sans-serif)
+#let hdr(txt) = text(weight: "bold", txt)
 
-|                       |              |           |                        |                     | *Valori concorrenti per singolo SM |
-|-----------------------|--------------|-----------|------------------------|---------------------|------------------------------------|
-| Compute<br>Capability | Architettura | Warp Size | Max Blocchi<br>per SM* | Max Warp<br>per SM* | Max Threads<br>per SM*             |
-| 1.x                   | Tesla        | 32        | 8                      | 24/32               | 768/1024                           |
-| 2.x                   | Fermi        | 32        | 8                      | 48                  | 1536                               |
-| 3.x                   | Kepler       | 32        | 16                     | 64                  | 2048                               |
-| 5.x                   | Maxwell      | 32        | 32                     | 64                  | 2048                               |
-| 6.x                   | Pascal       | 32        | 32                     | 64                  | 2048                               |
-| 7.x                   | Volta/Turing | 32        | 16/32                  | 32/64               | 1024/2048                          |
-| 8.x                   | Ampere/Ada   | 32        | 16/24                  | 48/64               | 1536/2048                          |
-| 9.x                   | Hopper       | 32        | 32                     | 64                  | 2048                               |
-| 10.x/12.x             | Blackwell    | 32        | 32                     | 64/48               | 2048/1536                          |
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+  breakable: false,
+)[
+  #table(
+    columns: (auto, auto, auto, auto, auto, auto),
+    // Allinea tutto al centro orizzontalmente e verticalmente
+    align: center + horizon, 
+    stroke: none,
+    column-gutter: 0.1em,
+    row-gutter: -0.5em, // Spaziatura verticale comoda come nell'immagine
 
-// [https://en.wikipedia.org/wiki/CUDA=Version\features\and\specifications](https://en.wikipedia.org/wiki/CUDA=Version_features_and_specifications)
+    // --- Intestazioni ---
+    // Uso le interruzioni di riga manuali (\) per replicare l'impaginazione
+    hdr[Compute\ Capability],
+    hdr[Architettura],
+    hdr[Warp Size],
+    hdr[Max Blocchi\ per SM\*],
+    hdr[Max Warp\ per SM\*],
+    hdr[Max Threads\ per SM\*],
 
-== Warp: Contesto di Esecuzion
+    // --- Riga 1 ---
+    num[1.x], arch[Tesla], num[32], num[8], num[24/32], num[768/1024],
+    
+    // --- Riga 2 ---
+    num[2.x], arch[Fermi], num[32], num[8], num[48], num[1536],
+
+    // --- Riga 3 ---
+    num[3.x], arch[Kepler], num[32], num[16], num[64], num[2048],
+
+    // --- Riga 4 ---
+    num[5.x], arch[Maxwell], num[32], num[32], num[64], num[2048],
+
+    // --- Riga 5 ---
+    num[6.x], arch[Pascal], num[32], num[32], num[64], num[2048],
+
+    // --- Riga 6 ---
+    num[7.x], arch[Volta/Turing], num[32], num[16/32], num[32/64], num[1024/2048],
+
+    // --- Riga 7 ---
+    num[8.x], arch[Ampere/Ada], num[32], num[16/24], num[48/64], num[1536/2048],
+
+    // --- Riga 8 ---
+    num[9.x], arch[Hopper], num[32], num[32], num[64], num[2048],
+
+    // --- Riga 9 ---
+    num[10.x/12.x], arch[Blackwell], num[32], num[32], num[64/48], num[2048/1536],
+  )
+]
+
+#align(center)[https://en.wikipedia.org/wiki/CUDA=Version_features_and_specifications]
+
+
+==== Warp: Contesto di Esecuzione
+#let c-red = rgb("#ff0000")
+
+// --- Funzioni Helper per i Box ---
+
+// Box Esterno (Linea continua verde)
+#let main-box(body) = block(
+  stroke: (paint: nvidia-green, thickness: 1.5pt),
+  radius: 8pt,
+  inset: 15pt,
+  width: 100%,
+  body
+)
+
+// Box Interni (Linea tratteggiata)
+#let dashed-box(color, body) = block(
+  stroke: (paint: color, dash: "dashed", thickness: 1pt),
+  radius: 5pt,
+  inset: 8pt,
+  width: 100%,
+  body
+)
+
+// --- Layout del Documento ---
+
+
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  main-box[
+  #set text(size: 8pt)
+  // Punto elenco principale
+  #list(marker: [•], body-indent: 0.5em)[
+    Il contesto di *esecuzione locale* di un warp in un SM contiene:
+  ]
+
+  #v(0.5em)
+
+  // --- PRIMO BLOCCO: VERDE (con testo ruotato) ---
+  #dashed-box(nvidia-green)[
+    #grid(
+      columns: (auto, 1fr),
+      column-gutter: 0.8em,
+      
+      // Colonna 1: Etichetta Ruotata
+      align(center + horizon)[
+        #rotate(-90deg, reflow: true)[
+          #text(fill: nvidia-green, size: 8pt)[Volta- : Per warp]\
+          #text(fill: nvidia-green, size: 8pt)[Volta+ : Per thread]
+        ]
+      ],
+      
+      // Colonna 2: Lista
+      [
+        #set list(marker: circle(radius: 1.5pt, stroke: black))
+        #list(
+          spacing: 0.6em,
+          [*Program Counter (PC)*: Indica l’indirizzo della prossima istruzione da eseguire.],
+          [*Call Stack*: Struttura dati che memorizza le informazioni sulle chiamate di funzione, inclusi gli indirizzi di ritorno, gli argomenti, array e strutture dati più grandi.]
+        )
+      ]
+    )
+  ]
+
+  #v(0.3em)
+
+  // --- SECONDO BLOCCO: ROSSO (Registri) ---
+  #dashed-box(c-red)[
+    #set list(marker: circle(radius: 1.5pt, stroke: black))
+    // Aggiungo un h(2.5em) manuale o uso un grid simile sopra per allineare perfettamente i pallini
+    // se necessario, ma qui lascio il flow naturale del blocco.
+    #list(
+      [*Registri*: Memoria veloce e #underline[privata] per ogni thread, utilizzata per memorizzare variabili e dati temporanei.]
+    )
+  ]
+
+  #v(0.2em) // Spazio ridotto tra i due blocchi rossi
+
+  // --- TERZO BLOCCO: ROSSO (Memoria Condivisa) ---
+  #dashed-box(c-red)[
+    #set list(marker: circle(radius: 1.5pt, stroke: black))
+    #list(
+      [*Memoria Condivisa*: Memoria veloce e #underline[condivisa] tra i thread di un blocco utile per comunicare.]
+    )
+  ]
+
+  #v(0.3em)
+
+  // --- LISTA RIMANENTE (Senza box) ---
+  #set list(marker: circle(radius: 1.5pt, stroke: black))
+  #list(
+    spacing: 0.6em,
+    [*Thread Mask*: Indica quali thread del warp sono attivi o inattivi durante l’esecuzione di un’istruzione.],
+    [*Stato di Esecuzione*: Informazioni sullo stato corrente del warp (es. in esecuzione/in stallo/eleggibile).],
+    [*Warp ID*: Identificatore che consente di distinguere i warp e calcolare l’offset nel register file per ogni thread nel warp.]
+  )
+
+  #v(0.8em)
+
+  // --- FOOTER ---
+  #list(marker: [•], body-indent: 0.5em)[
+    L'SM mantiene *on-chip* il contesto di ogni warp #underline[per tutta la sua durata], quindi il *cambio di contesto è senza costo*.
+  ]
+],
+  //Box destro
+  image("images/_page_39_Figure_12_2.2.png")
+)
+
+
+
+
+
+
+==== Parallelismo a Livello di Warp nell'SM
+
+#figure(image("images/_page_41_2.2.png"))
+
+=== Classificazione dei Thread Block e Warp
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Thread Block Attivo (Active Block)")
+
+  - Un thread block viene considerato *attivo* (o *residente*) quando gli vengono 
+    allocate risorse di calcolo di un SM come registri e memoria condivisa 
+    (non significa che tutti i suoi warp siano in esecuzione simultaneamente 
+    sulle unità).
+  - I warp contenuti in un thread block attivo sono chiamati *warp attivi.*
+  - Il numero di blocchi/warp attivi in ciascun istante è *limitato dalle 
+    risorse* dell'SM (compute capability).
+]
+
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Tipi di Warp Attivi")
+
+  + *Warp Selezionato (Selected Warp)*
+    - Un warp #underline[in esecuzione] attiva su un'unità di 
+      elaborazione (FP32, INT32, Tensor Core, etc.).
+  + *Warp in Stallo (Stalled Warp)*
+    - Un warp #underline[in attesa] di dati o risorse, impossibilitato 
+      a proseguire l'esecuzione.
+    - Cause comuni: latenza di memoria, dipendenze da istruzioni, sincronizzazioni.
+  + *Warp Eleggibile/Candidato (Eligible Warp)*
+    - Un warp #underline[pronto] (ma ancora non scelto) per l'esecuzione, 
+      con tutte le risorse necessarie disponibili.
+    - Condizioni per l'eleggibilità:
+      - *Disponibilità Risorse*: I thread del warp devono essere allocabili 
+        sulle unità di esecuzione disponibili.
+      - *Prontezza Dati*: Gli argomenti dell'istruzione corrente devono 
+        essere pronti (es. dati dalla memoria).
+      - *Nessuna Dipendenza Bloccante*: Risolte tutte le dipendenze con 
+        le istruzioni precedenti.
+]
+
+=== Classificazione degli Stati dei Thread
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Thread all'interno di un Warp")
+
+  - Un warp contiene sempre 32 thread, ma non tutti potrebbero essere 
+    logicamente attivi.
+  - Lo stato di ogni thread è tracciato attraverso una *thread mask* o 
+    *maschera di attività* (un registro hardware a 32 bit).
+] 
+
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Stati dei Thread")
+  #figure(image("images/_page_42_Figure_8_2.2.jpeg", width: 70%))
+
+  + Thread Attivo (Active Thread)
+    - Esegue l'istruzione corrente del warp.
+    - o Contribuisce attivamente all'esecuzione *SIMT*.
+  + Thread Inattivo (Inactive Thread)
+    - *Divergenza*: Ha seguito un percorso diverso nel warp per istruzioni 
+      di controllo flusso, come salti condizionali.
+    - *Terminazione*: Ha completato la sua esecuzione prima di altri thread nel warp.
+    - *Padding*: I thread di padding sono utilizzati in situazioni in cui 
+      il numero totale di thread nel blocco non è un multiplo di 32, per 
+      garantire che il warp sia completamente riempito (puro overhead).
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Gestione degli Stati*
+
+  - Gli stati sono *gestiti automaticamente dall'hardware* attraverso maschere di esecuzione.
+  - La transizione tra stati è dinamica durante l'esecuzione, quindi il numero di thread attivi può variare nel tempo. 
+]
+
+
+
+=== Scheduling dei Warp
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Introduzione al Warp Scheduler")
+
+  - Un'*unità hardware* presente in più copie all'interno di ogni 
+    SM, responsabile della *selezione* e *assegnazione* dei warp 
+    alle unità di calcolo CUDA.
+  - *Obiettivo*: Massimizzare l'utilizzo delle risorse di calcolo 
+    dell'SM, selezionando in modo efficiente i warp pronti e minimizzando 
+    i tempi di inattività.
+  - *Latency Hiding*: Contribuiscono a nascondere la latenza eseguendo 
+    warp alternativi quando altri sono in stallo, garantendo un utilizzo 
+    efficace delle risorse computazionali (prossime slide).
+
+  #green_heading("Funzionamento Generale")
+  - *Processo di Schedulazione*: I warp scheduler all'interno di un 
+    SM #underline[selezionano i warp eleggibili] ad ogni ciclo di clock e #underline[li 
+    inviano alle dispatch unit], responsabili dell'assegnazione 
+    effettiva alle unità di esecuzione.
+  - *Gestione degli Stalli*: Se un warp è in stallo, il warp scheduler 
+    seleziona un altro warp eleggibile per l'esecuzione, garantendo 
+    consentendo l'esecuzione continua e l'uso ottimale delle risorse di calcolo.
+  - *Cambio di Contesto*: Il cambio di contesto tra warp è estremamente 
+    rapido (on-chip per tutta la durata del warp) grazie alla partizione 
+    delle risorse di calcolo e alla struttura hardware della GPU.
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Limiti Architettonici*
+
+  - Il numero di warp attivi su un SM è limitato dalle risorse 
+    di calcolo. (Esempio: 64 warp concorrenti su un SM Kepler).
+  - Il numero di warp selezionati ad ogni ciclo è limitato dal 
+    numero di scheduler di warp. (Esempio: 4 su un SM Kepler).
+]
+
+#pagebreak()
+==== Warp Scheduler e Dispatch Unit
+
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  
+  // GreenBlock
+  {block(
+    //fill: rgb("#F5F9E8"),
+    stroke: 1pt + light_green,
+    radius: 0.8em,
+    inset: 1.5em,
+    width: 100%,
+    // height: 21em,
+    breakable: false
+  )[
+    #green_heading("Warp Scheduler")
+
+    - È il "*cervello strategico*" che decide *#underline[quali]* warp mandare in esecuzione.
+    - *Monitora* continuamente lo *stato dei warp* per identificare quelli eleggibili.
+    - Gestisce la *priorità* e l'*ordine* di esecuzione dei warp, 
+      cercando di minimizzare le latenze (_latency hiding_).
+  ]
+  // GreenBlock
+  block(
+    //fill: rgb("#F5F9E8"),
+    stroke: 1pt + light_green,
+    radius: 0.8em,
+    inset: 1.5em,
+    width: 100%,
+    // height: 21em,
+    breakable: false
+  )[
+    #green_heading("Dispatch Unit")
+    - È il "*braccio esecutivo*" che si occupa di *come* eseguire i warp selezionati.
+    - Si occupa di:
+      - *Decodificare le istruzioni* del warp.
+      - *Distribuire i thread* del warp alle unità di calcolo 
+        appropriate (es. FP, INT, Tensor Cores).
+      - *Recuperare i dati* dai registri e dalla memoria necessaria 
+        per l'esecuzione.
+      - *Assegnare fisicamente le risorse* hardware (registri, 
+        unità di calcolo) ai thread.
+
+  ]},
+  //Box destro
+  figure(image("images/_page_44_Figure_13_2.2.jpeg"))
+)
+
+
+==== Scheduling dei Warp: TLP e ILP
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Thread-Level Parallelism (TLP)")
+
+  - *Definizione*: Esecuzione simultanea di più warp per sfruttare 
+    il parallelismo tra thread.
+  - *Funzionamento*: Quando un warp è in attesa (ad esempio, per 
+    completare un'istruzione), un altro warp viene selezionato ed 
+    eseguito, aumentando l'occupazione delle unità di calcolo.
+
+  #green_heading("Instruction-Level Parallelism (ILP)")
+
+  - *Definizione*: Esecuzione di istruzioni indipendenti all'interno 
+    dello stesso warp.
+  - *Funzionamento:* Se ci sono più istruzioni pronte da eseguire 
+    in un warp, il warp scheduler può emettere queste istruzioni in 
+    parallelo alle unità di esecuzione, massimizzando l'utilizzo 
+    delle risorse (pipelining).
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Importanza di TLP e ILP")
+
+  - *Massimizzazione delle Risorse*: TLP e ILP contribuiscono a 
+    mantenere le unità di calcolo attive e occupate, riducendo i 
+    tempi morti durante l'esecuzione.
+  - *Nascondere la Latenza*: TLP e ILP insieme aiutano a nascondere la 
+    latenza delle operazioni di memoria e di calcolo, migliorando le 
+    prestazioni complessive del sistema (vedi _latency hiding_).
+]
+
+
+=== Esecuzione Parallela dei Warp - Esempio con Fermi SM
+
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  {
+    block(
+      //fill: rgb("#F5F9E8"),
+      stroke: 1pt + light_green,
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #set text(size: 8pt)
+      #text(fill: light_green, weight: "bold")[Componenti Chiave per il Parallelismo]
+
+      - *Due Scheduler di Warp*: Selezionano due warp pronti da 
+        eseguire dai thread block assegnati all'SM.
+      - *Due Unità di Dispatch delle Istruzioni*: Inviano le 
+        istruzioni dei warp selezionati alle unità di esecuzione.
+
+      #text(fill: light_green, weight: "bold")[Flusso di Esecuzione]
+
+      - I blocchi vengono assegnati all'SM e *divisi in warp*.
+      - Due scheduler selezionano warp *pronti* per l'esecuzione.
+      - Ogni dispatch unit invia un'istruzione per warp a 16 
+        CUDA Core, 16 unità di caricamento/memorizzazione (LD/ST), 
+        4 unità di funzioni speciali (SFU).
+      - Questo processo *si ripete ciclicamente*, consentendo 
+        l'esecuzione parallela di più warp da più blocchi.
+
+    ]
+
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #set text(size: 8pt)
+      *Capacità*
+
+      Fermi (compute capability 2.x) può gestire simultaneamente *48 warp* 
+      per SM, per un totale di *1.536 thread residenti* in un singolo SM. 
+      Ad ogni ciclo, al più *2 selected warps*.
+    ]
+  },
+  {
+    v(5em)
+    image("images/_page_46_Figure_12_2.2.jpeg")
+    dashed-box(
+      black,
+      "Poiché le risorse di calcolo sono partizionate tra i warp e mantenute *on-chip* durante l'intero ciclo di vita del warp, il cambio di contesto tra warp è immediato."
+    )
+  }
+)
+
+
+=== Scheduling Dinamico dell Istruzioni - Fermi SM
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - Ad ogni ciclo di clock, un warp scheduler *emette un'istruzione* 
+    pronta per l'esecuzione.
+  - L'istruzione può provenire *dallo stesso warp* (ILP), #underline[se indipendente], 
+    o più spesso da un warp diverso (TLP).
+  - Se le risorse sono occupate, lo scheduler passa a un altro 
+    warp pronto (_latency hiding_).
+
+]
+
+#figure(image("images/_page_47_2.2.png"))
+
+=== Latency, Throughput e Concurrency
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - #green_heading("Mean Latency:") La latenza media è la *media delle latenze* degli elementi individuali. La latenza di un singolo elemento è la differenza tra il suo tempo di inizio e il suo tempo di fine.
+  - #green_heading("Throughput:") Il throughput rappresenta la velocità di elaborazione. È definito come il *numero di elementi completati entro un dato intervallo di tempo* diviso per la durata dell'intervallo stesso.
+  - #green_heading("Concurrency:") La concurrency misura *quanti elementi vengono processati contemporaneamente* in un determinato momento. Si può definire sia istantaneamente che come media su un intervallo di tempo.
+]
+#figure(image("images/_page_48_Figure_4_2.2.jpeg"))
+
+=== Latency Hiding nelle GPU
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cosa è il Latency Hiding?")
+
+  - Una tecnica che permette di *mascherare i tempi di attesa* dovuti ad operazioni ad alta latenza (come gli accessi alla memoria globale) attraverso l'esecuzione concorrente di più warp all'interno di un SM.
+  - Si ottiene *intercambiando la computazione tra warp*, per massimizzare l'uso delle unità di calcolo di ogni SM.
+
+  #green_heading("Funzionamento")
+
+  - Ogni SM può gestire decine di warp concorrentemente da più blocchi (vedi compute capability della GPU).
+  - Quando un warp è in stallo (es. accesso memoria), l'SM passa immediatamente all'esecuzione di altri warp pronti.
+  - I Warp Scheduler dell'SM selezionano costantemente (ad ogni ciclo 
+    di clock) i warp pronti all'esecuzione (#underline[occorre che abbiano sempre 
+    warp eleggibili ad ogni ciclo]).
+
+  #green_heading("Vantaggi del Latency Hiding")
+
+  - *Migliore Utilizzo delle Risorse*: Le unità di elaborazione della GPU sono mantenute costantemente attive.
+  - *Maggiore Throughput*: Completamento di un maggior numero di operazioni nello stessa unità di tempo.
+  - *Minore Latenza Effettiva*: Minimizza l'impatto delle operazioni ad alta latenza.
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Tipi di Latenza* (variano a seconda dell'architettura e dalla tipologia di operazione)
+
+  - *Latenza Aritmetica*: Tempo di completamento di operazioni matematiche (bassa, es. 4-20 cicli).
+  - *Latenza di Memoria*: Tempo di accesso ai dati in memoria (alta, es. 400-800 cicli per la memoria globale).
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Meccanismo dei Warp Scheduler")
+
+  - L'immagine mostra *due warp scheduler* che gestiscono l'esecuzione di diversi warp nel tempo.
+  - Warp Scheduler 0 e 1 *alternano l'esecuzione di warp diversi* per mantenere le unità di elaborazione occupate.
+  - Quando un warp è in attesa (es. Warp 0 all'inizio), *altri warp vengono eseguiti* per nascondere la latenza.
+  - I periodi di inattività (es. 'nessun eligible warp da eseguire') sono *minimizzati.*
+  - Questo approccio permette di *mascherare i tempi di latenza* e aumentare l'efficienza complessiva.
+  - Risorse pienamente utilizzate quando ogni scheduler ha un warp eleggibile ad *ogni ciclo di clock*.
+]
+#figure(image("images/_page_50_Figure_8_2.2.jpeg"))
+
+=== Legge di Little
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cos'è la Legge di Little?")
+
+  - La Legge di Little (dalla teoria delle code) ci aiuta a calcolare *quanti 
+    warp (#underline[approssimativamente]) devono essere in esecuzione 
+    concorrente* per ottimizzare il latency hiding e mantenere le unità 
+    di elaborazione della GPU occupate. 
+    #align(center)[#green_heading(`Warp Richiesti = Latenza x Throughput`)]
+
+    - *Latenza:* Tempo di completamento di un'istruzione (in cicli di clock).
+    - *Throughput:* Numero di warp (e, quindi, di operazioni) eseguiti per ciclo di clock.
+    - *Warp Richiesti:* Numero di warp attivi necessari per nascondere la latenza.
+  
+  - Indica che per nascondere la latenza, è necessario avere un *numero sufficiente di warp in esecuzione o pronti per l'esecuzione*, in modo che mentre uno è in attesa, altri possano essere eseguiti.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Note*
+
+  - La *latenza* e il *throughput* possono variare a seconda dell'architettura della GPU e del tipo di istruzioni.
+  - Questa è una *stima*, il numero effettivo di warp necessari potrebbe essere leggermente diverso.
+]
+
+
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  {
+    // GreenBlock
+    block(
+      //fill: rgb("#F5F9E8"),
+      stroke: 1pt + light_green,
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #green_heading("Esempio della Legge di Little")
+
+      - *Latenza*: 5 Cicli
+      - *Throughput desiderato*: 6 warp/ciclo
+
+      Numero di Warp Richiesti = 5 x 6 = 30 warp in-flight.
+
+      In questo caso, per mantenere un throughput di 6 warp/ciclo 
+      con una latenza di 5 cicli, avremmo bisogno di almeno 30 warp 
+      in esecuzione o pronti per l'esecuzione.
+    ]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      *Nota*: Un warp (32 thread) che esegue un'istruzione corrisponde 
+      a *32 operazioni*  (1 operazione per thread)
+    ]
+  },
+  //Box destro
+  image("images/_page_52_Picture_7_2.2.jpeg")
+)
+
+
+=== Massimizzare il Parallelismo per Operazioni Aritmetiche
+
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+)[
+  // Helper per lo stile
+  #set text(size: 8pt)
+  #let arch(name) = text(font: "Liberation Mono", weight: "bold", fill: nvidia-green, name)
+  #let num(val) = text(font: "Liberation Mono", val)
+
+  #table(
+    columns: (auto, auto, auto, auto),
+    // Allineamento centrato per tutte le celle
+    align: center + horizon,
+    stroke: none,
+    column-gutter: 2em,
+    row-gutter: -0.8em,
+
+    // --- Intestazioni ---
+    [*Architettura*],
+    [*Latenza Istruzione*\ *(Cicli)*],
+    [*Throughput*\ *(Operazioni/Ciclo)*],
+    [*Parallelismo Necessario*\ *(Operazioni)*],
+
+    // --- Riga 1: Fermi ---
+    arch("Fermi"),
+    num("20"),
+    num("32 (1 warp/ciclo)"),
+    num("640 (20 warp)"),
+
+    // --- Riga 2: Kepler ---
+    arch("Kepler"),
+    num("20"),
+    num("192 (6 warp/ciclo)"),
+    // Composizione manuale per la parte rossa
+    [
+      #num("3,840 (")#text(fill: c-red, font: "Liberation Mono")[120 warp]#num(")")
+    ]
+  )
+]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Esempio: Operazione Multiply-Add a 32-bit Floating-Point (a + b ") 
+  #green_heading($times$) #green_heading(" c)")
+
+  Limite Warp/SM in Kepler è 64
+
+  Consideriamo una GPU con architettura Fermi:
+
+  - *Throughput*: 32 operazioni/ciclo/SM
+    - Un singolo SM può eseguire 32 operazioni di multiply-add a 32-bit 
+      floating-point per ciclo di clock.
+  - *Warp Richiesti per SM*: $640 div 32 "(operazioni per warp)" = 20 "warp"\/"SM" $
+    - Per raggiungere il throughput massimo e per mantenere il pieno 
+      utilizzo delle risorse computazionali, sono necessari 20 warp 
+      attivi contemporaneamente su ogni SM.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  Esistono due modi principali per aumentare il parallelismo:
+
+  - *ILP (Instruction-Level Parallelism)*: Aumentare il numero di istruzioni indipendenti all'interno di un singolo thread.
+  - *TLP (Thread-Level Parallelism)*: Aumentare il numero di thread (e quindi di warp) che possono essere eseguiti contemporaneamente.
+]
+=== Massimizzare il Parallelismo per Operazioni di Memoria
+
+
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+)[
+  // Helper per lo stile
+  #set text(size: 8pt)
+  #let arch(name) = text(font: "Liberation Mono", weight: "bold", fill: nvidia-green, name)
+  #let num(val) = text(font: "Liberation Mono", val)
+
+  #table(
+    columns: (auto, auto, auto, auto, auto),
+    // Allineamento centrato per tutte le celle
+    align: center + horizon,
+    stroke: none,
+    column-gutter: 2em,
+    row-gutter: -0.8em,
+
+    // --- Intestazioni ---
+    [*Architettura*],
+    [*Latenza*\ *(Cicli)*],
+    [*Bandwidth*\ *(GB/s)*],
+    [*Bandwidth*\ *(B/ciclo)*],
+    [*Parallelismo*\ *(KB)*],
+
+    // --- Riga 1: Fermi ---
+    arch("Fermi"),
+    num("800"),
+    num("144"),
+    num("92"),
+    num("74"),
+
+    // --- Riga 2: Kepler ---
+    arch("Kepler"),
+    num("800"),
+    num("250"),
+    num("96"),
+    num("77")
+  )
+]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Esempio: Operazione di Memoria")
+
+  Consideriamo sempre una GPU con *architettura Fermi*:
+
+  - *Calcolo del Bandwidth in Bytes/Ciclo:*
+    -$ 144 "GB"\/s div 1.566 "GHz" approx 92 "Bytes"\/"Ciclo"$ (#underline[Frequenza di 
+      memoria] Fermi -Tesla C2070 = 1.566 GHz)
+  - *Calcolo del Parallelismo Richiesto:*
+    - #green_heading("Parallelismo") = #green_heading("Bandwidth") (B/ciclo) 
+      $times$ #green_heading("Latenza Memoria") (cicli)
+    - Fermi: 92 B/ciclo $times$ 800 cicli ≈ 74 KB di I/O in-flight 
+      per saturare il bus di memoria.
+  - Memory Bandwidth è relativo all'intero device
+
+  - *Interpretazione:*
+    - 74 KB di operazioni di memoria necessarie per nascondere la latenza 
+      (per l'intero device, non per SM).
+      -  Memory Bandwidth è relativo all'intero device
+]
+#green_heading("Recuperare la Memory Frequency di una GPU NVIDIA (da terminale)")
+
+```sh
+$ nvidia-smi -a -q -d CLOCK | fgrep -A 3 "Max Clocks" | fgrep "Memory"
+```
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Esempio: Operazione di Memoria")
+
+  - Il legame tra questi valori e il numero di warp/thread *varia 
+    a seconda della specifica applicazione*.
+  - *Conversione in Thread/Warp* (Supponendo 4 bytes ad esempio, FP32 per thread):
+    - 74 KB $div$ 4 bytes/thread $approx$ 18,500 thread
+    - 18,500 thread  $div$  32 thread/warp  $approx$  579 warp
+    - Per 16 SM: 579 warp $div$ 16 SM = 36 warp per SM
+  - Ovviamente, se ogni thread eseguisse più di un caricamento indipendente da 4 byte o un tipo di dato più grande (es. FP64), sarebbero necessari meno thread per mascherare la latenza di memoria.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  Esistono due modi principali per aumentare il parallelismo di memoria:
+
+  - *Maggiore Granularità*: Spostare più dati per thread (ad esempio, 
+    caricare più float per thread).
+  - *Più Thread Attivi*: Aumentare il numero di thread concorrenti per 
+    aumentare il numero di warp attivi.
+]
+
+=== Warp Divergence
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cosa è la Warp Divergence?")
+
+  - In un warp, idealmente tutti i thread eseguono la *stessa istruzione contemporaneamente* per massimizzare il parallelismo SIMT (condividono un unico *Program Counter* [Architetture Pre-Volta] ).
+  - Tuttavia, se un'*istruzione condizionale* (come un `if-else` o `switch`) porta thread diversi a percorrere *rami diversi* del codice, si verifica la *Warp Divergence.*
+  - In questo caso, il warp esegue *serialmente ogni ramo*, utilizzando 
+    una *maschera di attività* (calcolata #underline[automaticamente] in hardware) 
+    per abilitare/disabilitare i thread.
+  - La divergenza termina quando i thread *riconvergono* alla fine del costrutto condizionale.
+  - La Warp Divergence *può significativamente degradare le prestazioni* perché i thread non vengono eseguiti in parallelo durante la divergenza (le risorse non vengono pienamente utilizzate).
+  - Notare che il fenomeno della divergenza occorre *solo all'interno di un warp*.
+]
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+Esempio
+
+```
+if (threadIdx.x % 2 == 0) {
+ // Istruzioni per thread con indice pari
+} else {
+ // Istruzioni per thread con indice dispari
+}
+```
+]
+=== CPU vs GPU: Gestione del Branching e della Warp Divergence
+
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+  breakable: false,
+)[
+  #grid(
+    columns: (auto, 1fr, 1fr),
+    column-gutter: 1.5em,
+    row-gutter: 0.8em,
+    
+    // --- Intestazione ---
+    [], // Cella vuota sopra la prima colonna
+    align(center, text(fill: device-blue, weight: "bold", size: 1.1em)[CPU]),
+    align(center, text(fill: nvidia-green, weight: "bold", size: 1.1em)[GPU]),
+
+    // --- Riga 1: Esecuzione ---
+    [*Esecuzione*],
+    [Singoli thread o piccoli gruppi, *indipendenti* tra loro.],
+    [Warp che eseguono le *stesse istruzioni* concorrentemente.],
+
+    dashed-line,
+
+    // --- Riga 2: Branch Prediction ---
+    [*Branch Prediction*],
+    [*Hardware dedicato*, con algoritmi di predizione complessi.],
+    [*Non supportata*],
+
+    dashed-line,
+
+    // --- Riga 3: Esecuzione Speculativa ---
+    [*Esecuzione Speculativa*],
+    [Esegue istruzioni *in anticipo* basandosi sulla *branch prediction*.],
+    [*Non supportata*],
+
+    dashed-line,
+
+    // --- Riga 4: Impatto della Divergenza ---
+    [*Impatto della Divergenza*],
+    [Mitigato dalla *branch prediction* e dall'*esecuzione speculativa*.],
+    [Causa la *warp divergence*, riducendo il parallelismo e le prestazioni.],
+
+    dashed-line,
+
+    // --- Riga 5: Gestione della Divergenza ---
+    [*Gestione della Divergenza*],
+    [*Predizione* del ramo più probabile e *esecuzione speculativa* del codice.],
+    [*Esecuzione seriale* dei rami divergenti nel warp, *disabilitando* i thread inattivi.],
+
+    dashed-line,
+
+    // --- Riga 6: Ottimizzazioni ---
+    [*Ottimizzazioni*],
+    [Meno critiche, gestite in parte *dall'hardware*.],
+    [*Branch predication* (non lo vedremo) e *riorganizzazione del codice* essenziali.],
+
+    dashed-line,
+
+    // --- Riga 7: Considerazioni ---
+    [*Considerazioni*],
+    [Il costo della predizione errata è *relativamente basso*.],
+    [Il costo della warp divergence è *elevato* a causa della perdita di parallelismo e dell'overhead di esecuzione seriale.],
+  )
+]
+
+==== Warp Divergence: Analisi del Flusso di Esecuzione
+
+#figure(image("images/_page_58_Figure_1_2.2.jpeg"))
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Flusso*
+
+  - All'inizio, tutti i thread eseguono lo stesso codice 
+    ((#text(fill: blue)[*blocchi blu*]).
+  - Quando si incontra un'*istruzione condizionale* 
+    (#text(fill: orange)[*blocchi arancioni*]), il warp si *divide*.
+  - Alcuni thread eseguono la clausola "#text(fill: nvidia-green)[*then*]"
+    (#text(fill: nvidia-green)[*blocchi verdi*]), 
+    mentre altri sono in #text(fill: rgb("#674EA7"))[*stallo*] 
+    (#text(fill: rgb("#674EA7"))[*blocchi viola*]).
+  - Nei momenti di divergenza, l'efficienza può scendere al 50% 
+    (in questo caso, 16 thread attivi su 32).
+]
+==== Serializzazione nella Warp Divergence
+// Griglia
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  block(
+    //fill: rgb("#F5F9E8"),
+    stroke: 1pt + light_green,
+    radius: 0.8em,
+    inset: 1.5em,
+    width: 100%,
+    // height: 21em,
+    breakable: false
+  )[
+    #green_heading("Divergenza")
+
+    Quando i thread di un warp seguono percorsi diversi a causa di istruzioni condizionali (es. *if*), il warp esegue ogni ramo in serie, *disabilitando i thread inattivi*.
+
+    #green_heading("Località")
+
+    - La divergenza si verifica solo all'interno di un *singolo warp*.
+    - Warp diversi operano *indipendentemente*.
+    - I passi condizionali in *differenti warp* non causano divergenza.
+
+    #green_heading("Impatto")
+
+    - La divergenza può ridurre il parallelismo *fino a 32 volte.*
+  ],
+  //Box destro
+  image("images/_page_59_Picture_9_2.2.jpeg")
+)
+
+
+
+
+#codly(header: [#align(center)[*Caso Peggiore*]])
+
+```cpp
+__global__ void WorstDivergence(int* x) {
+  int i = threadIdx.x + blockDim.x * blockIdx.x;
+  switch (i % 32) {
+    case 0 :
+      x[i] = a(x[i]);
+      break;
+    case 1 :
+      x[i] = b(x[i]);
+      break;
+    . . .
+    case 31:
+      x[i] = v(x[i]);
+      break;
+  }
+}
+```
+
+Le prestazioni diminuiscono con l'aumento della divergenza nei warp.
+
+==== Confronto delle Condizioni di Branch
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  {
+    // GreenBlock
+    block(
+      //fill: rgb("#F5F9E8"),
+      stroke: 1pt + light_green,
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #codly(header: [#align(center)[*Kernel 1*]])
+      ```cpp
+      __global__ void mathKernel1(float *sum) {
+      int tid = blockIdx.x * blockDim.x + threadIdx.x;
+      float a = 0.0f, b = 0.0f;
+      if (tid % 2 == 0) a = 100.0f;
+      else b = 200.0f;
+      *sum += a + b;} // Race condition (risolveremo con atomicAdd dopo)
+      ```
+    ]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+        #set text(size: 8pt)
+        #green_heading("Funzionamento")
+
+        Valuta la parità dell'*ID* di ogni singolo thread.
+
+        #green_heading("Effetto sui thread")
+
+        - *Thread pari* (ID 0, 2, 4, ...): eseguono il ramo *if*.
+        - *Thread dispari* (ID 1, 3,...): eseguono il ramo *else*.
+
+        #green_heading("Impatto sul warp")
+
+        In ogni warp (32 thread), 16 thread eseguono *if* e 16 eseguono *else*.
+
+        #green_heading("Risultato")
+
+        *Warp divergence*, con esecuzione serializzata dei due percorsi all'interno del warp.
+
+    ]
+  },
+    {
+    // GreenBlock
+    block(
+      //fill: rgb("#F5F9E8"),
+      stroke: 1pt + light_green,
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #codly(header: [#align(center)[*Kernel 2*]])
+      ```cpp
+      __global__ void mathKernel2(float *sum) {
+      int tid = blockIdx.x * blockDim.x + threadIdx.x;
+      float a = 0.0f, b = 0.0f;
+      if ((tid / warpSize) % 2 == 0) a = 100.0f;
+      else b = 200.0f;
+      *sum += a + b;}// Race condition (risolveremo atomicAdd dopo)
+      ```
+    ]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+        #set text(size: 8pt)
+        #green_heading("Funzionamento")
+        - tid \/ *warpSize*: Identifica l'*ID del warp* a cui appartiene il thread.
+        - (...) % 2: Determina la parità del numero del warp.
+
+        #green_heading("Effetto sui warp")
+
+        - *Warp pari*: tutti i 32 thread eseguono il ramo *if*.
+        - *Warp dispari*: tutti i 32 thread eseguono il ramo *else*.
+
+        #green_heading("Impatto sul warp")
+
+        Tutti i thread in un warp eseguono lo *stesso percorso.*
+
+        #green_heading("Risultato")
+
+        *Eliminazione del warp divergence*, con esecuzione parallela 
+        all'interno di ogni warp (nessun overhead).
+
+    ]
+  }
+)
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Branch Efficiency") (calcolata in #green_heading("Nsight Compute"))
+
+  La *Branch Efficiency* misura la percentuale di branch non divergenti rispetto al totale dei branch eseguiti da un warp.
+
+#math.equation(
+        numbering: none,
+        block: true, 
+        $ "Branch Efficiency" = 100 times ( (\# "Branches" - \# "DivergentBranches") 
+          / (\# "Branches") )$
+      )
+
+
+  - Un *valore elevato* indica che la maggior parte dei branch eseguiti dal warp non causa divergenza.
+  - Un *valore basso* indica un'elevata divergenza, con conseguente perdita di prestazioni.
+
+  ```
+  mathKernel1: Branch Efficiency 80.00%
+  mathKernel2: Branch Efficiency 100.00%
+  ```
+
+  *Nota*: Nonostante la warp divergence, il compilatore CUDA applica ottimizzazioni anche con *-G* abilitato, risultando in una branch efficiency di *`mathKernel1`* superiore al 50% teorico.
+]
+=== Architetture Pre-Volta (< CC 7.0)
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #image("images/_page_63_Figure_10_2.2.png")
+
+  - *Singolo Program Counter* e *Call Stack* condiviso per tutti i 
+    32 thread del warp (puntano alla stessa istruzione).
+  - Il warp agisce come una #underline[unità di esecuzione coesa/sincrona] (stato dei 
+    thread è tracciato a livello di warp intero).
+  - *Maschera di Attività (Active Mask)* per specificare i 
+    thread attivi nel warp in ciascun istante.
+  - La maschera viene *salvata* fino alla riconvergenza del warp, poi 
+    *ripristinata* per riesecuzione sincrona.
+
+  #green_heading("Limitazioni")
+
+  - Quando c'è divergenza, i thread che prendono branch diverse *perdono concorrenza* fino alla riconvergenza.
+  - Possibili *deadlock* tra thread in un warp, se i thread dipendono l'uno dall'altro in modo circolare.
+]
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  {green_heading("Esempio di Divergenza (Pseudo-Code)")
+  ```cpp
+  if (threadIdx.x < 4) { 
+    A; 
+    B; 
+  } else { 
+    X; 
+    Y; 
+  } 
+  Z;
+  ```},
+  {
+    v(3em)
+    image("images/page_63_Figure_2_2.2.png")
+  }
+  
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  // GrayBlock
+  block(
+    fill: rgb("#F3F3F3"),
+    radius: 0.8em,
+    inset: 1.5em,
+    width: 100%,
+    // height: 21em,
+    breakable: false
+  )[
+    #green_heading("Esempio di Potenziale Deadlock") 
+    ```cpp
+    if (threadIdx.x < 4) {
+      A;
+      waitOnB();
+    } else {
+      B;
+      waitOnA();
+    }
+    ```
+  ],
+  {
+    v(3em)
+    image("images/_page_64_Figure_1_2.2.png")
+  }
+)
+
+
+==== Architettura Volta (CC 7.0+) e Independent Thread Scheduling
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Concetto chiave")
+
+  L'*Independent Thread Scheduling (ITS)* consente #underline[piena concorrenza 
+  tra i thread], indipendentemente dal warp.
+]
+#figure(image("images/_page_65_Picture_3_2.2.jpeg"))
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Stato di Esecuzione per Thread")
+
+  - Ogni thread mantiene il *proprio stato di esecuzione*, inclusi program counter e stack di chiamate.
+  - Permette di #underline[cedere l'esecuzione] a livello di *singolo thread* (non sono più obbligati a eseguire in lockstep).
+
+  #green_heading("Attesa per Dati")
+
+  - Un thread può attendere che un altro thread produca dati, *facilitando 
+    la comunicazione e la sincronizzazione* tra di essi.
+  
+  #green_heading("Ottimizzazione della Pianificazione")
+    - Un *ottimizzatore di scheduling* raggruppa i thread attivi dello 
+      stesso warp in unità SIMT.
+    - Così facendo, si mantiene l'alto throughput dell'esecuzione SIMT, 
+      come nelle GPU NVIDIA precedenti.
+
+  #green_heading("Flessibilità Maggiore")
+
+  - I thread possono ora divergere e riconvergere indipendentemente con *granularità sub-warp*.
+  - Apre a pattern di programmazione che erano impossibili o problematici 
+    nelle architetture precedenti.
+]
+==== Confronto Pre-Volta vs Post-Volta
+
+#figure(image("images/_page_66_Figure_1_2.2.jpeg"))
+
+#figure(image("images/_page_67_Figure_1_2.2.jpeg"))
+
+=== Introduzione di `__syncwarp` in Volta
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Scopo")
+
+  - Introdotta dall'architettura Volta *per supportare l'ITS* e *migliorare la gestione della divergenza* dei thread.
+  - Permette di *sincronizzare esplicitamente e riconvergere* i thread 
+    #underline[all'interno di un warp].
+  - *Blocca l'esecuzione* del thread corrente finché tutti i thread 
+    specificati nella maschera non hanno raggiunto il punto di sincronizzazione.
+
+  ```cpp
+  void __syncwarp(unsigned mask=0xffffffff);
+  ```
+
+  #green_heading("Vantaggi")
+
+  - *Evita comportamenti non deterministici* dovuti alla divergenza intra-warp.
+  - Garantisce che tutti i thread del warp specificato *siano allineati prima di comunicare o accedere a dati condivisi*.
+  - Abilita l'*esecuzione sicura di algoritmi a grana fine* (riduzioni, scambi in shared memory, operazioni cooperative).
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Esempio di Utilizzo")
+
+  ```cpp
+  if (threadIdx.x < 16) {
+    // Codice per i primi 16 thread
+  } else {
+    // Codice per gli ultimi 16 thread
+  }
+  __syncwarp(); // Sincronizza tutti i thread del warp qui
+  ```
+
+  *Quando è davvero necessaria* #green_heading(`__syncwarp`)?
+
+  Dopo una divergenza:
+  - ❌ È superflua se ogni thread lavora su dati privati, senza comunicare.
+  - ✅ È necessaria se c'è comunicazione o dipendenza tra thread del warp.
+]
+
+
+=== Confronto Pre-Volta vs Post-Volta
+// --- Blocco Principale ---
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 15pt,
+  breakable: false,
+)[
+  #grid(
+    columns: (auto, 1fr, 1fr),
+    column-gutter: 1.5em,
+    row-gutter: 0.8em,
+    
+    // --- Intestazione ---
+    [], // Cella vuota sopra la prima colonna
+    align(center, text(fill: nvidia-green, weight: "bold", size: 1.1em)[Pre-Volta]),
+    align(center, text(fill: nvidia-green, weight: "bold", size: 1.1em)[Post-Volta]),
+
+    // --- Riga 1: Program Counter ---
+    [*Program Counter*],
+    [Singolo #underline[per warp]],
+    [Individuale #underline[per thread]],
+
+    dashed-line,
+
+    // --- Riga 2: Scheduling ---
+    [*Scheduling*],
+    [#underline[Lockstep]: tutti i thread del warp eseguono insieme],
+    [#underline[Indipendente]: ogni thread può progredire autonomamente],
+
+    dashed-line,
+
+    // --- Riga 3: Sincronizzazione ---
+    [*Sincronizzazione*],
+    [#underline[Implicita]: i thread sono automaticamente sincronizzati],
+    [#underline[Esplicita]: richiede #text(font: "Liberation Mono", fill: nvidia-green, weight: "bold")[`__syncwarp`]],
+
+    dashed-line,
+
+    // --- Riga 4: Divergenza ---
+    [*Divergenza*],
+    [Serializzazione dei rami divergenti],
+    [Esecuzione interlacciata dei rami possibile],
+
+    dashed-line,
+
+    // --- Riga 5: Deadlock Intra-Warp ---
+    [*Deadlock Intra-Warp*],
+    [Possibili in certi scenari],
+    [Largamente mitigati],
+
+    dashed-line,
+
+    // --- Riga 6: Prestazioni con Divergenza ---
+    [*Prestazioni con Divergenza*],
+    [Penalità per serializzazione],
+    [Penalità simile, nessun miglioramento intrinseco],
+
+    dashed-line,
+
+    // --- Riga 7: Complessità del Codice ---
+    [*Complessità del Codice*],
+    [Workaround necessari per certi algoritmi],
+    [Implementazioni più naturali possibili (ma richiede gestione esplicita)],
+  )
+]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #align(center)[
+    #text(weight: "extrabold", size: 13pt)[ITS: Limitazioni]
+  ]
+  - ITS non può esonerare gli sviluppatori da una programmazione 
+    parallela impropria. Nessuno scheduling hardware può salvare 
+    dal *livelock* (ovvero thread che sono Sche tecnicamente in esecuzione 
+    ma non fanno progressi reali).
+  - Il progresso è garantito *solo per i warp residenti* al momento. 
+    I thread rimarranno in Sinc attesa infinita se il loro progresso 
+    dipende da un warp che non lo è.
+  - Non garantisce la riconvergenza, quindi le assunzioni relative alla 
+    programmazione a Dive ssibile livello di warp potrebbero non essere 
+    valide (usare esplicitamente #green_heading(`__syncwarp`)).
+  - Bisogna prestare più attenzione per garantire il comportamento SIMD dei warp.
+  - ITS introduce *overhead hardware* per la gestione indipendente di 
+    program counter e Pres call stack per ogni thread, aumentando la 
+    flessibilità ma richiedendo più risorse. 
+
+]
+
+
+== Sincronizzazione e Comunicazione
+=== Sincronizzazione in CUDA - Motivazioni
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("1. Asincronia tra Host e Device")
+  - *Comportamento di Base*: L'host e il device operano in modo *asincrono*.
+  - Senza sincronizzazione, l'host potrebbe tentare di utilizzare risultati *non ancora pronti* o *modificare dati ancora in uso* dalla GPU.
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("2. Sincronizzazione tra Thread all'Interno di un Blocco")
+
+  - *Comportamento di Base*: I thread all'interno di un blocco possono 
+    eseguire in #underline[ordine arbitrario] e a #underline[velocità diverse].
+  - Quando i thread dello stesso blocco necessitano di condividere dati (utilizzando, ad esempio, la shared memory) o coordinare le loro azioni, è necessaria una sincronizzazione esplicita.
+  ]
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("3. Coordinazione all'Interno dei Warp")
+
+  - *Comportamento di Base*:
+    - *Pre-Volta*: I thread all'interno di un warp eseguivano sempre la stessa istruzione contemporaneamente (modello SIMD).
+    - *Post-Volta* (CUDA 9.0+): Introdotta l'esecuzione indipendente dei thread (ITS) nel warp.
+  - Con l'esecuzione indipendente dei thread, la sincronizzazione esplicita diventa necessaria per garantire la *coerenza nelle operazioni intra-warp*.
+]
+
+
+=== Race Condition (Hazard)
+
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cos'è?")
+
+  Una *race condition* si verifica quando più thread accedono *concorrentemente 
+  (almeno uno in scrittura)* e in modo *non sincronizzato* alla #underline[stessa locazione 
+  di memoria], causando *risultati imprevedibili ed errori*.
+
+  #green_heading("Tipi di Race Condition (Noti anche nella pipeline dei processori)")
+
+  - *Read-After-Write (RAW):* Un thread legge prima che un altro finisca di scrivere.
+  - *Write-After-Read (WAR):* Un thread scrive dopo che un altro ha letto, invalidando il valore.
+  - *Write-After-Write (WAW):* Più thread scrivono nella stessa locazione, rendendo il valore indeterminato.
+
+  #green_heading("Perché si verificano?")
+
+  - I thread in un blocco sono logicamente paralleli ma #underline[non sempre 
+    fisicamente simultanei].
+  - Sono eseguiti in warp che possono trovarsi in punti diversi del codice.
+  - *Senza sincronizzazione*, l'ordine di esecuzione tra thread è *imprevedibile*.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Prevenzione delle Race Condition")
+
+  - *All'interno di un Thread Block*
+    - Utilizzare #green_heading(`__syncthreads()`) per sincronizzare i thread 
+      e garantire la visibilità dei dati condivisi.
+    - #green_heading(`__syncthreads()`) garantisce che il thread A legga 
+      dopo che il thread B ha scritto.
+  - *Tra Thread Block diversi:*
+    - Non esiste sincronizzazione diretta. L'unico modo sicuro è terminare il kernel e avviarne uno nuovo.
+]
+
+=== Deadlock in CUDA
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Cos'è?")
+
+  - Un *deadlock* (o stallo) in CUDA si verifica quando i thread di un 
+    blocco si bloccano reciprocamente #underline[in attesa di sincronizzazioni o risorse 
+    non raggiungibili], causando il *blocco permanente* dell'esecuzione del kernel.
+  - Può insorgere in presenza di *sincronizzazioni condizionali* o *dipendenze* non gestite correttamente.
+
+  #green_heading("Condizioni per il Deadlock")
+
+  - *Sincronizzazione Condizionale:* Uso di #green_heading(`__syncthreads()`) 
+    all'interno di condizioni (#text(fill: rgb("#7B30D0"))[*`if`*], 
+    #text(fill: rgb("#7B30D0"))[*`else`*]), dove solo 
+    una parte dei thread     del blocco raggiunge il punto di sincronizzazione.
+  - *Dipendenze Circolari:* Situazioni in cui gruppi di thread attendono 
+    reciprocamente il completamento di operazioni, creando un ciclo di 
+    dipendenze irrisolvibile.
+  - *Risorse Condivise:* Gestione non corretta dell'accesso alla memoria 
+    condivisa o ad altre risorse comuni.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Prevenzione/Gestione del Deadlock")
+
+  - *Sincronizzazione Completa*: Evitare #green_heading(`__syncthreads()`) nei rami condizionali divergenti; assicurarsi che tutti i thread del blocco raggiungano i punti di sincronizzazione.
+  - *Ristrutturazione del Codice*: Rimuovere le dipendenze condizionali organizzando le operazioni in modo che tutti i thread completino una fase prima di passare alla successiva.
+  - *Independent Thread Scheduling*: Con architetture #green_heading("Volta") e successive, i thread di un warp possono avanzare in modo più indipendente, grazie all'Independent Thread Scheduling ed alleviare il problema.
+]
+
+=== Sincronizzazione in CUDA
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  La sincronizzazione è il meccanismo che permette di *coordinare* l'esecuzione di thread paralleli e garantire la *correttezza* dei risultati, evitando *race condition* *deadlock* e *accessi concorrenti non sicuri* alla memoria.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Livelli di Sincronizzazione in CUDA")
+
+  - *Livello di Sistema (Host-Device)*:
+    - #underline[Blocca l'applicazione host] finché tutte le operazioni sul device non sono completate.
+    - Garantisce che il device abbia terminato l'esecuzione (copie, kernels, etc) prima che l'host proceda.
+    - *Firma*: `cudaError_t cudaDeviceSynchronize(void); // può causare overhead bloccando l'host`
+  - *Livello di Blocco (Thread Block)*:
+    - Sincronizza tutti i thread all'interno di un singolo thread block.
+    - Ogni thread attende che tutti gli altri thread nel blocco raggiungano il punto di sincronizzazione.
+    - Garantisce la visibilità delle modifiche alla shared memory tra i thread del blocco.
+    - *Firma*: `__device__ void __syncthreads(void); // riduce le prestazioni se usato troppo`
+  - *Livello di Warp* (Disponibile con ITS a partire da CUDA 9.0 e architetture Volta+)
+    - Sincronizza i thread all'interno di un #underline[singolo warp].
+    - Garantisce la *riconvergenza* dei thread in presenza di divergenza.
+    - *Ottimizza la cooperazione* tra thread dello stesso warp.
+    - *Firma*: `__device__ void __syncwarp(unsigned mask=0xffffffff); // minimo overhead`
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  La sincronizzazione è il meccanismo che permette di *coordinare* l'esecuzione di thread paralleli e garantire la *correttezza* dei risultati, evitando *race condition*deadlock* e *accessi concorrenti non sicuri* alla memoria.
+]
+#green_heading("Esempi")
+
+#image("images/_page_76_Figure_1_2.2.png")
+
+
+=== Operazioni Atomiche in CUDA
+v// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+#green_heading("Perché sono Necessarie le Operazioni Atomiche?")
+
+- *Problema:* Race condition in operazioni *Read-Modify-Write*
+  - Più thread *accedono e modificano* la stessa locazione di memoria contemporaneamente.
+  - Risultati *imprevedibili* e *inconsistenti*.
+]
+#green_heading("Scenario Tipico")
+
+```cpp
+__global__ void increment(int *counter) {
+  int old = *counter; // Legge il valore attuale dalla memoria
+  old = old + 1; // Incrementa il valore letto
+  *counter = old; // Scrive il nuovo valore nella stessa locazione
+ }
+```
+
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+#green_heading("Conseguenze")
+
+- *Conteggi Errati:* Il valore finale potrebbe non riflettere correttamente il numero di incrementi eseguiti.
+- *Aggiornamenti di Dati Persi:* Le modifiche apportate da alcuni thread potrebbero essere sovrascritte da altri.
+- *Comportamento Non Deterministico:* L'applicazione potrebbe dare risultati diversi ad ogni esecuzione.
+
+#green_heading("Soluzione")
+
+Operazioni atomiche *garantiscono l'integrità* delle operazioni Read-Modify-Write in ambiente concorrente.
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+#green_heading("Cosa sono le Operazioni Atomiche?")
+(#link("https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html=atomic-functions")[Documentazione Online])
+
+- Operazioni *Read-Modify-Write* eseguite (solo su funzioni device) come *singola istruzione hardware indivisibile*.
+
+#green_heading("Caratteristiche")
+
+- *Esclusività dell'accesso alla memoria*: L'hardware assicura che #underline[solo un 
+  thread alla volta] può eseguire l'operazione #underline[sulla stessa locazione di memoria]. 
+  I thread che eseguono operazioni atomiche sulla stessa posizione vengono 
+  messi in coda ed eseguiti in serie (correttezza garantita).
+- *Prevenzione delle interferenze*: Evitano che i thread interferiscano tra loro durante la modifica dei dati.
+- *Compatibilità con memoria globale e condivisa*: Operano su word di 32, 64 bit o 128 bit.
+- *Riduzione del parallelismo effettivo*, poiché i thread devono aspettare il proprio turno per accedere alla memoria.
+
+#green_heading("Tipiche Operazioni Atomiche:")
+
+- *Matematiche*: Addizione, sottrazione, massimo, minimo, incremento, decremento.
+- *Bitwise*: Operazioni bit a bit come AND, OR, XOR.
+- *Swap*: Scambio del valore in memoria con un nuovo valore.
+]
+#green_heading("Utilizzo di Base")
+
+```cpp
+__global__ void safeIncrement(int *counter) {
+  atomicAdd(counter, 1); // Incrementa il valore atomico, evitando condizioni di gara
+}
+```
+
+=== Operazioni Atomiche in CUDA - Esempi d'Uso
+
+#codly(header: [#align(center)[*Operazioni Atomiche*]])
+```cpp
+// Operazioni atomiche aritmetiche
+int atomicAdd(int* addr, int val); // Somma val a *addr
+int atomicSub(int* addr, int val); // Sottrae val da *addr
+int atomicMax(int* addr, int val); // Aggiorna *addr al max tra *addr e val
+int atomicMin(int* addr, int val); // Aggiorna *addr al min tra *addr e val
+unsigned int atomicInc(unsigned int* addr, unsigned int val); // Incrementa *addr, ciclato tra 0 e val
+unsigned int atomicDec(unsigned int* addr, unsigned int val); // Decrementa *addr, ciclato tra 0 e val
+// Operazioni atomiche di confronto
+int atomicExch(int* addr, int val); // Scambia *addr con val
+int atomicCAS(int* addr, int cmp, int val); // Confronta *addr con cmp, aggiorna *addr a val se uguali
+// Operazioni atomiche bitwise
+int atomicAnd(int* addr, int val); // AND tra *addr e val, aggiorna addr
+int atomicOr(int* addr, int val); // OR tra *addr e val, aggiorna addr
+int atomicXor(int* addr, int val); // XOR tra *addr e val, aggiorna addr
+```
+
+#block(
+  stroke: (paint: black, dash: "dashed", thickness: 1pt),
+  radius: 5pt,
+  inset: 8pt,
+  width: 100%
+  )[
+  - Leggono il valore originale dalla memoria, eseguono l'operazione e salvano 
+    il risultato *nello stesso indirizzo*, *restituendo il valore originale pre-modifica*.
+  - *Supporto a Tipi Estesi:* Esistono anche varianti atomiche per operazioni 
+    su tipi a 64 bit (*`long` `long int`*) e floating point (*`float`* e *`double`*), 
+    supportate su architetture recenti.
+]
+
+== Ottimizzazione delle Risorse
+=== Resource Partitioning in CUDA
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+#green_heading("Cos'è il Resource Partitioning?")
+
+- Come abbiamo visto, assegnare molti warp a un SM aiuta a nascondere la latenza, ma i limiti delle risorse possono impedire di raggiungere il massimo supportato.
+- Il *Resource Partitioning* riguarda la *suddivisione e la gestione delle risorse hardware* limitate all'interno di una GPU, in particolare all'interno di ogni SM.
+- L'obiettivo è *trovare un equilibrio* nella distribuzione di registri e memoria condivisa tra thread e blocchi, *ottimizzando l'efficienza complessiva dell'esecuzione* dei kernel CUDA.
+
+#green_heading("Partizionamento delle Risorse nell'SM")
+
+- Ogni SM ha una quantità limitata di registri e memoria condivisa:
+  - *Register File*: Un insieme di registri a 32 bit, partizionati tra i thread attivi.
+  - *Memoria Condivisa*: Una quantità fissa di memoria condivisa, partizionata tra i blocchi di thread attivi.
+- Il numero di thread block e warp che possono risiedere simultaneamente su un SM dipende dalla:
+  - *Disponibilità di Risorse*: Quantità di registri e memoria condivisa disponibili sull'SM.
+  - *Richiesta del Kernel*: Quantità di registri e memoria condivisa richiesti dal kernel per l'esecuzione.
+- Se le risorse di uno SM non permettono di eseguire almeno un blocco di thread, il kernel *fallisce*.
+]
+#pagebreak()
+
+=== Anatomia di un Thread Block
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  {
+    block(
+    fill: rgb("#F3F3F3"),
+    radius: 0.8em,
+    inset: 1.5em,
+    width: 100%,
+    // height: 21em,
+    breakable: false
+    )[
+    #green_heading("Requisiti di Risorse per SM")
+
+      Tutti i blocchi in una griglia eseguono lo stesso programma 
+      usando lo stesso numero di thread, portando a *3 requisiti di 
+      risorse fondamentali*:
+    ]
+    
+    // GreenBlock
+    block(
+      //fill: rgb("#F5F9E8"),
+      stroke: 1pt + light_green,
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #green_heading("1. Dimensione del Blocco")
+
+      Il numero di thread che devono essere concorrenti.
+
+      #green_heading("2. Memoria Condivisa")
+
+      È comune a tutti i thread dello stesso blocco.
+
+      #green_heading("3. Registri")
+
+      Dipendono dalla complessità del programma.
+      (*thread-per-blocco* $times$ *registri-per-thread*)
+    ]
+
+  },
+  {
+    image("images/_page_82_Picture_11_2.2.jpeg")
+    text()[Un blocco mantiene un numero costante di thread ed esegue 
+    unicamente su un singolo SM]
+
+    ```cpp
+    __global__ void simpleKernel(float* out) {
+      int tid = threadIdx.x;
+      float myValue = 3.14;
+      __shared__ float sharedData[64];
+      sharedData[tid] = myValue;
+      __syncthreads();
+      out[tid] = sharedData[tid] * myValue;
+    }
+    ```
+  }
+
+
+)
+
+#let circled_color(color, body) = box(
+  stroke: (paint: color, thickness: 1.4pt),
+  radius: 50%, // Raggio al 50% crea un ovale perfetto
+  inset: (x: 10pt, y: 8pt), // Padding orizzontale maggiore per allungare l'ovale
+  body
+)
+
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  image("images/_page_83_Figure_2_2.2.png"),
+
+  {
+    align(center)[#text(weight: "bold", size: 7pt)[Thread Block]]
+    image("images/_page_83_Picture_4_2.2.jpeg")
+    text()[Un blocco contiene un numero fisso di thread ed esegue 
+    unicamente su un singolo SM]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di Requisiti di Risorse per i Blocchi*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#blue_heading()[Thread per Blocco]], [`256`],
+        [Registri per Thread], [`64`],
+        [#blue_heading()[Registri per Blocco]],[`(256*64)=16384` ],
+        [#blue_heading()[Shared Memory per Blocco]],[#circled_color(orange, `48Kb`)]
+
+      )
+    ]
+  }
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  // Box sinistro
+  // GreenBlock
+  image("images/_page_84_Figure_2_2.2.jpeg"),
+
+  {
+    align(center)[#text(weight: "bold", size: 7pt)[Thread Block]]
+    image("images/_page_83_Picture_4_2.2.jpeg")
+    text()[Un blocco contiene un numero fisso di thread ed esegue 
+    unicamente su un singolo SM]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di Requisiti di Risorse per i Blocchi*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#blue_heading()[Thread per Blocco]], [`256`],
+        [Registri per Thread], [`64`],
+        [#blue_heading()[Registri per Blocco]],[`(256*64)=16384` ],
+        [#blue_heading()[Shared Memory per Blocco]],
+        [#circled_color(nvidia-green, `32Kb`)]
+
+      )
+    ]
+  }
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  image("images/_page_86_Figure_2_2.2.jpeg"),
+  {
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di requisiti (Griglia Blue)*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#blue_heading()[Thread per Blocco]], [`256`],
+        [#blue_heading()[Registri per Thread]], [`64`],
+        [#blue_heading()[Registri per Blocco]],[`(256*64)=16384` ],
+        [#blue_heading()[Shared Memory per Blocco]],[`48Kb`]
+
+      )
+    ]
+        block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di requisiti (Griglia Arancione)*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#orange_heading()[Thread per Blocco]], [`512`],
+        [#orange_heading()[Registri per Thread]], [`32`],
+        [#orange_heading()[Registri per Blocco]],[`(512*32)=16384` ],
+        [#orange_heading()[Shared Memory per Blocco]],[`0`]
+
+      )
+    ]
+  }
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  image("images/_page_87_Figure_2_2.2.jpeg"),
+  {
+    align(center)[#text(weight: "bold", size: 7pt)[Thread Block]]
+    image("images/_page_83_Picture_4_2.2.jpeg")
+    text()[Un blocco contiene un numero fisso di thread ed esegue 
+    unicamente su un singolo SM]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di Requisiti di Risorse per i Blocchi*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#blue_heading()[Thread per Blocco]], 
+        [#circled_color(light_orange, `768`)],
+        [#blue_heading()[Registri per Thread]], [`16`],
+        [#blue_heading()[Registri per Blocco]],[`(768*16)=12288` ],
+        [#blue_heading()[Shared Memory per Blocco]],[`32Kb`]
+
+      )
+    ]
+  }
+)
+
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1.5em,
+  image("images/_page_88_Figure_2_2.2.jpeg"),
+  {
+    align(center)[#text(weight: "bold", size: 7pt)[Thread Block]]
+    image("images/_page_83_Picture_4_2.2.jpeg")
+    text()[Un blocco contiene un numero fisso di thread ed esegue 
+    unicamente su un singolo SM]
+    // GrayBlock
+    block(
+      fill: rgb("#F3F3F3"),
+      radius: 0.8em,
+      inset: 1.5em,
+      width: 100%,
+      // height: 21em,
+      breakable: false
+    )[
+      #align(center)[*Esempio di Requisiti di Risorse per i Blocchi*]
+      #table(
+        columns: (auto, auto),
+        column-gutter: 1em,
+        align: (left, center),
+        stroke: none,
+
+        [#blue_heading()[Thread per Blocco]], 
+        [#circled_color(nvidia-green, `1024`)],
+        [#blue_heading()[Registri per Thread]], [`16`],
+        [#blue_heading()[Registri per Blocco]],[`(1024*16)=12288` ],
+        [#blue_heading()[Shared Memory per Blocco]],[`32Kb`]
+
+      )
+    ]
+  }
+)
+
+
+==== Compute Capability (CC) - Limiti SM
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  - La *Compute Capability (CC)* di NVIDIA è un numero che identifica le 
+    caratteristiche e le capacità di una GPU NVIDIA in termini di 
+    #underline[funzionalità supportate] e #underline[limiti hardware].
+  - È composta da *due numeri*: il numero principale indica la *generazione* 
+    dell'architettura, mentre il numero secondario indica *revisioni* 
+    e *miglioramenti* all'interno di quella generazione.
+]
+
+
+#block(
+  width: 100%,
+  fill: my_gray,
+  radius: 8pt,
+  inset: 10pt, // Inset ridotto leggermente per massimizzare lo spazio orizzontale
+  breakable: false,
+)[
+  #set text(size: 8pt)
+  // Nota in alto a destra
+  #align(right)[\*Valori concorrenti per singolo SM]
+  
+  #v(0.5em)
+
+  #table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto),
+    // Allinea tutte le celle al centro orizzontalmente e verticalmente
+    align: center + horizon, 
+    stroke: none,
+    column-gutter: 0.5em, // Spazio tra le colonne
+    row-gutter: -0.8em,    // Spazio tra le righe
+
+    // --- Intestazioni ---
+    // Uso le interruzioni di riga manuali (\) per replicare l'impaginazione dell'immagine
+    hdr[Compute\ Capability],
+    hdr[Architettura],
+    hdr[Max Thread\ per Blocco],
+    hdr[Max Thread\ per SM\*],
+    hdr[Max Warps\ per SM\*],
+    hdr[Max Blocchi\ per SM\*],
+    hdr[Max Registri\ per Thread],
+    hdr[Memoria Condivisa\ per SM],
+
+    // --- Riga 1 ---
+    num[1.x], arch[Tesla], num[512], num[768], num[24/32], num[8], num[124], num[16KB],
+    
+    // --- Riga 2 ---
+    num[2.x], arch[Fermi], num[1024], num[1536], num[48], num[8], num[63], num[48KB],
+
+    // --- Riga 3 ---
+    num[3.x], arch[Kepler], num[1024], num[2048], num[64], num[16], num[255], num[48KB],
+
+    // --- Riga 4 ---
+    num[5.x], arch[Maxwell], num[1024], num[2048], num[64], num[32], num[255], num[64KB],
+
+    // --- Riga 5 ---
+    num[6.x], arch[Pascal], num[1024], num[2048], num[64], num[32], num[255], num[64KB],
+
+    // --- Riga 6 ---
+    num[7.x], arch[Volta/Turing], num[1024], num[1024/2048], num[32/64], num[16/32], num[255], num[96KB],
+
+    // --- Riga 7 ---
+    num[8.x], arch[Ampere/Ada], num[1024], num[1536/2048], num[48/64], num[16/24], num[255], num[164KB],
+
+    // --- Riga 8 ---
+    num[9.x], arch[Hopper], num[1024], num[2048], num[64], num[32], num[255], num[228KB],
+
+    // --- Riga 9 ---
+    num[10.x/12.x], arch[Blackwell], num[1024], num[2048/1536], num[64/48], num[32], num[255], num[128KB],
+  )
+]
+#align(center)[#link("https://en.wikipedia.org/wiki/UDA=Version\_features\_and\_specifications")]
+
+
+
+=== Occupancy
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+#green_heading("Cosa è l'Occupancy?")
+
+  - L'occupancy rappresenta il *grado di utilizzo delle risorse* di calcolo dell'SM.
+  - L'occupancy è il *rapporto* tra i warp attivi e il numero massimo di warp supportati per SM (vedi compute capability):
+
+  #align(center)[`Occupancy [%] = Active Warps / Maximum Warps`] 
+
+  #green_heading("Punti Chiave")
+
+  - L'occupancy misura l'efficacia nell'uso delle risorse dell'SM:
+    - *Occupancy Ottimale*: Quando raggiunge un livello sufficiente per nascondere la latenza. Un ulteriore aumento potrebbe degradare le prestazioni a causa della riduzione delle risorse disponibili per thread.
+    - *Occupancy Bassa*: Risulta in una scarsa efficienza nell'emissione delle istruzioni, poiché non ci sono abbastanza warp eleggibili per nascondere la latenza tra istruzioni dipendenti.
+  - *Un'occupancy elevata non garantisce sempre prestazioni migliori*: Oltre certa soglia, fattori come i pattern di accesso alla memoria e il parallelismo delle istruzioni possono diventare più rilevanti per l'ottimizzazione.
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Strumenti per l'Ottimizzazione")
+
+  - *Strumenti di Profiling:* Nsight Compute consente di recuperare facilmente 
+    l'occupancy, offrendo dettagli sul numero di warp attivi per SM e 
+    sull'efficienza delle risorse di calcolo (tuttavia, l'occupancy non 
+    deve #underline[mai essere guardata in isolamento]. Diventa utile se combinata 
+    con altre metriche del profiler).
+  - *Suggerimento*: Osservare gli effetti sul tempo di esecuzione del kernel a diversi livelli di occupancy.
+]
+
+==== Occupancy Teorica vs Effettiva
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Misure di Occupancy")
+
+  L'occupancy di un kernel CUDA si divide in *teorica*, basata sui limiti hardware, ed *effettiva*, misurata a runtime.
+
+  #green_heading("Occupancy Teorica (Theoretical)")
+
+  - L'occupancy teorica è *determinata dalla configurazione di lancio* (numero di blocchi/thread, quantità di memoria condivisa, numero di registri per thread) e i limiti dell'SM (compute capability).
+  - *Limite massimo warp attivi per SM* = (*Limite massimo blocchi attivi*) × (*Warp per blocco*)
+  - È possibile aumentare il limite incrementando il numero di warp per blocco (dimensioni del blocco) o modificando i fattori limitanti (registri e/o shared memory) per aumentare i blocchi attivi per SM.
+
+  #green_heading("Occupancy Effettiva (Achieved)")
+
+  - Misura il *numero reale di warp attivi* durante l'esecuzione del kernel.
+  - Il numero reale di warp attivi varia durante l'esecuzione del kernel, man mano che i warp iniziano e terminano.
+  - *Calcolo dell'occupazione effettiva* (vedere Nsight Compute):
+    - L'occupazione ottenuta è misurata su ciascun scheduler di warp utilizzando *contatori di prestazioni hardware* che registrano i warp attivi ad ogni ciclo di clock.
+    - I conteggi vengono sommati su tutti i warp scheduler di ogni SM (1 per SMSP) e divisi per i cicli di clock attivi dell'SM per calcolare la *media dei warp attivi*.
+    - Dividendo per il numero massimo di warp attivi supportati dall'SM (Maximum Warps), si ottiene l'*occupazione effettiva media* per SM durante l'esecuzione del kernel.
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Obiettivi di Ottimizzazione")
+
+  - L'occupazione effettiva *non può* superare l'occupazione teorica (rappresenta il limite superiore).
+  - Pertanto, il primo passo per aumentare l'occupazione è *incrementare quella teorica*, modificando i fattori limitanti.
+  - Successivamente, è necessario verificare se il valore ottenuto è vicino a quello teorico per ridurre il gap.
+
+  #green_heading("Cause di Bassa Occupazione Effettiva")
+
+  - L'occupancy effettiva sarà inferiore a quella teorica quando il numero 
+    teorico di warp attivi non viene mantenuto durante l'attività dello 
+    SM (il problema forse non è il resource partitioning). Ciò può 
+    accadere quando si ha:
+    - *Carico di lavoro sbilanciato nei blocchi*: Quando i warp in un
+      blocco hanno tempi di esecuzione diversi (es. warp divergence), 
+      si crea un "*tail effect*" che riduce l'occupazione. Soluzione: 
+      bilanciare il carico tra i warp.
+    - *Carico di lavoro sbilanciato tra blocchi*: Se i blocchi della grid 
+      hanno durate diverse, si può lanciare un maggior numero di blocchi o 
+      kernel concorrenti per ridurre l'effetto coda.
+    - *Numero insufficiente di blocchi lanciati*: Se la grid ha meno blocchi 
+      del numero di SM del device, alcuni SM rimarranno inattivi. Ad esempio, 
+      lanciare 60 blocchi su un dispositivo con 80 SM lascia 20 SM sempre inattivi, 
+      riducendo l'utilizzo complessivo della GPU.
+    - *Wave Parziale*: L'ultima ondata di blocchi potrebbe non saturare tutti 
+      gli SM. Ad esempio, con 80 SM che supportano 2 blocchi ciascuno e una grid 
+      di 250 blocchi: le prime due wave eseguono 160 blocchi (80 SM $times$ 2), ma 
+      la terza wave ha solo 90 blocchi, lasciando alcuni SM parzialmente 
+      utilizzati o inattivi.
+]
+==== Nota Importante sull'Occupancy
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Ricorda")
+
+  L'obiettivo finale *non è massimizzare l'occupancy*, ma #underline[*minimizzare il 
+  tempo di esecuzione del kernel*].
+]
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Linee guida pratiche")
+
+  - ❌*Occupancy < 25-30 % → problema serio*
+    - Non ci sono abbastanza warp per nascondere le latenze (critico soprattutto per kernel memory-bound).
+    - La GPU risulta sottoutilizzata, con SM spesso inattivi
+    - *Azione*: ridurre l'uso di registri / shared memory per thread oppure aumentare il numero di thread per blocco, se possibile.
+  - ✅*Occupancy 50-80 % → generalmente buono*
+    - Warp sufficienti per un buon *latency hiding* nella maggior parte dei casi
+    - Risorse adeguate per ciascun thread
+    - *Focus*: ottimizzare coalescing, divergenza, e accessi alla memoria
+  - ⚠️*Occupancy > 90 % → non sempre vantaggiosa* (kernel memory bound compute bound )
+    - Latency hiding ottimo ma attenzione: se limita troppo le risorse il guadagno si perde.
+    - Oltre una certa soglia, più occupancy potrebbe non migliorare le performance.
+  - *Occupancy =* strumento per trovare il *giusto equilibrio tra latency hiding e risorse per thread*.
+  ]
+
+==== Nsight Compute: Occupancy Calculator
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  Nsight Compute offre uno strumento utile chiamato "Occupancy Calculator" (<u>Documentazione</u>) che consente di:
+
+  - *Stimare l'Occupancy*: Calcola l'occupancy di un kernel CUDA su una determinata GPU.
+  - *Ottimizzare le Risorse*: Mostra l'impatto di registri e memoria condivisa sull'occupancy.
+  - *Migliorare le Prestazioni*: Fornisce suggerimenti per massimizzare l'uso delle risorse dell'SM e migliorare le prestazioni complessive.
+]
+#image("images/_page_94_Figure_5_2.2.jpeg")
+
+#green_heading("Nsight Compute: Occupancy Calculator")
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #align(center)[*Linee Guida per le Dimensioni di Griglia e Blocchi*]
+  - Mantenere il numero di thread per block multiplo della dimensione del warp (32).
+  - Evitare dimensioni di block piccole: Iniziare con almeno 128 o 256 thread per block.
+  - 
+]
+   Regolare la dimensione del blocco in base ai requisiti di risorse del kernel. Mantenere il *numero di blocchi molto maggiore del numero di SM* per esporre sufficiente parallelismo al dispositivo (latency hiding). Condurre esperimenti per scoprire la migliore configurazione di esecuzione e utilizzo delle risorse. Impatto della Variazione dell'Uso della Memoria Condivisa Per Blocco
+
+=== Panoramica del Modello di Esecuzione CUDA
+
+- *Architettura Hardware GPU*
+  - Introduzione al Modello di Esecuzione CUDA
+  - Organizzazione degli Streaming Multiprocessors (SM)
+  - Panoramica delle Architetture GPU NVIDIA
+- *Organizzazione e Gestione dei Thread*
+  - Mappatura tra Vista Logica e Hardware
+  - Distribuzione e Schedulazione dei Blocchi sui SM
+- *Modello di Esecuzione SIMT e Warp*
+  - Confronto tra SIMD e SIMT
+  - Warp e Gestione dei Warp
+  - Latency Hiding e Legge di Little
+  - Warp Divergence e Thread Independent Scheduling
+- *Sincronizzazione e Comunicazione*
+  - Meccanismi di Sincronizzazione
+  - Operazioni Atomiche
+- *Ottimizzazione delle Risorse*
+  - Resource Partitioning
+  - Occupancy
+- *Parallelismo Avanzato*
+  - CUDA Dynamic Parallelism
+
+=== Introduzione al CUDA Dynamic Parallelism
+
+#green_heading("Il Problema:")
+
+- Algoritmi complessi (altamente dinamici) possono richiedere *strutture di parallelismo più flessibili.*
+- La suddivisione dei problemi in kernel separati da lanciare in sequenza *dalla CPU* creano un collo di bottiglia.
+
+#green_heading("La Soluzione: Dynamic Parallelism")
+
+- Introdotto in CUDA 5.0 nel 2012 (Architettura Kepler), il CUDA Dynamic Parallelism (CDP) è disponibile su device con una Compute Capability 3.5 o superiore.
+- Permette la *creazione* e *sincronizzazione* dinamica (on the fly) di nuovi kernel direttamente dalla GPU.
+- È possibile posticipare a *runtime* la decisione su quanti blocchi e griglie creare sul device (utile quando la *quantità di lavoro nidificato è sconosciuta*)
+- Supporta un approccio *gerarchico* e *ricorsivo* al parallelismo *evitando* continui passaggi fra CPU e GPU.
+
+#green_heading("Possibili Applicazioni")
+
+- *Algoritmi ricorsivi* (es: Quick Sort, Merge Sort) → [Ricorsione con profondità sconosciuta]
+- *Strutture dati ad albero* (es: Alberi di ricerca, Alberi decisionali) → [Elaborazione parallela nidificata irregolare]
+- *Elaborazione di immagini e segnali* (es. Region growing) → [Decomposizione dinamica delle aree di elaborazione]
+
+#green_heading("Vantaggi")
+
+- *Flessibilità*: Adattamento dinamico del parallelismo in base ai dati elaborati, senza dover prevedere tutto a priori.
+- *Scalabilità*: Sfruttamento ottimale delle risorse GPU, creando nuovi blocchi e griglie solo quando necessario.
+- *Efficienza*: Riduzione del collo di bottiglia CPU-GPU, spostando parte del controllo dell'esecuzione sulla GPU.
+
+=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
+
+*Lancio da CPU (Approccio Tradizionale)*
+
+```
+__global__ void kernelA() {
+}
+__global__ void kernelB() {
+}
+int main() {
+ ...
+ kernelA<<<1,1>>>();
+ ... // ottieni i risultati
+ if(condition) {
+ kernelB <<<1, 1>>>();
+ }
+}
+```
+
+*Lancio dalla GPU (Dynamic Parallelism)*
+
+```
+__global__ void kernelB() {
+}
+__global__ void kernelA() {
+ if(condition)
+ kernelB <<<1, 1>>>();
+}
+int main() {
+ ...
+ kernelA<<<1,1>>>();
+}
+```
+
+=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
+
+#image("images/_page_99_Figure_1_2.2.jpeg")
+
+#image("images/_page_99_Figure_2_2.2.jpeg")
+
+=== Esecuzione Nidificata con CUDA Dynamic Parallelism
+
+#green_heading("Come Funziona:")
+
+- Un thread, un blocco di thread o una griglia (*parent*) lancia una nuova griglia (*child grid*).
+- Una child grid lanciata con dynamic parallelism *eredita* dal kernel padre certi attributi e limiti come, ad esempio, la configurazione della *cache L1/memoria condivisa* e *dimensione dello stack*.
+- I blocchi della griglia child possono essere eseguiti in parallelo e in modo indipendente rispetto al kernel padre.
+- Il kernel/griglia parent continua immediatamente dopo il lancio del kernel child (*asincronicità*).
+- Il *child deve sempre completare prima che il thread/blocco/griglia parent sia considerato completo.*
+- Un parent si considera *completato* solo quando tutte le griglie child create dai suoi thread (tutti) hanno terminato l'esecuzione.
+
+#green_heading("Visibilità e Sincronizzazione:")
+
+- Ogni child grid lanciata da un thread è *visibile a tutti i thread dello stesso blocco*.
+- Se i thread di un blocco terminano prima che tutte le loro griglie child abbiano completato, il sistema attiva automaticamente una *sincronizzazione implicita* per attendere il completamento di queste griglie.
+- Un thread può *sincronizzarsi esplicitamente* con le proprie griglie child e con quelle lanciate da altri thread *nel suo blocco* utilizzando *primitive di sincronizzazione* (*cudaDeviceSynchronize*).
+- Quando un thread parent lancia una child grid, *l'esecuzione della griglia figlio non è garantita immediatamente*, a meno che il blocco di thread genitore non esegua una *sincronizzazione esplicita*.
+
+=== Esempio di CUDA Dynamic Parallelism
+
+```
+// Kernel Figlio
+__global__ childKernel(void* data){
+ // Operazioni sui dati
+}
+// Kernel Genitore
+__global__ parentKernel(void *data){
+ childKernel<<<16, 16>>>(data);
+}
+// Chiamata del Parent Kernel dall'Host
+parentKernel<<<256, 64>>(data);
+```
+
+```
+// Kernel ricorsivo supportato
+__global__ recursiveKernel(void* data){
+ if(continueRecursion == true)
+ recursiveKernel<<<64, 16>>>(data);
+}
+```
+
+========= Struttura del Codice
+
+- *Stessa sintassi* usata nel codice host.
+- Si noti che ogni thread che incontra un lancio di kernel *lo esegue*.
+- Quanti thread vengono lanciati in totale per l'esecuzione di *childKernel*?
+
+Nel caso in cui si desidera *solo una griglia child per blocco parent* usare:
+
+```
+if ( threadIdx.x == 0 )
+ childKernel <<<16,16>>>(data);
+```
+
+*Configurazione Griglia/Blocco:* I kernel lanciati dinamicamente possono avere una configurazione di griglia e blocco indipendente dal kernel genitore.
+
+=== Memoria in CUDA Dynamic Parallelism
+
+#green_heading("Memoria Globale e Costante:")
+
+- Le griglie parent e child *condividono lo stesso spazio di memoria globale* (accesso *concorrente*) *e memoria costante.* Tuttavia*, la memoria locale e condivisa* (shared memory) sono *distinte* fra parent e child*.*
+- La coerenza della memoria globale non è garantita tra parent e child (be careful), tranne che:
+  - *All'avvio della griglia child.*
+  - *Quando la griglia child completa.*
+
+#green_heading("Visibilità della Memoria:")
+
+- Tutte le operazioni sulla memoria globale eseguite dal thread parent *prima* di lanciare una griglia child sono garantite essere *visibili e accessibili* ai thread della griglia child.
+- Tutte le operazioni di memoria eseguite dalla griglia child sono garantite essere visibili al thread genitore *dopo che il genitore si è sincronizzato* con il completamento della griglia child.
+
+#green_heading("Memoria Locale e Condivisa (Shared Memory):")
+
+- La memoria locale e condivisa sono *private* per un thread o un blocco di thread, rispettivamente.
+- La memoria locale e condivisa *non sono visibili* o *coerenti* tra parent e child.
+- La memoria locale è uno spazio di archiviazione privato per un thread e *non è visibile al di fuori di quel thread*.
+
+#green_heading("Limitazioni")
+
+- *Non è valido* passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
+- È possibile passare variabili *per copia* (by value).
+
+#green_heading("Memoria in CUDA Dynamic Parallelism")
+
+============ Memoria Globale e Costante:
+
+#green_heading("Passaggio dei Puntatori alle Child Grid")
+
+============ Possono Essere Passati
+
+- Memoria Globale (sia variabili \_\_device\_
+   sia memoria allocata con cudaMalloc)
+- Memoria Zero-Host Copy
+- Memoria Costante (ereditata dal parent e non può essere modificata)
+
+========= Non Possono Essere Passati X
+
+- Memoria Condivisa (variabili shared )
+- Local Memory (incluse variabili dello stack)
+
+\* Analizzeremo meglio queste memorie in seguito ("2.3 Modello di Memoria in CUDA")
+
+============ Limitazioni
+
+- Non è valido passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
+- È possibile passare variabili per copia (by value).
+
+=== Gestione dello Scambio Dati nel Parallelismo Dinamico
+
+*Quindi, Come Restituire un Valore da un Child Kernel?*
+
+```
+__global__ void childKernel(void* p) { ... }
+__global__ void parentKernel(void) {
+ int v = 0; // Variabile nei registri/memoria locale del padre
+ childKernel<<<16, 16>>>(&v); // Passa indirizzo non accessibile
+ ...
+}
+                                 Versione Errata
+```
+
+#green_heading("Versione Corretta")
+
+```
+__device__ int v = 0; // Variabile in memoria globale
+__global__ void childKernel(void* p) { ... }
+__global__ void parentKernel(void) {
+ childKernel<<<16, 16>>>(&v); // Passa indirizzo accessibile della memoria globale
+ ...
+}
+```
+
+=== Consistenza della Memoria nel Parallelismo Dinamico
+
+#green_heading("Scenario Sicuro:")
+
+- Quando il thread parent scrive in memoria globale *prima* di lanciare la griglia child.
+- Il thread figlio vedrà *correttamente* il valore scritto dal padre.
+
+#green_heading("Scenario Problematico:")
+
+- *Scrittura da parte del child*:
+  - Il thread parent potrebbe *non* vedere i valori scritti dal child.
+- *Scrittura del parent dopo il lancio*:
+  - Se il padre scrive dopo aver lanciato il figlio, si crea una "*race condition*".
+  - Non si può sapere quale valore verrà letto.
+
+```
+__global__ void parentKernel(void) {
+ v = 1; // OK
+ childKernel<<<16,16>>>();
+}
+__device__ int v = 0; // Variabile globale
+__global__ void childKernel( void ) {
+ printf( "v = %d\n", v );
+}
+```
+
+```
+__global__ void parentKernel(void) {
+ v = 1; // OK
+ childKernel<<<16,16>>>();
+ v = 2; // Race condition!
+}
+                                         Non c'è sincronizzazione esplicita
+```
+
+=== Dipendenze Annidate in CUDA
+
+```
+CPU
+                                                      A
+                                                      B
+                                                     C
+                                                                        X
+                                                                        Y
+                                                                        Z
+                                                              GPU
+__global__ void B(float *data)
+{
+ do_stuff(data);
+ X <<< ... >>> (data);
+ Y <<< ... >>> (data);
+ Z <<< ... >>> (data);
+ cudaDeviceSynchronize();
+ do_more_stuff(data);
+}
+void main() 
+{
+ float *data;
+ do_stuff(data);
+ A <<< ... >>> (data);
+ B <<< ... >>> (data);
+ C <<< ... >>> (data);
+ cudaDeviceSynchronize();
+ do_more_stuff(data);
+}
+                 Stessa Sintassi
+```
+
+=== Sincronizzazione con cudaDeviceSynchronize()
+
+#green_heading("Funzione Principale")
+
+- *cudaDeviceSynchronize() attende il completamento* di tutte le griglie (kernel) precedentemente lanciate da qualsiasi thread del blocco corrente, includendo tutti i kernel discendenti (child, nipoti, ecc.) nella gerarchia.
+- Se chiamata da un singolo thread, gli altri thread del blocco *continueranno* l'esecuzione.
+
+#green_heading("Sincronizzazione a Livello di Blocco")
+
+- *Attenzione*: *cudaDeviceSynchronize()* non implica una sincronizzazione fra thread del blocco.
+- Il blocco di tutti i thread può essere ottenuto sia chiamando *cudaDeviceSynchronize()* da tutti i thread, sia facendo seguire la chiamata di *cudaDeviceSynchronize()* da parte di un singolo thread con *\_\_synchthreads()*.
+
+```
+__global__ void parentKernel(float *a, float *b, float *c) {
+ createData(a, b); // Tutti i thread generano i dati
+ __syncthreads(); // Sincronizzazione dei thread nel blocco per garantire i dati
+ if (threadIdx.x == 0) {
+ childKernel<<<n, m>>>(a, b, c); // Lancio della griglia child (1 thread call)
+ cudaDeviceSynchronize(); // Attesa per il completamento dei kernel discendenti
+ }
+ __syncthreads(); // Tutti i thread nel blocco attendono prima di utilizzare i dati
+ consumeData(c); // I thread nel blocco possono ora usare i dati della griglia child
+}
+```
+
+#green_heading("Sincronizzazione con cudaDeviceSynchronize()")
+
+========= Funzione Principale
+
+cudaDeviceSynchronize() attende il completamento di tutte le griglie (kernel) precedentemente lanciate da qualsiasi thread del blocco corrente, includendo tutti i kernel discendenti (child, nipoti, ecc.) nella gerarchia.
+
+============ Sincre
+
+#green_heading("Limiti")
+
+- cudaDeviceSynchronize() è un'operazione computazionalmente costosa perché:
+  - Può causare la sospensione (swap-out) del blocco in esecuzione.
+  - In caso di sospensione, richiede il trasferimento dell'intero stato del blocco (registri, memoria condivisa, program counter) nella memoria del device.
+  - Il blocco dovrà poi essere ripristinato (swap-in) quando i kernel child saranno completati.
+- Non dovrebbe essere chiamato <u>al termine</u> di un kernel genitore, poiché la *sincronizzazione implicita* viene già eseguita automaticamente.
+
+\_\_syncthreads(); // Tutti i thread nel blocco attendono prima di utilizzare i dati
+consumeData(c); // I thread nel blocco possono ora usare i dati della griglia child
+
+cendo
+
+Ĺ
+
+=== Esecuzione Nidificata con CUDA Dynamic Parallelism
+
+#image("images/_page_109_Figure_1_2.2.jpeg")
+
+- *Esecuzione Nidificata*: Il thread CPU lancia la griglia parent (*blu*), che a sua volta lancia una griglia child (*verde*).
+- *Sincronizzazione Esplicita*: La barriera nella griglia parent dimostra una *sincronizzazione esplicita* (*cudaDeviceSynchronize*) con la griglia child, assicurando che il parent attenda il completamento del child.
+- *Completamento Gerarchico*: La griglia parent si considera *completata* solo dopo che la griglia child ha terminato.
+
+=== Parallelismo Dinamico su GPU: Nested Hello World
+
+- Il kernel seguente è un esempio di come utilizzare la *parallelizzazione dinamica* sulla GPU per eseguire un kernel ricorsivo.
+- Il kernel viene invocato dalla applicazione *host* con una griglia di 8 thread in un singolo blocco. Il thread 0 di questo grid invoca un *nuovo grid* con la metà dei thread, e così via fino a quando non rimane solo un thread.
+
+#image("images/_page_110_Picture_3_2.2.jpeg")
+
+```
+__global__ void nestedHelloWorld(int const iSize, int iDepth) {
+ int tid = threadIdx.x;
+ printf("Recursion=%d: Hello World from thread %d block %d\n", 
+ iDepth, tid, blockIdx.x);
+ // Condizione di terminazione: 
+ // se c'è solo un thread, termina la ricorsione
+ if (iSize == 1) return;
+ // Calcola il numero di thread per 
+ // il prossimo livello (dimezza)
+ int nthreads = iSize >> 1;
+ // Solo il thread 0 lancia ricorsivamente una nuova grid,
+ // se ci sono ancora thread da lanciare
+ if (tid == 0) {
+ // Ricorsione
+ nestedHelloWorld<<<1, nthreads>>>(nthreads, ++iDepth);
+
+ // Stampa la profondità di esecuzione nidificata
+ printf("-------> nested execution depth: %d\n", iDepth);
+ }}
+```
+
+=== Nested Hello World : Compilazione ed Esecuzione
+
+Per compilare il codice abilitando il parallelismo dinamico:
+
+```
+$ nvcc -arch=sm_86 -rdc=true -lcudadevrt nested_hello_world.cu -o nested_hello_world
+   --rdc=True: Abilita Relocatable Device Code, necessario per il parallelismo dinamico.
+   -lcudadevrt: Collega la CUDA Device Runtime Library (spesso implicito con -rdc=true).
+   -arch: Specifica l'architettura di destinazione della GPU (min. Kepler per il parallelismo dinamico. Ampere in questo caso).
+```
+
+Profiling con *Nsight Compute* (tuttavia, il tracciamento dei kernel CDP per le architetture GPU Volta e superiori non è supportato).
+
+#green_heading("Output (Terminale)")
+
+```
+./nestedHelloWorld Configuration: grid 1 block 8
+Recursion=0: Hello World from thread 0 block 0
+Recursion=0: Hello World from thread 1 block 0
+Recursion=0: Hello World from thread 2 block 0
+Recursion=0: Hello World from thread 3 block 0
+Recursion=0: Hello World from thread 4 block 0
+Recursion=0: Hello World from thread 5 block 0
+Recursion=0: Hello World from thread 6 block 0
+Recursion=0: Hello World from thread 7 block 0
+-------> nested execution depth: 1
+                                                       Recursion=1: Hello World from thread 0 block 0
+                                                       Recursion=1: Hello World from thread 1 block 0
+                                                       Recursion=1: Hello World from thread 2 block 0
+                                                       Recursion=1: Hello World from thread 3 block 0
+                                                       -------> nested execution depth: 2
+                                                       Recursion=2: Hello World from thread 0 block 0
+                                                       Recursion=2: Hello World from thread 1 block 0
+                                                       -------> nested execution depth: 3
+                                                       Recursion=3: Hello World from thread 0 block 0
+```
+
+=== Nested Hello World : Compilazione ed Esecuzione
+
+Ora, si provi a invocare la griglia parent con 2 blocchi invece di uno solo:
+
+```
+$ ./nestedHelloWorld 2
+```
+
+Perché l'ID dei blocchi per le griglie child è sempre 0 nei messaggi di output? (vedi codice precedente)
+
+```
+nestedHelloWorld<<<1, nthreads>>>(nthreads, ++iDepth);
+```
+
+#image("images/_page_112_Figure_5_2.2.jpeg")
+
+============ Output (Terminale)
+
+```
+./nestedHelloWorld Configuration: grid 1 block 8
+Recursion=0: Hello World from thread 0 block 1
+Recursion=0: Hello World from thread 1 block 1
+Recursion=0: Hello World from thread 2 block 1
+Recursion=0: Hello World from thread 3 block 1
+Recursion=0: Hello World from thread 4 block 1
+Recursion=0: Hello World from thread 5 block 1
+Recursion=0: Hello World from thread 6 block 1
+Recursion=0: Hello World from thread 7 block 1
+Recursion=0: Hello World from thread 0 block 0
+Recursion=0: Hello World from thread 1 block 0
+Recursion=0: Hello World from thread 2 block 0
+Recursion=0: Hello World from thread 3 block 0
+Recursion=0: Hello World from thread 4 block 0
+Recursion=0: Hello World from thread 5 block 0
+Recursion=0: Hello World from thread 6 block 0
+Recursion=0: Hello World from thread 7 block 0
+-------> nested execution depth: 1
+-------> nested execution depth: 1
+Recursion=1: Hello World from thread 0 block 0
+Recursion=1: Hello World from thread 1 block 0
+Recursion=1: Hello World from thread 2 block 0
+Recursion=1: Hello World from thread 3 block 0
+Recursion=1: Hello World from thread 0 block 0
+Recursion=1: Hello World from thread 1 block 0
+Recursion=1: Hello World from thread 2 block 0
+Recursion=1: Hello World from thread 3 block 0
+-------> nested execution depth: 2
+-------> nested execution depth: 2
+Recursion=2: Hello World from thread 0 block 0
+Recursion=2: Hello World from thread 1 block 0
+Recursion=2: Hello World from thread 0 block 0
+Recursion=2: Hello World from thread 1 block 0
+-------> nested execution depth: 3
+Recursion=3: Hello World from thread 0 block 0
+-------> nested execution depth: 3
+Recursion=3: Hello World from thread 0 block 0
+```
+
+=== Restrizioni sul Parallelismo Dinamico
+
+#green_heading("Compatibilità dei Dispositivi")
+
+Supportato solo da device con capacità di calcolo *≥ 3.5*.
+
+#green_heading("Limitazioni di Lancio")
+
+I kernel *non* possono essere lanciati su device *fisicamente separati*.
+
+#green_heading("Profondità Massima di Nidificazione")
+
+- Nesting depth imitata a *24 livelli*
+- Nella pratica, limitata dalla memoria richiesta dal *runtime* del device.
+- Runtime riserva *memoria aggiuntiva* per sincronizzazione griglia padre-figlio.
+
+#green_heading("Deprecazione")
+
+- L'uso di *cudaDeviceSynchronize* nel *codice device* è stato *deprecato* in CUDA 11.6 (la versione host-side rimane supportata). Rimosso per compute capability > 9.0.
+- Per GPU con compute capability < 9.0 (es. Tesla T4 in Google Colab) e versione di CUDA ≥ 11.6 è possibile *forzare il supporto* usando il flag di compilazione *-D CUDA\_FORCE\_CDP1\_IF\_SUPPORTED*.
+
+=== Riferimenti Bibliografici
+
+#green_heading("Testi Generali")
+
+- Cheng, J., Grossman, M., McKercher, T. (2014). *Professional CUDA C Programming*. Wrox Pr Inc. (1^ edizione)
+- Kirk, D. B., Hwu, W. W. (2022). *Programming Massively Parallel Processors*. Morgan Kaufmann (4^ edizione)
+
+#green_heading("NVIDIA Docs")
+
+// - CUDA Programming:
+//   - <http://docs.nvidia.com/cuda/cuda-c-programming-guide/>
+// - CUDA C Best Practices Guide
+//   - <http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/>
+// - CUDA University Courses
+//   - <https://developer.nvidia.com/educators/existing-courses=2>a.com/educators/existing-courses=2>
