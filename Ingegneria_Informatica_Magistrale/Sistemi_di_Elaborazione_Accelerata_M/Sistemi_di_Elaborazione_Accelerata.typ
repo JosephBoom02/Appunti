@@ -7691,122 +7691,137 @@ int atomicXor(int* addr, int val); // XOR tra *addr e val, aggiorna addr
   breakable: false
 )[
   #align(center)[*Linee Guida per le Dimensioni di Griglia e Blocchi*]
-  - Mantenere il numero di thread per block multiplo della dimensione del warp (32).
-  - Evitare dimensioni di block piccole: Iniziare con almeno 128 o 256 thread per block.
-  - 
+  - Mantenere il numero di thread per block *multiplo* della dimensione del warp (32).
+  - *Evitare dimensioni di block piccole*: Iniziare con almeno 128 o 256 thread per block.
+  - Regolare la dimensione del blocco *in base ai requisiti di risorse* del kernel.
+  - antenere il *numero di blocchi molto maggiore del numero di SM* per 
+    esporre sufficiente parallelismo al dispositivo (latency hiding).
+  - *Condurre esperimenti* per scoprire la migliore configurazione di esecuzione 
+    e utilizzo delle risorse.
 ]
-   Regolare la dimensione del blocco in base ai requisiti di risorse del kernel. Mantenere il *numero di blocchi molto maggiore del numero di SM* per esporre sufficiente parallelismo al dispositivo (latency hiding). Condurre esperimenti per scoprire la migliore configurazione di esecuzione e utilizzo delle risorse. Impatto della Variazione dell'Uso della Memoria Condivisa Per Blocco
 
-=== Panoramica del Modello di Esecuzione CUDA
-
-- *Architettura Hardware GPU*
-  - Introduzione al Modello di Esecuzione CUDA
-  - Organizzazione degli Streaming Multiprocessors (SM)
-  - Panoramica delle Architetture GPU NVIDIA
-- *Organizzazione e Gestione dei Thread*
-  - Mappatura tra Vista Logica e Hardware
-  - Distribuzione e Schedulazione dei Blocchi sui SM
-- *Modello di Esecuzione SIMT e Warp*
-  - Confronto tra SIMD e SIMT
-  - Warp e Gestione dei Warp
-  - Latency Hiding e Legge di Little
-  - Warp Divergence e Thread Independent Scheduling
-- *Sincronizzazione e Comunicazione*
-  - Meccanismi di Sincronizzazione
-  - Operazioni Atomiche
-- *Ottimizzazione delle Risorse*
-  - Resource Partitioning
-  - Occupancy
-- *Parallelismo Avanzato*
-  - CUDA Dynamic Parallelism
-
+== Parallelismo Avanzato
 === Introduzione al CUDA Dynamic Parallelism
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Il Problema:")
 
-#green_heading("Il Problema:")
+  - Algoritmi complessi (altamente dinamici) possono richiedere *strutture di parallelismo più flessibili.*
+  - La suddivisione dei problemi in kernel separati da lanciare in sequenza *dalla CPU* creano un collo di bottiglia.
 
-- Algoritmi complessi (altamente dinamici) possono richiedere *strutture di parallelismo più flessibili.*
-- La suddivisione dei problemi in kernel separati da lanciare in sequenza *dalla CPU* creano un collo di bottiglia.
+  #green_heading("La Soluzione: Dynamic Parallelism")
 
-#green_heading("La Soluzione: Dynamic Parallelism")
+  - Introdotto in CUDA 5.0 nel 2012 (Architettura Kepler), il CUDA Dynamic Parallelism (CDP) è disponibile su device con una Compute Capability 3.5 o superiore.
+  - Permette la *creazione* e *sincronizzazione* dinamica (on the fly) 
+    di nuovi kernel #underline[direttamente dalla GPU].
+  - È possibile posticipare a *runtime* la decisione su quanti blocchi e griglie creare sul device (utile quando la *quantità di lavoro nidificato è sconosciuta*)
+  - Supporta un approccio *gerarchico* e *ricorsivo* al parallelismo *evitando* continui passaggi fra CPU e GPU.
 
-- Introdotto in CUDA 5.0 nel 2012 (Architettura Kepler), il CUDA Dynamic Parallelism (CDP) è disponibile su device con una Compute Capability 3.5 o superiore.
-- Permette la *creazione* e *sincronizzazione* dinamica (on the fly) di nuovi kernel direttamente dalla GPU.
-- È possibile posticipare a *runtime* la decisione su quanti blocchi e griglie creare sul device (utile quando la *quantità di lavoro nidificato è sconosciuta*)
-- Supporta un approccio *gerarchico* e *ricorsivo* al parallelismo *evitando* continui passaggi fra CPU e GPU.
+  #green_heading("Possibili Applicazioni")
 
-#green_heading("Possibili Applicazioni")
+  - *Algoritmi ricorsivi* (es: Quick Sort, Merge Sort) → [Ricorsione con profondità sconosciuta]
+  - *Strutture dati ad albero* (es: Alberi di ricerca, Alberi decisionali) → [Elaborazione parallela nidificata irregolare]
+  - *Elaborazione di immagini e segnali* (es. Region growing) → [Decomposizione dinamica delle aree di elaborazione]
+]
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Vantaggi")
 
-- *Algoritmi ricorsivi* (es: Quick Sort, Merge Sort) → [Ricorsione con profondità sconosciuta]
-- *Strutture dati ad albero* (es: Alberi di ricerca, Alberi decisionali) → [Elaborazione parallela nidificata irregolare]
-- *Elaborazione di immagini e segnali* (es. Region growing) → [Decomposizione dinamica delle aree di elaborazione]
+  - *Flessibilità*: Adattamento dinamico del parallelismo in base ai dati elaborati, senza dover prevedere tutto a priori.
+  - *Scalabilità*: Sfruttamento ottimale delle risorse GPU, creando nuovi blocchi e griglie solo quando necessario.
+  - *Efficienza*: Riduzione del collo di bottiglia CPU-GPU, spostando parte del controllo dell'esecuzione sulla GPU.
+]
 
-#green_heading("Vantaggi")
 
-- *Flessibilità*: Adattamento dinamico del parallelismo in base ai dati elaborati, senza dover prevedere tutto a priori.
-- *Scalabilità*: Sfruttamento ottimale delle risorse GPU, creando nuovi blocchi e griglie solo quando necessario.
-- *Efficienza*: Riduzione del collo di bottiglia CPU-GPU, spostando parte del controllo dell'esecuzione sulla GPU.
-
-=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
-
-*Lancio da CPU (Approccio Tradizionale)*
-
-```
+==== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
+#codly(header: [#align(center)[*Lancio da CPU (Approccio Tradizionale)*]])
+```c
 __global__ void kernelA() {
 }
+
 __global__ void kernelB() {
 }
+
 int main() {
- ...
- kernelA<<<1,1>>>();
- ... // ottieni i risultati
- if(condition) {
- kernelB <<<1, 1>>>();
- }
+  ...
+  kernelA<<<1,1>>>();
+  ... // ottieni i risultati
+  if(condition) {
+    kernelB <<<1, 1>>>();
+  }
 }
 ```
 
-*Lancio dalla GPU (Dynamic Parallelism)*
+#codly(header: [#align(center)[*Lancio dalla GPU (Dynamic Parallelism)*]])
 
-```
+```cpp
 __global__ void kernelB() {
 }
+
 __global__ void kernelA() {
- if(condition)
- kernelB <<<1, 1>>>();
+  if(condition)
+  kernelB <<<1, 1>>>();
 }
+
 int main() {
- ...
- kernelA<<<1,1>>>();
+  ...
+  kernelA<<<1,1>>>();
 }
 ```
 
-=== Dynamic Parallelism: Eliminare il Round-trip CPU-GPU
-
-#image("images/_page_99_Figure_1_2.2.jpeg")
-
-#image("images/_page_99_Figure_2_2.2.jpeg")
+#image("images/_page_99_Figure_1_2.2.png")
 
 === Esecuzione Nidificata con CUDA Dynamic Parallelism
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Come Funziona:")
 
-#green_heading("Come Funziona:")
+  - Un thread, un blocco di thread o una griglia (*parent*) lancia una nuova griglia (*child grid*).
+  - Una child grid lanciata con dynamic parallelism *eredita* dal kernel padre certi attributi e limiti come, ad esempio, la configurazione della *cache L1/memoria condivisa* e *dimensione dello stack*.
+  - I blocchi della griglia child possono essere eseguiti #underline[in parallelo] 
+    e in modo #underline[indipendente] rispetto al kernel padre.
+  - Il kernel/griglia parent continua immediatamente dopo il lancio del kernel child (*asincronicità*).
+  - Il *child deve #underline[sempre] completare prima che il thread/blocco/griglia 
+    parent sia considerato completo.*
+  - Un parent si considera *completato* solo quando #underline[tutte] le griglie child create dai suoi thread (tutti) hanno terminato l'esecuzione.
 
-- Un thread, un blocco di thread o una griglia (*parent*) lancia una nuova griglia (*child grid*).
-- Una child grid lanciata con dynamic parallelism *eredita* dal kernel padre certi attributi e limiti come, ad esempio, la configurazione della *cache L1/memoria condivisa* e *dimensione dello stack*.
-- I blocchi della griglia child possono essere eseguiti in parallelo e in modo indipendente rispetto al kernel padre.
-- Il kernel/griglia parent continua immediatamente dopo il lancio del kernel child (*asincronicità*).
-- Il *child deve sempre completare prima che il thread/blocco/griglia parent sia considerato completo.*
-- Un parent si considera *completato* solo quando tutte le griglie child create dai suoi thread (tutti) hanno terminato l'esecuzione.
+  #green_heading("Visibilità e Sincronizzazione:")
 
-#green_heading("Visibilità e Sincronizzazione:")
+  - Ogni child grid lanciata da un thread è *visibile a tutti i thread dello stesso blocco*.
+  - Se i thread di un blocco terminano prima che tutte le loro griglie child abbiano completato, il sistema attiva automaticamente una *sincronizzazione implicita* per attendere il completamento di queste griglie.
+  - Un thread può *#underline[sincronizzarsi esplicitamente]* con le proprie 
+    griglie child e con quelle lanciate da altri thread *nel suo blocco* 
+    utilizzando *primitive di sincronizzazione* (*`cudaDeviceSynchronize`*).
+  - Quando un thread parent lancia una child grid, *l'esecuzione della griglia figlio non è garantita immediatamente*, a meno che il blocco di thread genitore non esegua una *sincronizzazione esplicita*.
+]
 
-- Ogni child grid lanciata da un thread è *visibile a tutti i thread dello stesso blocco*.
-- Se i thread di un blocco terminano prima che tutte le loro griglie child abbiano completato, il sistema attiva automaticamente una *sincronizzazione implicita* per attendere il completamento di queste griglie.
-- Un thread può *sincronizzarsi esplicitamente* con le proprie griglie child e con quelle lanciate da altri thread *nel suo blocco* utilizzando *primitive di sincronizzazione* (*cudaDeviceSynchronize*).
-- Quando un thread parent lancia una child grid, *l'esecuzione della griglia figlio non è garantita immediatamente*, a meno che il blocco di thread genitore non esegua una *sincronizzazione esplicita*.
 
 === Esempio di CUDA Dynamic Parallelism
 
-```
+```cpp
 // Kernel Figlio
 __global__ childKernel(void* data){
  // Operazioni sui dati
@@ -7827,70 +7842,83 @@ __global__ recursiveKernel(void* data){
 }
 ```
 
-========= Struttura del Codice
-
-- *Stessa sintassi* usata nel codice host.
-- Si noti che ogni thread che incontra un lancio di kernel *lo esegue*.
-- Quanti thread vengono lanciati in totale per l'esecuzione di *childKernel*?
-
-Nel caso in cui si desidera *solo una griglia child per blocco parent* usare:
-
-```
-if ( threadIdx.x == 0 )
- childKernel <<<16,16>>>(data);
-```
-
-*Configurazione Griglia/Blocco:* I kernel lanciati dinamicamente possono avere una configurazione di griglia e blocco indipendente dal kernel genitore.
-
+#image("images/_page_104_Figure_1_2.2.png")
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Configurazione Griglia/Blocco:* I kernel lanciati dinamicamente possono avere una configurazione di griglia e blocco indipendente dal kernel genitore.
+]
 === Memoria in CUDA Dynamic Parallelism
 
-#green_heading("Memoria Globale e Costante:")
 
-- Le griglie parent e child *condividono lo stesso spazio di memoria globale* (accesso *concorrente*) *e memoria costante.* Tuttavia*, la memoria locale e condivisa* (shared memory) sono *distinte* fra parent e child*.*
-- La coerenza della memoria globale non è garantita tra parent e child (be careful), tranne che:
-  - *All'avvio della griglia child.*
-  - *Quando la griglia child completa.*
+// GreenBlock
+#block(
+  //fill: rgb("#F5F9E8"),
+  stroke: 1pt + light_green,
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  #green_heading("Memoria Globale e Costante:")
 
-#green_heading("Visibilità della Memoria:")
+  - Le griglie parent e child *condividono lo stesso spazio di memoria globale* (accesso *concorrente*) *e memoria costante.* Tuttavia*, la memoria locale e condivisa* (shared memory) sono *distinte* fra parent e child*.*
+  - La coerenza della memoria globale non è garantita tra parent e child (be careful), tranne che:
+    - *All'avvio della griglia child.*
+    - *Quando la griglia child completa.*
 
-- Tutte le operazioni sulla memoria globale eseguite dal thread parent *prima* di lanciare una griglia child sono garantite essere *visibili e accessibili* ai thread della griglia child.
-- Tutte le operazioni di memoria eseguite dalla griglia child sono garantite essere visibili al thread genitore *dopo che il genitore si è sincronizzato* con il completamento della griglia child.
+  #green_heading("Visibilità della Memoria:")
 
-#green_heading("Memoria Locale e Condivisa (Shared Memory):")
+  - Tutte le operazioni sulla memoria globale eseguite dal thread parent *prima* di lanciare una griglia child sono garantite essere *visibili e accessibili* ai thread della griglia child.
+  - Tutte le operazioni di memoria eseguite dalla griglia child sono garantite essere visibili al thread genitore *dopo che il genitore si è sincronizzato* con il completamento della griglia child.
 
-- La memoria locale e condivisa sono *private* per un thread o un blocco di thread, rispettivamente.
-- La memoria locale e condivisa *non sono visibili* o *coerenti* tra parent e child.
-- La memoria locale è uno spazio di archiviazione privato per un thread e *non è visibile al di fuori di quel thread*.
+  #text(fill: red)[*Memoria Locale e Condivisa (Shared Memory):*] ❌
 
-#green_heading("Limitazioni")
+  - La memoria locale e condivisa sono *private* per un thread o un blocco di thread, rispettivamente.
+  - La memoria locale e condivisa #underline[*non sono visibili* o *coerenti*] tra 
+    parent e child.
+  - La memoria locale è uno spazio di archiviazione privato per un thread e 
+    *non è visibile al di fuori di quel thread*.
+]
 
-- *Non è valido* passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
-- È possibile passare variabili *per copia* (by value).
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Limitazioni*
 
-#green_heading("Memoria in CUDA Dynamic Parallelism")
+  - *Non è valido* passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
+  - È possibile passare variabili *per copia* (by value).
+]
+=== Memoria in CUDA Dynamic Parallelism
+#image("images/_page_106_FIgure_1_2.2.png")
 
-============ Memoria Globale e Costante:
+// GrayBlock
+#block(
+  fill: rgb("#F3F3F3"),
+  radius: 0.8em,
+  inset: 1.5em,
+  width: 100%,
+  // height: 21em,
+  breakable: false
+)[
+  *Limitazioni*
 
-#green_heading("Passaggio dei Puntatori alle Child Grid")
-
-============ Possono Essere Passati
-
-- Memoria Globale (sia variabili \_\_device\_
-   sia memoria allocata con cudaMalloc)
-- Memoria Zero-Host Copy
-- Memoria Costante (ereditata dal parent e non può essere modificata)
-
-========= Non Possono Essere Passati X
-
-- Memoria Condivisa (variabili shared )
-- Local Memory (incluse variabili dello stack)
-
-\* Analizzeremo meglio queste memorie in seguito ("2.3 Modello di Memoria in CUDA")
-
-============ Limitazioni
-
-- Non è valido passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
-- È possibile passare variabili per copia (by value).
+  - Non è valido passare un puntatore a memoria locale o shared come argomento quando si lancia una griglia child.
+  - È possibile passare variabili per copia (by value).
+]
 
 === Gestione dello Scambio Dati nel Parallelismo Dinamico
 
